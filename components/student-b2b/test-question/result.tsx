@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaStar, FaSmile } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface ScoreItem {
   name: string;
@@ -38,25 +39,37 @@ const ResultsCard: React.FC = () => {
     <div className="bg-white rounded-4xl shadow-2xl p-6 md:p-8 w-full max-w-4xl font-sans">
       {/* Header */}
       <div className="flex items-center mb-6">
-        <FaStar className="text-yellow-400 text-3xl mr-3" />
+
+        <Image
+          src="/images/Frame.png"
+          width={25}
+          alt="smille"
+          height={25} // Adjust aspect ratio as needed
+          className="mr-2 not-odd:w-[25px] object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+
         <h1 className="text-2xl font-bold text-gray-800">Results</h1>
       </div>
 
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8">
         {/* Left Pane: Overall Score */}
-        <div className="bg-slate-50 bg-grey rounded-4xl p-6 flex flex-col items-center justify-center md:w-1/3 space-y-3">
+        <div className=" bg-slate-50 bg-grey rounded-4xl p-6 flex flex-col items-center justify-center md:w-1/3 space-y-3">
           <div className="relative w-36 h-36">
             <svg className="w-full h-full" viewBox="0 0 36 36">
               {/* Background Circle */}
               <path
                 className="text-gray-200"
                 d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
+     a 15.9155 15.9155 0 0 1 0 31.831
+     a 15.9155 15.9155 0 0 1 0 -31.831"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.5" 
+                strokeWidth="2.5"
+                strokeDasharray="25, 50"
+                strokeLinecap="round"
+
               />
+
               {/* Progress Circle */}
               <path
                 className="text-blue-500"
@@ -72,18 +85,24 @@ const ResultsCard: React.FC = () => {
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <FaSmile className="text-blue-500 text-4xl" />
+              <Image
+                src="/images/Smile.png"
+                width={35}
+                alt="smille"
+                height={35} // Adjust aspect ratio as needed
+                className="mr-2 not-odd:w-[35px] object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
-          <div className="text-4xl font-bold text-green-500 mt-2">{overallScore}%</div>
-          <p className="text-sm text-gray-600 text-center max-w-xs">
+          <div className="text-3xl font-bold text-green-500 mt-0 mb-10">{overallScore}%</div>
+          <p className="text-sm text-black font-bold text-center max-w-xs">
             Great effort! A little more focus will take you to the top.
           </p>
         </div>
 
         {/* Right Pane: Individual Scores */}
-        <div className="bg-slate-50 rounded-x2 rounded-4xl p-6 md:w-2/3">
-          <h2 className="text-xl font-semibold text-gray-800 mb-5">Individual Scores</h2>
+        <div className="bg-slate-50 rounded-x2 rounded-4xl p-6 md:w-2/3 flex justify-center flex-col">
+          <h2 className="font-bold text-gray-800 mb-5 text-2xl">Individual Scores</h2>
           <div className="space-y-4">
             {individualScores.map((item) => (
               <div key={item.name} className='flex items-center justify-center'>
@@ -95,7 +114,7 @@ const ResultsCard: React.FC = () => {
                     className={`${item.color} h-2.5 rounded-full`}
                     style={{ width: `${item.score}%` }}
                   ></div>
-                  <span className="text-xs font-medium text-gray-500">{item.score}%</span>
+                  <span className="text-xs font-medium text-gray-500 ml-1">{item.score}%</span>
                 </div>
               </div>
             ))}
@@ -107,7 +126,7 @@ const ResultsCard: React.FC = () => {
       <div className="bg-slate-50 rounded-4xl p-4 md:p-5 flex flex-wrap justify-around items-center text-center mb-8">
         {summaryStats.map((stat) => (
           <div key={stat.label} className="p-2 min-w-[80px]">
-            <p className="text-xs text-gray-500 uppercase tracking-wider">{stat.label}</p>
+            <p className="text-xs font-bold  text-gray-800 uppercase tracking-wider">{stat.label}</p>
             <p className={`text-2xl font-bold ${stat.colorClass || 'text-gray-800'}`}>
               {stat.value}
             </p>

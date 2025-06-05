@@ -176,7 +176,7 @@ export default function DmittTestPage() {
 
 					{/* Category Tabs */}
 					<div className="mb-8 overflow-x-auto pb-2">
-						<div className="flex justify-between space-x-2 border-b border-gray-200 rounded-full border overflow-hidden p-2">
+						<div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 							{tabCategories.map(category => (
 								<button
 									key={category}

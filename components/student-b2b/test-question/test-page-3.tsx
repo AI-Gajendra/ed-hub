@@ -206,7 +206,7 @@ export default function DmittTest_3_Page() {
                                 </div>
                                 <p className="text-md font-medium text-[#FF99B7]">Min Left</p>
                              <p className="text-sm mt-2 p-2 rounded-xl border-2 border-red-500
-                                                        flex"> <Image src="/images/Tip.png" alt="Ask me bot" className="w-[40px]" width={10} height={10} /><span>Draw the lines to match the following</span></p>
+                                                        flex"> <Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} /><span>Draw the lines to match the following</span></p>
                                                 
                             </div>
                         </div>
