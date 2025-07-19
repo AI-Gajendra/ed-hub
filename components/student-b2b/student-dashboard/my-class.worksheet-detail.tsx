@@ -14,6 +14,7 @@ import {
 	FiChevronRight as FiPageRight,
 } from 'react-icons/fi'
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar'
+import StudentWrapper from '@/components/student-wrapper'
 
 // --- Main Category Tab Component (Reused) ---
 const MainCategoryTab = ({
@@ -29,9 +30,8 @@ const MainCategoryTab = ({
 }) => (
 	<button
 		onClick={onClick}
-		className={`flex items-center gap-1.5 px-5 py-2.5 text-sm font-medium rounded-2xl transition-colors whitespace-nowrap ${
-			isActive ? 'bg-[#FF3366] text-white shadow-md' : 'text-[#6B7280] hover:bg-[#ff33660f]'
-		}`}>
+		className={`flex items-center gap-1.5 px-5 py-2.5 text-sm font-medium rounded-2xl transition-colors whitespace-nowrap ${isActive ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-[#ff33660f]'
+			}`}>
 		{label}
 		{hasDropdown && (
 			<FiChevronDown className={`w-4 h-4 transition-transform duration-200 ${isActive ? 'transform rotate-180' : ''} `} />
@@ -244,68 +244,74 @@ export default function WorksheetViewPage() {
 
 	const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly')
 	const mainCategoriesData = [
-  "Academics",
-  "Skill Development",
-  "Brain Function",
-  "Sports",
-  "STEMnology",
-  "Competition",
-  "Extra curriculars",
-];
+		"Academics",
+		"Skill Development",
+		"Brain Function",
+		"Sports",
+		"STEMnology",
+		"Competition",
+		"Extra curriculars",
+	];
 
 	return (
-		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
-			<Header user={headerUser} />
+		<StudentWrapper student activeState='My course' >
 
-			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-				<div className="mb-4">
-						  <OptimizedCategoryTabsBar
+			<div className="bg-[#eeeeee] min-h-screen flex flex-col">
+				<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+					<div className="mb-4">
+						<OptimizedCategoryTabsBar
 							categories={mainCategoriesData}
 							activeCategory={activeMainCategory}
 							onCategoryClick={(category) => setActiveMainCategory(category)}
-						  />
-						</div>
-
-				{/* Main Worksheet Content Card */}
-				<div className="bg-white rounded-2xl shadow-xl px-3 py-6 relative">
-					{/* Worksheet Header */}
-					<div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
-						<div className="flex gap-3">
-							<div className="flex items-center gap-3 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-								<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-								<span>Page {currentPage}</span>
-								<FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-							</div>
-						</div>
+						/>
 					</div>
 
-					{/* Test Title and Subtitle */}
-					<div className="mb-8 flex items-start gap-3">
-						<button className="p-1.5 text-black cursor-pointer focus:outline-none">
-							<FiArrowLeft className="w-5 h-5" strokeWidth={3} />
-						</button>
-						<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-							<div>
-								<h2 className="text-xl font-bold text-[#FF3366]">Understanding Unitary Method – Level 1 </h2>
-								<p className="text-md text-black mt-1">Worksheet </p>
+					{/* Main Worksheet Content Card */}
+					<div className="bg-white rounded-2xl px-3 py-6 relative">
+						{/* Worksheet Header */}
+						<div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
+							<div className="flex gap-3">
+								<div className="flex items-center gap-3 sm:gap-4 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+									<FiArrowLeftCircle onClick={goToPreviousPage} className="w-4 h-4 cursor-pointer hover:text-black" />
+									<span className='font-normal'>Page {currentPage}</span>
+									<FiArrowRightCircle onClick={goToNextPage} className="w-4 h-4 cursor-pointer hover:text-black" />
+								</div>
 							</div>
 						</div>
-					</div>
 
-					{/* Worksheet Content (Rendered from HTML string) */}
-					{/* For security, if content comes from users, sanitize it properly */}
-					{/* <article
+						{/* Test Title and Subtitle */}
+						<div className="mb-8 flex items-start gap-3 mr-40">
+							<button className="p-1.5 text-black cursor-pointer focus:outline-none">
+								<FiArrowLeft className="w-5 h-5" onClick={() => {
+									if (typeof window !== "undefined") {
+										window.history.back();
+									}
+								}} />
+							</button>
+							<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+								<div>
+									<h2 className="text-xl font-bold text-[#FF3366]">Understanding Unitary Method – Level 1 </h2>
+									<p className="text-md text-black mt-1">Worksheet </p>
+								</div>
+							</div>
+						</div>
+
+						{/* Worksheet Content (Rendered from HTML string) */}
+						{/* For security, if content comes from users, sanitize it properly */}
+						{/* <article
             className="max-w-2xl mx-4 prose prose-sm sm:prose-base prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF]"
             dangerouslySetInnerHTML={{ __html: worksheetContent.contentHtml }}
           /> */}
-					<div className="max-w-2xl mx-4 prose prose-sm sm:prose-base prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF]">
-						<HtmlArticle />
+						<div className="max-w-2xl mx-4 prose prose-sm sm:prose-base prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF]">
+							<HtmlArticle />
+						</div>
+						{/* Add more interactive elements or structured components if content is not HTML */}
 					</div>
-					{/* Add more interactive elements or structured components if content is not HTML */}
-				</div>
-			</main>
+				</main>
 
-			<Footer />
-		</div>
+				<Footer />
+			</div>
+		</StudentWrapper>
+
 	)
 }

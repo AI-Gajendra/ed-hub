@@ -7,6 +7,7 @@ import {
     FiArrowLeft, FiVolume2, FiMaximize, FiLock, FiChevronRight
 } from 'react-icons/fi';
 import { MainCategoryTab, InfoTabButton, SimpleIconButton } from './ui-components'; // Import UI components
+import { useRouter } from 'next/navigation';
 
 // --- Data Interfaces ---
 export interface PlaylistItemData { // Exported for page.tsx
@@ -70,7 +71,7 @@ export const VideoPlayerSection: React.FC<VideoPlayerSectionProps> = ({
             The h-full on the outer div of VideoPlayerSection and flex-grow here make this part
             take up remaining vertical space.
         */}
-        <div className="px-3 pb-3 sm:px-6 sm:pb-6 flex-grow flex flex-col">
+        <div className="md:pb-3 sm:px-6 lg:pb-6 flex-grow flex flex-col">
             <div className="relative aspect-video bg-black group rounded-xl sm:rounded-2xl overflow-hidden w-full"> {/* Ensure w-full */}
                 <Image src={videoThumbnailSrc} alt="Video player placeholder" layout="fill" objectFit="cover" />
                 {/* Custom Controls */}
@@ -94,23 +95,23 @@ interface PlaylistItemPropsComponent { item: PlaylistItemData; onClick: () => vo
 export const PlaylistItem: React.FC<PlaylistItemPropsComponent> = ({ item, onClick }) => (
 	<button
 		onClick={onClick}
-		className={`w-full text-left py-2.5 px-3 sm:py-3 sm:px-4 border bg-[#F9FAFB] border-[#E5E7EB] rounded-xl sm:rounded-2xl transition-colors flex justify-between items-center 
-        ${ item.isActive ? 'bg-[#3366FF1A] border-transparent' : 'hover:bg-gray-100/70' }`}
+		className={`w-full text-left py-2.5 px-3 sm:py-3 sm:px-4 border border-[#E5E7EB] rounded-xl sm:rounded-2xl transition-colors flex justify-between items-center cursor-pointer
+        ${ item.isActive ? 'bg-[#3366FF1A] border-transparent' : 'bg-[#F9FAFB] hover:bg-gray-100/70' }`}
     >
 		<div>
-			<h4 className={`text-md sm:text-lg ${item.isActive ? 'text-[#3366FF]' : 'text-black'}`}>{item.title}</h4>
+			<h4 className={`text-sm sm:text-base font-medium ${item.isActive ? 'text-[#3366FF]' : 'text-black'}`}>{item.title}</h4>
 			<p className={`text-xs sm:text-sm font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>{item.subtitle}</p>
 			<p className={`text-xs sm:text-sm font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>{item.date}</p>
 		</div>
-		<div className="text-right flex-shrink-0 flex flex-col ml-2 gap-1 items-end mt-auto">
+		<div className="text-right flex-shrink-0 flex flex-col ml-2 gap-2 items-end mt-auto">
 			{item.isLocked ? (
-				<div className="bg-[#FF33661A] rounded-full p-2 sm:p-3 h-fit w-fit">
-					<FiLock className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF3366]" strokeWidth={3} />
+				<div className="bg-[#FF33661A] rounded-full p-1 sm:p-1.5 h-fit w-fit">
+					<FiLock className="w-3 h-3 sm:w-5 sm:h-5 text-[#FF3366]" />
 				</div>
 			) : item.duration ? (
 				'' // Empty string as per original if not locked and has duration (duration shown below)
 			) : null}
-			<span className={`text-sm sm:text-md mt-auto font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>
+			<span className={`text-xs sm:text-sm mt-auto font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>
 				{item.duration}
 			</span>
 		</div>
@@ -128,7 +129,7 @@ export const PlaylistSidebar: React.FC<PlaylistSidebarProps> = ({ playlistItems,
                     h-64 lg:h-auto overflow-hidden custom-scrollbar ">
         {/* Added lg:p-3 and flex-shrink-0 to prevent it from shrinking if content is too wide */}
         <div className="relative z-10 h-full">
-            <div className="space-y-1.5 sm:space-y-2 lg:max-h-127 h-full overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
+            <div className="space-y-1.5 sm:space-y-2 lg:max-h-127 xl:max-h-[670px] h-full overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
                 {playlistItems.map(item => (
                     <PlaylistItem key={item.id} item={item} onClick={() => onItemClick(item)} />
                 ))}
@@ -138,9 +139,15 @@ export const PlaylistSidebar: React.FC<PlaylistSidebarProps> = ({ playlistItems,
 );
 
 // --- Component 5: QuizResultItem ---
-interface QuizResultItemPropsComponent { item: QuizResultItemData; } // Renamed to avoid conflict
-export const QuizResultItem: React.FC<QuizResultItemPropsComponent> = ({ item }) => (
-	<div className="bg-[#F9FAFB] p-3 sm:p-4 rounded-2xl border border-[#E5E7EB] flex items-center justify-between">
+interface QuizResultItemPropsComponent { item: QuizResultItemData; activeTab: 'Overview' | 'Quiz' | 'Result'; } // Renamed to avoid conflict
+export const QuizResultItem: React.FC<QuizResultItemPropsComponent> = ({ item , activeTab}) => {
+    const Router = useRouter();
+    const handleClick = ()=>{
+        if(activeTab==="Result") Router.push("/b2c-student/student-flow/quiz-result")
+        else if(activeTab==="Quiz" && !item.isLocked) Router.push("/b2c-student/student-flow/quiz-page")
+    }
+    return(
+	<div className="bg-[#F9FAFB] p-3 sm:p-4 rounded-2xl border border-[#E5E7EB] flex items-center justify-between cursor-pointer" onClick={handleClick}>
 		<div className="flex flex-col justify-between min-h-[50px] sm:min-h-[60px]"> {/* Adjusted min-height for mobile */}
 			<h4 className="text-sm sm:text-md font-medium text-black">{item.name}</h4>
 			<p className="text-[10px] sm:text-xs font-light text-[#6B7280]">{item.subtitleOrDate}</p>
@@ -157,7 +164,7 @@ export const QuizResultItem: React.FC<QuizResultItemPropsComponent> = ({ item })
 			)}
 		</div>
 	</div>
-);
+);}
 
 
 // --- Component 6: VideoInfoSection ---
@@ -170,7 +177,8 @@ interface VideoInfoSectionProps {
 }
 export const VideoInfoSection: React.FC<VideoInfoSectionProps> = ({
     activeTab, onTabChange, overviewContent, upcomingQuizzes, results
-}) => (
+}) => {
+    return(
     <div className="bg-white rounded-2xl  p-4 sm:p-6">
         <div>
             <div className="flex items-center font-semibold gap-3 sm:gap-6 mb-4 sm:mb-6 border-gray-200 pb-2 sm:pb-3"> {/* Added border-b */}
@@ -190,17 +198,17 @@ export const VideoInfoSection: React.FC<VideoInfoSectionProps> = ({
                 <div>
                     <h3 className="text-md sm:text-lg font-semibold text-[#FF3366] mb-3 sm:mb-4">Upcoming Quiz</h3>
                     <div className="space-y-2 sm:space-y-3">
-                        {upcomingQuizzes.map(quiz => <QuizResultItem key={quiz.id} item={quiz} />)}
+                        {upcomingQuizzes.map(quiz => <QuizResultItem key={quiz.id} item={quiz} activeTab={activeTab}/>)}
                     </div>
                 </div>
             )}
             {activeTab === 'Result' && (
                 <div>
                     <div className="space-y-2 sm:space-y-3">
-                        {results.map(result => <QuizResultItem key={result.id} item={result} />)}
+                        {results.map(result => <QuizResultItem key={result.id} item={result} activeTab={activeTab}/>)}
                     </div>
                 </div>
             )}
         </div>
     </div>
-);
+);}
