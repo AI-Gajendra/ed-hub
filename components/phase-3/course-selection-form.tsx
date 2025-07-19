@@ -18,8 +18,8 @@ const MembershipForm = () => {
     <div>
       <div className="max-w-[95rem] mx-auto  overflow-hidden  gap-3 flex flex-col sm:flex-row">
         {/* Left Side - Image */}
-        <div className="md:w-[65%]  rounded-2xl bg-white flex flex-col sm:flex-row">
-          <div className=" p-4  max-w-md md:h-[32rem]">
+        <div className="md:w-[65%]  rounded-2xl bg-white flex flex-col lg:flex-row">
+          <div className=" p-4  lg:max-w-md md:h-[33rem]">
             <img
               src="/phase-3/alphaers.png"
               alt="Membership"
@@ -28,7 +28,7 @@ const MembershipForm = () => {
           </div>
 
           {/* Center - Form */}
-          <div className=" p-6 max-w-base">
+          <div className=" p-6 lg:max-w-base">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">
               Membership Name
             </h2>
@@ -73,9 +73,9 @@ const MembershipForm = () => {
               </div>
             ))}
 
-            <div className="flex items-center  flex-col md:flex-row gap-1 mt-4">
+            <div className="flex items-center  flex-row  gap-2 md:gap-1 mt-4">
                <div className="w-[30%]"><NumberInput/></div>
-              <Button className="bg-[#3366ff] rounded-full w-[70%] text-white px-6 text-sm md:text-xl font-medium  py-2 hover:bg-blue-700">
+              <Button className="bg-[#3366ff] rounded-full md:w-[70%] text-white px-6 text-sm md:text-xl font-medium  py-2 hover:bg-blue-700">
                 Add to Cart
               </Button>
             </div>
@@ -89,7 +89,7 @@ const MembershipForm = () => {
           <p className="text-sm text-center sm:text-lg text-[#6b7280]  mb-2">
             Available Courses
           </p>
-          <hr className="border-t-[1px]  border-black"></hr>
+          <hr className="border-t-[1px]    border-[#6b7280]"></hr>
           <ul className="text-sm sm:text-base mt-2 text-black space-y-2">
             {courses.map((course, idx) => (
               <li key={idx}>{course}</li>

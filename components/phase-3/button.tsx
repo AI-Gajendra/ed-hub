@@ -14,7 +14,7 @@ export default function NumberInput() {
   };
 
   return (
-    <div className="relative w-[80%] ">
+    <div className="relative ">
       <div className="flex items-center justify-between rounded-full border border-[#d5d5d5] bg-[#f9fafb] px-3 py-1 focus-within:ring-2 focus-within:ring-blue-400 transition-shadow duration-200">
         {/* Input Field */}
         <input
