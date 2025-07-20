@@ -224,7 +224,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                         ))}
                     </div>
                 </div>
-                <div className="bg-gray-100 px-2 py-1 rounded-full flex justify-between items-center gap-2">
+                <div className="bg-[#f9fafb] px-2 py-1 rounded-full flex justify-between items-center gap-2">
                     <p className="font-semibold text-lg text-[#4BC4B6]">₹2,000-₹5,000</p>
                     <button className='px-3 py-2 text-white font-medium bg-blue-600 rounded-full'>Add to cart</button>
                 </div>
