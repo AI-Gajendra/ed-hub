@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 // No imports from ui-components.tsx needed for this specific page's structure yet.
 
 // --- Component 1: CourseCard (Major Component) ---
@@ -22,7 +23,7 @@ export interface Course { // Exporting interface for use in page.tsx
 }
 
 interface CourseCardProps {
-  course: Course;
+    course: Course;
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
@@ -30,9 +31,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     const isUpcoming = course.status === 'upcoming';
     const isCompleted = course.status === 'completed';
 
+    const Router = useRouter();
+
     if (course.isKnowledgeBox) {
         return (
-            <div className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-3 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
+            <div onClick={() => Router.push("/b2c-student/student-flow/my-class")} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-3 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
                 <div className="w-full rounded-xl flex items-center justify-center mb-3 sm:mb-4"> {/* Adjusted margin */}
                     <Image src={course.imageSrc} alt={course.name} width={932} height={460} className="w-full h-auto rounded-xl object-cover aspect-[16/9] sm:aspect-video" /> {/* Added aspect ratio */}
                 </div>
@@ -45,7 +48,9 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     }
 
     return (
-        <div className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-2 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
+        <div onClick={() => {
+            if (!isCompleted) Router.push("/b2c-student/student-flow/single-course-detail")
+        }} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-2 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
             <div className="relative w-full aspect-[16/9] sm:aspect-video rounded-xl overflow-hidden mb-2"> {/* Added aspect ratio and overflow hidden for Image */}
                 <Image src={course.imageSrc} alt={course.name} layout="fill" objectFit="contain" />
             </div>

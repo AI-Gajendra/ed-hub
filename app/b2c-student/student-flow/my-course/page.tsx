@@ -5,6 +5,7 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { CourseSection, AiSuggestsSection, Course } from './components'; 
+import StudentWrapper from '@/components/student-wrapper';
 // --- Sample Data (moved to page.tsx for clarity) ---
 const ongoingCoursesData: Course[] = [
     { id: 1, status: 'ongoing', isKnowledgeBox: true, imageSrc: '/C1.png', name: 'My Knowledge Box', description: 'Explore subjects like Academics, Sports & more', domain: '', levelGrade: '' },
@@ -24,15 +25,10 @@ const completedCoursesData: Course[] = [
 
 
 export default function MyCoursePage() {
-    const headerUser = {
-        name: 'Shlok Agheda',
-        role: 'Student',
-        avatarSrc: '/placeholder-avatar-student.jpg', // UPDATE PATH
-    };
-
     return (
-        <div className="bg-gray-100 min-h-screen flex flex-col">
-            <Header user={headerUser} />
+        <StudentWrapper student activeState='My course'>
+
+        <div className="bg-[#eeeeee] min-h-screen flex flex-col p-3 sm:p-4 md:p-6 lg:p-8">
 
             <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 bg-white rounded-2xl sm:rounded-2xl my-0 sm:my-6"> {/* Adjusted margin/rounding for mobile */}
                 <CourseSection title="Ongoing" courses={ongoingCoursesData} />
@@ -41,7 +37,8 @@ export default function MyCoursePage() {
                 <AiSuggestsSection />
             </main>
 
-            <Footer />
         </div>
+            <Footer />
+        </StudentWrapper>
     );
 }
