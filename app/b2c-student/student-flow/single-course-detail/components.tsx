@@ -11,6 +11,7 @@ import {
 import { DateNavigatorWithArrows, FilterDropdown } from "./ui-components";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import MonthTab from "@/components/common-components/MonthTab/MonthTab";
+import { useRouter } from "next/navigation";
 
 // --- Interfaces ---
 export interface LearningWeek {
@@ -274,7 +275,9 @@ export const AttendanceCard: React.FC<{
   </div>
 );
 
-export const CertificateCard: React.FC = () => (
+export const CertificateCard: React.FC = () => {
+  const Router = useRouter();
+  return(
   <div className="bg-white rounded-2xl p-3 md:p-4 text-left h-full flex flex-col lg:col-span-5">
     <h3 className="font-medium text-black mb-2 text-sm md:text-base">
       Download Certificate
@@ -285,13 +288,14 @@ export const CertificateCard: React.FC = () => (
     <ActionButton
       variant="secondary"
       size="sm"
+      onClick={() => Router.push("/b2c-student/student-flow/checkout")}
       className="w-full bg-[#F3F4F6] flex justify-center items-center mt-auto"
     >
       <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-[#B0B0B0]" />
       <span className="text-[#B0B0B0]">Download</span>
     </ActionButton>
   </div>
-);
+);}
 
 export const ExtraClass: React.FC<{ materials: CourseMaterial[] }> = ({
 
@@ -365,8 +369,10 @@ export const ContentTab: React.FC<{
   </button>
 );
 
-export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => (
-  <div className="flex items-center justify-between bg-[#F3F4F6] p-2 rounded-full border border-[#E5E7EB]">
+export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => {
+  const Router = useRouter();
+  return(
+  <div onClick={()=>Router.push("/b2c-student/student-flow/video-screen")} className="flex items-center justify-between bg-[#F3F4F6] p-2 rounded-full border border-[#E5E7EB] cursor-pointer">
     <div className="flex items-center gap-2">
       <div className=" rounded-full p-1">
         <svg
@@ -408,15 +414,17 @@ export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => (
       ></path>
     </svg>
   </div>
-);
+);}
 
 export const ActionButton: React.FC<{
   variant: "primary" | "secondary";
   size: "sm" | "md";
   children: React.ReactNode;
   className?: string;
-}> = ({ variant, size, children, className }) => (
+  onClick?:()=>void;
+}> = ({ variant, size, children, className, onClick }) => (
   <button
+  onClick={onClick}
     className={`font-semibold rounded-full transition-colors ${variant === "primary"
       ? "bg-[#3366FF] text-white hover:bg-blue-700"
       : "bg-gray-200 text-gray-800 hover:bg-gray-300"
