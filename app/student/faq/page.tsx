@@ -1,6 +1,6 @@
 'use client';
 
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CHeader";
 import { ChevronDown } from 'lucide-react';
 import Footer from "@/components/footer";
 import { useState } from "react";

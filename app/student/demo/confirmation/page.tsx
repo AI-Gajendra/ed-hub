@@ -1,6 +1,6 @@
 "use client";
 
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CHeader";
 import FooterNew from "@/components/footer3";
 import { FaCircleCheck } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
