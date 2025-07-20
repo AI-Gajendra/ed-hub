@@ -19,7 +19,6 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaCircleCheck } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
-import StudentB2CHeader from "@/components/layout/StudentB2CHeader";
 
 interface Course {
   id: string;
@@ -178,8 +177,7 @@ export default function StudentHome() {
   const [searchQuery, setSearchQuery] = useState("");
   const startingCourses = courses.slice(0, 3);
   return (
-    <div>
-      <StudentB2CHeader activeState="Home"/>
+    <StudentWrapper activeState="Home">
       <main className="min-h-[calc(100vh-80px)]">
         {/* Hero Section */}
         <section className="relative h-full">
@@ -473,6 +471,6 @@ export default function StudentHome() {
         {/* footer */}
         <FooterNew />
       </main>
-    </div>
+    </StudentWrapper>
   );
 }

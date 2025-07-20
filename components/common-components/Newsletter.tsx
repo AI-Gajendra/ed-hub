@@ -12,7 +12,7 @@ const Newsletter = () => {
     }
     return (
         <div
-            className="mt-8 rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
+            className="mt-4 rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
             style={{
                 backgroundImage: 'url(/pattern-2.png)', // UPDATE PATH
                 backgroundSize: '1500px',

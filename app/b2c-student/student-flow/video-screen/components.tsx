@@ -7,15 +7,16 @@ import {
     FiArrowLeft, FiVolume2, FiMaximize, FiLock, FiChevronRight
 } from 'react-icons/fi';
 import { MainCategoryTab, InfoTabButton, SimpleIconButton } from './ui-components'; // Import UI components
+import { useRouter } from 'next/navigation';
 
 // --- Data Interfaces ---
 export interface PlaylistItemData { // Exported for page.tsx
-	id: string; title: string; subtitle: string; date: string;
-	duration?: string; isLocked?: boolean; isActive?: boolean;
+    id: string; title: string; subtitle: string; date: string;
+    duration?: string; isLocked?: boolean; isActive?: boolean;
 }
 export interface QuizResultItemData { // Exported for page.tsx
-	id: string; name: string; subtitleOrDate: string;
-	scorePercentage?: number; isLocked?: boolean; date?: string; // Keep 'date' for Quiz type
+    id: string; name: string; subtitleOrDate: string;
+    scorePercentage?: number; isLocked?: boolean; date?: string; // Keep 'date' for Quiz type
 }
 
 // --- Component 1: MainCategoryTabsBar ---
@@ -39,7 +40,7 @@ export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ catego
                     hasDropdown={category === 'Sports'}
                 />
             ))}
-             <SimpleIconButton icon={<FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5}/>} ariaLabel="Scroll categories right" className="absolute right-0 z-10 bg-white/80 hover:bg-gray-200 md:hidden" />
+            <SimpleIconButton icon={<FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5} />} ariaLabel="Scroll categories right" className="absolute right-0 z-10 bg-white/80 hover:bg-gray-200 md:hidden" />
         </div>
     </div>
 );
@@ -60,7 +61,7 @@ export const VideoPlayerSection: React.FC<VideoPlayerSectionProps> = ({
     // For mobile, it will be block and take full width.
     <div className="flex flex-col h-full"> {/* Ensure it tries to fill height if parent allows */}
         <div className="py-3 sm:py-4 px-2 sm:px-3 flex items-start gap-2 sm:gap-4">
-            {onBackClick && <SimpleIconButton onClick={onBackClick} icon={<FiArrowLeft className="w-5 h-5" strokeWidth={3} />} ariaLabel="Back to course list" />}
+            {onBackClick && <SimpleIconButton onClick={onBackClick} icon={<FiArrowLeft className="w-5 h-5" />} ariaLabel="Back to course list" />}
             <div className="flex-grow min-w-0"> {/* Added min-w-0 here for text truncation if needed */}
                 <h2 className="text-lg sm:text-2xl font-semibold text-[#3366FF] leading-tight truncate">{courseTitle}</h2>
                 <p className="text-sm sm:text-lg font-light text-[#3366FF] mt-0.5 leading-tight line-clamp-2 sm:line-clamp-none">{courseSubtitle}</p>
@@ -70,7 +71,7 @@ export const VideoPlayerSection: React.FC<VideoPlayerSectionProps> = ({
             The h-full on the outer div of VideoPlayerSection and flex-grow here make this part
             take up remaining vertical space.
         */}
-        <div className="px-3 pb-3 sm:px-6 sm:pb-6 flex-grow flex flex-col">
+        <div className="md:pb-3 sm:px-6 lg:pb-6 flex-grow flex flex-col">
             <div className="relative aspect-video bg-black group rounded-xl sm:rounded-2xl overflow-hidden w-full"> {/* Ensure w-full */}
                 <Image src={videoThumbnailSrc} alt="Video player placeholder" layout="fill" objectFit="cover" />
                 {/* Custom Controls */}
@@ -92,43 +93,43 @@ export const VideoPlayerSection: React.FC<VideoPlayerSectionProps> = ({
 // --- Component 3: PlaylistItem ---
 interface PlaylistItemPropsComponent { item: PlaylistItemData; onClick: () => void; } // Renamed to avoid conflict
 export const PlaylistItem: React.FC<PlaylistItemPropsComponent> = ({ item, onClick }) => (
-	<button
-		onClick={onClick}
-		className={`w-full text-left py-2.5 px-3 sm:py-3 sm:px-4 border bg-[#F9FAFB] border-[#E5E7EB] rounded-xl sm:rounded-2xl transition-colors flex justify-between items-center 
-        ${ item.isActive ? 'bg-[#3366FF1A] border-transparent' : 'hover:bg-gray-100/70' }`}
+    <div
+        onClick={onClick}
+        className={`w-full text-left py-2.5 px-3 sm:px-4 border border-[#E5E7EB] rounded-xl sm:rounded-2xl transition-colors flex justify-between items-center ${item.title === "Quiz Name" ? "cursor-pointer" : ""}
+        ${item.isActive ? 'bg-[#3366FF1A] border-transparent' : 'bg-[#F9FAFB] hover:bg-gray-100/70'}`}
     >
-		<div>
-			<h4 className={`text-md sm:text-lg ${item.isActive ? 'text-[#3366FF]' : 'text-black'}`}>{item.title}</h4>
-			<p className={`text-xs sm:text-sm font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>{item.subtitle}</p>
-			<p className={`text-xs sm:text-sm font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>{item.date}</p>
-		</div>
-		<div className="text-right flex-shrink-0 flex flex-col ml-2 gap-1 items-end mt-auto">
-			{item.isLocked ? (
-				<div className="bg-[#FF33661A] rounded-full p-2 sm:p-3 h-fit w-fit">
-					<FiLock className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF3366]" strokeWidth={3} />
-				</div>
-			) : item.duration ? (
-				'' // Empty string as per original if not locked and has duration (duration shown below)
-			) : null}
-			<span className={`text-sm sm:text-md mt-auto font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>
-				{item.duration}
-			</span>
-		</div>
-	</button>
+        <div>
+            <h4 className={`text-sm sm:text-base font-medium ${item.isActive ? 'text-[#3366FF]' : 'text-black'}`}>{item.title}</h4>
+            <p className={`text-xs sm:text-sm font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>{item.subtitle}</p>
+            <p className={`text-xs sm:text-sm font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>{item.date}</p>
+        </div>
+        <div className="text-right flex-shrink-0 flex flex-col ml-2 gap-2 items-end mt-auto">
+            {item.isLocked ? (
+                <div className="bg-[#FF33661A] rounded-full p-1 sm:p-1.5 h-fit w-fit">
+                    <FiLock className="w-3 h-3 sm:w-5 sm:h-5 text-[#FF3366]" />
+                </div>
+            ) : item.duration ? (
+                ''
+            ) : null}
+            <span className={`text-xs sm:text-sm mt-auto font-light ${item.isActive ? 'text-[#3366FF99]' : 'text-[#6B7280]'}`}>
+                {item.duration}
+            </span>
+        </div>
+    </div>
 );
 
 // --- Component 4: PlaylistSidebar ---
 interface PlaylistSidebarProps {
     playlistItems: PlaylistItemData[];
     onItemClick: (item: PlaylistItemData) => void;
+    rightHeight: number;
 }
-export const PlaylistSidebar: React.FC<PlaylistSidebarProps> = ({ playlistItems, onItemClick }) => (
+export const PlaylistSidebar: React.FC<PlaylistSidebarProps> = ({ playlistItems, onItemClick, rightHeight }) => (
     // On lg screens, it has a fixed width. On smaller, it's w-full.
     <div className="w-full lg:w-80 xl:w-96 bg-white rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none p-4 sm:p-6 lg:p-3 lg:pl-3 flex-shrink-0 
-                    h-64 lg:h-auto overflow-hidden custom-scrollbar ">
-        {/* Added lg:p-3 and flex-shrink-0 to prevent it from shrinking if content is too wide */}
+                    h-64 lg:h-auto overflow-hidden custom-scrollbar " style={{ maxHeight: `${rightHeight}px` }}>
         <div className="relative z-10 h-full">
-            <div className="space-y-1.5 sm:space-y-2 lg:max-h-127 h-full overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
+            <div className={`space-y-1.5 sm:space-y-2 max-h-[${rightHeight}px] h-full overflow-y-auto custom-scrollbar pr-1 sm:pr-2`}>
                 {playlistItems.map(item => (
                     <PlaylistItem key={item.id} item={item} onClick={() => onItemClick(item)} />
                 ))}
@@ -138,26 +139,33 @@ export const PlaylistSidebar: React.FC<PlaylistSidebarProps> = ({ playlistItems,
 );
 
 // --- Component 5: QuizResultItem ---
-interface QuizResultItemPropsComponent { item: QuizResultItemData; } // Renamed to avoid conflict
-export const QuizResultItem: React.FC<QuizResultItemPropsComponent> = ({ item }) => (
-	<div className="bg-[#F9FAFB] p-3 sm:p-4 rounded-2xl border border-[#E5E7EB] flex items-center justify-between">
-		<div className="flex flex-col justify-between min-h-[50px] sm:min-h-[60px]"> {/* Adjusted min-height for mobile */}
-			<h4 className="text-sm sm:text-md font-medium text-black">{item.name}</h4>
-			<p className="text-[10px] sm:text-xs font-light text-[#6B7280]">{item.subtitleOrDate}</p>
-			{item.date && <p className="text-[10px] sm:text-xs font-light text-[#6B7280]">{item.date}</p>} {/* Ensure item.date is rendered if present */}
-		</div>
-		<div className="text-right flex-shrink-0 flex flex-col ml-2 self-start gap-1 items-end">
-			{item.isLocked && (
-				<div className="bg-[#FF33661A] rounded-full p-2 sm:p-3 h-fit w-fit">
-					<FiLock className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF3366]" strokeWidth={3} />
-				</div>
-			)}
-			{typeof item.scorePercentage === 'number' && !item.isLocked && (
-				<div className="bg-[#99DEFF] text-black text-sm sm:text-md px-4 py-5 sm:px-6 sm:py-7 rounded-xl sm:rounded-2xl flex-shrink-0 ml-2">{item.scorePercentage}%</div>
-			)}
-		</div>
-	</div>
-);
+interface QuizResultItemPropsComponent { item: QuizResultItemData; activeTab: 'Overview' | 'Quiz' | 'Result'; } // Renamed to avoid conflict
+export const QuizResultItem: React.FC<QuizResultItemPropsComponent> = ({ item, activeTab }) => {
+    const Router = useRouter();
+    const handleClick = () => {
+        if (activeTab === "Result") Router.push("/b2c-student/student-flow/quiz-result")
+        else if (activeTab === "Quiz" && !item.isLocked) Router.push("/b2c-student/student-flow/quiz-page")
+    }
+    return (
+        <div className={`bg-[#F9FAFB] p-3 sm:p-4 rounded-2xl border border-[#E5E7EB] flex items-center justify-between ${ activeTab === "Result" || !item.isLocked ? "cursor-pointer" : ""}`} onClick={handleClick}>
+            <div className="flex flex-col justify-between min-h-[50px] sm:min-h-[60px]"> {/* Adjusted min-height for mobile */}
+                <h4 className="text-sm sm:text-md font-medium text-black">{item.name}</h4>
+                <p className="text-[10px] sm:text-xs font-light text-[#6B7280]">{item.subtitleOrDate}</p>
+                {item.date && <p className="text-[10px] sm:text-xs font-light text-[#6B7280]">{item.date}</p>} {/* Ensure item.date is rendered if present */}
+            </div>
+            <div className="text-right flex-shrink-0 flex flex-col ml-2 self-start gap-1 items-end">
+                {item.isLocked && (
+                    <div className="bg-[#FF33661A] rounded-full p-2 sm:p-3 h-fit w-fit">
+                        <FiLock className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF3366]" strokeWidth={3} />
+                    </div>
+                )}
+                {typeof item.scorePercentage === 'number' && !item.isLocked && (
+                    <div className="bg-[#99DEFF] text-black text-sm sm:text-md px-4 py-5 sm:px-6 sm:py-7 rounded-xl sm:rounded-2xl flex-shrink-0 ml-2">{item.scorePercentage}%</div>
+                )}
+            </div>
+        </div>
+    );
+}
 
 
 // --- Component 6: VideoInfoSection ---
@@ -170,37 +178,40 @@ interface VideoInfoSectionProps {
 }
 export const VideoInfoSection: React.FC<VideoInfoSectionProps> = ({
     activeTab, onTabChange, overviewContent, upcomingQuizzes, results
-}) => (
-    <div className="bg-white rounded-2xl  p-4 sm:p-6">
-        <div>
-            <div className="flex items-center font-semibold gap-3 sm:gap-6 mb-4 sm:mb-6 border-gray-200 pb-2 sm:pb-3"> {/* Added border-b */}
-                <InfoTabButton label="Overview" isActive={activeTab === 'Overview'} onClick={() => onTabChange('Overview')} />
-                <InfoTabButton label="Quiz" isActive={activeTab === 'Quiz'} onClick={() => onTabChange('Quiz')} />
-                <InfoTabButton label="Result" isActive={activeTab === 'Result'} onClick={() => onTabChange('Result')} />
-            </div>
+}) => {
+    return (
+        <div className="bg-white rounded-2xl  p-4">
+            <div>
+                <div className="flex items-center font-semibold gap-3 sm:gap-6 pb-2 sm:pb-3">
+                    <InfoTabButton label="Overview" isActive={activeTab === 'Overview'} onClick={() => onTabChange('Overview')} />
+                    <InfoTabButton label="Quiz" isActive={activeTab === 'Quiz'} onClick={() => onTabChange('Quiz')} />
+                    <InfoTabButton label="Result" isActive={activeTab === 'Result'} onClick={() => onTabChange('Result')} />
+                </div>
 
-            {activeTab === 'Overview' && (
-                <div className="text-xs sm:text-sm text-gray-600 leading-relaxed space-y-2 sm:space-y-3">
-                    {/* Splitting lorem ipsum for paragraph tags, adjust substring length as needed */}
-                    <p>{overviewContent.substring(0, 400)}...</p>
-                    <p>{overviewContent.substring(400, 800)}...</p>
-                </div>
-            )}
-            {activeTab === 'Quiz' && (
-                <div>
-                    <h3 className="text-md sm:text-lg font-semibold text-[#FF3366] mb-3 sm:mb-4">Upcoming Quiz</h3>
-                    <div className="space-y-2 sm:space-y-3">
-                        {upcomingQuizzes.map(quiz => <QuizResultItem key={quiz.id} item={quiz} />)}
+                {activeTab === 'Overview' && (
+                    <div className="text-xs sm:text-sm text-black leading-relaxed space-y-2 sm:space-y-3">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros sapien, semper id velit quis, sollicitudin egestas sem. In ac bibendum lacus, at luctus nunc. Proin elementum ullamcorper luctus. Aenean nec nulla imperdiet, sodales lacus quis, tempus neque. Vestibulum id purus augue. Fusce vel lectus ac nibh auctor tristique. Aliquam a leo risus. Integer ut gravida risus. Aliquam lobortis tortor at tellus consequat egestas eget ac mi. Suspendisse id ligula accumsan, ullamcorper nibh non, semper felis. Integer efficitur luctus sem, varius vehicula tellus hendrerit nec. Vestibulum ut aliquet turpis. Suspendisse ac semper nisi. Donec tristique ligula a volutpat mollis. Duis vel ligula in mi cursus accumsan vel at quam. Nullam in metus nec turpis mattis ullamcorper sit amet at est</p>
+                        <p>Aliquam fringilla sapien nec arcu faucibus luctus. Nullam elementum aliquam arcu, vitae lacinia erat aliquam nec. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In ac lorem vitae urna elementum bibendum sed sit amet neque. Nam quis sem ac augue porta tempor vel non tortor. Etiam sollicitudin odio ligula, vel eleifend nisl viverra quis. Sed sed nunc scelerisque, fringilla magna vitae, condimentum odio. Phasellus sed rutrum ligula, sed interdum lorem. Etiam massa nisi, eleifend ut sollicitudin accumsan, viverra vel ex. Pellentesque id enim tincidunt, consequat felis a, tempor nisi. Cras hendrerit lacinia tellus at sollicitudin. Nullam dolor enim, luctus id auctor ut, ultrices eget nulla. Cras vestibulum quam id sapien efficitur volutpat. Cras tempor magna elementum maximus faucibus.</p>
                     </div>
-                </div>
-            )}
-            {activeTab === 'Result' && (
-                <div>
-                    <div className="space-y-2 sm:space-y-3">
-                        {results.map(result => <QuizResultItem key={result.id} item={result} />)}
+                )}
+
+                {activeTab === 'Quiz' && (
+                    <div>
+                        <h3 className="text-md sm:text-lg font-semibold text-[#FF3366] mb-3 sm:mb-4">Upcoming Quiz</h3>
+                        <div className="space-y-2 sm:space-y-3">
+                            {upcomingQuizzes.map(quiz => <QuizResultItem key={quiz.id} item={quiz} activeTab={activeTab} />)}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+
+                {activeTab === 'Result' && (
+                    <div>
+                        <div className="space-y-2 sm:space-y-3">
+                            {results.map(result => <QuizResultItem key={result.id} item={result} activeTab={activeTab} />)}
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
+}

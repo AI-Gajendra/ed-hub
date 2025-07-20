@@ -5,14 +5,13 @@ import React from "react";
 import {
   FiChevronDown,
   FiChevronUp,
-  
+
   FiDownload,
 } from "react-icons/fi";
 import { DateNavigatorWithArrows, FilterDropdown } from "./ui-components";
-// NOTE: I am mocking the ui-components as they were not provided.
-// In your project, this import should work correctly.
-// You need to create a file named 'ui-components.tsx' and export these components.
-// For now, I'll add mock components at the end of this file.
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import MonthTab from "@/components/common-components/MonthTab/MonthTab";
+import { useRouter } from "next/navigation";
 
 // --- Interfaces ---
 export interface LearningWeek {
@@ -35,8 +34,23 @@ export interface CourseMaterial {
   date: string;
 }
 
-// --- Full Component Definitions ---
+const StyledSelect: React.FC<{
+  defaultValue?: string;
+  placeholder: string;
+  items: { value: string; label: string }[];
+  // Add onChange handler if needed
+}> = ({ defaultValue, placeholder, items }) => (
+  <Select defaultValue={defaultValue}>
+    <SelectTrigger className="w-fit rounded-xl sm:py-4 bg-[#F9FAFB] text-xs sm:text-sm text-black border border-[#E5E7EB]">
+      <SelectValue placeholder={placeholder} />
+    </SelectTrigger>
+    <SelectContent>
+      {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+    </SelectContent>
+  </Select>
+);
 
+// --- Full Component Definitions ---
 export const LearningContentCard: React.FC<{
   tabs: string[];
   activeTab: string;
@@ -44,18 +58,19 @@ export const LearningContentCard: React.FC<{
   currentWeekFilter: string;
   onWeekFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   currentMonth: string;
-  onMonthPrev?: () => void;
-  onMonthNext?: () => void;
   courseTitle: string;
   courseSubtitle: string;
   learningWeeks: LearningWeek[];
-  openAccordionId: string | null;
+  openAccordionIds: string[];
   onAccordionToggle: (weekId: string) => void;
+  leftRef: React.RefObject<HTMLDivElement | null>
 }> = (props) => (
-  <div className="bg-white rounded-2xl p-4 md:p-6">
-    <div className="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+  <div className="bg-white rounded-2xl p-4 md:p-6" ref={props.leftRef}>
+
+    <div className="mb-4 md:mb-6 flex flex-col lg:flex-row md:items-center justify-between gap-4">
+      {/* Tabs */}
       <nav
-        className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin"
+        className="w-full md:w-auto -mb-px flex overflow-x-auto space-x-1 lg:space-x-2 custom-scrollbar-thin"
         aria-label="Content Tabs"
       >
         {props.tabs.map((tab) => (
@@ -67,22 +82,22 @@ export const LearningContentCard: React.FC<{
           />
         ))}
       </nav>
-      <div className="flex items-center gap-2 sm:gap-3 self-end sm:self-center">
-        <FilterDropdown
-          value={props.currentWeekFilter}
-          onChange={props.onWeekFilterChange}
-          options={[
-            { value: "Week 1", label: "Week 1" },
-            { value: "Week 2", label: "Week 2" },
+
+      {/* Filters */}
+      <div className="w-full md:w-auto flex items-center gap-2 sm:gap-3 justify-center md:justify-end">
+        <StyledSelect
+          defaultValue="all"
+          placeholder="Filter"
+          items={[
+            { value: "all", label: "Week 1" },
+            { value: "batch1", label: "Batch 1" },
           ]}
         />
-        <DateNavigatorWithArrows
-          currentDate={props.currentMonth}
-          onPrevious={props.onMonthPrev}
-          onNext={props.onMonthNext}
-        />
+        <MonthTab />
       </div>
     </div>
+
+
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 gap-2 sm:gap-4">
       <div>
         <h2 className="text-lg md:text-xl font-bold text-[#3366FF]">
@@ -93,23 +108,17 @@ export const LearningContentCard: React.FC<{
         </p>
       </div>
     </div>
-    {props.activeTab === "Learning" && (
-      <div className="space-y-2 md:space-y-3">
-        {props.learningWeeks.map((week) => (
-          <LearningAccordion
-            key={week.id}
-            week={week}
-            isOpen={props.openAccordionId === week.id}
-            onToggle={() => props.onAccordionToggle(week.id)}
-          />
-        ))}
-      </div>
-    )}
-    {props.activeTab !== "Learning" && (
-      <div className="text-center py-8 md:py-10 text-gray-500 text-sm md:text-base">
-        {props.activeTab} content goes here.
-      </div>
-    )}
+
+    <div className="space-y-2 md:space-y-3">
+      {props.learningWeeks.map((week) => (
+        <LearningAccordion
+          key={week.id}
+          week={week}
+          isOpen={props.openAccordionIds.includes(week.id)}
+          onToggle={() => props.onAccordionToggle(week.id)}
+        />
+      ))}
+    </div>
   </div>
 );
 
@@ -119,26 +128,25 @@ export const LearningAccordion: React.FC<{
   onToggle: () => void;
 }> = ({ week, isOpen, onToggle }) => (
   <div className="bg-[#F9FAFB] rounded-2xl overflow-hidden border border-[#E5E7EB]">
-    {" "}
-    <button
-      onClick={onToggle}
-      className="w-full flex justify-between items-center p-3 sm:p-4 hover:bg-[#F3F4F6] focus:outline-none transition-colors"
+
+    <div
+      className="w-full flex justify-between items-center p-3 sm:p-4 focus:outline-none transition-colors"
     >
       <div>
-        {" "}
+
         <h3 className="text-sm sm:text-md mb-0.5 sm:mb-1 text-black text-left">
           {week.title}
-        </h3>{" "}
+        </h3>
         <p className="text-[10px] sm:text-xs text-left mt-1 sm:mt-1.5 text-gray-500">
           {week.videoCount} videos
         </p>
-      </div>{" "}
+      </div>
       {isOpen ? (
-        <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+        <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black cursor-pointer" onClick={onToggle} />
       ) : (
-        <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+        <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black cursor-pointer" onClick={onToggle} />
       )}
-    </button>{" "}
+    </div>
     {isOpen && (
       <div className="p-3 sm:p-4 bg-[#F9FAFB] space-y-1.5 sm:space-y-2">
         {week.videos.map((video) => (
@@ -154,31 +162,25 @@ export const UpcomingClassesCard: React.FC<{
   currentWeekFilter: string;
   onWeekFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   currentMonth: string;
-  onMonthPrev?: () => void;
-  onNext?: () => void;
+  rightHeight: number;
 }> = (props) => (
-  <div className="bg-white rounded-2xl p-4 md:p-6 flex flex-col flex-grow max-h-161">
+  <div className={`bg-white rounded-2xl p-4 flex flex-col flex-grow md:min-h-[300px]`}
+    style={{ maxHeight: `${props.rightHeight - 136}px` }}
+  >
     <div className="flex justify-between items-center mb-3 md:mb-4 flex-shrink-0">
       <h3 className="text-lg md:text-xl font-bold text-[#FF3366]">
         Upcoming Classes
       </h3>
     </div>
     <div className="flex justify-center items-center gap-2 sm:gap-3 mb-3 md:mb-4 flex-shrink-0">
-      <FilterDropdown
-        value={props.currentWeekFilter}
-        onChange={props.onWeekFilterChange}
-        options={[
-          { value: "Week 1", label: "Week 1" },
-          { value: "Week 2", label: "Week 2" },
-        ]}
+      <StyledSelect
+        defaultValue="all"
+        placeholder="Filter"
+        items={[{ value: "all", label: "Date" }, { value: "batch1", label: "Batch 1" }]}
       />
-      <DateNavigatorWithArrows
-        currentDate={props.currentMonth}
-        onPrevious={props.onMonthPrev}
-        onNext={props.onNext}
-      />
+      <MonthTab />
     </div>
-    <div className="flex-1 space-y-2 md:space-y-3 overflow-y-auto -mr-2 pr-2 custom-scrollbar">
+    <div className="flex-1 space-y-2 md:space-y-3 overflow-y-auto -mr-2 pr-1 custom-scrollbar-blue">
       {props.classes.map((uClass) => (
         <UpcomingClassItem key={uClass.id} uClass={uClass} />
       ))}
@@ -194,35 +196,34 @@ export const UpcomingClassesCard: React.FC<{
 export const UpcomingClassItem: React.FC<{ uClass: UpcomingClass }> = ({
   uClass,
 }) => (
-  <div className="bg-[#F9FAFB]/70 p-3 sm:p-4 rounded-2xl border border-[#E5E7EB]/100 flex flex-col xs:flex-row xs:items-stretch justify-between">
-    {" "}
-    <div className="mb-2 xs:mb-0 w-full">
-      {" "}
+  <div className="relative bg-[#F9FAFB]/70 p-3 sm:p-4 rounded-3xl border border-[#E5E7EB]/100 flex flex-col xs:flex-row xs:items-stretch justify-between">
+
+    <div className="mb-2 xs:mb-0 w-full space-y-1 md:space-y-1.5">
       <div className="flex justify-between items-start gap-2">
-        {" "}
         <h4 className="text-sm sm:text-md font-bold text-black">
           {uClass.title}
-        </h4>{" "}
-        <p className="text-[10px] sm:text-xs text-gray-400 mb-1 xs:mb-0 whitespace-nowrap">
+        </h4>
+        <p className="text-[10px] sm:text-xs text-[#6B7280] mb-1 xs:mb-0 whitespace-nowrap">
           {uClass.date}
         </p>
       </div>
+
       <p className="text-[10px] sm:text-xs text-[#FFCC00] font-light tracking-wide mt-0.5">
         {uClass.teacher}
       </p>
+
       <p className="text-[10px] sm:text-xs text-[#6B7280] font-light tracking-tight mt-1">
         {uClass.description}
       </p>
-    </div>
-    <div className="flex justify-between items-center xs:flex-col xs:items-end xs:justify-between ml-2 flex-shrink-0">
-      {" "}
-      <p className="text-[10px] sm:text-xs text-gray-500 font-medium tracking-tight whitespace-nowrap">
+
+      <p className="text-[10px] sm:text-xs text-[#6B7280] tracking-tight mt-1 whitespace-nowrap">
         {uClass.time}
       </p>
-      <ActionButton variant="primary" size="sm" className="xs:w-auto mt-2">
-        Join
-      </ActionButton>
+
     </div>
+    <ActionButton variant="primary" size="sm" className="absolute right-3 bottom-3 px-6 w-auto">
+      Join
+    </ActionButton>
   </div>
 );
 
@@ -245,10 +246,10 @@ export const AttendanceCard: React.FC<{
     percentage: number;
   };
 }> = ({ attendance }) => (
-  <div className="bg-white rounded-2xl p-3 md:p-4 h-full flex flex-col gap-4">
+  <div className="bg-white rounded-2xl p-3 md:p-4 h-full flex flex-col gap-4 lg:col-span-5">
     <h3 className="font-medium text-black  text-sm md:text-base">Attendence</h3>
     <p className="text-[10px] md:text-xs text-black ">
-      Total : {attendance.total}   Attended : {attendance.attended}   Missed :{" "}
+      Total : {attendance.total}   Attended : {attendance.attended}   Missed :
       {attendance.missed}
     </p>
     <div className="w-full flex rounded-full h-2.5 md:h-3">
@@ -261,9 +262,9 @@ export const AttendanceCard: React.FC<{
         </p>
       </div>
     </div>
-    <div className="text-[#78350F] space-y-2 text-xs text-center bg-[#FFCC004D] rounded-2xl p-4 mt-auto">
+    <div className="flex-1 text-[#78350F] space-y-2 text-xs text-center bg-[#FFCC004D] rounded-2xl p-4 mt-auto">
       <h1 className="font-semibold">Only 3 Classes Left</h1>
-      <p className="text-xs">
+      <p className="text-xs lg:mt-8 lg:px-4">
         To continue learning without interruption, please renew your course or
         complete the payment.
       </p>
@@ -274,37 +275,36 @@ export const AttendanceCard: React.FC<{
   </div>
 );
 
-export const CertificateCard: React.FC = () => (
-  <div className="bg-white rounded-2xl p-3 md:p-4 text-left h-full flex flex-col">
+export const CertificateCard: React.FC = () => {
+  const Router = useRouter();
+  return(
+  <div className="bg-white rounded-2xl p-3 md:p-4 text-left h-full flex flex-col lg:col-span-5">
     <h3 className="font-medium text-black mb-2 text-sm md:text-base">
       Download Certificate
     </h3>
-    <p className="text-[12px] text-[#6B7280] mb-2 flex-grow">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla,
-      enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a
-      tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor
-      lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare
-      quis. Vivamus porta finibus accumsan.
+    <p className="text-xs text-[#6B7280] mb-2 flex-grow">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare quis. Vivamus porta finibus accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare quis. Vivamus porta finibus accumsan.
     </p>
     <ActionButton
       variant="secondary"
       size="sm"
-      className="w-full flex justify-center items-center mt-auto"
+      onClick={() => Router.push("/b2c-student/student-flow/checkout")}
+      className="w-full bg-[#F3F4F6] flex justify-center items-center mt-auto"
     >
-      <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />{" "}
-      Download
+      <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-[#B0B0B0]" />
+      <span className="text-[#B0B0B0]">Download</span>
     </ActionButton>
   </div>
-);
+);}
 
 export const ExtraClass: React.FC<{ materials: CourseMaterial[] }> = ({
-  
+
 }) => (
-  <div className="bg-white rounded-2xl p-3 md:p-4 gap-1 h-full flex flex-col justify-between">
+  <div className="bg-white rounded-2xl p-3 md:p-4 h-full flex flex-col justify-between lg:col-span-4">
     <h3 className="font-medium text-black  text-sm md:text-base">
       Extra Class Payment
     </h3>
-    <p className="text-xs text-[#6B7280] mb-1">
+    <p className="text-xs text-[#6B7280]">
       Some topics remain uncovered in your current course plan.
     </p>
     <ul className="space-y-2">
@@ -362,16 +362,17 @@ export const ContentTab: React.FC<{
 }> = ({ label, isActive, onClick }) => (
   <button
     onClick={onClick}
-    className={`whitespace-nowrap px-3 py-2 text-sm font-medium  ${
-      isActive ? "border-b-2 border-[#3366FF] text-[#3366FF]" : "text-[#6B7280] hover:bg-gray-100"
-    }`}
+    className={`whitespace-nowrap md:px-2 lg:px-3 py-2 text-xs sm:text-sm font-medium  ${isActive ? "border-b-2 border-[#3366FF] text-[#3366FF]" : "text-[#6B7280] hover:bg-gray-100"
+      }`}
   >
     {label}
   </button>
 );
 
-export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => (
-  <div className="flex items-center justify-between bg-[#F3F4F6] p-2 rounded-full border border-[#E5E7EB]">
+export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => {
+  const Router = useRouter();
+  return(
+  <div onClick={()=>Router.push("/b2c-student/student-flow/video-screen")} className="flex items-center justify-between bg-[#F3F4F6] p-2 rounded-full border border-[#E5E7EB] cursor-pointer">
     <div className="flex items-center gap-2">
       <div className=" rounded-full p-1">
         <svg
@@ -413,24 +414,24 @@ export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => (
       ></path>
     </svg>
   </div>
-);
+);}
 
 export const ActionButton: React.FC<{
   variant: "primary" | "secondary";
   size: "sm" | "md";
   children: React.ReactNode;
   className?: string;
-}> = ({ variant, size, children, className }) => (
+  onClick?:()=>void;
+}> = ({ variant, size, children, className, onClick }) => (
   <button
-    className={`font-semibold rounded-full transition-colors ${
-      variant === "primary"
-        ? "bg-[#3366FF] text-white hover:bg-blue-700"
-        : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-    } ${
-      size === "sm"
+  onClick={onClick}
+    className={`font-semibold rounded-full transition-colors ${variant === "primary"
+      ? "bg-[#3366FF] text-white hover:bg-blue-700"
+      : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+      } ${size === "sm"
         ? "px-4 py-2 text-xs sm:text-sm"
         : "px-6 py-3 text-sm sm:text-base"
-    } ${className}`}
+      } ${className}`}
   >
     {children}
   </button>

@@ -19,7 +19,7 @@ export const MainCategoryTab: React.FC<MainCategoryTabProps> = ({ label, isActiv
                    sm:gap-1.5 sm:px-5 sm:py-2.5 sm:text-sm sm:font-semibold sm:rounded-3xl 
                    transition-colors whitespace-nowrap 
         ${ isActive
-            ? "bg-[#FF3366] text-white shadow-md"
+            ? "bg-[#FF3366] text-white"
             : "text-[#6B7280] hover:bg-[#ff33660f]"
         }`}
     >
@@ -61,7 +61,7 @@ interface ActionButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 }
 export const ActionButton: React.FC<ActionButtonProps> = ({ children, className, variant = 'primary', fullWidthOnMobile = false, ...props }) => {
     // Original desktop submit button: px-12 py-3 bg-[#3366FF] text-white font-semibold text-sm rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md
-    let baseStyle = "font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-md";
+    let baseStyle = "font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
     // Mobile default sizes, desktop (sm+) sizes match original
     const sizeStyle = "px-10 py-2.5 text-xs sm:px-12 sm:py-3 sm:text-sm";
 

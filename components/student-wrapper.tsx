@@ -3,7 +3,7 @@
 import StudentNavbar from "./student-navbar";
 import StudentNavbarNew from "./student-navbar-new";
 
-export default function StudentWrapper({
+export default function StudentB2CHeader({
   children,
   student = false,
   activeState,
