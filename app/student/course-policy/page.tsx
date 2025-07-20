@@ -1,7 +1,7 @@
 "use client";
 
 import FooterNew from "@/components/footer3";
-import StudentWrapper from "@/components/StudentB2CWrapper";
+import StudentWrapper from "@/components/StudentB2CHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";

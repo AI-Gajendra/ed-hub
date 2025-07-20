@@ -10,7 +10,7 @@ import {
   QuestionData // Type
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
-import StudentWrapper from '@/components/StudentB2CWrapper';
+import StudentWrapper from '@/components/StudentB2CHeader';
 
 // --- Sample Data (from your original) ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];

@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/footer";
-import StudentWrapper from "@/components/StudentB2CWrapper";
+import StudentWrapper from "@/components/StudentB2CHeader";
 import CourseMaterials from "@/components/student/settings/course-material";
 export default function SettingsCourseMaterials() {
   return (

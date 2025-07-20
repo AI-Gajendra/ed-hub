@@ -1,5 +1,5 @@
 "use client";
-import StudentWrapper from "@/components/StudentB2CWrapper";
+import StudentWrapper from "@/components/StudentB2CHeader";
 import { Button } from "@/components/ui/button";
 import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";

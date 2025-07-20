@@ -14,7 +14,7 @@ import {
 	FiChevronRight as FiPageRight,
 } from 'react-icons/fi'
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar'
-import StudentWrapper from '@/components/StudentB2CWrapper'
+import StudentWrapper from '@/components/StudentB2CHeader'
 
 // --- Main Category Tab Component (Reused) ---
 const MainCategoryTab = ({
