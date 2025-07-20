@@ -13,7 +13,7 @@ export default function AfterDemoCourseFeePayment() {
           <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
               <div className="space-y-5">
-                <h1 className=" text-center text-4xl font-bold text-[#8DD9B3]">
+                <h1 className=" text-center text-3xl font-bold text-[#8DD9B3]">
                   What Our Learners Are Saying
                 </h1>
                 <div
