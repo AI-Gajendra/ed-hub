@@ -54,12 +54,12 @@ interface DateNavigatorProps {
 }
 export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({ currentDate, onPrevious, onNext }) => (
     <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
-        <button onClick={onPrevious} className="disabled:opacity-50" disabled={!onPrevious} aria-label="Previous month">
-            <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 hover:text-black cursor-pointer" />
+        <button onClick={onPrevious} aria-label="Previous month">
+            <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
         </button>
-        <span className="">{currentDate}</span>
-        <button onClick={onNext} className="disabled:opacity-50" disabled={!onNext} aria-label="Next month">
-            <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 hover:text-black cursor-pointer" />
+        <span className="text-nowrap">{currentDate}</span>
+        <button onClick={onNext} aria-label="Next month">
+            <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
         </button>
     </div>
 );
@@ -76,8 +76,8 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({ value, onChange,
         <select
             value={value}
             onChange={onChange}
-            className="appearance-none border border-[#E5E7EB] text-xs text-black bg-[#F9FAFB] px-3 py-1.5 rounded-lg pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]
-                       sm:text-sm sm:px-4 sm:py-2 sm:rounded-xl sm:pr-8"
+            className="appearance-none border border-[#E5E7EB] text-xs text-black bg-[#F9FAFB] px-3 rounded-lg pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]
+                       sm:text-sm sm:px-4 py-2 sm:rounded-xl sm:pr-8"
         >
             {options.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
         </select>
