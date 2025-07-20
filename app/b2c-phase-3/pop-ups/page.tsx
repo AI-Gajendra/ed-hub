@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CourseUnlockPopup from "./component/course-unlock-confirmation";
-import PreRecordedCourses from "./component/worksheet-story";
+import ConfirmUnlockPopup from './component/teacher-unlock-confirm'
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -86,9 +86,9 @@ export default function AllTeacherB2CPopups() {
       action: () => setOpenModal("course unlock"),
     },
     {
-      id: "worksheet",
-      label: " story based learning",
-      action: () => setOpenModal("worksheet"),
+      id: "confirm unlock",
+      label: " Confirm Unlock",
+      action: () => setOpenModal("confirm unlock"),
     },
   ];
 
@@ -113,7 +113,9 @@ export default function AllTeacherB2CPopups() {
         isOpen={openModal === "course unlock"}
         onClose={() => setOpenModal(null)}
       />
-     
+      <ConfirmUnlockPopup
+      isOpen={openModal === "confirm unlock"}
+        onClose={() => setOpenModal(null)}/>
     </div>
   );
 }
