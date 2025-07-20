@@ -12,6 +12,9 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import Header from './Header2';
 import Footer from '@/components/layout/Footer'
 import GoBack from "@/components/principal/goback";
+import StudentNavbar from '../student-navbar';
+import BackButton from '../common-components/BackButton';
+import StudentB2CWrapper from './common-components/StudentB2CWrapper';
 
 const images = [
     '/b2c-student/card-banner-1.png',
@@ -189,8 +192,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
 
             <div className="px-4 pb-4 space-y-2">
                 <div className="flex justify-between items-baseline">
-                    <h2 className="text-base font-semibold text-black">{courseName}</h2>
-                    <button className='text-[#FF3366] text-xs underline underline-offset-4'>Know more</button>
+                    <h2 className="text-base md:text-lg font-semibold text-black">{courseName}</h2>
+                    <button className='text-[#FF3366] text-sm underline underline-offset-5'>Know more</button>
                 </div>
                 <div className="space-y-3">
                     {details.map((item, idx) => (
@@ -301,19 +304,15 @@ const qualifications: Qualification[] = [
 ];
 
 const Profile = () => {
-    const headerUser = {
-		name: 'Shlok Agheda',
-		role: 'Student',
-		avatarSrc: '/images/person.jpg',
-	}
+
     return (
         <>
-        <Header user={headerUser} currPage='teacher-profile'/>
-        <GoBack GoBackHeading="Teacher Name"/>
-            <div className="py-2 px-8">
+        <StudentNavbar activeState='Home'/>
+        <BackButton Heading="Teacher Name"/>
+            <StudentB2CWrapper>
                 
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.75fr_1fr_1fr] my-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[4fr_3fr_3fr] my-4 gap-4">
                     <div className="bg-white rounded-2xl p-6 sm:col-span-2 lg:col-span-1">
                         {/* Top section */}
                         <div className="flex items-start justify-between">
@@ -352,7 +351,7 @@ const Profile = () => {
                         </div>
 
                         {/* Demo Button */}
-                        <button className="w-full mt-4 bg-[#FF3366] text-white font-semibold py-2 rounded-2xl flex items-center justify-center gap-2 text-sm">
+                        <button className="w-full mt-4 bg-[#FF3366] text-white font-semibold py-3 rounded-2xl flex items-center justify-center gap-2 text-sm">
                             <IoVideocamOutline />
                             Watch Demo Video
                         </button>
@@ -360,7 +359,7 @@ const Profile = () => {
                         {/* Availability */}
                         <div className="mt-6">
                             <h3 className="font-semibold mb-2">Availability</h3>
-                            <div className="bg-gray-100 rounded-xl p-4 text-sm space-y-2">
+                            <div className="bg-[#f9fafb] border rounded-2xl p-4 text-sm space-y-2">
                                 <div className="flex justify-between">
                                     <span className="text-gray-600">Monday, Wednesday, Friday</span>
                                     <span className="text-gray-500">10 AM – 1 PM</span>
@@ -393,7 +392,7 @@ const Profile = () => {
                             {qualifications.map((q, i) => (
                                 <div
                                     key={i}
-                                    className="flex items-center bg-gray-100 p-3 rounded-xl gap-4"
+                                    className="flex items-center bg-[#f9fafb] p-3 rounded-2xl gap-4"
                                 >
                                     <div className="relative w-16 h-16">
                                         <Image
@@ -493,7 +492,7 @@ const Profile = () => {
 
 
 
-            </div>
+            </StudentB2CWrapper>
             <Footer/>
         </>
 

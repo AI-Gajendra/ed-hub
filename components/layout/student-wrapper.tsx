@@ -39,7 +39,7 @@ interface HeaderProps {
 	isAskme?: boolean
 }
 
-export default function StudentB2BHeader({ user, isAskme = true }: HeaderProps) {
+export default function StudentWrapper({ user, isAskme = true }: HeaderProps) {
 	const pathname = usePathname()
 
 	const navItems = [

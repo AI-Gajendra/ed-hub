@@ -25,17 +25,49 @@ const reviews: Review[] = [
     review:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placarat luctus at leo fermentum aliquet...',
   },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: '/b2c-student/review-image.jpg',
+    rating: 4,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placarat luctus at leo fermentum aliquet...',
+  },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: '/b2c-student/review-image.jpg',
+    rating: 3,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placarat luctus at leo fermentum aliquet...',
+  },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: '/b2c-student/review-image.jpg',
+    rating: 4,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placarat luctus at leo fermentum aliquet...',
+  },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: '/b2c-student/review-image.jpg',
+    rating: 3,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placarat luctus at leo fermentum aliquet...',
+  },
 ];
 
 export default function ReviewCard() {
   return (
-    <div className="bg-white p-4 rounded-2xl">
+    <div className="bg-white py-4 pl-4 pr-1 rounded-2xl">
       <h2 className="text-xl font-semibold mb-4">Reviews</h2>
-      <div className="space-y-5">
+      <div className="space-y-5 flex flex-col pr-2 max-h-[650px] overflow-y-auto custom-scrollbar-thin">
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="bg-gray-100 rounded-2xl p-5 shadow-sm flex flex-col gap-4"
+            className="bg-[#f3f4f6] rounded-2xl p-5 flex flex-col gap-4"
           >
             <div className="flex items-center gap-4">
               <img
