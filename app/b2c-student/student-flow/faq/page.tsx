@@ -1,17 +1,15 @@
 // page.tsx (e.g. /app/faq/page.tsx)
 "use client";
 
-import React, { useState } from 'react'; // Removed useState as activeMainCategory is not used in this page's content
+import React from 'react'; 
 import Footer from '@/components/layout/Footer';
-// Accordion components are imported directly from shadcn/ui path in components.tsx
 import {
 	FAQSection,
-	NewsletterSection,
 	FAQItemData // Type
 } from './components';
-import { PageTitleBar } from './ui-components'; // Import PageTitleBar
-import StudentB2CHeader from '@/components/layout/StudentB2BHeader';
+import { PageTitleBar } from './ui-components'; 
 import Newsletter from '@/components/common-components/Newsletter';
+import StudentNavbar from '@/components/student-navbar';
 
 // --- Sample Data (from your original) ---
 const faqQuestionsData: FAQItemData[] = [ // Renamed for clarity
@@ -31,24 +29,12 @@ export default function FAQPage() {
 			window.history.back();
 		}
 	};
-	const [newsletterEmail, setNewsletterEmail] = useState("");
-	const handleNewsletterEmailChange = (value: string) => {
-		setNewsletterEmail(value);
-	};
-
-	const handleNewsletterSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		console.log("Newsletter Subscription:", newsletterEmail);
-		alert(`Subscribed with ${newsletterEmail} (check console)!`);
-		setNewsletterEmail("");
-	};
-
 
 	return (
 		// Original wrapper: div and inner div with bg-gray-100
 		// Simplified to single wrapper
 		<div className="min-h-screen flex flex-col bg-[#e3e3e3]">
-			<StudentB2CHeader activeState='faq' />
+			<StudentNavbar activeState='faq' />
 			<PageTitleBar title="FAQs" onBackClick={handleBackClick} />
 			<div className="px-2 lg:px-0">
 

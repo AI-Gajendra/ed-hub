@@ -1,19 +1,18 @@
 'use client'
-import Header from '@/components/b2c-student/Header2';
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import StudentB2CHeader from '@/components/layout/StudentB2BHeader';
 import Newsletter from '@/components/common-components/Newsletter';
+import StudentNavbar from '@/components/student-navbar'
 
 export default function FAQPage() {
 	
 	return (
 		<div>
-			<StudentB2CHeader  activeState='Contact'/>
+			<StudentNavbar  activeState='Contact'/>
 			<div className="min-h-screen flex flex-col px-2 md:px-0 bg-[#eeeeee]">
 				<main className="container mx-auto p-4 md:p-6 max-w-screen-xl rounded-2xl mt-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image

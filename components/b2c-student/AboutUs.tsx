@@ -2,6 +2,8 @@ import Image from "next/image";
 import { FC } from "react";
 import Newsletter from "../common-components/Newsletter";
 import Header from "./Header2";
+import StudentNavbar from "../student-navbar";
+import Footer from "../layout/Footer";
 
 const content = {
     heading: "Eduport education theme, built specifically for the education centers which is dedicated to teaching and involve learners.",
@@ -44,7 +46,7 @@ const EducationSection: FC = () => {
 
     return (
         <>
-            <Header user={headerUser} />
+            <StudentNavbar activeState="About" />
             {/* Hero Section */}
             <section className="relative py-16 px-4 md:px-10 lg:px-16 text-white overflow-hidden">
                 {/* Background pattern */}
@@ -94,8 +96,8 @@ const EducationSection: FC = () => {
             </section>
 
             {/* About Section */}
-            <section className="bg-white py-16 px-4 md:px-10 lg:px-20">
-                <div className="max-w-7xl px-6 py-8 rounded-2xl bg-gray-100 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <section className="bg-white py-16 px-4 md:px-10 lg:px-12">
+                <div className="max-w-8xl px-6 py-8 rounded-2xl bg-gray-100 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div>
                         <h2 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4">
                             {aboutSection.title}
@@ -132,8 +134,8 @@ const EducationSection: FC = () => {
             </section>
 
             {/* Benefits Section */}
-            <section className="bg-white py-16 px-4 md:px-10 lg:px-20">
-                <div className="max-w-7xl mx-auto text-center mb-12">
+            <section className="bg-white rounded-b-3xl pb-4 mb-6 px-4 md:px-10 lg:px-12">
+                <div className="max-w-8xl mx-auto text-center mb-12">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#FF3366] mb-4">
                         {benefitSection.title}
                     </h2>
@@ -141,11 +143,11 @@ const EducationSection: FC = () => {
                         {benefitSection.description}
                     </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:px-8 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-8xl mx-auto">
                     {benefitSection.benefits.map((benefit, idx) => (
                         <div
                             key={idx}
-                            className="bg-gray-100 p-2 rounded-2xl"
+                            className="bg-[#f9fafb] border p-2 rounded-2xl"
                         >
                             <Image
                                 src={benefit.icon}
@@ -155,12 +157,15 @@ const EducationSection: FC = () => {
                                 className="mb-4"
                             />
                             <h4 className="text-lg font-semibold mb-2">{benefit.title}</h4>
-                            <p className="text-sm text-gray-600">{benefit.description}</p>
+                            <p className="text-sm pb-2 pr-2 leading-relaxed text-gray-600">{benefit.description}</p>
                         </div>
                     ))}
                 </div>
-                <Newsletter />
+                <div className=" mt-4 md:mt-8 rounded-b-2xl ">
+                    <Newsletter />
+                </div>
             </section>
+            <Footer />
         </>
     );
 };
