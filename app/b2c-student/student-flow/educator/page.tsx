@@ -15,6 +15,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"; // Assuming 
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 
 import CustomSelect from "@/components/student/courses/CustomSelect";
+import { useRouter } from "next/navigation";
 
 // -------- EducatorPanel Component and related declarations START --------
 
@@ -36,23 +37,15 @@ interface Educator {
   category: string;
 }
 
-// Dummy data for educators.
-
-// Replace imageUrls with paths to your actual images in the /public directory.
-
-// Example: /educators/sarah.jpg, /educators/john.jpg
-
-// Ensure Background2.png is also in /public for the main title.
-
 export const educatorsData: Educator[] = [
   {
     id: 1,
 
-    name: "Olivia Davis",
+    name: "Name",
 
-    title: "Lead Tech Educator",
+    title: "Title",
 
-    imageUrl: "/student/educator/educator_female.png", // Placeholder image
+    imageUrl: "/student/educator/ed1.jpg", // Placeholder image
 
     rating: 4.4,
 
@@ -67,16 +60,16 @@ export const educatorsData: Educator[] = [
   {
     id: 2,
 
-    name: "Marcus Chen",
+    name: "Name",
 
-    title: "AI & Robotics Lead",
+    title: "Title",
 
-    imageUrl: "/student/educator/educator_male.png", // Placeholder image
+    imageUrl: "/student/educator/ed2.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor ac lacus ultricies.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
 
     linkedinUrl: "https://linkedin.com/in/marcuschen",
 
@@ -86,16 +79,16 @@ export const educatorsData: Educator[] = [
   {
     id: 3,
 
-    name: "Sophia Miller",
+    name: "Name",
 
-    title: "Head of Sciences",
+    title: "Title",
 
-    imageUrl: "/student/educator/educator_female.png", // Placeholder image
+    imageUrl: "/student/educator/ed3.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor ac lacus ultricies, quis blandit sem varius.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
 
     linkedinUrl: "https://linkedin.com/in/sophiamiller",
 
@@ -105,16 +98,16 @@ export const educatorsData: Educator[] = [
   {
     id: 4,
 
-    name: "David Wilson",
+    name: "Name",
 
-    title: "Computer Science Pro",
+    title: "Title",
 
-    imageUrl: "/student/educator/educator_male.png", // Placeholder image
+    imageUrl: "/student/educator/ed4.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Curabitur sollicitudin tortor ac lacus ultricies, quis blandit sem varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
 
     linkedinUrl: "https://linkedin.com/in/davidwilson",
 
@@ -124,16 +117,16 @@ export const educatorsData: Educator[] = [
   {
     id: 5,
 
-    name: "Isabelle Garcia",
+    name: "Name",
 
-    title: "English & Literature",
+    title: "Title",
 
-    imageUrl: "/student/educator/educator_female.png", // Placeholder image (reused)
+    imageUrl: "/student/educator/ed2.jpg", // Placeholder image (reused)
 
     rating: 4.4,
 
     description:
-      "Quis blandit sem varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
 
     linkedinUrl: "https://linkedin.com/in/isabellegarcia",
 
@@ -143,16 +136,16 @@ export const educatorsData: Educator[] = [
   {
     id: 6,
 
-    name: "James Brown",
+    name: "Name",
 
-    title: "Public Speaking Coach",
+    title: "Title",
 
-    imageUrl: "/student/educator/educator_male.png", // Placeholder image (reused)
+    imageUrl: "/student/educator/ed1.jpg", // Placeholder image (reused)
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
 
     linkedinUrl: "https://linkedin.com/in/jamesbrown",
 
@@ -177,8 +170,9 @@ const categories = [
 ];
 
 const EducatorCard = ({ educator }: { educator: Educator }) => {
+  const Router=useRouter();
   return (
-    <div className="bg-[#F9FAFB] p-4 sm:p-5 rounded-3xl flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch relative min-h-[200px] sm:min-h-[190px]">
+    <div onClick={()=>Router.push("/b2c-student/student-flow/teacher-profile")} className="bg-[#F9FAFB] p-4 sm:p-5 rounded-3xl flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch relative min-h-[200px] sm:min-h-[190px] cursor-pointer">
       <div className="relative w-full h-48 sm:w-32 sm:h-auto rounded-lg overflow-hidden flex-shrink-0">
         {/* On mobile (flex-col), image takes full width and fixed height. */}
 
@@ -250,9 +244,7 @@ const EducatorCard = ({ educator }: { educator: Educator }) => {
 function EducatorPanel() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
-  const filteredEducators = educatorsData.filter(
-    (educator) => educator.category === selectedCategory
-  );
+  const filteredEducators = educatorsData;
 
   const selectOptions = categories.map((category) => ({
     value: category,
@@ -261,7 +253,7 @@ function EducatorPanel() {
 
   return (
     <div className="w-full mb-62">
-      <div className="max-w-7xl mx-auto w-full p-6 bg-white rounded-3xl">
+      <div className="max-w-screen-xl mx-auto w-full p-6 bg-white rounded-3xl">
         {/* Heading Section */}
 
         <div className="text-left mb-10 md:mb-12">
@@ -359,7 +351,7 @@ export default function CourseDetail() {
   // const [activeTab, setActiveTab] = useState("about"); // This was from your original snippet, might be used for other page tabs.
 
   return (
-    <StudentWrapper>
+    <StudentWrapper activeState="Instructor List">
       <div className="bg-[#EEEEEE] mx-auto w-full py-8 sm:py-12 space-y-6 px-4 sm:px-6 md:px-10 lg:px-16">
         <EducatorPanel />
       </div>

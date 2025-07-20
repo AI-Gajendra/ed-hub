@@ -19,6 +19,7 @@ import {
   FillForm,
 } from "./components";
 import { OptimizedCategoryTabsBar } from "@/components/common-components/topbar";
+import { useRouter } from "next/navigation";
 
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = [
@@ -59,7 +60,7 @@ const learningWeeksDataPage: LearningWeek[] = Array.from(
   (_, i) => ({
     id: `week${i + 1}`,
     title: `Learning Videos ( Week 1 )`,
-    videoCount: i === 0 ? 4 : 3,
+    videoCount: 3,
     videos: Array.from({ length: i === 0 ? 4 : 3 }, (_, j) => ({
       id: `v${i}-${j}`,
       topic: `Topic ${j + 1}`,
@@ -92,9 +93,8 @@ export default function MyClassAssesmentPage() {
     academicSubCategoriesData3[0]
   );
   const [activeContentTab, setActiveContentTab] = useState(contentTabsData[0]); // Default to Learning
-  const [openAccordionId, setOpenAccordionId] = useState<string | null>(
-    learningWeeksDataPage[0]?.id || null
-  );
+     const [openAccordionIds, setOpenAccordionIds] = useState<string[]>([learningWeeksDataPage[0]?.id]);
+ 
   const [currentMonth, setCurrentMonth] = useState("June 2025");
   const [currentWeekFilter, setCurrentWeekFilter] = useState("Weekly"); // Matched original select default
 
@@ -104,13 +104,15 @@ export default function MyClassAssesmentPage() {
     avatarSrc: "/images/person.jpg",
   };
 
-  const handleAccordionToggle = (weekId: string) => {
-    setOpenAccordionId((prevId) => (prevId === weekId ? null : weekId));
-  };
+  const Router = useRouter();
 
-  // Dummy handlers for date nav
-  const handleMonthPrev = () => setCurrentMonth("May 2025");
-  const handleMonthNext = () => setCurrentMonth("July 2025");
+ const handleAccordionToggle = (weekId: string) => {
+        setOpenAccordionIds((prev) =>
+            prev.includes(weekId)
+                ? prev.filter((id) => id !== weekId)
+                : [...prev, weekId]
+        );
+    };
 
   const getContentTitle = () => {
     if (activeContentTab === "Learning") return `Earth and Space Science`;
@@ -136,7 +138,7 @@ export default function MyClassAssesmentPage() {
               <LearningAccordion
                 key={week.id}
                 week={week}
-                isOpen={openAccordionId === week.id}
+                isOpen={openAccordionIds.includes(week.id)}
                 onToggle={() => handleAccordionToggle(week.id)}
               />
             ))}
@@ -146,7 +148,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {assessmentDataPage.map((assessment) => (
-              <AssessmentItem key={assessment.id} assessment={assessment} />
+              <AssessmentItem key={assessment.id} assessment={assessment} onClick={()=>Router.push("/b2c-student/student-flow/startup-math")}/>
             ))}
           </div>
         );
@@ -154,7 +156,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {mockPapersDataPage.map((item) => (
-              <MockPaperItem key={item.id} item={item} />
+              <MockPaperItem key={item.id} item={item} onClick={()=>Router.push("/b2c-student/student-flow/mock-papers-3")}/>
             ))}
           </div>
         );
@@ -162,7 +164,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {workSheetDataPage.map((item) => (
-              <WorkSheetItem key={item.id} item={item} />
+              <WorkSheetItem key={item.id} item={item} onClick={()=>Router.push("/b2c-student/student-flow/my-class-worksheet-3")}/>
             ))}
           </div>
         );
@@ -188,38 +190,36 @@ export default function MyClassAssesmentPage() {
         </div>
         <div className="mx-auto max-w-[96rem]">
           <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-          <div className="md:col-span-1 lg:col-span-1 space-y-4">
-            {" "}
-            {/* Sidebar takes 1 col on md and lg */}
-            <SubCategorySidebar
-              subCategories={academicSubCategoriesData3} // This would be dynamic based on activeMainCategory
-              activeSubCategory={activeSubCategory}
-              onSubCategoryClick={setActiveSubCategory}
-            />
-           
+            <div className="md:col-span-1 lg:col-span-1 space-y-4">
+              {" "}
+              {/* Sidebar takes 1 col on md and lg */}
+              <SubCategorySidebar
+                subCategories={academicSubCategoriesData3} // This would be dynamic based on activeMainCategory
+                activeSubCategory={activeSubCategory}
+                onSubCategoryClick={setActiveSubCategory}
+              />
+              <FillForm />
+            </div>
+            <div className="md:col-span-3 lg:col-span-4">
+              {" "}
+              {/* Content takes remaining cols */}
+              <ContentDisplayArea
+                contentTabs={contentTabsData}
+                activeContentTab={activeContentTab}
+                onContentTabClick={setActiveContentTab}
+                currentWeekFilter={currentWeekFilter}
+                onWeekFilterChange={(e) => setCurrentWeekFilter(e.target.value)}
+                currentMonth={currentMonth}
+                contentTitle={getContentTitle()}
+                contentSubtitle={getContentSubTitle()}
+              >
+                {renderActiveContent()}
+              </ContentDisplayArea>
+            </div>
           </div>
-          <div className="md:col-span-3 lg:col-span-4">
-            {" "}
-            {/* Content takes remaining cols */}
-            <ContentDisplayArea
-              contentTabs={contentTabsData}
-              activeContentTab={activeContentTab}
-              onContentTabClick={setActiveContentTab}
-              currentWeekFilter={currentWeekFilter}
-              onWeekFilterChange={(e) => setCurrentWeekFilter(e.target.value)}
-              currentMonth={currentMonth}
-              onMonthPrev={handleMonthPrev}
-              onMonthNext={handleMonthNext}
-              contentTitle={getContentTitle()}
-              contentSubtitle={getContentSubTitle()}
-            >
-              {renderActiveContent()}
-            </ContentDisplayArea>
-          </div>
-        </div>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
