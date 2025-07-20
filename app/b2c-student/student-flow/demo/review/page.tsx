@@ -6,6 +6,8 @@ import FooterNew from "@/components/footer3";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import BackButton from "@/components/common-components/BackButton";
+import Footer from "@/components/layout/Footer";
 
 export default function CourseDetail() {
   const router = useRouter();
@@ -13,21 +15,9 @@ export default function CourseDetail() {
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
         {/* headers */}
-        <div className="bg-white border-b">
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center py-4">
-              <ArrowLeft
-                className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
-                onClick={() => router.push("/student/demo/teacher-selection")}
-              />
-              <h1 className="text-2xl font-medium text-[#FF3366]">
-                Course Name
-              </h1>
-            </div>
-          </div>
-        </div>
+        <BackButton Heading="Course Name" />
 
-        <section className="px-16 py-8">
+        <section className="px-2 md:px-8 lg:px-12 xl:px-16 py-8">
           <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <h1 className="text-3xl font-semibold text-[#FF3366]">Review</h1>
             <div className="md:grid md:grid-cols-[1fr_1fr] gap-16">
@@ -49,18 +39,18 @@ export default function CourseDetail() {
                     />
                   </div>
                 ))}
-                <div className="w-full rounded-2xl bg-[#F9FAFB] placeholder:text-[#6B7280] border border-[#D5D5D5] flex items-center p-2 gap-4">
+                <div className="w-full rounded-2xl bg-[#F9FAFB] placeholder:text-[#6B7280] border border-[#D5D5D5] flex items-center px-2 py-1 gap-4">
                   <img
                     alt="profile image"
-                    src="/student/educator/educator_female.png"
+                    src="/common-images/teacher.png"
                     className="w-20 h-20 rounded-2xl"
                   />
                   <span className="font-semibold">Name</span>
                 </div>
-                <div className="w-full rounded-2xl bg-[#3366FF1A] placeholder:text-[#6B7280] border border-[#3366FF] flex items-center p-3 gap-4">
+                <div className="w-full rounded-xl bg-[#3366FF1A] placeholder:text-[#6B7280] border border-[#3366FF] flex items-center p-3 gap-4">
                   <strong>Slot:</strong>12th June 2025, 6:30 PM
                 </div>
-                <Button className="bg-[#F9FAFB] border border-[#E5E7EB] px-6 py-4 rounded-full text-black hover:bg-[#F9FAFB] cursor-pointer">
+                <Button className="bg-[#F9FAFB] border border-[#E5E7EB] px-8 py-4 rounded-full text-black hover:bg-[#F9FAFB] cursor-pointer">
                   Edit
                 </Button>
               </div>
@@ -81,7 +71,7 @@ export default function CourseDetail() {
             </div>
             <div className="flex items-center justify-center">
               <Button
-                className="bg-[#3366ff] text-white px-10 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full cursor-pointer"
+                className="bg-[#3366ff] text-white px-10 py-3.5 hover:bg-[#0c45f0] hover:text-white rounded-full cursor-pointer"
                 onClick={() => router.push("/student/demo/confirmation")}
               >
                 Book
@@ -92,7 +82,7 @@ export default function CourseDetail() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

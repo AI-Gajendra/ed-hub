@@ -16,6 +16,7 @@ import { BookOpen, Star, Info, Brain, ChartNoAxesColumn } from "lucide-react";
 import FooterNew from "@/components/footer3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
+import Footer from "@/components/layout/Footer";
 
 interface Review {
   id: number;
@@ -185,12 +186,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
 
   return (
     <StudentWrapper>
-      <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16">
+      <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-2 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-11 gap-4">
             {/* Left Section */}
             <div className="bg-[#FFFFFF] rounded-2xl p-3 lg:col-span-8">
-              <div className="flex gap-6">
+              <div className="flex flex-col lg:flex-row gap-6">
                 {/* Course Image */}
                 <div className="flex-[1.75]">
                   <div className="rounded-2xl overflow-hidden">
@@ -281,7 +282,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                 Reviews
               </h2>
               <div
-                className="h-[550px] overflow-y-auto"
+                className="max-h-[550px] h-full overflow-y-auto"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "#FFA500 transparent",
@@ -310,10 +311,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="max-w-7xl flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
+        <div className="max-w-7xl flex flex-col lg:flex-row bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
           {/* Fixed Sidebar */}
           <div className="w-64 flex-shrink-0">
-            <div className="p-6">
+            <div className="px-4 pt-4 lg:p-6">
               <nav className="space-y-4">
                 {menuItems.map((item) => {
                   const IconComponent = item.icon;
@@ -343,13 +344,13 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
 
           {/* Main Content Area */}
           <div className="flex-1 overflow-auto">
-            <div className="p-8">
-              <h1 className="text-2xl font-semibold mb-8">
+            <div className="px-4 lg:pl-8 lg:pr-4 py-4">
+              <h1 className="text-xl lg:pr-4 font-semibold mb-6">
                 {contentMap[activeTab as keyof typeof contentMap].title}
               </h1>
 
               <div className="max-w-none">
-                <p className="leading-relaxed text-xl whitespace-pre-line text-black">
+                <p className="leading-relaxed text-sm sm:text-base whitespace-pre-line text-black">
                   {contentMap[activeTab as keyof typeof contentMap].content}
                 </p>
               </div>
@@ -357,7 +358,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
       </div>
-      <FooterNew showSuscriptionBlock={false} />
+      <Footer />
     </StudentWrapper>
   );
 }

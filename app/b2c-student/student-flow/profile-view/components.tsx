@@ -34,13 +34,18 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
   onProfileSave,
   profileAvatarSrc,
 }) => {
+  const handleBackClick = () => {
+    if (typeof window !== "undefined") {
+      window.history.back();
+    }
+  };
   return (
     
     <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8">
       
     <div className="flex items-center gap-2 mb-4 sm:mb-6">
                 <button 
-                    // onClick={handleBackClick} 
+                    onClick={handleBackClick} 
                     className="p-1 text-gray-600 hover:text-blue-600 focus:outline-none"
                     aria-label="Go back"
                 >

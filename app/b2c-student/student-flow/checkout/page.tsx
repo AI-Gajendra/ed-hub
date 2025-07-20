@@ -1,7 +1,6 @@
 "use client";
 
 import StudentWrapper from "@/components/student-wrapper";
-import FooterNew from "@/components/footer3";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,6 +17,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { CreditCard, ArrowLeft, Lock } from "lucide-react";
 import { FaCheck } from "react-icons/fa6";
 import { FaBuildingColumns } from "react-icons/fa6";
+import BackButton from "@/components/common-components/BackButton";
+import Footer from "@/components/layout/Footer";
+import Newsletter from "@/components/common-components/Newsletter";
 
 // Custom Radio Button Component with Tick Icon
 const CustomRadioButton = ({
@@ -107,22 +109,15 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
 
   return (
     <StudentWrapper>
-      <div className="bg-white border-b">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center py-4">
-            <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
-            <h1 className="text-2xl font-medium text-[#FF3366]">Checkout</h1>
-          </div>
-        </div>
-      </div>
+      <BackButton Heading="Checkout" />
 
-      <div className="bg-[#EEEEEE] w-full py-8 space-y-6 px-16 pb-70">
+      <div className="bg-[#EEEEEE] w-full py-8 space-y-6 px-2 md:px-8 lg:px-12 xl:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left Section - Billing & Payment */}
             <div className="lg:col-span-2 space-y-6">
               {/* Billing Address */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl ">
                 <CardContent className="p-5">
                   <h2 className="text-2xl font-medium text-gray-900 mb-6">
                     Billing Address
@@ -137,7 +132,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                         Country
                       </Label>
                       <Select value={country} onValueChange={setCountry}>
-                        <SelectTrigger className="h-12 rounded-full border-gray-300 w-full bg-[#F9FAFB]">
+                        <SelectTrigger className="h-10 rounded-full border-gray-300 w-full bg-[#F9FAFB]">
                           <SelectValue placeholder="Option 1" />
                         </SelectTrigger>
                         <SelectContent>
@@ -153,7 +148,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                         State / Union
                       </Label>
                       <Select value={state} onValueChange={setState}>
-                        <SelectTrigger className="h-12 rounded-full border-gray-300 w-full bg-[#F9FAFB]">
+                        <SelectTrigger className="h-10 rounded-full border-gray-300 w-full bg-[#F9FAFB]">
                           <SelectValue placeholder="Option 1" />
                         </SelectTrigger>
                         <SelectContent>
@@ -176,7 +171,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
               </Card>
 
               {/* Payment Method */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl ">
                 <CardContent className="p-5">
                   <div className="flex items-center gap-2 mb-6">
                     <Lock className="w-5 h-5" />
@@ -185,8 +180,8 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
 
                   <div className="space-y-4">
                     {/* Cards Option */}
-                    <div className="space-y-4 border-[#E5E7EB] bg-[#F9FAFB] border rounded-2xl lg:max-w-[600px] overflow-hidden">
-                      <div className="flex items-center justify-between p-4 bg-[#F9FAFB]">
+                    <div className=" border-[#E5E7EB] bg-[#F9FAFB] border rounded-2xl lg:max-w-[600px] overflow-hidden">
+                      <div className="flex items-center justify-between px-4 pt-4 bg-[#F9FAFB]">
                         <div className="flex items-center space-x-3">
                           <label
                             htmlFor="cards"
@@ -227,7 +222,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                               onChange={(e) =>
                                 handleInputChange("name", e.target.value)
                               }
-                              className="h-12 rounded-full focus:bg-white bg-[#F9FAFB] border-gray-300"
+                              className="h-10 rounded-full focus:bg-white bg-[#F9FAFB] border-gray-300"
                             />
                           </div>
 
@@ -245,7 +240,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                               onChange={(e) =>
                                 handleInputChange("number", e.target.value)
                               }
-                              className="h-12 rounded-full focus:bg-white bg-[#F9FAFB] border-gray-300"
+                              className="h-10 rounded-full focus:bg-white bg-[#F9FAFB] border-gray-300"
                             />
                             <img
                               alt="payment modes"
@@ -268,7 +263,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                                 onChange={(e) =>
                                   handleInputChange("expiry", e.target.value)
                                 }
-                                className="h-12 bg-[#F9FAFB] focus:bg-white rounded-full border-gray-300"
+                                className="h-10 bg-[#F9FAFB] focus:bg-white rounded-full border-gray-300"
                               />
                             </div>
                             <div className="space-y-2">
@@ -285,7 +280,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                                 onChange={(e) =>
                                   handleInputChange("cvv", e.target.value)
                                 }
-                                className="h-12 bg-[#F9FAFB] focus:bg-white rounded-full border-gray-300"
+                                className="h-10 bg-[#F9FAFB] focus:bg-white rounded-full border-gray-300"
                               />
                             </div>
                           </div>
@@ -367,7 +362,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
             {/* Right Section - Order Summary & Details */}
             <div className="space-y-6">
               {/* Order Summary */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl ">
                 <CardContent className="p-5 space-y-2">
                   <h2 className="text-2xl font-medium mb-6">Order Summary</h2>
 
@@ -416,7 +411,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                     </div>
                   </div>
 
-                  <Button className="w-full h-12 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-medium">
+                  <Button className="w-full h-10 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-medium">
                     Proceed
                   </Button>
 
@@ -442,7 +437,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
               </Card>
 
               {/* Order Details */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl ">
                 <CardContent className="p-5 space-y-5">
                   <h2 className="text-2xl font-medium">Order Details</h2>
 
@@ -465,9 +460,12 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
               </Card>
             </div>
           </div>
+          <div className="mt-4">
+            <Newsletter />
+          </div>
         </div>
       </div>
-      <FooterNew />
+      <Footer />
     </StudentWrapper>
   );
 }
