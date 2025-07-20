@@ -6,10 +6,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import StudentWrapper from "@/components/student-wrapper";
 import { ArrowLeft } from "lucide-react";
-import FooterNew from "@/components/footer3";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/layout/Footer";
+import BackButton from "@/components/common-components/BackButton";
 
 interface FormData {
   studentName: string;
@@ -59,20 +60,8 @@ export default function DemoBookingForm() {
   return (
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
-        {/* headers */}
-        <div className="bg-white border-b">
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center py-4">
-              <ArrowLeft
-                className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
-                onClick={handleBackClick}
-              />
-              <h1 className="text-2xl font-medium text-[#FF3366]">
-                Course Name
-              </h1>
-            </div>
-          </div>
-        </div>
+      
+      <BackButton Heading="Course Name" />
 
         <section className="px-4 sm:px-8 lg:px-16 py-8">
           <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
@@ -100,15 +89,15 @@ export default function DemoBookingForm() {
                             e.target.value
                           )
                         }
-                        className="w-full rounded-full bg-[#F9FAFB] placeholder:text-[#6B7280] border transition-colors border-[#D5D5D5]"
+                        className="w-full py-2.5 rounded-full bg-[#F9FAFB] placeholder:text-[#6B7280] border transition-colors border-[#D5D5D5]"
                         placeholder={
                           field.type === "email"
-                            ? "example@email.com"
+                            ? "Text"
                             : field.type === "tel"
-                            ? "+1 (555) 123-4567"
+                            ? "Text"
                             : field.type === "number"
-                            ? "Enter age"
-                            : "Enter " + field.label.toLowerCase()
+                            ? "Text"
+                            : "Text " 
                         }
                         required
                       />
@@ -145,7 +134,7 @@ export default function DemoBookingForm() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer/>
       </div>
     </StudentWrapper>
   );
