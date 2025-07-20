@@ -4,15 +4,16 @@ import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as nee
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import Image from "next/image";
 
-import { FiArrowLeft } from "react-icons/fi";
-import MaxWidthWrapper from "../../admin/max-width-wrapper";
 import AttendanceForm from '@/components/teacher-b2c/progress-form/components'
 import BackButton from "@/components/common-components/BackButton";
 import TeacherB2CWrapper from "../common-components/TeacherB2CPageWrapper";
+import DailyLogSavedPopup from "@/app/b2c-teacher/ct-pop-ups/popupComponent/DailySaved";
+import { useState } from "react";
 
 // Main File Management Content Component
 
 export default function StudentSubmittedPapersPage() {
+
 
 
   const students = new Array(4).fill({
@@ -20,56 +21,58 @@ export default function StudentSubmittedPapersPage() {
     grade: "Level / Grade",
     image: "/student-avatar-1.png", // place an avatar image in public folder
   });
-  
+
+  const [dailyLog, setDailyLog] = useState(false);
 
   return (
-    <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
+    <>
       <Header activeState="Dashboard" />
       <BackButton Heading="Add Daily Progress" />
       <TeacherB2CWrapper>
-     
-          <main className="flex-grow   px-2 py-4 sm:p-6">
-            <div className="space-y-4 mt-2 rounded-2xl p-4 bg-white">
 
-              <div className="space-y-6">
-<AttendanceForm/>
+        <main className="flex-grow   px-2 py-4 sm:p-6">
+          <div className="space-y-4 mt-2 rounded-2xl p-4 bg-white">
 
-                {/* Section: Test Name */}
-                <div className="  space-y-4">
-                  <h2 className="text-md  rounded-2xl font-semibold text-gray-800 border bg-[#E5E7EB] px-4 py-4">
-                    Test Name
-                  </h2>
+            <div className="space-y-6">
+              <AttendanceForm />
 
-                  {students.map((student, index) => (
-                    <StudentCard key={`test-${index}`} student={student} />
-                  ))}
-                </div>
+              {/* Section: Test Name */}
+              <div className="  space-y-4">
+                <h2 className="text-md  rounded-2xl font-semibold text-gray-800 border bg-[#E5E7EB] px-4 py-4">
+                  Test Name
+                </h2>
 
-                {/* Section: Quiz Name */}
-                <div className="space-y-4 rounded-2xl">
-                  <h2 className="text-md  rounded-2xl font-semibold text-gray-800 border bg-[#E5E7EB] px-4 py-4">
-                    Quiz Name
-                  </h2>
-
-                  {students.map((student, index) => (
-                    <StudentCard key={`quiz-${index}`} student={student} />
-                  ))}
-                </div>
+                {students.map((student, index) => (
+                  <StudentCard key={`test-${index}`} student={student} />
+                ))}
               </div>
 
-              {/* Save Button */}
-              <div className="text-center">
-                <button className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-all">
-                  Save Log
-                </button>
+              {/* Section: Quiz Name */}
+              <div className="space-y-4 rounded-2xl">
+                <h2 className="text-md  rounded-2xl font-semibold text-gray-800 border bg-[#E5E7EB] px-4 py-4">
+                  Quiz Name
+                </h2>
+
+                {students.map((student, index) => (
+                  <StudentCard key={`quiz-${index}`} student={student} />
+                ))}
               </div>
             </div>
-          </main>
-      
+
+            {/* Save Button */}
+            <div className="text-center">
+              <button onClick={() => setDailyLog(true)} className="bg-[#3366ff] text-white px-6 py-2 rounded-full ">
+                Save Log
+              </button>
+            </div>
+          </div>
+        </main>
+
       </TeacherB2CWrapper>
 
       <Footer />
-    </div>
+      <DailyLogSavedPopup isOpen={dailyLog} onClose={() => setDailyLog(false)}/>
+    </>
   );
 }
 

@@ -68,7 +68,7 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
         <MdOutlineFileDownload size={20} />
         <button className="" onClick={() => setFileShare(true)}>
           <FiShare2 size={20} />
-          </button>
+        </button>
       </div>
       <FileShare isOpen={fileShare} onClose={() => setFileShare(false)} />
     </div>
@@ -179,11 +179,7 @@ export default function StudentSubmittedPapersPage() {
       <TeacherB2CWrapper>
 
         <main className="flex-grow">
-          {/* 
-          The space-y-8 from your example is removed here if FileManagementContent 
-          is the only direct child and already has its own internal spacing/padding.
-          If you have other elements directly within main, you can add space-y back.
-        */}
+       
           <FileManagementContent />
         </main>
 

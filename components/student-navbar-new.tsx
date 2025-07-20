@@ -13,12 +13,10 @@ import {
   LayoutGrid,
   Database,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
 
-export default function StudentNavbarNew() {
+export default function StudentNavbarNew({ activeState = "My Learnings" }: { activeState?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,39 +36,33 @@ export default function StudentNavbarNew() {
       href: "/student/my-learnings",
       label: "My Learnings",
       icon: Smile,
-      isActive: true,
     },
     {
       href: "/student/courses",
       label: "My course",
       icon: LayoutGrid,
-      isActive: false,
     },
     {
       href: "/student/material",
       label: "Material",
       icon: Database,
-      isActive: false,
     },
     {
       href: "/student/chat",
       label: "Chat",
       icon: MessageCircle,
-      isActive: false,
     },
     {
       href: "/student/recordings",
       label: "Recordings",
       icon: Video,
-      isActive: false,
     },
   ];
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "shadow-md" : ""
-      }`}
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+        }`}
     >
       <nav className="bg-[#3366FF] text-white pt-5">
         <div className="max-w-7xl mx-auto px-4">
@@ -88,30 +80,31 @@ export default function StudentNavbarNew() {
                   />
                 </div>
               </Link>
-              <button className="p-2 hover:bg-white/10 rounded-full transition-colors">
-                <ArrowLeft className="h-5 w-5" />
-              </button>
             </div>
 
-            {/* Center - Navigation Items */}
-            <div className="hidden md:flex items-center space-x-4 bg-[#E3F2FD26] rounded-full p-1">
-              {navItems.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${
-                      item.isActive || pathname === item.href
+            <div className="hidden md:flex items-center space-x-4">
+              <button className="p-2 cursor-pointer bg-white/10 rounded-full transition-colors">
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+              {/* Center - Navigation Items */}
+              <div className="flex items-center space-x-4 bg-[#E3F2FD26] rounded-full p-1">
+                {navItems.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${activeState === item.label
                         ? "text-[#FFCC00]"
                         : "hover:bg-white/10"
-                    }`}
-                  >
-                    <IconComponent className="h-5 w-5" />
-                    <span className="font-medium text-md">{item.label}</span>
-                  </Link>
-                );
-              })}
+                        }`}
+                    >
+                      <IconComponent className="h-5 w-5" />
+                      <span className="font-medium text-md">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Right Side - Actions */}
@@ -136,7 +129,7 @@ export default function StudentNavbarNew() {
               {/* Profile Picture */}
               <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white/20">
                 <Image
-                  src="/student/home/student-profile.jpg"
+                  src="/images/person.jpg"
                   alt="User profile"
                   fill
                   className="object-cover"
@@ -171,9 +164,8 @@ export default function StudentNavbarNew() {
 
           {/* Mobile Navigation */}
           <div
-            className={`md:hidden transition-all duration-300 overflow-hidden ${
-              isMobileMenuOpen ? "max-h-96 pb-4" : "max-h-0"
-            }`}
+            className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? "max-h-96 pb-4" : "max-h-0"
+              }`}
           >
             <div className="space-y-2">
               {navItems.map((item) => {
@@ -182,11 +174,10 @@ export default function StudentNavbarNew() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                      item.isActive || pathname === item.href
-                        ? "bg-orange-400 text-white"
-                        : "hover:bg-white/10"
-                    }`}
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${activeState === item.label
+                      ? "bg-orange-400 text-white"
+                      : "hover:bg-white/10"
+                      }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <IconComponent className="h-5 w-5" />

@@ -5,11 +5,12 @@ import React, { useState, useEffect } from 'react';
 import Header from '@/components/b2c-student/Header';
 // Removed unused icons
 import {
-    QuizHeader,
-    QuizContent, // New wrapper for questions and submit button
-    QuestionData // Type
+  QuizHeader,
+  QuizContent, // New wrapper for questions and submit button
+  QuestionData // Type
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
+import StudentWrapper from '@/components/student-wrapper';
 
 // --- Sample Data (from your original) ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];
@@ -49,40 +50,41 @@ export default function QuizTestPage() {
   };
 
   const handlePageBack = () => { // For the QuizHeader back button
-      if(typeof window !== "undefined") window.history.back();
+    if (typeof window !== "undefined") window.history.back();
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col">
-      <Header user={headerUser} />
+    <StudentWrapper student activeState='My course'>
 
-      <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
-        <div className="mb-4">
-          <OptimizedCategoryTabsBar
-            categories={mainCategoriesData}
-            activeCategory={activeMainCategory}
-            onCategoryClick={(category) => setActiveMainCategory(category)}
-          />
-        </div>
+      <div className="bg-gray-100 min-h-screen flex flex-col">
 
-        {/* Main Content Card for Mock Test */}
-        {/* Original: bg-white rounded-2xl shadow-xl px-3 py-6 relative */}
-        <div className="bg-white rounded-2xl shadow-xl px-2 py-4 sm:px-3 sm:py-6 relative border border-gray-200"> {/* No shadow, add border */}
-          <QuizHeader
-            onBackClick={handlePageBack}
-            quizTitle="Quiz" // These were hardcoded in your original
-            topicName="Topic name"
-          />
-          <QuizContent
-            questions={mockTestQuestionsData}
-            answers={answers}
-            onOptionSelect={handleOptionSelect}
-            onSubmit={handleSubmitTest}
-          />
-        </div>
-      </main>
+        <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
+          <div className="mb-4">
+            <OptimizedCategoryTabsBar
+              categories={mainCategoriesData}
+              activeCategory={activeMainCategory}
+              onCategoryClick={(category) => setActiveMainCategory(category)}
+            />
+          </div>
 
-     
-    </div>
+          {/* Main Content Card for Mock Test */}
+          <div className="bg-white rounded-2xl px-2 py-4 sm:px-3 sm:py-6 relative border border-gray-200"> {/* No shadow, add border */}
+            <QuizHeader
+              onBackClick={handlePageBack}
+              quizTitle="Quiz"
+              topicName="Topic name"
+            />
+            <QuizContent
+              questions={mockTestQuestionsData}
+              answers={answers}
+              onOptionSelect={handleOptionSelect}
+              onSubmit={handleSubmitTest}
+            />
+          </div>
+        </main>
+
+
+      </div>
+    </StudentWrapper>
   );
 }
