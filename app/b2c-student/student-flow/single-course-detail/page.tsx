@@ -16,11 +16,12 @@ import {
 } from './components';
 import StudentWrapper from '@/components/student-wrapper';
 import Footer from '@/components/layout/Footer';
+import GoBack from '@/components/principal/goback';
 
 // --- Sample Data ---
 const contentTabsData = ['Learning', 'Assessments', 'Mock Papers', 'Work Sheet'];
 const learningWeeksData: LearningWeek[] = Array.from({ length: 4 }, (_, i) => ({ id: `week${i + 1}`, title: `Learning Videos ( Week 1 )`, videoCount: i === 0 ? 3 : 3, videos: Array.from({ length: i === 0 ? 4 : 3 }, (_, j) => ({ id: `v${i + 1}-${j + 1}`, topic: `Topic 1` })) }));
-const upcomingClassesData: UpcomingClass[] = Array.from({ length: 10 }, (_, i) => ({ id: i + 1, title: 'Title', teacher: "Teacher's Name ", description: 'Description ', time: '16:30 ', date: `1${i + 6}/5/25` }));
+const upcomingClassesData: UpcomingClass[] = Array.from({ length: 10 }, (_, i) => ({ id: i + 1, title: 'Title', teacher: "Teacher's Name ", description: 'Description ', time: '16:30 ', date: `16/5/25` }));
 const ExtraClassData: CourseMaterial[] = [{ id: 1, fileName: 'File Name', date: '24th June 2025' }, { id: 2, fileName: 'File Name', date: '24th June 2025' }];
 const attendanceData = { total: 20, attended: 17, missed: 3, percentage: 85 };
 // --- End Sample Data ---
@@ -73,12 +74,7 @@ export default function CourseDetailPage() {
         <StudentWrapper student activeState='"My course'>
             <div className="bg-[#eeeeee] min-h-screen flex flex-col">
 
-                <div className="flex items-center gap-2 bg-white px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
-                    <button onClick={handleBackClick} className="p-1 text-gray-600 hover:text-[#3366FF] focus:outline-none rounded-md" aria-label="Go back">
-                        <FiArrowLeft className="w-5 h-5 sm:w-5 sm:h-5 font-extrabold" />
-                    </button>
-                    <h1 className="text-lg sm:text-xl font-bold text-[#FF3366]">Course Name</h1>
-                </div>
+                <GoBack GoBackHeading='Course Name'/>
 
                 <main className="flex-grow max-w-[94rem] mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4">
                     {/* Main Content Grid (Top Part) */}

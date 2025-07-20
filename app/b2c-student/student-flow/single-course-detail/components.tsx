@@ -10,6 +10,7 @@ import {
 } from "react-icons/fi";
 import { DateNavigatorWithArrows, FilterDropdown } from "./ui-components";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import MonthTab from "@/components/common-components/MonthTab/MonthTab";
 
 // --- Interfaces ---
 export interface LearningWeek {
@@ -91,7 +92,7 @@ export const LearningContentCard: React.FC<{
             { value: "batch1", label: "Batch 1" },
           ]}
         />
-        <DateNavigatorWithArrows currentDate={props.currentMonth} />
+        <MonthTab />
       </div>
     </div>
 
@@ -162,7 +163,7 @@ export const UpcomingClassesCard: React.FC<{
   currentMonth: string;
   rightHeight: number;
 }> = (props) => (
-  <div className={`bg-white rounded-2xl p-4 flex flex-col flex-grow md:min-h-[500px]`}
+  <div className={`bg-white rounded-2xl p-4 flex flex-col flex-grow md:min-h-[300px]`}
     style={{ maxHeight: `${props.rightHeight - 136}px` }}
   >
     <div className="flex justify-between items-center mb-3 md:mb-4 flex-shrink-0">
@@ -176,9 +177,7 @@ export const UpcomingClassesCard: React.FC<{
         placeholder="Filter"
         items={[{ value: "all", label: "Date" }, { value: "batch1", label: "Batch 1" }]}
       />
-      <DateNavigatorWithArrows
-        currentDate={props.currentMonth}
-      />
+      <MonthTab />
     </div>
     <div className="flex-1 space-y-2 md:space-y-3 overflow-y-auto -mr-2 pr-1 custom-scrollbar-blue">
       {props.classes.map((uClass) => (
@@ -211,11 +210,11 @@ export const UpcomingClassItem: React.FC<{ uClass: UpcomingClass }> = ({
       <p className="text-[10px] sm:text-xs text-[#FFCC00] font-light tracking-wide mt-0.5">
         {uClass.teacher}
       </p>
-      
+
       <p className="text-[10px] sm:text-xs text-[#6B7280] font-light tracking-tight mt-1">
         {uClass.description}
       </p>
-      
+
       <p className="text-[10px] sm:text-xs text-[#6B7280] tracking-tight mt-1 whitespace-nowrap">
         {uClass.time}
       </p>
@@ -262,9 +261,9 @@ export const AttendanceCard: React.FC<{
         </p>
       </div>
     </div>
-    <div className="text-[#78350F] space-y-2 text-xs text-center bg-[#FFCC004D] rounded-2xl p-4 mt-auto">
+    <div className="flex-1 text-[#78350F] space-y-2 text-xs text-center bg-[#FFCC004D] rounded-2xl p-4 mt-auto">
       <h1 className="font-semibold">Only 3 Classes Left</h1>
-      <p className="text-xs">
+      <p className="text-xs lg:mt-8 lg:px-4">
         To continue learning without interruption, please renew your course or
         complete the payment.
       </p>
@@ -280,16 +279,16 @@ export const CertificateCard: React.FC = () => (
     <h3 className="font-medium text-black mb-2 text-sm md:text-base">
       Download Certificate
     </h3>
-    <p className="text-sm text-[#6B7280] mb-2 flex-grow">
+    <p className="text-xs text-[#6B7280] mb-2 flex-grow">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare quis. Vivamus porta finibus accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare quis. Vivamus porta finibus accumsan.
     </p>
     <ActionButton
       variant="secondary"
       size="sm"
-      className="w-full flex justify-center items-center mt-auto text-[#B0B0B0]"
+      className="w-full bg-[#F3F4F6] flex justify-center items-center mt-auto"
     >
-      <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
-      Download
+      <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-[#B0B0B0]" />
+      <span className="text-[#B0B0B0]">Download</span>
     </ActionButton>
   </div>
 );
@@ -297,11 +296,11 @@ export const CertificateCard: React.FC = () => (
 export const ExtraClass: React.FC<{ materials: CourseMaterial[] }> = ({
 
 }) => (
-  <div className="bg-white rounded-2xl p-3 md:p-4 gap-1 h-full flex flex-col justify-between lg:col-span-4">
+  <div className="bg-white rounded-2xl p-3 md:p-4 h-full flex flex-col justify-between lg:col-span-4">
     <h3 className="font-medium text-black  text-sm md:text-base">
       Extra Class Payment
     </h3>
-    <p className="text-xs text-[#6B7280] mb-1">
+    <p className="text-xs text-[#6B7280]">
       Some topics remain uncovered in your current course plan.
     </p>
     <ul className="space-y-2">
