@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CWrapper";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import {

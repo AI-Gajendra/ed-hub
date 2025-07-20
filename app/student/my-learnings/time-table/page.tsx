@@ -1,7 +1,7 @@
 "use client";
 
 import FooterNew from "@/components/footer3";
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CWrapper";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 

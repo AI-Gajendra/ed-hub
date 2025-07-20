@@ -3,7 +3,7 @@
 import { User, Clock, Monitor, DollarSign } from "lucide-react";
 // import { FiCheckCircle } from "react-icons/fi";
 import { Card, CardContent } from "@/components/ui/card";
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CWrapper";
 import Image from "next/image";
 // import Footer from "@/components/footer";
 import FooterNew from "@/components/footer3";

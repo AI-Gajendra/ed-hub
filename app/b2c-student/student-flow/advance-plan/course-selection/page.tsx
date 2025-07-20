@@ -1,4 +1,4 @@
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CWrapper";
 import FooterNew from "@/components/footer3";
 import { ArrowLeft } from "lucide-react";
 

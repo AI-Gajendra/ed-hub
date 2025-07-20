@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/footer";
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CWrapper";
 import StudentProfileForm from "@/components/student/settings/profile";
 export default function CourseDetail() {
   return (

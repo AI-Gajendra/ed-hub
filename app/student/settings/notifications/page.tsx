@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/footer";
-import StudentWrapper from "@/components/student-wrapper";
+import StudentWrapper from "@/components/StudentB2CWrapper";
 import Notifications from "@/components/student/settings/notifications";
 export default function SettingsNotifications() {
   return (
