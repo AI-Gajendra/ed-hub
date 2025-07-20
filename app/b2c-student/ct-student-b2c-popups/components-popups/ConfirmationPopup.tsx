@@ -5,18 +5,13 @@ import { StudentB2CBaseModal, PopupPropB2CStudent } from "@/app/b2c-student/ct-s
 
 const CourseRenewedModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
   return (
-    <StudentB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-lg">
-      <div className="relative bg-white p-8 text-center">
-        <button
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
-          onClick={onClose}
-        >
-          <FiX className="w-5 h-5" />
-        </button>
+    <StudentB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-2xl">
+      <div className="relative bg-white px-6 md:px-12 py-16 text-center">
+       
 
-        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-200 flex items-center justify-center">
+        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#8dd9b3] flex items-center justify-center">
           <svg
-            className="w-10 h-10 text-green-600"
+            className="w-10 h-10 text-white"
             fill="none"
             stroke="currentColor"
             strokeWidth="3"
@@ -26,7 +21,7 @@ const CourseRenewedModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) 
           </svg>
         </div>
 
-        <h2 className="text-xl font-bold mb-3 flex items-center justify-center gap-2">
+        <h2 className="text-3xl font-semibold mb-3 flex items-center justify-center gap-2">
           Course Renewed Successfully
           <Image
             src="/common-images/celebration-icon.png"
@@ -36,13 +31,13 @@ const CourseRenewedModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) 
           />
         </h2>
 
-        <p className="text-gray-500 text-sm mb-6">
+        <p className="text-gray-600 max-w-96 mx-auto text-base mb-6">
           Your course has been renewed. You can now continue learning without interruptions.
         </p>
 
         <button
           onClick={onClose}
-          className="px-6 py-2 rounded-full bg-green-400 text-white font-medium text-sm"
+          className="px-6 py-2 rounded-full bg-[#8dd9b3] text-white font-medium text-sm"
         >
           Start Learning Again
         </button>

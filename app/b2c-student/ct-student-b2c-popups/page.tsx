@@ -77,6 +77,7 @@ export default function AllTeacherB2CPopups() {
         { id: "cancelLecture", label: "Cancel Warning Popup" },
         { id: "warningPopup", label: "Warning Popup" },
         { id: "confirmationPopup", label: "Confirmation Popup" },
+        { id: "assessmentResult", label: "Assessment Result" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
