@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 
-import StudentWrapper from "@/components/StudentB2CHeader"; // Assuming this path is correct
+import StudentWrapper from "@/components/student-wrapper"; // Assuming this path is correct
 
 import Image from "next/image";
 

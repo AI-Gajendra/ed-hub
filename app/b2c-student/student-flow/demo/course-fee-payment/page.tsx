@@ -1,6 +1,6 @@
 "use client";
 
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
 import { Button } from "@/components/ui/button";
 import { ReviewCard, reviews } from "../course-details/page";

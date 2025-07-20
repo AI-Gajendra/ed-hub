@@ -15,7 +15,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";
 

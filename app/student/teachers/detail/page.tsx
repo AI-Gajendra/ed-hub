@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/footer";

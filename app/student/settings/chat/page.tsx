@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/footer";
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import Chat from "@/components/student/settings/chat";
 export default function SettingsChats() {
   return (

@@ -1,5 +1,5 @@
 "use client";
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import Image from "next/image";
 import { Search, Star } from "lucide-react";
 import FooterNew from "@/components/footer3";

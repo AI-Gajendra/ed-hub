@@ -1,7 +1,7 @@
 "use client"
 
 import Footer from "@/components/footer";
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import TeachersList from "@/components/student/home/teachers-component";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import StudentWrapper from "@/components/StudentB2CHeader";
+import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, ArrowLeft } from "lucide-react";
 import FooterNew from "@/components/footer3";
