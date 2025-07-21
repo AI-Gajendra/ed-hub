@@ -2,7 +2,7 @@
 "use client"
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { IoVideocamOutline } from "react-icons/io5";
 import { MdBarChart } from "react-icons/md";
 import ReviewCard from './review-card';
@@ -15,6 +15,8 @@ import GoBack from "@/components/principal/goback";
 import StudentNavbar from '../student-navbar';
 import BackButton from '../common-components/BackButton';
 import StudentB2CWrapper from './common-components/StudentB2CWrapper';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const images = [
     '/b2c-student/card-banner-1.png',
@@ -86,6 +88,13 @@ const OngoingBatchesCard: React.FC<OngoingBatchesProps> = ({
     // domain,
     courseName,
 }) => {
+     const router = useRouter();
+
+  const handleClick = () => {
+    if (available > 0) {
+      router.push("/b2c-student/student-flow/courses/detail");
+    }
+  };
     const details = ['Detail 1', 'Detail 2', 'Detail 3', 'Detail 4'];
     return (
         <div className="w-full rounded-2xl bg-white border border-gray-200">
@@ -136,15 +145,13 @@ const OngoingBatchesCard: React.FC<OngoingBatchesProps> = ({
                     ))}
                 </div>
                 <div className={`${available === 0 ? "bg-[#b0b0b0] text-[#747a86]" : "bg-blue-600 text-white"} rounded-full mt-2 flex px-4  items-center gap-4 justify-center`}>
-                    <button className="font-semibold py-2 flex items-center gap-2">
-                        {available === 0 ? (
-                            "Batch Full"
-                        ) : (
-
-                            "Enroll Now"
-
-                        )}
-                    </button>
+                    <button
+      className="font-semibold py-2 flex items-center gap-2"
+      onClick={handleClick}
+      disabled={available === 0}
+    >
+      {available === 0 ? "Batch Full" : "Enroll Now"}
+    </button>
 
                 </div>
             </div>
@@ -304,14 +311,27 @@ const qualifications: Qualification[] = [
 ];
 
 const Profile = () => {
+    const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
 
+    const handleSelect = (index: number) => {
+        setSelectedIndexes((prev) =>
+            prev.includes(index)
+                ? prev.filter((i) => i !== index)
+                : [...prev, index]
+        );
+    };
+     const router = useRouter();
+
+  const handleContinue = () => {
+    router.push("/b2c-student/student-flow/time-table"); // <-- yahan apna route daal
+  };
     return (
         <>
-        <StudentNavbar activeState='Home'/>
-        <BackButton Heading="Teacher Name"/>
+            <StudentNavbar activeState='Home' />
+            <BackButton Heading="Teacher Name" />
             <StudentB2CWrapper>
-                
-                
+
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[4fr_3fr_3fr] my-4 gap-4">
                     <div className="bg-white rounded-2xl p-6 sm:col-span-2 lg:col-span-1">
                         {/* Top section */}
@@ -344,7 +364,7 @@ const Profile = () => {
                                 <MdBarChart className="text-m" />
                                 6 years
                             </div>
-                            <div className="bg-[#d1f0e1] w-full sm:w-[40%] text-zinc-900 text-m px-3 py-2 rounded-full flex items-center gap-2">
+                            <div className="bg-[#d1f0e1] w-full sm:w-[50%] text-zinc-900 text-m px-3 py-2 rounded-full flex items-center gap-2">
                                 <FaRegEnvelope className="text-m" />
                                 example@gm.com
                             </div>
@@ -396,7 +416,7 @@ const Profile = () => {
                                 >
                                     <div className="relative w-16 h-16">
                                         <Image
-                                        fill
+                                            fill
                                             src={q.logo}
                                             alt="logo"
                                             className="object-cover rounded-2xl"
@@ -441,18 +461,25 @@ const Profile = () => {
                 </div>
                 <div className="bg-white rounded-2xl p-6 mt-4">
                     <h2 className="font-semibold text-lg">Browse and Enroll in available sessions</h2>
-                    <div className="grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-                        {batch.map((batches, index) => (
-                            <div className="bg-gray-100 py-5 px-5 rounded-xl mt-4" key={index}>
-                                <h3 className='text-black-600'>Btach: {batches.Batch}</h3>
-                                <h4 className="">Day: {batches.Day}</h4>
-                                <h4 className=''>Time: {batches.Time}</h4>
-
-                            </div>
-                        ))}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                        {batch.map((batches, index) => {
+                            const isSelected = selectedIndexes.includes(index);
+                            return (
+                                <div
+                                    key={index}
+                                    onClick={() => handleSelect(index)}
+                                    className={`border py-5 px-5 rounded-xl mt-4 cursor-pointer transition ${isSelected ? "bg-[#3366ff] text-white" : "bg-[#f9fafb] text-black"
+                                        }`}
+                                >
+                                    <h3 className="font-medium">Batch: {batches.Batch}</h3>
+                                    <h4>Day: {batches.Day}</h4>
+                                    <h4>Time: {batches.Time}</h4>
+                                </div>
+                            );
+                        })}
                     </div>
                     <div className="flex justify-center w-full">
-                        <button className="px-8 py-3 text-white font-semibold my-4 rounded-full bg-[#FF3366]">Continue</button>
+                        <button   onClick={handleContinue} className="px-8 py-3 text-white font-semibold my-4 rounded-full bg-[#FF3366]">Continue</button>
                     </div>
                 </div>
 
@@ -460,9 +487,9 @@ const Profile = () => {
                     <h2 className={`text-[#FF3366] font-bold text-m`}>Ongoing Courses</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 pb-4 pt-2">
                         {OngoingClass.map((course, index) => (
-                            <div key={index} className="">
+                            <Link href={"/b2c-student/student-flow/about-courses"} key={index} className="">
                                 <OngoingClassesCard {...course} />
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -482,9 +509,9 @@ const Profile = () => {
                     <h2 className={`text-[#FF3366] font-bold text-m`}>Upcoming Batches</h2>
                     <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
                         {courses.map((course, index) => (
-                            <div key={index} className="min-w-[325px]">
+                            <Link href={"/b2c-student/student-flow/courses/detail"} key={index} className="min-w-[325px]">
                                 <CourseCard {...course} />
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -493,7 +520,7 @@ const Profile = () => {
 
 
             </StudentB2CWrapper>
-            <Footer/>
+            <Footer />
         </>
 
     )

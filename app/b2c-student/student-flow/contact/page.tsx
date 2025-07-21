@@ -7,13 +7,14 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import Newsletter from '@/components/common-components/Newsletter';
 import StudentNavbar from '@/components/student-navbar'
+import StudentB2CWrapper from '@/components/b2c-student/common-components/StudentB2CWrapper'
 
 export default function FAQPage() {
 	
 	return (
 		<div>
 			<StudentNavbar  activeState='Contact'/>
-			<div className="min-h-screen flex flex-col px-2 md:px-0 bg-[#eeeeee]">
+			<StudentB2CWrapper>
 				<main className="container mx-auto p-4 md:p-6 max-w-screen-xl rounded-2xl mt-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image
 						src={'/pattern.png'}
@@ -122,7 +123,7 @@ export default function FAQPage() {
 					<Newsletter />
 				</div>
 
-			</div>
+			</StudentB2CWrapper>
 				<Footer />
 		</div>
 	)

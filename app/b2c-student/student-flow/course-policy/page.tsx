@@ -16,7 +16,7 @@ export default function CoursePolicy() {
   const handleAcceptAndProceed = () => {
     if (isAgreed) {
       console.log("Policies accepted, proceeding...");
-      router.push("/student/skill-assessment")
+      router.push("/b2c-student/student-flow/new-skill-assessment")
       // Handle navigation or form submission here
     }
   };
