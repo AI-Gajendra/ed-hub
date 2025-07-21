@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FiBell, FiClock } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 // Sample Question Data Structure
 interface QuestionOption {
@@ -87,7 +88,7 @@ export default function DmittTest_5_Page() {
 	const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null)
 	const [answers, setAnswers] = useState<(string | null)[]>(Array(TOTAL_QUESTIONS).fill(null))
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES * 60) // Time in seconds
-
+const router = useRouter();
 	// Timer useEffect
 	useEffect(() => {
 		if (timeLeft <= 0) {
@@ -228,7 +229,8 @@ export default function DmittTest_5_Page() {
 					{/* Navigation */}
 					<div className="mt-10 flex justify-center rounded-full">
 						<button
-							onClick={handleNextQuestion}
+							
+              onClick={() => router.push("/b2c-student/test/test-page-13")}
 							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
 								? 'Submit'

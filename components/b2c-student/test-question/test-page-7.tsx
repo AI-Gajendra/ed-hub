@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FiBell, FiClock } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 // --- Simplified Header for In-Test View ---
 // You might use your full Header component or a simplified one for focus.
@@ -63,7 +64,7 @@ export default function DmittTest_7_Page() {
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES_DMIT * 60) // Time in seconds
 
 	// User data for header
-	
+	const router = useRouter();
 
 	// Timer useEffect
 	useEffect(() => {
@@ -100,7 +101,7 @@ export default function DmittTest_7_Page() {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex flex-col">
+		<div className="min-h-screen bg-white flex flex-col">
 			<TestHeader />
 
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
@@ -156,7 +157,8 @@ export default function DmittTest_7_Page() {
 						{' '}
 						{/* Centered Next button */}
 						<button
-							onClick={handleNext}
+							
+              onClick={() => router.push("/b2c-student/student-flow/dashboard")}
 							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
 						</button>

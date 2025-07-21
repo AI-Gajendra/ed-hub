@@ -309,9 +309,7 @@ export default function CourseDetail() {
         {/* <Footer /> */}
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

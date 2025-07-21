@@ -190,7 +190,7 @@ export default function TeacherSelection() {
 
   const handleContinue = () => {
     if (selectedTeacher && selectedTimeSlot) {
-      router.push("/student/demo/review");
+      router.push("/b2c-student/student-flow/demo/review");
     }
   };
 
@@ -295,6 +295,8 @@ export default function TeacherSelection() {
                           </p>
                         </div>
                         <div
+
+              onClick={() => router.push("/b2c-student/student-flow/teachers/profile?flow=demo")}
                           className={`flex flex-col items-center justify-center self-start p-2 rounded-full gap-1 hover:bg-[${selectedTeacher === teacher.id
                               ? "#E5E7EB1A"
                               : "#6B72801A"
@@ -396,9 +398,7 @@ export default function TeacherSelection() {
         </div>
       </div>
 
-      <div className="z-10 absolute">
         <Footer />
-      </div>
     </StudentWrapper>
   );
 }

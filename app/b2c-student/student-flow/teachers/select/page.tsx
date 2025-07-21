@@ -116,9 +116,7 @@ export default function SelectTeacher() {
         {/* <Footer /> */}
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }
