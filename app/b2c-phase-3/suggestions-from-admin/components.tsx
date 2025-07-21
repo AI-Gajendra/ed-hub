@@ -43,31 +43,30 @@ export const TeacherListItem: React.FC<TeacherListItemProps> = ({
 }) => (
   // Original: w-full flex items-center p-3 rounded-3xl transition-colors
   <button
-    onClick={onClick}
-    className={`w-full flex gap-4 items-start p-2.5 rounded-xl transition-colors 
-                   sm:p-3 sm:rounded-2xl 
-        ${isActive ? "bg-[#e5e7eb] " : "hover:bg-gray-100"}`}
-  >
-    {/* Original Image: h-10 w-10 rounded-full object-cover mr-3 flex-shrink-0 */}
-    <div className="bg-[#8dd9b3] p-3 rounded-full">
-      < FiFileText size={20} className="text-black w-4 h-4" />
+  onClick={onClick}
+  className={`w-full flex items-center justify-between p-3 rounded-xl transition-colors
+    ${isActive ? "bg-[#e5e7eb]" : "hover:bg-gray-100"}`}
+>
+  {/* Left Section */}
+  <div className="flex items-center gap-3">
+    {/* Icon */}
+    <div className="bg-[#8dd9b3] p-2 rounded-full">
+      <FiFileText size={16} className="text-black" />
     </div>
-    <div className="flex flex-col text-left pt-2  min-w-0">
-      {/* Original h4: text-sm font-semibold text-black */}
-      <h4 className="text-xs font-semibold text-black truncate sm:text-sm">
-        {teacher.name}
-      </h4>
-      <h4 className="text-xs font-semibold text-black truncate sm:text-sm">
-        {teacher.name}
-      </h4>
+
+    {/* Texts */}
+    <div className="flex flex-col text-left">
+      <h4 className="text-sm font-semibold text-black">Worksheet Name</h4>
+      <p className="text-xs text-[#6b7280]">11th July 2025</p>
     </div>
-    {teacher.lastMessageTime && (
-      // Original span: text-[10px] text-[#6B7280] ml-2 self-end flex-shrink-0
-      <span className="text-[9px] text-[#6B7280] ml-1 self-end flex-shrink-0 sm:text-[10px] sm:ml-2">
-        {teacher.lastMessageTime}
-      </span>
-    )}
-  </button>
+  </div>
+
+  {/* Time */}
+  {teacher.lastMessageTime && (
+    <span className="text-[10px] text-[#6b7280] mt-4">{teacher.lastMessageTime}</span>
+  )}
+</button>
+
 );
 
 // --- Component 2: ChatMessage ---

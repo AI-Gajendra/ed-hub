@@ -13,10 +13,11 @@ const user = {
 };
 
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({
-  id: `teacher${i + 1}`,
+  id: 'number',
   name: 'Name',
   avatarSrc: `/teacher-avatar-chat-${(i % 3) + 1}.jpg`,
   lastMessageTime: '7:00 pm',
+   date: "11th July 2025",
 }));
 
 const initialChatMessagesData: ChatMessageData[] = [

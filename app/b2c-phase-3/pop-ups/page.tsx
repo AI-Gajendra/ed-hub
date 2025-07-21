@@ -5,13 +5,15 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CourseUnlockPopup from "./component/course-unlock-confirmation";
 import ConfirmUnlockPopup from './component/teacher-unlock-confirm'
-
+import CourseMaterial from './component/course-material'
+import DmitStart from './component/Choice of DMIT or Start'
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   maxWidth: string;
+  className:string;
 }
 export interface PopupPropB2CTeacher {
   // this can be import as a prop
@@ -23,7 +25,7 @@ export interface PopupPropB2CTeacher {
 export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
   isOpen,
   onClose,
-
+className,
   children,
   maxWidth,
 }) => {
@@ -90,6 +92,16 @@ export default function AllTeacherB2CPopups() {
       label: " Confirm Unlock",
       action: () => setOpenModal("confirm unlock"),
     },
+     {
+      id: "course material",
+      label: " Course material",
+      action: () => setOpenModal("course material"),
+    },
+     {
+      id: "dmit start",
+      label: " dmit start",
+      action: () => setOpenModal("dmit start"),
+    },
   ];
 
   return (
@@ -116,6 +128,12 @@ export default function AllTeacherB2CPopups() {
       <ConfirmUnlockPopup
       isOpen={openModal === "confirm unlock"}
         onClose={() => setOpenModal(null)}/>
+        <CourseMaterial
+      isOpen={openModal === "course material"}
+        onClose={() => setOpenModal(null)}/>
+        <DmitStart isOpen={openModal === "dmit start"}
+        onClose={() => setOpenModal(null)}
+        />
     </div>
   );
 }
