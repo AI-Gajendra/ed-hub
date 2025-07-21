@@ -16,7 +16,7 @@ export const QuizResultHeader: React.FC<QuizResultHeaderProps> = ({ onBackClick,
     <div className="mb-6 flex items-center gap-2 sm:mb-8 sm:gap-3">
         {onBackClick && <SimpleIconButton onClick={onBackClick} icon={<FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />} ariaLabel="Go back"/>}
         <div>
-            <h2 className="text-xl font-medium text-[#FF3366] sm:text-2xl">{quizTitle}</h2>
+            <h2 className="text-xl font-bold text-[#FF3366] sm:text-2xl">{quizTitle}</h2>
             <p className="font-light tracking-wide text-black mt-0.5 sm:text-base sm:mt-1">{topicName}</p> {/* text-base not md */}
         </div>
     </div>

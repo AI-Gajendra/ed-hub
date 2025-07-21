@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer';
 import {  TestHeader, TestContent, QuestionData } from './components';
 import { TimerDisplay } from './ui-components'; // Timer is a UI element displayed on the page
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
+import StudentNavbarNew from '@/components/student-navbar-new';
 
 // --- Sample Data ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];
@@ -56,7 +57,7 @@ export default function MockTestPage() {
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
-      <Header user={headerUser} />
+      <StudentNavbarNew activeState='My course' />
 
       <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
         <div className="mb-4">
