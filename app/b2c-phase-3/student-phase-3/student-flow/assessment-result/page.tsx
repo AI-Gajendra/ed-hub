@@ -1,5 +1,5 @@
 // For App Router: app/page.tsx
-import ResultsCard from '@/components/student-b2b/test-question/result'; // Adjust path if needed
+import ResultsCard from './result'; // Adjust path if needed
 
 
 export default function HomePage() {

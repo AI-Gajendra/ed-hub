@@ -1,13 +1,11 @@
 import React from "react"
 
-import Profile from "@/components/b2c-student/profile";
+import Profile from "./profile";
 
 const TeacherProfile = ()=>{
     return(
         <> 
-        
         <Profile/>
-    
         </>
     )
 

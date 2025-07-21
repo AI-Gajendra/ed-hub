@@ -1,4 +1,4 @@
-import DmittTest_3_Page from '@/components/b2c-student/test-question/test-page-3'
+import DmittTest_3_Page from './test-page-10'
 
 export default function DmittTest3() {
     return (

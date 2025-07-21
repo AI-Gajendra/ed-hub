@@ -1,4 +1,4 @@
-import EducationSection from "@/components/b2c-student/AboutUs";
+import EducationSection from "./AboutUs";
 
 const About = () => {
 
