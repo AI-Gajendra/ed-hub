@@ -225,6 +225,8 @@ export default function CoursesComponent({
     }
   };
 
+  const Router = useRouter()
+
   return (
     <div className="px-16">
       <div
@@ -264,24 +266,24 @@ export default function CoursesComponent({
         {/* Course Slider */}
         <div className="relative">
           {/* Left Navigation Button */}
-          {showLeftArrow && (
+          {/* {showLeftArrow && (
             <button
               onClick={() => scroll("left")}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
             >
               <ChevronLeft className="w-5 h-5 text-gray-700" />
             </button>
-          )}
+          )} */}
 
           {/* Right Navigation Button */}
-          {showRightArrow && (
+          {/* {showRightArrow && (
             <button
               onClick={() => scroll("right")}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
             >
               <ChevronRight className="w-5 h-5 text-gray-700" />
             </button>
-          )}
+          )} */}
 
           {/* Scrollable Container */}
           <div
@@ -293,7 +295,8 @@ export default function CoursesComponent({
             {courses.map((course) => (
               <div
                 key={course.id}
-                className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                onClick={() => Router.push("/b2c-student/student-flow/course-details")}
+                className="flex-none w-80 bg-white rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative p-4">
                   <Image
@@ -303,32 +306,35 @@ export default function CoursesComponent({
                     height={200}
                     className="w-full h-48 object-cover rounded-2xl"
                   />
+
                   <div className="absolute right-5 top-5 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                    <span className="text-amber-300 text-lg font-bold">
-                      4.2
-                    </span>
+                    <span className="text-amber-300 text-lg font-bold">4.2</span>
+
                     <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
                   </div>
                 </div>
 
-                <div className="p-4 pt-0">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Course Name
-                  </h3>
+                <div className="p-6 pt-0 space-y-2">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Course Name
+                    </h3>
 
-                  <div className="space-y-1">
+                    <button
+                      className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
+                      onClick={() => router.push("/student/courses/know-more")}
+                    >
+                      Know More
+                    </button>
+                  </div>
+
+                  <div className="space-y-2">
                     {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                       (detail, index) => (
                         <div key={index} className="flex items-center gap-2">
-                          <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                            <Image
-                              src="/student/home/tick2.png"
-                              alt="tick2"
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          <span className="text-gray-600">{detail}</span>
+                          <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+
+                          <span className="text-[#6B7280] text-sm">{detail}</span>
                         </div>
                       )
                     )}
@@ -342,10 +348,13 @@ export default function CoursesComponent({
                       height={24}
                       className="w-8 h-8 rounded-full"
                     />
+
                     <div>
                       <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+
                       <p className="text-xs text-[#FF3366]">Teacher</p>
                     </div>
+
                     <div className="ml-auto flex gap-1 text-yellow-400">
                       {[1, 2, 3, 4].map((star) => (
                         <Star key={star} className="w-3 h-3 fill-current" />
@@ -353,13 +362,14 @@ export default function CoursesComponent({
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                  <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl py-2 w-full mt-2">
                     <span className="text-[#50C878] font-bold">
                       ₹2,000 - ₹5,000
                     </span>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
+
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm h-fit">
                       Add to cart
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -383,7 +393,8 @@ export default function CoursesComponent({
             {startingCourses.map((course) => (
               <Card
                 key={course.id}
-                className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                onClick={() => Router.push("/b2c-student/student-flow/course-details")}
+                className="bg-white cursor-pointer rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
               >
                 <div className="relative p-3">
                   <Image
@@ -401,7 +412,9 @@ export default function CoursesComponent({
                     </h3>
                     <button
                       className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
-                      onClick={() => router.push("/student/courses/know-more")}
+                      onClick={() =>
+                        Router.push("/student/courses/know-more")
+                      }
                     >
                       Know More
                     </button>
@@ -410,7 +423,10 @@ export default function CoursesComponent({
                   <div className="space-y-1">
                     {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                       (detail, index) => (
-                        <div key={index} className="flex items-center gap-2">
+                        <div
+                          key={index}
+                          className="flex items-center gap-2"
+                        >
                           <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
                           <span className="text-[#6B7280] text-sm">
                             {detail}
@@ -426,7 +442,9 @@ export default function CoursesComponent({
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     </div>
                     <span className="text-gray-600 bg-[#F3F4F6] rounded-xl px-3 py-1">
-                      <span className="font-bold text-black mr-1">4.4K</span>
+                      <span className="font-bold text-black mr-1">
+                        4.4K
+                      </span>
                       Ratings
                     </span>
                     <span className="text-gray-600 bg-[#F3F4F6] rounded-xl px-3 py-1">

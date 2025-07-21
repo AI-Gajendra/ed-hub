@@ -432,13 +432,23 @@ const CourseSlider = () => {
             }
 
             return (
-              <TabsTrigger
+              // <TabsTrigger
+              //   key={category}
+              //   value={category}
+              //   onClick={() => Router.push("/b2c-student/student-flow/courses/categorical")}
+              //   className="data-[state=active]:bg-[#FF3366] data-[state=active]:text-white cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
+              // >
+              //   {category}
+              // </TabsTrigger>
+
+              <Button
                 key={category}
                 value={category}
-                className="data-[state=active]:bg-[#FF3366] data-[state=active]:text-white cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
+                onClick={() => Router.push("/b2c-student/student-flow/courses/categorical")}
+                className={`${isActive ? "bg-[#FF3366] text-white" : "bg-transparent hover:bg-black/10"}  cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full`}
               >
                 {category}
-              </TabsTrigger>
+              </Button>
             );
           })}
         </TabsList>
