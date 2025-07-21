@@ -23,12 +23,12 @@ export default function GradeAndContent() {
 			<MaxWidthWrapper className="py-10">
 				<div>
 					<div className="flex gap-4 justify-between items-center">
-						<ArrowLeft />
-						<div className="text-xl font-medium mb-2">Chooses Pre-Recorded Courses</div>
+						<ArrowLeft  className='w-6 h-6'/>
+						<div className="text-xl font-semibold mb-2">Chooses Pre-Recorded Courses</div>
 						<div></div>
 					</div>
 					<div className="w-full flex justify-center items-center mt-4">
-						<Button className="bg-[#FF3366] hover:bg-[#F9FAFB]/90 text-white rounded-2xl px-2">Academic Courses</Button>
+						<Button className="bg-[#FF3366] hover:bg-[#ff3366]/80 text-white rounded-2xl px-2">Academic Courses</Button>
 					</div>
 				</div>
 
@@ -94,9 +94,9 @@ function GradeCard() {
 				className="w-full max-h-52 object-cover"
 			/>
 
-			<div className="p-4">
+			<div className="p-4 items-center text-center flex flex-col  ">
 				<h3 className="text-[1.3rem] text-center mb-2 font-medium">Grade and Content Name</h3>
-				<p className="text-[#2E2E2E] text-center text-sm tracking-wide leading-6">
+				<p className="text-[#2E2E2E] text-center  max-w-[39ch] text-sm tracking-wide leading-6">
 					Courses offered in this Course Type Name. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 				</p>
 

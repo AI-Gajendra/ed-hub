@@ -40,7 +40,7 @@ const CoursesSection = () => {
             key={index}
             className="bg-white w-[400px] md:w-[480px] h-[420px] md:h-[650px] rounded-3xl flex flex-col items-center"
           >
-            <div className="relative w-full h-60 md:h-84 lg:h-96 mb-4">
+            <div className="relative w-full h-60 md:h-84  mb-4">
               <Image
                 src={course.image}
                 alt={course.title}
