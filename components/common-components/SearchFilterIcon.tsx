@@ -20,11 +20,11 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
     };
 
     return (
-        <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 relative z-50">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 relative z-10">
             {filters.map((filter) => {
                 const isOpen = openFilterId === filter.id;
                 return (
-                    <div key={filter.id} className="relative inline-block text-left">
+                    <div key={filter.id} className="relative z-10 inline-block text-left">
                         {/* Button + border container */}
                         <div className={`bg-[#f9fafb]  ${isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"} box-border`}>
                             <button
