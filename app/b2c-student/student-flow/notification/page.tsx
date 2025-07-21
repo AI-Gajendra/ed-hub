@@ -1,4 +1,4 @@
-import NotificationsPage from '@/components/student-b2b/student-dashboard/notification'
+import NotificationsPage from '@/components/b2c-student/notification'
 
 export default function Notifications() {
     return (
