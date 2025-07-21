@@ -11,6 +11,7 @@ import {
     QuestionReviewData // Type
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
+import Footer from '@/components/layout/Footer';
 // SimpleIconButton is in ui-components, used by components
 
 // --- Sample Data (from your original) ---
@@ -47,7 +48,7 @@ export default function QuizTestResultPage() {
 
                 {/* Main Content Card for Test Result */}
                 {/* Original: bg-white px-3 py-6 rounded-2xl shadow-lg */}
-                <div className="bg-white px-2 py-4 sm:px-3 sm:py-6 max-w-[96rem] mx-auto rounded-3xl shadow-lg mt-4 md:mt-6 border border-gray-200"> {/* No shadow, add border */}
+                <div className="bg-white px-2 py-4 sm:px-3 sm:py-6 max-w-[96rem] mx-auto rounded-3xl mt-4 md:mt-6 "> {/* No shadow, add border */}
                     <QuizResultHeader
                         onBackClick={handlePageBack}
                         quizTitle="Quiz" // As per original
@@ -72,7 +73,7 @@ export default function QuizTestResultPage() {
                 </div>
             </main>
 
-           
+           <Footer />
         </div>
     );
 }

@@ -128,15 +128,20 @@ export default function DmittTest_2_Page() {
     }
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
             {/* Header */}
-            <header className="bg-[#3366FF] text-white  sticky top-0 z-50">
+            <header className="bg-[#3366FF] text-white sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
                     {/* Logo */}
                     <div className="flex items-center">
                         {/* Replace with your actual logo */}
-                        <Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={150} height={40} />
-                                      {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
+                        <Image
+                            src="/page3/student_b2b/Clip path group.svg"
+                            alt="Edunique Logo"
+                            width={150}
+                            height={40}
+                        />
+                        {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
                     </div>
 
                     {/* User Info & Notification */}
@@ -154,7 +159,7 @@ export default function DmittTest_2_Page() {
                             />
                             <div>
                                 <p className="text-sm font-medium">Shlok Agheda</p>
-                                <p className="text-xs opacity-80">Student</p>
+                                <p className="text-xs text-[#FFCC00] opacity-80">Student</p>
                             </div>
                         </div>
                     </div>
@@ -163,22 +168,25 @@ export default function DmittTest_2_Page() {
 
             {/* Main Content */}
             <main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-[50rem] mx-auto bg-white rounded-xl p-6 md:p-8">
+                <div className="lg:max-w-[46rem] mx-auto bg-white rounded-xl  w-full">
                     {/* Test Title */}
                     <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
-                        DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
+                        DMIT (Dermatoglyphics Multiple Intelligence Test) and skill
+                        assessment
                     </h1>
 
                     {/* Category Tabs */}
-                    <div className="mb-8 overflow-x-auto pb-3">
-                        <div className="flex justify-between space-x-2 border-b border-gray-200 bg-[#f9fafb] rounded-full border overflow-hidden p-3">
-                            {tabCategories.map(category => (
+                    <div className="mb-8  pb-2 ">
+                        <div className="flex lg:justify-center overflow-x-auto custom-scrollbar max-w-[55%] min-w-full space-x-1 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
+                            {tabCategories.map((category) => (
                                 <button
                                     key={category}
                                     onClick={() => setActiveCategory(category)}
-                                    className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${
-                                    activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                                    }`}>
+                                    className={`px-4 py-2 text-xs md:text-sm font-medium whitespace-nowrap transition-colors duration-150 rounded-full ${activeCategory === category
+                                            ? "bg-[#FF3366] text-white"
+                                            : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                                        }`}
+                                >
                                     {category}
                                 </button>
                             ))}
@@ -186,18 +194,24 @@ export default function DmittTest_2_Page() {
                     </div>
 
                     {/* Test Info: Questions, Time Limit, Progress, Timer */}
-                    <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-                        <div className="text-left">
-                            <p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
-                            <p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
+                    <div className="flex justify-start relative  items-center sm:justify-between  mb-8 gap-4">
+                        <div className="sm:text-left">
+                            <p className="text-lg font-semibold text-[#6B7280]">
+                                Questions : {TOTAL_QUESTIONS}
+                            </p>
+                            <p className="text-xs mt-2 text-gray-500">
+                                Time Limit: {TIME_LIMIT_MINUTES} Minutes
+                            </p>
                             <div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
                                 {currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
                             </div>
                         </div>
-                        <div className="text-right">
+                        <div className="absolute right-0">
                             <div className="flex items-center gap-1.5 text-[#FF3366]">
                                 <FiClock className="w-5 h-5" />
-                                <span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
+                                <span className="text-lg font-extrabold">
+                                    {formatTime(timeLeft)}
+                                </span>
                             </div>
                             <p className="text-md font-medium text-[#FF99B7]">Min Left</p>
                         </div>
@@ -213,9 +227,8 @@ export default function DmittTest_2_Page() {
                                     <button
                                         key={option.id}
                                         onClick={() => handleOptionSelect(option.id)}
-                                        className={`hover:cursor-pointer w-full text-left flex items-center p-4 rounded-full transition-all duration-150 font-semibold focus:outline-none bg-white hover:bg-blue-100 ${
-                                            selectedOptionId === option.id && 'border-2 border-blue-500'
-                                        }`}>
+                                        className={`hover:cursor-pointer w-full text-left flex items-center p-4 rounded-full transition-all duration-150 font-semibold focus:outline-none bg-white hover:bg-blue-100 ${selectedOptionId === option.id && 'border-2 border-blue-500'
+                                            }`}>
                                         {/* Optional: Add a visual radio button if needed */}
                                         {/* <div className={`w-4 h-4 rounded-full border-2 mr-3 ${selectedOptionId === option.id ? 'bg-blue-500 border-blue-500' : 'border-gray-400'}`}></div> */}
                                         <span className="text-sm text-[#6B7280]">{option.text}</span>
@@ -229,7 +242,7 @@ export default function DmittTest_2_Page() {
                     <div className="mt-10 flex justify-center rounded-full">
                         <button
                             onClick={handleNextQuestion}
-                           className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
+                            className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
                             {currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
                                 ? 'Submit'
                                 : 'Next'}

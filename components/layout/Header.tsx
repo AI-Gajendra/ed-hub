@@ -35,33 +35,33 @@ interface UserProfile {
 }
 
 interface HeaderProps {
-	user: UserProfile
+	user?: UserProfile
 	isAskme?: boolean
+	activeState?: string
 }
 
-export default function Header({ user, isAskme = true }: HeaderProps) {
-	const pathname = usePathname()
+export default function Header({ user, isAskme = true, activeState = "Dashboard" }: HeaderProps) {
 
 	const navItems = [
 		{
 			icon: FaRegSmile,
 			label: 'Dashboard',
-			href: '/student-b2b/student-dashboard/dashboard',
+			href: '/',
 		},
 		{
 			icon: FiBookOpen,
 			label: 'My course',
-			href: '/student-b2b/student-dashboard/my-course',
+			href: '/b2c-student/student-flow/my-course',
 		},
 		{
 			icon: FiMessageSquare,
 			label: 'Chat',
-			href: '/student-b2b/student-dashboard/chat',
+			href: '/',
 		},
 		{
 			icon: FiVideo,
 			label: 'Recordings',
-			href: '/student-b2b/student-dashboard/recording',
+			href: '/',
 		},
 	]
 
@@ -76,7 +76,7 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
 				{/* Main Navigation */}
 				<nav className="hidden lg:flex items-center bg-[#E3F2FD26] rounded-full px-4 py-2 space-x-2">
 					{navItems.map(({ icon, label, href }) => (
-						<NavItem key={label} icon={icon} label={label} href={href} active={pathname === href} />
+						<NavItem key={label} icon={icon} label={label} href={href} active={activeState === label} />
 					))}
 				</nav>
 
@@ -92,8 +92,8 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
 						<FiBell className="w-5 h-5" />
 					</button>
 					<Image
-						src={user.avatarSrc ?? '/page3/entry/pri.png'}
-						alt={user.name}
+						src={"/student/home/student-profile.jpg"}
+						alt="name"
 						width={40}
 						height={40}
 						className="w-10 h-10 rounded-full object-cover hover:cursor-pointer"

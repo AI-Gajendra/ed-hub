@@ -124,8 +124,8 @@ const Course = () => {
 	}
     return (   
         <>
-        <Header user={headerUser} currPage='Contact'/>
-        <GoBack GoBackHeading="Course Name" />
+        <StudentNavbar activeState="Courses List"/>
+        <BackButton Heading="Course Name" />
         <div className="py-2 px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr] bg-gray-100 md:p-4 gap-4 rounded-2xl">
                 <div className="bg-white rounded-2xl p-4 grid grid-cols-1 lg:grid-cols-[2.5fr_1.5fr]">
@@ -245,6 +245,8 @@ export default Course;
 
 
 import { FaChevronDown, FaMinus, FaPlus } from 'react-icons/fa';
+import StudentNavbar from '../student-navbar';
+import BackButton from '../common-components/BackButton';
 
 export function CourseOptionsCard() {
   const [quantity, setQuantity] = useState(0);

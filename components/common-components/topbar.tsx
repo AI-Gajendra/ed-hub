@@ -51,7 +51,7 @@ export const OptimizedCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({
 
           <div
             ref={scrollContainerRef}
-            className="flex-1 overflow-x-auto custom-scrollbar-thin"
+            className="flex-1 overflow-x-auto pb-1 custom-scrollbar-thin"
           >
             <div className="flex flex-nowrap md:justify-center justify-start pr-4 md:pl-14 pl-10 xl:gap-6 gap-2">
               {categories.map((category) => (

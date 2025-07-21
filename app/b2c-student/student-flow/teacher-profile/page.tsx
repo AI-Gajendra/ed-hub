@@ -2,7 +2,7 @@ import React from "react"
 
 import Profile from "@/components/b2c-student/profile";
 
-const teacherprofile = ()=>{
+const TeacherProfile = ()=>{
     return(
         <> 
         
@@ -13,4 +13,4 @@ const teacherprofile = ()=>{
 
 }
 
-export default teacherprofile;
+export default TeacherProfile;

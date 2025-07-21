@@ -1,6 +1,7 @@
 // ui-components.tsx
 "use client";
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import {
@@ -75,9 +76,11 @@ interface VideoItemProps {
     topic: string;
     onClick?: () => void;
 }
-export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => (
+export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => {
+    const Router = useRouter();
+    return(  
     <button
-        onClick={onClick}
+        onClick={()=>Router.push("/b2c-student/student-flow/video-screen")}
         className="w-full flex items-center justify-between p-2.5 sm:p-3 text-left border border-[#E5E7EB] bg-[#F3F4F6] hover:bg-[#E5E7EB]/70 rounded-2xl sm:rounded-3xl transition-colors"
     >
         <div className="flex items-center gap-2 sm:gap-3">
@@ -86,26 +89,7 @@ export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => (
         </div>
         <FiChevronRight className="w-4 h-4 text-black" />
     </button>
-);
-
-
-// --- Component 5: DateNavigatorWithArrows (from previous) ---
-interface DateNavigatorProps {
-    currentDate: string;
-    onPrevious?: () => void;
-    onNext?: () => void;
-}
-export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({ currentDate, onPrevious, onNext }) => (
-    <div className="flex items-center sm:gap-2 text-[10px] border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg md:text-sm gap-1 sm:px-3 sm:py-2 sm:rounded-xl">
-        <button onClick={onPrevious} className="disabled:opacity-50" disabled={!onPrevious} aria-label="Previous month">
-            <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
-        </button>
-        <span className="">{currentDate}</span>
-        <button onClick={onNext} className="disabled:opacity-50" disabled={!onNext} aria-label="Next month">
-            <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
-        </button>
-    </div>
-);
+);}
 
 // --- Component 6: FilterDropdown (from previous) ---
 interface FilterDropdownProps {

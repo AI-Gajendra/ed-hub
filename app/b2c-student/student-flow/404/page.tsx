@@ -22,7 +22,7 @@ export default function CourseDetail() {
             tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <Button
-            onClick={() => router.push("/student/home")}
+            onClick={() => router.push("/b2c-student/student-flow/home")}
             className="px-16 text-base rounded-full cursor-pointer bg-[#3366FF] hover:bg-blue-600 text-white transition-colors h-fit"
           >
             <span className="py-1">Back to Home</span>

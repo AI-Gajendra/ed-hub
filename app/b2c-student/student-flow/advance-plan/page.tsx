@@ -273,7 +273,7 @@ export default function AdvancePlan() {
             {data.headers.map((header, index) => (
               <th key={index} className="p-1 text-left font-semibold">
                 <div
-                  className={`${data.bgColor} py-2 px-3 rounded-2xl w-full h-full`}
+                  className={`${data.bgColor} py-2 px-3 rounded-xl text-center w-full h-full`}
                 >
                   {header}
                 </div>
@@ -482,7 +482,7 @@ export default function AdvancePlan() {
                   bgColor: "bg-[#99DEFF]",
                 })
               : renderTable({
-                  headers: ["Date", "Test", "Quiz", "Assessment"],
+                  headers: ["Date", "Subject", "Topics to be Covered", "Subtopics to be Covered"],
                   rows: secondSectionTestData,
                   bgColor: "bg-[#FFC79A]",
                 })}

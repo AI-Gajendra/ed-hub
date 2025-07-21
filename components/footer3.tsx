@@ -62,7 +62,7 @@ export default function FooterNew({
     hover: {
       y: -5,
       scale: 1.1,
-      transition: { type: "spring", stiffness: 300, damping: 10 },
+      transition: { type: "spring" as const, stiffness: 300, damping: 10 },
     },
   };
 
@@ -107,7 +107,7 @@ export default function FooterNew({
       className="w-screen relative flex flex-col bg-[#3366FFD9] items-center justify-between bg-cover bg-center bg-no-repeat"
     >
       {showSuscriptionBlock && (
-        <div className="max-w-7xl mx-auto z-40 min-h-65 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
+        <div className="max-w-7xl  mx-auto z-40 min-h-65 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
           <div className="min-h-24 bg-[#FF3366] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
             {/* Background Layer */}
             <div

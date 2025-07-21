@@ -4,40 +4,24 @@ import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
 import { Button } from "@/components/ui/button";
 import { ReviewCard, reviews } from "../course-details/page";
+import Image from "next/image";
+import Footer from "@/components/layout/Footer";
 
 export default function AfterDemoCourseFeePayment() {
   return (
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
-        <section className="px-16 py-8">
+        <section className="px-2 md:px-8 lg:px-12 xl:px-16 py-8">
           <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
-            <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
+            <div className="md:grid md:grid-cols-[1fr_1fr] px-2 py-4 md:p-4 gap-14">
               <div className="space-y-5">
-                <h1 className=" text-center text-4xl font-bold text-[#8DD9B3]">
+                <h1 className=" text-center text-3xl font-bold text-[#8DD9B3]">
                   What Our Learners Are Saying
                 </h1>
                 <div
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-1 h-[600px] overflow-y-auto content-start pr-2"
-                  style={{
-                    scrollbarWidth: "thin",
-                    scrollbarColor: "#FFA500 transparent",
-                  }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-1 content-start pr-2"
+                  
                 >
-                  <style jsx>{`
-                    div::-webkit-scrollbar {
-                      width: 8px;
-                    }
-                    div::-webkit-scrollbar-track {
-                      background: transparent;
-                    }
-                    div::-webkit-scrollbar-thumb {
-                      background: #ffa500;
-                      border-radius: 4px;
-                    }
-                    div::-webkit-scrollbar-thumb:hover {
-                      background: #ff8c00;
-                    }
-                  `}</style>
                   {[...reviews, ...reviews, ...reviews, ...reviews].map(
                     (review, index) => (
                       <ReviewCard
@@ -49,10 +33,12 @@ export default function AfterDemoCourseFeePayment() {
                 </div>
               </div>
               <div className="space-y-2 mt-4 sm:mt-0">
-                <img
+                <Image
                   alt="course pack image"
+                  width={600}
+                  height={800}
                   src="/student/courses/detail/hero.png"
-                  className="block mx-auto rounded-3xl"
+                  className="block max-h-[675px] h-full mx-auto object-cover rounded-3xl"
                 />
                 <div className="border border-zinc-200 bg-[#F9FAFB] rounded-3xl space-y-2 px-3 py-4 text-center">
                   <h2 className="font-semibold text-lg">Enjoyed the Demo?</h2>
@@ -71,7 +57,7 @@ export default function AfterDemoCourseFeePayment() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

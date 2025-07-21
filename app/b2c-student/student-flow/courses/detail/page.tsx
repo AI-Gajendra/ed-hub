@@ -27,6 +27,8 @@ import FooterNew from "@/components/footer3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { FaCircleCheck } from "react-icons/fa6";
+import Footer from "@/components/layout/Footer";
+import Newsletter from "@/components/common-components/Newsletter";
 
 interface Review {
   id: number;
@@ -230,11 +232,10 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`w-3 h-3 ${
-            star <= rating
+          className={`w-3 h-3 ${star <= rating
               ? "fill-yellow-400 text-yellow-400"
               : "fill-transparent text-transparent"
-          }`}
+            }`}
         />
       ))}
     </div>
@@ -396,7 +397,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         </div>
       </div>
 
-      <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16 pb-70">
+      <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-2 md:px-8 lg:px-12 xl:px-16">
         <div className="mx-auto">
           <div className="grid lg:grid-cols-11 gap-4">
             {/* Left Section */}
@@ -540,11 +541,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       onClick={() => setActiveTab(item.id)}
                       className={`
                     w-full flex items-center gap-3 px-4 py-2 rounded-full text-left transition-all duration-200
-                    ${
-                      isActive
-                        ? "bg-[#FF3366] text-white"
-                        : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
-                    }
+                    ${isActive
+                          ? "bg-[#FF3366] text-white"
+                          : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
+                        }
                   `}
                     >
                       <IconComponent size={20} />
@@ -573,32 +573,29 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         </div>
 
         <div className="relative py-14 rounded-2xl">
-          <div className="relative flex gap-6 items-center flex-col md:flex-row justify-center w-full z-9">
-            <h1 className="text-3xl sm:text-[48px] font-semibold text-white">
-              Book a Free Demo
-            </h1>
-            <button className="bg-white cursor-pointer rounded-full px-8 py-4 text-m font-medium">
-              Click Here
-            </button>
+          <div className="relative flex gap-4 items-center flex-col md:flex-row justify-center w-full z-9">
+            <h1 className="text-3xl sm:text-[48px] font-bold text-white">Book a Free Demo</h1>
+            <button className='bg-white cursor-pointer rounded-full px-8 py-2 text-m font-medium'>Click Here</button>
           </div>
           <div
             className="absolute inset-0 rounded-2xl bg-center bg-repeat z-0"
             style={{
-              backgroundImage: "url('/Background6.png')",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              filter: "grayscale(10%) brightness(1.1) blur(0.5px)",
+              backgroundImage: "url('/Background2.png')",
+              backgroundSize: '400px',
+              filter: 'grayscale(10%) brightness(1.1) blur(0.5px)',
               opacity: 0.3,
-            }}
-          ></div>
+            }}>
+
+          </div>
           {/* Bluish Overlay */}
           <div
-            className="absolute inset-0 rounded-2xl bg-[#3366FF] z-0"
+            className="absolute inset-0 rounded-2xl bg-[#517dfe] z-0"
             style={{
-              opacity: 0.88, // increase to make it more blue
-              mixBlendMode: "multiply", // try "multiply" or "soft-light" too
-            }}
-          ></div>
+              opacity: 0.78, // increase to make it more blue
+              mixBlendMode: 'multiply', // try "multiply" or "soft-light" too
+            }}>
+
+          </div>
         </div>
 
         <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
@@ -632,9 +629,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Scrollable Container */}
             <div
               ref={scrollContainerRef}
-              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                showLeftArrow ? "pl-16" : "pl-0"
-              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                } ${showRightArrow ? "pr-16" : "pr-0"}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {courses.map((course) => (
@@ -748,9 +744,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Scrollable Container */}
             <div
               ref={scrollContainerRef}
-              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                showLeftArrow ? "pl-16" : "pl-0"
-              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                } ${showRightArrow ? "pr-16" : "pr-0"}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {courses.map((course) => (
@@ -864,9 +859,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Scrollable Container */}
             <div
               ref={scrollContainerRef}
-              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                showLeftArrow ? "pl-16" : "pl-0"
-              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                } ${showRightArrow ? "pr-16" : "pr-0"}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {courses.map((course) => (
@@ -948,8 +942,11 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             </div>
           </div>
         </div>
+      <div className="mt-4">
+        <Newsletter />
       </div>
-      <FooterNew />
+      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

@@ -21,7 +21,7 @@ const BackButton: React.FC<GoBackProps> = ({ Heading }) => {
       >
         <FiArrowLeft className="w-5 h-5" />
       </button>
-      <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+      <h1 className="text-xl md:text-2xl font-medium text-[#FF3366]">
         {Heading}
       </h1>
     </div>

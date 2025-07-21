@@ -7,6 +7,8 @@ import {
     ProfileFormSection, 
     NewsletterSection 
 } from './components'; 
+import StudentNavbarNew from '@/components/student-navbar-new';
+import Footer from '@/components/layout/Footer';
 
 export default function EditStudentProfilePage() {
   const [formData, setFormData] = useState({
@@ -54,8 +56,8 @@ export default function EditStudentProfilePage() {
 
 
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col">
-      <Header user={headerUser} />
+    <div className="bg-[#e3e3e3] min-h-screen flex flex-col">
+      <StudentNavbarNew />
 
       <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
 
@@ -72,6 +74,7 @@ export default function EditStudentProfilePage() {
           onNewsletterSubmit={handleNewsletterSubmit}
         />
       </main>
+      <Footer />
     </div>
   );
 }

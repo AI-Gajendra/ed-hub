@@ -45,7 +45,7 @@ const TestHeader = () => (
 					<Image src="/images/person.jpg" alt="Shlok Agheda" width={32} height={32} className="rounded-full" />
 					<div>
 						<p className="text-sm font-medium">Shlok Agheda</p>
-						<p className="text-xs opacity-80">Student</p>
+						<p className="text-xs text-[#FFCC00] opacity-80">Student</p>
 					</div>
 				</div>
 			</div>
@@ -77,12 +77,12 @@ const QuestionPanel = ({
 	}
 
 	return (
-		<div className="w-full lg:w-3/5 bg-white rounded-xl p-6 md:p-8 flex flex-col h-full overflow-y-auto custom-scrollbar">
+		<div className="w-full lg:w-[70%] bg-white rounded-xl p-6 md:p-8 flex flex-col h-full overflow-y-auto custom-scrollbar">
 			<h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
 				DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
 			</h1>
-			<div className="mb-8 overflow-x-auto pb-2">
-				<div className="flex justify-between space-x-1 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
+			<div className="mb-8  pb-2">
+				<div className="flex overflow-x-auto custom-scrollbar justify-between space-x-1 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 					{tabCategories.map(category => (
 						<button key={category} onClick={() => setActiveCategory(category)} className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}>
 							{category}
@@ -90,26 +90,30 @@ const QuestionPanel = ({
 					))}
 				</div>
 			</div>
-			<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-				<div className="text-left">
+			<div className="flex flex-row justify-between items-center mb-8 gap-4">
+				<div className="sm:text-left">
 					<p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
 					<p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
 					<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
 						{currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
 					</div>
 				</div>
-				<div className="text-right">
-					<div className="flex justify-end items-center gap-1.5 text-[#FF3366]">
+				<div className="sm:text-right">
+					<div className="flex sm:justify-end items-center gap-1.5 text-[#FF3366]">
 						<FiClock className="w-5 h-5" />
 						<span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
 					</div>
 					<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
-					<p className="text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
+					<p className="sm:block hidden text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
 						<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
 						<span>Draw the lines to match the following</span>
 					</p>
 				</div>
 			</div>
+				<p className="sm:hidden block text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
+						<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
+						<span>Draw the lines to match the following</span>
+					</p>
 			{currentQuestion && (
 				<div className="bg-gray-50 p-6 rounded-2xl">
 					<p className="text-sm mb-2 text-gray-500">Question {currentQuestionIndex + 1}</p>

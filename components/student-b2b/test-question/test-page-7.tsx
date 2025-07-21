@@ -31,7 +31,7 @@ const TestHeader = () => (
 					/>
 					<div>
 						<p className="text-sm font-medium">Shlok Agheda</p>
-						<p className="text-xs opacity-80">Student</p>
+						<p className="text-xs text-[#FFCC00] opacity-80">Student</p>
 					</div>
 				</div>
 			</div>
@@ -127,7 +127,7 @@ export default function DmittTest_7_Page() {
 					</div>
 
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
-					<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+					<div className="flex flex-row justify-between items-center mb-8 gap-4">
 						<div className="text-left">
 							<p className="text-md font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS_IN_SET}</p>
 							<p className="text-xs text-gray-500">Time Limit: {TIME_LIMIT_MINUTES_DMIT} Minutes</p>

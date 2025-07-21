@@ -5,6 +5,8 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronRightIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { FaAngleDown } from 'react-icons/fa'
+import { FaChevronDown } from 'react-icons/fa6'
 
 function Accordion({ ...props }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
 	return <AccordionPrimitive.Root data-slot="accordion" {...props} />
@@ -27,7 +29,7 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
 				)}
 				{...props}>
 				{children}
-				<ChevronRightIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
+				<FaChevronDown className="text-black pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
 			</AccordionPrimitive.Trigger>
 		</AccordionPrimitive.Header>
 	)
