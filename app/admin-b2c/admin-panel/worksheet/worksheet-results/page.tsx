@@ -4,12 +4,8 @@ import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
 import BackButton from "@/components/common-components/BackButton";
 import { useState, type FC } from "react";
 import {
-  FiSearch,
   FiPercent,
-  FiAward,
-  FiBarChart2,
   FiChevronDown,
-  FiZap,
   FiArrowLeftCircle,
   FiArrowRightCircle,
   FiChevronUp,
@@ -19,6 +15,9 @@ import { MdOutlineSuperscript, MdOutlineFunctions } from "react-icons/md";
 import { TbMathFunction } from "react-icons/tb"; // Add icons as needed
 import { RiPsychotherapyLine } from "react-icons/ri";
 import { MdOutlineTheaterComedy } from "react-icons/md";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Star } from "lucide-react";
 
 export default function page() {
   return (
@@ -27,6 +26,7 @@ export default function page() {
       <MaxWidthWrapper>
         <main className="flex-grow w-full max-w-[90rem] mx-auto p-4 ">
           <div className="space-y-4 ">
+            <ResultsSection />
             <ChartsReport />
           </div>
         </main>
@@ -34,6 +34,198 @@ export default function page() {
     </div>
   );
 }
+
+const ResultsSection = () => {
+  const overallScore = 40;
+  const individualScores = [
+    { name: "Academic Skills", percentage: 40, color: "#3B82F6" },
+    { name: "Brain Development", percentage: 60, color: "#F59E0B" },
+    { name: "Personality Development", percentage: 50, color: "#EC4899" },
+    { name: "Emotional Intelligence", percentage: 20, color: "#10B981" },
+    { name: "Pedagogy learning", percentage: 40, color: "#F97316" },
+  ];
+
+  const stats = [
+    { label: "Total Marks", value: "50", color: "#6B7280" },
+    { label: "Total Questions", value: "50", color: "#6B7280" },
+    { label: "Attempted", value: "40", color: "#6B7280" },
+    { label: "Correct", value: "30", color: "#3B82F6" },
+    { label: "Incorrect", value: "10", color: "#EF4444" },
+  ];
+
+  const aiSuggestions = [
+    {
+      heading: "Heading of AI Suggestion",
+      points: [
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+      ],
+    },
+    {
+      heading: "Heading of AI Suggestion",
+      points: [
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+      ],
+    },
+    {
+      heading: "Heading of AI Suggestion",
+      points: [
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+        "Pointers suggested by AI after analyzing test results",
+      ],
+    },
+  ];
+
+  // Circular progress component
+  const CircularProgress = ({ percentage }: { percentage: number }) => {
+    const radius = 60;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (percentage / 100) * circumference;
+
+    return (
+      <div className="relative w-32 h-32 mx-auto mb-4">
+        <svg
+          className="w-full h-full transform -rotate-90"
+          viewBox="0 0 144 144"
+        >
+          <circle
+            cx="72"
+            cy="72"
+            r={radius}
+            fill="none"
+            stroke="#E5E7EB"
+            strokeWidth="8"
+          />
+          <circle
+            cx="72"
+            cy="72"
+            r={radius}
+            fill="none"
+            stroke="#3B82F6"
+            strokeWidth="8"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+          />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-2xl">😔</span>
+          <span className="text-2xl font-bold text-green-500 mt-1">
+            {percentage}%
+          </span>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="rounded-2xl p-4 pb-0">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.5fr] gap-5">
+        {/* Left Section */}
+        <div className="bg-white p-4 rounded-3xl">
+          {/* Results Header */}
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-2xl">⭐</span>
+            <h2 className="text-2xl font-bold text-gray-800">Results</h2>
+          </div>
+
+          {/* Circular Progress */}
+          <div className="mb-6">
+            <CircularProgress percentage={overallScore} />
+            <p className="text-center text-gray-600 font-medium max-w-xs mx-auto">
+              Great effort! A little more focus will take you to the top
+            </p>
+          </div>
+
+          {/* Individual Scores */}
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              Individual Scores
+            </h3>
+            <div className="space-y-4">
+              {individualScores.map((score, index) => (
+                <div key={index} className="flex items-center justify-between">
+                  <span className="text-gray-700 font-medium min-w-0 flex-1 mr-4">
+                    {score.name}
+                  </span>
+                  <div className="flex items-center gap-3 flex-1 max-w-xs">
+                    <div className="flex-1 bg-gray-200 rounded-full h-2">
+                      <div
+                        className="h-2 rounded-full transition-all duration-300"
+                        style={{
+                          width: `${score.percentage}%`,
+                          backgroundColor: score.color,
+                        }}
+                      />
+                    </div>
+                    <span className="text-gray-500 text-sm font-medium min-w-[3rem] text-right">
+                      {score.percentage}%
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Statistics */}
+          <div className="grid grid-cols-5 gap-4 mb-6">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <p className="text-sm text-gray-500 mb-1">{stat.label}</p>
+                <p className="text-xl font-bold" style={{ color: stat.color }}>
+                  {stat.value}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <div className="flex justify-center">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-3 rounded-full transition-colors">
+              Next
+            </button>
+          </div>
+        </div>
+
+        {/* Right Section - AI Suggestions */}
+        <div className="bg-white p-4 rounded-3xl">
+          <div className="flex items-center gap-2 mb-6">
+            <h2 className="text-xl font-semibold text-[#FF3366]">
+              AI Suggestions
+            </h2>
+          </div>
+
+          <div className="space-y-6 max-h-[600px] overflow-y-auto pr-2">
+            {aiSuggestions.map((suggestion, index) => (
+              <div key={index}>
+                <h3 className="text-lg font-bold text-[#2E2E2E] mb-3">
+                  {suggestion.heading}
+                </h3>
+                <ul className="space-y-2 pl-2">
+                  {suggestion.points.map((point, pointIndex) => (
+                    <li key={pointIndex} className="flex items-start gap-2">
+                      <span className="text-gray-400">•</span>
+                      <span className="text-[#2E2E2ECC] text-sm leading-relaxed">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
