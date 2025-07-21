@@ -1,5 +1,6 @@
-import Activity from "@/components/b2c-admin/activity";
-import GoBack from "@/components/principal/goback";
+import Activity from "./activity";
+import BackButton from '@/components/common-components/BackButton';
+
 
 export default function CourseDetail() {
     const headerUser = {
@@ -10,7 +11,7 @@ export default function CourseDetail() {
     }
     return <div>
        
-        <GoBack GoBackHeading="Student Login Activity" />
+        <BackButton Heading="Student Login Activity" />
         <Activity isStudent/>
         
 

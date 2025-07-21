@@ -30,7 +30,7 @@ export default function MyCoursePage() {
 
         <div className="bg-[#eeeeee] min-h-screen flex flex-col p-3 sm:p-4 md:p-6 lg:p-8">
 
-            <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 bg-white rounded-2xl sm:rounded-2xl my-0 sm:my-6"> {/* Adjusted margin/rounding for mobile */}
+            <main className="flex-grow mx-auto p-3 sm:p-4 md:p-6 lg:p-8 bg-white rounded-2xl sm:rounded-2xl my-0 sm:my-6"> {/* Adjusted margin/rounding for mobile */}
                 <CourseSection title="Ongoing" courses={ongoingCoursesData} />
                 <CourseSection title="Upcoming" courses={upcomingCoursesData} />
                 <CourseSection title="Completed" courses={completedCoursesData} titleColor="text-[#00B060]" />

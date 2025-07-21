@@ -1,5 +1,5 @@
 import React from 'react'
-import TeacherDroppingForm from '@/components/b2c-admin/assign-batches'
+import TeacherDroppingForm from './assign-batches'
 export default function page() {
 	return (
 		<div>

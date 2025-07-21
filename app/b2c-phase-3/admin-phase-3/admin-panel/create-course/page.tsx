@@ -16,7 +16,7 @@ import {
 } from './components';
 import Preview from './preview';
 import { ActionButton } from './ui-components';
-import GoBack from '@/components/principal/goback';
+import BackButton from '@/components/common-components/BackButton';
 
 const creationSteps = ["Add Details", "Add Videos", "Know More Section", "Preview"];
 
@@ -125,7 +125,9 @@ export default function CourseCreationFlowPage() {
 
     return (
         <div className="bg-gray-100 min-h-screen w-full flex flex-col">
-            <GoBack GoBackHeading="Add Course" toLink='/admin-b2c/admin-panel/course-management'/>
+            {/* <GoBack GoBackHeading="Add Course" toLink='/admin-b2c/admin-panel/course-management'/>
+             */}
+             <BackButton Heading="Add Course" />
             <div className="px-4 sm:px-6 lg:px-8">
                 <main className="bg-white rounded-2xl w-full max-w-screen-xl mx-auto my-6 p-3 sm:p-4 md:p-6">
                     <CourseCreationStepper

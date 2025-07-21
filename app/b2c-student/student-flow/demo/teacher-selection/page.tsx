@@ -16,6 +16,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/layout/Footer";
+import BackButton from "@/components/common-components/BackButton";
 
 interface Teacher {
   id: string;
@@ -195,19 +197,9 @@ export default function TeacherSelection() {
   return (
     <StudentWrapper>
       {/* headers */}
-      <div className="bg-white border-b">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center py-4">
-            <ArrowLeft
-              className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
-              onClick={() => router.push("/student/demo/booking-form")}
-            />
-            <h1 className="text-2xl font-medium text-[#FF3366]">Course Name</h1>
-          </div>
-        </div>
-      </div>
-      <div className="w-full bg-[#EEEEEE] py-10">
-        <div className="max-w-7xl mx-auto p-10 space-y-6 bg-white rounded-3xl">
+      <BackButton Heading="Course Name" />
+      <div className="w-full bg-[#EEEEEE] px-2 py-10">
+        <div className="max-w-7xl mx-auto p-4  space-y-6 bg-white rounded-3xl">
           <h1 className="text-2xl font-semibold text-[#FF3366] mb-6">
             Teacher Selection
           </h1>
@@ -261,14 +253,13 @@ export default function TeacherSelection() {
                 {filteredTeachers.map((teacher) => (
                   <Card
                     key={teacher.id}
-                    className={`cursor-pointer transition-all duration-200 rounded-3xl ${
-                      selectedTeacher === teacher.id
-                        ? "bg-blue-500 text-white shadow-lg"
-                        : "bg-white hover:shadow-md"
-                    }`}
+                    className={`cursor-pointer transition-all duration-200 rounded-3xl ${selectedTeacher === teacher.id
+                        ? "bg-blue-500 text-white "
+                        : "bg-white "
+                      }`}
                     onClick={() => setSelectedTeacher(teacher.id)}
                   >
-                    <CardContent className="p-2">
+                    <CardContent className="px-2 py-1">
                       <div className="flex items-center gap-3">
                         <Avatar className="w-18 h-20 rounded-2xl">
                           <AvatarImage
@@ -287,30 +278,27 @@ export default function TeacherSelection() {
                             {teacher.name}
                           </h3>
                           <p
-                            className={`text-sm truncate ${
-                              selectedTeacher === teacher.id
+                            className={`text-sm truncate ${selectedTeacher === teacher.id
                                 ? "text-blue-100"
                                 : "text-gray-600"
-                            }`}
+                              }`}
                           >
                             {teacher.detail1}
                           </p>
                           <p
-                            className={`text-sm truncate ${
-                              selectedTeacher === teacher.id
+                            className={`text-sm truncate ${selectedTeacher === teacher.id
                                 ? "text-blue-100"
                                 : "text-gray-500"
-                            }`}
+                              }`}
                           >
                             {teacher.detail2}
                           </p>
                         </div>
                         <div
-                          className={`flex flex-col items-center justify-center self-start p-2 rounded-full gap-1 hover:bg-[${
-                            selectedTeacher === teacher.id
+                          className={`flex flex-col items-center justify-center self-start p-2 rounded-full gap-1 hover:bg-[${selectedTeacher === teacher.id
                               ? "#E5E7EB1A"
                               : "#6B72801A"
-                          }]`}
+                            }]`}
                         >
                           <Info className="h-5 w-5" />
                         </div>
@@ -344,9 +332,8 @@ export default function TeacherSelection() {
                   {times.map((time, index) => (
                     <div
                       key={time}
-                      className={`grid grid-cols-6 gap-2 border border-x-0 ${
-                        index === 0 ? "border-t-[#B0B0B0]" : "border-t-0"
-                      } border-b-[#B0B0B0] py-1`}
+                      className={`grid grid-cols-6 gap-2 border border-x-0 ${index === 0 ? "border-t-[#B0B0B0]" : "border-t-0"
+                        } border-b-[#B0B0B0] py-1`}
                     >
                       <div className="flex items-center justify-center text-sm font-medium text-[#6B7280]">
                         {time}
@@ -360,13 +347,12 @@ export default function TeacherSelection() {
                             disabled={status === "unavailable"}
                             className={`
                           h-10 rounded-xl text-sm font-medium transition-all duration-200
-                          ${
-                            status === "available"
-                              ? "bg-[#B0B0B01A] hover:bg-gray-200 text-gray-700 border border-[#6B7280]"
-                              : status === "selected"
-                              ? "bg-blue-500 text-white shadow-md"
-                              : "bg-[#FF33661A] text-red-400 cursor-not-allowed border border-[#FF3366]"
-                          }
+                          ${status === "available"
+                                ? "bg-[#B0B0B01A] hover:bg-gray-200 text-gray-700 border border-[#6B7280]"
+                                : status === "selected"
+                                  ? "bg-blue-500 text-white "
+                                  : "bg-[#FF33661A] text-red-400 cursor-not-allowed border border-[#FF3366]"
+                              }
                         `}
                           >
                             {status === "selected" && (
@@ -411,7 +397,7 @@ export default function TeacherSelection() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

@@ -1,4 +1,4 @@
-import GoBack from '@/components/principal/goback';
+import BackButton from '@/components/common-components/BackButton';
 import React from 'react'
 import Image from "next/image";
 import AdminB2CWrapper from '@/components/b2c-admin/common-component/AdminB2CPageWrapper';
@@ -16,7 +16,7 @@ const items = [
 const knowMore = () => {
    return (
       <>
-         <GoBack GoBackHeading="Course Name" />
+               <BackButton Heading="Course Name" />
          <AdminB2CWrapper>
             <div className="bg-white rounded-2xl p-4">
                <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">

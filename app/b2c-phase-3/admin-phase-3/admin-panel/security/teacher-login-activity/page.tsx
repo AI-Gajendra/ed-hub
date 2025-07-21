@@ -1,5 +1,5 @@
-import Activity from "@/components/b2c-admin/activity";
-import GoBack from "@/components/principal/goback";
+import Activity from "./activity";
+import BackButton from '@/components/common-components/BackButton';
 
 
 export default function CourseDetail() {
@@ -10,8 +10,7 @@ export default function CourseDetail() {
 
     }
     return <div>
-      
-        <GoBack GoBackHeading="Teacher Login Activity" />
+        <BackButton Heading="Teacher Login Activity" />
         <Activity />
         
 

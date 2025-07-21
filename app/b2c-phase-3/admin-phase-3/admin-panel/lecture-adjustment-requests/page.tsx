@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FiSearch, FiChevronDown } from 'react-icons/fi';
-import GoBack from "@/components/principal/goback"; // Assuming this component exists as per your template
+import BackButton from '@/components/common-components/BackButton'; // Assuming this component exists as per your template
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Data Interfaces ---
@@ -189,7 +189,9 @@ export default function RequestManagementPage() {
     return (
         // Using your provided page template structure
         <div className={`bg-[#eeeeee] min-h-screen flex flex-col relative`}>
-            <GoBack GoBackHeading="Lecture Adjustment Requests" toLink='/admin-b2c/admin-panel/dashboard' /> {/* This is your template component */}
+            {/* <GoBack GoBackHeading="Lecture Adjustment Requests" toLink='/admin-b2c/admin-panel/dashboard' />/ This is your template component */}
+                  <BackButton Heading="Lecture Adjustment Requests" />
+
             <div className='p-4 sm:p-6 lg:p-8'>
                 <main className="bg-white rounded-2xl flex-grow w-full max-w-screen-xl mx-auto p-4">
 

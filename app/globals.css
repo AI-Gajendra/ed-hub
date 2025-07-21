@@ -249,3 +249,19 @@ h3 {
 .card-bg-color{
   background-color: #f9fafb; 
 }
+
+
+/* Blue scrollbar  */
+.blue-scrollbar::-webkit-scrollbar {
+                    width: 8px;
+                  }
+                  .blue-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                  }
+                  .blue-scrollbar::-webkit-scrollbar-thumb {
+                    background: #3366ff;
+                    border-radius: 4px;
+                  }
+                  .blue-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #3366ff;
+                  }

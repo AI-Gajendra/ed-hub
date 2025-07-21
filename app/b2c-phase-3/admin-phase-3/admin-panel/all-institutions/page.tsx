@@ -1,5 +1,5 @@
 "use client"
-import InstitueCard from "@/components/b2c-admin/AllInstitueCard";
+import InstitueCard from "./AllInstitueCard";
 import AdminB2CWrapper from "@/components/b2c-admin/common-component/AdminB2CPageWrapper";
 import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
 import BackButton from "@/components/common-components/BackButton";
