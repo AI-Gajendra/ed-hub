@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
+import StudentNavbarNew from '@/components/student-navbar-new'
 
 // --- Recording Card Component ---
 interface Recording {
@@ -24,7 +25,7 @@ const RecordingCard = ({ recording }: { recording: Recording; onDelete: (id: str
 				alt={recording.topicName}
 				width={256}
 				height={256} // Adjust aspect ratio as needed
-				className="w-full h-44 object-fill group-hover:scale-105 transition-transform duration-300"
+				className="w-full h-44 object-fill "
 			/>
 		</div>
 		<div className="flex gap-4 items-center justify-between">
@@ -122,10 +123,10 @@ export default function RecordingsPage() {
 
 	return (
 		<>
-			<Header user={headerUser} />
-		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
+			<StudentNavbarNew activeState='Recordings' />
+		<div className="bg-[#eeeeee] px-2 min-h-screen flex flex-col">
 
-			<main className="container p-4 max-w-[90vw] sm:p-6 lg:p-8 bg-white m-6 mx-auto rounded-2xl">
+			<main className="container p-4 max-w-7xl sm:p-6 lg:p-8 bg-white m-6 mx-auto rounded-2xl">
 				{' '}
 				{/* Increased padding */}
 				{recordingsByDate.length === 0 ? (
@@ -146,8 +147,8 @@ export default function RecordingsPage() {
 				)}
 			</main>
 
-			<Footer />
 		</div>
+			<Footer />
 		</>
 	)
 }

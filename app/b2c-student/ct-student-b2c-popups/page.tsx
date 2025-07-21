@@ -6,6 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import CancelLectureModal from "./components-popups/CancelLecture";
 import RescheduleRequestModal from "./components-popups/WarningPopup";
 import CourseRenewedModal from "./components-popups/ConfirmationPopup";
+import Timetable from "./Reschedule/RescheduleClass";
+import RescheduleClass from "./Reschedule/RescheduleClass";
+import SelectLectureToReschedule from "./Reschedule/SelectLectureToReschedule";
+import SelectLectureToCancel from "./Reschedule/SelectLectureToCancel";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -77,7 +81,10 @@ export default function AllTeacherB2CPopups() {
         { id: "cancelLecture", label: "Cancel Warning Popup" },
         { id: "warningPopup", label: "Warning Popup" },
         { id: "confirmationPopup", label: "Confirmation Popup" },
-        { id: "assessmentResult", label: "Assessment Result" },
+        { id: "rescheduleClass", label: "Reschedule Class" },
+        { id: "selectLecture", label: "Select Lecture to Reschedule" },
+        { id: "selectLectureToCancel", label: "Select Lecture to Cancel" },
+        
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -109,6 +116,18 @@ export default function AllTeacherB2CPopups() {
             />
             <CourseRenewedModal
                 isOpen={openModal === "confirmationPopup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RescheduleClass
+                isOpen={openModal === "rescheduleClass"}
+                onClose={() => setOpenModal(null)}
+            />
+            <SelectLectureToReschedule
+                isOpen={openModal === "selectLecture"}
+                onClose={() => setOpenModal(null)}
+            />
+            <SelectLectureToCancel
+                isOpen={openModal === "selectLectureToCancel"}
                 onClose={() => setOpenModal(null)}
             />
             
