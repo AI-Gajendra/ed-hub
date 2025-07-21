@@ -24,6 +24,7 @@ import { ReviewCard, reviews } from "../../demo/course-details/page";
 import { FaCircleCheck } from "react-icons/fa6";
 import { useSearchParams } from "next/navigation";
 import { courses } from "../../courses/detail/page";
+import { useRouter } from "next/navigation";
 
 interface Qualification {
   id: string;
@@ -64,6 +65,8 @@ function TeacherProfileContent() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration] = useState(300); // 5 minutes
+
+  const router = useRouter()
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
@@ -474,7 +477,7 @@ function TeacherProfileContent() {
                     ))}
                 </div>
                 <div className="flex justify-center items-center pt-4">
-                  <button className="w-fit bg-[#FF3366] hover:bg-[#ff1a53] text-white rounded-full py-3 px-8 h-fit gap-2 cursor-pointer font">
+                  <button onClick={() => router.push("/b2c-student/student-flow/time-table")} className="w-fit bg-[#FF3366] hover:bg-[#ff1a53] text-white rounded-full py-3 px-8 h-fit gap-2 cursor-pointer font">
                     <span>Continue</span>
                   </button>
                 </div>

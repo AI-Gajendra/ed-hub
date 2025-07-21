@@ -4,6 +4,7 @@ import FooterNew from "@/components/footer3";
 import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 
 interface ScheduleSlot {
   time: string;
@@ -81,9 +82,10 @@ const courses: Course[] = [
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 export default function LearningSchedule() {
+  const router = useRouter()
+
   const handleContinue = () => {
-    console.log("Continue clicked");
-    // Handle continue action
+    router.push("/b2c-student/student-flow/course-policy")
   };
 
   return (
