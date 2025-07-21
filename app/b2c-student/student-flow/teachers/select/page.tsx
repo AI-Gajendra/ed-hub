@@ -2,9 +2,9 @@
 
 import StudentWrapper from "@/components/student-wrapper";
 import { Star } from "lucide-react";
-import FooterNew from "@/components/footer3";
 import { educatorsData } from "../../educator/page";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/layout/Footer";
 
 export default function SelectTeacher() {
   const router = useRouter();
@@ -22,8 +22,8 @@ export default function SelectTeacher() {
       ></div>
       <div className="bg-black fixed inset-0 bg-center bg-repeat z-1 opacity-40" />
 
-      <div className="relative z-10 p-10">
-        <div className="container mx-auto rounded-3xl bg-white p-10 space-y-7">
+      <div className="relative z-10 px-2 py-4 md:p-6 lg:p-10">
+        <div className="container mx-auto rounded-3xl bg-white p-4 md:p-6 lg:p-10 space-y-7">
           <h1 className="text-center text-5xl font-bold text-[#FFCC00]">
             Pick Your Preferred Teacher
           </h1>
@@ -35,12 +35,12 @@ export default function SelectTeacher() {
             {[...educatorsData, ...educatorsData].map((educator, index) => (
               <div
                 key={index}
-                className="rounded-3xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 space-y-2 cursor-pointer hover:shadow-md"
+                className="rounded-3xl border border-[#E5E7EB] bg-[#F9FAFB] p-4 space-y-2 cursor-pointer"
                 onClick={() => router.push("/student/teachers/profile")}
               >
                 <div className="w-full flex justify-center items-center">
                   <div className="rounded-full w-32 h-32 overflow-hidden flex justify-center items-center">
-                    <img src={educator.imageUrl} alt="teacher profile" />
+                    <img src={educator.imageUrl} alt="teacher profile" className="object-cover w-full h-full"/>
                   </div>
                 </div>
                 <h4 className="text-2xl font-medium overflow-hidden whitespace-nowrap text-ellipsis">
@@ -76,7 +76,7 @@ export default function SelectTeacher() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

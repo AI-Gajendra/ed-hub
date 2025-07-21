@@ -24,6 +24,7 @@ import { ReviewCard, reviews } from "../../demo/course-details/page";
 import { FaCircleCheck } from "react-icons/fa6";
 import { useSearchParams } from "next/navigation";
 import { courses } from "../../courses/detail/page";
+import Footer from "@/components/layout/Footer";
 
 interface Qualification {
   id: string;
@@ -117,12 +118,12 @@ function TeacherProfileContent() {
 
   return (
     <StudentWrapper>
-      <div className="p-10 bg-[#EEEEEE]">
+      <div className="p-4 md:p-6 lg:p-10 bg-[#EEEEEE]">
         <div className="max-w-7xl mx-auto space-y-8">
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Left Column - Teacher Profile */}
-            <div className="lg:col-span-5 space-y-6 bg-white rounded-3xl p-4">
+            <div className="lg:col-span-5 space-y-6 bg-white rounded-3xl py-4 sm:p-4">
               {/* Profile Header */}
               <Card className="w-full border-0">
                 <CardContent className="space-y-6">
@@ -163,8 +164,8 @@ function TeacherProfileContent() {
                   </div>
 
                   {/* Info Pills */}
-                  <div className="flex gap-3 justify-center items-center">
-                    <div className="flex items-center gap-2 bg-[#99DEFF66] text-[#3366FF] px-4 py-2 rounded-full">
+                  <div className="flex flex-col md:flex-row whitespace-nowrap gap-3 justify-start md:justify-center md:items-center items-start">
+                    <div className="flex  items-center gap-2 bg-[#99DEFF66] text-[#3366FF] px-4 py-2 rounded-full">
                       <ChartNoAxesColumn className="w-5 h-5" />
                       <span>6 years</span>
                     </div>
@@ -618,9 +619,8 @@ function TeacherProfileContent() {
                   )}
                   <div
                     ref={scrollContainerRef}
-                    className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                      showLeftArrow ? "pl-16" : "pl-0"
-                    } ${showRightArrow ? "pr-16" : "pr-0"}`}
+                    className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                      } ${showRightArrow ? "pr-16" : "pr-0"}`}
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                   >
                     {courses.map((course) => (
@@ -715,7 +715,7 @@ function TeacherProfileContent() {
           )}
         </div>
       </div>
-      <FooterNew showSuscriptionBlock={false} />
+      <Footer />
     </StudentWrapper>
   );
 }
