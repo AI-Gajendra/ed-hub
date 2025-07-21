@@ -1,4 +1,4 @@
-import RecordingsPage from "@/components/student-b2b/student-dashboard/recording";
+import RecordingsPage from "@/components/b2c-student/recording";
 
 export default function Recordings(){
     return <div><RecordingsPage /></div>

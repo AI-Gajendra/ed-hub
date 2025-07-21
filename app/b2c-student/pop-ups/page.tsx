@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AskMeAnything from "./popupComponent/AskMeAnything";
 import ReportButtonsPopup from "./popupComponent/ReportButtons";
+import VideoPlayerPopup from "./popupComponent/VideoPlayerPopup";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -74,6 +75,7 @@ export default function AllTeacherB2CPopups() {
     const modalButtons = [
         { id: "AskMeAnything", label: "Ask Me Anything", action: () => setOpenModal("AskMeAnything") },
         { id: "reportButtons", label: "Buttons", action: () => setOpenModal("reportButtons") },
+        { id: "videoPlayer", label: "Video Player Popup", action: () => setOpenModal("videoPlayer") },
     ];
 
     return (
@@ -98,6 +100,10 @@ export default function AllTeacherB2CPopups() {
                 onClose={() => setOpenModal(null)}
             />
             <ReportButtonsPopup isOpen={openModal === "reportButtons"} onClose={() => setOpenModal(null)} />
+            <VideoPlayerPopup
+                isOpen={openModal === "videoPlayer"}
+                onClose={() => setOpenModal(null)}
+            />
 
         </div>
     );

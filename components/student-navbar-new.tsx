@@ -129,7 +129,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
               {/* Profile Picture */}
               <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white/20">
                 <Image
-                  src="/student/home/student-profile.jpg"
+                  src="/images/person.jpg"
                   alt="User profile"
                   fill
                   className="object-cover"

@@ -80,7 +80,7 @@ export default function LandingNavbar() {
 						</Link>
 					))}
 					{/* <button className="px-6 py-2 text-xs text-white rounded-sm bg-[#3366ff] hover:bg-blue-700 cursor-pointer">Login</button> */}
-					<Link href={'/student/auth/login'} className={cn(buttonVariants({ variant: 'default' }), 'px-6 text-xs')}>
+					<Link href={'/student/auth/login'} className={cn(buttonVariants({ variant: 'default' }), 'px-6 text-xs bg-[#f9326f] rounded-full')}>
 						Login
 					</Link>
 				</div>

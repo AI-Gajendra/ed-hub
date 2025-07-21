@@ -405,6 +405,8 @@ const CourseSlider = () => {
     }
   };
 
+  const Router = useRouter();
+
   return (
     <div className="max-w-7xl mx-auto">
       {/* Category Tabs */}
@@ -447,39 +449,39 @@ const CourseSlider = () => {
       <div className="relative">
         {/* Left Navigation Button */}
 
-        {showLeftArrow && (
+        {/* {showLeftArrow && (
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-2xl rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
           >
             <ChevronLeft className="w-5 h-5 text-gray-700" />
           </button>
-        )}
+        )} */}
 
         {/* Right Navigation Button */}
 
-        {showRightArrow && (
+        {/* {showRightArrow && (
           <button
             onClick={() => scroll("right")}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-2xl rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
           >
             <ChevronRight className="w-5 h-5 text-gray-700" />
           </button>
-        )}
+        )} */}
 
         {/* Scrollable Container */}
 
         <div
           ref={scrollContainerRef}
-          className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-            showLeftArrow ? "pl-16" : "pl-0"
-          } ${showRightArrow ? "pr-16" : "pr-0"}`}
+          className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+            } ${showRightArrow ? "pr-16" : "pr-0"}`}
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              onClick={() => Router.push("/b2c-student/student-flow/course-details")}
+              className="flex-none w-80 bg-white rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative p-4">
                 <Image
@@ -560,20 +562,6 @@ const CourseSlider = () => {
         </div>
       </div>
 
-      {/* Scroll Progress Indicator */}
-
-      {filteredCourses.length > 3 && (
-        <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: Math.ceil(filteredCourses.length / 3) }).map(
-            (_, index) => (
-              <div
-                key={index}
-                className="w-2 h-2 rounded-full bg-gray-400 transition-colors duration-300"
-              ></div>
-            )
-          )}
-        </div>
-      )}
     </div>
   );
 };

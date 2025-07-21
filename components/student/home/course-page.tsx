@@ -234,18 +234,18 @@ export default function CoursesComponent({
         )}
       >
         {/* Search Bar */}
-        <div className="w-full bg-[#FFCC00] rounded-2xl p-4 flex items-center gap-4">
+        <div className="w-full  bg-[#FFCC00] rounded-2xl p-4 flex items-center gap-4">
           <div className="flex-1 relative">
-            <Search className="absolute z-10 left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
+            <Search className="absolute z-10 left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5 stroke-[#6B7280]" />
             <Input
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 border-0 bg-white rounded-full h-10 text-lg"
+              className="pl-10 border-0 bg-white rounded-full h-12 text-lg"
             />
           </div>
           <Select defaultValue="popular">
-            <SelectTrigger className="w-32 bg-[#FFD119] border-0 rounded-full h-10 text-white font-medium">
+            <SelectTrigger className="w-fit bg-[#FFDB4C] border-0 rounded-full h-12 text-white font-medium" downArrowColor="white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -255,6 +255,7 @@ export default function CoursesComponent({
             </SelectContent>
           </Select>
         </div>
+
         <CourseSlider />
 
         <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
@@ -285,9 +286,8 @@ export default function CoursesComponent({
           {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-              showLeftArrow ? "pl-16" : "pl-0"
-            } ${showRightArrow ? "pr-16" : "pr-0"}`}
+            className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+              } ${showRightArrow ? "pr-16" : "pr-0"}`}
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {courses.map((course) => (
