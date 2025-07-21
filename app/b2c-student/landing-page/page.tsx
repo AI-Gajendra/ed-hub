@@ -223,7 +223,7 @@ export default function Landing() {
     ...props
   }: ActionButtonProps) => (
     <motion.button
-      className={`bg-[#f9326f] text-white font-medium px-6 py-2 rounded-sm hover:bg-[#c20840] transition-colors duration-300 cursor-pointer ${className}`}
+      className={`bg-[#f9326f] text-white font-medium px-6 py-2 rounded-full hover:bg-[#c20840] transition-colors duration-300 cursor-pointer ${className}`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       {...props}
@@ -233,7 +233,7 @@ export default function Landing() {
   );
   const ViewMoreButton = ({ className = "" }) => (
     <motion.button
-      className={`bg-[#f9326f] text-white px-4 py-2 text-sm rounded-lg hover:bg-[#ff1a5f] cursor-pointer flex items-center ${className}`}
+      className={`bg-[#f9326f] text-white px-4 py-2 text-sm rounded-full hover:bg-[#ff1a5f] cursor-pointer flex items-center ${className}`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -651,9 +651,8 @@ export default function Landing() {
 
       {/* Page 5 - Features */}
       <div
-        className="relative min-h-[calc(100vh-7.5rem)] w-full flex flex-col px-4 md:px-[7%] pt-8 pb-8 justify-start bg-cover bg-center bg-no-repeat"
+        className="relative min-h-[calc(100vh-7.5rem)] w-full flex flex-col px-4 md:px-[7%] pt-8 pb-8 justify-start bg-[#6633ff]"
         style={{
-          backgroundImage: "url('/Background3.png')",
           backgroundBlendMode: "difference",
           backgroundSize: "calc",
         }}
@@ -679,7 +678,7 @@ export default function Landing() {
         {/* Header section */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6 z-20">
           <motion.h1
-            className="text-4xl md:text-5xl font-bold text-black mb-3 md:mb-0"
+            className="text-4xl md:text-5xl font-bold text-white mb-3 md:mb-0"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -745,7 +744,7 @@ export default function Landing() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-2xl md:text-4xl text-center font-semibold text-black"
           >
-            How We Ensure Quality & Guarantee Results!
+            Benefits of Online Education
           </motion.h1>
 
           {/* Image takes remaining space */}
@@ -880,9 +879,9 @@ export default function Landing() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#f9326f] text-white px-4 py-2 text-sm rounded-lg hover:bg-[#ff1a5f] cursor-pointer flex items-center transition-all duration-300"
+                className="bg-[#f9326f] text-white px-4 py-2 text-sm rounded-full hover:bg-[#ff1a5f] cursor-pointer flex items-center transition-all duration-300"
               >
-                View More <span className="ml-1">›</span>
+                Contact Now <span className="ml-1">›</span>
               </motion.button>
             </div>
           </div>
