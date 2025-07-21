@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Tilt from 'react-parallax-tilt';
 
 const testimonials = [
   {
@@ -87,21 +88,6 @@ export default function Testimonials() {
     setCurrentIndex((prev) => prev - 1)
   }
 
-  const renderStars = (rating: number) => {
-    return Array(5)
-      .fill(0)
-      .map((_, i) => (
-        <svg
-          key={i}
-          className={`w-5 h-5 ${i < rating ? "text-[#ff9900]" : "text-gray-300"}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))
-  }
-
   const handleTransitionEnd = () => {
     setIsAnimating(false)
     if (currentIndex >= totalCards + cardsToShow) {
@@ -143,7 +129,7 @@ export default function Testimonials() {
           {/* Rating Section */}
           <div className="md:w-1/4 mb-8 md:mb-0 flex flex-col items-center md:items-start">
             <div className="text-xl font-bold text-gray-900 mb-2">EXCELLENT</div>
-            <div className="flex mb-1">{renderStars(5)}</div>
+            <br />
             <div className="text-sm text-gray-600 mb-2">Based on 7 reviews</div>
             <Image src="/Google_logo.png" alt="Google" width={80} height={30} className="h-6 w-auto object-contain" />
           </div>
@@ -161,26 +147,35 @@ export default function Testimonials() {
               {duplicatedSlides.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="px-2 "
+                  className="p-4"
                   style={{ width: `${100 / duplicatedSlides.length}%` }}
                 >
-                  <div className="bg-[#8FDDAA] rounded-3xl p-6 h-full">
-                    <div className="flex items-center mb-4">
-                      <div className="relative w-12 h-12 mr-3 rounded-full overflow-hidden border-3 border-[#F9326F]">
-                        <Image
-                          src={testimonial.image || "/placeholder.svg"}
-                          alt={testimonial.name}
-                          width={48}
-                          height={48}
-                          className="object-cover"
-                        />
+                  <Tilt
+                    className="parallax-effect-glare-scale"
+                    perspective={500}
+                    glareEnable={false}
+                    glareMaxOpacity={0.45}
+                    tiltAngleYInitial={60}
+                    scale={1.02}
+                  >
+                    <div className="bg-[#8FDDAA] rounded-3xl p-6 h-full">
+                      <div className="flex items-center mb-4">
+                        <div className="relative w-12 h-12 mr-3 rounded-full overflow-hidden border-3 border-[#F9326F]">
+                          <Image
+                            src={testimonial.image || "/placeholder.svg"}
+                            alt={testimonial.name}
+                            width={48}
+                            height={48}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-black">{testimonial.name}</h3>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-medium text-black">{testimonial.name}</h3>
-                      </div>
+                      <p className="text-black">{testimonial.text}</p>
                     </div>
-                    <p className="text-black">{testimonial.text}</p>
-                  </div>
+                  </Tilt>
                 </div>
               ))}
             </div>
