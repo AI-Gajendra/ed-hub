@@ -104,7 +104,7 @@ export default function FooterNew({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="w-screen relative flex flex-col bg-[#3366FFD9] items-center justify-between bg-cover bg-center bg-no-repeat px-4 md:px-8"
+      className="w-screen relative flex flex-col bg-[#3366FFD9] items-center justify-between bg-cover bg-center bg-no-repeat"
     >
       {showSuscriptionBlock && (
         <div className="max-w-7xl  mx-auto z-40 min-h-65 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">

@@ -130,7 +130,7 @@ export default function DmittTest_4_Page() {
 		<div className="min-h-screen flex flex-col">
 			{/* Header */}
 			<header className="bg-[#3366FF] text-white sticky top-0 z-50">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+				<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
 					{/* Logo */}
 					<div className="flex items-center">
 						{/* Replace with your actual logo */}
@@ -153,7 +153,7 @@ export default function DmittTest_4_Page() {
 							/>
 							<div>
 								<p className="text-sm font-medium">Shlok Agheda</p>
-								<p className="text-xs opacity-80">Student</p>
+								<p className="text-xs text-[#FFCC00] opacity-80">Student</p>
 							</div>
 						</div>
 					</div>
@@ -169,7 +169,7 @@ export default function DmittTest_4_Page() {
 					</h1>
 
 					{/* Category Tabs */}
-					<div className="mb-8 overflow-x-auto pb-2">
+					<div className="mb-8 pb-2">
 						<div className="flex justify-between overflow-x-auto custom-scrollbar space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 							{tabCategories.map(category => (
 								<button
@@ -185,29 +185,30 @@ export default function DmittTest_4_Page() {
 					</div>
 
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
-					<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-						<div className="text-left">
-							<p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
-							<p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
-							<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
-								{currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
-							</div>
-						</div>
-						<div className="text-right">
-							<div className="flex items-center justify-end gap-1.5 text-[#FF3366]">
-								<FiClock className="w-5 h-5" />
-								<span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
-							</div>
-							<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
-							<p
-								className="text-sm mt-2 p-2 rounded-xl space-x-1 border border-[#FF3366]
- flex">
-								{' '}
-								<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
-								<span>Draw in the box to complete the task</span>
-							</p>
-						</div>
-					</div>
+					<div className="flex flex-row justify-between items-center mb-8 gap-4">
+									<div className="sm:text-left">
+										<p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
+										<p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
+										<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
+											{currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
+										</div>
+									</div>
+									<div className="sm:text-right">
+										<div className="flex sm:justify-end items-center gap-1.5 text-[#FF3366]">
+											<FiClock className="w-5 h-5" />
+											<span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
+										</div>
+										<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
+										<p className="sm:block hidden text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
+											<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
+											<span>Draw the lines to match the following</span>
+										</p>
+									</div>
+								</div>
+									<p className="sm:hidden block text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
+											<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
+											<span>Draw the lines to match the following</span>
+										</p>
 
 					{/* Current Question */}
 					{currentQuestion && (

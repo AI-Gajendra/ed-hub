@@ -9,6 +9,7 @@ import {
   FiArrowRightCircle,
   FiChevronDown,
 } from "react-icons/fi";
+import GoBack from "@/components/principal/goback";
 
 const categories = [
   "Subject 1",
@@ -64,25 +65,10 @@ const Curriculum = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
-    <div className="bg-gray-100">
-      <div className="bg-white py-3">
-        <div className="container mx-2 flex items-center gap-3">
-          <button
-            className="p-1.5 text-black hover:text-gray-700 focus:outline-none rounded-md"
-            aria-label="Go back"
-          >
-            <FiArrowLeft className="w-5 h-5" />
-          </button>
-          <h1
-            className="text-lg sm:text-xl font-semibold"
-            style={{ color: PALETTE.ACCENT_PINK }}
-          >
-            Yearly Plan Overview
-          </h1>
-        </div>
-      </div>
+    <div className="bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
+      <GoBack GoBackHeading="Yearly Plan Overview" />
 
-      <div className=" px-4 mx-auto bg-gray-100">
+      <div className=" px-4 mx-auto bg-[#eeeeee]">
         <div className="px-4 pt-4">
           <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
             <div className="flex flex-wrap md:text-base text-xs md:justify-center justify-start px-2 md:gap-4 gap-2">
@@ -92,10 +78,9 @@ const Curriculum = () => {
                   onClick={() => setSelected(category)}
                   className={`
                     relative md:px-5 px-2 py-2 rounded-2xl cursor-pointer font-medium transition-colors duration-200
-                    ${
-                      selected === category
-                        ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
-                        : "text-gray-700 hover:bg-gray-200"
+                    ${selected === category
+                      ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
+                      : "text-gray-700 hover:bg-gray-200"
                     }
                   `}
                 >
@@ -122,7 +107,7 @@ const Curriculum = () => {
           {/* Left column */}
           <div className="bg-white p-6 rounded-2xl">
             <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
-              <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b border-[#3366FF] w-fit">
+              <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b-2 border-[#3366FF] w-fit">
                 Modules
               </h2>
               <div className="flex items-center h-fit gap-2 sm:gap-3 sm:self-center">
@@ -145,9 +130,8 @@ const Curriculum = () => {
                 return (
                   <div
                     key={index}
-                    className={`${
-                      isOpen ? "p-6" : "border border-[#E5E7EB]"
-                    } relative z-20 rounded-2xl overflow-hidden transition-all`}
+                    className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                      } relative z-20 rounded-2xl overflow-hidden transition-all`}
                   >
                     {/* Filtered background image */}
                     <div
@@ -159,9 +143,8 @@ const Curriculum = () => {
                     />
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
-                      className={`${
-                        isOpen ? "bg-white px-6 py-2" : ""
-                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                      className={`${isOpen ? "bg-white px-6 py-2" : ""
+                        } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
                       <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
                       <div>

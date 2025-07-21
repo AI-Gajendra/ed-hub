@@ -5,13 +5,14 @@ import FooterNew from "@/components/footer3";
 import { FaCircleCheck } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/layout/Footer";
 
 export default function DemoBookingConfirmation() {
   const router = useRouter();
   return (
     <StudentWrapper>
-      <div className="relative z-10 p-10 bg-[#EEEEEE]">
-        <div className="w-full rounded-3xl flex flex-col justify-center items-center bg-white  md:py-12 gap-5">
+      <div className="relative z-10 py-4 px-2 sm:p-4 lg:px-10 lg:py-6 bg-[#EEEEEE]">
+        <div className="w-full rounded-3xl flex flex-col justify-center items-center bg-white  py-6 md:py-12 gap-5">
           <FaCircleCheck className="w-44 h-44 fill-[#8DD9B3]" />
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-center">
             Demo Booked Successfully 🎉
@@ -24,7 +25,7 @@ export default function DemoBookingConfirmation() {
             bibendum orci blandit vitae
           </p>
           <Button
-            className="bg-[#FF3366] text-white px-8 py-6 hover:bg-[#ff1a53] cursor-pointer rounded-full"
+            className="bg-[#FF3366] text-white px-4 py-6 hover:bg-[#ff1a53] cursor-pointer rounded-full"
             onClick={() => router.push("/student/courses")}
           >
             Explore More Courses
@@ -32,7 +33,7 @@ export default function DemoBookingConfirmation() {
         </div>
       </div>
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

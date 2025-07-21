@@ -171,7 +171,7 @@ export default function DmittTestPage() {
               />
               <div>
                 <p className="text-sm font-medium">Shlok Agheda</p>
-                <p className="text-xs opacity-80">Student</p>
+                <p className="text-xs text-[#FFCC00] opacity-80">Student</p>
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function DmittTestPage() {
 
       {/* Main Content */}
       <main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[62%] mx-auto bg-white rounded-xl  p-6 md:p-8">
+        <div className="lg:max-w-[46rem] mx-auto bg-white rounded-xl  w-full">
           {/* Test Title */}
           <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
             DMIT (Dermatoglyphics Multiple Intelligence Test) and skill
@@ -188,8 +188,8 @@ export default function DmittTestPage() {
           </h1>
 
           {/* Category Tabs */}
-          <div className="mb-8 overflow-x-auto pb-2 no-scrollbar">
-            <div className="flex max-w-[55%] min-w-full space-x-1 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
+          <div className="mb-8  pb-2 ">
+            <div className="flex lg:justify-center overflow-x-auto custom-scrollbar max-w-[55%] min-w-full space-x-1 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
               {tabCategories.map((category) => (
                 <button
                   key={category}
@@ -207,7 +207,7 @@ export default function DmittTestPage() {
           </div>
 
           {/* Test Info: Questions, Time Limit, Progress, Timer */}
-          <div className="flex max-w-[100%] flex-col sm:flex-row justify-center items-center relative  sm:items-center sm:justify-between  mb-8 gap-4">
+          <div className="flex justify-start relative  items-center sm:justify-between  mb-8 gap-4">
             <div className="sm:text-left">
               <p className="text-lg font-semibold text-[#6B7280]">
                 Questions : {TOTAL_QUESTIONS}
