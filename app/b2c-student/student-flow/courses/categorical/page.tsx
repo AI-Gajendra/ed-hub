@@ -12,6 +12,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import ReviewsComponent from "@/components/student/courses/review";
+import Footer from "@/components/layout/Footer";
 
 const features = [
   {
@@ -79,7 +80,7 @@ export default function CategoricalCoursePage() {
   return (
     <StudentWrapper>
       <main className="min-h-[calc(100vh-80px)]">
-        <div className="w-full mb-72">
+        <div className="w-full">
           {/* Hero Section */}
           <section className="relative h-full overflow-hidden">
             {/* Background Pattern */}
@@ -95,7 +96,7 @@ export default function CategoricalCoursePage() {
             ></div>
 
             {/* Main content */}
-            <div className="w-full max-w-7xl mx-auto p-16 md:p-12 flex flex-col md:flex-row items-center justify-between h-full gap-16">
+            <div className="w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-16 md:p-12 flex flex-col md:flex-row items-center justify-between h-full gap-16">
               {/* Left Content */}
               <div className="w-full md:w-[55%] z-10 gap-y-10 flex flex-col justify-center h-full">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight">
@@ -148,7 +149,7 @@ export default function CategoricalCoursePage() {
                 {features.map((feature, index) => (
                   <Card
                     key={index}
-                    className="text-center p-6 rounded-3xl hover:shadow-lg transition-shadow border border-[#E5E7EB] bg-[#F9FAFB]"
+                    className="text-center p-6 rounded-3xl border border-[#E5E7EB] bg-[#F9FAFB]"
                   >
                     <CardContent className="pt-6">
                       <div className="flex items-center justify-center mx-auto mb-4">
@@ -227,7 +228,7 @@ export default function CategoricalCoursePage() {
           </div>
 
           {/* Overlaying Cards Section */}
-          <div className="z-10 p-10">
+          <div className="z-10 p-4 md:p-6 lg:p-10">
             <div className="max-w-7xl mx-auto w-full">
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-12 items-center">
                 {/* Left Side - Content */}
@@ -264,7 +265,7 @@ export default function CategoricalCoursePage() {
 
           {/* FAQ Section */}
           <section className="pt-16">
-            <div className="max-w-7xl mx-auto lg:px-8 space-y-8">
+            <div className="max-w-7xl mx-auto px-4 lg:px-8 space-y-8">
               <h2 className="text-left text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight">
                 FAQ
               </h2>
@@ -301,7 +302,7 @@ export default function CategoricalCoursePage() {
         </div>
 
         {/* footer */}
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </main>
     </StudentWrapper>
   );

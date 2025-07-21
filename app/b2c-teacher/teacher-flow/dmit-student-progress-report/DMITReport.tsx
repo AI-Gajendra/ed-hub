@@ -1,20 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  FiArrowLeft,
-  // FiClock,
-  // FiChevronLeft,
-  // FiChevronRight,
-  FiSearch,
-  FiPercent,
-  FiAward,
-  FiBarChart2,
-  FiChevronDown,
-  FiZap,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-} from "react-icons/fi"; // Add icons as needed
+
 import Image from "next/image"; // For profile picture
 import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
