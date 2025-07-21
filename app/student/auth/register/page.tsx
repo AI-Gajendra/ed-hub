@@ -247,7 +247,7 @@ export default function RegisterPage() {
                     <div className="flex">
                       <p>Already Have Aan Account?</p>
                       <Link
-                        href={"/student/auth/register"}
+                        href={"/student/auth/login"}
                         className="ml-2 text-[#F9326F] hover:underline"
                       >
                         Login

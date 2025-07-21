@@ -663,7 +663,7 @@ export default function CurriculumComponent() {
             <div className="flex items-center py-4">
               <ArrowLeft
                 className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
-                onClick={() => router.push("/student/courses")}
+                onClick={() => router.push("/student/teachers/profile")}
               />
               <h1 className="text-xl font-medium text-[#FF3366]">
                 About Course

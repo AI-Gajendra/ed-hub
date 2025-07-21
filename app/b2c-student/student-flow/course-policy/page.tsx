@@ -6,13 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CoursePolicy() {
   const [isAgreed, setIsAgreed] = useState<boolean>(false);
+  const router = useRouter()
 
   const handleAcceptAndProceed = () => {
     if (isAgreed) {
       console.log("Policies accepted, proceeding...");
+      router.push("/student/skill-assessment")
       // Handle navigation or form submission here
     }
   };
