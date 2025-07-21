@@ -3,8 +3,10 @@
 import { useState } from "react";
 import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
-import { Minus, Plus, ArrowLeft } from "lucide-react";
-import FooterNew from "@/components/footer3";
+import { Minus, Plus } from "lucide-react";
+import BackButton from "@/components/common-components/BackButton";
+import Footer from "@/components/layout/Footer";
+import Newsletter from "@/components/common-components/Newsletter";
 interface CartItem {
   id: number;
   name: string;
@@ -99,18 +101,11 @@ export default function CourseDetail() {
       ></div>
       <div className="bg-black fixed inset-0 bg-center bg-repeat z-1 opacity-40" />
 
-      <div className="relative z-10 pb-70">
+      <div className="relative z-10">
         {/* headers */}
-        <div className="bg-white border-b">
-          <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center py-4">
-              <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
-              <h1 className="text-2xl font-medium text-[#FF3366]">Cart</h1>
-            </div>
-          </div>
-        </div>
+        <BackButton Heading="Cart" />
 
-        <div className="max-w-7xl mx-auto py-10">
+        <div className="max-w-7xl mx-auto px-2 py-6">
           <div className="flex flex-col mx-auto bg-white rounded-3xl gap-4">
             {/* Cart Items Section */}
             <div className="lg:col-span-2">
@@ -143,7 +138,7 @@ export default function CourseDetail() {
                             {index + 1}
                           </td>
                           <td className="py-4 px-2">
-                            <div className="flex items-center gap-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                               <img
                                 src={item.image}
                                 alt={item.name}
@@ -165,11 +160,10 @@ export default function CourseDetail() {
                                 onClick={() =>
                                   updateQuantity(item.id, item.quantity - 1)
                                 }
-                                className={`w-8 h-8 flex items-center justify-center transition-colors ${
-                                  item.quantity <= 1
-                                    ? "cursor-not-allowed"
-                                    : "cursor-pointer"
-                                }`}
+                                className={`w-8 h-8 flex items-center justify-center transition-colors ${item.quantity <= 1
+                                  ? "cursor-not-allowed"
+                                  : "cursor-pointer"
+                                  }`}
                                 disabled={item.quantity <= 1}
                               >
                                 <Minus
@@ -214,17 +208,17 @@ export default function CourseDetail() {
             <div className="flex flex-col lg:flex-row gap-8 p-6">
               {/* Left Section - Explore More & Coupon */}
               <div className="flex-1">
-                <div className="rounded-2xl bg-[#F9FAFB] p-4 border border-[#E5E7EB] border-dashed">
+                <div className="rounded-2xl  bg-[#F9FAFB] p-4 border border-[#E5E7EB] border-dashed">
                   <h3 className="text-xl font-bold text-gray-800 mb-4">
                     Coupon
                   </h3>
-                  <div className="flex gap-3">
+                  <div className="flex flex-wrap gap-3">
                     <input
                       type="text"
                       placeholder="Coupon code"
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
-                      className="bg-white flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                      className="bg-white w-full px-4 py-3 border border-gray-300 rounded-full"
                       onKeyPress={(e) => e.key === "Enter" && applyCoupon()}
                     />
                     {/* <Input type="text"
@@ -308,13 +302,15 @@ export default function CourseDetail() {
               </div>
             </div>
           </div>
+          <div className="">
+            <Newsletter />
+          </div>
         </div>
-
         {/* <Footer /> */}
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew />
+        <Footer />
       </div>
     </StudentWrapper>
   );

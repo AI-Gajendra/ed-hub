@@ -5,20 +5,21 @@ import React from 'react';
 import Image from 'next/image';
 import { FiMessageSquare as FiChatIcon, FiVideo as FiVideoActivity, FiFileText as FiFileActivity } from 'react-icons/fi';
 import { FocusPill, DateNavigator, FilterTabButton, DualToggleButton, OutlineButton } from './ui-components';
+import MonthTab from '@/components/common-components/MonthTab/MonthTab';
 
 // --- Data Interfaces ---
 interface StudentProfileData {
-	name: string; class: string; group: string; avatar: string; gender: string; dob: string; email: string;
-	contact: string; city: string; state: string; dmitScore: number; assessmentReportDate: string;
-	objective: string; focusAreas: string[];
+    name: string; class: string; group: string; avatar: string; gender: string; dob: string; email: string;
+    contact: string; city: string; state: string; dmitScore: number; assessmentReportDate: string;
+    objective: string; focusAreas: string[];
 }
 interface ClassStatsData {
-	month: string; complete: number; total: number; incomplete: number;
-	attendance: string; grade: string; leaderBoardRank: string;
+    month: string; complete: number; total: number; incomplete: number;
+    attendance: string; grade: string; leaderBoardRank: string;
 }
 export interface Activity { // Export if used by page.tsx for state typing
-	id: number; type: 'video' | 'document'; category: string; topic: string;
-	dateRange: string; status: 'join' | 'not_started' | 'completed';
+    id: number; type: 'video' | 'document'; category: string; topic: string;
+    dateRange: string; status: 'join' | 'not_started' | 'completed';
 }
 interface Teacher { id: number; name: string; subject: string; avatarSrc: string; }
 interface Notification { id: number; title: string; message: string; date: string; }
@@ -73,28 +74,28 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
 
 // --- Learning Activity Item (Internal to LearningActivitiesSection) ---
 const ActivityItem: React.FC<{ activity: Activity }> = ({ activity }) => {
-	const Icon = activity.type === 'video' ? FiVideoActivity : FiFileActivity;
-	const iconBgColor = activity.type === 'video' ? 'bg-[#FF3366]' : 'bg-[#3366FF]';
-	const categoryTextColor = 'text-[#FF3366]';
-	return (
-		<div className="flex flex-col items-start gap-2 p-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl hover:shadow-md transition-shadow sm:flex-row sm:items-center sm:justify-between sm:rounded-full sm:gap-0">
-			<div className="flex items-center gap-3 sm:gap-4"> {/* Desktop: gap-4 */}
-				<div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${iconBgColor} text-white flex items-center justify-center flex-shrink-0`}> {/* Desktop: w-14 h-14 */}
-					<Icon className="w-6 sm:w-7 h-6 sm:h-7" /> {/* Desktop: w-7 h-7 */}
-				</div>
-				<div>
-					<p className={`text-[11px] sm:text-xs font-medium ${categoryTextColor}`}>{activity.category}</p>
-					<h4 className="text-sm sm:text-base font-semibold text-black mt-0.5">{activity.topic}</h4>
-					<p className="text-[8px] sm:text-[9px] text-[#6B7280] mt-0.5">{activity.dateRange}</p>
-				</div>
-			</div>
-			<div className="self-end sm:self-center sm:pr-2"> {/* Align right on mobile, center on sm+ */}
+    const Icon = activity.type === 'video' ? FiVideoActivity : FiFileActivity;
+    const iconBgColor = activity.type === 'video' ? 'bg-[#FF3366]' : 'bg-[#3366FF]';
+    const categoryTextColor = 'text-[#FF3366]';
+    return (
+        <div className="flex flex-col items-start gap-2 p-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl sm:flex-row sm:items-center sm:justify-between sm:rounded-full sm:gap-0">
+            <div className="flex items-center gap-3 sm:gap-4"> {/* Desktop: gap-4 */}
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${iconBgColor} text-white flex items-center justify-center flex-shrink-0`}> {/* Desktop: w-14 h-14 */}
+                    <Icon className="w-6 sm:w-7 h-6 sm:h-7" /> {/* Desktop: w-7 h-7 */}
+                </div>
+                <div>
+                    <p className={`text-[11px] sm:text-xs font-medium ${categoryTextColor}`}>{activity.category}</p>
+                    <h4 className="text-sm sm:text-base font-semibold text-black mt-0.5">{activity.topic}</h4>
+                    <p className="text-[8px] sm:text-[9px] text-[#6B7280] mt-0.5">{activity.dateRange}</p>
+                </div>
+            </div>
+            <div className="self-end sm:self-center sm:pr-2"> {/* Align right on mobile, center on sm+ */}
                 {activity.status === 'join' && <button className="text-blue-600 text-md sm:text-lg font-semibold hover:text-blue-700 transition-colors">Join</button>}
                 {activity.status === 'not_started' && <span className="text-md sm:text-lg font-semibold text-gray-400">Not Started</span>}
                 {activity.status === 'completed' && <span className="text-md sm:text-lg font-semibold text-green-500">Completed</span>}
             </div>
-		</div>
-	);
+        </div>
+    );
 };
 
 // --- Learning Activities Section ---
@@ -112,42 +113,62 @@ export const LearningActivitiesSection: React.FC<LearningActivitiesSectionProps>
                 <div className="flex items-center gap-1 bg-[#F9FAFB] p-1.5 md:p-2 rounded-full">{['Active', 'Completed'].map(filter => (<FilterTabButton key={filter} label={filter} isActive={currentFilter === filter} onClick={() => onFilterChange(filter as 'Active' | 'Completed')} />))}</div>
             </div>
             <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 flex-wrap">
-                <DateNavigator currentDate={currentDate} onPrevious={onDatePrev} onNext={onDateNext} />
-                <DualToggleButton leftLabel="Weekly ( 10 )" rightLabel="Monthly ( 50 )" activeSide="left"/>
+                <MonthTab />
+                <DualToggleButton leftLabel="Weekly ( 10 )" rightLabel="Monthly ( 50 )" activeSide="left" />
                 <OutlineButton label="Yearly Plan Overview" />
             </div>
-            <div className="space-y-3 md:space-y-4">{filteredActivities.length > 0 ? filteredActivities.map(activity => (<ActivityItem key={activity.id} activity={activity} />)) : <p className="text-center text-sm text-gray-500 py-4">No activities.</p>}</div>
+            <div className="space-y-3 md:space-y-4 pr-2 max-h-[480px] overflow-y-auto custom-scrollbar-thin h-full">
+                {filteredActivities.length > 0 ? filteredActivities.map(activity => (<ActivityItem key={activity.id} activity={activity} />)) : <p className="text-center text-sm text-gray-500 py-4">No activities.</p>}
+                </div>
         </div>
     );
 };
 
 // --- Classes Card ---
 interface ClassesSummaryCardProps { classStats: ClassStatsData; onDatePrev?: () => void; onDateNext?: () => void; }
-export const ClassesSummaryCard: React.FC<ClassesSummaryCardProps> = ({ classStats, onDatePrev, onDateNext }) => (
-    <div className="bg-white rounded-2xl p-4 md:p-6">
-        <div className="flex  justify-between items-start xs:items-center mb-4 gap-2">
-            <h2 className="text-md md:text-lg font-semibold text-black">Classes</h2>
-            <DateNavigator currentDate={classStats.month} onPrevious={onDatePrev} onNext={onDateNext} />
+export const ClassesSummaryCard: React.FC<ClassesSummaryCardProps> = ({ classStats }) => (
+    <>
+        <div className="bg-white rounded-2xl p-4 text-center">
+            <h3 className="text-lg font-semibold text-[#3366ff] mb-2">
+                Need to Reschedule a Class?
+            </h3>
+            <p className="text-sm text-gray-500 mb-4">
+                You can submit a request if your child is unavailable for the upcoming session.
+            </p>
+            <div className="flex justify-center gap-3">
+                <button className="bg-[#FFEDEF] text-[#FF3366] text-sm font-medium px-4 py-2.5 rounded-full">
+                    Cancel a Lecture
+                </button>
+                <button className="bg-[#246BFD] text-white text-sm font-medium px-4 py-2.5 rounded-full">
+                    Request Reschedule
+                </button>
+            </div>
         </div>
-        <div className="flex justify-between items-baseline mb-4">
-            <div><p className="text-xs text-gray-500">Complete</p><p className="text-xl md:text-2xl font-bold text-black">{classStats.complete}<span className="text-sm font-normal text-gray-500"> / {classStats.total}</span></p></div>
-            <div className="text-right"><p className="text-xs text-[#6B7280]">Incomplete</p><p className="text-sm md:text-base text-center font-bold mt-2 text-[#FF3366]">{classStats.incomplete}</p></div>
+        <div className="bg-white rounded-2xl p-4 md:p-6">
+            <div className="flex  justify-between items-start xs:items-center mb-4 gap-2">
+                <h2 className="text-md md:text-lg font-semibold text-black">Classes</h2>
+                <MonthTab />
+            </div>
+            <div className="flex justify-between items-baseline mb-4">
+                <div><p className="text-xs text-gray-500">Complete</p><p className="text-xl md:text-2xl font-bold text-black">{classStats.complete}<span className="text-sm font-normal text-gray-500"> / {classStats.total}</span></p></div>
+                <div className="text-right"><p className="text-xs text-[#6B7280]">Incomplete</p><p className="text-sm md:text-base text-center font-bold mt-2 text-[#FF3366]">{classStats.incomplete}</p></div>
+            </div>
+            <div className="space-y-1 text-sm">
+                {[{ label: 'Attendance', value: classStats.attendance }, { label: 'Grade', value: classStats.grade }, { label: 'Leader Board', value: classStats.leaderBoardRank }].map((item, index, array) => (<React.Fragment key={item.label}><div className="flex justify-between items-center pt-1"><span className="text-[#6B7280]">{item.label}</span><span className="text-[#3366FF] font-medium">{item.value}</span></div>{index < array.length - 1 && <div className="w-full border-b border-[#B0B0B0] h-[1px] my-0.5" />}</React.Fragment>))}
+            </div>
         </div>
-        <div className="space-y-1 text-sm">
-            {[{label: 'Attendance', value: classStats.attendance}, {label: 'Grade', value: classStats.grade}, {label: 'Leader Board', value: classStats.leaderBoardRank}].map((item, index, array) => (<React.Fragment key={item.label}><div className="flex justify-between items-center pt-1"><span className="text-[#6B7280]">{item.label}</span><span className="text-[#3366FF] font-medium">{item.value}</span></div>{index < array.length - 1 && <div className="w-full border-b border-[#B0B0B0] h-[1px] my-0.5" />}</React.Fragment>))}
-        </div>
-    </div>
+    </>
 );
 
 // --- Teacher Item (Internal to YourTeachersCard) ---
 const TeacherItem: React.FC<Teacher> = ({ avatarSrc, name, subject }) => (
-	<div className="flex items-center justify-between p-1.5 md:p-2 bg-gray-100 rounded-full hover:shadow-sm transition-shadow">
-		<div className="flex items-center gap-2 md:gap-3">
-			<Image src={avatarSrc} alt={name} width={40} height={40} className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10" />
-			<div><p className="text-sm font-medium text-black">{name}</p><p className="text-xs text-[#FF3366]">{subject}</p></div>
-		</div>
-		<button className="p-1.5 md:p-2 text-gray-400 hover:text-blue-600 transition-colors"><FiChatIcon className="w-4 h-4 md:w-5 md:h-5" /></button>
-	</div>
+    <div className="flex items-center justify-between p-1.5 md:p-2 bg-gray-100 rounded-full ">
+        <div className="flex items-center gap-2 md:gap-3">
+            <Image src={avatarSrc} alt={name} width={40} height={40} className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10" />
+            <div><p className="text-sm font-medium text-black">{name}</p><p className="text-xs text-[#FF3366]">{subject}</p></div>
+        </div>
+        <button className="p-1.5 md:p-2 text-gray-400 hover:text-blue-600 transition-colors"><FiChatIcon className="w-4 h-4 md:w-5 md:h-5" /></button>
+    </div>
 );
 
 // --- Your Teachers Card ---
@@ -161,11 +182,11 @@ export const YourTeachersCard: React.FC<YourTeachersCardProps> = ({ teachers }) 
 
 // --- Notification Item (Internal to NotificationsCard) ---
 const NotificationItem: React.FC<Notification> = ({ title, message, date }) => (
-	<div className="border-[#FFCC00] border bg-[#FEF9C3] rounded-lg p-2 md:p-2.5">
-		<h5 className="text-sm font-semibold text-black mb-1">{title}</h5>
-		<p className="text-xs text-[#6B7280] leading-relaxed mb-1.5 line-clamp-2">{message}</p>
-		<p className="text-[10px] text-gray-500 text-right">{date}</p>
-	</div>
+    <div className="border-[#FFCC00] border bg-[#FEF9C3] rounded-lg p-2 md:p-2.5">
+        <h5 className="text-sm font-semibold text-black mb-1">{title}</h5>
+        <p className="text-xs text-[#6B7280] leading-relaxed mb-1.5 line-clamp-2">{message}</p>
+        <p className="text-[10px] text-gray-500 text-right">{date}</p>
+    </div>
 );
 
 // --- Notifications Card ---
