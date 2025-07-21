@@ -12,9 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import ConfirmUnlockPopup from "../pop-ups/component/teacher-unlock-confirm";
 
 // --- Data Interfaces ---
 interface RequestItem {
+  coursevalidity: string;
+  noofsession: string;
   id: string;
   studentName: string;
   avatarSrc: string;
@@ -22,7 +25,6 @@ interface RequestItem {
   batch: string;
   emailId: string;
   assignedFaculty: string;
-  lectureDate: string;
   reason: string;
   price:string;
 }
@@ -30,7 +32,7 @@ interface RequestItem {
 
 
 const reschedulingRequests: RequestItem[] = Array.from(
-  { length: 6 },
+  { length: 16 },
   (_, i) => ({
     id: `resched-${i}`,
     studentName: "Student Name",
@@ -89,9 +91,10 @@ const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
 
 const RequestCard: React.FC<{
   request: RequestItem;
+  setOpenModal: React.Dispatch<React.SetStateAction<string | null>>
   reference: React.RefObject<HTMLDivElement | null>;
-  togglePopup: () => void;
-}> = ({ request, reference, togglePopup }) => (
+ 
+}> = ({ request, reference, setOpenModal }) => (
   <div
     ref={reference}
     className="bg-[#F9FAFB] rounded-2xl relative border border-[#B0B0B0] p-3 flex flex-col gap-3 transition-shadow duration-150 hover:shadow-lg"
@@ -141,13 +144,14 @@ const RequestCard: React.FC<{
     {/* Action Buttons */}
     <div className="flex justify-center items-center gap-3">
       <button
-        onClick={togglePopup}
+          onClick={() => setOpenModal("confirm unlock")}
         className="w-28 py-2 text-sm  text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors cursor-pointer"
       >
         Reject
       </button>
       <button
-        onClick={togglePopup}
+        onClick={() => setOpenModal("confirm unlock")}
+        
         className="w-28 py-2 text-sm   text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
       >
         Approve
@@ -158,14 +162,11 @@ const RequestCard: React.FC<{
 
 // --- Main Page Component ---
 export default function RequestManagementPage() {
-  const [activeTab, setActiveTab] = useState<"rescheduling" | "cancellation">(
-    "rescheduling"
-  );
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
-  const togglePopup = () => setIsPopupOpen(!isPopupOpen);
+  const [openModal, setOpenModal] = useState<string | null>(null);
+ 
 
-  const requestsToDisplay =
-    activeTab === "cancellation" ? cancellationRequests : reschedulingRequests;
+  
+    
 
   const [minHeight, setMinHeight] = useState<number>(100);
   const heightRef = useRef<HTMLDivElement | null>(null);
@@ -175,7 +176,7 @@ export default function RequestManagementPage() {
     if (heightRef.current) {
       setMinHeight(heightRef.current.offsetHeight);
     }
-  }, [activeTab]);
+  }, []);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -205,6 +206,9 @@ export default function RequestManagementPage() {
   return (
     // Using your provided page template structure
     <div className={` flex flex-col relative`}>
+      <ConfirmUnlockPopup
+      isOpen={openModal === "confirm unlock"}
+        onClose={() => setOpenModal(null)}/>
       {/* This is your template component */}
       <div className="p-4 sm:p-6 lg:p-8">
         <main className="bg-white  rounded-2xl flex-grow w-full max-w-[95rem] mx-auto p-4">
@@ -240,12 +244,12 @@ export default function RequestManagementPage() {
               height: `${minHeight}px`,
             }}
           >
-            {requestsToDisplay.map((request) => (
+            {reschedulingRequests.map((request: RequestItem) => (
               <RequestCard
                 key={request.id}
                 request={request}
                 reference={heightRef}
-                togglePopup={togglePopup}
+                setOpenModal ={setOpenModal}
               />
             ))}
           </div>
