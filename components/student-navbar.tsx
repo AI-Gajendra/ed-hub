@@ -93,7 +93,7 @@ export default function StudentNavbar({ activeState = "Home" }:{ activeState?: s
               <div className="hidden sm:flex items-center gap-2">
                 <div className="relative h-12 w-12 rounded-full overflow-hidden">
                   <Image
-                    src="/student/home/student-profile.jpg"
+                    src="/images/person.jpg"
                     alt="User profile"
                     fill
                     className="object-cover"

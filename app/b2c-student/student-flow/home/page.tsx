@@ -36,7 +36,7 @@ interface Course {
 const courses: Course[] = [
   {
     id: "academics",
-    title: "Academics",
+    title: "Course Name",
     category: "Science",
     image: "/student/home/acadmics.png",
     features: [
@@ -53,7 +53,7 @@ const courses: Course[] = [
   },
   {
     id: "foundation",
-    title: "Foundation",
+    title: "Course Name",
     category: "Technology Programs",
     image: "/student/home/foundation.png",
     features: [
@@ -70,7 +70,7 @@ const courses: Course[] = [
   },
   {
     id: "brain-development",
-    title: "Brain Development",
+    title: "Course Name",
     category: "Science",
     image: "/student/home/basic-dev.png",
     features: [
@@ -87,7 +87,7 @@ const courses: Course[] = [
   },
   {
     id: "skill-development",
-    title: "Skill Development",
+    title: "Course Name",
     category: "Public speaking",
     image: "/student/home/learn-peace.png",
     features: [
@@ -104,7 +104,7 @@ const courses: Course[] = [
   },
   {
     id: "stem-programs",
-    title: "STEM Programs",
+    title: "Course Name",
     category: "Technology Programs",
     image: "/student/home/learn-peace2.png",
     features: [
@@ -121,7 +121,7 @@ const courses: Course[] = [
   },
   {
     id: "robotics",
-    title: "Robotics",
+    title: "Course Name",
     category: "Technology Programs",
     image: "/student/home/robotics.png",
     features: [
@@ -138,7 +138,7 @@ const courses: Course[] = [
   },
   {
     id: "phonics",
-    title: "Phonics",
+    title: "Course Name",
     category: "English",
     image: "/student/home/phonics.png",
     features: [
@@ -155,7 +155,7 @@ const courses: Course[] = [
   },
   {
     id: "personality-development",
-    title: "Personality Development",
+    title: "Course Name",
     category: "Public speaking",
     image: "/student/home/pers-dev.png",
     features: [
@@ -173,7 +173,7 @@ const courses: Course[] = [
 ];
 
 export default function StudentHome() {
-  const router = useRouter();
+  const Router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const startingCourses = courses.slice(0, 3);
   return (
@@ -309,7 +309,8 @@ export default function StudentHome() {
                 {startingCourses.map((course) => (
                   <Card
                     key={course.id}
-                    className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                    onClick={() => Router.push("/b2c-student/student-flow/course-details")}
+                    className="bg-white cursor-pointer rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
                   >
                     <div className="relative p-3">
                       <Image
@@ -328,7 +329,7 @@ export default function StudentHome() {
                         <button
                           className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
                           onClick={() =>
-                            router.push("/student/courses/know-more")
+                            Router.push("/student/courses/know-more")
                           }
                         >
                           Know More
@@ -410,7 +411,9 @@ export default function StudentHome() {
                         blandit sem varius.
                       </p>
 
-                      <button className="bg-[#3366FF] hover:bg-blue-700 text-white max-w-md w-full py-3 cursor-pointer rounded-2xl text-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
+                      <button
+                        onClick={() => Router.push("/b2c-student/student-flow/courses")}
+                        className="bg-[#3366FF] hover:bg-blue-700 text-white max-w-md w-full py-3 cursor-pointer rounded-2xl text-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
                         Explore More
                       </button>
                     </div>
