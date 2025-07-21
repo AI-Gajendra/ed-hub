@@ -1,4 +1,4 @@
-import ContentManagementFiles from "@/components/b2c-admin/content-management-files";
+import ContentManagementFiles from "./content-management-files";
 
 export default function CourseDetail() {
     const headerUser = {

@@ -1,4 +1,4 @@
-import AttendancePage from '@/components/b2c-admin/attendance-page'
+import AttendancePage from './attendance-page'
 import Link from 'next/link'
 import NamingBar from '@/components/admin/ui/naming-bar'
 export default function page() {

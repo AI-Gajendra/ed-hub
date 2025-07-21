@@ -1,8 +1,8 @@
-import ChartsReport from '@/components/b2c-admin/charts'
-import CourseSection from '@/components/b2c-admin/course-section'
+import ChartsReport from './charts'
+import CourseSection from './course-section'
 import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
-import TeacherCard from '@/components/b2c-admin/teacher-card'
-import TeacherControlPanel from '@/components/b2c-admin/teacher-control-panel'
+import TeacherCard from './teacher-card'
+import TeacherControlPanel from './teacher-control-panel'
 import BackButton from '@/components/common-components/BackButton'
 
 export default function page() {
