@@ -89,7 +89,7 @@ export default function CourseVideoPage() {
 
             <div className="bg-[#eeeeee] min-h-screen flex flex-col">
 
-                <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
+                <main className="flex-grow w-full mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
                     <div className="mb-4">
                         <OptimizedCategoryTabsBar
                             categories={mainCategoriesData}

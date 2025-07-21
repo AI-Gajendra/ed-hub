@@ -51,14 +51,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
         <div onClick={() => {
             if (!isCompleted) Router.push("/b2c-student/student-flow/single-course-detail")
         }} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-2 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
-            <div className="relative w-full aspect-[16/9] sm:aspect-video rounded-xl overflow-hidden mb-2"> {/* Added aspect ratio and overflow hidden for Image */}
+            <div className="relative w-full aspect-[16/9] sm:aspect-video rounded-xl overflow-hidden"> {/* Added aspect ratio and overflow hidden for Image */}
                 <Image src={course.imageSrc} alt={course.name} layout="fill" objectFit="contain" />
             </div>
-            <div className="flex flex-col flex-grow mt-1 sm:mt-2"> {/* Adjusted margin */}
-                {course.category && (
-                    <p className="text-xs font-semibold text-[#FF3366] uppercase mb-1">{course.category}</p>
-                )}
-                <h3 className="text-lg sm:text-xl font-bold text-black my-1 sm:my-2 leading-tight">{course.name}</h3>
+            <div className="flex flex-col flex-grow sm:mt-2"> {/* Adjusted margin */}
+                <h3 className="text-lg sm:text-xl font-bold text-black sm:my-2 leading-tight">{course.name}</h3>
                 <p className="text-xs sm:text-sm text-[#6B7280] mb-0.5">
                     <span className="text-black font-medium">Domain:</span> {course.domain}
                 </p>
@@ -87,10 +84,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                             <div className="w-[50%] sm:w-[55%] bg-gray-300 rounded-full h-2.5 sm:h-3"> {/* Added track bg */}
                                 <div
                                     className={`h-2.5 sm:h-3 rounded-full ${isCompleted ? 'bg-[#8DD9B3]' : 'bg-blue-500'}`}
-                                    style={{ width: `${course.progress}%` }}></div>
+                                    style={{ width: `100%` }}></div>
                             </div>
-                            <p className="text-[10px] sm:text-xs text-[#6B7280] text-right flex-grow"> {/* flex-grow for alignment */}
-                                {course.progress}% {isCompleted ? 'Completed' : 'Progress'} {/* Added 'Progress' for ongoing */}
+                            <p className="text-[10px] sm:text-xs text-[#6B7280] text-left flex-grow"> {/* flex-grow for alignment */}
+                                {course.progress}% {isCompleted ? 'Completed' : ''} {/* Added 'Progress' for ongoing */}
                             </p>
                         </div>
                     )}
@@ -141,7 +138,7 @@ export const AiSuggestsSection: React.FC = () => (
         <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center relative z-10">
             <div className="text-center md:text-left relative z-10 flex-shrink-0 md:w-1/2 lg:w-2/5">
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-3 sm:mb-4">
-                    <h2 className="text-2xl sm:text-3xl tracking-wider md:text-4xl font-bold">AI suggests</h2>
+                    <h2 className="text-2xl sm:text-3xl tracking-wider md:text-4xl font-semibold">AI suggests</h2>
                     <Image src="/star.png" alt="star" width={180} height={180} className="w-10 h-10 sm:w-16 sm:h-16 object-contain" />
                 </div>
                 <p className="text-xs sm:text-sm opacity-90 mb-6 sm:mb-8 max-w-xs sm:max-w-sm md:max-w-none mx-auto md:mx-0 md:w-auto"> {/* Adjusted max-w */}
