@@ -75,8 +75,6 @@ const SearchFilter: FC<SearchFilterProps> = ({ filters, bg, placeHolder }) => {
         />
       </div>
 
-      {/* Filters */}
-      <Filters filters={filters} />
     </div>
   );
 };
