@@ -32,9 +32,7 @@ export default function DemoBookingConfirmation() {
           </Button>
         </div>
       </div>
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

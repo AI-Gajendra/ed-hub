@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiX } from "react-icons/fi";
 import { StudentB2CBaseModal, PopupPropB2CStudent } from "@/app/b2c-student/ct-student-b2c-popups/page";
+import RescheduleClass from "../Reschedule/RescheduleClass";
 
-const RescheduleRequestModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
+const WarningPopup: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
+  const [classes, setClasses] = useState(false)
   return (
+    <>
     <StudentB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
       <div className="relative bg-white p-6 text-center">
       
@@ -19,16 +22,21 @@ const RescheduleRequestModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose
 
         <button
           onClick={() => {
-            // reschedule request logic here
-            onClose();
-          }}
+  onClose();
+  setTimeout(() => {
+    setClasses(true);
+  }, 300); // 300ms delay after close
+}}
+
           className="px-8 py-3 rounded-full bg-[#3366ff] text-white font-medium"
         >
           Continue
         </button>
       </div>
     </StudentB2CBaseModal>
+    <RescheduleClass isOpen={classes} onClose={() => setClasses(false)}/> 
+    </>
   );
 };
 
-export default RescheduleRequestModal;
+export default WarningPopup;

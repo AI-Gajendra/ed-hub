@@ -50,12 +50,10 @@ export default function DemoBookingForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push("/student/demo/teacher-selection");
+    router.push("/b2c-student/student-flow/demo/teacher-selection");
   };
 
-  const handleBackClick = () => {
-    router.back();
-  };
+ 
 
   return (
     <StudentWrapper>
@@ -133,9 +131,7 @@ export default function DemoBookingForm() {
         </section>
       </div>
 
-      <div className="z-10 absolute">
-        <Footer/>
-      </div>
+      <Footer/>
     </StudentWrapper>
   );
 }

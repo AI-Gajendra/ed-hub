@@ -56,9 +56,7 @@ export default function AfterDemoCourseFeePayment() {
         </section>
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

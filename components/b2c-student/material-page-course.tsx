@@ -15,6 +15,7 @@ import StudentNavbarNew from "../student-navbar-new";
 import BackButton from "../common-components/BackButton";
 import SearchFilterIcon from "../common-components/SearchFilterIcon";
 import Footer from "../layout/Footer";
+import DownloadToast from "../common-components/DownloadToast";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -61,10 +62,20 @@ const sampleFolders: FolderItem[] = Array.from({ length: 50 }, (_, i) => ({
 }));
 
 
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
+const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
+   const [showToast, setShowToast] = useState(false);
+
+  const handleDownload = () => {
+    // simulate download
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
+  return(
   <div
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB]  duration-200 flex items-center gap-4 relative`}
   >
+    
+      <DownloadToast show={showToast} />
     <div className="absolute right-5 top-5 text-gray-400">
       <LuInfo />
     </div>
@@ -85,11 +96,11 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
       </div>
       <div className="w-ful flex gap-2 ">
 
-        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <MdOutlineFileDownload /> Download</button>
+        <button     onClick={handleDownload} className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>
     </div>
   </div>
-);
+)};
 
 const GeneralFilterButton: React.FC<{
   filter: GeneralFilterOption;
@@ -134,6 +145,7 @@ const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }
 
   return (
     <>
+
       <div className="bg-white rounded-2xl  p-4  space-y-6">
         
         <SearchFilterIcon filters={filter} />

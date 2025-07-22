@@ -7,6 +7,7 @@ import { Minus, Plus } from "lucide-react";
 import BackButton from "@/components/common-components/BackButton";
 import Footer from "@/components/layout/Footer";
 import Newsletter from "@/components/common-components/Newsletter";
+import { useRouter } from "next/navigation";
 interface CartItem {
   id: number;
   name: string;
@@ -15,6 +16,7 @@ interface CartItem {
   image: string;
 }
 export default function CourseDetail() {
+  const router = useRouter();
   const [cartItems, setCartItems] = useState<CartItem[]>([
     {
       id: 1,
@@ -294,7 +296,10 @@ export default function CourseDetail() {
                   </div>
 
                   <div className="p-6">
-                    <Button className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-3 px-8 rounded-3xl font-medium text transition-colors cursor-pointer h-fit">
+                    <Button
+                    
+                      onClick={() => router.push("b2c-student/student-flow/checkout")} 
+                    className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-3 px-8 rounded-3xl font-medium text transition-colors cursor-pointer h-fit">
                       Proceed to checkout
                     </Button>
                   </div>
@@ -309,9 +314,7 @@ export default function CourseDetail() {
         {/* <Footer /> */}
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

@@ -50,7 +50,9 @@ export default function CourseDetail() {
                 <div className="w-full rounded-xl bg-[#3366FF1A] placeholder:text-[#6B7280] border border-[#3366FF] flex items-center p-3 gap-4">
                   <strong>Slot:</strong>12th June 2025, 6:30 PM
                 </div>
-                <Button className="bg-[#F9FAFB] border border-[#E5E7EB] px-8 py-4 rounded-full text-black hover:bg-[#F9FAFB] cursor-pointer">
+                <Button
+                
+              onClick={() => router.push("/b2c-student/student-flow/demo/booking-form")} className="bg-[#F9FAFB] border border-[#E5E7EB] px-8 py-4 rounded-full text-black hover:bg-[#F9FAFB] cursor-pointer">
                   Edit
                 </Button>
               </div>
@@ -72,7 +74,7 @@ export default function CourseDetail() {
             <div className="flex items-center justify-center">
               <Button
                 className="bg-[#3366ff] text-white px-10 py-3.5 hover:bg-[#0c45f0] hover:text-white rounded-full cursor-pointer"
-                onClick={() => router.push("/student/demo/confirmation")}
+                onClick={() => router.push("/b2c-student/student-flow/demo/confirmation")}
               >
                 Book
               </Button>
@@ -81,9 +83,7 @@ export default function CourseDetail() {
         </section>
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

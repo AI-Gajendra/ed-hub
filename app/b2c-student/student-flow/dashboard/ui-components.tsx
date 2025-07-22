@@ -109,6 +109,7 @@ interface OutlineButtonProps {
     onClick?: () => void;
     className?: string;
 }
+
 export const OutlineButton: React.FC<OutlineButtonProps> = ({ label, onClick, className = "" }) => (
     <button
         onClick={onClick}

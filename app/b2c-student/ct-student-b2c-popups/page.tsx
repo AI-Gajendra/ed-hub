@@ -51,7 +51,7 @@ export const StudentB2CBaseModal: React.FC<BaseModalProps> = ({
             {isOpen && (
                 <div
                     onClick={onClose}
-                    className="fixed inset-0 z-50 bg-[#0000004a] overflow-y-auto"
+                    className="fixed inset-0 z-50 bg-[#0000004a] h-full overflow-y-auto"
                 >
                     <div className="flex flex-col min-h-screen justify-center items-center p-4">
                         <motion.div

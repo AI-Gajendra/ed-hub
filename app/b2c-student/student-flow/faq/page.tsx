@@ -1,15 +1,17 @@
 // page.tsx (e.g. /app/faq/page.tsx)
 "use client";
 
-import React from 'react'; 
+import React from 'react';
 import Footer from '@/components/layout/Footer';
 import {
 	FAQSection,
 	FAQItemData // Type
 } from './components';
-import { PageTitleBar } from './ui-components'; 
+import { PageTitleBar } from './ui-components';
 import Newsletter from '@/components/common-components/Newsletter';
 import StudentNavbar from '@/components/student-navbar';
+import BackButton from '@/components/common-components/BackButton';
+import StudentB2CWrapper from '@/components/b2c-student/common-components/StudentB2CWrapper';
 
 // --- Sample Data (from your original) ---
 const faqQuestionsData: FAQItemData[] = [ // Renamed for clarity
@@ -24,35 +26,30 @@ const faqQuestionsData: FAQItemData[] = [ // Renamed for clarity
 export default function FAQPage() {
 
 
-	const handleBackClick = () => {
-		if (typeof window !== "undefined") {
-			window.history.back();
-		}
-	};
 
 	return (
 		// Original wrapper: div and inner div with bg-gray-100
 		// Simplified to single wrapper
 		<div className="min-h-screen flex flex-col bg-[#e3e3e3]">
 			<StudentNavbar activeState='faq' />
-			<PageTitleBar title="FAQs" onBackClick={handleBackClick} />
-			<div className="px-2 lg:px-0">
+			<BackButton Heading='FAQs' />
+			<StudentB2CWrapper>
 
-			{/* Original main: container mx-auto p-2 max-w-[90vw] bg-white rounded-2xl my-6 flex flex-col sm:flex-row gap-4 */}
-			<main className="flex-grow container mx-auto my-4 mt-6 p-3 bg-white 
+				{/* Original main: container mx-auto p-2 max-w-[90vw] bg-white rounded-2xl my-6 flex flex-col sm:flex-row gap-4 */}
+				<main className="flex-grow container mx-auto my-4 mt-6 p-3 bg-white 
                              rounded-2xl 
                            max-w-screen-xl ">
-				<FAQSection
-					questions={faqQuestionsData}
-					imageSrc="/student.png" // Your original image path
-					imageAlt="Student illustration for FAQ"
-				/>
-			</main>
-			<div className='max-w-screen-xl mx-auto w-full mb-6'>
+					<FAQSection
+						questions={faqQuestionsData}
+						imageSrc="/student.png" // Your original image path
+						imageAlt="Student illustration for FAQ"
+					/>
+				</main>
+				<div className='max-w-screen-xl mx-auto w-full mb-6'>
 
-				<Newsletter />{/* Newsletter is outside the main white card as per your layout */}
-			</div>
-</div>
+					<Newsletter />{/* Newsletter is outside the main white card as per your layout */}
+				</div>
+			</StudentB2CWrapper>
 			<Footer />
 		</div>
 	);
