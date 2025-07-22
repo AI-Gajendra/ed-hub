@@ -18,6 +18,8 @@ import {
 import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";
+import { IoIosArrowDown } from "react-icons/io";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Unit {
   number: string;
@@ -139,6 +141,34 @@ const classFlowSteps: ClassFlowStep[] = [
   },
 ];
 
+const pedagogyData = Array.from({ length: 6 }, () => ({
+  title: `Chapter Name`,
+  content: `Before the class
+
+1. Study the Lesson Plan Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous home assignment.
+
+1. Encourage the students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking about the concept is more important. You can use statements like excellent, you are thinking in the right direction.
+
+1. Definition of nth root of a real number.
+
+1. Basically, before introducing today's topic you first need to revise the addition and subtraction of proper and improper fractions, and mixed numbers.
+`,
+}));
+
+const lectureData = Array.from({ length: 6 }, () => ({
+  title: `Lecture Number`,
+  content: `Before the class
+
+1. Study the Lesson Plan Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous home assignment.
+
+1. Encourage the students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking about the concept is more important. You can use statements like excellent, you are thinking in the right direction.
+
+1. Definition of nth root of a real number.
+
+1. Basically, before introducing today's topic you first need to revise the addition and subtraction of proper and improper fractions, and mixed numbers.
+`,
+}));
+
 export default function CurriculumComponent() {
   const router = useRouter();
   const [activeMainTab, setActiveMainTab] = useState<
@@ -148,6 +178,8 @@ export default function CurriculumComponent() {
     "pedagogy"
   );
   const [activeCategory, setActiveCategory] = useState(1);
+  const [activePedagogyIndex, setActivePedagogyIndex] = useState<number | null>(0);
+  const [activeLectureIndex, setActiveLectureIndex] = useState<number | null>(0);
   const [openSessions, setOpenSessions] = useState<number[]>([]);
   const [openChapters, setOpenChapters] = useState<number[]>([]);
   const [openLectures, setOpenLectures] = useState<number[]>([]);
@@ -440,22 +472,20 @@ export default function CurriculumComponent() {
           <Button
             onClick={() => setActiveSubTab("pedagogy")}
             variant={activeSubTab === "pedagogy" ? "default" : "outline"}
-            className={`rounded-2xl px-4 py-3 text-sm curosr-pointer border-0 ${
-              activeSubTab === "pedagogy"
-                ? "bg-[#FF3366] hover:bg-[#FF3366] text-white"
-                : "text-gray-600 hover:text-gray-800"
-            }`}
+            className={`rounded-2xl px-4 py-3 text-sm curosr-pointer border-0 ${activeSubTab === "pedagogy"
+              ? "bg-[#FF3366] hover:bg-[#FF3366] text-white"
+              : "text-gray-600 hover:text-gray-800"
+              }`}
           >
             Pedagogy
           </Button>
           <Button
             onClick={() => setActiveSubTab("class-flow")}
             variant={activeSubTab === "class-flow" ? "default" : "outline"}
-            className={`rounded-2xl px-4 py-3 text-sm cursor-pointer border-0 ${
-              activeSubTab === "class-flow"
-                ? "bg-[#FF3366] hover:bg-[#FF3366] text-white"
-                : "text-gray-600 hover:text-gray-800"
-            }`}
+            className={`rounded-2xl px-4 py-3 text-sm cursor-pointer border-0 ${activeSubTab === "class-flow"
+              ? "bg-[#FF3366] hover:bg-[#FF3366] text-white"
+              : "text-gray-600 hover:text-gray-800"
+              }`}
           >
             Class Flow
           </Button>
@@ -463,143 +493,165 @@ export default function CurriculumComponent() {
 
         {activeSubTab === "pedagogy" ? (
           <>
-            {/* Chapter Card */}
-            <Card className="mb-4 bg-[#E5E7EB] rounded-3xl">
-              <CardContent
-                className="p-4 rounded-3xl"
-                style={{
-                  backgroundImage: 'url("/student/my-course/Pedagogy.png")',
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
-              >
-                <div className="flex justify-between items-center mb-3 bg-white rounded-3xl px-4 py-3">
-                  <h4 className="font-medium text-lg">Chapter Name</h4>
-                  <div className="text-xs flex items-center text-gray-500">
-                    <span>Duration: 5 Hrs/Mins</span>
-                    <span className="ml-4">Topic Name: Name</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4 text-sm text-gray-700 bg-white rounded-3xl px-4 py-3">
-                  <div>
-                    <h5 className="font-medium mb-2">Before the class</h5>
-                    <p className="mb-2 font-xs text-[#6B7280]">
-                      1. Study the Lesson Plan Prepare a list of students
-                      according to their groups. Keep the printouts of the next
-                      homework assignment ready and answers of the previous home
-                      assignment.
-                    </p>
-                    <p className="mb-2 font-xs text-[#6B7280]">
-                      1. Encourage the students to speak up and participate in
-                      the discussion. Getting the answer right is not the
-                      purpose, trying and thinking about the concept is more
-                      important. You can use statements like excellent, you are
-                      thinking in the right direction.
-                    </p>
-                    <p className="mb-2 font-xs text-[#6B7280]">
-                      1. Definition of nth root of a real number.
-                    </p>
-                    <p className="mb-2 font-xs text-[#6B7280]">
-                      1. Basically, before introducing today&#39;s topic you
-                      first need to revise the addition and subtraction of
-                      proper and improper fractions, and mixed numbers.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Expandable Chapters */}
             <div className="space-y-2">
-              {Array.from({ length: 5 }, (_, i) => (
-                <Collapsible
-                  key={i}
-                  open={openChapters.includes(i)}
-                  onOpenChange={() => toggleChapter(i)}
-                >
-                  <CollapsibleTrigger className="w-full">
-                    <Card className="hover:shadow-md transition-shadow border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl">
-                      <CardContent className="p-4">
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium">Chapter Name</span>
-                          {openChapters.includes(i) ? (
-                            <ChevronUp className="h-4 w-4" />
-                          ) : (
-                            <ChevronDown className="h-4 w-4" />
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-2">
-                    <Card className="border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl">
-                      <CardContent className="p-4 text-sm">
-                        <p>Chapter content would go here...</p>
-                      </CardContent>
-                    </Card>
-                  </CollapsibleContent>
-                </Collapsible>
-              ))}
+              {pedagogyData.map((item, index) => {
+                const isOpen = activePedagogyIndex === index;
+
+                return (
+                  <div
+                    key={index}
+                    className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                      } relative z-20 rounded-2xl overflow-hidden transition-all`}
+                  >
+                    {/* Filtered background image */}
+                    <div
+                      className="absolute inset-0 bg-cover rounded-3xl bg-repeat -z-10"
+                      style={{
+                        backgroundImage: 'url("/pattern.png")',
+                        filter: "brightness(0.7) grayscale(30%)",
+                      }}
+                    />
+                    <button
+                      onClick={() => setActivePedagogyIndex(isOpen ? null : index)}
+                      className={`${isOpen ? "bg-white px-6 py-2" : ""
+                        } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                    >
+                      <span className="text-lg">{isOpen ? item.title : "Chapter Name"}</span>
+                      <div>
+                        {isOpen ? (
+                          <div className="flex gap-3 text-[#6B7280] text-xs items-center">
+                            <p>Duration: 5 Hrs/Mins</p>
+                            <p>Topic Name: Name</p>
+                            <svg
+                              width={20}
+                              height={20}
+                              viewBox="0 0 24 25"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <rect
+                                width={24}
+                                height={24}
+                                rx={12}
+                                transform="matrix(1 0 0 -1 0 24.5)"
+                                fill="black"
+                                fillOpacity="0.3"
+                              />
+                              <path
+                                d="M6 15.5L12 9.5L18 15.5"
+                                stroke="white"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        ) : (
+                          <IoIosArrowDown className="text-xl text-gray-600" />
+                        )}
+                      </div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-sm text-[#6B7280] whitespace-pre-line">
+                            {item.content}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </>
         ) : (
           <>
-            {/* Lecture Card */}
-            <Card className="mb-4 bg-[#E5E7EB] rounded-3xl">
-              <CardContent className="p-4">
-                <div className="flex justify-between items-center mb-3 bg-white rounded-3xl px-4 py-3">
-                  <h4 className="font-medium text-lg">Lecture Number</h4>
-                  <div className="text-xs flex items-center text-gray-500">
-                    <span>Duration: 5 Hrs/Mins</span>
-                    <span className="ml-4">Chapter Name: Name</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4 text-sm bg-white rounded-3xl px-4 py-3">
-                  {classFlowSteps.map((step) => (
-                    <div key={step.number} className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-[#3366FF] text-white rounded-full flex items-center justify-center text-xs font-medium flex-shrink-0">
-                        {step.number}
-                      </div>
-                      <p className="text-sm">{step.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Expandable Lectures */}
-            <div className="space-y-2">
-              {Array.from({ length: 7 }, (_, i) => (
-                <Collapsible
-                  key={i}
-                  open={openLectures.includes(i)}
-                  onOpenChange={() => toggleLecture(i)}
-                >
-                  <CollapsibleTrigger className="w-full">
-                    <Card className="hover:shadow-md transition-shadow border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl">
-                      <CardContent className="p-4">
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium">Lecture Number</span>
-                          {openLectures.includes(i) ? (
-                            <ChevronUp className="h-4 w-4" />
-                          ) : (
-                            <ChevronDown className="h-4 w-4" />
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="mt-2">
-                    <Card className="border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl">
-                      <CardContent className="p-4 text-sm text-gray-700">
-                        <p>Lecture content would go here...</p>
-                      </CardContent>
-                    </Card>
-                  </CollapsibleContent>
-                </Collapsible>
-              ))}
+            <div className="space-y-2" >
+              {lectureData.map((item, index) => {
+                const isOpen = activeLectureIndex === index;
+
+                return (
+                  <div
+                    key={index}
+                    className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                      } relative z-20 rounded-2xl overflow-hidden transition-all bg-[#E5E7EB]`}
+                  >
+                    <button
+                      onClick={() => setActiveLectureIndex(isOpen ? null : index)}
+                      className={`${isOpen ? "bg-white px-6 py-2" : ""
+                        } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                    >
+                      <span className="text-lg">{isOpen ? item.title : "Lecture Number"}</span>
+                      <div>
+                        {isOpen ? (
+                          <div className="flex gap-3 text-[#6B7280] text-xs items-center">
+                            <p>Duration: 5 Hrs/Mins</p>
+                            <p>Chapter Name: Name</p>
+                            <svg
+                              width={20}
+                              height={20}
+                              viewBox="0 0 24 25"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <rect
+                                width={24}
+                                height={24}
+                                rx={12}
+                                transform="matrix(1 0 0 -1 0 24.5)"
+                                fill="black"
+                                fillOpacity="0.3"
+                              />
+                              <path
+                                d="M6 15.5L12 9.5L18 15.5"
+                                stroke="white"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        ) : (
+                          <IoIosArrowDown className="text-xl text-gray-600" />
+                        )}
+                      </div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-sm text-[#6B7280] whitespace-pre-line">
+                            <div className="space-y-4 text-sm bg-white rounded-3xl px-4 py-3">
+                              {classFlowSteps.map((step) => (
+                                <div key={step.number} className="flex items-start gap-3">
+                                  <div className="w-6 h-6 bg-[#3366FF] text-white rounded-full flex items-center justify-center text-xs font-medium flex-shrink-0">
+                                    {step.number}
+                                  </div>
+                                  <p className="text-sm">{step.title}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </>
         )}
@@ -676,21 +728,19 @@ export default function CurriculumComponent() {
           <div className="flex gap-8 mb-8 border-b">
             <button
               onClick={() => setActiveMainTab("learning-intent")}
-              className={`pb-2 px-1 font-medium ${
-                activeMainTab === "learning-intent"
-                  ? "text-blue-600 border-b-2 border-blue-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
+              className={`pb-2 px-1 font-medium ${activeMainTab === "learning-intent"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-500 hover:text-gray-700"
+                }`}
             >
               Learning Intent
             </button>
             <button
               onClick={() => setActiveMainTab("curriculum")}
-              className={`pb-2 px-1 font-medium ${
-                activeMainTab === "curriculum"
-                  ? "text-blue-600 border-b-2 border-blue-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
+              className={`pb-2 px-1 font-medium ${activeMainTab === "curriculum"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-500 hover:text-gray-700"
+                }`}
             >
               Curriculum
             </button>
@@ -703,11 +753,10 @@ export default function CurriculumComponent() {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   variant={activeCategory === category ? "default" : "outline"}
-                  className={`rounded-2xl px-4 py-3 text-sm cursor-pointer border-0 ${
-                    activeCategory === category
-                      ? "bg-[#FF3366] hover:bg-[#FF3366] text-white"
-                      : "text-gray-600 hover:text-gray-800"
-                  }`}
+                  className={`rounded-2xl px-4 py-3 text-sm cursor-pointer border-0 ${activeCategory === category
+                    ? "bg-[#FF3366] hover:bg-[#FF3366] text-white"
+                    : "text-gray-600 hover:text-gray-800"
+                    }`}
                 >
                   Category {category}
                 </Button>
