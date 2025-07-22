@@ -15,6 +15,7 @@ export interface UserCardProps {
   batchInfo: string;
   id: string;
   showBorder?: boolean;
+  navigate?: string;
 }
 
 const getHrefByRole = (role: UserRole, id: string) => {
@@ -39,12 +40,13 @@ const UserCard: FC<UserCardProps> = ({
   batchInfo,
   id,
   showBorder = false,
+  navigate = "",
 }) => {
   const isPink = role === "Teacher" || role === "Mentor";
   const href = getHrefByRole(role, id);
 
   return (
-    <Link href={href} className="block">
+    <Link href={navigate || href} className="block">
       <div
         className={`w-full bg-[#F9FAFB] rounded-2xl p-2 flex items-center gap-4 cursor-pointer hover:shadow-md transition ${
           showBorder ? "border border-[#B0B0B0]" : ""

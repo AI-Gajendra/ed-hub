@@ -42,7 +42,12 @@ const Page: NextPage = () => {
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 max-h-screen overflow-y-auto custom-scrollbar-thin gap-4 pr-2">
               {users.map((user, index) => (
-                <UserCard key={index} {...user} showBorder />
+                <UserCard
+                  key={index}
+                  {...user}
+                  showBorder
+                  navigate="/admin-b2c/admin-panel/worksheet/worksheet-selection"
+                />
               ))}
             </div>
           </div>

@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const PRIMARY_BLUE = "#3366FF"; // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = "bg-white"; // Search bar background
@@ -170,7 +171,7 @@ const Page: NextPage = () => {
       <BackButton Heading="Student Worksheets" />
       <MaxWidthWrapper>
         <main className="flex-grow w-full max-w-[90rem] mx-auto px-4 py-10 ">
-          <SubjectFolderViewContent setOpenModal={() => {}} />
+          <SubjectFolderViewContent />
         </main>
       </MaxWidthWrapper>
     </div>
@@ -182,52 +183,63 @@ export default Page;
 const FolderCard: React.FC<{
   folder: FolderItem;
   reference: React.RefObject<HTMLDivElement | null>;
-  setOpenModal: React.Dispatch<React.SetStateAction<"manageAccess" | null>>;
-}> = ({ folder, reference, setOpenModal }) => (
-  <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] bg-[#F9FAFB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
-    ref={reference}
-  >
-    <div className="absolute right-5 top-5 text-gray-400">
-      <LuInfo className="w-5 h-5 stroke-[#6B7280]" />
-    </div>
+}> = ({ folder, reference }) => {
+  const router = useRouter();
+  return (
     <div
-      className={`bg-[#8dd9b3] w-28 h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] bg-[#F9FAFB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
+      ref={reference}
     >
-      <FiFileText
-        className="w-12 h-12 text-black opacity-80"
-        strokeWidth={1.5}
-      />
-    </div>
-    <div className="flex flex-col flex-wrap w-full gap-2 sm:gap-4">
-      <div className="">
-        <h4 className="text-sm sm:text-lg text-black font-medium truncate">
-          {folder.name}
-        </h4>
-        <p className="text-xs lg:text-sm text-[#6B7280] mt-1">
-          {folder.fileCount}
-        </p>
+      <div className="absolute right-5 top-5 text-gray-400">
+        <LuInfo className="w-5 h-5 stroke-[#6B7280]" />
       </div>
-      <div className="flex gap-1 lg:gap-2 w-full flex-wrap sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
-        <div className="w-full flex gap-1 sm:gap-2 ">
-          <button
-            onClick={() => setOpenModal("manageAccess")}
-            className="bg-[#F3F4F6] text-nowrap w-full rounded-full p-2 flex items-center gap-2 cursor-pointer justify-center text-[#6B7280] text-sm md:text-base hover:bg-gray-200"
-          >
-            {" "}
-            <MessageSquare className="w-5 h-5" /> Give Suggestions
-          </button>
+      <div
+        className={`bg-[#8dd9b3] w-28 h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      >
+        <FiFileText
+          className="w-12 h-12 text-black opacity-80"
+          strokeWidth={1.5}
+        />
+      </div>
+      <div className="flex flex-col flex-wrap w-full gap-2 sm:gap-4">
+        <div className="">
+          <h4 className="text-sm sm:text-lg text-black font-medium truncate">
+            {folder.name}
+          </h4>
+          <p className="text-xs lg:text-sm text-[#6B7280] mt-1">
+            {folder.fileCount}
+          </p>
         </div>
-        <div className="w-full flex gap-1 sm:gap-2 ">
-          <button className="bg-[#F3F4F6] w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-[#6B7280] text-sm md:text-base hover:bg-gray-200">
-            {" "}
-            <Eye /> See Results
-          </button>
+        <div className="flex gap-1 lg:gap-2 w-full flex-wrap sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
+          <div className="w-full flex gap-1 sm:gap-2 ">
+            <button
+              onClick={() =>
+                router.push("/admin-b2c/admin-panel/worksheet/give-suggestions")
+              }
+              className="bg-[#F3F4F6] text-nowrap w-full rounded-full p-2 flex items-center gap-2 cursor-pointer justify-center text-[#6B7280] text-sm md:text-base hover:bg-gray-200"
+            >
+              {" "}
+              <MessageSquare className="w-5 h-5" /> Give Suggestions
+            </button>
+          </div>
+          <div className="w-full flex gap-1 sm:gap-2 ">
+            <button
+              onClick={() =>
+                router.push(
+                  "/admin-b2c/admin-panel/worksheet/worksheet-results"
+                )
+              }
+              className="bg-[#F3F4F6] w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-[#6B7280] text-sm md:text-base hover:bg-gray-200"
+            >
+              {" "}
+              <Eye /> See Results
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 interface StyledSelectProps {
   defaultValue?: string;
@@ -253,9 +265,7 @@ export const StyledSelect: React.FC<StyledSelectProps> = ({
   </Select>
 );
 
-const SubjectFolderViewContent: React.FC<{
-  setOpenModal: React.Dispatch<React.SetStateAction<"manageAccess" | null>>;
-}> = ({ setOpenModal }) => {
+const SubjectFolderViewContent: React.FC = () => {
   const [activeSubjectId] = useState<string>(sampleSubjectTabs[0]?.id || "");
   const [searchTerm, setSearchTerm] = useState("");
   // Add states for general filters if their logic becomes more complex (e.g., selected options for dropdowns)
@@ -337,7 +347,6 @@ const SubjectFolderViewContent: React.FC<{
                 key={folder.id}
                 folder={folder}
                 reference={cardHeightRef}
-                setOpenModal={setOpenModal}
               />
             ))}
           </div>
