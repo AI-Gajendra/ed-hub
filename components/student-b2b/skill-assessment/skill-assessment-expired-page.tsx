@@ -63,12 +63,14 @@ export default function TestExpiredPage() {
 				backgroundSize: 'cover',
 				backgroundColor: '#2563EB', // fallback blue if image fails to load (Tailwind's blue-600)
 			}}>
-			<div className=" overflow-hidden gap-6 flex flex-col md:flex-row w-full max-w-4xl lg:max-w-5xl">
+			<div className=" overflow-hidden gap-4 flex flex-col md:flex-row w-full max-w-4xl lg:max-w-5xl">
 				{/* Left Section - Test Information */}
-				<div className="w-full rounded-3xl md:w-[60%] bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
-					<div className="mb-6 mt-12">
-						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight text-center">
-							5-Stage Dermatoglyphic Multiple Intelligence Test (DMIT) and skill assessment
+				<div className="w-full rounded-3xl md:w-[60%] bg-white p-4 sm:p-8 lg:p-10 flex flex-col">
+					<div className="mb-6 mt-6">
+						<h1 className="text-lg font-bold text-gray-800 leading-tight text-center md:text-2xl ">
+							5-Stage Dermatoglyphic Multiple Intelligence 
+							<br />
+							<span className="font-bold text-gray-800">Test (DMIT) and skill assessment</span>
 						</h1>
 					</div>
 					<p className="text-center font-poppins tracking-tight text-sm text-black max-w-xl mx-auto mb-5">{loremIpsum}</p>

@@ -44,9 +44,9 @@ export default function TestStartPage() {
 				{/* Left Section - Test Information */}
 				<div className="w-full md:w-[60%] rounded-3xl bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
 					<div className="mb-3 mt-6">
-						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight">
+						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight md:text-2xl ">
 							<div className="text-center">
-								<h2 className="text-2xl font-bold text-black">
+								<h2 className="text-lg font-bold text-black">
 									5-Stage Dermatoglyphic Multiple Intelligence
 									<br />
 									<span className="font-bold text-gray-800">Test (DMIT) and skill assessment</span>
