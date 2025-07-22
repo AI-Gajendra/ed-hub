@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import NumberInput from "./button";
 import { clsx } from 'clsx';
+import CompulsoryCourses from './component'
 const courses = Array.from({ length: 15 }, (_, i) => `Course Name ${i + 1}`);
 
 const MembershipForm = () => {
@@ -18,17 +19,17 @@ const MembershipForm = () => {
     <div>
       <div className="max-w-[95rem] mx-auto  overflow-hidden  gap-3 flex flex-col sm:flex-row">
         {/* Left Side - Image */}
-        <div className="md:w-[65%]  rounded-2xl bg-white flex flex-col lg:flex-row">
-          <div className=" p-4  lg:max-w-md md:h-[33rem]">
+        <div className="md:w-[65%]   flex flex-col lg:flex-row">
+          <div className=" p-4 flex flex-col lg:max-w-md md:h-[57rem]">
             <img
               src="/phase-3/alphaers.png"
               alt="Membership"
               className="rounded-2xl  w-full h-full "
-            />
+            />  <div className="mt-12"><CompulsoryCourses/></div>
           </div>
 
           {/* Center - Form */}
-          <div className=" p-6 lg:max-w-base">
+          <div className=" p-6  rounded-2xl  bg-white lg:max-w-base">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-2">
               Membership Name
             </h2>
@@ -82,7 +83,7 @@ const MembershipForm = () => {
           </div>
         </div>
         {/* Right - Course List */}
-        <div className="  md:w-[25%] rounded-2xl bg-white p-6">
+        <div className="  lg:w-[25%] rounded-2xl bg-white p-6">
           <h3 className="text-lg sm:text-xl font-medium mb-3">
             Pick any X Courses out of Y Courses
           </h3>

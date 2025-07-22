@@ -12,18 +12,20 @@ import {
 import { ChatInput } from "./ui-component"; // Import ChatInput
 import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
 import { FiFileText } from "react-icons/fi";
+import ChatInterface from "./messages";
 // --- Data Interfaces (from your original) ---
 export interface TeacherContact {
   id: string;
   name: string;
-  date:string;
+  date: string;
   avatarSrc: string;
   lastMessageTime?: string;
   // isActive prop will be passed by parent, not part of core data typically
 }
 export interface ChatMessageData {
+  fileUrl: React.JSX.Element;
   id: string;
-  sender: "user" | "teacher";
+  sender: "user" | "admin";
   text?: string;
   imageUrl?: string;
   imageName?: string;
@@ -43,107 +45,31 @@ export const TeacherListItem: React.FC<TeacherListItemProps> = ({
 }) => (
   // Original: w-full flex items-center p-3 rounded-3xl transition-colors
   <button
-  onClick={onClick}
-  className={`w-full flex items-center justify-between p-3 rounded-xl transition-colors
-    ${isActive ? "bg-[#e5e7eb]" : "hover:bg-gray-100"}`}
->
-  {/* Left Section */}
-  <div className="flex items-center gap-3">
-    {/* Icon */}
-    <div className="bg-[#8dd9b3] p-2 rounded-full">
-      <FiFileText size={16} className="text-black" />
-    </div>
+    onClick={onClick}
+    className="w-full flex items-center justify-between p-3 rounded-xl transition-colors"
+  >
+    {/* Left Section */}
+    <div className="flex items-center gap-3">
+      {/* Icon */}
+      <div className="bg-[#8dd9b3] p-2 rounded-full">
+        <FiFileText size={16} className="text-black" />
+      </div>
 
-    {/* Texts */}
-    <div className="flex flex-col text-left">
-      <h4 className="text-sm font-semibold text-black">Worksheet Name</h4>
-      <p className="text-xs text-[#6b7280]">11th July 2025</p>
-    </div>
-  </div>
-
-  {/* Time */}
-  {teacher.lastMessageTime && (
-    <span className="text-[10px] text-[#6b7280] mt-4">{teacher.lastMessageTime}</span>
-  )}
-</button>
-
-);
-
-// --- Component 2: ChatMessage ---
-interface ChatMessageProps {
-  message: ChatMessageData;
-}
-export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
-  const isUser = message.sender === "user";
-  return (
-    // Original wrapper: flex mb-4 ${isUser ? 'justify-end' : 'justify-start'}
-    <div
-      className={`flex mb-3 sm:mb-4 ${
-        isUser ? "justify-end" : "justify-start"
-      }`}
-    >
-      <div
-        // Original bubble: max-w-[60%] w-full px-4 py-3 rounded-2xl shadow
-        className={`max-w-[70%] sm:max-w-[60%] w-auto px-3 py-2 rounded-xl shadow
-                           sm:px-4 sm:py-3 sm:rounded-2xl
-                ${
-                  isUser ? "bg-[#3366FF] text-white" : "bg-[#F9FAFB] text-black"
-                }`}
-      >
-        {message.text && (
-          // Original text container: flex gap-2 relative ${isUser ? 'flex-row-reverse' : ''}
-          <div
-            className={`flex gap-1.5 relative ${
-              isUser ? "flex-row-reverse" : ""
-            }`}
-          >
-            {" "}
-            {/* Reduced gap */}
-            {/* Original p: text-lg font-light ${isUser ? 'text-right pl-5' : 'pr-5'} */}
-            <p
-              className={`text-sm font-light break-words sm:text-lg ${
-                isUser ? "text-right sm:pl-6" : "sm:pr-8"
-              }`}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit.{" "}
-              {/* Exact text with <br /> */}
-            </p>
-            {/* Original timestamp: absolute tracking-tight text-[8px] font-normal flex items-center text-nowrap text-xs mt-auto ... */}
-            <p
-              className={`absolute tracking-tight text-[7px] font-normal flex items-center whitespace-nowrap mt-auto
-                                       sm:text-[8px] 
-                            ${
-                              isUser
-                                ? "text-white/85 text-right left-0 bottom-0"
-                                : "text-[#6B7280] text-left right-0 bottom-0 sm:bottom-1/2 sm:translate-y-1/2"
-                            }`}
-            >
-              {message.timestamp}
-            </p>
-          </div>
-        )}
-        {message.imageUrl && (
-          // Original image div: mt-4
-          <div className="mt-2 sm:mt-4">
-            <Image
-              src={message.imageUrl}
-              alt={message.imageName || "Chat image"}
-              width={300}
-              height={200} // These are max if not constrained by parent
-              className="w-full max-h-32 rounded-xl object-cover sm:max-h-40 md:max-h-[200px] sm:rounded-2xl"
-            />
-            <div className="flex items-center justify-end mt-1 sm:mt-2">
-              {/* Original button: mt-2 flex items-center text-black gap-1.5 text-xs bg-[#B0B0B033] hover:text-blue-600 p-3 rounded-full border-gray-200 justify-center */}
-              <button className="flex items-center text-black gap-1 text-[10px] bg-[#B0B0B033] hover:text-blue-600 p-2 rounded-full justify-center sm:text-xs sm:gap-1.5 sm:p-3">
-                <FiDownload className="w-3 h-3 sm:w-4 sm:h-4" />
-              </button>
-            </div>
-          </div>
-        )}
+      {/* Texts */}
+      <div className="flex flex-col text-left">
+        <h4 className="text-sm font-semibold text-black">Worksheet Name</h4>
+        <p className="text-xs text-[#6b7280]">11th July 2025</p>
       </div>
     </div>
-  );
-};
+
+    {/* Time */}
+    {teacher.lastMessageTime && (
+      <span className="text-[10px] text-[#6b7280] mt-4">
+        {teacher.lastMessageTime}
+      </span>
+    )}
+  </button>
+);
 
 // --- Component 3: TeacherListSidebar ---
 interface TeacherListSidebarProps {
@@ -157,41 +83,43 @@ export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({
   activeTeacherId,
   onTeacherSelect,
 }) => (
-  <div className="w-full lg:w-[35%] bg-white rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
+  <div className="w-full lg:w-[35%] bg-white    rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
     {/* Original h2: text-lg tracking-wide font-popp font-semibold text-[#FF3366] mb-4 px-2 */}
     <h2 className="text-md tracking-wide font-semibold text-[#FF3366] mb-3 px-1 sm:text-lg sm:mb-4 sm:px-2">
       {" "}
       {/* Assuming font-popp is global */}
       Worksheet List
-    </h2>
-    <div className="w-full bg-white text-black flex gap-4 items-center py-2 rounded-xl">
-      {/* Search Input */}
-      <SearchFilter bg={"bg-white"} filters={filter} />
-    </div>
-    {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
-    <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey pr-1 sm:pr-2">
-      {/* Your original repetition for scroll testing */}
-      {[
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-        ...teachers,
-      ].map((teacher, indx) => (
-        <TeacherListItem
-          key={`${teacher.id}-${indx}`} // Ensure unique key with repeated data
-          teacher={teacher}
-          isActive={activeTeacherId === teacher.id && indx < teachers.length} // Only highlight first set if ids are repeated
-          onClick={() => onTeacherSelect(teacher.id)}
-        />
-      ))}
+    </h2>{" "}
+    <div>
+      <div className="w-full bg-white text-black flex gap-4 items-center py-2  rounded-xl">
+        {/* Search Input */}
+        <SearchFilter bg={"bg-white"} filters={filter} />
+      </div>
+      {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
+      <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey  pr-1 sm:pr-2">
+        {/* Your original repetition for scroll testing */}
+        {[
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+          ...teachers,
+        ].map((teacher, indx) => (
+          <TeacherListItem
+            key={`${teacher.id}-${indx}`} // Ensure unique key with repeated data
+            teacher={teacher}
+            isActive={activeTeacherId === teacher.id && indx < teachers.length} // Only highlight first set if ids are repeated
+            onClick={() => onTeacherSelect(teacher.id)}
+          />
+        ))}
+      </div>{" "}
     </div>
   </div>
 );
@@ -231,17 +159,13 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
     {selectedTeacher ? (
       <>
         {/* Original header: p-4 flex items-center gap-3 shrink-0 */}
-        <div className="p-2 mt-4 justify-between z-20 relative flex items-center gap-2 rounded-full bg-white  sm:gap-3">
+        <div className="p-3 mt-4 justify-between z-20 relative flex items-center gap-2 rounded-full bg-white  sm:gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
-            <Image
-              src={selectedTeacher.avatarSrc}
-              alt={selectedTeacher.name}
-              width={40}
-              height={40}
-              className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"
-            />
+            <div className="bg-[#8dd9b3] p-3 rounded-full">
+              <FiFileText size={18} className="text-black" />
+            </div>
             <h3 className="text-md font-semibold text-black sm:text-lg">
-              {selectedTeacher.name}
+              Worksheet Name
             </h3>
           </div>
           {onBackClick && (
@@ -256,10 +180,8 @@ export const ChatArea: React.FC<ChatAreaProps> = ({
           )}
         </div>
         {/* Original messages: flex-grow p-4 space-y-4 overflow-y-auto custom-scrollbar */}
-        <div className="flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4 sm:space-y-4">
-          {messages.map((msg) => (
-            <ChatMessage key={msg.id} message={msg} />
-          ))}
+        <div className="flex-grow p-3 mt-4 space-y-3 overflow-y-auto no-scrollbar  sm:p-4 sm:space-y-4">
+          <ChatInterface />
           <div />
         </div>
         {/* Original input: p-4 shrink-0 */}
