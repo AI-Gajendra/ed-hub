@@ -17,6 +17,7 @@ import FooterNew from "@/components/footer3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import Footer from "@/components/layout/Footer";
+import { useRouter } from "next/navigation";
 
 interface Review {
   id: number;
@@ -70,11 +71,10 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`w-3 h-3 ${
-            star <= rating
-              ? "fill-yellow-400 text-yellow-400"
-              : "fill-transparent text-transparent"
-          }`}
+          className={`w-3 h-3 ${star <= rating
+            ? "fill-yellow-400 text-yellow-400"
+            : "fill-transparent text-transparent"
+            }`}
         />
       ))}
     </div>
@@ -109,7 +109,7 @@ export const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 
 export default function DemoCourseDetail() {
   const [activeTab, setActiveTab] = useState("about");
-
+  const router = useRouter();
   const menuItems = [
     { id: "about", label: "About Course", icon: Info },
     { id: "benefits", label: "Benefits", icon: Star },
@@ -265,10 +265,14 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         className="w-full bg-[#F9FAFB] border border-[#D5D5D5] rounded-2xl"
                       />
                       <Button
+                        onClick={(e) => {
+                          e.preventDefault(); // <-- block form submit
+                          router.push("/b2c-student/student-flow/demo/checkout");
+                        }}
                         className="bg-[#3366FF] hover:bg-blue-700 text-white text-lg py-6 px-10 rounded-full"
                         size="lg"
                       >
-                        Add to Cart
+                        Buy Now
                       </Button>
                     </div>
                   </form>
@@ -326,11 +330,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       onClick={() => setActiveTab(item.id)}
                       className={`
                     w-full flex items-center gap-3 px-4 py-2 rounded-full text-left transition-all duration-200
-                    ${
-                      isActive
-                        ? "bg-[#FF3366] text-white"
-                        : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
-                    }
+                    ${isActive
+                          ? "bg-[#FF3366] text-white"
+                          : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
+                        }
                   `}
                     >
                       <IconComponent size={20} />

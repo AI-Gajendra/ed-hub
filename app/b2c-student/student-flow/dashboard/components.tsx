@@ -1,11 +1,16 @@
 // components.tsx
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { FiMessageSquare as FiChatIcon, FiVideo as FiVideoActivity, FiFileText as FiFileActivity } from 'react-icons/fi';
 import { FocusPill, DateNavigator, FilterTabButton, DualToggleButton, OutlineButton } from './ui-components';
 import MonthTab from '@/components/common-components/MonthTab/MonthTab';
+import WarningPopup from '../../ct-student-b2c-popups/components-popups/WarningPopup';
+import { warning } from 'framer-motion';
+import CancelLectureModal from '../../ct-student-b2c-popups/components-popups/CancelLecture';
+import { useRouter } from 'next/navigation';
+import Buttons from '@/app/b2c-teacher/ct-pop-ups/popupComponent/Buttons';
 
 // --- Data Interfaces ---
 interface StudentProfileData {
@@ -26,7 +31,11 @@ interface Notification { id: number; title: string; message: string; date: strin
 
 // --- Profile Info Card ---
 interface StudentProfileCardProps { studentData: StudentProfileData; }
-export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentData }) => (
+export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentData }) => {
+    const router = useRouter();
+    const [btn, setBtn] = useState(false)
+     return (
+<>
     <div className="bg-white rounded-2xl p-4 md:p-6"> {/* Base padding for mobile, md:p-6 for desktop */}
         <div className="flex flex-col sm:flex-row items-start sm:gap-6">
             <Image
@@ -51,14 +60,22 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
                 </div>
             </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-x-4 mt-6 md:mt-8">
-            <div className="bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-x-4 mt-6 md:mt-8">
+            <div
+            
+              onClick={() => router.push("/b2c-student/student-flow/assessment-result")} className="bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
                 <p className="text-sm font-semibold text-black">DMT & Skill Test</p>
                 <p className="text-sm font-medium text-black mt-1">Score: {studentData.dmitScore}</p>
             </div>
-            <div className="bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
+            <div
+            onClick={() => router.push("/b2c-student/student-flow/report")} 
+            className="bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
                 <p className="text-sm font-semibold text-black">Assessment Report</p>
                 <p className="text-sm font-medium text-black mt-1">{studentData.assessmentReportDate}</p>
+            </div>
+            <div
+            onClick={() => setBtn(true)} className="flex items-center justify-center bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
+                <p className="text-sm font-semibold  text-black">Report</p>
             </div>
         </div>
         <div className="mt-6 bg-[#FEF9C3] border-l-4 border-yellow-400 p-3 md:p-4 rounded-l-xl"> {/* Adjusted: rounded-l-xl not rounded-r-xl */}
@@ -70,7 +87,9 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
             <div className="flex flex-wrap gap-2 md:gap-3">{studentData.focusAreas.map(area => (<FocusPill key={area} label={area} />))}</div>
         </div>
     </div>
-);
+    <Buttons isOpen={btn} onClose={() => setBtn(false)}/>
+</>
+)};
 
 // --- Learning Activity Item (Internal to LearningActivitiesSection) ---
 const ActivityItem: React.FC<{ activity: Activity }> = ({ activity }) => {
@@ -106,6 +125,8 @@ interface LearningActivitiesSectionProps {
 }
 export const LearningActivitiesSection: React.FC<LearningActivitiesSectionProps> = ({ activities, currentFilter, onFilterChange, currentDate, onDatePrev, onDateNext }) => {
     const filteredActivities = activities.filter(activity => currentFilter === 'Active' ? (activity.status === 'join' || activity.status === 'not_started') : activity.status === 'completed');
+    const router = useRouter();
+
     return (
         <div className="bg-white rounded-2xl p-4 md:p-6">
             <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
@@ -115,51 +136,98 @@ export const LearningActivitiesSection: React.FC<LearningActivitiesSectionProps>
             <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 flex-wrap">
                 <MonthTab />
                 <DualToggleButton leftLabel="Weekly ( 10 )" rightLabel="Monthly ( 50 )" activeSide="left" />
-                <OutlineButton label="Yearly Plan Overview" />
+                <OutlineButton label="Yearly Plan Overview" 
+              onClick={() => router.push("/b2c-student/student-flow/yearly-plan")}/>
             </div>
             <div className="space-y-3 md:space-y-4 pr-2 max-h-[480px] overflow-y-auto custom-scrollbar-thin h-full">
                 {filteredActivities.length > 0 ? filteredActivities.map(activity => (<ActivityItem key={activity.id} activity={activity} />)) : <p className="text-center text-sm text-gray-500 py-4">No activities.</p>}
-                </div>
+            </div>
         </div>
     );
 };
 
 // --- Classes Card ---
-interface ClassesSummaryCardProps { classStats: ClassStatsData; onDatePrev?: () => void; onDateNext?: () => void; }
-export const ClassesSummaryCard: React.FC<ClassesSummaryCardProps> = ({ classStats }) => (
-    <>
-        <div className="bg-white rounded-2xl p-4 text-center">
-            <h3 className="text-lg font-semibold text-[#3366ff] mb-2">
-                Need to Reschedule a Class?
-            </h3>
-            <p className="text-sm text-gray-500 mb-4">
-                You can submit a request if your child is unavailable for the upcoming session.
-            </p>
-            <div className="flex justify-center gap-3">
-                <button className="bg-[#FFEDEF] text-[#FF3366] text-sm font-medium px-4 py-2.5 rounded-full">
-                    Cancel a Lecture
-                </button>
-                <button className="bg-[#246BFD] text-white text-sm font-medium px-4 py-2.5 rounded-full">
-                    Request Reschedule
-                </button>
-            </div>
-        </div>
-        <div className="bg-white rounded-2xl p-4 md:p-6">
-            <div className="flex  justify-between items-start xs:items-center mb-4 gap-2">
-                <h2 className="text-md md:text-lg font-semibold text-black">Classes</h2>
-                <MonthTab />
-            </div>
-            <div className="flex justify-between items-baseline mb-4">
-                <div><p className="text-xs text-gray-500">Complete</p><p className="text-xl md:text-2xl font-bold text-black">{classStats.complete}<span className="text-sm font-normal text-gray-500"> / {classStats.total}</span></p></div>
-                <div className="text-right"><p className="text-xs text-[#6B7280]">Incomplete</p><p className="text-sm md:text-base text-center font-bold mt-2 text-[#FF3366]">{classStats.incomplete}</p></div>
-            </div>
-            <div className="space-y-1 text-sm">
-                {[{ label: 'Attendance', value: classStats.attendance }, { label: 'Grade', value: classStats.grade }, { label: 'Leader Board', value: classStats.leaderBoardRank }].map((item, index, array) => (<React.Fragment key={item.label}><div className="flex justify-between items-center pt-1"><span className="text-[#6B7280]">{item.label}</span><span className="text-[#3366FF] font-medium">{item.value}</span></div>{index < array.length - 1 && <div className="w-full border-b border-[#B0B0B0] h-[1px] my-0.5" />}</React.Fragment>))}
-            </div>
-        </div>
-    </>
-);
+interface ClassesSummaryCardProps {
+    classStats: ClassStatsData;
+    onDatePrev?: () => void;
+    onDateNext?: () => void;
+}
 
+export const ClassesSummaryCard: React.FC<ClassesSummaryCardProps> = ({ classStats }) => {
+
+    const [waringPop, setWarningPop] = useState(false);
+    const [cancelWaringPop, setCancelWaringPop] = useState(false);
+
+    return (
+        <>
+            <div className="bg-white rounded-2xl p-4 text-center">
+                <h3 className="text-lg font-semibold text-[#3366ff] mb-2">
+                    Need to Reschedule a Class?
+                </h3>
+                <p className="text-sm text-gray-500 mb-4">
+                    You can submit a request if your child is unavailable for the upcoming session.
+                </p>
+                <div className="flex justify-center gap-3">
+                    <button
+                        className="bg-[#FFEDEF] text-[#FF3366] text-sm font-medium px-4 py-2.5 rounded-full"
+                        onClick={() => setCancelWaringPop(true)}
+                    >
+                        Cancel a Lecture
+                    </button>
+                    <button
+                        className="bg-[#246BFD] text-white text-sm font-medium px-4 py-2.5 rounded-full"
+                        onClick={() => setWarningPop(true)}
+                    >
+                        Request Reschedule
+                    </button>
+                </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-4 md:p-6">
+                <div className="flex justify-between items-start xs:items-center mb-4 gap-2">
+                    <h2 className="text-md md:text-lg font-semibold text-black">Classes</h2>
+                    <MonthTab />
+                </div>
+
+                <div className="flex justify-between items-baseline mb-4">
+                    <div>
+                        <p className="text-xs text-gray-500">Complete</p>
+                        <p className="text-xl md:text-2xl font-bold text-black">
+                            {classStats.complete}
+                            <span className="text-sm font-normal text-gray-500"> / {classStats.total}</span>
+                        </p>
+                    </div>
+                    <div className="text-right">
+                        <p className="text-xs text-[#6B7280]">Incomplete</p>
+                        <p className="text-sm md:text-base text-center font-bold mt-2 text-[#FF3366]">
+                            {classStats.incomplete}
+                        </p>
+                    </div>
+                </div>
+
+                <div className="space-y-1 text-sm">
+                    {[
+                        { label: 'Attendance', value: classStats.attendance },
+                        { label: 'Grade', value: classStats.grade },
+                        { label: 'Leader Board', value: classStats.leaderBoardRank },
+                    ].map((item, index, array) => (
+                        <React.Fragment key={item.label}>
+                            <div className="flex justify-between items-center pt-1">
+                                <span className="text-[#6B7280]">{item.label}</span>
+                                <span className="text-[#3366FF] font-medium">{item.value}</span>
+                            </div>
+                            {index < array.length - 1 && (
+                                <div className="w-full border-b border-[#B0B0B0] h-[1px] my-0.5" />
+                            )}
+                        </React.Fragment>
+                    ))}
+                </div>
+            </div>
+            <WarningPopup isOpen={waringPop} onClose={() => setWarningPop(false)} />
+            <CancelLectureModal isOpen={cancelWaringPop} onClose={() => setCancelWaringPop(false)} />
+        </>
+    );
+};
 // --- Teacher Item (Internal to YourTeachersCard) ---
 const TeacherItem: React.FC<Teacher> = ({ avatarSrc, name, subject }) => (
     <div className="flex items-center justify-between p-1.5 md:p-2 bg-gray-100 rounded-full ">
