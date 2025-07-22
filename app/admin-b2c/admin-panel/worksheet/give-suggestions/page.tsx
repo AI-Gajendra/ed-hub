@@ -127,7 +127,7 @@ export default function ChatInterface() {
 
   return (
     <div>
-      <BackButton Heading="Students giving Worksheets" />
+      <BackButton Heading="Give Suggestions" />
       <MaxWidthWrapper>
         <main className="flex-grow w-full max-w-[90rem] mx-auto px-4 py-10">
           <div className="flex h-screen gap-6">
@@ -181,7 +181,13 @@ export default function ChatInterface() {
             </div>
 
             {/* Right Side - Chat Area */}
-            <div className="flex-1 flex flex-col p-4 rounded-3xl">
+            <div
+              className="flex-1 flex flex-col p-4 rounded-3xl"
+              style={{
+                backgroundImage: 'url("/chat_background.png")',
+                backgroundSize: "cover",
+              }}
+            >
               {selectedStudent ? (
                 <>
                   {/* Chat Header */}
