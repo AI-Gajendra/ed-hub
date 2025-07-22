@@ -40,13 +40,13 @@ export default function TestStartPage() {
 				backgroundSize: 'cover',
 				backgroundColor: '#2563EB', // fallback blue if image fails to load (Tailwind's blue-600)
 			}}>
-			<div className="overflow-hidden flex flex-col gap-4 md:flex-row w-full max-w-4xl lg:max-w-5xl">
+			<div className="overflow-hidden flex flex-col gap-6 md:flex-row w-full max-w-4xl lg:max-w-5xl">
 				{/* Left Section - Test Information */}
 				<div className="w-full md:w-[60%] rounded-3xl bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
-					<div className="mb-3 mt-6">
-						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight">
+					<div className="mb-8 mt-14">
+						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight md:text-2xl ">
 							<div className="text-center">
-								<h2 className="text-2xl font-bold text-black">
+								<h2 className="text-xl font-bold text-black">
 									5-Stage Dermatoglyphic Multiple Intelligence
 									<br />
 									<span className="font-bold text-gray-800">Test (DMIT) and skill assessment</span>

@@ -1,18 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
-import Navbar from "@/components/phase-3/navbar";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ArrowLeft, ChevronDown } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 import Image from "next/image";
+import DetailsCousrePopup from "../pop-ups/component/details-for-course";
 
 const user = {
   avatarSrc: "/admin/usernav.jpg",
@@ -21,6 +13,7 @@ const user = {
 };
 
 export default function FoundationCard() {
+  const [openModal, setOpenModal] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<
     "Academic Courses" | "Foundation & Skills Courses"
   >("Academic Courses");
@@ -28,12 +21,16 @@ export default function FoundationCard() {
     <div className="bg-[#EEEEEE] h-full min-h-screen">
       <MaxWidthWrapper className="py-10">
         <div>
+          <DetailsCousrePopup
+            isOpen={openModal === "details course"}
+            onClose={() => setOpenModal(null)}
+          />
           <h2 className="text-xl mt-14 font-medium">
             Select Board in Foundation courses
           </h2>
           <div className="space-y-8 mt-4">
             <div className="">
-              <GradeCard />
+              <GradeCard setOpenModal={setOpenModal} />
             </div>
           </div>
         </div>
@@ -41,8 +38,10 @@ export default function FoundationCard() {
     </div>
   );
 }
-
-function GradeCard() {
+type GradeCardProps = {
+  setOpenModal: Dispatch<SetStateAction<string | null>>;
+};
+function GradeCard({ setOpenModal }: GradeCardProps) {
   const [selected, setSelected] = useState(true);
   interface CardData {
     id: number;
@@ -93,7 +92,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 6,
       title: "Crash Course - Olympiad (IMO, Aryabhatta, Ramanujan) ",
       description: `Courses offered in this Course Type Name.
@@ -101,7 +100,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 7,
       title: "Foreign Languages ",
       description: `Courses offered in this Course Type Name.
@@ -109,7 +108,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 8,
       title: "Applied Science ",
       description: `Courses offered in this Course Type Name.
@@ -117,7 +116,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 9,
       title: "Applied Mathematics",
       description: `Courses offered in this Course Type Name.
@@ -125,7 +124,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 10,
       title: "Placeholder ",
       description: `Courses offered in this Course Type Name.
@@ -133,7 +132,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 11,
       title: "Placeholder ",
       description: `Courses offered in this Course Type Name.
@@ -141,7 +140,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     {
+    {
       id: 12,
       title: "Placeholder",
       description: `Courses offered in this Course Type Name.
@@ -149,7 +148,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
       image: "/phase-3/grade-card.png",
       buttonLabel: "Select Course Type",
     },
-     
   ];
 
   return (
@@ -173,14 +171,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
             <p className="text-[#2E2E2E] text-center mx-auto  max-w-[39ch] text-sm tracking-wide leading-6">
               {card.description}
             </p>
-            <Link
-              href={"/b2c-phase-3/grade-and-content"}
-              className="w-full mt-4"
-            >
-              <button className="bg-[#3366ff] rounded-full w-full px-3 py-2   text-white">
-                {card.buttonLabel}
-              </button>
-            </Link>
+
+            <button className="bg-[#3366ff] rounded-full  mt-4 w-full px-3 py-2   text-white"
+            onClick={() => setOpenModal("details course")}>
+              
+              {card.buttonLabel}
+            </button>
           </div>
         </div>
       ))}
