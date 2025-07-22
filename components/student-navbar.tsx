@@ -25,12 +25,12 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
   }, []);
 
   const navLinks = [
-    "/student/home",
-    "/student/courses/about",
-    "/student/teachers/select",
-    "/student/courses",
-    "/student/contact",
-    "/student/my-learnings/time-table",
+    "/b2c-student/student-flow/home",
+    "/b2c-student/student-flow/about-us",
+    "/b2c-student/student-flow/educator",
+    "/b2c-student/student-flow/courses",
+    "/b2c-student/student-flow/contact",
+    "/b2c-student/student-flow/dashboard",
   ];
 
   const navLabels = [
@@ -47,8 +47,8 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
         }`}
     >
-      <nav className="bg-[#3366FF] text-white pt-4">
-        <div className="container mx-auto px-12">
+      <nav className="bg-[#3366FF] text-white pt-4 px-8">
+        <div className="w-full mx-auto xl:px-12">
           <div className="flex items-center justify-between h-17">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
@@ -63,12 +63,12 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden lg:flex lg:space-x-4 xl:space-x-8">
               {navLinks.map((href, idx) => (
                 <Link
                   key={`${href}-${idx}`}
                   href={href}
-                  className={`text-base font-medium hover:text-gray-200 transition-colors duration-200 px-3 py-2 rounded-full ${navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
+                  className={`text-sm text-nowrap xl:text-base font-medium hover:text-gray-200 transition-colors duration-200 px-2 py-1.5 lg:px-3 lg:py-2 rounded-full ${navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
                     }`}
                 >
                   {navLabels[idx]}
@@ -110,7 +110,7 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
 
               {/* Mobile menu button */}
               <button
-                className="md:hidden p-2 rounded-md hover:bg-white/10 hover:bg-opacity-20 transition-colors"
+                className="lg:hidden p-2 rounded-md hover:bg-white/10 hover:bg-opacity-20 transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg
@@ -137,42 +137,42 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? "max-h-96" : "max-h-0"
+          className={`lg:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? "max-h-96" : "max-h-0"
             }`}
         >
           <div className="px-4 py-2 space-y-1 bg-[#3366FF]">
             <Link
-              href="/student/home"
+              href="/b2c-student/student-flow/home"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Home
             </Link>
             <Link
-              href="/student/courses/about"
+              href="/b2c-student/student-flow/about-us"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               About
             </Link>
             <Link
-              href="/student/teachers/select"
+              href="/b2c-student/student-flow/educator"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Instructor List
             </Link>
             <Link
-              href="/student/courses"
+              href="/b2c-student/student-flow/courses"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Courses List
             </Link>
             <Link
-              href="/student/contact"
+              href="/b2c-student/student-flow/contact"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Contact
             </Link>
             <Link
-              href="/student/my-learnings/time-table"
+              href="/b2c-student/student-flow/dashboard"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               My learnings
