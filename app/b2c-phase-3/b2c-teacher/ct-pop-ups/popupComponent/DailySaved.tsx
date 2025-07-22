@@ -13,7 +13,7 @@ const DailyLogSavedPopup: React.FC<PopupPropB2CTeacher> = ({
 
   const handleContinue = () => {
     onClose(); // Close the modal
-    router.push("/b2c-teacher/teacher-flow/daily-log-student-list");
+    router.push("/b2c-phase-3/b2c-teacher/teacher-flow/daily-log-student-list");
   };
 
   return (

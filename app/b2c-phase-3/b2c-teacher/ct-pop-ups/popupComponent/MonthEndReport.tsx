@@ -7,7 +7,7 @@ const MonthEndReportModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose })
   const router = useRouter();
 
   const handlePublish = () => {
-    router.push("/b2c-teacher/teacher-flow/dashboard");
+    router.push("/b2c-phase-3/b2c-teacher/teacher-flow/dashboard");
   };
   return (
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-sm">
