@@ -15,9 +15,7 @@ import { MdOutlineSuperscript, MdOutlineFunctions } from "react-icons/md";
 import { TbMathFunction } from "react-icons/tb"; // Add icons as needed
 import { RiPsychotherapyLine } from "react-icons/ri";
 import { MdOutlineTheaterComedy } from "react-icons/md";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import { Smile, Star } from "lucide-react";
 
 export default function page() {
   return (
@@ -36,21 +34,20 @@ export default function page() {
 }
 
 const ResultsSection = () => {
-  const overallScore = 40;
   const individualScores = [
-    { name: "Academic Skills", percentage: 40, color: "#3B82F6" },
-    { name: "Brain Development", percentage: 60, color: "#F59E0B" },
-    { name: "Personality Development", percentage: 50, color: "#EC4899" },
-    { name: "Emotional Intelligence", percentage: 20, color: "#10B981" },
-    { name: "Pedagogy learning", percentage: 40, color: "#F97316" },
+    { name: "Academic Skills", percentage: 40, color: "#3366FF" },
+    { name: "Brain Development", percentage: 60, color: "#FFCC00" },
+    { name: "Personality Development", percentage: 50, color: "#FF99B7" },
+    { name: "Emotional Intelligence", percentage: 20, color: "#8DD9B3" },
+    { name: "Pedagogy learning", percentage: 40, color: "#FFC79A" },
   ];
 
   const stats = [
-    { label: "Total Marks", value: "50", color: "#6B7280" },
-    { label: "Total Questions", value: "50", color: "#6B7280" },
-    { label: "Attempted", value: "40", color: "#6B7280" },
-    { label: "Correct", value: "30", color: "#3B82F6" },
-    { label: "Incorrect", value: "10", color: "#EF4444" },
+    { label: "Total Marks", value: "50", color: "#000000" },
+    { label: "Total Questions", value: "50", color: "#000000" },
+    { label: "Attempted", value: "40", color: "#000000" },
+    { label: "Correct", value: "30", color: "#3366FF" },
+    { label: "Incorrect", value: "10", color: "#FF3366" },
   ];
 
   const aiSuggestions = [
@@ -83,112 +80,182 @@ const ResultsSection = () => {
     },
   ];
 
-  // Circular progress component
-  const CircularProgress = ({ percentage }: { percentage: number }) => {
-    const radius = 60;
-    const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (percentage / 100) * circumference;
+  interface SemiCircularProgressProps {
+    percentage: number;
+    size?: number;
+    strokeWidth?: number;
+    color?: string;
+    backgroundColor?: string;
+    showIcon?: boolean;
+    className?: string;
+  }
+
+  function SemiCircularProgress({
+    percentage = 40,
+    size = 200,
+    strokeWidth = 11,
+    color = "#3366FF", // blue-500
+    backgroundColor = "#E9EDF0", // gray-200
+    showIcon = true,
+    className = "",
+  }: SemiCircularProgressProps) {
+    const radius = (size - strokeWidth) / 2;
+    const circumference = Math.PI * radius; // Half circle circumference
+    const strokeDasharray = circumference;
+    const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
     return (
-      <div className="relative w-32 h-32 mx-auto mb-4">
-        <svg
-          className="w-full h-full transform -rotate-90"
-          viewBox="0 0 144 144"
+      <div className={`flex flex-col items-center justify-center ${className}`}>
+        <div
+          className="relative"
+          style={{ width: size, height: size / 2 + 40 }}
         >
-          <circle
-            cx="72"
-            cy="72"
-            r={radius}
-            fill="none"
-            stroke="#E5E7EB"
-            strokeWidth="8"
-          />
-          <circle
-            cx="72"
-            cy="72"
-            r={radius}
-            fill="none"
-            stroke="#3B82F6"
-            strokeWidth="8"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-          />
-        </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl">😔</span>
-          <span className="text-2xl font-bold text-green-500 mt-1">
+          {/* Semi-circular progress bar */}
+          <svg
+            width={size}
+            height={size / 2 + 20}
+            className="transform"
+            style={{ overflow: "visible" }}
+          >
+            {/* Background arc */}
+            <path
+              d={`M ${strokeWidth / 2} ${
+                size / 2
+              } A ${radius} ${radius} 0 0 1 ${size - strokeWidth / 2} ${
+                size / 2
+              }`}
+              fill="none"
+              stroke={backgroundColor}
+              strokeWidth={strokeWidth}
+              strokeLinecap="round"
+            />
+
+            {/* Progress arc */}
+            <path
+              d={`M ${strokeWidth / 2} ${
+                size / 2
+              } A ${radius} ${radius} 0 0 1 ${size - strokeWidth / 2} ${
+                size / 2
+              }`}
+              fill="none"
+              stroke={color}
+              strokeWidth={strokeWidth}
+              strokeLinecap="round"
+              strokeDasharray={strokeDasharray}
+              strokeDashoffset={strokeDashoffset}
+              className="transition-all duration-1000 ease-out"
+            />
+          </svg>
+
+          {/* Center icon */}
+          {showIcon && (
+            <div
+              className="absolute flex items-center justify-center bg-[#E9EDF0] rounded-full"
+              style={{
+                width: 48,
+                height: 48,
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <Smile className="w-8 h-8 stroke-[#3366FF]" />
+            </div>
+          )}
+        </div>
+
+        {/* Percentage text */}
+        <div className="-translate-y-[16px]">
+          <span className="text-2xl font-bold text-[#8DD9B3]">
             {percentage}%
           </span>
         </div>
       </div>
     );
-  };
+  }
 
   return (
     <div className="rounded-2xl p-4 pb-0">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.5fr] gap-5">
         {/* Left Section */}
-        <div className="bg-white p-4 rounded-3xl">
+        <div className="bg-white p-6 pr-0 rounded-3xl flex flex-col justify-between items-center gap-4">
           {/* Results Header */}
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-2xl">⭐</span>
-            <h2 className="text-2xl font-bold text-gray-800">Results</h2>
+          <div className="flex items-center gap-2 mb-6 w-full">
+            <Star className="stroke-[#FFCC00] stroke-2 w-6 h-6" />
+            <h2 className="text-2xl font-semibold">Results</h2>
           </div>
 
-          {/* Circular Progress */}
-          <div className="mb-6">
-            <CircularProgress percentage={overallScore} />
-            <p className="text-center text-gray-600 font-medium max-w-xs mx-auto">
-              Great effort! A little more focus will take you to the top
-            </p>
-          </div>
+          <div className="lg:grid lg:grid-cols-[0.5fr_1fr] lg:gap-10 w-full">
+            {/* Circular Progress */}
+            <div className="mb-6 border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl flex flex-col justify-center items-center gap-10 p-4">
+              <SemiCircularProgress
+                percentage={40}
+                size={200}
+                strokeWidth={12}
+                color="#3B82F6"
+                backgroundColor="#E5E7EB"
+                showIcon={true}
+              />
+              <p className="text-center font-medium max-w-xs mx-auto lg:w-[75%]">
+                Great effort! A little more focus will take you to the top
+              </p>
+            </div>
 
-          {/* Individual Scores */}
-          <div className="mb-8">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Individual Scores
-            </h3>
-            <div className="space-y-4">
-              {individualScores.map((score, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <span className="text-gray-700 font-medium min-w-0 flex-1 mr-4">
-                    {score.name}
-                  </span>
-                  <div className="flex items-center gap-3 flex-1 max-w-xs">
-                    <div className="flex-1 bg-gray-200 rounded-full h-2">
-                      <div
-                        className="h-2 rounded-full transition-all duration-300"
-                        style={{
-                          width: `${score.percentage}%`,
-                          backgroundColor: score.color,
-                        }}
-                      />
-                    </div>
-                    <span className="text-gray-500 text-sm font-medium min-w-[3rem] text-right">
-                      {score.percentage}%
+            {/* Individual Scores */}
+            <div className="mb-6 border border-[#E5E7EB] bg-[#F9FAFB] rounded-l-3xl p-4 pr-0">
+              <h3 className="text-2xl font-semibold mb-6">Individual Scores</h3>
+              <div className="space-y-5">
+                {individualScores.map((score, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
+                    <span className="font-medium min-w-0 flex-1 mr-4 text-right">
+                      {score.name}
                     </span>
+                    <div className="flex items-center gap-3 flex-1 max-w-xs">
+                      <div className="flex-1 bg-white rounded-l-full p-1 flex justify-start items-center">
+                        <div
+                          className="h-3 rounded-full transition-all duration-300 relative"
+                          style={{
+                            width: `${score.percentage}%`,
+                            backgroundColor: score.color,
+                          }}
+                        >
+                          <span className="text-[#B0B0B0] text-xs font-medium w-fit absolute right-0 top-1/2 translate-x-[calc(100%_+_8px)] -translate-y-1/2">
+                            {score.percentage}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Statistics */}
+          <div className="pr-6 mb-6 w-full">
+            <div className="flex justify-center items-center gap-10 mx-auto bg-[#F9FAFB] border border-[#E5E7EB] rounded-full p-4">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <p className="text-lg text-[#6B7280] font-semibold mb-1">
+                    {stat.label}
+                  </p>
+                  <p
+                    className="text-lg font-bold"
+                    style={{ color: stat.color }}
+                  >
+                    {stat.value}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Statistics */}
-          <div className="grid grid-cols-5 gap-4 mb-6">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <p className="text-sm text-gray-500 mb-1">{stat.label}</p>
-                <p className="text-xl font-bold" style={{ color: stat.color }}>
-                  {stat.value}
-                </p>
-              </div>
-            ))}
-          </div>
-
           {/* Next Button */}
           <div className="flex justify-center">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-8 py-3 rounded-full transition-colors">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-12 py-3 rounded-full transition-colors">
               Next
             </button>
           </div>
@@ -202,7 +269,7 @@ const ResultsSection = () => {
             </h2>
           </div>
 
-          <div className="space-y-6 max-h-[600px] overflow-y-auto pr-2">
+          <div className="space-y-6 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
             {aiSuggestions.map((suggestion, index) => (
               <div key={index}>
                 <h3 className="text-lg font-bold text-[#2E2E2E] mb-3">
