@@ -141,6 +141,27 @@ const classFlowSteps: ClassFlowStep[] = [
   },
 ];
 
+const sessionData = Array.from({ length: 12 }, () => ({
+  title: `Unit Name`,
+  content: `1. REAL NUMBERS
+
+1. Review of representation of natural numbers, integers, and
+rational numbers on the number line. Rational numbers as
+recurring/terminating decimals. Operations on real numbers.
+
+2. Examples of non-recurring/non-terminating decimals.
+Existence of non-rational numbers (irrational numbers) such as,
+and their representation on the number line. Explaining that
+every real number is represented by a unique point on the
+number line and conversely, viz. every point on the number line
+represents a unique real number.
+
+3. Definition of nth root of a real number.
+4. Rationalization (with precise meaning) of real numbers of the
+type
+`,
+}));
+
 const pedagogyData = Array.from({ length: 6 }, () => ({
   title: `Chapter Name`,
   content: `Before the class
@@ -178,6 +199,7 @@ export default function CurriculumComponent() {
     "pedagogy"
   );
   const [activeCategory, setActiveCategory] = useState(1);
+  const [activeCurriculumIndex, setActiveCurriculumIndex] = useState<number | null>(0);
   const [activePedagogyIndex, setActivePedagogyIndex] = useState<number | null>(0);
   const [activeLectureIndex, setActiveLectureIndex] = useState<number | null>(0);
   const [openSessions, setOpenSessions] = useState<number[]>([]);
@@ -226,82 +248,82 @@ export default function CurriculumComponent() {
           </div>
 
           {/* Unit Card */}
-          <Card className="mb-4 bg-[#E5E7EB] rounded-3xl">
-            <CardContent
-              className="p-4 rounded-3xl"
-              style={{
-                backgroundImage: 'url("/student/my-course/Ciricular.png")',
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
-              <div className="flex justify-between items-center mb-3 bg-white rounded-3xl px-4 py-3">
-                <h4 className="font-medium text-lg">Unit Name</h4>
-                <div className="text-xs flex items-center text-gray-500">
-                  <span>Periods: 18</span>
-                  <span className="ml-4">Marks: 20</span>
-                </div>
-              </div>
-
-              <div className="space-y-4 text-sm text-gray-700 bg-white rounded-3xl px-4 py-3">
-                <h5 className="font-medium mb-2">1. REAL NUMBERS</h5>
-                <p className="font-xs text-[#6B7280]">
-                  1. Review of representation of natural numbers, integers, and
-                  rational numbers on the number line. Rational numbers as
-                  recurring/terminating decimals. Operations on real numbers.
-                </p>
-                <p className="font-xs text-[#6B7280]">
-                  2. Examples of non-recurring/non-terminating decimals.
-                  Existence of non-rational numbers (irrational numbers) such
-                  as, and their representation on the number line. Explaining
-                  that every real number is represented by a unique point on the
-                  number line and conversely, viz. every point on the number
-                  line represents a unique real number.
-                </p>
-                <p className="font-xs text-[#6B7280]">
-                  3. Definition of nth root of a real number.
-                </p>
-                <p className="font-xs text-[#6B7280]">
-                  4. Rationalization (with precise meaning) of real numbers of
-                  the type
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Expandable Sessions */}
           <div className="space-y-2">
-            {Array.from({ length: 7 }, (_, i) => (
-              <Collapsible
-                key={i}
-                open={openSessions.includes(i)}
-                onOpenChange={() => toggleSession(i)}
-              >
-                <CollapsibleTrigger className="w-full">
-                  <Card className="hover:shadow-md transition-shadow border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl">
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">
-                          Session Name / Number
-                        </span>
-                        {openSessions.includes(i) ? (
-                          <ChevronUp className="h-4 w-4" />
-                        ) : (
-                          <ChevronDown className="h-4 w-4" />
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CollapsibleTrigger>
-                <CollapsibleContent className="mt-2">
-                  <Card className="border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl">
-                    <CardContent className="p-4 text-sm text-gray-700">
-                      <p>Session content would go here...</p>
-                    </CardContent>
-                  </Card>
-                </CollapsibleContent>
-              </Collapsible>
-            ))}
+            {sessionData.map((item, index) => {
+              const isOpen = activeCurriculumIndex === index;
+
+              return (
+                <div
+                  key={index}
+                  className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                    } relative z-20 rounded-2xl overflow-hidden transition-all`}
+                >
+                  {/* Filtered background image */}
+                  <div
+                    className="absolute inset-0 bg-cover rounded-3xl bg-repeat -z-10"
+                    style={{
+                      backgroundImage: 'url("/pattern.png")',
+                      filter: "brightness(0.7) grayscale(30%)",
+                    }}
+                  />
+                  <button
+                    onClick={() => setActiveCurriculumIndex(isOpen ? null : index)}
+                    className={`${isOpen ? "bg-white px-6 py-2" : ""
+                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                  >
+                    <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
+                    <div>
+                      {isOpen ? (
+                        <div className="flex gap-3 text-[#6B7280] text-xs items-center">
+                          <p>Periods: 18</p>
+                          <p>Marks: 20</p>
+                          <svg
+                            width={20}
+                            height={20}
+                            viewBox="0 0 24 25"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              width={24}
+                              height={24}
+                              rx={12}
+                              transform="matrix(1 0 0 -1 0 24.5)"
+                              fill="black"
+                              fillOpacity="0.3"
+                            />
+                            <path
+                              d="M6 15.5L12 9.5L18 15.5"
+                              stroke="white"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                      ) : (
+                        <IoIosArrowDown className="text-xl text-gray-600" />
+                      )}
+                    </div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-sm text-[#6B7280] whitespace-pre-line">
+                          {item.content}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
