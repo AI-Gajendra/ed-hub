@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
-export default function StudentNavbar({ activeState = "Home" }:{ activeState?: string }) {
+export default function StudentNavbar({ activeState = "Home", isLanding = false }: { activeState?: string, isLanding?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -42,9 +44,8 @@ export default function StudentNavbar({ activeState = "Home" }:{ activeState?: s
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "shadow-md" : ""
-      }`}
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+        }`}
     >
       <nav className="bg-[#3366FF] text-white pt-4">
         <div className="container mx-auto px-12">
@@ -67,9 +68,8 @@ export default function StudentNavbar({ activeState = "Home" }:{ activeState?: s
                 <Link
                   key={`${href}-${idx}`}
                   href={href}
-                  className={`text-base font-medium hover:text-gray-200 transition-colors duration-200 px-3 py-2 rounded-full ${
-                    navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
-                  }`}
+                  className={`text-base font-medium hover:text-gray-200 transition-colors duration-200 px-3 py-2 rounded-full ${navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
+                    }`}
                 >
                   {navLabels[idx]}
                 </Link>
@@ -78,28 +78,35 @@ export default function StudentNavbar({ activeState = "Home" }:{ activeState?: s
 
             {/* Right Side - User Actions */}
             <div className="flex items-center space-x-4">
-              <button className="group relative p-1.5 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
-                <Bell className="h-5 w-5 group-hover:stroke-black" />
-                <span className="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>
-              </button>
+              {!isLanding ?
+                <>
+                  <button className="group relative p-1.5 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
+                    <Bell className="h-5 w-5 group-hover:stroke-black" />
+                    <span className="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>
+                  </button>
 
-              <button className="group relative p-1.5 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
-                <ShoppingCart className="h-5 w-5 group-hover:stroke-black" />
-                <span className="absolute -top-1 -right-1 h-5 w-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs text-black font-medium">
-                  2
-                </span>
-              </button>
+                  <button className="group relative p-1.5 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
+                    <ShoppingCart className="h-5 w-5 group-hover:stroke-black" />
+                    <span className="absolute -top-1 -right-1 h-5 w-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs text-black font-medium">
+                      2
+                    </span>
+                  </button>
 
-              <div className="hidden sm:flex items-center gap-2">
-                <div className="relative h-12 w-12 rounded-full overflow-hidden">
-                  <Image
-                    src="/images/person.jpg"
-                    alt="User profile"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
+                  <div className="hidden sm:flex items-center gap-2">
+                    <div className="relative h-12 w-12 rounded-full overflow-hidden">
+                      <Image
+                        src="/images/person.jpg"
+                        alt="User profile"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </>
+                :
+                <Link href={'/b2c-phase-3/b2c-teacher/registration/select-type'} className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#f9326f] rounded-full')}>
+                  Login
+                </Link>}
 
               {/* Mobile menu button */}
               <button
@@ -130,9 +137,8 @@ export default function StudentNavbar({ activeState = "Home" }:{ activeState?: s
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden transition-all duration-300 overflow-hidden ${
-            isMobileMenuOpen ? "max-h-96" : "max-h-0"
-          }`}
+          className={`md:hidden transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? "max-h-96" : "max-h-0"
+            }`}
         >
           <div className="px-4 py-2 space-y-1 bg-[#3366FF]">
             <Link

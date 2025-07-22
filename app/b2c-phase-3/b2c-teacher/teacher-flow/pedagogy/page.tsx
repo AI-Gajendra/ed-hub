@@ -362,7 +362,7 @@ const PedagogyContent: React.FC = () => {
 
                     {/* Chapter Accordions */}
                     <div
-                        className={`space-y-2 mb-2 md:mb-4 overflow-y-auto custom-scrollbar-thin pr-2 ml-4 mr-3 overflow-hidden h-full max-h-[800px] lg:max-h-none lg:h-[${rightHeight - 52}px]`}
+                        className={`space-y-2 h-full mb-2 md:mb-4 overflow-y-auto custom-scrollbar-thin pr-2 ml-4 mr-3 overflow-hidden h-full max-h-[800px] lg:max-h-none lg:h-[${rightHeight - 52}px]`}
                     >
                         {sampleChapterAccordions.map((acc) => (
                             <ChapterAccordion

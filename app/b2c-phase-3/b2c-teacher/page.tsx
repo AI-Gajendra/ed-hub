@@ -26,6 +26,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import StudentNavbar from "@/components/student-navbar";
+import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -241,8 +243,60 @@ export default function Landing() {
     </motion.button>
   );
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const phoneNumber = '+0931-705-3875'
+
   return (
-    <LandingWrapper>
+    <div>
+      <nav className="sticky top-0 left-0 w-full z-50 flex flex-col">
+        {/* Top Bar (1/3 of total height => 40px) */}
+        <div className="flex-1 bg-[#F9326F] text-white py-[0.3rem] px-[8vw] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 min-h-[40px]">
+          {/* Left: Contact */}
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-start sm:items-center gap-2 sm:gap-6">
+            {/* Phone */}
+            <a href={`tel:${phoneNumber}`} className="flex items-center gap-2 no-underline">
+              <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#ff5e8e] text-white text-sm shadow-md">
+                <FaPhoneAlt />
+              </div>
+              <span className="font-bold tracking-wide text-xs sm:text-sm break-all">
+                {phoneNumber.split('').map((char, index) => (
+                  <span key={index} className={`relative px-[0.3px] ${index % 2 === 0 ? '-top-[0.5px]' : 'top-[0.7px]'}`}>
+                    {char}
+                  </span>
+                ))}
+              </span>
+            </a>
+
+            {/* Email */}
+            <a href="mailto:ElizabethJ@jourrapide.com" className="flex items-center gap-2 no-underline">
+              <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#ff5e8e] text-white text-sm shadow-md">
+                <FaEnvelope />
+              </div>
+              <span className="font-bold tracking-wide text-xs sm:text-sm break-all">ElizabethJ@jourrapide.com</span>
+            </a>
+          </div>
+
+          {/* Right: Social */}
+          <div className="flex justify-center sm:justify-end gap-2 sm:gap-4 items-center">
+            {[FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaYoutube].map((Icon, index) => {
+              const bgColors = ['#3b5998', '#E4405F', '#0088cc', '#444', '#FF0000']
+              return (
+                <a
+                  key={index}
+                  className="w-[24px] h-[24px] flex items-center justify-center rounded-t-full rounded-bl-full text-white text-xs"
+                  style={{ backgroundColor: bgColors[index] }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://facebook.com">
+                  <Icon />
+                </a>
+              )
+            })}
+          </div>
+        </div>
+      </nav>
+
+      <StudentNavbar isLanding={true} />
       {/* Page 1 - Hero Section */}
       <motion.div
         className="w-full flex flex-col md:flex-row gap-6 md:gap-3 px-6 md:px-[9%] items-center justify-between bg-cover bg-center bg-no-repeat"
@@ -1027,6 +1081,6 @@ export default function Landing() {
 
       {/* page 10 */}
       <Footer />
-    </LandingWrapper>
+    </div>
   );
 }
