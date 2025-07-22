@@ -27,6 +27,8 @@ import FooterNew from "@/components/footer3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { FaCircleCheck } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Review {
   id: number;
@@ -230,11 +232,10 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`w-3 h-3 ${
-            star <= rating
+          className={`w-3 h-3 ${star <= rating
               ? "fill-yellow-400 text-yellow-400"
               : "fill-transparent text-transparent"
-          }`}
+            }`}
         />
       ))}
     </div>
@@ -269,7 +270,7 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 
 export default function CourseDetail() {
   const [activeTab, setActiveTab] = useState("about");
-
+  const router = useRouter();
   const menuItems = [
     { id: "about", label: "About Course", icon: Info },
     { id: "benefits", label: "Benefits", icon: Star },
@@ -540,11 +541,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       onClick={() => setActiveTab(item.id)}
                       className={`
                     w-full flex items-center gap-3 px-4 py-2 rounded-full text-left transition-all duration-200
-                    ${
-                      isActive
-                        ? "bg-[#FF3366] text-white"
-                        : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
-                    }
+                    ${isActive
+                          ? "bg-[#FF3366] text-white"
+                          : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
+                        }
                   `}
                     >
                       <IconComponent size={20} />
@@ -577,7 +577,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             <h1 className="text-3xl sm:text-[48px] font-semibold text-white">
               Book a Free Demo
             </h1>
-            <button className="bg-white cursor-pointer rounded-full px-8 py-4 text-m font-medium">
+            <button
+
+              onClick={() => router.push("/b2c-student/student-flow/demo/booking-form")}
+              className="bg-white cursor-pointer rounded-full px-8 py-4 text-m font-medium">
               Click Here
             </button>
           </div>
@@ -632,9 +635,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Scrollable Container */}
             <div
               ref={scrollContainerRef}
-              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                showLeftArrow ? "pl-16" : "pl-0"
-              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                } ${showRightArrow ? "pr-16" : "pr-0"}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {courses.map((course) => (
@@ -663,9 +665,9 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       <h3 className="text-xl font-bold text-gray-900">
                         Course Name
                       </h3>
-                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                      <Link href={"/b2c-student/student-flow/know-more"} className="font-main text-sm text-[#FF3366] relative z-10 w-fit border-b border-b-[#FF3366] cursor-pointer">
                         Know More
-                      </button>
+                      </Link>
                     </div>
 
                     <div className="space-y-1">
@@ -748,9 +750,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Scrollable Container */}
             <div
               ref={scrollContainerRef}
-              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                showLeftArrow ? "pl-16" : "pl-0"
-              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                } ${showRightArrow ? "pr-16" : "pr-0"}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {courses.map((course) => (
@@ -864,9 +865,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Scrollable Container */}
             <div
               ref={scrollContainerRef}
-              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                showLeftArrow ? "pl-16" : "pl-0"
-              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${showLeftArrow ? "pl-16" : "pl-0"
+                } ${showRightArrow ? "pr-16" : "pr-0"}`}
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {courses.map((course) => (
