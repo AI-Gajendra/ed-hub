@@ -4,7 +4,7 @@ import NamingBar from '@/components/admin/ui/naming-bar'
 export default function page() {
 	return (
 		<div>
-			<Link href="/admin-b2c/admin-panel/dashboard">
+			<Link href="/b2c-phase-3/admin-phase-3/admin-panel/dashboard">
 				<NamingBar name="Attendance" />
 			</Link>
 			<AttendancePage />

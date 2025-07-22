@@ -416,7 +416,7 @@ const CourseSlider = () => {
         onValueChange={setSelectedCategory}
         className="w-full"
       >
-        <TabsList className="flex flex-wrap justify-between gap-2 bg-transparent h-auto">
+        <TabsList className="flex flex-nowrap overflow-x-auto custom-scrollbar-thin justify-between gap-2 bg-transparent h-auto">
           {categories.map((category) => {
             const isActive = category === selectedCategory;
 
@@ -445,7 +445,7 @@ const CourseSlider = () => {
                 key={category}
                 value={category}
                 onClick={() => Router.push("/b2c-student/student-flow/courses/categorical")}
-                className={`${isActive ? "bg-[#FF3366] text-white" : "bg-transparent hover:bg-black/10"}  cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full`}
+                className={`${isActive ? "bg-[#FF3366] text-white" : "bg-transparent hover:bg-black/10"}  cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-sm xl:text-base font-medium break-words max-w-full`}
               >
                 {category}
               </Button>
@@ -490,7 +490,7 @@ const CourseSlider = () => {
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              onClick={() => Router.push("/b2c-student/student-flow/course-details")}
+              onClick={() => Router.push("/b2c-student/student-flow/courses/detail")}
               className="flex-none w-80 bg-white rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative p-4">

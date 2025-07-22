@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
+import DetailsCousrePopup from "../pop-ups/component/details-for-course";
 
 const user = {
   avatarSrc: "/admin/usernav.jpg",
@@ -30,6 +31,7 @@ export default function GradeAndContent() {
       <Navbar user={user} />
       <MaxWidthWrapper className="py-10">
         <div>
+         
           <div className="flex gap-4 justify-between items-center">
             <ArrowLeft className="w-6 h-6" />
             <div className="text-xl font-semibold mb-2">

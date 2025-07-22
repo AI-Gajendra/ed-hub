@@ -5,7 +5,7 @@ const actions = [
   {
     label: 'Profile Management',
     icon: <CiPower className="text-[#6b7280] w-5 h-5" />,
-    href: '/admin-b2c/admin-panel/student-profile-management',
+    href: '/b2c-phase-3/admin-phase-3/admin-panel/student-profile-management',
   },
 ];
 const StudentPanel = () => {

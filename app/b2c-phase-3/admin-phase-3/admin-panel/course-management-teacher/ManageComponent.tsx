@@ -78,8 +78,8 @@ const CourseManagement = () => {
           {filteredData.map((item) => {
             const linkHref =
               item.role === 'teacher'
-                ? `/admin-b2c/admin-panel/teacher-profile`
-                : `/admin-b2c/admin-panel/student-profile`;
+                ? `/b2c-phase-3/admin-phase-3/admin-panel/teacher-profile`
+                : `/b2c-phase-3/admin-phase-3/admin-panel/student-profile`;
 
             return (
               <Link href={linkHref} key={item.id} passHref>

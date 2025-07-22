@@ -11,8 +11,8 @@ import { MdSettings } from "react-icons/md";
 import BackButton from '@/components/common-components/BackButton';
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import CreateFolderModal from "@/app/admin-b2c/pop-ups-2/components/CreateFolder";
-import ManageAccess from "@/app/admin-b2c/pop-ups-2/components/ManageAccess";
+import CreateFolderModal from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/CreateFolder";
+import ManageAccess from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/ManageAccess";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Style Constants ---
@@ -70,7 +70,7 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border cursor-pointer border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
     ref={reference}
     onClick={() => {
-      Router.push('/admin-b2c/admin-panel/content-management-files');
+      Router.push('/b2c-phase-3/admin-phase-3/admin-panel/content-management-files');
     }}
   >
     <div

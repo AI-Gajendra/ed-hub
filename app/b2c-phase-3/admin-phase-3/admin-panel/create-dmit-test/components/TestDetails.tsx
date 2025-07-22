@@ -1,6 +1,6 @@
 'use client';
 
-import { UploadFileImage } from '@/app/admin-b2c/pop-ups-2/page';
+import { UploadFileImage } from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/page';
 import { FC, useState } from 'react';
 interface TabProps {
   setSelectedTab: (tab: string) => void;

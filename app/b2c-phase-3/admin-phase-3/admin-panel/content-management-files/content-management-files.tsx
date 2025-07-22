@@ -10,7 +10,7 @@ import { MdOutlineFileDownload, MdSettings } from "react-icons/md";
 import { LuInfo } from "react-icons/lu";
 import BackButton from '@/components/common-components/BackButton';
 import { useRouter } from "next/navigation";
-import ManageAccess from "@/app/admin-b2c/pop-ups-2/components/ManageAccess";
+import ManageAccess from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/ManageAccess";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Style Constants ---

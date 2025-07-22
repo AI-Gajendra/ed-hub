@@ -74,7 +74,7 @@ const CreateTest: React.FC<TabProps> = ({ setSelectedTab }) => {
           <CustomNumberInput label="Pass Points" value={0} onChange={() => { }} />
         </div>
         <div className="flex justify-center gap-4 my-8">
-          <Link href={"/admin-b2c/admin-panel/admin-dmit-test"}>
+          <Link href={"/b2c-phase-3/admin-phase-3/admin-panel/admin-dmit-test"}>
             <GrayBtn title='Cancel' />
           </Link>
           <button className="rounded-[42px] text-lg font-semibold bg-[#3366ff] text-white px-2.5 py-4 cursor-pointer inline-block"

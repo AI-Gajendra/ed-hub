@@ -1,7 +1,6 @@
 "use client"
 import AdminB2CWrapper from "@/components/b2c-admin/common-component/AdminB2CPageWrapper";
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
 import ExistingDmitModal from "../../pop-ups-2/components/existing-dmit-test";
 import Link from "next/link";
 import { AnimatePresence, motion } from 'framer-motion';
@@ -28,7 +27,7 @@ const DmitTestForm = () => {
                     <div className="flex flex-col gap-4 md:gap-8">
 
                         <h2 className="font-semibold text-[#ff3366] text-lg md:text-xl">Create New DMIT Test</h2>
-                        <Link href={'/admin-b2c/admin-panel/create-dmit-test'} className="text-white bg-[#3366ff] font-medium rounded-full py-2 text-sm px-4 w-full text-center">Create</Link>
+                        <Link href={'/b2c-phase-3/admin-phase-3/admin-panel/create-dmit-test'} className="text-white bg-[#3366ff] font-medium rounded-full py-2 text-sm px-4 w-full text-center">Create</Link>
                     </div>
                 </div>
 
@@ -110,7 +109,7 @@ const DmitTestForm = () => {
 
                     {/* Button */}
                     <div className="text-right">
-                        <Link href={'/admin-b2c/admin-panel/edit-dmit-test'} className="bg-[#ff3366] text-white inline-block text-sm py-3 rounded-full hover:opacity-90 w-32 text-center cursor-pointer">
+                        <Link href={'/b2c-phase-3/admin-phase-3/admin-panel/edit-dmit-test'} className="bg-[#ff3366] text-white inline-block text-sm py-3 rounded-full hover:opacity-90 w-32 text-center cursor-pointer">
                             Edit Questions
                         </Link>
                         <div className="flex flex-wrap gap-2 md:gap-4 pt-4 justify-end">

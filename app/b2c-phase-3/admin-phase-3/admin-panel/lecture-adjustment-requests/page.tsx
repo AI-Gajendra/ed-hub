@@ -189,7 +189,7 @@ export default function RequestManagementPage() {
     return (
         // Using your provided page template structure
         <div className={`bg-[#eeeeee] min-h-screen flex flex-col relative`}>
-            {/* <GoBack GoBackHeading="Lecture Adjustment Requests" toLink='/admin-b2c/admin-panel/dashboard' />/ This is your template component */}
+            {/* <GoBack GoBackHeading="Lecture Adjustment Requests" toLink='/b2c-phase-3/admin-phase-3/admin-panel/dashboard' />/ This is your template component */}
                   <BackButton Heading="Lecture Adjustment Requests" />
 
             <div className='p-4 sm:p-6 lg:p-8'>

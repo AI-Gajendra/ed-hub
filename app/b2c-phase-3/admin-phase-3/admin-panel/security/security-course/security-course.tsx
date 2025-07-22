@@ -60,7 +60,7 @@ export default function SecurityCoursePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4 py-4">
             {courses.map((course, index) => (
               <Link
-                href="/admin-b2c/admin-panel/security/course-login-activity" 
+                href="/b2c-phase-3/admin-phase-3/admin-panel/security/course-login-activity" 
                 key={index}
               >
                 <div

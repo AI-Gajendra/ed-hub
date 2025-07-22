@@ -229,7 +229,7 @@ export default function TeacherProfile() {
 
       {/* Save Button */}
       <div>
-        <Link href={"/admin-b2c/admin-panel/teacher-profile"}
+        <Link href={"/b2c-phase-3/admin-phase-3/admin-panel/teacher-profile"}
           
           className="bg-[#3366ff] text-white px-8 py-2 text-sm rounded-full hover:opacity-90"
         >

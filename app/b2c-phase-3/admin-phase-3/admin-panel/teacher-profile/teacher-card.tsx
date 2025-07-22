@@ -1,5 +1,5 @@
 "use client";
-import ProfileSettingsTeacherPopup from "@/app/admin-b2c/pop-ups-2/components/profileSettingTeacher";
+import ProfileSettingsTeacherPopup from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/profileSettingTeacher";
 import Image from "next/image";
 import { useState } from "react";
 import { FiSettings } from "react-icons/fi";

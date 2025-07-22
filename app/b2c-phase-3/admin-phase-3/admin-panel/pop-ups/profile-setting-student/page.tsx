@@ -1,6 +1,6 @@
 "use client";
 
-import { BaseModal, PopupProp } from '@/app/admin-b2c/pop-ups-2/page';
+import { BaseModal, PopupProp } from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/page';
 import React, { useState } from 'react';
 import { FiCheck } from 'react-icons/fi'; // Using FiCheck for the checkmark icon
 

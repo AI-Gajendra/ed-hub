@@ -20,6 +20,7 @@ import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
+import MonthTab from "@/components/common-components/MonthTab/MonthTab";
 
 interface Unit {
   number: string;
@@ -141,7 +142,7 @@ const classFlowSteps: ClassFlowStep[] = [
   },
 ];
 
-const sessionData = Array.from({ length: 12 }, () => ({
+const sessionData = Array.from({ length: 16 }, () => ({
   title: `Unit Name`,
   content: `1. REAL NUMBERS
 
@@ -162,7 +163,7 @@ type
 `,
 }));
 
-const pedagogyData = Array.from({ length: 6 }, () => ({
+const pedagogyData = Array.from({ length: 16 }, () => ({
   title: `Chapter Name`,
   content: `Before the class
 
@@ -176,7 +177,7 @@ const pedagogyData = Array.from({ length: 6 }, () => ({
 `,
 }));
 
-const lectureData = Array.from({ length: 6 }, () => ({
+const lectureData = Array.from({ length: 16 }, () => ({
   title: `Lecture Number`,
   content: `Before the class
 
@@ -235,20 +236,16 @@ export default function CurriculumComponent() {
               Session
             </h3>
             <div className="flex items-center gap-4 text-sm text-gray-600">
-              <select className="border rounded-xl px-2 py-1 border-[#E5E7EB] bg-[#F9FAFB]">
+              <select className="border rounded-xl px-2 py-2 border-[#E5E7EB] bg-[#F9FAFB]">
                 <option>Weekly</option>
                 <option>Monthly</option>
               </select>
-              <div className="flex justify-center items-center gap-2 border rounded-xl px-2 py-1 border-[#E5E7EB] bg-[#F9FAFB]">
-                <CircleArrowLeft className="w-4 h-4 cursor-pointer" />
-                <span>June 2025</span>
-                <CircleArrowRight className="w-4 h-4 cursor-pointer" />
-              </div>
+              <MonthTab/>
             </div>
           </div>
 
           {/* Unit Card */}
-          <div className="space-y-2">
+          <div className="space-y-2 max-h-[1050px] pr-2 overflow-y-auto custom-scrollbar-thin">
             {sessionData.map((item, index) => {
               const isOpen = activeCurriculumIndex === index;
 
@@ -329,7 +326,7 @@ export default function CurriculumComponent() {
       </div>
 
       {/* Right Side */}
-      <div className="lg:col-span-5">
+      <div className="lg:col-span-5 text-medium">
         {/* Course Structure Table */}
         <Card className="bg-white rounded-3xl mb-6">
           <CardContent className="p-5">
@@ -516,7 +513,7 @@ export default function CurriculumComponent() {
         {activeSubTab === "pedagogy" ? (
           <>
             {/* Expandable Chapters */}
-            <div className="space-y-2">
+            <div className="space-y-2 max-h-[1050px] pr-2 overflow-y-auto custom-scrollbar-thin">
               {pedagogyData.map((item, index) => {
                 const isOpen = activePedagogyIndex === index;
 
@@ -530,7 +527,7 @@ export default function CurriculumComponent() {
                     <div
                       className="absolute inset-0 bg-cover rounded-3xl bg-repeat -z-10"
                       style={{
-                        backgroundImage: 'url("/pattern.png")',
+                        backgroundImage: 'url("/pattern-3.png")',
                         filter: "brightness(0.7) grayscale(30%)",
                       }}
                     />
@@ -597,7 +594,7 @@ export default function CurriculumComponent() {
         ) : (
           <>
             {/* Expandable Lectures */}
-            <div className="space-y-2" >
+            <div className="space-y-2 max-h-[1050px] pr-2 overflow-y-auto custom-scrollbar-thin" >
               {lectureData.map((item, index) => {
                 const isOpen = activeLectureIndex === index;
 
@@ -747,10 +744,10 @@ export default function CurriculumComponent() {
         </div>
         <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
           {/* Main Tabs */}
-          <div className="flex gap-8 mb-8 border-b">
+          <div className="flex gap-8 mb-8">
             <button
               onClick={() => setActiveMainTab("learning-intent")}
-              className={`pb-2 px-1 font-medium ${activeMainTab === "learning-intent"
+              className={`pb-1 px-1 font-medium ${activeMainTab === "learning-intent"
                 ? "text-blue-600 border-b-2 border-blue-600"
                 : "text-gray-500 hover:text-gray-700"
                 }`}
@@ -759,7 +756,7 @@ export default function CurriculumComponent() {
             </button>
             <button
               onClick={() => setActiveMainTab("curriculum")}
-              className={`pb-2 px-1 font-medium ${activeMainTab === "curriculum"
+              className={`pb-1 px-1 font-medium ${activeMainTab === "curriculum"
                 ? "text-blue-600 border-b-2 border-blue-600"
                 : "text-gray-500 hover:text-gray-700"
                 }`}
@@ -769,7 +766,7 @@ export default function CurriculumComponent() {
           </div>
 
           {activeMainTab === "curriculum" && (
-            <div className="flex justify-center items-center flex-wrap gap-4 mb-6 bg-white px-4 py-3 rounded-full">
+            <div className="flex lg:justify-center lg:items-center flex-nowrap overflow-y-auto custom-scrollbar-thin gap-4 mb-6 bg-white px-4 py-3 rounded-xl sm:rounded-2xl">
               {[1, 2, 3, 4, 5].map((category) => (
                 <Button
                   key={category}
