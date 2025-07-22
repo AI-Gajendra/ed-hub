@@ -9,8 +9,8 @@ import { HiOutlineBookOpen } from 'react-icons/hi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import StudentPanel from './StudentControlPanel'
 import Link from 'next/link'
-import ProfileSettingsStudentPopup from '@/app/admin-b2c/pop-ups-2/components/profileSettingStudent'
-import AllotCoursePopup from '@/app/admin-b2c/pop-ups-2/components/allotNewCourse'
+import ProfileSettingsStudentPopup from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/profileSettingStudent'
+import AllotCoursePopup from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/allotNewCourse'
 import SuggestionPopup from '../../pop-ups/send-suggestion/page'
 
 interface CourseCardProps {
@@ -223,7 +223,7 @@ const StudentProfile = () => {
 							<h2 className="my-2 text-sm font-bold">Assigned Teachers</h2>
 							<div className="flex flex-wrap gap-4 items-stretch">
 								{Teachers.map((card, index) => (
-									<Link href={"/admin-b2c/admin-panel/teacher-profile"} className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+									<Link href={"/b2c-phase-3/admin-phase-3/admin-panel/teacher-profile"} className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
 										<Image className="rounded-xl" src={card.image} width={80} height={80} alt={card.name} />
 										<div className="">
 											<h2 className="font-medium">{card.name}</h2>

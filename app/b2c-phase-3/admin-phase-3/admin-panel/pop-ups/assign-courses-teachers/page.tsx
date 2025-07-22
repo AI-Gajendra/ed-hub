@@ -3,7 +3,7 @@
 import { useState } from "react";
 import GoBack from "@/components/principal/goback"; // Adjust this path if needed
 import TeacherForm from "@/components/b2c-admin/assign-courses-teacher2";
-import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
+import { BaseModal, PopupProp } from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/page";
 
 const AssignCourseTeacher: React.FC<PopupProp> = ({
   isOpen,

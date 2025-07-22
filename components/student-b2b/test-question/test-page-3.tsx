@@ -131,7 +131,7 @@ const QuestionPanel = ({
 
 const DrawingPanel = () => (
 	<div className="w-full lg:w-2/5 flex items-center justify-center">
-		<div className="flex item-center flex-col w-full h-full">
+		<div className="flex item-center flex-col w-full h-[30rem]">
 			<div className="p-5 bg-[#F9FAFB] rounded-2xl flex items-center justify-between flex-1">
 				<ul className="flex flex-col gap-6 justify-center h-full">
 					<Image src={"/images/animals.png"} alt='animals' priority height={474} width={99} className='h-[310px] w-auto object-cover' />

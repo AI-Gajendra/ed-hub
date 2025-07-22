@@ -27,10 +27,10 @@ export default function SchoolManagementReportPage() {
 
     const tabs = ['Analysis', 'Teachers', 'Students', 'Content'];
     const tabPaths: Record<string, string> = {
-        Analysis: '/admin-b2c/admin-panel/institute-profile',
-        Teachers: '/admin-b2c/admin-panel/course-management-teacher',
-        Students: '/admin-b2c/admin-panel/course-management-teacher',
-        Content: '/admin-b2c/admin-panel/content-management',
+        Analysis: '/b2c-phase-3/admin-phase-3/admin-panel/institute-profile',
+        Teachers: '/b2c-phase-3/admin-phase-3/admin-panel/course-management-teacher',
+        Students: '/b2c-phase-3/admin-phase-3/admin-panel/course-management-teacher',
+        Content: '/b2c-phase-3/admin-phase-3/admin-panel/content-management',
     };
     return (
         <div>
@@ -258,7 +258,7 @@ export default function SchoolManagementReportPage() {
 function TecherChip() {
     return (
         <>
-            <Link href="/admin-b2c/admin-panel/course-management-teacher" className="block">
+            <Link href="/b2c-phase-3/admin-phase-3/admin-panel/course-management-teacher" className="block">
                 <div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
                     <Image
                         src={'/images/teacher.jpg'}
@@ -279,7 +279,7 @@ function TecherChip() {
 
 function ClassBox() {
     return (
-        <Link href="/admin-b2c/admin-panel/course-management-teacher" className="block">
+        <Link href="/b2c-phase-3/admin-phase-3/admin-panel/course-management-teacher" className="block">
             <div className="border p-4 rounded-2xl w-full">
                 <div className="flex gap-2 items-center mb-4">
                     <h1 className="text-[#1D5851] font-semibold text-lg px-2">Class 1</h1>

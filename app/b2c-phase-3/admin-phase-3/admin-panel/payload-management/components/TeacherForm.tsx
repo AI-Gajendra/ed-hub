@@ -29,7 +29,7 @@ export default function TeacherSettingsForm() {
       <Dropdown label="Example Question" options={['Option 1', 'Option 2']} />
 
       {/* Save Button */}
-      <Link href="/admin-b2c/admin-panel/teacher-profile">
+      <Link href="/b2c-phase-3/admin-phase-3/admin-panel/teacher-profile">
         <button className="bg-[#3366ff] text-white text-sm font-medium py-2 px-8 rounded-full hover:opacity-90">
           Save
         </button>

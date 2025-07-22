@@ -309,7 +309,7 @@ export default function StudentProfile() {
       </form>
 
       {/* Save Button */}
-      <Link href={"/admin-b2c/admin-panel/student-profile"}
+      <Link href={"/b2c-phase-3/admin-phase-3/admin-panel/student-profile"}
      
           className="bg-[#3366ff] cursor-pointer text-white px-8 py-2 text-sm rounded-full hover:opacity-90"
         >

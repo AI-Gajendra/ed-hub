@@ -26,7 +26,7 @@ const InstitueCard: FC<UserCardProps> = ({
 }) => {
 
   return (
-    <Link href="/admin-b2c/admin-panel/institute-profile" className="block">
+    <Link href="/b2c-phase-3/admin-phase-3/admin-panel/institute-profile" className="block">
       <div className="w-full bg-[#f9fafb] border rounded-2xl p-2 flex flex-col sm:flex-row items-start gap-2 sm:gap-4 cursor-pointer transition">
         {/* Profile Image */}
         <div className="relative rounded-2xl overflow-hidden border w-full sm:max-w-[280px] h-[210px]">

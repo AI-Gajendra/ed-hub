@@ -5,7 +5,7 @@ import { BsTrash } from "react-icons/bs";
 import { GoPlus } from "react-icons/go";
 import { useState } from "react";
 import AddWorkingHours from "@/components/b2c-admin/add-working-hours";
-import EditWorkingHoursPopup from "@/app/admin-b2c/pop-ups-2/components/editWorkingHours";
+import EditWorkingHoursPopup from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/editWorkingHours";
 const workingHours = [
   {
     day: 'Sunday',

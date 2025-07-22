@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import AdminB2CLayoutWrapper from '@/components/b2c-admin/common-component/AdminB2CLayoutWrapper'
+import Phase3AdminLayoutWrapper from '@/components/phase-3-admin/common-components/Phase3AdminLayoutWrapper'
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<div className="font-main overflow-x-hidden">
-			<AdminB2CLayoutWrapper>{children}</AdminB2CLayoutWrapper>
+			<Phase3AdminLayoutWrapper>{children}</Phase3AdminLayoutWrapper>
 		</div>
 	)
 }

@@ -19,11 +19,11 @@ export interface UserCardProps {
 const getHrefByRole = (role: UserRole, id: string) => {
   switch (role) {
     case 'Teacher':
-      return `/admin-b2c/admin-panel/teacher-profile`;
+      return `/b2c-phase-3/admin-phase-3/admin-panel/teacher-profile`;
     case 'Mentor':
-      return `/admin-b2c/admin-panel/mentor-profile`;
+      return `/b2c-phase-3/admin-phase-3/admin-panel/mentor-profile`;
     case 'Student':
-      return `/admin-b2c/admin-panel/student-profile`;
+      return `/b2c-phase-3/admin-phase-3/admin-panel/student-profile`;
     default:
       return '#';
   }

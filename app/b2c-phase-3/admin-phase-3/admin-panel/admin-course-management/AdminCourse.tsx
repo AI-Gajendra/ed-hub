@@ -113,10 +113,10 @@ const AdminCourse: React.FC = () => {
 
         {/* Buttons */}
         <div className="flex items-center justify-center sm:justify-end gap-4">
-          <Link href="/admin-b2c/admin-panel/course-management" className="rounded-full px-6 py-2 text-sm font-medium text-[#ff3366] bg-[#ffe6ec] hover:bg-[#ffd4df] transition">
+          <Link href="/b2c-phase-3/admin-phase-3/admin-panel/course-management" className="rounded-full px-6 py-2 text-sm font-medium text-[#ff3366] bg-[#ffe6ec] hover:bg-[#ffd4df] transition">
             Discard
           </Link>
-          <Link href="/admin-b2c/admin-panel/course-management" className="rounded-full px-6 py-2 text-sm font-medium text-white bg-[#3366ff] hover:bg-[#2b5de0] transition">
+          <Link href="/b2c-phase-3/admin-phase-3/admin-panel/course-management" className="rounded-full px-6 py-2 text-sm font-medium text-white bg-[#3366ff] hover:bg-[#2b5de0] transition">
             Save
           </Link>
         </div>

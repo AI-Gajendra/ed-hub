@@ -55,7 +55,7 @@ const ReviewList = () => {
         <div className="flex flex-col gap-2 mr-2">
           {sampleData.map((item, index) => {
             const isEven = index % 2 === 0;
-            const linkHref = isEven ? `/admin-b2c/admin-panel/request-teach-more` : `/admin-b2c/admin-panel/request-drop-course`;
+            const linkHref = isEven ? `/b2c-phase-3/admin-phase-3/admin-panel/request-teach-more` : `/b2c-phase-3/admin-phase-3/admin-panel/request-drop-course`;
 
             return (
               <Link key={item.id} href={linkHref} passHref>
