@@ -3,13 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Search,
-  Download,
-  Paperclip,
-  Send,
-  SendHorizontal,
-} from "lucide-react";
+import { Search, Paperclip, SendHorizontal, File } from "lucide-react";
 import { useState } from "react";
 import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
 import BackButton from "@/components/common-components/BackButton";
@@ -208,28 +202,32 @@ export default function ChatInterface() {
                       <div key={message.id} className="flex justify-end">
                         <div className="max-w-xs lg:max-w-md">
                           <div className="bg-[#3366FF] text-white rounded-2xl px-4 py-3">
-                            <p className="text-sm">{message.content}</p>
+                            <p className="text-sm text-right pl-10 font-light">
+                              {message.content}
+                            </p>
+                            <p className="text-[8px] text-white text-left">
+                              {message.timestamp}
+                            </p>
                             {message.isFile && (
-                              <Card className="mt-3 bg-white">
-                                <CardContent className="p-3 flex items-center justify-between">
-                                  <span className="text-sm text-gray-700">
-                                    {message.fileName}
-                                  </span>
+                              <Card className="mt-3 bg-white rounded-2xl">
+                                <CardContent className="p-3">
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-sm">
+                                      {message.fileName}
+                                    </span>
+                                    <File className="w-4 h-4" />
+                                  </div>
                                   <Button
                                     size="sm"
                                     variant="ghost"
-                                    className="text-gray-600 hover:text-gray-800"
+                                    className="text-gray-600 hover:text-gray-800 flex justify-center items-center bg-[#6B72801A] text-xs w-full rounded-xl mt-2"
                                   >
-                                    <Download className="w-4 h-4 mr-1" />
                                     Download
                                   </Button>
                                 </CardContent>
                               </Card>
                             )}
                           </div>
-                          <p className="text-xs text-gray-500 mt-1 text-right">
-                            {message.timestamp}
-                          </p>
                         </div>
                       </div>
                     ))}
