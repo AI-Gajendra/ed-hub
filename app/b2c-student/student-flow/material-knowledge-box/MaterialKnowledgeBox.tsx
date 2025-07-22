@@ -14,6 +14,8 @@ import StudentNavbarNew from "@/components/student-navbar-new";
 import BackButton from "@/components/common-components/BackButton";
 import StudentB2CWrapper from "@/components/b2c-student/common-components/StudentB2CWrapper";
 import Footer from "@/components/layout/Footer";
+import { SubCategorySidebar } from "../my-class/components";
+import { OptimizedCategoryTabsBar } from "@/components/common-components/topbar";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -61,44 +63,45 @@ const sampleFolders: FolderItem[] = Array.from({ length: 50 }, (_, i) => ({
 
 
 const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
-   const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const handleDownload = () => {
     // simulate download
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2000);
   };
-  return(
-  <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB]  duration-200 flex items-center gap-4 relative`}
-  >
-    
-      <DownloadToast show={showToast} />
-    <div className="absolute right-5 top-5 text-gray-400">
-      <LuInfo />
-    </div>
+  return (
     <div
-      className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB]  duration-200 flex items-center gap-4 relative`}
     >
-      <FiFileText
-        className="w-8 h-8 sm:w-12 sm:h-12 text-black opacity-80"
-        strokeWidth={1.5}
-      />
-    </div>
-    <div className="flex flex-col w-full gap-4">
-      <div className="">
-        <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
-          {folder.name}
-        </h3>
-        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
-      </div>
-      <div className="w-ful flex gap-2 ">
 
-        <button     onClick={handleDownload} className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <MdOutlineFileDownload /> Download</button>
+      <DownloadToast show={showToast} />
+      <div className="absolute right-5 top-5 text-gray-400">
+        <LuInfo />
+      </div>
+      <div
+        className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      >
+        <FiFileText
+          className="w-8 h-8 sm:w-12 sm:h-12 text-black opacity-80"
+          strokeWidth={1.5}
+        />
+      </div>
+      <div className="flex flex-col w-full gap-4">
+        <div className="">
+          <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
+            {folder.name}
+          </h3>
+          <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+        </div>
+        <div className="w-ful flex gap-2 ">
+
+          <button onClick={handleDownload} className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <MdOutlineFileDownload /> Download</button>
+        </div>
       </div>
     </div>
-  </div>
-)};
+  )
+};
 
 const GeneralFilterButton: React.FC<{
   filter: GeneralFilterOption;
@@ -118,6 +121,12 @@ const SubjectFolderViewContent: React.FC = () => {
   const [activeSubjectId] = useState<string>(
     sampleSubjectTabs[0]?.id || ""
   );
+
+  const academicSubCategoriesData3 = ["Math", "Science", "English"];
+  const [activeSubCategory, setActiveSubCategory] = useState(
+    academicSubCategoriesData3[0]
+  );
+
   const [searchTerm, setSearchTerm] = useState("");
   // Add states for general filters if their logic becomes more complex (e.g., selected options for dropdowns)
   // const [activeGeneralFilters, setActiveGeneralFilters] = useState({});
@@ -139,31 +148,58 @@ const SubjectFolderViewContent: React.FC = () => {
     // e.g., if (activeGeneralFilters.someFilter) { folders = folders.filter(...) }
     return folders;
   }, [filteredFoldersBySubject, searchTerm /*, activeGeneralFilters */]);
-const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
-
+  const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
+  const mainCategoriesData = [
+    "Academics",
+    "Skill Development",
+    "Brain Function",
+    "Sports",
+    "STEMnology",
+    "Competition",
+    "Extra curriculars",
+  ];
+  const [activeMainCategory, setActiveMainCategory] = useState(
+    mainCategoriesData[0]
+  );
   return (
     <>
+      <div className="mb-4">
+        <OptimizedCategoryTabsBar
+          categories={mainCategoriesData}
+          activeCategory={activeMainCategory}
+          onCategoryClick={(category) => setActiveMainCategory(category)}
+        />
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_4fr]">
 
-      <div className="bg-white rounded-2xl  p-4  space-y-6">
-        
-        <SearchFilterIcon filters={filter} />
-        {/* Bottom Section: Folders Grid */}
-        {searchedAndFilteredFolders.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            {searchedAndFilteredFolders.map((folder) => (
-              <FolderCard key={folder.id} folder={folder} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12 text-[#6B7280]">
-            <FiFileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-            <h3 className="text-xl font-semibold mb-2">No Folders Found</h3>
-            <p className="text-sm">
-              Try adjusting your search or filter criteria, or select a
-              different subject.
-            </p>
-          </div>
-        )}
+
+        <SubCategorySidebar
+          subCategories={academicSubCategoriesData3} // This would be dynamic based on activeMainCategory
+          activeSubCategory={activeSubCategory}
+          onSubCategoryClick={setActiveSubCategory}
+        />
+        <div className="bg-white rounded-2xl  p-4  space-y-4">
+
+          <SearchFilterIcon filters={filter} />
+          {/* Bottom Section: Folders Grid */}
+          <h1 className="text-[#ff3366] font-semibold mt-2 text-2xl"> Course Material</h1>
+          {searchedAndFilteredFolders.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              {searchedAndFilteredFolders.map((folder) => (
+                <FolderCard key={folder.id} folder={folder} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-[#6B7280]">
+              <FiFileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+              <h3 className="text-xl font-semibold mb-2">No Folders Found</h3>
+              <p className="text-sm">
+                Try adjusting your search or filter criteria, or select a
+                different subject.
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
@@ -171,15 +207,14 @@ const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }
 
 // --- Main Page Export ---
 export default function MaterialPageCourse() {
-  // This page design does not include a prominent title bar or back button below the main header.
-  // Navigation would typically be handled by the global Header or side navigation.
+
 
   return (
     <>
       <StudentNavbarNew activeState="Material" />
       <BackButton Heading="Course Name" />
       <StudentB2CWrapper>
-          <SubjectFolderViewContent />
+        <SubjectFolderViewContent />
       </StudentB2CWrapper>
       <Footer />
     </>

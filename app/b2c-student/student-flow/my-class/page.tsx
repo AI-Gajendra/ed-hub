@@ -46,7 +46,7 @@ const academicSubCategoriesData2 = [
   "Subtraction Mock Test  2",
   "Division Mock Test ",
   "Multiplication Mock Test 2",
-]; // Added more for scrolling
+]; // Added more for scrolling 
 const academicSubCategoriesData3 = ["Math", "Science", "English"];
 const contentTabsData = [
   "Learning",
