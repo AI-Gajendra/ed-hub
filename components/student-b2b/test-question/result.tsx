@@ -1,6 +1,8 @@
+"use client"
 import React from 'react';
 // import { FaStar, FaSmile } from 'react-icons/fa';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface ScoreItem {
   name: string;
@@ -17,7 +19,7 @@ interface SummaryStat {
 const ResultsCard: React.FC = () => {
   const overallScore = 15;
   const displayScore = 40;
-
+const router = useRouter();
   const individualScores: ScoreItem[] = [
     { name: 'Academic Skills', score: 40, color: 'bg-[#3366FF]' },
     { name: 'Brain Development', score: 60, color: 'bg-[#FFCC00]' },
@@ -137,7 +139,10 @@ const ResultsCard: React.FC = () => {
 
       {/* Button */}
       <div className="text-center">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-12 rounded-full text-md transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+        <button
+
+onClick={() => router.push("/b2c-student/student-flow/dashboard")} 
+         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-12 rounded-full text-md transition duration-150 ease-in-out shadow-md hover:shadow-lg">
           Next
         </button>
       </div>

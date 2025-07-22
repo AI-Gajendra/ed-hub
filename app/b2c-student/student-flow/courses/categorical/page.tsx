@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/collapsible";
 import ReviewsComponent from "@/components/student/courses/review";
 import Footer from "@/components/layout/Footer";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -68,7 +69,7 @@ const faqItems = [
 
 export default function CategoricalCoursePage() {
   const [openFaqItems, setOpenFaqItems] = useState<number[]>([]);
-
+const router = useRouter();
   const toggleFaqItem = (index: number) => {
     setOpenFaqItems((prev) =>
       prev.includes(index)
@@ -209,7 +210,10 @@ export default function CategoricalCoursePage() {
                     <h2 className="text-2xl lg:text-3xl font-medium text-white mb-6">
                       Start Excelling Today Join Our Homework Heroes!
                     </h2>
-                    <Button className="px-6 py-4 w-fit bg-[#FFCC00] hover:bg-[#E6B800] text-white rounded-full cursor-pointer">
+                    <Button 
+                    
+                      onClick={() => router.push("/b2c-student/student-flow/courses/detail")} 
+                    className="px-6 py-4 w-fit bg-[#FFCC00] hover:bg-[#E6B800] text-white rounded-full cursor-pointer">
                       Enroll Now
                     </Button>
                   </div>

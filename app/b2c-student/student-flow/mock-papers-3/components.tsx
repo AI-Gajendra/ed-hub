@@ -4,6 +4,7 @@
 import React from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { OptionButton, SimpleIconButton, ActionButton } from './ui-components';
+import { useRouter } from 'next/navigation';
 
 // --- Data Interfaces ---
 export interface Option { id: string; text: string; }
@@ -49,7 +50,9 @@ interface TestContentProps {
     onOptionSelect: (questionId: number, optionId: string) => void;
     onSubmit: (e: React.FormEvent) => void;
 }
-export const TestContent: React.FC<TestContentProps> = ({ questions, answers, onOptionSelect, onSubmit}) => (
+export const TestContent: React.FC<TestContentProps> = ({ questions, answers, onOptionSelect, onSubmit}) => {
+  const router = useRouter();
+  return(
     <form onSubmit={onSubmit} className="w-full">
         {/* The QuestionBlocks will take the width of their container. */}
         {/* If the container of TestContent needs to be max-w-2xl and centered, that happens in page.tsx */}
@@ -59,9 +62,10 @@ export const TestContent: React.FC<TestContentProps> = ({ questions, answers, on
         {/* Original submit button wrapper: mt-10 flex justify-center max-w-2xl */}
         {/* This centering and max-width should apply to the button itself if it's narrower than the form */}
         <div className="mt-8 flex justify-center sm:mt-10">
-            <ActionButton type="submit" fullWidthOnMobile={false}> {/* fullWidthOnMobile=false to match original centered button */}
+            <ActionButton 
+onClick={() => router.push("/b2c-student/student-flow/mock-paper-result")}  type="submit" fullWidthOnMobile={false}> {/* fullWidthOnMobile=false to match original centered button */}
                 Submit
             </ActionButton>
         </div>
     </form>
-);
+)};
