@@ -4,7 +4,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // Using FiCheckCircle as it's a closer match to the original image than FaRegCircleCheck
-import { FiCheckCircle } from 'react-icons/fi';
+import { FaRegCheckCircle } from "react-icons/fa";
 
 interface ToastNotificationProps {
     isVisible: boolean;
@@ -28,10 +28,10 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
                 >
                     <div
                         // Styling to match your image: green background, white text, rounded corners
-                        className="flex items-center gap-3 bg-green-500 text-white font-semibold 
-                                   px-6 py-3 rounded-xl shadow-lg"
+                        className="flex items-start gap-3 w-56 bg-[#00b060] border border-[#02a35a]/47 text-white font-semibold 
+                                   px-4 py-3 rounded-xl shadow-lg"
                     >
-                        <FiCheckCircle className="w-6 h-6" strokeWidth={2.5} />
+                        <FaRegCheckCircle className="w-6 h-6" strokeWidth={2.5} />
                         <span className="text-base">{message}</span>
                     </div>
                 </motion.div>

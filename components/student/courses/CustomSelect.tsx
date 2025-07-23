@@ -63,7 +63,9 @@ export default function CustomSelect({
           `}
         >
           <span>{selectedOption?.label || placeholder}</span>
-          <ChevronDown className="w-4 h-4 ml-2 text-white" />
+          {selectedValue === "Academic" && (
+            <ChevronDown className="w-4 h-4 ml-10 text-white" />
+          )}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

@@ -127,7 +127,7 @@ export default function AllTeacherB2CPopups() {
                 onClose={() => setOpenModal(null)}
             />
 
-            <ToastNotification isVisible={showToast} message="Saved !" />
+            <ToastNotification isVisible={showToast} message="Downloaded !" />
 
         </div>
     );

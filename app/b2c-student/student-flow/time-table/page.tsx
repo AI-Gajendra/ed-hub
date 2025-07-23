@@ -4,7 +4,9 @@ import FooterNew from "@/components/footer3";
 import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface ScheduleSlot {
   time: string;
@@ -82,12 +84,26 @@ const courses: Course[] = [
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 export default function LearningSchedule() {
-  const router = useRouter()
+  const [selectedSlots, setSelectedSlots] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const router = useRouter();
 
   const handleContinue = () => {
-    router.push("/b2c-student/student-flow/course-policy")
+    router.push("/b2c-student/student-flow/course-policy");
   };
-
+  useEffect(() => {
+    const initialSelected: { [key: string]: boolean } = {};
+    scheduleData.forEach((slot) => {
+      days.forEach((day) => {
+        if (slot.courses[day]) {
+          const key = `${day}_${slot.time}`;
+          initialSelected[key] = true;
+        }
+      });
+    });
+    setSelectedSlots(initialSelected);
+  }, []);
   return (
     <StudentWrapper>
       {/* Background */}
@@ -103,25 +119,26 @@ export default function LearningSchedule() {
       <div className="bg-black fixed inset-0 bg-center bg-repeat z-1 opacity-40" />
 
       <div className="relative z-10 p-10">
-        <div className="min-h-fit w-full max-w-7xl mx-auto bg-white py-8 px-4 sm:px-6 lg:px-8 rounded-3xl">
+        <div className="min-h-fit w-full max-w-[86rem] mx-auto bg-white py-8 px-4 sm:px-6 lg:px-30 rounded-3xl">
           <div className="">
             {/* Header */}
             <div className="text-center mb-12">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFCC00] mb-4">
                 Your Learning Schedule
               </h1>
-              <p className="text-xl sm:text-2xl font-medium text-[#6B7280] max-w-3xl mx-auto">
+              <p className="text-xl sm:text-2xl  md:text-3xl font-medium text-[#6B7280] max-w-5xl mx-auto">
                 Here&#39;s your confirmed schedule based on your selections.
               </p>
             </div>
 
             {/* Main Content */}
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+            <div className="flex flex-col  gap-3 md:flex-row justify-center">
+            <div className="grid grid-cols-1 xl:grid-cols-14 ">
               {/* Schedule Grid */}
-              <div className="xl:col-span-9">
+              <div className="xl:col-span-13">
                 <div className="bg-white overflow-hidden">
                   {/* Days Header */}
-                  <div className="grid grid-cols-6 border-b border-[#B0B0B0]">
+                  <div className="grid grid-cols-6 border-b  border-[#B0B0B0]">
                     <div className="p-4"></div>{" "}
                     {/* Empty cell for time column */}
                     {days.map((day) => (
@@ -149,15 +166,37 @@ export default function LearningSchedule() {
                       {days.map((day) => (
                         <div key={day} className="p-2">
                           <div
-                            className={`h-12 rounded-xl flex items-center justify-center text-sm font-medium transition-all duration-200 ${
-                              slot.courses[day]
-                                ? "bg-[#3366FF] text-white shadow-sm hover:bg-blue-600"
-                                : "border bg-[#B0B0B01A] border-[#6B7280] hover:border-gray-300"
-                            }`}
+                            onClick={() => {
+                              const key = `${day}_${slot.time}`; // e.g., "Mon_09:00"
+                              setSelectedSlots((prev) => ({
+                                ...prev,
+                                [key]: !prev[key],
+                              }));
+                            }}
+                            className={`h-12 rounded-xl flex items-center justify-center text-sm font-medium transition-all duration-200 cursor-pointer
+      ${
+        selectedSlots[`${day}_${slot.time}`]
+          ? "bg-[#3366FF] text-white shadow-s px-2 m hover:bg-blue-600"
+          : "border bg-[#B0B0B01A] border-[#6B7280] hover:border-gray-300"
+      }`}
                           >
-                            {slot.courses[day] && (
-                              <span className="px-2 text-center">
-                                {slot.courses[day]}
+                            {selectedSlots[`${day}_${slot.time}`] && (
+                              <span className="flex items-center gap-1 text-center">
+                                {slot.courses[day] && (
+                                  <span>{slot.courses[day]}</span>
+                                )}
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-4 w-4 text-white"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 00-1.414 0L9 11.586 6.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 000-1.414z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
                               </span>
                             )}
                           </div>
@@ -169,11 +208,13 @@ export default function LearningSchedule() {
               </div>
 
               {/* Course Legend */}
-              <div className="xl:col-span-3">
-                <Card className="sticky top-8 border-0">
-                  <CardContent className="p-0">
-                    {/* Header */}
-                    <div className="bg-[#3366FF] text-white px-4 py-2 rounded-t-3xl">
+              
+            </div>
+            <div className="items-center my-40">
+                
+                  
+                    {/* Header */} <div className="">
+                    <div className="bg-[#3366FF] text-white px-4 rounded-t-xl py-2 ">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="font-medium text-left">Code Name</div>
                         <div className="font-medium text-right">Course</div>
@@ -181,7 +222,7 @@ export default function LearningSchedule() {
                     </div>
 
                     {/* Course List */}
-                    <div className="bg-[#3366FF1A]">
+                    <div className="bg-[#3366FF1A] rounded-b-xl">
                       {courses.map((course, index) => (
                         <div key={index} className="px-4 py-2">
                           <div className="grid grid-cols-2 gap-4 text-sm">
@@ -194,21 +235,21 @@ export default function LearningSchedule() {
                           </div>
                         </div>
                       ))}
-                    </div>
+                    </div> </div>
 
                     {/* Continue Button */}
                     <div className="pt-3">
+                      <Link href={"/b2c-student/student-flow/course-policy"}>
                       <Button
                         onClick={handleContinue}
                         className="w-full bg-[#FF3366] hover:bg-[#FF3366] text-white py-3 rounded-full cursor-pointer font-medium transition-colors duration-200"
                       >
                         Continue
-                      </Button>
+                      </Button></Link>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+                  
+                
+              </div></div>
           </div>
         </div>
       </div>
