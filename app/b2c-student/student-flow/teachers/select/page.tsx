@@ -2,7 +2,6 @@
 
 import StudentWrapper from "@/components/student-wrapper";
 import { Star } from "lucide-react";
-import { educatorsData } from "../../educator/page";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import { useState } from "react";
@@ -10,7 +9,138 @@ import { useState } from "react";
 export default function SelectTeacher() {
   const router = useRouter();
   const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
+  interface Educator {
+    id: number;
 
+    name: string;
+
+    title: string;
+
+    imageUrl: string;
+
+    rating: number;
+
+    description: string;
+
+    linkedinUrl?: string;
+
+    category: string;
+  }
+  const educatorsData: Educator[] = [
+    {
+      id: 1,
+
+      name: "Teacher Name",
+
+      title: "Education",
+
+      imageUrl: "/student/educator/ed4.jpg", // Placeholder image
+
+      rating: 4.4,
+
+      description:
+        "Description",
+
+      linkedinUrl: "#",
+
+      category: "Specially",
+    },
+
+    {
+      id: 2,
+
+      name: "Teacher Name",
+
+      title: "Education",
+
+      imageUrl: "/student/educator/ed4.jpg", // Placeholder image
+
+      rating: 4.4,
+
+      description:
+        "Description",
+
+      linkedinUrl: "https://linkedin.com/in/marcuschen",
+
+      category: "Specially",
+    },
+
+    {
+      id: 3,
+
+      name: "Teacher Name",
+
+      title: "Education",
+
+      imageUrl: "/student/educator/ed4.jpg", // Placeholder image
+
+      rating: 4.4,
+
+      description:
+        "Description",
+
+      linkedinUrl: "https://linkedin.com/in/sophiamiller",
+
+      category: "Specially",
+    },
+
+    {
+      id: 4,
+
+      name: "Teacher Name",
+
+      title: "Education",
+
+      imageUrl: "/student/educator/ed4.jpg", // Placeholder image
+
+      rating: 4.4,
+
+      description:
+        "Description",
+
+      linkedinUrl: "https://linkedin.com/in/davidwilson",
+
+      category: "Specially",
+    },
+
+    {
+      id: 5,
+
+      name: "Teacher Name",
+
+      title: "Education",
+
+      imageUrl: "/student/educator/ed4.jpg", // Placeholder image (reused)
+
+      rating: 4.4,
+
+      description:
+        "Description",
+
+      linkedinUrl: "https://linkedin.com/in/isabellegarcia",
+
+      category: "Specially",
+    },
+
+    {
+      id: 6,
+
+      name: "Teacher Name",
+
+      title: "Education",
+
+      imageUrl: "/student/educator/ed4.jpg", // Placeholder image (reused)
+
+      rating: 4.4,
+
+      description:
+        "Description",
+
+      linkedinUrl: "https://linkedin.com/in/jamesbrown",
+
+      category: "Specially",
+    },
+  ];
   const handleToggle = (index: number) => {
     if (index === 0) {
       router.push("/b2c-student/student-flow/teacher-profile");
@@ -54,10 +184,10 @@ export default function SelectTeacher() {
                 <div
                   key={index}
                   className={`rounded-3xl border border-[#E5E7EB] p-4 space-y-2 cursor-pointer ${index === 0
-                      ? "bg-[#F9FAFB]" // First div default
-                      : isActive
-                        ? "bg-[#3366ff] text-white"
-                        : "bg-[#F9FAFB]"
+                    ? "bg-[#F9FAFB]" // First div default
+                    : isActive
+                      ? "bg-[#3366ff] text-white"
+                      : "bg-[#F9FAFB]"
                     }`}
                   onClick={() => handleToggle(index)}
                 >

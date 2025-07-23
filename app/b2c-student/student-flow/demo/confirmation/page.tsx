@@ -26,7 +26,7 @@ export default function DemoBookingConfirmation() {
           </p>
           <Button
             className="bg-[#FF3366] text-white px-4 py-6 hover:bg-[#ff1a53] cursor-pointer rounded-full"
-            onClick={() => router.push("/student/courses")}
+            onClick={() => router.push("/b2c-student/student-flow/demo/course-details")}
           >
             Explore More Courses
           </Button>

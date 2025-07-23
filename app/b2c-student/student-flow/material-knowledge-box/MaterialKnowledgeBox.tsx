@@ -77,7 +77,7 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
 
       <DownloadToast show={showToast} />
       <div className="absolute right-5 top-5 text-gray-400">
-        <LuInfo />
+       
       </div>
       <div
         className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
@@ -92,7 +92,7 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
           <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
             {folder.name}
           </h3>
-          <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+          <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
         </div>
         <div className="w-ful flex gap-2 ">
 

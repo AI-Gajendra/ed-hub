@@ -25,6 +25,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 import { useSearchParams } from "next/navigation";
 import { courses } from "../../courses/detail/page";
 import Footer from "@/components/layout/Footer";
+import BackButton from "@/components/common-components/BackButton";
 
 interface Qualification {
   id: string;
@@ -118,6 +119,7 @@ function TeacherProfileContent() {
 
   return (
     <StudentWrapper>
+      <BackButton Heading="Teacher Name"/>
       <div className="p-4 md:p-6 lg:p-10 bg-[#EEEEEE]">
         <div className="max-w-7xl mx-auto space-y-8">
           {/* Main Content Grid */}
@@ -289,27 +291,8 @@ function TeacherProfileContent() {
               <div>
                 <h2 className="text-lg font-semibold mb-4">Reviews</h2>
                 <div
-                  className="h-full overflow-y-auto pr-2"
-                  style={{
-                    scrollbarWidth: "thin",
-                    scrollbarColor: "#FFA500 transparent",
-                  }}
+                  className="h-full overflow-y-auto max-h-[544px] custom-scrollbar-thin pr-2"
                 >
-                  <style jsx>{`
-                    div::-webkit-scrollbar {
-                      width: 8px;
-                    }
-                    div::-webkit-scrollbar-track {
-                      background: transparent;
-                    }
-                    div::-webkit-scrollbar-thumb {
-                      background: #ffa500;
-                      border-radius: 4px;
-                    }
-                    div::-webkit-scrollbar-thumb:hover {
-                      background: #ff8c00;
-                    }
-                  `}</style>
                   {reviews.map((review) => (
                     <ReviewCard key={review.id} review={review} />
                   ))}
