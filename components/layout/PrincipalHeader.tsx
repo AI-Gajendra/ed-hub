@@ -41,17 +41,17 @@ export default function PrincipalHeader() {
         {
             icon: PiSuitcaseBold,
             label: 'School MGMT',
-            href: '/student-b2b/student-dashboard/my-course',
+            href: '/principal/branch-management',
         },
         {
             icon: FiDatabase,
             label: 'Material',
-            href: '/student-b2b/student-dashboard/chat',
+            href: '/principal/content-management-principal',
         },
         {
             icon: FiShield,
             label: 'Security',
-            href: '/student-b2b/student-dashboard/recording',
+            href: '/principal/school-security',
         },
         {
             icon: IoChatbubbleOutline,

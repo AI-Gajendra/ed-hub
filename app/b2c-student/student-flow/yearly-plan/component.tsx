@@ -10,7 +10,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import GoBack from "@/components/principal/goback";
-
+import { format } from "date-fns";
 const categories = [
   "Subject 1",
   "Subject 2",
@@ -39,7 +39,7 @@ const PALETTE = {
   WHITE_CARD: "#FFFFFF",
 };
 
-const sessionData = Array.from({ length: 14 }, () => ({
+const sessionData = Array.from({ length: 134 }, () => ({
   title: `Unit Name`,
   content: `1. REAL NUMBERS
 
@@ -61,14 +61,24 @@ type
 }));
 const Curriculum = () => {
   const [selected, setSelected] = useState<string>("Subject 1");
-
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const handlePrevious = () => {
+    const prevMonth = new Date(currentDate);
+    prevMonth.setMonth(prevMonth.getMonth() - 1);
+    setCurrentDate(prevMonth);
+  };
 
+  const handleNext = () => {
+    const nextMonth = new Date(currentDate);
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    setCurrentDate(nextMonth);
+  };
   return (
     <div className="bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
       <GoBack GoBackHeading="Yearly Plan Overview" />
 
-      <div className=" px-4 mx-auto bg-[#eeeeee]">
+      <div className=" md:px-4 mx-auto bg-[#eeeeee]">
         <div className="px-4 pt-4">
           <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
             <div className="flex flex-wrap md:text-base text-xs md:justify-center justify-start px-2 md:gap-4 gap-2">
@@ -78,9 +88,10 @@ const Curriculum = () => {
                   onClick={() => setSelected(category)}
                   className={`
                     relative md:px-5 px-2 py-2 rounded-2xl cursor-pointer font-medium transition-colors duration-200
-                    ${selected === category
-                      ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
-                      : "text-gray-700 hover:bg-gray-200"
+                    ${
+                      selected === category
+                        ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
+                        : "text-gray-700 hover:bg-gray-200"
                     }
                   `}
                 >
@@ -119,19 +130,24 @@ const Curriculum = () => {
                     { value: "Week 2", label: "Week 2" },
                   ]} // Added Weekly as per original
                 />
-                <DateNavigatorWithArrows currentDate={"June 2025"} />
+                <DateNavigatorWithArrows
+                  currentDate={format(currentDate, "MMMM yyyy")}
+                  onPrevious={handlePrevious}
+                  onNext={handleNext}
+                />
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2   overflow-y-scroll custom-peach-scrollbar max-h-[880px]">
               {sessionData.map((item, index) => {
                 const isOpen = activeIndex === index;
 
                 return (
                   <div
                     key={index}
-                    className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
-                      } relative z-20 rounded-2xl overflow-hidden transition-all`}
+                    className={`${
+                      isOpen ? "p-6" : "border border-[#E5E7EB]"
+                    } relative z-20 rounded-2xl mr-3 transition-all`}
                   >
                     {/* Filtered background image */}
                     <div
@@ -143,13 +159,16 @@ const Curriculum = () => {
                     />
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
-                      className={`${isOpen ? "bg-white px-6 py-2" : ""
-                        } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                      className={`${
+                        isOpen ? "bg-white px-6 py-2 " : ""
+                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
-                      <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
+                      <span className="text-lg">
+                        {isOpen ? item.title : "Unit Name "}
+                      </span>
                       <div>
                         {isOpen ? (
-                          <div className="flex gap-2 text-[#6B7280] text-xs items-center">
+                          <div className="flex gap-4  font-normal text-[#6B7280] text-xs items-center">
                             <p>Periods: 18</p>
                             <p>Marks: 20</p>
                             <svg
@@ -399,17 +418,11 @@ export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({
   onNext,
 }) => (
   <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
-    <button
-      onClick={onPrevious}
-      aria-label="Previous month"
-    >
+    <button onClick={onPrevious} aria-label="Previous month">
       <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
     </button>
     <span className="">{currentDate}</span>
-    <button
-      onClick={onNext}
-      aria-label="Next month"
-    >
+    <button onClick={onNext} aria-label="Next month">
       <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
     </button>
   </div>

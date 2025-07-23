@@ -600,7 +600,7 @@ const [isOpen, setIsOpen] = useState(false);
 							borderColor: PALETTE.BORDER_GREY,
 						}}>
 						<table className="w-full text-xs ">
-							<thead className="bg-gray-200">
+							<thead className="bg-[#e5ecff]">
 								<tr>
 									{['Test', 'Date', 'Date', 'Total Marks', 'How', 'Marks', 'Results'].map((header, index) => (
 										<th key={index} className="p-2.5 text-left font-semibold">
@@ -611,7 +611,7 @@ const [isOpen, setIsOpen] = useState(false);
 							</thead>
 							<tbody>
 								{testResultsData.map((row, i) => (
-									<tr key={i} className="odd:bg-white even:bg-gray-100" style={{ borderColor: PALETTE.BORDER_GREY }}>
+									<tr key={i} className="odd:bg-white even:bg-[#e5ecff4d]" style={{ borderColor: PALETTE.BORDER_GREY }}>
 										<td className="p-2.5" style={{ color: PALETTE.TEXT_DARK }}>
 											{row.test}
 										</td>

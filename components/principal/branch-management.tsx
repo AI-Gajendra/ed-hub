@@ -7,44 +7,119 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { Button } from '../ui/button'
 import ActiveTab from './active-inactive'
+import { useRouter } from 'next/navigation'
+import { ChevronDownIcon } from 'lucide-react'
 type CardData = {
-	id: number
-	name: string
-	address: string
-	detail1: string
-	detail2: string
-	detail3: string
-	detail4: string
-	image: string
+  id: number
+  name: string
+  address: string
+  detail1: string
+  detail2: string
+  detail3: string
+  detail4: string
+  image: string
 }
 
 const branch = Array.from({ length: 3 }, (_, i) => ({
-	id: i + 1,
-	name: 'School Name',
-	address: 'Address',
-	detail1: 'Detail 1',
-	detail2: 'Detail 2',
-	detail3: 'Detail 3',
-	detail4: 'Detail 4',
-	image: '/principal/school-login-banner.png',
+  id: i + 1,
+  name: 'School Name',
+  address: 'Address',
+  detail1: 'Detail 1',
+  detail2: 'Detail 2',
+  detail3: 'Detail 3',
+  detail4: 'Detail 4',
+  image: '/principal/school-login-banner.png',
 }))
 
 export const sampleData: CardData[] = [...branch]
 
 const filters = ['Filter 1', 'Filter 2', 'Filter 3']
 
-const BranchManagement = () => {
-	  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''))
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-	const handleFilterChange = (index: number, value: string) => {
-		const updated = [...selectedFilters]
-		updated[index] = value
-		setSelectedFilters(updated)
-	}
-	const [searchTerm, setSearchTerm] = useState('')
+const AddNewBranchModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  const formFields = ["Country", "State / Province", "City"];
+  return (
+    <div className="fixed inset-0 bg-transparent backdrop-blur-xs bg-opacity-75 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-md transform transition-all duration-300 ease-in-out scale-100 opacity-100">
+        <label
+          htmlFor="mc_className"
+          className="block text-md font-medium text-black mb-4"
+        >
+          Add New Branch
+        </label>
+        <div className="space-y-3 mb-8">
+          <div>
+            <label
+              htmlFor="anb_branchName"
+              className="block text-sm font-medium text-black mb-1"
+            >
+              Branch Name
+            </label>
+            <input
+              type="text"
+              id="anb_branchName"
+              placeholder="Branch Name"
+              className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="anb_branchAddress"
+              className="block text-sm font-medium text-black mb-1"
+            >
+              Branch Address
+            </label>
+            <textarea
+              id="anb_branchAddress"
+              rows={3}
+              className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm resize-none"
+            ></textarea>
+          </div>
+          {formFields.map((label) => (
+            <div key={label}>
+              <label className="block text-sm font-medium text-black mb-1">
+                {label}
+              </label>
+              <div className="relative">
+                <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm pr-8">
+                  <option>Option 1</option>
+                </select>
+                <ChevronDownIcon />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <button onClick={onClose} className="w-full px-6 py-3 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const BranchManagement = () => {
+  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''))
+  const [showPopup, setShowPopup] = useState<boolean>(false)
+  const router = useRouter()
+
+  const handleFilterChange = (index: number, value: string) => {
+    const updated = [...selectedFilters]
+    updated[index] = value
+    setSelectedFilters(updated)
+  }
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="py-4 px-4 md:px-16">
+      <AddNewBranchModal isOpen={showPopup} onClose={() => setShowPopup(false)} />
+      
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
 
@@ -74,9 +149,9 @@ const BranchManagement = () => {
               <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
             </div>
           ))}
-          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Staff</Button>
-          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Add Branch</Button>
-          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Approval</Button>
+          <Button onClick={() => router.push("/principal/manage-teacher-leave")} className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Staff</Button>
+          <Button onClick={() => setShowPopup(true)}className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Add Branch</Button>
+          <Button onClick={() => router.push("/principal/manage-approvals")} className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Approval</Button>
           {/* Filters with dropdown icons */}
         </div>
         <ActiveTab />
@@ -85,7 +160,7 @@ const BranchManagement = () => {
 
           {/* Cards */}
           {branch.map((item) => (
-            <div key={item.id} className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
+            <div key={item.id} onClick={() => router.push("/principal/teacher-management")} className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
               <div className={`w-full lg:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

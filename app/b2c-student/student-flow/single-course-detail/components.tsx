@@ -12,6 +12,7 @@ import { DateNavigatorWithArrows, FilterDropdown } from "./ui-components";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import MonthTab from "@/components/common-components/MonthTab/MonthTab";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // --- Interfaces ---
 export interface LearningWeek {
@@ -228,7 +229,9 @@ export const UpcomingClassItem: React.FC<{ uClass: UpcomingClass }> = ({
 );
 
 export const FillForm: React.FC = () => (
+
   <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
+    
     <h3 className="text-lg md:text-xl font-bold text-[#FF3366]">
       Request Teacher Change
     </h3>
@@ -268,9 +271,10 @@ export const AttendanceCard: React.FC<{
         To continue learning without interruption, please renew your course or
         complete the payment.
       </p>
+      <Link href={"/b2c-student/student-flow/checkout"}>
       <button className={`rounded-full bg-[#D97706] text-white px-4 py-3`}>
         Pay Fees
-      </button>
+      </button></Link>
     </div>
   </div>
 );

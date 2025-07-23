@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { FaSearch } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useRouter } from 'next/navigation';
 type CardData = {
   id: number;
   name: string;
@@ -38,6 +39,8 @@ const SchoolSecurity = () => {
   const filteredData = sampleData.filter((item) => item.role === activeTab);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
+
+  const router = useRouter();
 
   const handleFilterChange = (index: number, value: string) => {
     const updated = [...selectedFilters];
@@ -102,7 +105,7 @@ const SchoolSecurity = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex flex-col sm:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
+            <div onClick={() => router.push("/principal/school-login-activity")} key={item.id} className="flex flex-col sm:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
               <div className={`w-full sm:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

@@ -23,14 +23,17 @@ import Newsletter from "@/components/common-components/Newsletter";
 import { useRouter } from "next/navigation";
 
 // Custom Radio Button Component with Tick Icon
+// Custom Radio Button Component with Tick Icon
 const CustomRadioButton = ({
   value,
   selectedValue,
   id,
+  onChange,
 }: {
   value: string;
   selectedValue: string;
   id: string;
+  onChange: (value: string) => void;
 }) => {
   const isSelected = value === selectedValue;
 
@@ -49,6 +52,8 @@ const CustomRadioButton = ({
         type="radio"
         value={value}
         id={id}
+        checked={isSelected}
+        onChange={() => onChange(value)}
         className="absolute inset-0 opacity-0 cursor-pointer"
       />
     </div>
@@ -194,6 +199,7 @@ export default function Checkout({ demo = false }: { demo?: boolean }) {
                               value="cards"
                               selectedValue={selectedPayment}
                               id="cards"
+                              onChange={setSelectedPayment}
                             />
                           </label>
                           <Label
@@ -315,6 +321,7 @@ export default function Checkout({ demo = false }: { demo?: boolean }) {
                             value="upi"
                             selectedValue={selectedPayment}
                             id="upi"
+                            onChange={setSelectedPayment}
                           />
                         </label>
                         <Label
@@ -342,6 +349,7 @@ export default function Checkout({ demo = false }: { demo?: boolean }) {
                             value="netbanking"
                             selectedValue={selectedPayment}
                             id="netbanking"
+                            onChange={setSelectedPayment}
                           />
                         </label>
                         <Label
@@ -414,10 +422,13 @@ export default function Checkout({ demo = false }: { demo?: boolean }) {
                   </div>
 
                   <Button
-                  // 
+                    //
 
-onClick={() => router.push("/b2c-student/student-flow/teachers/select")} 
-                  className="w-full h-10 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-medium">
+                    onClick={() =>
+                      router.push("/b2c-student/student-flow/teachers/select")
+                    }
+                    className="w-full h-10 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-medium"
+                  >
                     Proceed
                   </Button>
 
