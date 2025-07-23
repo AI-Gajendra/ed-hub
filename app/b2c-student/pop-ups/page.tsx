@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import AskMeAnything from "./popupComponent/AskMeAnything";
 import ReportButtonsPopup from "./popupComponent/ReportButtons";
 import VideoPlayerPopup from "./popupComponent/VideoPlayerPopup";
+import ToastNotification from "./popupComponent/ToastNotification";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -78,6 +79,18 @@ export default function AllTeacherB2CPopups() {
         { id: "videoPlayer", label: "Video Player Popup", action: () => setOpenModal("videoPlayer") },
     ];
 
+    const [showToast, setShowToast] = useState(false);
+    const handleShowToast = () => {
+        setShowToast(true);
+        setTimeout(() => {
+            setShowToast(false);
+        }, 3000); // Hides after 3 seconds
+    };
+
+    const notificationButtons = [
+        { id: "savedToast", label: "Show 'Saved!' Toast", action: handleShowToast },
+    ];
+
     return (
         <div className="bg-gray-200 min-h-screen p-10 font-sans">
             <h1 className="text-3xl font-bold text-center mb-10 text-[#6B7280]">
@@ -93,6 +106,15 @@ export default function AllTeacherB2CPopups() {
                         {btn.label}
                     </button>
                 ))}
+                {notificationButtons.map((btn) => (
+                     <button
+                        key={btn.id}
+                        onClick={btn.action}
+                        className="bg-green-500 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
+                    >
+                        {btn.label}
+                    </button>
+                ))}
             </div>
 
             <AskMeAnything
@@ -104,6 +126,8 @@ export default function AllTeacherB2CPopups() {
                 isOpen={openModal === "videoPlayer"}
                 onClose={() => setOpenModal(null)}
             />
+
+            <ToastNotification isVisible={showToast} message="Saved !" />
 
         </div>
     );
