@@ -6,6 +6,7 @@ const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 import { FaSearch } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdOutlineDateRange } from "react-icons/md";
+import ReassignClassModal from "@/app/principal/pop-ups/components/Reassign";
 
 type leavecards = {
   id: number,
@@ -36,6 +37,7 @@ const Leave = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
+  const [showReassignPopup, setShowReassignPopup] = useState<boolean>(false)
 
   const handleFilterChange = (index: number, value: string) => {
     const updated = [...selectedFilters];
@@ -47,6 +49,7 @@ const Leave = () => {
 
 
       <div className="p-4 ">
+        <ReassignClassModal isOpen={showReassignPopup} onClose={() => setShowReassignPopup(false)} />
         {/* Tabs */}
         <div className="bg-white rounded-2xl p-4">
 
@@ -106,7 +109,7 @@ const Leave = () => {
                 <button className="px-6 py-2 bg-red-100 text-red-500 rounded-3xl">
                   Reject
                 </button>
-                <button className="px-6 py-2 bg-[#3366FF] text-white rounded-3xl">
+                <button onClick={() => setShowReassignPopup(true)} className="px-6 py-2 bg-[#3366FF] text-white rounded-3xl">
                   Approve
                 </button>
               </div>

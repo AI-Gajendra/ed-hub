@@ -9,6 +9,8 @@ import { Button } from '../ui/button'
 import ActiveTab from './active-inactive'
 import { useRouter } from 'next/navigation'
 import { ChevronDownIcon } from 'lucide-react'
+import DeactivatePopup from '@/app/principal/pop-ups/components/Deactivate'
+
 type CardData = {
   id: number
   name: string
@@ -107,6 +109,7 @@ const AddNewBranchModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 const BranchManagement = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''))
   const [showPopup, setShowPopup] = useState<boolean>(false)
+  const [showDeactivatePopup,setShowDeactivatePopup] = useState<boolean>(false)
   const router = useRouter()
 
   const handleFilterChange = (index: number, value: string) => {
@@ -119,6 +122,7 @@ const BranchManagement = () => {
   return (
     <div className="py-4 px-4 md:px-16">
       <AddNewBranchModal isOpen={showPopup} onClose={() => setShowPopup(false)} />
+      <DeactivatePopup isOpen={showDeactivatePopup} onClose={() => setShowDeactivatePopup(false)} />
       
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
@@ -177,7 +181,7 @@ const BranchManagement = () => {
 
               </div>
               <div className="flex gap-2 absolute items-center right-3 bottom-3">
-                <button className="bg-gray-100  text-black-900 p-3 text-lg rounded-full ">
+                <button onClick={(e) => {e.stopPropagation(); setShowDeactivatePopup(true)}} className="bg-gray-100  text-black-900 p-3 text-lg rounded-full ">
                   <IoSettingsOutline />
                 </button>
                 <button className=" bg-blue-600 py-2 px-8 text-sm rounded-full text-white">
