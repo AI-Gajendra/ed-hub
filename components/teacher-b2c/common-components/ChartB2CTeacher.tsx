@@ -648,7 +648,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<main className="grid h-full  mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 ">
+				<main className="grid h-full  mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 py-4 ">
 					<div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-4 items-start">
 						{skillCardData.map((card, cardIndex) => (
 							<div key={cardIndex} className="py-4 px-2 rounded-2xl overflow-y-auto bg-gray-100">

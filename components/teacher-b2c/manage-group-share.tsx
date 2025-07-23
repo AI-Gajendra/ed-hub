@@ -107,7 +107,7 @@ const ManageGroup = () => {
                     >
                         <FiArrowLeft className="w-5 h-5" />
                     </button>
-                    <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+                    <h1 className="text-lg sm:text-xl font-normal text-[#FF3366]">
                         Manage Group Share
                     </h1>
                 </div>

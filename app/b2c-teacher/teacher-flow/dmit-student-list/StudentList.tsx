@@ -9,7 +9,7 @@ import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/Teache
 import Link from 'next/link'
 
 export default function StudentListPage() {
-   
+
 
     return (
         <div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -128,28 +128,30 @@ const dummyStudents: Student[] = [
 const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
     return (
         <Link href={"/b2c-teacher/teacher-flow/dmit-student-paper"} className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-2 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:space-x-4 ">
-            {/* Avatar */}
-            <Image
-                width={100}
-                height={100}
-                src={student.avatarUrl}
-                alt={`${student.name}'s avatar`}
-                className="w-12 h-12 sm:w-20 sm:h-20 rounded-2xl object-cover flex-shrink-0"
-            />
+            <div className="flex items-center gap-2">
+                {/* Avatar */}
+                <Image
+                    width={100}
+                    height={100}
+                    src={student.avatarUrl}
+                    alt={`${student.name}'s avatar`}
+                    className="w-28 sm:w-20 sm:h-20 rounded-2xl object-cover flex-shrink-0"
+                />
 
-            {/* Student Info */}
-            <div className="flex-grow min-w-0">
-                {' '}
-                {/* min-w-0 prevents text overflow issues */}
-                <h3 className="text-base sm:text-lg font-semibold text-black">{student.name}</h3>
-                <p className="text-xs  text-[#6B7280] mt-0.5">{student.courseName}</p>
-                <p className="text-xs  text-[#6B7280] mt-0.5">{student.levelGrade}</p>
-                <p className="text-xs  text-[#6B7280] mt-0.5">{student.group}</p>
+                {/* Student Info */}
+                <div className="flex-grow min-w-0">
+                    {' '}
+                    {/* min-w-0 prevents text overflow issues */}
+                    {/* <h3 className="text-base sm:text-xl font-normal text-black">{student.name}</h3> */}
+                    <p className="text-base sm:text-xl font-normal text-black">{student.name}</p>
+                    <p className="text-xs  text-[#6B7280] mt-0.5">{student.courseName}</p>
+                    <p className="text-xs  text-[#6B7280] mt-0.5">{student.levelGrade}</p>
+                    <p className="text-xs  text-[#6B7280] mt-0.5">{student.group}</p>
+                </div>
             </div>
-
             {/* Score and Status */}
-            <div className="flex gap-2 flex-shrink-0 sm:mt-0 self-start sm:self-center mr-2">
-                <div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] sm:min-w-[140px]">
+            <div className="grid grid-cols-2 gap-2 flex-shrink-0 sm:mt-0 self-start sm:self-center mr-2">
+                <div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] w-full sm:min-w-[140px]">
                     <p className="text-sm text-[#6B7280] mb-0.5">Score</p>
                     <p className="text-sm font-bold text-[#3366FF]">{student.score}</p>
                 </div>
@@ -185,7 +187,7 @@ const StudentPerformancePage: React.FC = () => {
         // Add further filtering logic here based on activeFilters
         return S
     }, [students, searchTerm /*, activeFilters */])
-const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
+    const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
     return (
         <main className="flex-grow container mx-auto p-4 min-h-screen space-y-6 bg-white rounded-2xl">
             {/* Header: Search and Filters */}
