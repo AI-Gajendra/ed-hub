@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import ClassTab from './class-tab';
+import { useRouter } from 'next/navigation';
 type CardData = {
   id: number;
   name: string;
@@ -40,6 +41,8 @@ export const sampleData: CardData[] = [...students, ...teachers];
 const SchoolLogin = () => {
   const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('teacher');
 
+  const router = useRouter();
+
   const filteredData = sampleData.filter((item) => item.role === activeTab);
 
 
@@ -47,14 +50,17 @@ const SchoolLogin = () => {
     <div className="p-4 ">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-3">
-        <div className="grid grid-cols-1 relative gap-4 md:gap-12 justify-between py-4 md:grid-cols-[2fr_1fr] bg-[url('/principal/login-pattern.png')] bg-repeat bg-[length:650px_650px]">
-          <div className="px-2">
+        <div className="relative grid grid-cols-1 relative gap-4 md:gap-12 justify-between py-4 md:grid-cols-[2fr_1fr] bg-white">
+          <div className="z-0 absolute inset-0 bg-[url('/principal/login-pattern.png')] filter grayscale opacity-20 bg-repeat-none bg-cover">
+
+          </div>
+          <div className="px-2 z-10">
             <h2 className="font-bold mb-2">School Name</h2>
-            <div className="h-62 relative z-10">
+            <div className="h-62 relative">
               <Image src="/principal/school-login-banner.png" alt='school-login-principal-image' fill objectFit='cover' className='rounded-2xl' />
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col z-10">
             <p className="text-sm"><strong>Email:</strong> example@gm.com
             </p>
             <p className="text-sm"><strong>Contact:</strong> +91 1234567890</p>
@@ -84,7 +90,7 @@ const SchoolLogin = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
+            <div key={item.id} onClick={() => router.push(item.role === 'teacher' ? "/principal/teacher-login-activity" : "/principal/student-login-activity")} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
               <div className={`${item.role === "teacher" ? "w-20 h-20" : "w-10 h-10"} rounded-xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

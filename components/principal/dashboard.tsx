@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { MouseEventHandler, useState } from 'react'
 import Image from 'next/image'
 import { FiArrowRight, FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi' // Add more icons if used by StatCard or other elements
+import { useRouter } from 'next/navigation'
 
 // --- Color Constants (approximated from image) ---
 const PROFILE_NAME_COLOR = 'black'
@@ -27,10 +28,11 @@ const SCROLLBAR_THUMB_COLOR = '#FFC79A' // For scrollbar thumb
 // --- Helper Components ---
 interface StatCardProps {
 	number: string | number
-	label: string
+	label: string,
+	onClick: MouseEventHandler<HTMLDivElement>
 }
-const StatCard: React.FC<StatCardProps> = ({ number, label }) => (
-	<div className={`p-6 rounded-xl text-center border border-[#E5E7EB]`} style={{ backgroundColor: STAT_CARD_BG }}>
+const StatCard: React.FC<StatCardProps> = ({ number, label, onClick }) => (
+	<div className={`p-6 rounded-xl text-center border border-[#E5E7EB]`} onClick={onClick} style={{ backgroundColor: STAT_CARD_BG }}>
 		<p className="text-4xl font-bold" style={{ color: STAT_NUMBER_COLOR }}>
 			{number}
 		</p>
@@ -51,7 +53,7 @@ const TabButton: React.FC<TabButtonProps> = ({ label, isActive, onClick }) => (
 		className={`px-12 py-1.5 text-sm font-medium rounded-xl transition-colors duration-150
       ${isActive ? `text-white` : `hover:bg-gray-100 text-[${INACTIVE_TAB_TEXT}]`}`}
 		style={{ backgroundColor: isActive ? ACTIVE_TAB_BG : INACTIVE_TAB_BG }}>
-		{label}
+		{/* {label} */}
 	</button>
 )
 
@@ -59,6 +61,8 @@ const TabButton: React.FC<TabButtonProps> = ({ label, isActive, onClick }) => (
 const PrincipalDashboardPage: React.FC = () => {
 	const [teacherPerformanceTab, setTeacherPerformanceTab] = useState('Class A')
 	const [studentPerformanceTab, setStudentPerformanceTab] = useState('Class A')
+
+	const router = useRouter()
 
 	const profile = {
 		name: 'Shlok Agheda',
@@ -76,9 +80,9 @@ const PrincipalDashboardPage: React.FC = () => {
 	}
 
 	const stats = [
-		{ number: 3, label: 'Branches' },
-		{ number: 200, label: 'Teachers' },
-		{ number: 600, label: 'Students' },
+		{ number: 3, label: 'Branches', href:"/principal/branch-management" },
+		{ number: 200, label: 'Teachers', href:"#" },
+		{ number: 600, label: 'Students', href:"#" },
 	]
 
 	const overallProgressData = {
@@ -147,7 +151,7 @@ const PrincipalDashboardPage: React.FC = () => {
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
 						{stats.map(stat => (
-							<StatCard key={stat.label} number={stat.number} label={stat.label} />
+							<StatCard key={stat.label} number={stat.number} label={stat.label} onClick={() => router.push(stat.href)}/>
 						))}
 					</div>
 					</div>
@@ -317,7 +321,7 @@ const PrincipalDashboardPage: React.FC = () => {
 								style={{ color: TABLE_HEADER_TEXT }}>
 								<div className="py-1.5 px-2 text-left">Teacher Name</div> {/* Teacher Name can remain left-aligned */}
 								<div className="py-1.5 px-2">Subjects</div>
-								<div className="py-1.5 px-2">Avg. Student Score</div>
+								<div className="py-1.5 px-2">Avg. <br/>Student Score</div>
 								<div className="py-1.5 px-2">Progress</div> {/* Progress header also centered now */}
 							</div>
 						</div>
@@ -326,6 +330,7 @@ const PrincipalDashboardPage: React.FC = () => {
 							{teacherPerformanceData.map(item => (
 								<div
 									key={item.id}
+									onClick={() => router.push("/principal/teacher-performance")}
 									className="grid grid-cols-4 p-2 rounded-xl text-sm border border-[#E5E7EB] items-center text-center" // Added text-center to rows
 									style={{ backgroundColor: TABLE_ROW_BG }}>
 									<div className="px-1 text-left" style={{ color: TABLE_TEXT_COLOR }}>
@@ -352,6 +357,7 @@ const PrincipalDashboardPage: React.FC = () => {
 					<div className="p-3 mt-auto text-center">
 						<button
 							className="text-md font-medium px-16 py-2.5 rounded-full border border-[#E5E7EB] "
+							onClick={() => router.push("/principal/teacher-management")}
 							style={{ backgroundColor: VIEW_ALL_BG, color: VIEW_ALL_TEXT }}>
 							View All
 						</button>
@@ -384,7 +390,7 @@ const PrincipalDashboardPage: React.FC = () => {
 								className="grid grid-cols-3 text-sm font-semibold text-center" // Added text-center to header
 								style={{ color: TABLE_HEADER_TEXT }}>
 								<div className="py-1.5 px-2">Class</div>
-								<div className="py-1.5 px-2">Avg. Student Score</div>
+								<div className="py-1.5 px-2">Avg. <br/>Student Score</div>
 								<div className="py-1.5 px-2">Top Performer</div>
 							</div>
 						</div>
@@ -393,6 +399,7 @@ const PrincipalDashboardPage: React.FC = () => {
 							{studentPerformanceData.map(item => (
 								<div
 									key={item.id}
+									onClick={() => router.push("/principal/student-progress-report")}
 									className="grid grid-cols-3 p-2 rounded-xl border border-[#E5E7EB] text-sm items-center text-center" // Added text-center to rows
 									style={{ backgroundColor: TABLE_ROW_BG }}>
 									<div className="px-1" style={{ color: TABLE_TEXT_COLOR }}>

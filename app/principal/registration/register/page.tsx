@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 // import StepIndicator from '@/components/step-indicator'; // Adjust path if needed
 import { FiChevronDown, FiEye, FiEyeOff, FiUploadCloud } from 'react-icons/fi';
+import StepIndicator from '@/components/step-indicator';
+import { useRouter } from 'next/navigation';
 
 // --- Form Step Components (defined in the same file for simplicity) ---
 
@@ -11,7 +13,7 @@ const Step1 = ({ onContinue }: { onContinue: () => void }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
-      <h1 className="text-2xl font-bold text-black mb-6">Create Account</h1>
+      <h1 className="text-xl text-black mb-6">Create Account</h1>
       <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
         <div>
           <label className="block text-sm font-semibold text-black mb-2">Email ID</label>
@@ -41,15 +43,17 @@ const Step1 = ({ onContinue }: { onContinue: () => void }) => {
 // --- Main Page Component ---
 export default function RegisterPage() {
   const [step, setStep] = useState(1);
+  const router = useRouter()
   const totalSteps = 5;
 
   const nextStep = () => {
     setStep((prev) => (prev < totalSteps ? prev + 1 : prev));
   };
   
-  // const prevStep = () => {
-  //   setStep((prev) => (prev > 1 ? prev - 1 : prev));
-  // };
+  const handleRegistration = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push("/principal/dashboard")
+  }
 
   const renderStep = () => {
     switch (step) {
@@ -58,7 +62,7 @@ export default function RegisterPage() {
       case 2: return <Step2 onContinue={nextStep} />;
       case 3: return <Step3 onContinue={nextStep} />;
       case 4: return <Step4 onContinue={nextStep} />;
-      case 5: return <Step5 />;
+      case 5: return <Step5 onContinue={handleRegistration}/>;
       default: return <Step1 onContinue={nextStep} />;
     }
   };
@@ -77,7 +81,7 @@ export default function RegisterPage() {
         {/* Left Column: Form Area */}
         <div className="md:col-span-6 lg:col-span-5 w-full">
           <div className="flex flex-col items-center w-full max-w-md mx-auto">
-            {/* <StepIndicator currentStep={step} totalSteps={totalSteps} /> */}
+            <StepIndicator currentStep={step} totalSteps={totalSteps} setStep={setStep} />
             <div className="bg-white p-8 rounded-4xl shadow-xl w-full">
               {renderStep()}
             </div>
@@ -114,7 +118,7 @@ export default function RegisterPage() {
 
 const Step2 = ({ onContinue }: { onContinue: () => void }) => (
     <>
-      <h1 className="text-2xl font-bold text-black mb-6">Personal Information</h1>
+      <h1 className="text-xl text-black mb-6">Personal Information</h1>
       <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
         <div>
           <label className="block text-sm font-semibold text-black mb-2">Profile Image</label>
@@ -138,7 +142,7 @@ const Step2 = ({ onContinue }: { onContinue: () => void }) => (
         </div>
         <div>
           <label className="block text-sm font-semibold text-black mb-2">Address</label>
-          <input type="text" placeholder="Address" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <textarea className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows={2}></textarea>
         </div>
         {['Country', 'State / Province', 'City'].map(label => (
           <div key={label} className='relative flex flex-col'>
@@ -146,12 +150,12 @@ const Step2 = ({ onContinue }: { onContinue: () => void }) => (
             <select required className="w-full appearance-none rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option>Option 1</option> <option>Option 2</option>
             </select>
-            <FiChevronDown className="pointer-events-none absolute right-4 top-[50%] transform -translate-y-1/2 text-black w-4 h-4 z-20 " />
+            <FiChevronDown className="pointer-events-none absolute right-4 top-[70%] transform -translate-y-1/2 text-black w-4 h-4 z-20 " />
           </div>
         ))}
          <div>
           <label className="block text-sm font-semibold text-black mb-2">Bio</label>
-          <textarea placeholder="Bio" className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows={2}></textarea>
+          <textarea className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows={2}></textarea>
         </div>
         <button type="submit" className="w-full bg-[#3366FF] text-white font-bold py-3.5 mt-4 rounded-full hover:bg-blue-700 transition-all">Continue</button>
       </form>
@@ -160,7 +164,7 @@ const Step2 = ({ onContinue }: { onContinue: () => void }) => (
 
 const Step3 = ({ onContinue }: { onContinue: () => void }) => (
     <>
-      <h1 className="text-2xl font-bold text-black mb-6">Education</h1>
+      <h1 className="text-xl text-black mb-6">Education</h1>
       <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
         <div>
           <label className="block text-sm font-semibold text-black mb-2">School / University Name</label>
@@ -190,7 +194,7 @@ const Step3 = ({ onContinue }: { onContinue: () => void }) => (
   
 const Step4 = ({ onContinue }: { onContinue: () => void }) => (
       <>
-        <h1 className="text-2xl font-bold text-black mb-6">Achievement / Experience</h1>
+        <h1 className="text-xl text-black mb-6">Achievement / Experience</h1>
         <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
           <div>
             <label className="block text-sm font-semibold text-black mb-2">Title</label>
@@ -198,7 +202,7 @@ const Step4 = ({ onContinue }: { onContinue: () => void }) => (
           </div>
           <div>
             <label className="block text-sm font-semibold text-black mb-2">Description</label>
-            <textarea placeholder="Description" required className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows={5}></textarea>
+            <textarea className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows={2}></textarea>
           </div>
           <div className="pt-2 space-y-4">
             <button type="button" className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">Add Achievement / Experience</button>
@@ -208,24 +212,25 @@ const Step4 = ({ onContinue }: { onContinue: () => void }) => (
       </>
 );
   
-const Step5 = () => (
+const Step5 = ({ onContinue }: { onContinue: (e: FormEvent<HTMLFormElement>) => void }) => (
       <>
-        <h1 className="text-2xl font-bold text-black mb-6">School Information</h1>
-        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Registration Complete!"); }}>
+        <h1 className="text-xl text-black mb-6">School Information</h1>
+        <form className="space-y-4" onSubmit={onContinue}>
           <div>
             <label className="block text-sm font-semibold text-black mb-2">School Name</label>
             <input type="text" placeholder="School Name" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
           <div>
             <label className="block text-sm font-semibold text-black mb-2">School Address</label>
-            <input type="text" placeholder="School Address" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <textarea className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows={2}></textarea>
           </div>
           {['Country', 'State / Province', 'City'].map(label => (
-            <div key={label}>
+            <div key={label} className='relative flex flex-col'>
               <label className="block text-sm font-semibold text-black mb-2">{label}</label>
               <select required className="w-full appearance-none rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option>Option 1</option> <option>Option 2</option>
               </select>
+              <FiChevronDown className="pointer-events-none absolute right-4 top-[70%] transform -translate-y-1/2 text-black w-4 h-4 z-20 " />
             </div>
           ))}
           <div className="pt-2">
