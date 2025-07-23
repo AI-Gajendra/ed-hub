@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRouter } from "next/navigation";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import { FiCalendar, FiClock } from "react-icons/fi";
@@ -34,6 +36,8 @@ const times = [
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 export default function LectureForm() {
+  const router = useRouter();
+  
   return (
     <div className="max-w-6xl px-2 py-4 mx-auto">
     <div className="p-4 bg-white rounded-2xl ">
@@ -174,8 +178,8 @@ export default function LectureForm() {
       </div>
 
       <div className="flex justify-center gap-4 mt-6">
-        <Button className="bg-[#FFEEF2] rounded-full text-[#FF3366] px-6">Cancel</Button>
-        <Button className="bg-[#0049FF] rounded-full text-white px-8">Add</Button>
+        <Button onClick={() => router.push("/principal/teacher-management")} className="bg-[#FFEEF2] rounded-full text-[#FF3366] px-6">Cancel</Button>
+        <Button onClick={() => router.push("/principal/teacher-management")} className="bg-[#0049FF] rounded-full text-white px-8">Add</Button>
       </div>
     </div>
     </div>
