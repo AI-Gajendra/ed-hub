@@ -23,7 +23,7 @@ export default function page() {
       <BackButton Heading="Worksheet Report" />
       <MaxWidthWrapper>
         <main className="flex-grow w-full max-w-[90rem] mx-auto p-4 ">
-          <div className="space-y-4 ">
+          <div className="space-y-2">
             <ResultsSection />
             <ChartsReport />
           </div>
@@ -431,9 +431,9 @@ const ChartsReport: FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <LuOmega key="s" className="w-4 h-4" />,
-        <FiPercent key="p" className="w-4 mt-4.5 h-4" />,
-        <MdOutlineSuperscript key="a" className="w-4 h-4" />,
+        <LuOmega key="s" className="w-5 h-5" />,
+        <FiPercent key="p" className="w-5 mt-4.5 h-5" />,
+        <MdOutlineSuperscript key="a" className="w-5 h-5" />,
       ],
       skills: Array(7).fill({
         name: "Subject 1",
@@ -449,9 +449,9 @@ const ChartsReport: FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <MdOutlineFunctions key="b" className="w-4 h-4" />,
-        <RiPsychotherapyLine key="a" className="w-4 mt-4.5 h-4" />,
-        <TbMathFunction key="z" className="w-4 h-4" />,
+        <MdOutlineFunctions key="b" className="w-5 h-5" />,
+        <RiPsychotherapyLine key="a" className="w-5 mt-4.5 h-5" />,
+        <TbMathFunction key="z" className="w-5 h-5" />,
       ],
       skills: [
         {
@@ -477,10 +477,7 @@ const ChartsReport: FC = () => {
     overallProgress: "4/5",
     progressPercent: 80,
     iconSet: [
-      <MdOutlineTheaterComedy
-        key="a"
-        className="w-6 text-[#893544] mt-4.5 h-6"
-      />,
+      <MdOutlineTheaterComedy key="a" className="w-8 h-8 text-[#893544]" />,
     ], // Example icons
     skills: [
       {
@@ -1000,7 +997,7 @@ const ChartsReport: FC = () => {
             <h3 className="font-medium text-lg mb-10 text-[#FF3366]">
               {personalDevData.title}
             </h3>
-            <div className="space-y-3 overflow-y-scroll custom-grey-scrollbar pr-3 max-h-[424px]">
+            <div className="space-y-3 overflow-y-scroll custom-scrollbar-thin-grey pr-3 max-h-[424px]">
               {personalDevData.skills.map((skill, i) => (
                 <ProgressCircleItem
                   key={i}
@@ -1034,8 +1031,8 @@ const ChartsReport: FC = () => {
                       {card.title}
                     </h3>
                     <div
-                      className="flex space-x-1.5 text-xs"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
+                      className="flex translate-y-2 text-xs opacity-[40%]"
+                      style={{ color: card.subTitleColor }}
                     >
                       {card.iconSet}
                     </div>
@@ -1096,7 +1093,7 @@ const ChartsReport: FC = () => {
               style={{
                 backgroundColor: lifeSkillsData.bgColor,
               }}
-              className={` p-3 mb-4 rounded-2xl`}
+              className={`py-3 px-7 mb-4 rounded-2xl`}
             >
               <div className="flex justify-between items-center mb-2">
                 <h3
@@ -1106,8 +1103,8 @@ const ChartsReport: FC = () => {
                   {lifeSkillsData.title}
                 </h3>
                 <div
-                  className="flex space-x-1.5 text-xs"
-                  style={{ color: PALETTE.TEXT_MEDIUM }}
+                  className="flex text-xs opacity-[40%] translate-y-2"
+                  style={{ color: lifeSkillsData.subTitleColor }}
                 >
                   {lifeSkillsData.iconSet}
                 </div>
