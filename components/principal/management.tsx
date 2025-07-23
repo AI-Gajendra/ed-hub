@@ -47,6 +47,7 @@ const filters = ['Filter 1', 'Filter 3'];
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  showDeleteBtn?: boolean;
 }
 
 const CloseIcon = () => (
@@ -340,7 +341,7 @@ const SelectClassToEditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-const ManageClassModal: React.FC<ModalProps> = ({ isOpen }) => {
+const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn }) => {
   if (!isOpen) return null;
   // Dummy state for this modal's internal selections if any
   // const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -466,13 +467,98 @@ const ManageClassModal: React.FC<ModalProps> = ({ isOpen }) => {
             </div>
           </div>
         </div>
-        <div className="flex justify-end space-x-3">
-          <button className="px-6 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
+        <div className="flex justify-center space-x-3">
+          {showDeleteBtn && <button onClick={() => onClose()} className="px-6 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
             Delete Class
-          </button>
-          <button className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
+          </button>}
+          <button onClick={() => onClose()} className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
             Continue
           </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const AddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn }) => {
+  if (!isOpen) return null;
+  const students = Array(10)
+    .fill(null)
+    .map((_, i) => ({
+      id: `s${i}`,
+      name: `Student Name ${i + 1}`,
+      course: "Course Name",
+      grade: "Level / Grade",
+      group: "Group",
+    }));
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-3xl transform transition-all duration-300 ease-in-out scale-100 opacity-100">
+        <label
+          htmlFor="mc_className"
+          className="block text-sm font-medium text-black mb-3"
+        >
+          Add Students
+        </label>
+        <div className="flex items-center gap-2 mb-2 ">
+          <div className="relative flex-grow text-black">
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Search Student"
+              className="w-full pl-9 pr-3 py-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+            />
+          </div>
+          <div className="relative">
+            <select className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-2 bg-[#F9FAFB] focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <option value="">filter 1</option>
+              <option value="Option 1">Option 1</option>
+              <option value="Option 2">Option 2</option>
+            </select>
+            <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-[#F9FAFB]0 text-xs" />
+          </div>
+          <div className="relative">
+            <select className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-2 bg-[#F9FAFB] focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <option value="">filter 2</option>
+              <option value="Option 1">Option 1</option>
+              <option value="Option 2">Option 2</option>
+            </select>
+            <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-[#F9FAFB]0 text-xs" />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-80 overflow-y-auto custom-scrollbar pr-2 mb-8 relative  p-3 rounded-xl">
+          {students.map((student) => (
+            <div
+              key={student.id}
+              className="flex items-center p-1.5 rounded-xl border border-[#E5E7EB] bg-white cursor-pointer hover:border-blue-500"
+            >
+              <Image
+                src={`/teacher-b2b/list-profile.png`}
+                alt="User Avatar"
+                width={48}
+                height={48}
+                className="w-12 h-12 rounded-lg object-cover mr-2"
+              />
+              <div className="flex-grow text-[10px]">
+                <p className="font-semibold text-xs text-black">
+                  {student.name}
+                </p>
+                <p className="text-[#F9FAFB]0">{student.course}</p>
+                <p className="text-[#F9FAFB]0">{student.grade}</p>
+                <p className="text-[#F9FAFB]0">{student.group}</p>
+              </div>
+              <div className="w-5 h-5 rounded-full border-2 border-gray-400 ml-2"></div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-center space-x-3">
+          {showDeleteBtn && <button onClick={() => onClose()} className="px-6 w-45 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
+            Delete Class
+          </button>}
+          <button onClick={() => onClose()} className="px-6 w-45 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
+            Save
+          </button>{" "}
+          {/* Or Create Class */}
         </div>
       </div>
     </div>
@@ -484,8 +570,10 @@ const Management = () => {
 
   const filteredData = sampleData.filter((item) => item.role === activeTab);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showDeleteBtn, setShowDeleteBtn] = useState<boolean>(false);
   const [showRemoveTeacherPopup, setShowRemoveTeacherPopup] = useState<boolean>(false)
   const [showRemoveStudentPopup, setShowRemoveStudentPopup] = useState<boolean>(false)
+  const [showAddStudentPopup, setShowAddStudentPopup] = useState<boolean>(false)
   const [showShiftTeacherPopup, setShowShiftTeacherPopup] = useState<boolean>(false)
   const [showShiftStudentPopup, setShowShiftStudentPopup] = useState<boolean>(false)
   const [showSelectClassPopup, setShowSelectClassPopup] = useState<boolean>(false)
@@ -514,6 +602,11 @@ const Management = () => {
 
   const handleManageClass = () => {
     setShowSelectClassPopup(false);
+    setShowDeleteBtn(true);
+    setShowManageClassPopup(true);
+  }
+  const handleAddClass = () => {
+    setShowDeleteBtn(false);
     setShowManageClassPopup(true);
   }
 
@@ -528,10 +621,11 @@ const Management = () => {
       <div className="bg-white rounded-2xl p-4">
         <RemoveTeacherModal isOpen={showRemoveTeacherPopup} onClose={() => { setShowRemoveTeacherPopup(false) }} />
         <RemoveStudentModal isOpen={showRemoveStudentPopup} onClose={() => { setShowRemoveStudentPopup(false) }} />
+        <AddStudentsModal isOpen={showAddStudentPopup} onClose={() => { setShowAddStudentPopup(false) }} showDeleteBtn={showDeleteBtn}/>
         <ShiftTeacherModalWithOptions isOpen={showShiftTeacherPopup} onClose={() => { setShowShiftTeacherPopup(false) }} />
         <ShiftStudentModalWithOptions isOpen={showShiftStudentPopup} onClose={() => { setShowShiftStudentPopup(false) }} />
         <SelectClassToEditModal isOpen={showSelectClassPopup} onClose={handleManageClass} />
-        <ManageClassModal isOpen={showManageClassPopup} onClose={() => setShowManageClassPopup(false)} />
+        <ManageClassModal isOpen={showManageClassPopup} onClose={() => setShowManageClassPopup(false)} showDeleteBtn={showDeleteBtn} />
 
         <div className="flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
@@ -546,7 +640,7 @@ const Management = () => {
             />
           </div>
           <Button onClick={() => setShowSelectClassPopup(true)} className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
-          <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
+          <Button onClick={() => handleAddClass()} className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
           <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
           {/* Filters with dropdown icons */}
           {filters.map((filter, index) => (

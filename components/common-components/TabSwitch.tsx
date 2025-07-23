@@ -18,7 +18,7 @@ const TabSwitch: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) => {
               key={id}
               onClick={() => onChange(tab)}
               className={`
-                relative px-2 py-2 rounded-2xl text-xs sm:text-sm md:text-md cursor-pointer font-medium transition-colors duration-200
+                relative px-2 py-2 rounded-[14px] text-xs sm:text-sm md:text-md cursor-pointer font-medium transition-colors duration-200
                 ${selected === tab
                   ? 'text-white bg-[#FF3366]'
                   : 'text-gray-700 hover:bg-gray-200'
@@ -29,7 +29,7 @@ const TabSwitch: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) => {
                 {selected === tab && (
                   <motion.div
                     layoutId="highlight"
-                    className="absolute inset-0 bg-[#FF3366] rounded-2xl z-0"
+                    className="absolute inset-0 bg-[#FF3366] rounded-[14px] z-0"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
