@@ -52,7 +52,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ questions, imageSrc, ima
             {/* Original Image: src={'/student.png'} width={200} height={200} alt="student" className="w-full h-full" */}
             {/* For responsiveness, provide intrinsic size and let Tailwind control display size.
                 object-contain or object-cover depending on desired image behavior. */}
-            <Image src={imageSrc} width={500} height={500} alt={imageAlt} className="w-full h-auto max-h-[400px] sm:max-h-[500px] object-contain rounded-lg" />
+            <Image src={imageSrc} width={600} height={600} alt={imageAlt} className="w-full h-auto max-h-[400px] sm:max-h-[500px] object-contain rounded-lg" />
         </div>
     </div>
 );

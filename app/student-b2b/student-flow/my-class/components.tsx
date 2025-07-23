@@ -22,10 +22,10 @@ export interface WorkSheetItemData { id: string; title: string; }
 // --- Accordion Item ---
 interface LearningAccordionProps { week: LearningWeek; isOpen: boolean; onToggle: () => void; }
 export const LearningAccordion: React.FC<LearningAccordionProps> = ({ week, isOpen, onToggle }) => (
-    <div className="bg-[#F9FAFB] rounded-2xl overflow-hidden border border-[#E5E7EB]">
+    <div className="bg-[#F9FAFB] rounded-xl overflow-hidden border border-[#E5E7EB]">
         <button onClick={onToggle} className={`w-full flex justify-between items-center px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none ${isOpen ? '' : 'hover:bg-[#F3F4F6]'}`}>
             <div>
-                <h3 className="text-sm sm:text-md mb-1 sm:mb-3 font-medium text-black text-left">{week.title}</h3> {/* text-left ensures it doesn't center with button flex */}
+                <h3 className="text-sm m:text-md mb-1 sm:mb-3 font-medium text-black text-left">{week.title}</h3> {/* text-left ensures it doesn't center with button flex */}
                 <p className="text-xs sm:text-sm text-left text-[#6B7280]">{week.videoCount} videos</p>
             </div>
             {isOpen ? <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black" /> : <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black" />}

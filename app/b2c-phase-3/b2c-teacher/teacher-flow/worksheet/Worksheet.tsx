@@ -50,16 +50,7 @@ interface CategoryTabProps {
 	onClick: () => void
 }
 
-const CategoryTab: React.FC<CategoryTabProps> = ({ category, isActive, onClick }) => {
-	return (
-		<button
-			onClick={onClick}
-			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-md md:text-lg font-medium transition-all duration-200 whitespace-nowrap
-        ${isActive ? 'bg-[#FF3366] text-white' : 'bg-transparent text-[#6B7280] hover:bg-gray-100'}`}>
-			{category.name}
-		</button>
-	)
-}
+
 
 interface FolderCardProps {
 	folder: Folder
@@ -67,17 +58,17 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 	return (
-		<Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/worksheet-selection"} className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-2 duration-200 relative flex flex-col md:flex-row md:items-center gap-4  max-w-lg">
+		<Link href={"/b2c-teacher/teacher-flow/worksheet-selection"} className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-3 duration-200 relative flex flex-col md:flex-row md:items-center gap-4  max-w-lg">
 			{/* Info Icon */}
-			<div className="flex gap-4 items-center justify-start">
+			<div className="flex gap-4 items-start justify-start">
 				{/* Folder Icon Area */}
 				<div className="bg-[#99DEFF] w-24 h-24 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0">
 					<FiFolder className="w-10 h-10 sm:w-14 sm:h-14 text-black opacity-80" strokeWidth={1.5} />
 				</div>
 
 				{/* Folder Details */}
-				<div className="flex  flex-col flex-grow w-full">
-					<h3 className="sm:text-lg text-base font-semibold text-black mb-1">{folder.name}</h3>
+				<div className="flex mt-1 flex-col flex-grow w-full">
+					<p className="sm:text-lg text-lg font-medium text-black mb-1">{folder.name}</p>
 					<p className="text-xs sm:text-sm text-[#6B7280] mb-5">{folder.fileCount} Files</p>
 					
 				</div>

@@ -18,7 +18,7 @@ export default function StudentSubmittedPapersPage() {
  const router = useRouter();
 
   const handleDelete = () => {
-    router.push("/b2c-phase-3/b2c-teacher/teacher-flow/daily-log-student-list");
+    router.push("/b2c-teacher/teacher-flow/daily-log-student-list");
   };
 
   const students = new Array(4).fill({
@@ -86,7 +86,7 @@ export default function StudentSubmittedPapersPage() {
 
 function StudentCard({ student }: { student: any }) {
   return (
-    <div className="flex items-center justify-between bg-[#F9FAFB] px-2 py-2 rounded-2xl shadow-sm border border-[#B0B0B0]">
+    <div className="flex items-center justify-between bg-[#F9FAFB] px-2 py-2 rounded-2xl border border-[#B0B0B0]">
       <div className="flex items-center space-x-2">
         <Image
           src={student.image}
@@ -96,7 +96,7 @@ function StudentCard({ student }: { student: any }) {
           className="rounded-md w-20 h-20"
         />
         <div>
-          <p className="font-medium text-xl text-black">{student.name}</p>
+          <p className="font-normal text-xl text-black">{student.name}</p>
           <p className="text-md text-[#6B7280]">{student.grade}</p>
         </div>
       </div>

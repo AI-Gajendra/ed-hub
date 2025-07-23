@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import React, { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
-import StudentAtitude from "@/components/teacher-b2c/attitude";
+import StudentAtitude from "./attitude";
 
 // --- UPDATED DATA STRUCTURES & DATA for "Academics" page ---
 

@@ -37,7 +37,7 @@ const FormInput = ({
 			value={value}
 			onChange={onChange}
 			placeholder={placeholder}
-			className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-3xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
+			className="w-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] rounded-3xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
 		/>
 	</div>
 );
@@ -221,7 +221,7 @@ export default function EditStudentProfilePage() {
 							</div>
 						</form>
 						<div className="w-full flex pt-6 justify-center">
-							<Button className="px-[15%] rounded-full text-xl h-11 mx-auto"
+							<Button className="px-[15%] rounded-full text-xl h-10 mx-auto"
 							onClick={handleBack}>
 								Save
 							</Button>

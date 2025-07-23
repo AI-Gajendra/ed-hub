@@ -1,20 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  FiArrowLeft,
-  // FiClock,
-  // FiChevronLeft,
-  // FiChevronRight,
-  FiSearch,
-  FiPercent,
-  FiAward,
-  FiBarChart2,
-  FiChevronDown,
-  FiZap,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-} from "react-icons/fi"; // Add icons as needed
+
 import Image from "next/image"; // For profile picture
 import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
@@ -120,7 +107,7 @@ const StudentReport: React.FC = () => {
         <BackButton Heading="Report" />
      
       <TeacherB2CWrapper>
-          <div className="grid grid-cols-1 lg:grid-cols-3 pb-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 pb-4 gap-6">
           {/* Student Info Card */}
 
           <div
