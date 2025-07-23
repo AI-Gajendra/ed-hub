@@ -18,7 +18,7 @@ export const MainCategoryTab: React.FC<MainCategoryTabProps> = ({ label, isActiv
                    sm:px-5 sm:py-2.5 sm:text-sm sm:rounded-2xl 
                    font-medium transition-colors whitespace-nowrap 
         ${ isActive
-            ? 'bg-[#FF3366] text-white shadow-md'
+            ? 'bg-[#FF3366] text-white -md'
             : 'text-[#6B7280] hover:bg-[#ff33660f]'
         }`}
     >

@@ -551,7 +551,7 @@ const StudentReport: React.FC = () => {
 						))}
 						{/* Life Skill Enhancements Card - similar structure to Personal Development */}
 					</div>
-					<div className="p-5 h-full custom-scrollbar rounded-2xl overflow-y-auto shadow-sm bg-white row-span-2">
+					<div className="p-5 h-full custom-scrollbar rounded-2xl overflow-y-auto -sm bg-white row-span-2">
 						<div
 							style={{
 								backgroundColor: lifeSkillsData.bgColor,
@@ -602,7 +602,7 @@ const StudentReport: React.FC = () => {
 					{/* ===== Table started ===== */}
 
 					<div
-						className="rounded-2xl w-full h-full custom-scrollbar overflow-y-auto shadow-sm"
+						className="rounded-2xl w-full h-full custom-scrollbar overflow-y-auto -sm"
 						style={{
 							backgroundColor: PALETTE.WHITE_CARD,
 							borderColor: PALETTE.BORDER_GREY,

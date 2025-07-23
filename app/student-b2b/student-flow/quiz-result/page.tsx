@@ -47,8 +47,8 @@ export default function QuizTestResultPage() {
         </div>
 
 				{/* Main Content Card for Test Result */}
-                {/* Original: bg-white px-3 py-6 rounded-2xl shadow-lg */}
-				<div className="bg-white px-2 py-4 sm:px-3 sm:py-6 rounded-2xl shadow-lg mt-4 md:mt-6 border border-gray-200"> {/* No shadow, add border */}
+                {/* Original: bg-white px-3 py-6 rounded-2xl -lg */}
+				<div className="bg-white px-2 py-4 sm:px-3 sm:py-6 rounded-2xl -lg mt-4 md:mt-6 border border-gray-200"> {/* No , add border */}
 					<QuizResultHeader
                         onBackClick={handlePageBack}
                         quizTitle="Quiz" // As per original

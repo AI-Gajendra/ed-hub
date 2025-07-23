@@ -87,7 +87,7 @@ export const NewsletterSection: React.FC<NewsletterSectionProps> = ({
         </p>
         <form
           onSubmit={onNewsletterSubmit}
-          className="max-w-sm md:max-w-md mx-auto flex flex-row items-center bg-white rounded-full p-1 sm:p-1.5 shadow-lg"
+          className="max-w-sm md:max-w-md mx-auto flex flex-row items-center bg-white rounded-full p-1 sm:p-1.5 -lg"
         >
           <input
             type="email"

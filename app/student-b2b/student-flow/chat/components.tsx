@@ -54,8 +54,8 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
         // Original wrapper: flex mb-4 ${isUser ? 'justify-end' : 'justify-start'}
 		<div className={`flex mb-3 sm:mb-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
 			<div
-                // Original bubble: max-w-[60%] w-full px-4 py-3 rounded-2xl shadow
-				className={`max-w-[70%] sm:max-w-[60%] w-auto px-3 py-2 rounded-xl shadow
+                // Original bubble: max-w-[60%] w-full px-4 py-3 rounded-2xl 
+				className={`max-w-[70%] sm:max-w-[60%] w-auto px-3 py-2 rounded-xl 
                            sm:px-4 sm:py-3 sm:rounded-2xl
                 ${ isUser ? 'bg-[#3366FF] text-white' : 'bg-[#F9FAFB] text-black' }`}
             >
@@ -106,7 +106,7 @@ interface TeacherListSidebarProps {
     onTeacherSelect: (teacherId: string) => void;
 }
 export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers, activeTeacherId, onTeacherSelect }) => (
-    // Original: w-full sm:w-[30%] bg-white rounded-3xl shadow-xl p-4 self-stretch
+    // Original: w-full sm:w-[30%] bg-white rounded-3xl -xl p-4 self-stretch
     <div className="w-full lg:w-[30%] xl:w-1/4 bg-white rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
         {/* Original h2: text-lg tracking-wide font-popp font-semibold text-[#FF3366] mb-4 px-2 */}
         <h2 className="text-md tracking-wide font-semibold text-[#FF3366] mb-3 px-1 sm:text-lg sm:mb-4 sm:px-2"> {/* Assuming font-popp is global */}
@@ -134,7 +134,7 @@ interface ChatAreaProps {
     onSendMessage: (e: React.FormEvent) => void;
 }
 export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, newMessage, onNewMessageChange, onSendMessage, }) => (
-    // Original wrapper: w-full sm:w-[70%] bg-white rounded-3xl shadow-xl flex flex-col h-[calc(100vh-4rem)]
+    // Original wrapper: w-full sm:w-[70%] bg-white rounded-3xl -xl flex flex-col h-[calc(100vh-4rem)]
     <div className="w-full relative z-0 lg:w-[70%] xl:w-3/4 bg-[#EEEEEE] rounded-2xl sm:rounded-3xl flex flex-col 
                    h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-4rem)]"
                     > 

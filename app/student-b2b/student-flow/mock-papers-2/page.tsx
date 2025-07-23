@@ -63,8 +63,8 @@ export default function MockTestPage() {
                 </div>
 
         {/* Main Content Card for Mock Test */}
-        {/* Original wrapper: bg-white rounded-2xl shadow-xl px-3 py-6 relative */}
-        <div className="bg-white rounded-2xl px-2 py-4 sm:px-3 sm:py-6 relative border border-gray-200"> {/* No shadow, add border */}
+        {/* Original wrapper: bg-white rounded-2xl -xl px-3 py-6 relative */}
+        <div className="bg-white rounded-2xl px-2 py-4 sm:px-3 sm:py-6 relative border border-gray-200"> {/* No , add border */}
           {/* Timer - Positioned top right of this card */}
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8">
             <TimerDisplay formattedTime={formatTime(timeLeft)} />

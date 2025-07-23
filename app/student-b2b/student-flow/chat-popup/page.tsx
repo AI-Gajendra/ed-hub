@@ -35,7 +35,7 @@ const messages = [
  export default function ChatPop  ()  {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-800 px-4">
-      <div className="w-full max-w-screen-md rounded-2xl  flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4  sm:space-y-6  py-6 px-8 shadow-xl relative "
+      <div className="w-full max-w-screen-md rounded-2xl  flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4  sm:space-y-6  py-6 px-8 -xl relative "
       style={{backgroundImage:"url('/chatpopupbg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
 
         <div className="absolute h-full inset-0 bg-[#F9FAFB] opacity-70 rounded-2xl z-0"></div>
@@ -56,7 +56,7 @@ const messages = [
           className={msg.sender === "Shlok" ? "text-right" : "text-left"}
         >
           <p className="text-sm font-bold text-white mt-1">{msg.sender}</p>
-          <div className="inline-block bg-white px-4 py-2 max-w-[60ch] rounded-2xl shadow text-gray-900">
+          <div className="inline-block bg-white px-4 py-2 max-w-[60ch] rounded-2xl  text-gray-900">
             {msg.text}
           </div>
         </div>
