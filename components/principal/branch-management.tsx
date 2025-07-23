@@ -7,26 +7,27 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { Button } from '../ui/button'
 import ActiveTab from './active-inactive'
+import { useRouter } from 'next/navigation'
 type CardData = {
-	id: number
-	name: string
-	address: string
-	detail1: string
-	detail2: string
-	detail3: string
-	detail4: string
-	image: string
+  id: number
+  name: string
+  address: string
+  detail1: string
+  detail2: string
+  detail3: string
+  detail4: string
+  image: string
 }
 
 const branch = Array.from({ length: 3 }, (_, i) => ({
-	id: i + 1,
-	name: 'School Name',
-	address: 'Address',
-	detail1: 'Detail 1',
-	detail2: 'Detail 2',
-	detail3: 'Detail 3',
-	detail4: 'Detail 4',
-	image: '/principal/school-login-banner.png',
+  id: i + 1,
+  name: 'School Name',
+  address: 'Address',
+  detail1: 'Detail 1',
+  detail2: 'Detail 2',
+  detail3: 'Detail 3',
+  detail4: 'Detail 4',
+  image: '/principal/school-login-banner.png',
 }))
 
 export const sampleData: CardData[] = [...branch]
@@ -34,14 +35,15 @@ export const sampleData: CardData[] = [...branch]
 const filters = ['Filter 1', 'Filter 2', 'Filter 3']
 
 const BranchManagement = () => {
-	  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''))
+  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''))
+  const router = useRouter()
 
-	const handleFilterChange = (index: number, value: string) => {
-		const updated = [...selectedFilters]
-		updated[index] = value
-		setSelectedFilters(updated)
-	}
-	const [searchTerm, setSearchTerm] = useState('')
+  const handleFilterChange = (index: number, value: string) => {
+    const updated = [...selectedFilters]
+    updated[index] = value
+    setSelectedFilters(updated)
+  }
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="py-4 px-4 md:px-16">
@@ -74,9 +76,9 @@ const BranchManagement = () => {
               <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
             </div>
           ))}
-          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Staff</Button>
+          <Button onClick={() => router.push("/principal/manage-teacher-leave")} className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Staff</Button>
           <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Add Branch</Button>
-          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Approval</Button>
+          <Button onClick={() => router.push("/principal/manage-approvals")} className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Approval</Button>
           {/* Filters with dropdown icons */}
         </div>
         <ActiveTab />
@@ -85,7 +87,7 @@ const BranchManagement = () => {
 
           {/* Cards */}
           {branch.map((item) => (
-            <div key={item.id} className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
+            <div key={item.id} onClick={() => router.push("/principal/teacher-management")} className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
               <div className={`w-full lg:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

@@ -1,23 +1,35 @@
 'use client'
 
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import AuthLayout from '@/components/auth-layout' // Adjust path if needed
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import { useRouter } from "next/navigation"
 
 export default function ResetPasswordPage() {
+  const [password, setPassword] = useState<string>("")
+  const [confirmPassword, setConfirmPassword] = useState<string>("")
   const [showNewPassword, setShowNewPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+  const router = useRouter()
+
+  const handlePasswordSet = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if(password === confirmPassword){
+      router.push("/principal/registration/login")
+    }
+  }
 
   return (
     <AuthLayout
       leftPanelTitle="Title"
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
       <h2 className="text-2xl font-bold text-black mb-2">Reset your password</h2>
-      <p className="text-sm text-black mb-8 leading-relaxed">
+      <p className="text-xs text-black mb-8 leading-relaxed">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
 
-      <form className="space-y-6 flex flex-col">
+      <form onSubmit={handlePasswordSet} className="space-y-6 flex flex-col">
         <div>
           <label
             htmlFor="new-password"
@@ -28,6 +40,8 @@ export default function ResetPasswordPage() {
             <input
               type={showNewPassword ? 'text' : 'password'}
               id="new-password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               placeholder="New Password"
               className="w-full px-4 py-1.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
@@ -50,6 +64,8 @@ export default function ResetPasswordPage() {
             <input
               type={showConfirmPassword ? 'text' : 'password'}
               id="confirm-password"
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
               className="w-full px-4 py-1.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />

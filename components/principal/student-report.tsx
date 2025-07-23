@@ -393,7 +393,7 @@ const PrincipalStudentReport: React.FC = () => {
                   className="text-base font-semibold"
                   style={{ color: PALETTE.ACCENT_PINK }}
                 >
-                  Overall Progress
+                  Performance Report
                 </h3>
               </div>
               <div className="flex sm:flex-row flex-col items-start justify-between px-2">
@@ -702,7 +702,7 @@ const PrincipalStudentReport: React.FC = () => {
               }}
             >
               <table className="w-full text-xs ">
-                <thead className="bg-gray-200">
+                <thead className="bg-[#e5ecff]">
                   <tr>
                     {[
                       "Test",
@@ -723,7 +723,7 @@ const PrincipalStudentReport: React.FC = () => {
                   {testResultsData.map((row, i) => (
                     <tr
                       key={i}
-                      className="odd:bg-white even:bg-gray-100"
+                      className="odd:bg-white even:bg-[#e5ecff4d]"
                       style={{ borderColor: PALETTE.BORDER_GREY }}
                     >
                       <td className="p-2.5" style={{ color: PALETTE.TEXT_DARK }}>

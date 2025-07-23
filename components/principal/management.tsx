@@ -8,6 +8,7 @@ import ClassTab from './class-tab';
 import { FiMinusCircle } from "react-icons/fi";
 import { AiOutlineSwap } from "react-icons/ai";
 import { Button } from '../ui/button';
+import { useRouter } from 'next/navigation';
 type CardData = {
   id: number;
   name: string;
@@ -48,6 +49,8 @@ const Management = () => {
   const filteredData = sampleData.filter((item) => item.role === activeTab);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
+
+  const router = useRouter()
 
   const handleFilterChange = (index: number, value: string) => {
     const updated = [...selectedFilters];
@@ -110,7 +113,7 @@ const Management = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
+            <div key={item.id} onClick={() => router.push(item.role === 'teacher' ? "/principal/teacher-performance" : "/principal/student-progress-report")} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
               <div className={`${item.role === "teacher" ? "w-20 h-20" : "w-10 h-10"} rounded-xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

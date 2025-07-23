@@ -1,3 +1,4 @@
+"use client"
 import PrincipalChatrsReport from '@/components/principal/principal-charts-report';
 import { IoMdSettings } from "react-icons/io";
 import React from 'react'
@@ -65,11 +66,11 @@ const CourseCard: React.FC<CourseCardProps> = ({
 };
 
 const StudentProgressReport = () => {
-  // const handleBackClick = () => {
-  //   if (typeof window !== "undefined") {
-  //     window.history.back();
-  //   }
-  // };
+  const handleBackClick = () => {
+    if (typeof window !== "undefined") {
+      window.history.back();
+    }
+  };
   const PALETTE = {
     GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
     GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar
@@ -120,7 +121,7 @@ const StudentProgressReport = () => {
       <div className='w-full'>
         <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
           <button
-            // onClick={handleBackClick}
+            onClick={handleBackClick}
             className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
             aria-label="Go back"
           >
@@ -133,7 +134,7 @@ const StudentProgressReport = () => {
         <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
           {/* Student Info Card */}
           <div
-            className=" bg-white rounded-2xl"
+            className="bg-white rounded-2xl p-2"
             style={{
               borderColor: PALETTE.BORDER_GREY,
             }}
