@@ -5,6 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FiDownload } from 'react-icons/fi';
 import { ChatInput } from './ui-components'; // Import ChatInput
+import { Search } from 'lucide-react';
 
 // --- Data Interfaces (from your original) ---
 export interface TeacherContact {
@@ -27,7 +28,7 @@ export const TeacherListItem: React.FC<TeacherListItemProps> = ({ teacher, onCli
         onClick={onClick}
         className={`w-full flex items-center p-2.5 rounded-xl transition-colors 
                    sm:p-3 sm:rounded-2xl 
-        ${ isActive ? 'bg-[#FFCC0026]' : 'hover:bg-gray-100' }`}
+        ${isActive ? 'bg-[#FFCC0026]' : 'hover:bg-gray-100'}`}
     >
         {/* Original Image: h-10 w-10 rounded-full object-cover mr-3 flex-shrink-0 */}
         <Image src={teacher.avatarSrc} alt={teacher.name} width={40} height={40}
@@ -57,7 +58,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                 // Original bubble: max-w-[60%] w-full px-4 py-3 rounded-2xl shadow
                 className={`max-w-[70%] sm:max-w-[60%] w-auto px-3 py-2 rounded-xl shadow
                            sm:px-4 sm:py-3 sm:rounded-2xl
-                ${ isUser ? 'bg-[#3366FF] text-white' : 'bg-[#F9FAFB] text-black' }`}
+                ${isUser ? 'bg-[#3366FF] text-white' : 'bg-[#F9FAFB] text-black'}`}
             >
                 {message.text && (
                     // Original text container: flex gap-2 relative ${isUser ? 'flex-row-reverse' : ''}
@@ -70,9 +71,9 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                         <p
                             className={`absolute tracking-tight text-[7px] font-normal flex items-center whitespace-nowrap mt-auto
                                        sm:text-[8px] 
-                            ${ isUser ? 'text-white/85 text-right left-0 bottom-0' 
-                                     : 'text-[#6B7280] text-left right-0 bottom-0 sm:bottom-1/2 sm:translate-y-1/2'
-                            }`}
+                            ${isUser ? 'text-white/85 text-right left-0 bottom-0'
+                                    : 'text-[#6B7280] text-left right-0 bottom-0 sm:bottom-1/2 sm:translate-y-1/2'
+                                }`}
                         >
                             {message.timestamp}
                         </p>
@@ -109,9 +110,15 @@ export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers
     // Original: w-full sm:w-[30%] bg-white rounded-3xl shadow-xl p-4 self-stretch
     <div className="w-full lg:w-[30%] xl:w-1/4 bg-white rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
         {/* Original h2: text-lg tracking-wide font-popp font-semibold text-[#FF3366] mb-4 px-2 */}
-        <h2 className="text-md tracking-wide font-semibold text-[#FF3366] mb-3 px-1 sm:text-lg sm:mb-4 sm:px-2"> {/* Assuming font-popp is global */}
-            Teachers
+        <h2 className="text-md tracking-wide font-semibold text-[#FF3366] mb-2 px-1 sm:text-lg sm:mb-4 sm:px-2"> {/* Assuming font-popp is global */}
+            Chat
         </h2>
+        <div className="relative my-2">
+            <button type="button" className="absolute inset-y-0 left-0 flex items-center pl-5 text-gray-500">
+                <Search size={20}/>
+            </button>
+            <input type='text' placeholder="Search" className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 pl-14 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
         <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
             {/* Your original repetition for scroll testing */}
@@ -137,20 +144,21 @@ export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, n
     // Original wrapper: w-full sm:w-[70%] bg-white rounded-3xl shadow-xl flex flex-col h-[calc(100vh-4rem)]
     <div className="w-full relative z-0 lg:w-[70%] xl:w-3/4 bg-[#EEEEEE] rounded-2xl sm:rounded-3xl flex flex-col 
                    h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-4rem)]"
-                    > 
-                    <div  className=" absolute -z-10 opacity-10 rounded-2xl inset-0"style={{backgroundImage:"url('/images/brandpatternchat.png')",
-                            backgroundRepeat: "none",
-                             backgroundSize: "cover",
-                             filter:"grayscale(100%)"
-                             
-                        
-                        }}></div>
-                   {/* Responsive height: 80vh for mobile, then your calculation for sm+ */}
+    >
+        <div className=" absolute -z-10 opacity-10 rounded-2xl inset-0" style={{
+            backgroundImage: "url('/images/brandpatternchat.png')",
+            backgroundRepeat: "none",
+            backgroundSize: "cover",
+            filter: "grayscale(100%)"
+
+
+        }}></div>
+        {/* Responsive height: 80vh for mobile, then your calculation for sm+ */}
         {selectedTeacher ? (
             <>
                 {/* Original header: p-4 flex items-center gap-3 shrink-0 */}
                 <div className="p-2 mt-4  z-20 relative flex items-center gap-2 rounded-full bg-white  sm:gap-3">
-                    <Image src={selectedTeacher.avatarSrc} alt={selectedTeacher.name} width={40} height={40} className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"/>
+                    <Image src={selectedTeacher.avatarSrc} alt={selectedTeacher.name} width={40} height={40} className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10" />
                     <h3 className="text-md font-semibold text-black sm:text-lg">{selectedTeacher.name}</h3>
                 </div>
                 {/* Original messages: flex-grow p-4 space-y-4 overflow-y-auto custom-scrollbar */}
@@ -159,11 +167,11 @@ export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, n
                     <div />
                 </div>
                 {/* Original input: p-4 shrink-0 */}
-               <div className='bg-white rounded-full p-2 mb-4'>
-                 <div className="  border-t border-gray-100">
-                    <ChatInput value={newMessage} onChange={onNewMessageChange} onSend={onSendMessage} />
+                <div className='bg-white rounded-full p-2 mb-4'>
+                    <div className="  border-t border-gray-100">
+                        <ChatInput value={newMessage} onChange={onNewMessageChange} onSend={onSendMessage} />
+                    </div>
                 </div>
-               </div>
             </>
         ) : (
             <div className="flex-grow flex items-center justify-center text-gray-400 p-4 text-sm text-center">Select a teacher to start chatting.</div>
