@@ -3,19 +3,20 @@
 import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
 import BackButton from "@/components/common-components/BackButton";
 import { useState, type FC } from "react";
-import {
-  FiPercent,
-  FiChevronDown,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-  FiChevronUp,
-} from "react-icons/fi";
+import { FiPercent } from "react-icons/fi";
 import { LuOmega } from "react-icons/lu";
 import { MdOutlineSuperscript, MdOutlineFunctions } from "react-icons/md";
 import { TbMathFunction } from "react-icons/tb"; // Add icons as needed
 import { RiPsychotherapyLine } from "react-icons/ri";
 import { MdOutlineTheaterComedy } from "react-icons/md";
-import { Smile, Star } from "lucide-react";
+import {
+  Smile,
+  Star,
+  ChevronDown,
+  ChevronUp,
+  ArrowLeftCircle,
+  ArrowRightCircle,
+} from "lucide-react";
 
 export default function page() {
   return (
@@ -381,12 +382,6 @@ const ProgressCircleItem: FC<ProgressCircleProps> = ({
 };
 
 const ChartsReport: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
   // Simplified data for the line chart (hardcoded points)
   const lineChartData = {
     labels: [
@@ -888,45 +883,7 @@ const ChartsReport: FC = () => {
                 </div>
               </div>
               <div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
-                <div className="relative inline-block text-left">
-                  {/* Button + Border container */}
-                  <div
-                    className={`bg-[#f9fafb] ${
-                      isOpen
-                        ? "rounded-t-xl border-t border-x"
-                        : "rounded-xl border"
-                    } box-border`}
-                  >
-                    <button
-                      onClick={toggleDropdown}
-                      className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full"
-                    >
-                      Month
-                      {isOpen ? (
-                        <FiChevronUp size={14} />
-                      ) : (
-                        <FiChevronDown size={14} />
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Dropdown content */}
-                  {isOpen && (
-                    <div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border">
-                      <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-                        Option 1
-                      </button>
-                      <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-                        Option 2
-                      </button>
-                    </div>
-                  )}
-                </div>
-                <div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                  <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                  <span>2025</span>
-                  <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                </div>
+                <DateSelector />
               </div>
             </div>
             {/* Simplified SVG Line Chart */}
@@ -1224,3 +1181,94 @@ const ChartsReport: FC = () => {
     </>
   );
 };
+
+interface DateSelectorProps {
+  className?: string;
+}
+
+function DateSelector({ className = "" }: DateSelectorProps) {
+  const [isMonthOpen, setIsMonthOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState("Month");
+  const [selectedYear, setSelectedYear] = useState(2025);
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const handleMonthSelect = (month: string) => {
+    setSelectedMonth(month);
+    setIsMonthOpen(false);
+  };
+
+  const handlePreviousYear = () => {
+    setSelectedYear((prev) => prev - 1);
+  };
+
+  const handleNextYear = () => {
+    setSelectedYear((prev) => prev + 1);
+  };
+
+  const getDisplayText = () => {
+    if (selectedMonth === "Month") {
+      return selectedYear.toString();
+    }
+    return `${selectedMonth} ${selectedYear}`;
+  };
+
+  return (
+    <div className={`flex items-center gap-4 ${className}`}>
+      {/* Month Dropdown */}
+      <div className="relative">
+        <div
+          className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors"
+          onClick={() => setIsMonthOpen(!isMonthOpen)}
+        >
+          <span className="whitespace-nowrap">{selectedMonth}</span>
+          {isMonthOpen ? (
+            <ChevronUp className="w-4 h-4 text-gray-500" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-gray-500" />
+          )}
+        </div>
+
+        {isMonthOpen && (
+          <div className="absolute left-0 top-full w-full min-w-fit bg-[#f9fafb] border-x border-b border-[#E5E7EB] rounded-b-xl z-10 box-border shadow-lg max-h-48 overflow-y-auto custom-scrollbar-thin-grey p-2 overflow-x-hidden">
+            {months.map((month) => (
+              <button
+                key={month}
+                className="whitespace-nowrap justify-center text-sm py-2 w-full flex items-center text-gray-500 cursor-pointer hover:bg-gray-100 transition-colors"
+                onClick={() => handleMonthSelect(month)}
+              >
+                {month}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Year Navigation */}
+      <div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+        <ArrowLeftCircle
+          className="w-4 h-4 cursor-pointer hover:text-black transition-colors text-gray-500"
+          onClick={handlePreviousYear}
+        />
+        <span className="min-w-[60px] text-center">{getDisplayText()}</span>
+        <ArrowRightCircle
+          className="w-4 h-4 cursor-pointer hover:text-black transition-colors text-gray-500"
+          onClick={handleNextYear}
+        />
+      </div>
+    </div>
+  );
+}
