@@ -1116,7 +1116,7 @@ const ChartsReport: FC = () => {
           {/* ===== Table started ===== */}
 
           <div
-            className="rounded-2xl h-full custom-scrollbar overflow-y-auto "
+            className="rounded-2xl h-full custom-scrollbar overflow-y-auto"
             style={{
               backgroundColor: PALETTE.WHITE_CARD,
               borderColor: PALETTE.BORDER_GREY,
@@ -1134,7 +1134,12 @@ const ChartsReport: FC = () => {
                     "Marks",
                     "Results",
                   ].map((header, index) => (
-                    <th key={index} className="p-3 text-left font-medium">
+                    <th
+                      key={index}
+                      className={`${
+                        index === 0 ? "p-3 pl-6" : "p-3"
+                      } text-left font-medium`}
+                    >
                       {header}
                     </th>
                   ))}
@@ -1147,7 +1152,7 @@ const ChartsReport: FC = () => {
                     className="odd:bg-[#E5ECFF4D] p-4 even:bg-white text-[#777777] font-medium"
                     style={{ borderColor: PALETTE.BORDER_GREY }}
                   >
-                    <td className="p-3">{row.test}</td>
+                    <td className="p-3 pl-6">{row.test}</td>
                     <td className="p-3">{row.date1}</td>
                     <td className="p-3">{row.date2}</td>
                     <td className="p-3">{row.totalMarks}</td>
