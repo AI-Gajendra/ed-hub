@@ -6,6 +6,7 @@ import { FiChevronDown, FiSearch } from 'react-icons/fi';
 import { FaRegCircle, FaCheckCircle } from "react-icons/fa";
 import TeacherB2CWrapper from './common-components/TeacherB2CPageWrapper';
 import { AnimatePresence, motion } from 'framer-motion';
+import UploadVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/UploadVideos';
 
 interface CustomSelectProps {
   label: string;
@@ -70,7 +71,7 @@ const CustomSelect = ({ label, options }: CustomSelectProps) => {
                                                 className={`px-4 py-2.5 mx-2 rounded-full text-sm
                 ${selectedPlan === option
                                                         ? 'bg-[#99DEFF] text-blue-600 font-medium'
-                                                        : 'text-gray-600 hover:bg-gray-100 text-center'}
+                                                        : 'text-gray-600 hover:bg-[#B0B0B014] text-center'}
                 ${index === 0 ? 'text-center' : 'text-center'}
               `}
                                             >
@@ -88,22 +89,23 @@ const CustomSelect = ({ label, options }: CustomSelectProps) => {
 
 
 const TeachMoreCourse = () => {
+  const [upload, setUplaod] = useState(false);
   return (
     <>
       <form className="flex flex-col text-sm">
         <div className="flex flex-col">
-          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">Your Contact Information</h1>
+          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#f9fafb] font-semibold rounded-xl">Your Contact Information</h1>
           <div className="max-w-md flex flex-col gap-1 pt-2 pb-4">
             <label className='font-medium text-md' htmlFor="fullName">Full Name</label>
             <input id="fullName" type="text" className='rounded-full px-4 py-2 bg-[#f9fafb] border' placeholder='Text' />
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-md' htmlFor="email">Email</label>
-            <input id="email" type="email" className='rounded-full px-4 py-2 bg-[#f9fafb] border' placeholder='Text' />
+            <input id="email" type="email" className='rounded-full px-4 py-2 bg-[#B0B0B014] border' placeholder='Text' />
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">Current Teaching Engagements</h1>
+          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#B0B0B014] font-semibold rounded-xl">Current Teaching Engagements</h1>
           <div className="max-w-md border mb-2 rounded-xl">
             <ul className="p-4 gap-2 flex flex-col">
               <li className="font-medium pb-1.5">Course (s) Currently Taught</li>
@@ -117,7 +119,7 @@ const TeachMoreCourse = () => {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">
+          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#B0B0B014] font-semibold rounded-xl">
             Desired New Teaching Opportunities
           </h1>
 
@@ -145,7 +147,8 @@ const TeachMoreCourse = () => {
               <span className="block text-sm text-gray-500 mb-1 ml-2">
                 Upload Document
               </span>
-              <div className="flex items-center gap-2 rounded-full ml-2 border border-gray-300 bg-[#f9fafb] p-2 text-gray-400">
+              <div
+              onClick={() => setUplaod(true)} className="flex items-center gap-2 rounded-full ml-2 border border-gray-300 bg-[#f9fafb] p-2 text-gray-400">
                 <div className="p-1 bg-pink-100 rounded-full">
                   <IoCloudUploadOutline className="text-[#FF3366]" size={20} />
                 </div>
@@ -166,7 +169,7 @@ const TeachMoreCourse = () => {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">Compensation Preferences</h1>
+          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#B0B0B014] font-semibold rounded-xl">Compensation Preferences</h1>
 
           <div className="max-w-md flex flex-col gap-1 pt-2 pb-4">
             <label className='font-medium text-md' htmlFor="teachingExperience">Your Total Teaching Experience (in years)</label>
@@ -205,6 +208,7 @@ const TeachMoreCourse = () => {
           </button>
         </div>
       </form>
+      <UploadVideo isOpen={upload} onClose={() => setUplaod(false)} />
     </>
   )
 }
@@ -231,7 +235,7 @@ const DropCourse = () => {
     <form>
       {/* Heading */}
       <div className="flex flex-col">
-        <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">Your Contact Information</h1>
+        <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#B0B0B014] font-semibold rounded-xl">Your Contact Information</h1>
         <div className="max-w-md flex flex-col gap-1 pt-2 pb-4">
           <label className='font-medium text-sm' htmlFor="fullName">Full Name</label>
           <input id="fullName" type="text" className='text-sm rounded-full px-4 py-2 bg-[#f9fafb] border' placeholder='Text' />
@@ -242,7 +246,7 @@ const DropCourse = () => {
         </div>
       </div>
       <div className="flex flex-col">
-        <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">
+        <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#B0B0B014] font-semibold rounded-xl">
           Course(s) You Wish to Discontinue
         </h1>
         <p className="text-[#ff3366] text-xs pt-2 pb-4">

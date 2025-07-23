@@ -21,12 +21,7 @@ interface Course {
 }
 
 export default function CourseCardPage() {
-  // Dummy user for Header
-  const headerUser = {
-    name: "Shlok Agheda",
-    role: "Student",
-    avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
-  };
+
 
   const courses = [
     {
@@ -94,14 +89,14 @@ export default function CourseCardPage() {
                 {/* Text section */}
                 <div className="flex flex-col gap-1 px-1 text-black">
                   <h2 className="font-semibold text-base">{course.name}</h2>
-                  <h3 className="text-sm font-normal text-black">
+                  <p className="text-sm font-normal text-black">
                     No. of Batch:{" "}
                     <span className="text-[#6B7280] text-sm">{course.batch}</span>
-                  </h3>
-                  <h3 className="text-sm font-normal">
+                  </p>
+                  <p className="text-sm font-normal">
                     No. of Students:{" "}
                     <span className="text-[#6B7280] text-sm">{course.students}</span>
-                  </h3>
+                  </p>
                 </div>
               </Link>
             ))}
