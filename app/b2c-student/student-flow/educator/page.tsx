@@ -16,6 +16,7 @@ import { TbBrandLinkedinFilled } from "react-icons/tb";
 
 import CustomSelect from "@/components/student/courses/CustomSelect";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // -------- EducatorPanel Component and related declarations START --------
 

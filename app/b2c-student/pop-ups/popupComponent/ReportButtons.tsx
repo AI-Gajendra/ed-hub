@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { TeacherB2CBaseModal, PopupPropB2CTeacher } from '../page'; // Assuming page.tsx is in the parent directory
+import Link from 'next/link';
 
 // --- Custom SVG Icons to exactly match your design ---
 
@@ -35,16 +36,34 @@ const MonthEndIcon = () => (
 
 
 // --- Reusable Button Component for this modal ---
-const ReportButton: React.FC<{ label: string; icon: React.ReactNode; }> = ({ label, icon }) => (
-    <button
-        className="w-full flex items-center justify-between py-2.5 px-4 bg-[#F9FAFB]
-                   rounded-2xl border border-gray-200 
-                   hover:bg-gray-100 hover:shadow-sm transition-all duration-200"
+
+
+const ReportButton: React.FC<{
+  label: string;
+  link?: string;
+  icon: React.ReactNode;
+}> = ({ label, link, icon }) => {
+  const content = (
+    <div
+      className="w-full flex items-center justify-between py-2.5 px-4 bg-[#F9FAFB]
+                 rounded-2xl border border-gray-200 
+                 hover:bg-gray-100 hover:shadow-sm transition-all duration-200"
     >
-        <span className="text-xs sm:text-sm md:mr-2 font-medium text-black">{label}</span>
-        <div className="text-[#6B7280]">{icon}</div>
-    </button>
-);
+      <span className="text-xs sm:text-sm md:mr-2 font-medium text-black">
+        {label}
+      </span>
+      <div className="text-[#6B7280]">{icon}</div>
+    </div>
+  );
+
+  return link ? (
+    <Link href={link} className="w-full block">
+      {content}
+    </Link>
+  ) : (
+    <button className="w-full">{content}</button>
+  );
+};
 
 
 // --- Main Report Buttons Popup Component ---
@@ -53,7 +72,9 @@ const ReportButtonsPopup: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) 
     // Hardcoded data for the buttons
     const buttonsData = [
         {
-            label: "View Advance Plan Report", icon: <svg
+            label: "View Advance Plan Report",
+            link:"/b2c-student/student-flow/advance-plan/course-selection",
+            icon: <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
@@ -83,7 +104,9 @@ const ReportButtonsPopup: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) 
             </svg>, action: () => alert("View Advance Plan Report")
         },
         {
-            label: "Download Journey Report", icon: <svg
+            label: "Download Journey Report", 
+            link:"/b2c-student/",
+            icon: <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="34"
                 height="34"
@@ -125,6 +148,7 @@ const ReportButtonsPopup: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) 
                         <ReportButton
                             key={button.label}
                             label={button.label}
+                            link={button.link}
                             icon={button.icon}
                         // In a real app, you would pass the action: onClick={button.action}
                         />
