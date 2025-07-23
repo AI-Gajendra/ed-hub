@@ -39,21 +39,7 @@ interface StudentData {
 // --- Sample Data ---
 const AVATAR_PLACEHOLDER = "/teacher-b2b/list-profile.png"; // Placeholder
 
-const sampleSubjects: DropdownOption[] = [
-    { value: "Option 1", label: "Option 1" },
-    { value: "Option 2", label: "Option 2" },
-    { value: "english", label: "English" },
-];
 
-const sampleClasses: DropdownOption[] = [
-    { value: "Option 1", label: "Option 1" },
-    { value: "class9b", label: "Class 9 - Section B" },
-];
-
-const sampleGroups: DropdownOption[] = [
-    { value: "Option 1", label: "Option 1" },
-    { value: "groupBeta", label: "Beta Group" },
-];
 
 const sampleUnitaryItems: UnitaryItemData[] = [
     { id: "u1", title: "Option Title", subtitle: "Option Subtitle" },
@@ -89,11 +75,7 @@ const sampleStudents: StudentData[] = [
     },
 ];
 
-const sampleStandards: DropdownOption[] = [
-    { value: "1std", label: "1st STD" },
-    { value: "2std", label: "2nd STD" },
-    // ... more standards
-];
+
 
 const PRIMARY_BLUE = "#3366FF";
 const INPUT_BG = "bg-[#F9FAFB]";
@@ -192,9 +174,9 @@ const StudentSelectItemCard: React.FC<{
             className="w-17 h-17 rounded-xl object-cover flex-shrink-0"
         />
         <div className="flex-grow text-left min-w-0">
-            <h4 className="text-sm sm:text-md font-semibold text-black truncate">
+            <p className="text-sm sm:text-base font-normal text-black truncate">
                 {student.name}
-            </h4>
+            </p>
             <p className="text-[10px] text-[#6B7280] truncate">{student.courseName}</p>
             <p className="text-[10px] text-[#6B7280] truncate">{student.levelGrade}</p>
             <p className="text-[10px] text-[#6B7280] truncate">Group</p>
@@ -377,9 +359,9 @@ const CreateAIAssessmentContent: React.FC = () => {
                         </div>
 
 
-                        <SearchFilter filters={filter} bg="bg-[#f9fafb]" />
+                        <SearchFilter filters={filter} bg="bg-[#f9fafb]" placeHolder="Search Student"/>
 
-                        <div className="space-y-2 max-h-[15rem] overflow-y-auto pr-1 custom-scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+                        <div className="space-y-2 max-h-[16rem] overflow-y-auto pr-1 custom-scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
                             {filteredStudents.map((student) => (
                                 <StudentSelectItemCard
                                     key={student.id}

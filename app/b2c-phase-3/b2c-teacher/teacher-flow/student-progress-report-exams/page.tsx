@@ -3,7 +3,7 @@
 
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import ExamReport from "@/components/teacher-b2c/exams-report";
+import ExamReport from "./exams-report";
 import React, { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 

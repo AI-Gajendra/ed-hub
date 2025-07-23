@@ -1,5 +1,5 @@
 import React from 'react'
-import StudentCard from '@/components/teacher-b2c/studentCard'
+import StudentCard from './studentCard'
 export default function page() {
 	return (
 		<div>
