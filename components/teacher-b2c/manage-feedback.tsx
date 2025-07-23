@@ -27,19 +27,19 @@ export default function ManageCardPage() {
       image: "/personality.png",
       name: "Course Name",
       domain: "Self Dev",
-      grade: "Grade4"
+      grade: "Grade 4"
     },
     {
       image: "/personality.png",
       name: "Course Name",
       domain: "Self Dev",
-      grade: "Grade4"
+      grade: "Grade 4"
     },
     {
       image: "/personality.png",
       name: "Course Name",
       domain: "Self Dev",
-      grade: "Grade4"
+      grade: "Grade 4"
     },
 
 
@@ -69,13 +69,13 @@ export default function ManageCardPage() {
                 </div>
                 <div className="flex flex-col gap-1 px-2 text-black">
                   <h2 className="font-semibold text-lg">{course.name}</h2>
-                  <h3 className="text-sm font-normal text-black-300">
+                  <p className="text-sm font-normal text-black-300">
                     Domain:{" "}
-                    <span className="text-[#6B7280] font-normal">{course.domain}</span>
-                  </h3>
-                  <h3 className="text-sm font-normal text-black-300">
-                    Level/Grade: <span className="font-normal text-[#6B7280]">{course.grade}</span>
-                  </h3>
+                    <span className="text-[#6B7280] tracking-wide font-normal">{course.domain}</span>
+                  </p>
+                  <p className="text-sm font-normal text-black-300">
+                    Level/Grade: <span className="font-normal tracking-wide text-[#6B7280]">{course.grade}</span>
+                  </p>
                 </div>
               </Link>
             ))}
