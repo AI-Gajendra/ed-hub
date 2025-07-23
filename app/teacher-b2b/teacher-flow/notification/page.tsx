@@ -1,9 +1,9 @@
+import NotificationsPage from '@/components/teacher-b2b/notification'
 
-import NotificationPage from '@/components/common-components/notification'
-import React from 'react'
-
-const TeacherCurriculam = () => {
-	return <NotificationPage />
+export default function Notifications() {
+    return (
+        <div>
+            <NotificationsPage imageSrc='/teacher-b2b/profile.png'/>
+        </div>
+    )
 }
-
-export default NotificationPage
