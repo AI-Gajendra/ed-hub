@@ -330,7 +330,7 @@ export default function TeacherSelection() {
                 </div>
 
                 {/* Time Slot Grid */}
-                <div className="space-y-2 max-h-[400px] overflow-y-auto custom-scrollbar-thin-grey pr-2">
+                <div className="max-h-[400px] overflow-y-auto custom-scrollbar-thin-grey pr-2">
                   {times.map((time, index) => (
                     <div
                       key={time}
@@ -341,9 +341,7 @@ export default function TeacherSelection() {
                       <div className="relative flex items-center justify-end text-sm font-medium text-[#6B7280]">
                         {time}
                         <div
-                          className={`absolute bg-white h-2 w-full top-0 left-0 ${
-                            index === 0 ? "-translate-y-2" : "-translate-y-4"
-                          }`}
+                          className={`absolute bg-white h-2 w-full top-0 left-0 -translate-y-2`}
                         ></div>
                         {index === times.length - 1 && (
                           <div className="absolute bg-white h-2 w-full bottom-0 left-0 translate-y-2"></div>
