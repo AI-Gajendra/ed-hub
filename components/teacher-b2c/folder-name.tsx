@@ -45,7 +45,7 @@ const dummyFiles: ManagedFile[] = [
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
   const [fileShare, setFileShare] = useState(false);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
+    <div className="grid grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
       <div className="flex items-center space-x-3 min-w-0 justify-self-start">
         <Image
           src={"/teacher-b2b/pdf.png"}
@@ -168,7 +168,7 @@ export default function StudentSubmittedPapersPage() {
           >
             <FiArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-base sm:text-xl whitespace-nowrap font-medium sm:font-semibold text-[#FF3366]">
+          <h1 className="text-xl md:text-2xl font-medium text-[#FF3366]">
             Folder Name
           </h1>
         </div>
