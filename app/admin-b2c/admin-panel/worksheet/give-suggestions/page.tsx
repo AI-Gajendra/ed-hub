@@ -25,72 +25,23 @@ interface Message {
   fileName?: string;
 }
 
-const students: Student[] = [
-  {
-    id: "1",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-    isActive: true,
-  },
-  {
-    id: "2",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "3",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "4",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "5",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "6",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "7",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "8",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-  {
-    id: "9",
-    name: "Student Name",
-    classInfo: "Class / Batch",
-    avatar: "/admin/PFP.png",
-    lastMessageTime: "7:00 pm",
-  },
-];
+Array.from({ length: 600 }, (_, i) => ({
+  id: `f${i + 1}`,
+  name: "Student Name",
+  classInfo: "Class / Batch",
+  avatar: "/admin/PFP.png",
+  lastMessageTime: "7:00 pm",
+  isActive: true,
+}));
+
+const students: Student[] = Array.from({ length: 100 }, (_, i) => ({
+  id: `f${i + 1}`,
+  name: "Student Name",
+  classInfo: "Class / Batch",
+  avatar: "/admin/PFP.png",
+  lastMessageTime: "7:00 pm",
+  isActive: true,
+}));
 
 export default function ChatInterface() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(
@@ -130,7 +81,7 @@ export default function ChatInterface() {
       <BackButton Heading="Give Suggestions" />
       <MaxWidthWrapper>
         <main className="flex-grow w-full max-w-[90rem] mx-auto px-4 py-10">
-          <div className="flex h-screen gap-6">
+          <div className="flex h-screen gap-4">
             {/* Left Sidebar - Students List */}
             <div className="w-80 bg-white border-r border-gray-200 flex flex-col rounded-3xl">
               {/* Header */}
@@ -191,7 +142,7 @@ export default function ChatInterface() {
               {selectedStudent ? (
                 <>
                   {/* Chat Header */}
-                  <div className="bg-white rounded-full p-4 flex items-center">
+                  <div className="bg-white rounded-full p-2 flex items-center">
                     <img
                       src={selectedStudent.avatar || "/placeholder.svg"}
                       alt={selectedStudent.name}
@@ -207,7 +158,7 @@ export default function ChatInterface() {
                     {messages.map((message) => (
                       <div key={message.id} className="flex justify-end">
                         <div className="max-w-xs lg:max-w-md">
-                          <div className="bg-[#3366FF] text-white rounded-2xl px-4 py-3">
+                          <div className="bg-[#3366FF] text-white rounded-2xl p-3">
                             <p className="text-sm text-right pl-10 font-light">
                               {message.content}
                             </p>
