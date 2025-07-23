@@ -237,7 +237,7 @@ const ResultsSection = () => {
 
           {/* Statistics */}
           <div className="pr-6 mb-6 w-full">
-            <div className="flex justify-center items-center gap-10 mx-auto bg-[#F9FAFB] border border-[#E5E7EB] rounded-full p-4">
+            <div className="flex justify-center items-center gap-10 mx-auto bg-[#F9FAFB] border border-[#E5E7EB] rounded-full py-2 px-4">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <p className="text-lg text-[#6B7280] font-semibold mb-1">
