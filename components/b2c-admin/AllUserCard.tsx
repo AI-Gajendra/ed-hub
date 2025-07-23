@@ -48,13 +48,13 @@ const UserCard: FC<UserCardProps> = ({
   return (
     <Link href={navigate || href} className="block">
       <div
-        className={`w-full bg-[#F9FAFB] rounded-2xl p-2 flex items-center gap-4 cursor-pointer hover:shadow-md transition ${
+        className={`w-full bg-[#F9FAFB] rounded-2xl p-[6px] flex items-center gap-4 cursor-pointer hover:shadow-md transition ${
           showBorder ? "border border-[#B0B0B0]" : ""
         }`}
       >
         {/* Profile */}
         <div
-          className={`relative rounded-2xl overflow-hidden border ${
+          className={`relative rounded-[14px] overflow-hidden border ${
             role === "Teacher" || role === "Mentor"
               ? "w-20 h-20"
               : role === "Student"
@@ -74,7 +74,7 @@ const UserCard: FC<UserCardProps> = ({
         <div className="text-sm leading-tight">
           <p
             className={`${
-              role === "Student" ? "font-medium" : "font-semibold"
+              role === "Student" ? "font-normal" : "font-semibold"
             } text-base text-gray-900`}
           >
             {name}

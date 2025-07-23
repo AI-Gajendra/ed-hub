@@ -61,7 +61,7 @@ const sampleSubjectTabs: SubjectTab[] = [
   { id: "subj5", name: "Subject 5" },
 ];
 
-const sampleFolders: FolderItem[] = Array.from({ length: 100 }, (_, i) => ({
+const sampleFolders: FolderItem[] = Array.from({ length: 800 }, (_, i) => ({
   id: `f${i + 1}`,
   name: "Worksheet Name",
   fileCount: "11ᵗʰ July 2025",
@@ -174,6 +174,12 @@ const Page: NextPage = () => {
           <SubjectFolderViewContent />
         </main>
       </MaxWidthWrapper>
+      <button
+        type="button"
+        className={`bg-[#FFCC00] fixed bottom-5 right-20 md:right-12 z-30 w-full sm:w-auto text-white px-3 py-2.5 text-sm sm:px-3 sm:py-3.5 sm:text-base font-medium hover:opacity-90 rounded-full transition-opacity`}
+      >
+        Upload File
+      </button>
     </div>
   );
 };

@@ -7,10 +7,10 @@ import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
 import BackButton from "@/components/common-components/BackButton";
 import { NextPage } from "next";
 
-const users = Array.from({ length: 20 }, (_, i) => ({
+const users = Array.from({ length: 200 }, (_, i) => ({
   id: String(i + 1),
   name: `Student Name`,
-  image: "/common-images/student.png",
+  image: "/common-images/student.jpg",
   role: "Student" as UserRole,
   subtitle: "Subject",
   classInfo: "Level / Grade",
@@ -32,7 +32,7 @@ const Page: NextPage = () => {
     <div>
       <BackButton Heading="Students giving Worksheets" />
       <MaxWidthWrapper>
-        <main className="flex-grow w-full max-w-[90rem] mx-auto p-4 ">
+        <main className="flex-grow w-full max-w-[90rem] mx-auto px-4 py-8">
           <div className="bg-white rounded-3xl p-4">
             <SearchFilter filters={filters} />
             <TabSwitch
