@@ -4,6 +4,7 @@ import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ChevronDown } from 'lucide-react'
+import  Link  from 'next/link';
 
 export default function DmitTest() {
 	return (
@@ -56,15 +57,17 @@ export default function DmitTest() {
 						</div>
 					</div>
 					<div className="flex flex-col items-end justify-center gap-4">
+						<Link href={"/admin/panel/edit-dmit-test-questions"}>
 						<Button className="hidden sm:block rounded-full w-32 bg-[#FF3366] px-2 hover:bg-[#FF3366]/90 shadow-none">
 							Edit Questions
 						</Button>
+						</Link>
 						<div className="flex justify-between sm:justify-center flex-wrap gap-4">
 							<Button className="rounded-full bg-[#FF33661A] px-6 shadow-none hover:bg-[#FF33661A]/90 text-[#FF3366]">
 								Discard
 							</Button>
 
-							<Button className="rounded-full w-32 bg-[#FF3366] px-2 hover:bg-[#FF3366]/90 shadow-none">Edit Questions</Button>
+							
 							<Button className="rounded-full bg-[#3366FF1A] shadow-none hover:bg-[#3366FF1A]/90 text-[#3366FF]">
 								View Existing Test
 							</Button>
@@ -75,7 +78,8 @@ export default function DmitTest() {
 
 				<div className="flex justify-center items-end flex-col gap-4">
 					<h2 className="text-[#FF3366] font-semibold">Create new DMIT Test</h2>
-					<Button className="rounded-full shadow-none px-16">Create</Button>
+					<Link href={"/admin/panel/create-dmit-test"}>
+					<Button className="rounded-full shadow-none px-16">Create</Button>	</Link>
 				</div>
 			</div>
 		</MaxWidthWrapper>

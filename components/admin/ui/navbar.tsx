@@ -55,17 +55,17 @@ export default function Navbar({ user, isAskme = true }: HeaderProps) {
 		{
 			icon: FiBriefcase,
 			label: 'School MGMT',
-			href: '/student-b2b/student-dashboard/chat',
+			href: '/admin/panel/school-management',
 		},
 		{
 			icon: FiBookOpen,
 			label: 'Course MGMT',
-			href: '/student-b2b/student-dashboard/recording',
+			href: '/admin/panel/course-management',
 		},
 		{
 			icon: FiShield,
 			label: 'Security',
-			href: '/student-b2b/student-dashboard/recording',
+			href: '/admin/panel/security-schools',
 		},
 	]
 

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/seperator";
+import Link from "next/link";
 
 export default function EditDmitTestQuestions() {
   return (
@@ -17,7 +18,7 @@ export default function EditDmitTestQuestions() {
           <PointSection
             points={[
               { value: 1, name: "Test Details", isActive: true },
-              { value: 2, name: "Review", isActive: false },
+              { value: 2, name: "Review", isActive: false,link: "/admin/panel/dmit-test-review" },
             ]}
           />
 
@@ -404,7 +405,8 @@ export default function EditDmitTestQuestions() {
           </div>
 
           <div className="flex justify-center items-center my-10">
-            <Button className="rounded-full px-6">Review</Button>
+            <Link href={"/admin/panel/dmit-test-review"}>
+            <Button className="rounded-full px-6">Review</Button></Link>
           </div>
         </MaxWidthWrapper>
       </div>

@@ -6,6 +6,7 @@ import NamingBar from '@/components/admin/ui/naming-bar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Progress } from '@/components/ui/progress'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FaStar } from 'react-icons/fa'
 import { FiChevronDown } from 'react-icons/fi'
 
@@ -505,6 +506,7 @@ const ProgressCircleItem = ({
 
 function TecherChip() {
 	return (
+		<Link href={"/admin/panel/teacher-performance"}>
 		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
 			<Image
 				src={'/images/teacher.jpg'}
@@ -517,7 +519,7 @@ function TecherChip() {
 				<p className="font-semibold text-lg">Name</p>
 				<p className="text-[#FF3366] text-sm font-medium">Subject</p>
 			</div>
-		</div>
+		</div></Link>
 	)
 }
 function CourseCard() {

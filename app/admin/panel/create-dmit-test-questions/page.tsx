@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/seperator'
+import Link from 'next/link'
 
 export default function EditDmitTestQuestions() {
 	return (
@@ -16,9 +17,9 @@ export default function EditDmitTestQuestions() {
 				<MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-xl">
 					<PointSection
 						points={[
-							{ value: 1, name: 'DMIT Test Details', isActive: false },
+							{ value: 1, name: 'DMIT Test Details', isActive: false,link:"/admin/panel/create-dmit-test" },
 							{ value: 2, name: 'DMIT Test Questionnaire ', isActive: true },
-							{ value: 3, name: 'Review', isActive: false },
+							{ value: 3, name: 'Review', isActive: false,link:"/admin/panel/create-dmit-test-review" },
 						]}
 					/>
 
@@ -317,8 +318,10 @@ export default function EditDmitTestQuestions() {
 					</div>
 
 					<div className="flex justify-center gap-2 items-center my-10">
-						<Button className="rounded-full px-6">Save</Button>
-						<Button className="rounded-full px-6">Review</Button>
+						<Link href={"/admin/panel/create-dmit-test"}>
+						<Button className="rounded-full px-6">Save</Button></Link>
+						<Link href={"/admin/panel/create-dmit-test-review"}>
+						<Button className="rounded-full px-6">Review</Button></Link>
 
 					</div>
 				</MaxWidthWrapper>

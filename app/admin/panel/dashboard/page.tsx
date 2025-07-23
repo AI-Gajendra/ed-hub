@@ -9,6 +9,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { ChevronDown, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
+import Link  from 'next/link';
 
 export default function DashboardPage() {
 	return (
@@ -17,7 +18,8 @@ export default function DashboardPage() {
 				<div className="flex flex-col gap-4 sm:gap-6 p-2 sm:p-4 border rounded-2xl">
 					{/* Stats Cards */}
 					<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
-						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
+						<Link href={"/admin/panel/school-management"} className='w-full sm:w-1/3'>
+						<Card className="shadow-none bg-[#F9FAFB] ">
 							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
 								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">10</CardTitle>
 								<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
@@ -25,6 +27,7 @@ export default function DashboardPage() {
 								</CardDescription>
 							</CardHeader>
 						</Card>
+						</Link>
 						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
 							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
 								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">250</CardTitle>
@@ -210,6 +213,7 @@ export default function DashboardPage() {
 
 const SchoolCard = () => {
 	return (
+		<Link href={"/admin/panel/school-management-report"}>
 		<Card className="shadow-none rounded-2xl bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
 			<div className="w-full sm:w-48">
 				<Image
@@ -259,7 +263,7 @@ const SchoolCard = () => {
 					</div>
 				</div>
 			</div>
-		</Card>
+		</Card></Link>
 	)
 }
 

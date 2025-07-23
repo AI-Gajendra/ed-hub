@@ -7,6 +7,7 @@ import PointSection from '@/components/admin/ui/point-section'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function DmitTestQuestions() {
 	return (
@@ -16,8 +17,8 @@ export default function DmitTestQuestions() {
 				<PointSection
 					points={[
 						{ value: 1, name: 'DMIT Test Details', isActive: true },
-						{ value: 2, name: 'DMIT Test Questionnaire ', isActive: false },
-						{ value: 3, name: 'Review', isActive: false },
+						{ value: 2, name: 'DMIT Test Questionnaire ', isActive: false ,link:"/admin/panel/create-dmit-test-questions"},
+						{ value: 3, name: 'Review', isActive: false ,link:"/admin/panel/create-dmit-test-review"},
 					]}
 				/>
 
@@ -85,10 +86,12 @@ export default function DmitTestQuestions() {
 					</div>
 
 					<div className="flex gap-4">
+						<Link href={"/admin/panel/dmit-test"}>
 						<Button className="rounded-full py-6" variant={'outline'}>
 							Cancel
-						</Button>
-						<Button className="bg-[#3366FF] rounded-full py-6 text-white shadow-none">Continue</Button>
+						</Button></Link>
+						<Link href={"/admin/panel/create-dmit-test-questions"}>
+						<Button className="bg-[#3366FF] rounded-full py-6 text-white shadow-none">Continue</Button></Link>
 					</div>
 				</div>
 			</MaxWidthWrapper>

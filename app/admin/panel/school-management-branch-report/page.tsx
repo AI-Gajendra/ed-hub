@@ -11,6 +11,7 @@ import ArrowControl from '@/components/admin/ui/arrow-control'
 import RadarChartAdmin from '@/components/admin/radar-chart'
 import { FiChevronDown } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 const PieChartAdmin = dynamic(() => import('@/components/admin/pie-chart'), {
 	ssr: false,
@@ -240,6 +241,7 @@ export default function SchoolManagementReportPage() {
 
 function TecherChip() {
 	return (
+		 <Link href={""}>
 		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
 			<Image
 				src={'/images/teacher.jpg'}
@@ -253,6 +255,7 @@ function TecherChip() {
 				<p className="text-[#FF3366] text-sm font-medium">Subject</p>
 			</div>
 		</div>
+		</Link>
 	)
 }
 

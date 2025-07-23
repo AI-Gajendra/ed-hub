@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ChevronDown, Search } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function SchoolManagement() {
 	return (
@@ -33,7 +34,8 @@ function SearchFilterBar() {
 				<Input className="border-black rounded-full pl-9" placeholder="Search" />
 				<Search className="absolute -top-1/12 translate-y-1/2 left-2 h-5" />
 			</div>
-			<Button className="text-xs bg-[#FF3366] text-white rounded-full">Manage Approval</Button>
+			<Link href={"/admin/panel/manage-all-approval"}>
+			<Button className="text-xs bg-[#FF3366] text-white rounded-full">Manage Approval</Button></Link>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button className="bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-[#F9FAFB]/90 rounded-xl font-light text-black">
@@ -79,6 +81,7 @@ function SearchFilterBar() {
 
 const SchoolCard = () => {
 	return (
+		<Link href={"/admin/panel/school-management-report"}>
 		<Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
 			<div className="w-full sm:w-52 h-44">
 				<Image
@@ -99,6 +102,6 @@ const SchoolCard = () => {
 					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 4</p>
 				</div>
 			</div>
-		</Card>
+		</Card></Link>
 	)
 }
