@@ -43,18 +43,18 @@ export const educatorsData: Educator[] = [
 
     name: "Name",
 
-    title: "Title",
+     title: "Education",
 
-    imageUrl: "/student/educator/ed1.jpg", // Placeholder image
+    imageUrl: "/student/educator/ed4.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Description",
 
     linkedinUrl: "https://linkedin.com/in/oliviadavis",
 
-    category: "Academic",
+    category: "Speciality",
   },
 
   {
@@ -62,18 +62,18 @@ export const educatorsData: Educator[] = [
 
     name: "Name",
 
-    title: "Title",
+    title: "Education",
 
-    imageUrl: "/student/educator/ed2.jpg", // Placeholder image
+    imageUrl: "/student/educator/ed4.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+     "Description",
 
     linkedinUrl: "https://linkedin.com/in/marcuschen",
 
-    category: "Academic",
+    category: "Speciality",
   },
 
   {
@@ -81,18 +81,18 @@ export const educatorsData: Educator[] = [
 
     name: "Name",
 
-    title: "Title",
+     title: "Education",
 
-    imageUrl: "/student/educator/ed3.jpg", // Placeholder image
+    imageUrl: "/student/educator/ed4.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Description",
 
     linkedinUrl: "https://linkedin.com/in/sophiamiller",
 
-    category: "Foundation",
+    category: "Speciality",
   },
 
   {
@@ -100,18 +100,18 @@ export const educatorsData: Educator[] = [
 
     name: "Name",
 
-    title: "Title",
+     title: "Education",
 
     imageUrl: "/student/educator/ed4.jpg", // Placeholder image
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Description",
 
     linkedinUrl: "https://linkedin.com/in/davidwilson",
 
-    category: "Notsoextra - Curricular",
+    category: "Speciality",
   },
 
   {
@@ -119,18 +119,18 @@ export const educatorsData: Educator[] = [
 
     name: "Name",
 
-    title: "Title",
+     title: "Education",
 
-    imageUrl: "/student/educator/ed2.jpg", // Placeholder image (reused)
+    imageUrl: "/student/educator/ed4.jpg", // Placeholder image (reused)
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+     "Description",
 
     linkedinUrl: "https://linkedin.com/in/isabellegarcia",
 
-    category: "Skill Development",
+    category: "Speciality",
   },
 
   {
@@ -138,41 +138,31 @@ export const educatorsData: Educator[] = [
 
     name: "Name",
 
-    title: "Title",
+    title: "Education",
 
-    imageUrl: "/student/educator/ed1.jpg", // Placeholder image (reused)
+    imageUrl: "/student/educator/ed4.jpg", // Placeholder image (reused)
 
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Description",
 
     linkedinUrl: "https://linkedin.com/in/jamesbrown",
 
-    category: "Brain Development",
+    category: "Speciality",
   },
 ];
 
 const categories = [
-  "Academic",
+  "Speciality",
 
-  "Notsoextra - Curricular",
-
-  "Foundation",
-
-  "Skill Development",
-
-  "Brain Development",
-
-  "Door Step Tutoring",
-
-  "Skill Club",
+  
 ];
 
 const EducatorCard = ({ educator }: { educator: Educator }) => {
   const Router=useRouter();
-  return (
-    <div onClick={()=>Router.push("/b2c-student/student-flow/teacher-profile")} className="bg-[#F9FAFB] p-4 sm:p-5 rounded-3xl flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch relative min-h-[200px] sm:min-h-[190px] cursor-pointer">
+  return ( <Link href={"/b2c-student/student-flow/teacher-profile"}>
+    <div  className="bg-[#F9FAFB] p-4   rounded-3xl flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch relative min-h-[200px] sm:min-h-[190px] cursor-pointer">
       <div className="relative w-full h-48 sm:w-32 sm:h-auto rounded-lg overflow-hidden flex-shrink-0">
         {/* On mobile (flex-col), image takes full width and fixed height. */}
 
@@ -235,7 +225,7 @@ const EducatorCard = ({ educator }: { educator: Educator }) => {
           <TbBrandLinkedinFilled className="w-8 h-8 fill-[#3366FF]" />
         </a>
       )}
-    </div>
+    </div> </Link>
   );
 };
 

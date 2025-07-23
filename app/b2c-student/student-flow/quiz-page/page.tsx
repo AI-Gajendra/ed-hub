@@ -58,7 +58,7 @@ export default function QuizTestPage() {
 
       <div className="bg-gray-100 min-h-screen flex flex-col">
 
-        <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
+        <main className="flex-grow  mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
           <div className="mb-4">
             <OptimizedCategoryTabsBar
               categories={mainCategoriesData}
