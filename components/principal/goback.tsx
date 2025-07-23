@@ -19,8 +19,8 @@ const GoBack: React.FC<GoBackProps> = ({ GoBackHeading, toLink }) => {
     }
   };
   return (
-  <div className='bg-white'>
-    <div className="flex   items-center gap-3 mx-auto max-w-[98rem] px-4 sm:px-6 py-3.5 sticky top-0 z-20">
+  <div className='bg-white '>
+    <div className="flex  items-center gap-3 mx-auto max-w-[98rem] px-4 sm:px-6 py-3.5 sticky top-0 z-20">
       <button
         onClick={handleBackClick}
         className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md cursor-pointer" // Using ACCENT_PINK for hover
