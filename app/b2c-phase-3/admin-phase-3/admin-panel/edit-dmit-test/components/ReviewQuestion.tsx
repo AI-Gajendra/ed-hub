@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { FiCheck } from 'react-icons/fi';
 
@@ -15,10 +16,12 @@ const Review: React.FC<DetailsProps> = ({ setSelectedTab }) => {
     options: ['Option', 'Option', 'Option'],
     correctIndex: 0,
   };
-const handleClick = () => {
+  const handleClick = () => {
     setSelectedTab("Test Details");
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const router = useRouter();
   return (
     <div className="w-full px-4 md:px-10 lg:px-16 py-8 space-y-8 bg-white">
       {/* Test Info */}
@@ -34,7 +37,7 @@ const handleClick = () => {
         </div>
 
         <button className="px-6 py-2 bg-gray-100 rounded-full text-sm shadow-sm hover:opacity-90"
-        onClick={() => setSelectedTab("Test Details")}>
+          onClick={() => setSelectedTab("Test Details")}>
           Edit
         </button>
       </div>
@@ -72,7 +75,7 @@ const handleClick = () => {
         </div>
 
         <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90"
-        onClick={handleClick}>
+          onClick={handleClick}>
           Edit
         </button>
       </div>
@@ -109,16 +112,18 @@ const handleClick = () => {
         </div>
 
         <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90"
-        onClick={() => setSelectedTab("Test Details")}>
+          onClick={() => setSelectedTab("Test Details")}>
           Edit
         </button>
       </div>
       <div className="flex justify-center gap-2 mt-4">
-        <div className="rounded-[42px] text-base md:text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-4 py-3 cursor-pointer inline-block">
+        <button
+          onClick={() => router.push("/b2c-phase-3/admin-phase-3/admin-panel/admin-dmit-test")} className="rounded-[42px] text-base md:text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-4 py-3 cursor-pointer inline-block">
           Cancel
-        </div>
-        <button className="rounded-[42px] text-base md:text-lg font-semibold bg-[#3366ff] text-white px-4 py-3 cursor-pointer inline-block">
-          Publish
+        </button>
+        <button
+          onClick={() => router.push("/b2c-phase-3/admin-phase-3/admin-panel/admin-dmit-test")} className="rounded-[42px] text-base md:text-lg font-semibold bg-[#3366ff] text-white px-4 py-3 cursor-pointer inline-block">
+          Update
         </button>
       </div>
     </div>

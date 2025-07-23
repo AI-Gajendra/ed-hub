@@ -5,7 +5,6 @@ import type React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import StudentWrapper from "@/components/student-wrapper";
-import { ArrowLeft } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -34,7 +33,7 @@ export default function DemoBookingForm() {
 
   const formFields = [
     { key: "studentName", label: "Student Name", type: "text" },
-    { key: "studentAge", label: "Student Age", type: "number" },
+    { key: "studentAge", label: "Student Age", type: "text" },
     { key: "studentGrade", label: "Student Grade", type: "text" },
     { key: "parentName", label: "Parent Name", type: "text" },
     { key: "parentEmail", label: "Parent Email ID", type: "email" },

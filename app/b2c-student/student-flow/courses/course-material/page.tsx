@@ -20,7 +20,7 @@ const router = useRouter();
           {/* Course Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* My Knowledge Box Card */}
-            <div onClick={() => router.push("/b2c-student/student-flow/material-page-course")}  className="bg-[#F9FAFB] rounded-3xl cursor-pointer border border-[#E5E7EB] overflow-hidden p-2">
+            <div onClick={() => router.push("/b2c-student/student-flow/material-knowledge-box")}  className="bg-[#F9FAFB] rounded-3xl cursor-pointer border border-[#E5E7EB] overflow-hidden p-2">
               <div className="h-48 bg-gradient-to-br from-purple-200 via-purple-300 to-blue-200 flex items-center justify-center rounded-3xl">
                 <div className="text-black text-6xl font-bold">
                   <div className="flex items-center justify-center space-x-2">
@@ -40,7 +40,7 @@ const router = useRouter();
             {/* Course Cards */}
             {new Array(2).fill(0).map((_, index) => (
               <div
-              onClick={() => router.push("/b2c-student/student-flow/material-knowledge-box")} 
+              onClick={() => router.push("/b2c-student/student-flow/material-page-course")} 
                 key={index}
                 className="bg-[#F9FAFB] rounded-3xl cursor-pointer border border-[#E5E7EB] overflow-hidden p-2"
               >
