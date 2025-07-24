@@ -228,14 +228,14 @@ export const UpcomingClassItem: React.FC<{ uClass: UpcomingClass }> = ({
   </div>
 );
 
-export const FillForm: React.FC = () => (
+export const FillForm: React.FC<{setOpenModal: React.Dispatch<React.SetStateAction<string | null>>}> = ({setOpenModal}) => (
 
   <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
     
     <h3 className="text-lg md:text-xl font-bold text-[#FF3366]">
       Request Teacher Change
     </h3>
-    <ActionButton variant="primary" size="sm" className="xs:w-auto">
+    <ActionButton onClick={()=>setOpenModal("requestChangeSingle")} variant="primary" size="sm" className="xs:w-auto">
       Fill the Form
     </ActionButton>
   </div>
@@ -345,9 +345,9 @@ export const ExtraClass: React.FC<{ materials: CourseMaterial[] }> = ({
     </ul>
     <div className="flex items-center justify-between ">
       <h2 className="text-sm self-center text-[#3366FF]">Total: ₹ 3000</h2>
-      <button className="bg-[#3366FF] text-white px-4 text-sm rounded-full py-1 xs:w-auto">
+      <Link href={"/b2c-student/student-flow/checkout"}><button className="bg-[#3366FF] text-white px-4 text-sm rounded-full py-1 xs:w-auto">
         Proceed to pay
-      </button>
+      </button></Link>
     </div>
     <p className="text-xs text-[#6B7280]">
       Once payment is confirmed, your extra class will be scheduled and updated
