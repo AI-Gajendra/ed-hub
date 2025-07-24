@@ -14,6 +14,7 @@ import {
 import ReviewsComponent from "@/components/student/courses/review";
 import Footer from "@/components/layout/Footer";
 import { useRouter } from "next/navigation";
+import CategoryTabs from "./CategoricalTab";
 
 const features = [
   {
@@ -81,6 +82,7 @@ const router = useRouter();
   return (
     <StudentWrapper>
       <main className="min-h-[calc(100vh-80px)]">
+        <CategoryTabs />
         <div className="w-full">
           {/* Hero Section */}
           <section className="relative h-full overflow-hidden">
