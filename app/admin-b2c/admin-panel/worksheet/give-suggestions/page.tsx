@@ -85,23 +85,22 @@ export default function ChatInterface() {
             {/* Left Sidebar - Students List */}
             <div className="w-80 bg-white border-r border-gray-200 flex flex-col rounded-3xl">
               {/* Header */}
-              <div className="p-4">
-                <h2 className="text-lg font-semibold text-[#FF3366] mb-4">
+              <div className="p-4 pb-1">
+                <h2 className="text-lg font-semibold text-[#FF3366]">
                   Students List
                 </h2>
+              </div>
 
+              {/* Students List */}
+              <div className="flex-1 overflow-y-auto custom-scrollbar-thin-grey p-3">
                 {/* Search Bar */}
-                <div className="relative">
+                <div className="relative mb-4">
                   <Search className="text-black absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 z-10" />
                   <Input
                     placeholder="Search"
                     className="pl-10 rounded-full border-2 border-[#6B7280]"
                   />
                 </div>
-              </div>
-
-              {/* Students List */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar-thin-grey p-3">
                 {students.map((student) => (
                   <div
                     key={student.id}
@@ -154,7 +153,7 @@ export default function ChatInterface() {
                   </div>
 
                   {/* Messages Area */}
-                  <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                  <div className="flex-1 overflow-y-auto py-8 pl-4 pr-0 space-y-4">
                     {messages.map((message) => (
                       <div key={message.id} className="flex justify-end">
                         <div className="max-w-xs lg:max-w-md">
