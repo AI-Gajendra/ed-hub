@@ -87,11 +87,30 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageTe
 }
 
 const ChartsReportTeacherB2C: React.FC = () => {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth()); // 0-11
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen)
 	}
+const months = [
+  "January", "February", "March", "April",
+  "May", "June", "July", "August",
+  "September", "October", "November", "December"
+];
+  const handleMonthSelect = (index: number) => {
+    setSelectedMonth(index);
+    setIsOpen(false);
+  };
+
+  const handlePrevYear = () => {
+    setSelectedYear(prev => prev - 1);
+  };
+
+  const handleNextYear = () => {
+    setSelectedYear(prev => prev + 1);
+  };
 
 	// Simplified data for the line chart (hardcoded points)
 	const lineChartData = {
@@ -124,9 +143,9 @@ const ChartsReportTeacherB2C: React.FC = () => {
 			progressPercent: 80,
 			color: '#1D5851',
 			iconSet: [
-				<LuOmega key="s" className="w-4 h-4 " />,
-				<FiPercent key="p" className="w-4 mt-4.5 h-4 " />,
-				<MdOutlineSuperscript key="a" className="w-4 h-4 " />,
+				<LuOmega key="s" className="w-5 h-5  text-[#1d5851]/40" />,
+				<FiPercent key="p" className="w-5 mt-4.5 h-5 text-[#1d5851]/40 " />,
+				<MdOutlineSuperscript key="a" className="w-5 h-5  text-[#1d5851]/40" />,
 			],
 			skills: Array(7).fill({
 				name: 'Subject 1',
@@ -142,9 +161,9 @@ const ChartsReportTeacherB2C: React.FC = () => {
 			progressPercent: 80,
 			color: '#37085C',
 			iconSet: [
-				<MdOutlineFunctions key="b" className="w-4 h-4 " />,
-				<RiPsychotherapyLine key="a" className="w-4 mt-4.5 h-4 " />,
-				<TbMathFunction key="z" className="w-4 h-4 " />,
+				<MdOutlineFunctions key="b" className="w-5 h-5 text-[#37085c]/30 " />,
+				<RiPsychotherapyLine key="a" className="w-5 mt-4.5 h-5 text-[#37085c]/30 " />,
+				<TbMathFunction key="z" className="w-5 h-5  text-[#37085c]/30" />,
 			],
 			skills: [
 				{
@@ -168,7 +187,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
 		progressColor: PALETTE.PINK_DARK, // Using the darker pink for progress
 		overallProgress: '4/5',
 		progressPercent: 80,
-		iconSet: [<MdOutlineTheaterComedy key="a" className="w-6 text-[#893544] mt-4.5 h-6" />], // Example icons
+		iconSet: [<MdOutlineTheaterComedy key="a" className="w-8  text-[#893544]/40 mr-6 mt-4.5 h-8" />], // Example icons
 		skills: [
 			{
 				name: 'Critical Thinking',
@@ -550,36 +569,48 @@ const ChartsReportTeacherB2C: React.FC = () => {
 									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Personality Development</span>
 								</div>
 							</div>
+							{/* month and june button */}
 							<div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
-								<div className="relative inline-block text-left">
-									{/* Button + Border container */}
-									<div className={`bg-[#f9fafb] ${isOpen ? 'rounded-t-xl border-t border-x' : 'rounded-xl border'} box-border`}>
-										<button
-											onClick={toggleDropdown}
-											className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full">
-											Month
-											{isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
-										</button>
-									</div>
+      <div className="relative inline-block text-left">
+        {/* Button + Border container */}
+        <div className={`bg-[#f9fafb] ${isOpen ? 'rounded-t-xl border-t border-x' : 'rounded-xl border'} box-border`}>
+          <button
+            onClick={toggleDropdown}
+            className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full">
+            {months[selectedMonth]}
+            {isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+          </button>
+        </div>
 
-									{/* Dropdown content */}
-									{isOpen && (
-										<div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border">
-											<button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-												Option 1
-											</button>
-											<button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-												Option 2
-											</button>
-										</div>
-									)}
-								</div>
-								<div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-									<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-									<span>2025</span>
-									<FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-								</div>
-							</div>
+        {/* Dropdown content */}
+        {isOpen && (
+          <div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border max-h-60 overflow-y-auto no-scrollbar">
+            {months.map((month, index) => (
+              <button
+                key={month}
+                onClick={() => handleMonthSelect(index)}
+                className={`whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-700 hover:bg-gray-100 ${
+                  index === selectedMonth ? "font-semibold text-black" : ""
+                }`}>
+                {month}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+        <FiArrowLeftCircle
+          onClick={handlePrevYear}
+          className="w-4 h-4 cursor-pointer hover:text-black"
+        />
+        <span>{selectedYear}</span>
+        <FiArrowRightCircle
+          onClick={handleNextYear}
+          className="w-4 h-4 cursor-pointer hover:text-black"
+        />
+      </div>
+    </div>
 						</div>
 						{/* Simplified SVG Line Chart */}
 						<div className="w-full overflow-x-auto">
@@ -630,12 +661,12 @@ const ChartsReportTeacherB2C: React.FC = () => {
 
 					{/* Personal Development Card */}
 					<div
-						className="p-5 h-[500px] rounded-2xl relative"
+						className="p-5 h-[520px] rounded-2xl relative"
 						style={{
 							backgroundColor: PALETTE.WHITE_CARD,
 						}}>
-						<h3 className="text-base font-semibold mb-3 text-[#FF3366]">{personalDevData.title}</h3>
-						<div className="space-y-3 overflow-y-scroll custom-scrollbar-thin-grey pr-3 max-h-[424px]">
+						<h3 className="text-base font-semibold mb-5 text-[#FF3366]">{personalDevData.title}</h3>
+						<div className="space-y-4 mt-2 overflow-y-scroll custom-scrollbar-thin-grey pr-3 max-h-[421px]">
 							{personalDevData.skills.map((skill, i) => (
 								<ProgressCircleItem
 									key={i}
@@ -656,9 +687,9 @@ const ChartsReportTeacherB2C: React.FC = () => {
 									style={{
 										backgroundColor: card.bgColor,
 									}}
-									className={` p-3 mb-2 rounded-xl`}>
+									className={` px-5 py-3 mb-2 rounded-xl`}>
 									<div className="flex justify-between items-center mb-2">
-										<h3 className="text-base font-bold" style={{ color: card.color }}>
+										<h3 className="text-base md:text-xl font-bold" style={{ color: card.color }}>
 											{card.title}
 										</h3>
 										<div className="flex space-x-1.5 text-xs" style={{ color: card.color }}>
@@ -708,9 +739,9 @@ const ChartsReportTeacherB2C: React.FC = () => {
 							style={{
 								backgroundColor: lifeSkillsData.bgColor,
 							}}
-							className={` p-3 mb-2 rounded-xl`}>
+							className={` px-4 py-2 mb-2 rounded-xl`}>
 							<div className="flex justify-between items-center mb-2">
-								<h3 className="text-base font-bold" style={{ color: lifeSkillsData.progressColor }}>
+								<h3 className="text-base md:text-lg font-bold" style={{ color: lifeSkillsData.progressColor }}>
 									{lifeSkillsData.title}
 								</h3>
 								<div className="flex space-x-1.5 text-xs" style={{ color: lifeSkillsData.progressColor }}>
