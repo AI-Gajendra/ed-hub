@@ -69,7 +69,6 @@ const SchoolLogin = () => {
             <p className="text-sm"><strong>Address:</strong> Vivamus sit amet sem ac nibh bibendum condimentum vel in sem. Curabitur tincidunt pretium faucibus. Vestibulum eget pellentesque justo. Vivamus ut pulvinar nibh</p>
           </div>
         </div>
-        <h2 className="text-m font-medium my-4">Branch Name</h2>
         <div className="flex mb-4 space-x-4 text-sm font-medium">
           <button
             className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
@@ -85,9 +84,7 @@ const SchoolLogin = () => {
           </button>
         </div>
         <ClassTab />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2 max-h-[80vh] overflow-y-scroll scrollbar">
           {/* Cards */}
           {filteredData.map((item) => (
             <div key={item.id} onClick={() => router.push(item.role === 'teacher' ? "/principal/teacher-login-activity" : "/principal/student-login-activity")} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">

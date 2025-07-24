@@ -42,7 +42,7 @@ const teachers = Array.from({ length: 32 }, (_, i) => ({
 
 export const sampleData: CardData[] = [...students, ...teachers];
 
-const filters = ['Filter 1', 'Filter 3'];
+const filters = ['Filter 1', 'Filter 2'];
 
 interface ModalProps {
   isOpen: boolean;
@@ -616,7 +616,7 @@ const Management = () => {
     setSelectedFilters(updated);
   };
   return (
-    <div className="p-4">
+    <div className="p-4 mx-auto w-[90vw]">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
         <RemoveTeacherModal isOpen={showRemoveTeacherPopup} onClose={() => { setShowRemoveTeacherPopup(false) }} />
@@ -636,18 +636,18 @@ const Management = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search"
-              className=" pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              className=" pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none text-sm"
             />
           </div>
           <div className="flex flex-grow gap-4 justify-between">
-            <Button onClick={() => setShowSelectClassPopup(true)} className="flex-1 bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
-            <Button onClick={() => handleAddClass()} className="flex-1 bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
-            <Button className="flex-1 bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
+            <Button onClick={() => setShowSelectClassPopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
+            <Button onClick={() => handleAddClass()} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
+            <Button className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
             {/* Filters with dropdown icons */}
             {filters.map((filter, index) => (
               <div key={filter} className="relative flex-1 overflow-x-auto custom-scrollbar">
                 <select
-                  className="appearance-none w-full border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="appearance-none w-full border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
                   value={selectedFilters[index]}
                   onChange={(e) => handleFilterChange(index, e.target.value)}
                 >
