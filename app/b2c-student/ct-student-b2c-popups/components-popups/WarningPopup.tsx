@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiX } from "react-icons/fi";
 import { StudentB2CBaseModal, PopupPropB2CStudent } from "@/app/b2c-student/ct-student-b2c-popups/page";
 import RescheduleClass from "../Reschedule/RescheduleClass";
+import SelectLectureToCancel from "../Reschedule/SelectLectureToCancel";
 
 const WarningPopup: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
   const [classes, setClasses] = useState(false)
@@ -34,7 +35,7 @@ const WarningPopup: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
         </button>
       </div>
     </StudentB2CBaseModal>
-    <RescheduleClass isOpen={classes} onClose={() => setClasses(false)}/> 
+    <SelectLectureToCancel isOpen={classes} onClose={() => setClasses(false)}/> 
     </>
   );
 };

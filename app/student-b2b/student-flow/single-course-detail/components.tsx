@@ -123,7 +123,7 @@ export const CourseMaterialItem: React.FC<Omit<CourseMaterial, "id">> = ({
   fileName,
   date,
 }) => (
-  <div className="bg-[#F9FAFB] p-3 sm:p-4 rounded-2xl border border-[#E5E7EB]  flex flex-col sm:flex-row items-center gap-3 sm:gap-4 hover:shadow-md transition-shadow">
+  <div className="bg-[#F9FAFB] p-3 sm:p-4 rounded-2xl border border-[#E5E7EB]  flex flex-col sm:flex-row items-center gap-3 sm:gap-4 hover:-md transition-">
     <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#8DD9B3] rounded-2xl flex items-center justify-center flex-shrink-0">
       {" "}
       {/* Adjusted size for mobile */}

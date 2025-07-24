@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import { FiX } from "react-icons/fi";
 import { StudentB2CBaseModal, PopupPropB2CStudent } from "@/app/b2c-student/ct-student-b2c-popups/page";
+import { useRouter } from "next/navigation";
 
 const CourseRenewedModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
+
+const router = useRouter();
   return (
     <StudentB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-2xl">
       <div className="relative bg-white px-6 md:px-12 py-16 text-center">
@@ -36,7 +38,7 @@ const CourseRenewedModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) 
         </p>
 
         <button
-          onClick={onClose}
+onClick={() => router.push("/b2c-student/student-flow/single-course-detail")} 
           className="px-6 py-2 rounded-full bg-[#8dd9b3] text-white font-medium text-sm"
         >
           Start Learning Again

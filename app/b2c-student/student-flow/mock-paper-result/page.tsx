@@ -28,12 +28,7 @@ const reviewQuestionsData: QuestionReviewData[] = [ // Renamed for clarity
 export default function QuizTestResultPage() {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategoriesData[0]);
 
-	const headerUser = {
-		name: 'Shlok Agheda',
-		role: 'Student',
-		avatarSrc: '/images/person.jpg', // UPDATE PATH
-		
-	}
+	
 
     const handlePageBack = () => { // For QuizResultHeader back button
         if(typeof window !== "undefined") window.history.back();

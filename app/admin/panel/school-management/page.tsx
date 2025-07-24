@@ -34,8 +34,9 @@ function SearchFilterBar() {
 				<Input className="border-black rounded-full pl-9" placeholder="Search" />
 				<Search className="absolute -top-1/12 translate-y-1/2 left-2 h-5" />
 			</div>
-			<Link href={"/admin/panel/manage-all-approval"}>
-			<Button className="text-xs bg-[#FF3366] text-white rounded-full">Manage Approval</Button></Link>
+			<Link href={'/admin/panel/manage-all-approval'}>
+				<Button className="text-xs bg-[#FF3366] text-white rounded-full">Manage Approval</Button>
+			</Link>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button className="bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-[#F9FAFB]/90 rounded-xl font-light text-black">
@@ -81,27 +82,28 @@ function SearchFilterBar() {
 
 const SchoolCard = () => {
 	return (
-		<Link href={"/admin/panel/school-management-report"}>
-		<Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
-			<div className="w-full sm:w-52 h-44">
-				<Image
-					src={'/images/school-image.jpg'}
-					alt="School"
-					width={1880}
-					height={1250}
-					className="w-full h-full sm:w-52 object-cover rounded-xl"
-				/>
-			</div>
-			<div className="flex flex-col justify-between gap-2 sm:gap-2 flex-1">
-				<div>
-					<h2 className="font-semibold text-sm sm:text-base truncate">School Name</h2>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Address</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 1</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 2</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 3</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 4</p>
+		<Link href={'/admin/panel/school-management-report'}>
+			<Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
+				<div className="w-full sm:w-52 h-44">
+					<Image
+						src={'/images/school-image.jpg'}
+						alt="School"
+						width={1880}
+						height={1250}
+						className="w-full h-full sm:w-52 object-cover rounded-xl"
+					/>
 				</div>
-			</div>
-		</Card></Link>
+				<div className="flex flex-col justify-between gap-2 sm:gap-2 flex-1">
+					<div>
+						<h2 className="font-semibold text-sm sm:text-base truncate">School Name</h2>
+						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Address</p>
+						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 1</p>
+						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 2</p>
+						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 3</p>
+						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 4</p>
+					</div>
+				</div>
+			</Card>
+		</Link>
 	)
 }

@@ -232,7 +232,14 @@ const TeacherDashboard = () => {
 			prevId === accordionId ? null : accordionId
 		);
 	};
-	 const router = useRouter();
+
+	const [showLeaveModal, setShowLeaveModal] = useState(false);
+	const handleToolClick = (label: string) => {
+		if (label === "Apply for leave") {
+			setShowLeaveModal(true);
+		} 
+	};
+	const router = useRouter();
 	return (
 		<div className="bg-[#F9FAFB]">
 			<Header activeState="Dashboard" />
@@ -283,7 +290,7 @@ const TeacherDashboard = () => {
 										<div className="flex justify-between items-center">
 											<span className="text-m font-medium">Demo Video</span>
 											<button
-											onClick={() => setUploadImage(true)}
+												onClick={() => setUploadImage(true)}
 												className="text-sm font-medium py-1 px-4 rounded-full text-black"
 												style={{ backgroundColor: PALETTE.GREEN_LIGHT }}>
 												Edit
@@ -319,25 +326,25 @@ const TeacherDashboard = () => {
 									{classSchedule.map((cls, index) => (
 										<div key={index} className="flex gap-2 justify-between items-center bg-[#F9FAFB] p-2 rounded-2xl">
 											<div className="flex items-center h-full gap-2">
-											<div>
-												<p className="text-sm flex items-center justify-center flex-col rounded-2xl font-semibold bg-[#F3F4F6] p-4 leading-tight min-h-[80px] text-center">
-													{cls.time.split(' ').map((part, i) => (
-														<span key={i} className="block">
-															{part}
-														</span>
-													))}
-												</p>
-											</div>
-											<div className='space-y-1'>
-												<p className="text-sm font-semibold">{cls.title}</p>
-												{cls.subTitle.map((text, i) => {
-													return (
+												<div>
+													<p className="text-sm flex items-center justify-center flex-col rounded-2xl font-semibold bg-[#F3F4F6] p-4 leading-tight min-h-[80px] text-center">
+														{cls.time.split(' ').map((part, i) => (
+															<span key={i} className="block">
+																{part}
+															</span>
+														))}
+													</p>
+												</div>
+												<div className='space-y-1'>
+													<p className="text-sm font-semibold">{cls.title}</p>
+													{cls.subTitle.map((text, i) => {
+														return (
 
-														<p key={i} className="text-xs text-[#6B7280]">{text}</p>
-													)
-												})}
+															<p key={i} className="text-xs text-[#6B7280]">{text}</p>
+														)
+													})}
+												</div>
 											</div>
-</div>
 											<div className='flex flex-col gap-1'>
 												<button onClick={() => setMeetingDetails(true)} className="text-black text-m px-4 py-1 rounded-full flex items-center justify-center bg-[#F3F4F6]">
 													<svg
@@ -377,16 +384,31 @@ const TeacherDashboard = () => {
 									Teacher Toolkit
 								</h2>
 								<div className="space-y-3">
-									{toolkitItems.map((tool) => (
-										<Link
-											key={tool.href}
-											href={tool.href}
-											className="flex items-center gap-4 text-black bg-gray-50 p-4 rounded-2xl border border-gray-200 font-medium cursor-pointer transition-all hover:bg-[#F9FAFB] hover:border-[#6B7280] hover:"
-										>
-											<tool.icon className="w-6 h-6 text-gray-600 flex-shrink-0" />
-											<span className="text-base">{tool.label}</span>
-										</Link>
-									))}
+									{toolkitItems.map((tool) => {
+										const Icon = tool.icon;
+										const commonClasses =
+											"flex items-center gap-4 text-black bg-gray-50 p-4 rounded-2xl border border-gray-200 font-medium cursor-pointer transition-all hover:bg-[#F9FAFB] hover:border-[#6B7280]";
+
+										if (!tool.href) {
+											return (
+												<button
+													key={tool.label}
+													onClick={() => handleToolClick(tool.label)}
+													className="flex w-full items-center gap-4 text-black bg-gray-50 p-4 rounded-2xl border border-gray-200 font-medium cursor-pointer transition-all hover:bg-[#F9FAFB] hover:border-[#6B7280]"
+												>
+													<Icon className="w-6 h-6 text-gray-600 flex-shrink-0" />
+													<span className="text-base">{tool.label}</span>
+												</button>
+											);
+										}
+
+										return (
+											<Link key={tool.href} href={tool.href} className={commonClasses}>
+												<Icon className="w-6 h-6 text-gray-600 flex-shrink-0" />
+												<span className="text-base">{tool.label}</span>
+											</Link>
+										);
+									})}
 								</div>
 							</div>
 						</div>
@@ -533,7 +555,7 @@ const TeacherDashboard = () => {
 												className="w-full pl-10 pr-4 py-2 border border-[#6B7280] rounded-full  focus:outline-none focus:ring-2 focus:ring-[#3366FF1A]0"
 											/>
 										</div>
-										<button      onClick={() => router.push('/b2c-teacher/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
+										<button onClick={() => router.push('/b2c-teacher/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
 											View All
 										</button>
 									</div>
@@ -605,9 +627,9 @@ const TeacherDashboard = () => {
 													return (
 														<div key={colIdx} className="p-2">
 															{slot ? (
-																<div 
-																onClick={() => setMeeting(true)}
-																className={`rounded-xl p-2 text-xs border ${slot.bg} ${slot.bor} flex cursor-pointer justify-between items-start`}>
+																<div
+																	onClick={() => setMeeting(true)}
+																	className={`rounded-xl p-2 text-xs border ${slot.bg} ${slot.bor} flex cursor-pointer justify-between items-start`}>
 																	<div className="flex flex-col justify-between items-start">
 																		<div className="font-medium">{slot.title}</div>
 																		<div className="text-black">{slot.subtitle}</div>
@@ -722,8 +744,9 @@ const TeacherDashboard = () => {
 			</TeacherB2CWrapper>
 			<Footer />
 			<RescheduleMeetingStudent isOpen={meeting} onClose={() => setMeeting(false)} />
-			<EditDemoVideo isOpen={uploadImage} onClose={() => setUploadImage(false)}/>
-			<MeetingDetailStudent isOpen={meetingDetails} onClose={() => setMeetingDetails(false)}/>
+			<EditDemoVideo isOpen={uploadImage} onClose={() => setUploadImage(false)} />
+			<MeetingDetailStudent isOpen={meetingDetails} onClose={() => setMeetingDetails(false)} />
+				<LeaveApplicationModal isOpen={showLeaveModal} onClose={() => setShowLeaveModal(false)}/>
 		</div>
 	)
 }
@@ -749,6 +772,7 @@ import MeetingDetailStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/Me
 import RescheduleMeetingStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/RescheduleMeetingStudent'
 import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideoDemo'
 import { PiSquaresFourLight } from 'react-icons/pi'
+import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ApplyLeaveModal'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (
@@ -757,20 +781,25 @@ const AssessmentIcon = () => (
 	</div>
 );
 
-// Array of tool items with their labels, icons, and links
-const toolkitItems = [
-	{ label: 'BW test', icon: FiCalendar, href: '/b2c-teacher/teacher-flow/create-test' },
-	{ label: 'Assessment', icon: AssessmentIcon, href: '/b2c-teacher/teacher-flow/create-assessment' },
-	{ label: 'Quiz', icon: FiHelpCircle, href: '/b2c-teacher/teacher-flow/create-quiz' },
-	{ label: 'Worksheet', icon: FiFileText, href: '/b2c-teacher/teacher-flow/worksheet' },
-	{ label: 'DMIT Results', icon: FiAward, href: '/b2c-teacher/teacher-flow/dmit-student-list' },
-	{ label: 'Videos', icon: FiVideo, href: '/b2c-teacher/teacher-flow/referance-video' },
-	{ label: 'Apply for leave', icon: FiSun, href: '/b2c-teacher/teacher-flow/apply-leave' },
-	{ label: 'Manage Course', icon: FiClipboard, href: '/b2c-teacher/teacher-flow/manage-course-teach' },
-	{ label: 'Daily Log', icon: FiCheckSquare, href: '/b2c-teacher/teacher-flow/daily-log-select-course' },
-	{ label: 'Manage Reports', icon: PiSquaresFourLight, href: '/b2c-teacher/teacher-flow/student-list-report' },
-	{ label: 'Manage Feedbacks', icon: HiOutlineArchiveBox, href: '/b2c-teacher/teacher-flow/manage-feedback' },
-	{ label: 'Advance Plan', icon: TfiMenuAlt, href: '#' },
+type ToolkitItem = {
+	label: string;
+	icon: React.ElementType;
+	href?: string;
+};
+
+const toolkitItems: ToolkitItem[] = [
+	{ label: "BW test", icon: FiCalendar, href: "/b2c-teacher/teacher-flow/create-test" },
+	{ label: "Assessment", icon: AssessmentIcon, href: "/b2c-teacher/teacher-flow/create-assessment" },
+	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-teacher/teacher-flow/create-quiz" },
+	{ label: "Worksheet", icon: FiFileText, href: "/b2c-teacher/teacher-flow/worksheet" },
+	{ label: "DMIT Results", icon: FiAward, href: "/b2c-teacher/teacher-flow/dmit-student-list" },
+	{ label: "Videos", icon: FiVideo, href: "/b2c-teacher/teacher-flow/referance-video" },
+	{ label: "Apply for leave", icon: FiSun }, // No href = button
+	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-teacher/teacher-flow/manage-course-teach" },
+	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-teacher/teacher-flow/daily-log-select-course" },
+	{ label: "Manage Reports", icon: PiSquaresFourLight, href: "/b2c-teacher/teacher-flow/student-list-report" },
+	{ label: "Manage Feedbacks", icon: HiOutlineArchiveBox, href: "/b2c-teacher/teacher-flow/manage-feedback" },
+	{ label: "Advance Plan", icon: TfiMenuAlt }, // No href = button
 ];
 const ChapterAccordion: React.FC<{
 	item: ChapterAccordionItem;

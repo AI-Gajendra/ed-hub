@@ -132,7 +132,7 @@ export default function FAQPage() {
 						<div className="relative z-10">
 							<h2 className="text-2xl md:text-3xl font-bold mb-3">Subscribe to our newsletter</h2>
 							<p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
-							<form className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 shadow-lg">
+							<form className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 -lg">
 								<input
 									type="email"
 									placeholder="Email Address"

@@ -27,11 +27,6 @@ export default function TestStartPage() {
 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
 
 	return (
-		// <div
-		//   className="min-h-screen flex items-center justify-center p-4 " // Main blue background
-		//   // If you have a pattern image for the blue background:
-		//   // style={{ backgroundImage: 'url(/images/blue-pattern-bg.png)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }}
-		// >
 		<div
 			className="min-h-screen flex items-center justify-center p-6"
 			style={{

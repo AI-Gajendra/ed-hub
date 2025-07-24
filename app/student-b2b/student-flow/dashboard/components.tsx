@@ -77,7 +77,7 @@ const ActivityItem: React.FC<{ activity: Activity }> = ({ activity }) => {
 	const iconBgColor = activity.type === 'video' ? 'bg-[#FF3366]' : 'bg-[#3366FF]';
 	const categoryTextColor = 'text-[#FF3366]';
 	return (
-		<div className="flex flex-col items-start gap-2 p-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl hover:shadow-md transition-shadow sm:flex-row sm:items-center sm:justify-between sm:rounded-full sm:gap-0">
+		<div className="flex flex-col items-start gap-2 p-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl hover:-md transition- sm:flex-row sm:items-center sm:justify-between sm:rounded-full sm:gap-0">
 			<div className="flex items-center gap-3 sm:gap-4"> {/* Desktop: gap-4 */}
 				<div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${iconBgColor} text-white flex items-center justify-center flex-shrink-0`}> {/* Desktop: w-14 h-14 */}
 					<Icon className="w-6 sm:w-7 h-6 sm:h-7" /> {/* Desktop: w-7 h-7 */}
@@ -141,7 +141,7 @@ export const ClassesSummaryCard: React.FC<ClassesSummaryCardProps> = ({ classSta
 
 // --- Teacher Item (Internal to YourTeachersCard) ---
 const TeacherItem: React.FC<Teacher> = ({ avatarSrc, name, subject }) => (
-	<div className="flex items-center justify-between p-1.5 md:p-2 bg-gray-100 rounded-full hover:shadow-sm transition-shadow">
+	<div className="flex items-center justify-between p-1.5 md:p-2 bg-gray-100 rounded-full hover:-sm transition-">
 		<div className="flex items-center gap-2 md:gap-3">
 			<Image src={avatarSrc} alt={name} width={40} height={40} className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10" />
 			<div><p className="text-sm font-medium text-black">{name}</p><p className="text-xs text-[#FF3366]">{subject}</p></div>

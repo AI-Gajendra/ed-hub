@@ -298,7 +298,7 @@ export default function CourseDetail() {
                   <div className="p-6">
                     <Button
                     
-                      onClick={() => router.push("b2c-student/student-flow/checkout")} 
+                      onClick={() => router.push("/b2c-student/student-flow/checkout")} 
                     className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-3 px-8 rounded-3xl font-medium text transition-colors cursor-pointer h-fit">
                       Proceed to checkout
                     </Button>

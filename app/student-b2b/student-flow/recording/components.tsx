@@ -22,7 +22,7 @@ interface RecordingCardProps {
 }
 export const RecordingCard: React.FC<RecordingCardProps> = ({ recording, onDelete }) => (
     // Original desktop: bg-white rounded-2xl overflow-hidden flex flex-col group
-	<div className="bg-white rounded-2xl overflow-hidden flex flex-col group border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200">
+	<div className="bg-white rounded-2xl overflow-hidden flex flex-col group border border-[#E5E7EB] hover:-lg transition- duration-200">
 		<div className="relative w-full">
             {/* Original Image: width={256} height={256} className="w-full h-44 object-fill ... */}
 			<Image
