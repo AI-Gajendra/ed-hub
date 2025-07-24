@@ -19,7 +19,7 @@ type leavecards = {
   email: string
 };
 
-const teachers = Array.from({ length: 4 }, (_, i) => ({
+const teachers = Array.from({ length: 8 }, (_, i) => ({
   id: i + 5,
   name: 'Name',
   course: 'Subject',
@@ -69,7 +69,7 @@ const Leave = () => {
             {filters.map((filter, index) => (
               <div key={filter} className="relative">
                 <select
-                  className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
                   value={selectedFilters[index]}
                   onChange={(e) => handleFilterChange(index, e.target.value)}
                 >
@@ -84,39 +84,38 @@ const Leave = () => {
 
 
 
-          {teachers.map((item) => (
-            <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-4 mb-4 shadow-sm relative">
-              <div className="flex">
-                <div className="rounded-xl relative overflow-hidden">
-                  <Image src={item.image} alt={item.name} width={100} height={100} className="object-cover" />
+          <div className="grid grid-cols-2 max-h-[80vh] overflow-y-scroll scrollbar">
+            {teachers.map((item) => (
+              <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-4 mb-4 shadow-sm relative">
+                <div className="flex">
+                  <div className="rounded-xl relative overflow-hidden">
+                    <Image src={item.image} alt={item.name} width={110} height={110} className="object-cover" />
+                  </div>
+                  <div className="flex-1 ml-4">
+                    <div className="font-semibold text-m mb-1">{item.name}</div>
+                    <div className="text-sm font-semibold text-[#FF3366] mb-1">{item.course}</div>
+                    <div className="text-xs text-gray-500 mb-1">{item.level}</div>
+                    <div className="text-xs text-gray-500 mb-1"> {item.group} </div>
+                    <div className="text-xs text-gray-500 mb-1"> {item.email} </div>
+                    <div className="text-xs absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange size={20} />From 6/8/25 to 6/6/25</div>
+                  </div>
                 </div>
-                <div className="flex-1 ml-4">
-                  <div className="font-semibold text-m ">{item.name}</div>
-                  <div className="text-sm font-semibold text-[#FF3366]">{item.course}</div>
-                  <div className="text-xs text-gray-500">{item.level}</div>
-                  <div className="text-xs text-gray-500"> {item.group} </div>
-                  <div className="text-xs text-gray-500"> {item.email} </div>
-                  <div className="text-xs absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange />From 6/8/25 to 6/6/25</div>
-
+                <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl shadow-md max-w-xl m-3  ">
+                  <p className="text-center text-black font-bold text-lg">Reason</p>
+                  <p className="text-center text-black-600 text-base">
+                    {item.reason}</p>
+                </div>
+                <div className="flex justify-center gap-4 mt-4">
+                  <button className="px-6 py-2 bg-red-100 text-red-500 rounded-3xl">
+                    Reject
+                  </button>
+                  <button onClick={() => setShowReassignPopup(true)} className="px-6 py-2 bg-[#3366FF] text-white rounded-3xl">
+                    Approve
+                  </button>
                 </div>
               </div>
-              <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl shadow-md max-w-xl m-3  ">
-                <p className="text-center text-black font-bold text-lg">Reason</p>
-                <p className="text-center text-black-600 text-base">
-                  {item.reason}</p>
-              </div>
-              <div className="flex justify-center gap-4 mt-4">
-                <button className="px-6 py-2 bg-red-100 text-red-500 rounded-3xl">
-                  Reject
-                </button>
-                <button onClick={() => setShowReassignPopup(true)} className="px-6 py-2 bg-[#3366FF] text-white rounded-3xl">
-                  Approve
-                </button>
-              </div>
-
-
-            </div>
-          ))}
+            ))}
+          </div>
 
         </div>
       </div>

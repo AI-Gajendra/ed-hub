@@ -2,22 +2,22 @@
 
 import React, { useState } from "react";
 import {
-  FiSearch,
   FiPercent,
-  FiAward,
-  FiBarChart2,
   FiChevronDown,
-  FiZap,
   FiArrowLeftCircle,
   FiArrowRightCircle,
 } from "react-icons/fi"; // Add icons as needed
+import { MdOutlinePsychology, MdOutlineTheaterComedy } from "react-icons/md";
+
+import { PiSigmaBold, PiTextSuperscriptBold } from "react-icons/pi";
+import { TbMathFunction } from "react-icons/tb";
 
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
-  GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar
+  GREEN_DARK: "#1D5852", // Not explicitly used but similar to progress bar
   PURPLE_LIGHT: "#EEDAFE", // Critical Academic Skills BG
-  PURPLE_DARK: "#A866DD", // Critical Academic Skills Progress
+  PURPLE_DARK: "#37085c", // Critical Academic Skills Progress
   PINK_LIGHT: "#FBD2D9", // Life Skill / Personal Dev BG
   PINK_DARK: "#893544", // Life Skill Progress (this is quite dark, using a lighter shade for text if needed)
 
@@ -143,9 +143,9 @@ const PrincipalStudentReport: React.FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <FiSearch key="s" className="w-4 h-4" />,
+        <p className="text-xl -mt-2 opacity-60">&#8486;</p>,
         <FiPercent key="p" className="w-4 mt-4.5 h-4" />,
-        <FiAward key="a" className="w-4 h-4" />,
+        <PiTextSuperscriptBold key="a" className="w-4 h-4" />
       ],
       skills: Array(7).fill({
         name: "Subject 1",
@@ -160,9 +160,9 @@ const PrincipalStudentReport: React.FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <FiBarChart2 key="b" className="w-4 h-4" />,
-        <FiAward key="a" className="w-4 mt-4.5 h-4" />,
-        <FiZap key="z" className="w-4 h-4" />,
+        <PiSigmaBold key="b" className="w-4 h-4" />,
+        <MdOutlinePsychology key="a" className="w-5 mt-4.5 h-5"/>,
+        <TbMathFunction key="z" className="w-4 h-4" />
       ],
       skills: [
         {
@@ -187,8 +187,7 @@ const PrincipalStudentReport: React.FC = () => {
     overallProgress: "4/5",
     progressPercent: 80,
     iconSet: [
-      <FiAward key="a" className="w-4 mt-4.5 h-4" />,
-      <FiZap key="z" className="w-4 h-4" />,
+      <MdOutlineTheaterComedy key="a" className="w-6 h-6"/>
     ], // Example icons
     skills: [
       {
@@ -505,7 +504,7 @@ const PrincipalStudentReport: React.FC = () => {
               <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
                 {personalDevData.title}
               </h3>
-              <div className="space-y-3  custom-scrollbar overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
+              <div className="space-y-3 max-h-96 scrollbar overflow-y-scroll pr-3">
                 {" "}
                 {/* Custom scrollbar */}
                 {personalDevData.skills.map((skill, i) => (
@@ -518,8 +517,6 @@ const PrincipalStudentReport: React.FC = () => {
                   />
                 ))}
               </div>
-              {/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
-              <div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
             </div>
           </div>
           <main
@@ -574,14 +571,14 @@ const PrincipalStudentReport: React.FC = () => {
                       </div>
                     </div>
                     <p
-                      className="text-xs mb-1"
+                      className="text-xs font-semibold mb-1"
                       style={{ color: card.progressColor }}
                     >
                       Overall Progress
                     </p>
                     <div className="items-center mb-3">
                       <span
-                        className="text-lg font-semibold mr-2"
+                        className="text-base mr-2"
                         style={{ color: PALETTE.TEXT_DARK }}
                       >
                         {card.overallProgress}
@@ -646,14 +643,14 @@ const PrincipalStudentReport: React.FC = () => {
                   </div>
                 </div>
                 <p
-                  className="text-xs mb-1"
+                  className="text-xs mb-1 font-semibold"
                   style={{ color: lifeSkillsData.progressColor }}
                 >
                   Overall Progress
                 </p>
                 <div className=" mb-3">
                   <span
-                    className="text-lg font-medium mr-2"
+                    className="text-base mr-2"
                     style={{ color: PALETTE.TEXT_DARK }}
                   >
                     {lifeSkillsData.overallProgress}

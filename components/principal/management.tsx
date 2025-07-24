@@ -20,7 +20,7 @@ type CardData = {
   image: string;
 };
 
-const students = Array.from({ length: 16 }, (_, i) => ({
+const students = Array.from({ length: 32 }, (_, i) => ({
   id: i + 1,
   name: 'Student Name',
   role: 'student' as const,
@@ -30,7 +30,7 @@ const students = Array.from({ length: 16 }, (_, i) => ({
   image: '/student-avatar-1.png', // Use same image or add logic to vary if needed
 }));
 
-const teachers = Array.from({ length: 16 }, (_, i) => ({
+const teachers = Array.from({ length: 32 }, (_, i) => ({
   id: i + 17,
   name: 'Teacher Name',
   role: 'teacher' as const,
@@ -616,47 +616,49 @@ const Management = () => {
     setSelectedFilters(updated);
   };
   return (
-    <div className="p-4 ">
+    <div className="p-4">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
         <RemoveTeacherModal isOpen={showRemoveTeacherPopup} onClose={() => { setShowRemoveTeacherPopup(false) }} />
         <RemoveStudentModal isOpen={showRemoveStudentPopup} onClose={() => { setShowRemoveStudentPopup(false) }} />
-        <AddStudentsModal isOpen={showAddStudentPopup} onClose={() => { setShowAddStudentPopup(false) }} showDeleteBtn={showDeleteBtn}/>
+        <AddStudentsModal isOpen={showAddStudentPopup} onClose={() => { setShowAddStudentPopup(false) }} showDeleteBtn={showDeleteBtn} />
         <ShiftTeacherModalWithOptions isOpen={showShiftTeacherPopup} onClose={() => { setShowShiftTeacherPopup(false) }} />
         <ShiftStudentModalWithOptions isOpen={showShiftStudentPopup} onClose={() => { setShowShiftStudentPopup(false) }} />
         <SelectClassToEditModal isOpen={showSelectClassPopup} onClose={handleManageClass} />
         <ManageClassModal isOpen={showManageClassPopup} onClose={() => setShowManageClassPopup(false)} showDeleteBtn={showDeleteBtn} />
 
-        <div className="flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
+        <div className="relative flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
-          <div className="relative w-full ">
+          <div className="relative bgred-400 flex justify-evenly">
             <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search"
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              className=" pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
           </div>
-          <Button onClick={() => setShowSelectClassPopup(true)} className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
-          <Button onClick={() => handleAddClass()} className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
-          <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
-          {/* Filters with dropdown icons */}
-          {filters.map((filter, index) => (
-            <div key={filter} className="relative overflow-x-auto custom-scrollbar">
-              <select
-                className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                value={selectedFilters[index]}
-                onChange={(e) => handleFilterChange(index, e.target.value)}
-              >
-                <option value="">{filter}</option>
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-              </select>
-              <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
-            </div>
-          ))}
+          <div className="flex flex-grow gap-4 justify-between">
+            <Button onClick={() => setShowSelectClassPopup(true)} className="flex-1 bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
+            <Button onClick={() => handleAddClass()} className="flex-1 bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
+            <Button className="flex-1 bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
+            {/* Filters with dropdown icons */}
+            {filters.map((filter, index) => (
+              <div key={filter} className="relative flex-1 overflow-x-auto custom-scrollbar">
+                <select
+                  className="appearance-none w-full border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  value={selectedFilters[index]}
+                  onChange={(e) => handleFilterChange(index, e.target.value)}
+                >
+                  <option value="">{filter}</option>
+                  <option value="Option 1">Option 1</option>
+                  <option value="Option 2">Option 2</option>
+                </select>
+                <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="flex mb-4 space-x-4 text-sm font-medium">
           <button
@@ -673,7 +675,7 @@ const Management = () => {
           </button>
         </div>
         <ClassTab />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 p-4 gap-4 max-h-[80vh] overflow-y-scroll scrollbar">
 
 
           {/* Cards */}

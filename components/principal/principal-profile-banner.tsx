@@ -47,7 +47,7 @@ const PrincipalProfileBanner = () => {
                     Teacher Report
                 </h1>
             </div>
-            <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
+            <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/teacher-progress-report-pattern.png')] bg-repeat bg-[length:650px_650px]">
                 {/* Student Info Card */}
                 <div
                     className="bg-white p-5 rounded-2xl "

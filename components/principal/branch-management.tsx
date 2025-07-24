@@ -24,7 +24,7 @@ type CardData = {
 
 const branch = Array.from({ length: 3 }, (_, i) => ({
   id: i + 1,
-  name: 'School Name',
+  name: 'Branch Name',
   address: 'Address',
   detail1: 'Detail 1',
   detail2: 'Detail 2',
