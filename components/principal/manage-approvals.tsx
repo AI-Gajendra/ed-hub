@@ -40,7 +40,7 @@ export const sampleData: CardData[] = [...students, ...teachers];
 const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 
 const ManageApprovalsPage = () => {
-    const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('student');
+    const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('teacher');
 
     const filteredData = sampleData.filter((item) => item.role === activeTab);
     const [searchTerm, setSearchTerm] = useState('');
@@ -100,7 +100,7 @@ const ManageApprovalsPage = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[80vh] overflow-y-scroll scrollbar">
 
 
                     {/* Cards */}
@@ -111,7 +111,7 @@ const ManageApprovalsPage = () => {
                             </div>
                             <div className="flex-1">
                                 <div className="font-semibold">{item.name}</div>
-                                <div className={`text-sm text-gray-500 ${item.role === "teacher" ? "text-[#ff3366]" : ""}`}>{item.course}</div>
+                                <div className={`text-sm ${item.role == "teacher" ? "text-[#ff3366]" : "text-gray-100"}`}>{item.course}</div>
                          
                                 <div className="text-sm text-gray-500">{item.level}</div>
                                 <div className="text-sm text-gray-500">{item.group}</div>
