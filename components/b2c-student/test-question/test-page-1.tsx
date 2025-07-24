@@ -181,8 +181,8 @@ export default function DmittTestPage() {
       </header>
 
       {/* Main Content */}
-      <main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[62%] mx-auto bg-white rounded-xl  p-6 md:p-8">
+      <main className="bg-white flex-1 py-8 ">
+        <div className="lg:max-w-[62%] mx-auto bg-white rounded-xl  p-6 md:p-8">
           {/* Test Title */}
           <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
             DMIT (Dermatoglyphics Multiple Intelligence Test) and skill

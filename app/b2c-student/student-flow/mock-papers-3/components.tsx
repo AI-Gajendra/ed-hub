@@ -32,10 +32,8 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({ question, question
   // Parent will handle max-w-2xl if needed for the group of questions.
   <div className="mb-4 p-4 bg-[#F9FAFB] rounded-2xl w-full sm:p-6 sm:rounded-3xl">
     {/* Original h3: text-md font-medium text-gray-800 mb-4 */}
-    <h2 className='text-sm md:text-md font-semibold text-black'>Question</h2>
-    <h3 className="text-sm font-medium text-gray-800 mb-3 sm:text-md sm:mb-4">
-      {questionNumber}) <span className="ml-1">{question.text || "Question"}</span> {/* Display question.text */}
-    </h3>
+    <h2 className='text-sm md:text-lg font-semibold text-black mb-2'>{questionNumber}) Question</h2>
+    
     <div className="space-y-2.5 sm:space-y-3">
       {question.options.map((option) => (
         <OptionButton key={option.id} text={option.text} isSelected={selectedOptionId === option.id} onClick={() => onOptionSelect(question.id, option.id)}/>

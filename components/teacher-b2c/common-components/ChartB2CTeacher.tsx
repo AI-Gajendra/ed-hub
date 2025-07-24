@@ -532,7 +532,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
 						}}>
 						<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
 							<h3 className="text-base font-semibold" style={{ color: PALETTE.ACCENT_PINK }}>
-								Performance Report
+								Overall Progress
 							</h3>
 						</div>
 						<div className="flex items-start justify-between px-2">

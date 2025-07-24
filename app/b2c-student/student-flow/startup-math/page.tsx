@@ -145,14 +145,14 @@ export default function WorksheetViewPage() {
                             {/* Worksheet Image */}
                             <div className="w-full relative mx-auto prose prose-sm sm:prose-base lg:prose-lg prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF] max-w-none">
                                 <div className="px-12 pb-6">
-                                    <h2 className="text-sm font-medium mb-4 h-16 flex items-end pb-6 bg-white w-full">Let&apos;s Revise</h2>
+                                    <h2 className="text-sm font-medium h-16 flex items-end pb-6 bg-white w-full">Let&apos;s Revise</h2>
                                     <Image
                                         src={'/images/startup-math.png'}
                                         alt="worksheet"
-                                        height={3510}
+                                        height={650}
                                         width={2482}
                                         priority
-                                        className="w-full h-auto object-cover object-bottom"
+                                        className="w-full h-[920px] object-cover object-bottom"
                                     />
                                 </div>
                             </div>

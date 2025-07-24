@@ -28,10 +28,8 @@ export const QuestionReviewBlock: React.FC<QuestionReviewBlockProps> = ({ questi
     // Original: mb-8 p-6 bg-[#F9FAFB] rounded-2xl
     <div className="mb-6 p-4 bg-[#F9FAFB] rounded-2xl border border-gray-200 sm:mb-8 sm:p-6"> {/* Add border, responsive padding */}
         {/* Original h3: text-md font-semibold text-black mb-4 */}
-        <h2 className='text-sm md:text-md font-semibold text-black'>Question</h2>
-		<h3 className="text-sm font-semibold text-black mb-3 sm:text-md sm:mb-4">
-			{questionNumber}) {question.text || "Question"} {/* Display actual question text */}
-		</h3>
+        <h2 className='text-sm md:text-lg mb-2 font-semibold text-black'>{questionNumber}) Question</h2>
+		
         {/* Original div: space-y-3 */}
 		<div className="space-y-2.5 sm:space-y-3">
 			{question.options.map(option => <OptionReviewDisplay key={option.id} option={option} />)}

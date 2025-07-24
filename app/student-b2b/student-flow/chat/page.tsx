@@ -10,6 +10,7 @@ import {
     TeacherContact, // Import type
     ChatMessageData // Import type
 } from './components';
+import StudentB2BHeader from '@/components/layout/StudentB2BHeader';
 
 // --- Sample Data (Strictly from your original) ---
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({ // Kept 10 distinct teacher entries
@@ -62,7 +63,7 @@ export default function ChatPage() {
 		
 		>
 			
-			<Header user={headerUser} />
+			<StudentB2BHeader activeState='Chat' user={headerUser} />
             {/* Original main: flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex gap-5 items-start */}
 			<main className=" z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 
                            sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start"> {/* Responsive padding, gap, and flex direction */}

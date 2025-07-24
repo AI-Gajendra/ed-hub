@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StudentB2CBaseModal, PopupPropB2CStudent } from "@/app/b2c-student/ct-student-b2c-popups/page";
 import SelectLectureToCancel from "../Reschedule/SelectLectureToCancel";
+import SelectLectureToReschedule from "../Reschedule/SelectLectureToReschedule";
 
 const CancelLectureModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) => {
   const [reschedule, setReschedule] = useState(false);
@@ -37,7 +38,7 @@ const CancelLectureModal: React.FC<PopupPropB2CStudent> = ({ isOpen, onClose }) 
           </div>
         </div>
       </StudentB2CBaseModal>
-      <SelectLectureToCancel isOpen={reschedule} onClose={() => setReschedule(false)} />
+      <SelectLectureToReschedule isOpen={reschedule} onClose={() => setReschedule(false)} />
     </>
   );
 };
