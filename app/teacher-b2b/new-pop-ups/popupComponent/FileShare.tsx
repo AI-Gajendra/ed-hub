@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FiSearch, } from 'react-icons/fi';
 import { PopupPropB2CTeacher, TeacherB2CBaseModal, } from '../page'; // Assuming page.tsx is in the parent directory
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'; // Assuming Shadcn Select
-import CreateGroupPopup from '../../ct-pop-ups/popupComponent/CreateGroup';
+import CreateGroupPopup from '@/app/b2c-teacher/ct-pop-ups/popupComponent/CreateGroup';
 
 // --- Data Interfaces ---
 interface SelectableItem {
