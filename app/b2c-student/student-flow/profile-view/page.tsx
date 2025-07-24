@@ -47,14 +47,6 @@ export default function EditStudentProfilePage() {
     setNewsletterEmail("");
   };
 
-  const headerUser = {
-    name: formData.name,
-    role: "Student",
-    avatarSrc: "/images/person.jpg",
-  };
-
-
-
   return (
     <div className="bg-[#e3e3e3] min-h-screen flex flex-col">
       <StudentNavbarNew />

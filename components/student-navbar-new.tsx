@@ -33,7 +33,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
 
   const navItems = [
     {
-      href: "/student/my-learnings",
+      href: "/student/profile-view",
       label: "My Learnings",
       icon: Smile,
     },

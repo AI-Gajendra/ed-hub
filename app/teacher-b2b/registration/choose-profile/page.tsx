@@ -12,9 +12,9 @@ const profiles = [
   { id: 'teacher', label: 'Teacher', iconSrc: '/images/profile-teacher-pen.svg' },
   { id: 'principal', label: 'Principal', iconSrc: '/images/profile-principal-star.svg' },
 ]
-const Router = useRouter();
 
 export default function ChooseProfilePage() {
+  const Router = useRouter();
   const [selectedProfile, setSelectedProfile] = useState<string>(profiles[2].id)
 
   return (
