@@ -1,4 +1,3 @@
-// /app/showcase/popups/page.tsx (or your preferred path)
 "use client";
 
 import React, { useState, useEffect } from "react";
