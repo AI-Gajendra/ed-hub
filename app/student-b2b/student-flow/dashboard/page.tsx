@@ -6,12 +6,13 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Activity } from './components'; // Import Activity type if needed for state
 import {
-    StudentProfileCard,
-    LearningActivitiesSection,
-    ClassesSummaryCard,
-    YourTeachersCard,
-    NotificationsCard
+	StudentProfileCard,
+	LearningActivitiesSection,
+	ClassesSummaryCard,
+	YourTeachersCard,
+	NotificationsCard
 } from './components';
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
 
 // --- Sample Data ---
 const studentData = {
@@ -35,7 +36,17 @@ const learningActivitiesData: Activity[] = [ // Use the imported Activity type
 	{ id: 1, type: 'video', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'join' },
 	{ id: 2, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'not_started' },
 	{ id: 3, type: 'video', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'join' },
-    { id: 4, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'not_started'},
+	{ id: 4, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'not_started' },
+	{ id: 5, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'not_started' },
+	{ id: 6, type: 'video', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'join' },
+	{ id: 7, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'not_started' },
+	{ id: 8, type: 'video', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'completed' },
+	{ id: 9, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'not_started' },
+	{ id: 10, type: 'video', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'completed' },
+	{ id: 11, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'completed' },
+	{ id: 12, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'completed' },
+	{ id: 13, type: 'video', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'completed' },
+	{ id: 14, type: 'document', category: 'Online Class: Science Topic', topic: 'Topic Name', dateRange: '28/4/2025 - 04/5/2025', status: 'completed' },
 ];
 const notificationsData = [
 	{ id: 1, title: 'Notification Title', message: 'Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem', date: '20/5/25' },
@@ -45,39 +56,37 @@ const notificationsData = [
 
 export default function StudentDashboardPage() {
 	const [learningActivityFilter, setLearningActivityFilter] = useState<'Active' | 'Completed'>('Active');
-    const [currentLearningDate, setCurrentLearningDate] = useState('June 2025'); // Example state
-    // const [currentClassDate, setCurrentClassDate] = useState('June 2025');     // Example state
+	const [currentLearningDate, setCurrentLearningDate] = useState('June 2025'); // Example state
 
-	const headerUser = { name: studentData.name, role: studentData.role, avatarSrc: studentData.avatarSrc };
 
-    // Dummy date navigation handlers
-    const handleLearningDatePrev = () => { setCurrentLearningDate("May 2025"); console.log("Prev Learning Month"); };
-    const handleLearningDateNext = () => { setCurrentLearningDate("July 2025"); console.log("Next Learning Month"); };
-    // const handleClassDatePrev = () => { setCurrentClassDate("May 2025"); console.log("Prev Class Month"); };
-    // const handleClassDateNext = () => { setCurrentClassDate("July 2025"); console.log("Next Class Month"); };
+	// Dummy date navigation handlers
+	const handleLearningDatePrev = () => { setCurrentLearningDate("May 2025"); console.log("Prev Learning Month"); };
+	const handleLearningDateNext = () => { setCurrentLearningDate("July 2025"); console.log("Next Learning Month"); };
+	// const handleClassDatePrev = () => { setCurrentClassDate("May 2025"); console.log("Prev Class Month"); };
+	// const handleClassDateNext = () => { setCurrentClassDate("July 2025"); console.log("Next Class Month"); };
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
-			<Header user={headerUser} />
+			<StudentNavbarNew />
 			<main className="container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 flex-grow">
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
 					<div className="lg:col-span-2 space-y-4 md:space-y-6">
 						<StudentProfileCard studentData={studentData} />
 						<LearningActivitiesSection
-                            activities={learningActivitiesData}
-                            currentFilter={learningActivityFilter}
-                            onFilterChange={setLearningActivityFilter}
-                            currentDate={currentLearningDate}
-                            onDatePrev={handleLearningDatePrev}
-                            onDateNext={handleLearningDateNext}
-                        />
+							activities={learningActivitiesData}
+							currentFilter={learningActivityFilter}
+							onFilterChange={setLearningActivityFilter}
+							currentDate={currentLearningDate}
+							onDatePrev={handleLearningDatePrev}
+							onDateNext={handleLearningDateNext}
+						/>
 					</div>
 					<div className="lg:col-span-1 space-y-4 md:space-y-6 flex flex-col">
 						<ClassesSummaryCard
-                            classStats={classStatsData}
-                            // onDatePrev={handleClassDatePrev}
-                            // onDateNext={handleClassDateNext}
-                        />
+							classStats={classStatsData}
+						// onDatePrev={handleClassDatePrev}
+						// onDateNext={handleClassDateNext}
+						/>
 						<YourTeachersCard teachers={teachersData} />
 						<NotificationsCard notifications={notificationsData} />
 					</div>
