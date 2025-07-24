@@ -82,7 +82,7 @@ function SearchFilterBar() {
 
 const SchoolCard = () => {
 	return (
-		<Link href={'/admin/panel/school-management-report'}>
+		<Link href={'/admin/panel/course-management-2'}>
 			<Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
 				<div className="w-full sm:w-52 h-44">
 					<Image

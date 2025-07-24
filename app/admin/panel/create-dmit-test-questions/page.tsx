@@ -8,13 +8,19 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/seperator'
 import Link from 'next/link'
-
+import { UploadFileImage } from "../../pop-ups-2/page";
+import { useState } from 'react'
 export default function EditDmitTestQuestions() {
+	 const [openModal, setOpenModal] = useState<string | null>(null);
 	return (
 		<div className="bg-gray-100/60">
 			<NamingBar name="Test Name" />
 			<div className="p-4">
 				<MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-xl">
+					<UploadFileImage
+											  isOpen={openModal === "uploadFileImage"}
+											  onClose={() => setOpenModal(null)}
+										  />
 					<PointSection
 						points={[
 							{ value: 1, name: 'DMIT Test Details', isActive: false,link:"/admin/panel/create-dmit-test" },
@@ -162,7 +168,7 @@ export default function EditDmitTestQuestions() {
 
 							{/* Button */}
 							<div className="flex flex-col gap-4 w-fit">
-								<Button className="text-white bg-[#FFCC00] rounded-full py-6 text-sm">Upload Image / File</Button>
+								<Button className="text-white bg-[#FFCC00] rounded-full py-6 text-sm" onClick={() => setOpenModal("uploadFileImage")}>Upload Image / File</Button>
 								<Button variant={'secondary'} className="rounded-xl">
 									Image/file name.extension
 								</Button>
@@ -308,7 +314,7 @@ export default function EditDmitTestQuestions() {
 
 							{/* Button */}
 							<div className="flex flex-col gap-4 w-fit">
-								<Button className="text-white bg-[#FFCC00] rounded-full py-6 text-sm">Upload Image / File</Button>
+								<Button className="text-white bg-[#FFCC00] rounded-full py-6 text-sm" onClick={() => setOpenModal("uploadFileImage")}>Upload Image / File</Button>
 								<Button variant={'secondary'} className="rounded-xl">
 									Image/file name.extension
 								</Button>

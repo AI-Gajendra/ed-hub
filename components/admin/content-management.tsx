@@ -19,8 +19,8 @@ export default function ContentManagement() {
   
 
   return (
-    <div className="bg-[#EEEEEE]">
-      <div className="px-4">
+    <div >
+      
         <MaxWidthWrapper className="bg-white p-4 rounded-2xl my-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {Array.from({ length: 12 }).map((_, i) => (
@@ -28,7 +28,7 @@ export default function ContentManagement() {
             ))}
           </div>
         </MaxWidthWrapper>
-      </div>
+      
     </div>
   );
 }
@@ -36,6 +36,7 @@ export default function ContentManagement() {
 function FolderCard() {
   return (
     <div className="p-3 rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] flex gap-4">
+        <Link href={"/admin/panel/content-management-files"}>
       <Image
         src="/admin/folder-img.png"
         alt="Folder"
@@ -43,15 +44,15 @@ function FolderCard() {
         height={100}
         className="w-24 h-24 object-cover rounded-xl"
       />
-
+</Link>
       <div className="flex flex-col gap-1 justify-between items-start w-full">
         <h4 className="font-medium">Folder Name</h4>
         <p className="text-xs font-[#6B7280]">100 Files</p>
-        <Link href={"/admin/panel/content-management-files"} className="w-full">
+         
         <Button className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full  w-full font-normal text-[#6B7280]">
           <Settings />
           Manage Access
-        </Button></Link>
+        </Button>
       </div>
     </div>
   );

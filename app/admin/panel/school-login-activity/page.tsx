@@ -17,7 +17,7 @@ export default function SchoolLoginActivity() {
 
 	return (
 		<div>
-			<MaxWidthWrapper className="bg-white rounded-2xl py-4 my-4 overflow-hidden">
+			<MaxWidthWrapper className="bg-white  rounded-2xl py-4 mx-10 my-4 ">
 				<div className="rounded-2xl">
 					<div className="flex flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
 						<div className="w-full lg:w-[70%]">

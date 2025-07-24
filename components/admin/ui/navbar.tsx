@@ -65,7 +65,7 @@ export default function Navbar({ user, isAskme = true }: HeaderProps) {
 		{
 			icon: FiShield,
 			label: 'Security',
-			href: '/admin/panel/security-schools',
+			href: '/admin/panel/security-scools',
 		},
 	]
 
