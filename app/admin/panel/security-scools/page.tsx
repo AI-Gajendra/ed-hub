@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card'
 import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { ChevronDown, Search } from 'lucide-react'
+import { ChevronDown, Search, Settings } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -15,7 +15,8 @@ export default function SchoolManagement() {
 	const tabs = ['Schools', 'Teachers', 'Students'] as const
 	type Tab = (typeof tabs)[number]
 
-	const [activeTab, setActiveTab] = useState<Tab>('Students')
+	const [activeTab, setActiveTab] = useState<Tab>('Schools')
+	const [activeClass, setActiveClass] = useState(false)
 
 	return (
 		<div className="bg-[#EEEEEE] p-4">
@@ -37,18 +38,54 @@ export default function SchoolManagement() {
 				</div>
 
 				<div className="rounded-2xl border border-[#E5E7EB] px-4 py-2 flex justify-center items-center gap-8">
-					<Button className="rounded-2xl bg-[#FF3366] hover:bg-[#FF3366]/90 text-white px-2.5">Active</Button>
-					<Button className="rounded-2xl bg-white hover:bg-white text-[#6B7280]">Inactive</Button>
+					<Button
+						className={cn(
+							'rounded-2xl bg-[#FF3366] hover:bg-[#FF3366]/90 hover:text-white px-2.5',
+							activeClass === true ? 'bg-[#FF3366]' : 'bg-white text-[#6B7280]'
+						)}
+						onClick={() => {
+							setActiveClass(true)
+						}}>
+						Active
+					</Button>
+					<Button
+						onClick={() => {
+							setActiveClass(false)
+						}}
+						className={cn(
+							'rounded-2xl bg-[#FF3366] hover:bg-[#FF3366]/90 hover:text-white px-2.5',
+							activeClass === false ? 'bg-[#FF3366]' : 'bg-white text-[#6B7280]'
+						)}>
+						Inactive
+					</Button>
 				</div>
 
-				<div className="rounded-2xl bg-white px-2 mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-				</div>
+				{activeTab === 'Schools' && (
+					<div className="rounded-2xl bg-white px-2 mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
+						<SchoolCard activeClass={activeClass} />
+						<SchoolCard activeClass={activeClass} />
+						<SchoolCard activeClass={activeClass} />
+						<SchoolCard activeClass={activeClass} />
+						<SchoolCard activeClass={activeClass} />
+						<SchoolCard activeClass={activeClass} />
+					</div>
+				)}
+
+				{activeTab === 'Teachers' && (
+					<div className="py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+						{Array.from({ length: 12 }).map((_, i) => (
+							<TeacherRectangle activeClass={activeClass} key={i} />
+						))}
+					</div>
+				)}
+
+				{activeTab === 'Students' && (
+					<div className="py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+						{Array.from({ length: 12 }).map((_, i) => (
+							<StudentRectangle activeClass={activeClass} key={i} />
+						))}
+					</div>
+				)}
 			</MaxWidthWrapper>
 		</div>
 	)
@@ -114,7 +151,7 @@ function SearchFilterBar() {
 	)
 }
 
-const SchoolCard = () => {
+const SchoolCard = ({ activeClass }: { activeClass: boolean }) => {
 	return (
 		<Link href={'/admin/panel/school-management-report'}>
 			<Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
@@ -163,10 +200,80 @@ const SchoolCard = () => {
 								</defs>
 							</svg>
 						</Button>
-						<Button className="rounded-full px-6">Active</Button>
+						{activeClass ? (
+							<Button className="rounded-full px-6">Active</Button>
+						) : (
+							<Button className="rounded-full text-red-600 bg-[#FBD2D9] hover:bg-[#FBD2D9]/90">Inactive</Button>
+						)}
 					</div>
 				</div>
 			</Card>
 		</Link>
+	)
+}
+
+function TeacherRectangle({ activeClass }: { activeClass: boolean }) {
+	return (
+		<div className="bg-[#F3F4F6] border border-[#E5E7EB] rounded-2xl px-2 py-1.5 flex items-center gap-2">
+			<Image
+				src="/images/admin-teacher-profile.png"
+				alt="Teacher Profile"
+				width={228}
+				height={228}
+				className="w-20 h-20 aspect-square"
+			/>
+			<div className="ml-1 flex items-center justify-between w-full">
+				<div>
+					<h2 className="text-lg font-semibold">Name</h2>
+					<h4 className="text-[#FF3366]">Subject</h4>
+					<h4 className="text-[#6B7280] text-xs">Class Assigned</h4>
+					<h4 className="text-[#6B7280] text-xs">Batch Assigned</h4>
+				</div>
+				<div className="flex gap-2 items-center">
+					<Button variant={'outline'} size={'icon'} className="rounded-full bg-[#F9FAFB] hover:bg-[#F9FAFB]/90">
+						<Settings />
+					</Button>
+
+					{activeClass ? (
+						<Button className="rounded-full px-2">Active</Button>
+					) : (
+						<Button className="rounded-full px-2 text-red-600 bg-[#FBD2D9] hover:bg-[#FBD2D9]/90">Inactive</Button>
+					)}
+				</div>
+			</div>
+		</div>
+	)
+}
+
+function StudentRectangle({ activeClass }: { activeClass: boolean }) {
+	return (
+		<div className="bg-[#F3F4F6] border border-[#E5E7EB] overflow-hidden rounded-2xl px-2 py-1.5 flex items-center gap-2">
+			<Image
+				src="/admin/student.png"
+				alt="Teacher Profile"
+				width={228}
+				height={228}
+				className="w-24 h-20 aspect-square object-cover rounded-2xl overflow-hidden"
+			/>
+			<div className="ml-1 flex items-center justify-between w-full">
+				<div>
+					<h2>Student Name</h2>
+					<h4 className="text-[#6B7280] text-xs">Course Name</h4>
+					<h4 className="text-[#6B7280] text-xs my-0.5">Level / Grade</h4>
+					<h4 className="text-[#6B7280] text-xs">Group</h4>
+				</div>
+				<div className="flex gap-2 items-center">
+					<Button variant={'outline'} size={'icon'} className="rounded-full bg-[#F9FAFB] hover:bg-[#F9FAFB]/90">
+						<Settings />
+					</Button>
+
+					{activeClass ? (
+						<Button className="rounded-full px-2">Active</Button>
+					) : (
+						<Button className="rounded-full px-2 text-red-600 bg-[#FBD2D9] hover:bg-[#FBD2D9]/90">Inactive</Button>
+					)}
+				</div>
+			</div>
+		</div>
 	)
 }
