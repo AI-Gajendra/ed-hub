@@ -211,7 +211,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                     Course Name
                   </h1>
                   <p className="text-gray-600 pb-2">Category</p>
-                  <div className="text-5xl font-bold text-[#3366FF] pb-2">
+                  <div className="text-5xl font-semibold text-[#3366FF] pb-2">
                     ₹2,000
                   </div>
                   <form className="space-y-4">
@@ -264,16 +264,15 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         placeholder="00"
                         className="w-full bg-[#F9FAFB] border border-[#D5D5D5] rounded-2xl"
                       />
-                      <Button
+                      <button
                         onClick={(e) => {
                           e.preventDefault(); // <-- block form submit
                           router.push("/b2c-student/student-flow/demo/checkout");
                         }}
-                        className="bg-[#3366FF] hover:bg-blue-700 text-white text-lg py-6 px-10 rounded-full"
-                        size="lg"
+                        className="bg-[#3366FF] whitespace-nowrap font-medium hover:bg-blue-700 text-white text-base py-1.5 px-16 rounded-full"
                       >
                         Buy Now
-                      </Button>
+                      </button>
                     </div>
                   </form>
                 </div>

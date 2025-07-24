@@ -99,7 +99,7 @@ const OngoingBatchesCard: React.FC<OngoingBatchesProps> = ({
     const details = ['Detail 1', 'Detail 2', 'Detail 3', 'Detail 4'];
     return (
         <div className="w-full rounded-2xl bg-white border border-gray-200">
-            <div className={`${available === 0 ? "bg-red-400 justify-center" : "bg-green-400 justify-between"} rounded-xl mx-2 mt-2 flex px-4 items-center gap-4`}>
+            <div className={`${available === 0 ? "bg-red-400 justify-center" : "bg-[#50c878] justify-between"} rounded-xl mx-2 mt-2 flex px-4 items-center gap-4`}>
                 <button className="font-semibold text-white  py-2 flex items-center gap-2">
                     {available === 0 ? (
                         "Batch Full"
@@ -233,7 +233,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                     </div>
                 </div>
                 <div className="bg-[#f9fafb] px-2 py-1 rounded-full flex justify-between items-center gap-2">
-                    <p className="font-semibold text-lg text-[#4BC4B6]">₹2,000-₹5,000</p>
+                    <p className="font-semibold text-lg text-[#50c878]">₹2,000-₹5,000</p>
                     <button className='px-3 py-2 text-white font-medium bg-blue-600 rounded-full'>Add to cart</button>
                 </div>
             </div>
@@ -486,7 +486,7 @@ const Profile = () => {
                 </div>
 
                 <div className="my-4 rounded-2xl overflow-x-auto bg-[#f1f1f2] border px-3 py-2">
-                    <h2 className={`text-[#FF3366] font-bold text-m`}>Ongoing Courses</h2>
+                    <h2 className={`text-[#FF3366] font-semibold mb-2 text-m`}>Ongoing Courses</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 pb-4 pt-2">
                         {OngoingClass.map((course, index) => (
                             <Link href={"/b2c-student/student-flow/about-courses"} key={index} className="">
@@ -497,7 +497,7 @@ const Profile = () => {
                 </div>
 
                 <div className="my-4 rounded-2xl overflow-x-auto bg-[#f1f1f2] border px-3 py-2">
-                    <h2 className={`text-[#FF3366] font-bold text-m`}>Ongoing Batches</h2>
+                    <h2 className={`text-[#FF3366] font-semibold mb-2 text-m`}>Ongoing Batches</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 pb-4 pt-2">
                         {OngoingBatches.map((course, index) => (
                             <div key={index} className="">
@@ -508,7 +508,7 @@ const Profile = () => {
                 </div>
 
                 <div className="my-4 rounded-2xl overflow-x-auto custom-scrollbar bg-[#f1f1f2] border px-3 py-2">
-                    <h2 className={`text-[#FF3366] font-bold text-m`}>Upcoming Batches</h2>
+                    <h2 className={`text-[#FF3366] font-semibold mb-2 text-m`}>Upcoming Batches</h2>
                     <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
                         {courses.map((course, index) => (
                             <Link href={"/b2c-student/student-flow/courses/detail"} key={index} className="min-w-[325px]">

@@ -142,8 +142,8 @@ function TeacherProfileContent() {
                         </AvatarFallback>
                       </Avatar>
 
-                      <div className="space-y-2">
-                        <h1 className="text-xl font-semibold text-gray-900">
+                      <div className=" mt-2">
+                        <h1 className="text-lg font-semibold text-gray-900">
                           Ronak Mathur
                         </h1>
                         <p className="text-[#FF3366]">Role</p>
@@ -153,10 +153,10 @@ function TeacherProfileContent() {
                           {[1, 2, 3, 4].map((star) => (
                             <Star
                               key={star}
-                              className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                              className="w-3 h-3 fill-yellow-400 text-yellow-400"
                             />
                           ))}
-                          <Star className="w-5 h-5 stroke-yellow-400" />
+                          <Star className="w-3 h-3 stroke-yellow-400" />
                         </div>
                       </div>
                     </div>
@@ -166,14 +166,14 @@ function TeacherProfileContent() {
                   </div>
 
                   {/* Info Pills */}
-                  <div className="flex flex-col md:flex-row whitespace-nowrap gap-3 justify-start md:justify-center md:items-center items-start">
-                    <div className="flex  items-center gap-2 bg-[#99DEFF66] text-[#3366FF] px-4 py-2 rounded-full">
+                  <div className="flex flex-col md:flex-row whitespace-nowrap gap-3 justify-start items-start">
+                    <div className="flex max-w-48 w-full items-center gap-2 bg-[#99DEFF66] text-[#3366FF] px-4 py-2 rounded-full">
                       <ChartNoAxesColumn className="w-5 h-5" />
                       <span>6 years</span>
                     </div>
 
-                    <div className="flex items-center gap-2 bg-[#8DD9B366] px-4 py-2 rounded-full">
-                      <Mail className="w-5 h-5" />
+                    <div className="flex items-center max-w-48 w-full gap-2 px-2 bg-[#8DD9B366]  py-2 rounded-full">
+                      <Mail className="w-5 h-5 text-black" />
                       <span>example@gm.com</span>
                     </div>
                   </div>
