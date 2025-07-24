@@ -555,7 +555,7 @@ const TeacherDashboard = () => {
 												className="w-full pl-10 pr-4 py-2 border border-[#6B7280] rounded-full  focus:outline-none focus:ring-2 focus:ring-[#3366FF1A]0"
 											/>
 										</div>
-										<button onClick={() => router.push('/b2c-teacher/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
+										<button onClick={() => router.push('/b2c-phase-3/b2c-teacher/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
 											View All
 										</button>
 									</div>
@@ -652,7 +652,7 @@ const TeacherDashboard = () => {
 									{/* Top Bar */}
 									<div className="flex items-center justify-between gap-2">
 										<h1 className="text-lg font-semibold">Curriculum</h1>
-										<button onClick={() => router.push('/b2c-teacher/teacher-flow/curriculum')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
+										<button onClick={() => router.push('/b2c-phase-3/b2c-teacher/teacher-flow/curriculum')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
 											View All
 										</button>
 									</div>
@@ -773,6 +773,7 @@ import RescheduleMeetingStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponen
 import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideoDemo'
 import { PiSquaresFourLight } from 'react-icons/pi'
 import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ApplyLeaveModal'
+import { BsFilm } from 'react-icons/bs'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (
@@ -793,7 +794,7 @@ const toolkitItems: ToolkitItem[] = [
 	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-phase-3/b2c-teacher/teacher-flow/create-quiz" },
 	{ label: "Worksheet", icon: FiFileText, href: "/b2c-phase-3/b2c-teacher/teacher-flow/worksheet" },
 	{ label: "DMIT Results", icon: FiAward, href: "/b2c-phase-3/b2c-teacher/teacher-flow/dmit-student-list" },
-	{ label: "Videos", icon: FiVideo, href: "/b2c-phase-3/b2c-teacher/teacher-flow/referance-video" },
+	{ label: "Videos", icon: BsFilm, href: "/b2c-phase-3/b2c-teacher/teacher-flow/referance-video" },
 	{ label: "Apply for leave", icon: FiSun }, // No href = button
 	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-phase-3/b2c-teacher/teacher-flow/manage-course-teach" },
 	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-phase-3/b2c-teacher/teacher-flow/daily-log-select-course" },

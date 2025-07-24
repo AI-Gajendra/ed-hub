@@ -42,6 +42,15 @@ const sampleFolders: Folder[] = [
 	{ id: 'f8', name: 'Folder Name', fileCount: 100, categoryId: 'cat2' },
 ]
 
+// --- Sub-components ---
+
+interface CategoryTabProps {
+	category: Category
+	isActive: boolean
+	onClick: () => void
+}
+
+
 
 interface FolderCardProps {
 	folder: Folder
@@ -49,24 +58,19 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 	return (
-		<Link href={"/teacher-b2b/teacher-flow/folder-name-2"} className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-2 duration-200 relative flex flex-col md:flex-row md:items-center gap-4  w-full">
+		<Link href={"/teacher-b2b/teacher-flow/worksheet-selection"} className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-3 duration-200 relative flex flex-col md:flex-row md:items-center gap-4  max-w-lg">
 			{/* Info Icon */}
-			<div className="flex gap-4 items-center w-full justify-start">
+			<div className="flex gap-4 items-start justify-start">
 				{/* Folder Icon Area */}
 				<div className="bg-[#99DEFF] w-24 h-24 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0">
 					<FiFolder className="w-10 h-10 sm:w-14 sm:h-14 text-black opacity-80" strokeWidth={1.5} />
 				</div>
 
 				{/* Folder Details */}
-				<div className="flex  flex-col flex-grow w-full">
+				<div className="flex mt-1 flex-col flex-grow w-full">
 					<p className="sm:text-lg text-lg font-medium text-black mb-1">{folder.name}</p>
 					<p className="text-xs sm:text-sm text-[#6B7280] mb-5">{folder.fileCount} Files</p>
-					<button
-						onClick={() => alert(`Manage Access for ${folder.name}`)}
-						className="w-full hidden md:flex text-base sm:self-start items-center justify-center gap-2 px-4 py-2.5 bg-[#f3f4f6] hover:bg-gray-200 text-[#6b7280] rounded-full transition-colors">
-						<FiSettings className="w-4 h-4" />
-						Manage Access
-					</button>
+					
 				</div>
 			</div>
 			<button
@@ -119,7 +123,7 @@ export default function SelectExistingTestPage() {
 	return (
 		<>
 			<Header activeState="Dashboard" />
-			<BackButton Heading='Select Existing Quiz' />
+			<BackButton Heading='' />
 			<TeacherB2CWrapper>
 				<UploadExistingTestContent />
 

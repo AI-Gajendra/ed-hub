@@ -70,7 +70,7 @@ export default function EditStudentProfilePage() {
 	const router = useRouter();
 	
 		const handleBack = () => {
-			router.push('/b2c-teacher/teacher-flow/dashboard');
+			router.push('/b2c-phase-3/b2c-teacher/teacher-flow/dashboard');
 		};
 
 	return (

@@ -1,5 +1,6 @@
-import TeacherDashboard from '@/components/teacher-b2c/teacher-dashboard'
+
 import React from 'react'
+import TeacherDashboard from './Dashboard'
 
 const Dashboard = () => {
 	return <TeacherDashboard />

@@ -1,7 +1,6 @@
 'use client'
-import Header from '@/components/layout/TeacherB2CHeader'
+import Header from '@/components/layout/Header'
 import React from 'react'
-import Footer from '@/components/layout/Footer'
 import { Input } from '@/components/ui/input'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -10,15 +9,6 @@ import { FaSearch } from 'react-icons/fa'
 import { Star as StarIcon } from "lucide-react";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { HiOutlineArchiveBox } from "react-icons/hi2";
-import { AnimatePresence, motion } from 'framer-motion'
-import { IoIosArrowDown } from 'react-icons/io'
-import { useRouter } from 'next/navigation'
-import MeetingDetailStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/MeetingDetailStudent'
-import RescheduleMeetingStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/RescheduleMeetingStudent'
-import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideoDemo'
-import { PiSquaresFourLight } from 'react-icons/pi'
-import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ApplyLeaveModal'
-
 const PALETTE = {
     GREEN_LIGHT: '#8DD9B3', // Basic Academic Skills BG
     GREEN_DARK: '#4BC4B6', // Not explicitly used but similar to progress bar
@@ -564,7 +554,7 @@ const TeacherDashboard = () => {
                                                 className="w-full pl-10 pr-4 py-2 border border-[#6B7280] rounded-full  focus:outline-none focus:ring-2 focus:ring-[#3366FF1A]0"
                                             />
                                         </div>
-                                        <button onClick={() => router.push('/b2c-teacher/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
+                                        <button onClick={() => router.push('/teacher-b2b/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
                                             View All
                                         </button>
                                     </div>
@@ -661,7 +651,7 @@ const TeacherDashboard = () => {
                                     {/* Top Bar */}
                                     <div className="flex items-center justify-between gap-2">
                                         <h1 className="text-lg font-semibold">Curriculum</h1>
-                                        <button onClick={() => router.push('/b2c-teacher/teacher-flow/curriculum')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
+                                        <button onClick={() => router.push('/teacher-b2b/teacher-flow/curriculum')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
                                             View All
                                         </button>
                                     </div>
@@ -773,7 +763,17 @@ import {
     FiClipboard,
     FiCheckSquare
 } from 'react-icons/fi';
+import { AnimatePresence, motion } from 'framer-motion'
+import { IoIosArrowDown } from 'react-icons/io'
+import { useRouter } from 'next/navigation'
+import MeetingDetailStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/MeetingDetailStudent'
+import RescheduleMeetingStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/RescheduleMeetingStudent'
+import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideoDemo'
+import { PiSquaresFourLight } from 'react-icons/pi'
+import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ApplyLeaveModal'
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper'
+import Footer from '@/components/layout/Footer'
+import { BsFilm } from 'react-icons/bs'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (
@@ -794,7 +794,7 @@ const toolkitItems: ToolkitItem[] = [
     { label: "Quiz", icon: FiHelpCircle, href: "/b2c-teacher/teacher-flow/create-quiz" },
     { label: "Worksheet", icon: FiFileText, href: "/b2c-teacher/teacher-flow/worksheet" },
     { label: "DMIT Results", icon: FiAward, href: "/b2c-teacher/teacher-flow/dmit-student-list" },
-    { label: "Videos", icon: FiVideo, href: "/b2c-teacher/teacher-flow/referance-video" },
+    { label: "Videos", icon: BsFilm, href: "/b2c-teacher/teacher-flow/referance-video" },
     { label: "Apply for leave", icon: FiSun }, // No href = button
     { label: "Manage Course", icon: FiClipboard, href: "/b2c-teacher/teacher-flow/manage-course-teach" },
     { label: "Daily Log", icon: FiCheckSquare, href: "/b2c-teacher/teacher-flow/daily-log-select-course" },
