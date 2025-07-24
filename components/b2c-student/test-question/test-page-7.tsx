@@ -59,7 +59,7 @@ const tabCategoriesData = ['Academic Skills', 'Brain Development', 'Personality 
 
 export default function DmittTest_7_Page() {
 	const [activeCategory, setActiveCategory] = useState(tabCategoriesData[2]) // Default to "Personality Development"
-	const [currentQuestionNumber] = useState(7) // For "1 / 10" display
+	const [currentQuestionNumber] = useState(2) // For "1 / 10" display
 	const [answerText] = useState('')
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES_DMIT * 60) // Time in seconds
 
@@ -85,27 +85,14 @@ export default function DmittTest_7_Page() {
 		return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
 	}
 
-	const handleNext = () => {
-		console.log('Answer for Question', currentQuestionNumber, ':', answerText)
-		// Save current answer
-		// If there are more questions:
-		if (currentQuestionNumber < TOTAL_QUESTIONS_IN_SET) {
-			// setCurrentQuestionNumber(prev => prev + 1);
-			// setAnswerText(''); // Clear for next question
-			// Fetch next question data
-			alert('Next question logic to be implemented. Current answer saved (logged).')
-		} else {
-			// Handle end of test
-			alert('Test Finished. Answers submitted (logged).')
-		}
-	}
+	
 
 	return (
 		<div className="min-h-screen bg-white flex flex-col">
 			<TestHeader />
 
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-[50rem] mx-auto bg-white rounded-xl p-6 md:p-8">
+				<div className="max-w-[53rem] mx-auto bg-white rounded-xl md:p-8">
 					{/* Test Title */}
 					<h1 className="text-lg md:text-xl font-semibold text-gray-800 mb-6">
 						DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
@@ -128,7 +115,7 @@ export default function DmittTest_7_Page() {
 					</div>
 
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
-					<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+					<div className="flex flex-row justify-between items-center mb-8 gap-4">
 						<div className="text-left">
 							<p className="text-md font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS_IN_SET}</p>
 							<p className="text-xs text-gray-500">Time Limit: {TIME_LIMIT_MINUTES_DMIT} Minutes</p>
