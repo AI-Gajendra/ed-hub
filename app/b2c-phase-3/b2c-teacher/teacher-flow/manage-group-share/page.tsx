@@ -1,4 +1,4 @@
-import ManageGroup from "@/components/teacher-b2c/manage-group-share"
+import ManageGroup from "./manage-group-share"
 
 const ManageGroupShare = () => {
     return (
