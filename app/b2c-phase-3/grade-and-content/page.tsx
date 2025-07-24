@@ -23,7 +23,7 @@ export default function GradeAndContent() {
 			<MaxWidthWrapper className="py-10">
 				<div>
 					<div className="flex gap-4 justify-between items-center">
-						<ArrowLeft  className='w-6 h-6'/>
+						<ArrowLeft className="w-6 h-6" />
 						<div className="text-xl font-semibold mb-2">Chooses Pre-Recorded Courses</div>
 						<div></div>
 					</div>

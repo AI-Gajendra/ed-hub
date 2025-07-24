@@ -8,12 +8,15 @@ import { Input } from '@/components/ui/input'
 import { ChevronDown, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 export default function SchoolManagement() {
 	return (
 		<div className="bg-[#EEEEEE] p-4">
 			<MaxWidthWrapper className="bg-white p-4 rounded-2xl">
 				<SearchFilterBar />
+
 				<div className="rounded-2xl bg-white px-2 mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
 					<SchoolCard />
 					<SchoolCard />
@@ -34,9 +37,6 @@ function SearchFilterBar() {
 				<Input className="border-black rounded-full pl-9" placeholder="Search" />
 				<Search className="absolute -top-1/12 translate-y-1/2 left-2 h-5" />
 			</div>
-			<Link href={'/admin/panel/manage-all-approval'}>
-				<Button className="text-xs bg-[#FF3366] text-white rounded-full">Manage Approval</Button>
-			</Link>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button className="bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-[#F9FAFB]/90 rounded-xl font-light text-black">
@@ -93,15 +93,13 @@ const SchoolCard = () => {
 						className="w-full h-full sm:w-52 object-cover rounded-xl"
 					/>
 				</div>
-				<div className="flex flex-col justify-between gap-2 sm:gap-2 flex-1">
-					<div>
-						<h2 className="font-semibold text-sm sm:text-base truncate">School Name</h2>
-						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Address</p>
-						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 1</p>
-						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 2</p>
-						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 3</p>
-						<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 4</p>
-					</div>
+				<div>
+					<h2 className="font-semibold text-sm sm:text-base truncate">School Name</h2>
+					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Address</p>
+					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 1</p>
+					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 2</p>
+					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 3</p>
+					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 4</p>
 				</div>
 			</Card>
 		</Link>
