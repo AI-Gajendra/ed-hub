@@ -1050,7 +1050,7 @@ const ChartsReport: FC = () => {
               style={{
                 backgroundColor: lifeSkillsData.bgColor,
               }}
-              className={`py-3 px-7 mb-4 rounded-2xl`}
+              className={`py-3 px-7 mb-6 rounded-2xl`}
             >
               <div className="flex justify-between items-center mb-2">
                 <h3
@@ -1101,7 +1101,7 @@ const ChartsReport: FC = () => {
                 </div>
               </div>
             </div>
-            <div className="space-y-3 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+            <div className="space-y-[18px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
               {lifeSkillsData.skills.map((skill, i) => (
                 <ProgressCircleItem
                   key={i}
