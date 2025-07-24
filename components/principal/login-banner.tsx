@@ -6,12 +6,13 @@ import { FiArrowLeft } from 'react-icons/fi';
 interface PrincipalLoginBannerProps {
     activity: string;
     profileImage: string;
+    name?: string;
     button1: string;
     button2: string;
 }
 
 // Receive props as an object, not a string
-const PrincipalLoginBanner = ({ activity, button1, button2, profileImage }: PrincipalLoginBannerProps) => {
+const PrincipalLoginBanner = ({ activity, name, button1, button2, profileImage }: PrincipalLoginBannerProps) => {
     const handleBackClick = () => {
         if (typeof window !== "undefined") {
             window.history.back();
@@ -73,7 +74,7 @@ const PrincipalLoginBanner = ({ activity, button1, button2, profileImage }: Prin
                                 className="text-xl font-semibold"
                                 style={{ color: PALETTE.TEXT_DARK }}
                             >
-                                Shlok Agheda
+                                {name || "Shlok Agheda"}
                             </h2>
                             <div className="flex flex-wrap items-center gap-1 mt-2">
                                 <span
