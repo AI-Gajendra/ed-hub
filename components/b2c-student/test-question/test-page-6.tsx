@@ -105,7 +105,7 @@ const router = useRouter();
 			<TestHeader  />
 
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-[50rem] mx-auto bg-white rounded-xl p-6 md:p-8">
+				<div className="max-w-[53rem] mx-auto bg-white rounded-xl md:p-8">
 					{/* Test Title */}
 					<h1 className="text-lg md:text-xl font-semibold text-gray-800 mb-6">
 						DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
@@ -128,7 +128,7 @@ const router = useRouter();
 					</div>
 
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
-					<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+					<div className="flex flex-row justify-between items-center mb-8 gap-4">
 						<div className="text-left">
 							<p className="text-md font-semibold text-gray-700">Questions : {TOTAL_QUESTIONS_IN_SET}</p>
 							<p className="text-xs text-gray-500">Time Limit: {TIME_LIMIT_MINUTES_DMIT} Minutes</p>
