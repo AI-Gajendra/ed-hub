@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FiBell, FiClock } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 // --- Simplified Header for In-Test View ---
 // You might use your full Header component or a simplified one for focus.
@@ -31,7 +32,7 @@ const TestHeader = () => (
 					/>
 					<div>
 						<p className="text-sm font-medium">Shlok Agheda</p>
-						<p className="text-xs text-[#FFCC00] opacity-80">Student</p>
+						<p className="text-xs opacity-80">Student</p>
 					</div>
 				</div>
 			</div>
@@ -58,12 +59,12 @@ const tabCategoriesData = ['Academic Skills', 'Brain Development', 'Personality 
 
 export default function DmittTest_7_Page() {
 	const [activeCategory, setActiveCategory] = useState(tabCategoriesData[2]) // Default to "Personality Development"
-	const [currentQuestionNumber] = useState(7) // For "1 / 10" display
+	const [currentQuestionNumber] = useState(2) // For "1 / 10" display
 	const [answerText] = useState('')
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES_DMIT * 60) // Time in seconds
 
 	// User data for header
-	
+	const router = useRouter();
 
 	// Timer useEffect
 	useEffect(() => {
@@ -84,27 +85,14 @@ export default function DmittTest_7_Page() {
 		return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
 	}
 
-	const handleNext = () => {
-		console.log('Answer for Question', currentQuestionNumber, ':', answerText)
-		// Save current answer
-		// If there are more questions:
-		if (currentQuestionNumber < TOTAL_QUESTIONS_IN_SET) {
-			// setCurrentQuestionNumber(prev => prev + 1);
-			// setAnswerText(''); // Clear for next question
-			// Fetch next question data
-			alert('Next question logic to be implemented. Current answer saved (logged).')
-		} else {
-			// Handle end of test
-			alert('Test Finished. Answers submitted (logged).')
-		}
-	}
+	
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex flex-col">
+		<div className="min-h-screen bg-white flex flex-col">
 			<TestHeader />
 
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-[50rem] mx-auto bg-white rounded-xl p-6 md:p-8">
+				<div className="max-w-[53rem] mx-auto bg-white rounded-xl md:p-8">
 					{/* Test Title */}
 					<h1 className="text-lg md:text-xl font-semibold text-gray-800 mb-6">
 						DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
@@ -156,7 +144,8 @@ export default function DmittTest_7_Page() {
 						{' '}
 						{/* Centered Next button */}
 						<button
-							onClick={handleNext}
+							
+			  onClick={() => router.push("/student-b2b/student-flow/dashboard")}
 							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
 						</button>

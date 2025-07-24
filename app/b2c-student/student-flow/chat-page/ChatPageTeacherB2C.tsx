@@ -391,7 +391,7 @@ const onBackClick = () => {
                                 transition={{ duration: 0.25 }}
                                 className="absolute top-0 left-0 w-full h-full z-10"
                             >
-                                <div className="w-full md:w-1/3 lg:w-[35%] bg-white rounded-3xl pt-4 pb-2 pl-4 pr-2 self-stretch">
+                                <div className="w-full  lg:w-[35%] bg-white rounded-3xl pt-4 pb-2 pl-4 pr-2 self-stretch">
                                     {" "}
                                     {/* self-stretch */}
                                     <h2 className="text-lg font-bold text-[#FF3366] mb-4 px-2">
