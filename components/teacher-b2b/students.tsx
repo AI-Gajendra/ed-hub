@@ -102,7 +102,7 @@ const StudentItemRow: React.FC<{
       <Image
         width={100}
         height={100}
-        src={student.avatarUrl}
+        src={"/teacher-b2b/student-avatar.png"}
         alt={student.name}
         className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover"
       />

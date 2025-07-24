@@ -26,14 +26,14 @@ const dummyFiles: ManagedFile[] = [
   { id: '5', name: 'File Name', type: 'pdf', size: '300 KB' },
   { id: '6', name: 'File Name', type: 'pdf', size: '300 KB' },
   { id: '7', name: 'File Name', type: 'pdf', size: '300 KB' },
-  { id: '8', name: 'File Name', type: 'pdf', size: '300 KBB' },
+  { id: '8', name: 'File Name', type: 'pdf', size: '300 KB' },
   { id: '9', name: 'File Name', type: 'pdf', size: '300 KB' },
 ];
 
 // FileItem Component
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
+		<div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
 			<div className="flex items-center space-x-3 min-w-0 justify-self-start">
 				<Image 
 				src={"/teacher-b2b/pdf.png"}
@@ -45,11 +45,11 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 					{file.name}
 				</span>
 			</div>
-			<span className="text-sm sm:text-md text-gray-500 flex-shrink-0 ml-4 sm:justify-self-center">{file.size}</span>
-			<div className="flex gap-4 text-gray-500 justify-self-end">
+			<span className="text-sm sm:text-md text-gray-500 flex-shrink-0 ml-4 sm:justify-self-end">{file.size}</span>
+			{/* <div className="flex gap-4 text-gray-500 justify-self-end">
 				<MdOutlineFileDownload size={22}/>
 				<FiShare2 size={22}/>
-			</div>
+			</div> */}
 		</div>
 	)
 }
@@ -106,7 +106,7 @@ const FileManagementContent: React.FC = () => {
 				</div>
 			</div>
 			{/* File List */}
-			<div className="flex-grow overflow-y-auto custom-scrollbar pr-1">
+			<div className="flex flex-col flex-grow overflow-y-auto custom-scrollbar pr-1">
 				{' '}
 				{/* Added custom-scrollbar if you have it defined */}
 				{filteredFiles.length > 0 ? (
@@ -124,7 +124,9 @@ const FileManagementContent: React.FC = () => {
 						<p className="text-sm">Try adjusting your search or filter criteria, or upload a new file.</p>
 					</div>
 				)}
-				
+				{/* <div className='flex justify-end bg-red-400'> */}
+					<button className='bg-[#ffcc00] w-fit py-2 px-4 rounded-full text-white text-semibold'>Upload</button>
+				{/* </div> */}
 			</div>
 		</div>
 	)

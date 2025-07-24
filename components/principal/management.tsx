@@ -675,7 +675,7 @@ const Management = () => {
           </button>
         </div>
         <ClassTab />
-        <div className="grid grid-cols-1 sm:grid-cols-2 p-4 gap-4 max-h-[80vh] overflow-y-scroll scrollbar">
+        <div className="grid grid-cols-1 sm:grid-cols-2 p-2 gap-4 max-h-[80vh] overflow-y-scroll scrollbar">
 
 
           {/* Cards */}
