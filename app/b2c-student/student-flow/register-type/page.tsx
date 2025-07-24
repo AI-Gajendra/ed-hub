@@ -1,7 +1,7 @@
 "use client"
-import SuccessCard from "@/components/student/auth/success-card";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { motion } from "framer-motion";
+import SuccessCard from "./SuccessCard";
 
 const RegisterType = () => {
   return (
@@ -14,7 +14,7 @@ const RegisterType = () => {
         viewport={{ once: true }}
       >
         <div className="relative z-10 flex items-center justify-center w-full min-h-screen p-4">
-          <SuccessCard successUrl="/student/auth/login" />
+          <SuccessCard successUrl="/b2c-student/registration/forgot-password-2" />
 
 
         </div>

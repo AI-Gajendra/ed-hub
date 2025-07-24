@@ -1,8 +1,8 @@
-// /app/skill-test-intro/page.tsx
 "use client";
 
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { FiHelpCircle, FiTarget, FiClock, FiCalendar, FiAlertTriangle } from 'react-icons/fi';
 
 // --- Data for the UI components ---
@@ -13,7 +13,6 @@ const infoPillsData = [
 ];
 
 // --- Sub-Components for a Clean Structure ---
-
 const InfoPill: React.FC<typeof infoPillsData[0]> = ({ text, icon: Icon, bgColor }) => (
     <div
         className="flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm"
@@ -25,8 +24,18 @@ const InfoPill: React.FC<typeof infoPillsData[0]> = ({ text, icon: Icon, bgColor
 );
 
 // --- Main Page Component ---
-
 export default function SkillTestIntroPage() {
+    const router = useRouter();
+    const rulesSectionRef = React.useRef<HTMLDivElement>(null);
+
+    const handleContinueClick = () => {
+        rulesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const handleStartClick = () => {
+        router.push('/b2c-student/test/test-page-8');
+    };
+
     return (
         <>
             <div
@@ -82,17 +91,21 @@ export default function SkillTestIntroPage() {
                             </div>
                         </div>
 
-                        <button className="w-full max-w-xs bg-[#3366FF] text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <button 
+                            onClick={handleContinueClick}
+                            className="w-full max-w-xs bg-[#3366FF] text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                        >
                             Continue
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div className="min-h-screen w-screen bg-white flex items-center justify-center p-4 sm:p-6">
-
+            <div 
+                ref={rulesSectionRef}
+                className="min-h-screen w-screen bg-white flex items-center justify-center p-4 sm:p-6"
+            >
                 <div className="w-full max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-
                     <h1 className="text-2xl sm:text-3xl font-extrabold text-black mb-3 sm:mb-4">
                         DMIT Test Rules and Regulations
                     </h1>
@@ -124,12 +137,12 @@ export default function SkillTestIntroPage() {
 
                     <div className="mt-6 flex justify-center">
                         <button
+                            onClick={handleStartClick}
                             className="bg-[#3366FF] text-white font-semibold text-lg px-12 py-2.5 rounded-full hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
                             Start
                         </button>
                     </div>
-
                 </div>
             </div>
         </>
