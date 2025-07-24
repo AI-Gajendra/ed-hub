@@ -491,7 +491,7 @@ const CourseSlider = () => {
             <div
               key={course.id}
               onClick={() => Router.push("/b2c-student/student-flow/courses/detail")}
-              className="flex-none w-80 bg-white rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative p-4">
                 <Image
@@ -517,7 +517,7 @@ const CourseSlider = () => {
 
                   <button
                     className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
-                    onClick={() => router.push("/student/courses/know-more")}
+                    onClick={() => router.push("/b2c-student/student-flow/know-more")}
                   >
                     Know More
                   </button>

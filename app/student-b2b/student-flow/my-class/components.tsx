@@ -5,10 +5,9 @@ import React from 'react';
 import {
     FiChevronDown, FiChevronUp, FiChevronRight
 } from 'react-icons/fi';
-import {
-    SubCategoryItem, ContentUITab, VideoItem,
-    DateNavigatorWithArrows, FilterDropdown
-} from './ui-components'; // Import UI components
+import { SubCategoryItem, ContentUITab, VideoItem, FilterDropdown, ActionButton } from './ui-component';
+import MonthTab from '@/components/common-components/MonthTab/MonthTab';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 
 // --- Data Interfaces ---
 export interface LearningWeek {
@@ -19,18 +18,63 @@ export interface AssessmentItemData { id: string; title: string; resourcesCount:
 export interface MockPaperItemData { id: string; title: string; }
 export interface WorkSheetItemData { id: string; title: string; }
 
+
+const StyledSelect: React.FC<{
+    defaultValue?: string;
+    placeholder: string;
+    items: { value: string; label: string }[];
+    // Add onChange handler if needed
+}> = ({ defaultValue, placeholder, items }) => (
+    <Select defaultValue={defaultValue}>
+        <SelectTrigger className="w-fit rounded-xl sm:py-4 bg-[#F9FAFB] text-xs sm:text-sm text-black border border-[#E5E7EB]">
+            <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+            {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+        </SelectContent>
+    </Select>
+);
+
 // --- Accordion Item ---
 interface LearningAccordionProps { week: LearningWeek; isOpen: boolean; onToggle: () => void; }
 export const LearningAccordion: React.FC<LearningAccordionProps> = ({ week, isOpen, onToggle }) => (
-    <div className="bg-[#F9FAFB] rounded-xl overflow-hidden border border-[#E5E7EB]">
-        <button onClick={onToggle} className={`w-full flex justify-between items-center px-3 py-2.5 sm:px-4 sm:py-3 focus:outline-none ${isOpen ? '' : 'hover:bg-[#F3F4F6]'}`}>
+    <div className="bg-[#F9FAFB] rounded-2xl overflow-hidden border border-[#E5E7EB]">
+
+        <div
+            className="w-full flex justify-between items-center p-3 sm:p-4 focus:outline-none transition-colors"
+        >
             <div>
-                <h3 className="text-sm m:text-md mb-1 sm:mb-3 font-medium text-black text-left">{week.title}</h3> {/* text-left ensures it doesn't center with button flex */}
-                <p className="text-xs sm:text-sm text-left text-[#6B7280]">{week.videoCount} videos</p>
+
+                <h3 className="text-sm sm:text-md mb-0.5 sm:mb-1 text-black text-left">
+                    {week.title}
+                </h3>
+                <p className="text-[10px] sm:text-xs text-left mt-1 sm:mt-1.5 text-gray-500">
+                    {week.videoCount} videos
+                </p>
             </div>
-            {isOpen ? <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black" /> : <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black" />}
-        </button>
-        {isOpen && (<div className="p-3 sm:p-4 bg-[#F9FAFB] space-y-1.5 sm:space-y-2">{week.videos.map(video => (<VideoItem key={video.id} topic={video.topic} />))}</div>)}
+            {isOpen ? (
+                <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black cursor-pointer" onClick={onToggle} />
+            ) : (
+                <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black cursor-pointer" onClick={onToggle} />
+            )}
+        </div>
+        {isOpen && (
+            <div className="p-3 sm:p-4 bg-[#F9FAFB] space-y-1.5 sm:space-y-2">
+                {week.videos.map((video) => (
+                    <VideoItem key={video.id} topic={video.topic} />
+                ))}
+            </div>
+        )}
+    </div>
+);
+export const FillForm: React.FC = () => (
+    <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
+        <h3 className="text-base lg:text-lg font-bold text-[#FF3366]">
+            Request Teacher Change
+        </h3>
+        <ActionButton variant="primary" size="sm" className="xs:w-auto">
+            Fill the Form
+        </ActionButton>
     </div>
 );
 
@@ -75,7 +119,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl p-3 sm:p-4 space-y-1.5 sm:space-y-2 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 md:min-h-84 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}
@@ -95,27 +139,27 @@ interface ContentDisplayAreaProps {
     currentWeekFilter: string;
     onWeekFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
     currentMonth: string;
-    onMonthPrev?: () => void;
-    onMonthNext?: () => void;
     contentTitle: string;
     contentSubtitle?: string | null;
     children: React.ReactNode; // For rendering dynamic content based on activeContentTab
 }
 export const ContentDisplayArea: React.FC<ContentDisplayAreaProps> = (props) => (
     <div className="bg-white rounded-2xl  p-4 md:p-6">
-        <div className="mb-4 md:mb-6 flex flex-col md:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-            <nav className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
+        <div className="mb-4 md:mb-6 flex flex-col sm:flex-row   justify-between items-start sm:items-center sm:gap-3 gap-1">
+            <nav className="-mb-px flex  space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
                 {props.contentTabs.map(tab => (
                     <ContentUITab key={tab} label={tab} isActive={props.activeContentTab === tab} onClick={() => props.onContentTabClick(tab)} />
                 ))}
             </nav>
-            <div className="flex items-center gap-2 sm:gap-3 self-end md:self-center">
-                <FilterDropdown
-                    value={props.currentWeekFilter}
-                    onChange={props.onWeekFilterChange}
-                    options={[{ value: "Weekly", label: "Weekly" }, { value: "Week 1", label: "Week 1" }, { value: "Week 2", label: "Week 2" }]} // Added Weekly as per original
-                />
-                <DateNavigatorWithArrows currentDate={props.currentMonth} onPrevious={props.onMonthPrev} onNext={props.onMonthNext} />
+            <div className="flex   items-center gap-2 sm:gap-3 self-end md:self-center">
+                <StyledSelect
+                    defaultValue="all"
+                    placeholder="Filter"
+                    items={[
+                        { value: "all", label: "Week 1" },
+                        { value: "batch1", label: "Batch 1" },
+                    ]}
+                />                <MonthTab />
             </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 gap-2 sm:gap-4">

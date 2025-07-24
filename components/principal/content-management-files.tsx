@@ -191,7 +191,7 @@ const SubjectFolderViewContent: React.FC = () => {
         </div>
         {/* Bottom Section: Folders Grid */}
         {searchedAndFilteredFolders.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+          <div className="grid max-h-[80vh] grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 pr-2 overflow-y-scroll scrollbar">
             {searchedAndFilteredFolders.map((folder) => (
               <FolderCard key={folder.id} folder={folder} />
             ))}

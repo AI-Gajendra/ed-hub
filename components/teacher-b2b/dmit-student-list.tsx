@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown } from 'react-icons/fi'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function StudentListPage() {
 	const headerUser = {
@@ -135,8 +136,9 @@ const dummyStudents: Student[] = [
 
 // StudentCard Component
 const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
+	const router = useRouter()
 	return (
-		<div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:space-x-4 hover:shadow-md transition-shadow duration-200">
+		<div onClick={() => router.push("/teacher-b2b/teacher-flow/dmit-student-paper")} className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:space-x-4 hover:shadow-md transition-shadow duration-200">
 			{/* Avatar */}
 			<Image
 				width={100}

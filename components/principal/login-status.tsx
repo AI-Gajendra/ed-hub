@@ -30,12 +30,12 @@ const LoginTable: React.FC = () => {
       <table className="min-w-full bg-white px-3 py-2 rounded-2xl border-separate border-spacing-y-2 text-sm">
         <thead>
           <tr className="bg-blue-600  text-white text-left">
-            <th className="px-4 py-4 rounded-tl-2xl rounded-bl-2xl">Login Date</th>
-            <th className="px-4 py-4">Login Time</th>
-            <th className="px-4 py-4">IP Address</th>
-            <th className="px-4 py-4">Device</th>
-            <th className="px-4 py-4">State / City</th>
-            <th className="px-4 py-4 rounded-tr-2xl rounded-br-2xl">Status</th>
+            <th className="px-4 py-4 font-medium rounded-tl-2xl rounded-bl-2xl">Login Date</th>
+            <th className="px-4 py-4 font-medium">Login Time</th>
+            <th className="px-4 py-4 font-medium">IP Address</th>
+            <th className="px-4 py-4 font-medium">Device</th>
+            <th className="px-4 py-4 font-medium">State / City</th>
+            <th className="px-4 py-4 font-medium rounded-tr-2xl rounded-br-2xl">Status</th>
           </tr>
         </thead>
         <tbody>

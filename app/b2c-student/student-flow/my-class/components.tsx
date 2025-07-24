@@ -67,15 +67,17 @@ export const LearningAccordion: React.FC<LearningAccordionProps> = ({ week, isOp
         )}
     </div>
 );
-export const FillForm: React.FC = () => (
-    <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
-        <h3 className="text-base lg:text-lg font-bold text-[#FF3366]">
-            Request Teacher Change
-        </h3>
-        <ActionButton variant="primary" size="sm" className="xs:w-auto">
-            Fill the Form
-        </ActionButton>
-    </div>
+export const FillForm: React.FC<{setOpenModal: React.Dispatch<React.SetStateAction<string | null>>}> = ({setOpenModal}) => (
+
+  <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
+    
+    <h3 className="text-lg md:text-xl font-bold text-[#FF3366]">
+      Request Teacher Change
+    </h3>
+    <ActionButton onClick={()=>setOpenModal("requestChangeSingle")} variant="primary" size="sm" className="xs:w-auto">
+      Fill the Form
+    </ActionButton>
+  </div>
 );
 
 // --- Assessment Item ---

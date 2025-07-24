@@ -25,12 +25,12 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
   }, []);
 
   const navLinks = [
-    "/b2c-student/student-flow/home",
-    "/b2c-student/student-flow/about-us",
-    "/b2c-student/student-flow/educator",
-    "/b2c-student/student-flow/courses",
-    "/b2c-student/student-flow/contact",
-    "/b2c-student/student-flow/dashboard",
+    "/student-b2b/student-flow/home",
+    "/student-b2b/student-flow/about-us",
+    "/student-b2b/student-flow/educator",
+    "/student-b2b/student-flow/courses",
+    "/student-b2b/student-flow/contact",
+    "/student-b2b/student-flow/dashboard",
   ];
 
   const navLabels = [
@@ -142,38 +142,38 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
         >
           <div className="px-4 py-2 space-y-1 bg-[#3366FF]">
             <Link
-              href="/b2c-student/student-flow/home"
-              className="block py-2 hover:bg-black/10 px-3 rounded-md transition-colors duration-200"
+              href="/student-b2b/student-flow/home"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Home
             </Link>
             <Link
-              href="/b2c-student/student-flow/about-us"
-              className="block py-2 hover:bg-black/10 px-3 rounded-md transition-colors duration-200"
+              href="/student-b2b/student-flow/about-us"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               About
             </Link>
             <Link
-              href="/b2c-student/student-flow/educator"
-              className="block py-2 hover:bg-black/10 px-3 rounded-md transition-colors duration-200"
+              href="/student-b2b/student-flow/educator"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Instructor List
             </Link>
             <Link
-              href="/b2c-student/student-flow/courses"
-              className="block py-2 hover:bg-black/10 px-3 rounded-md transition-colors duration-200"
+              href="/student-b2b/student-flow/courses"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Courses List
             </Link>
             <Link
-              href="/b2c-student/student-flow/contact"
-              className="block py-2 hover:bg-black/10 px-3 rounded-md transition-colors duration-200"
+              href="/student-b2b/student-flow/contact"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Contact
             </Link>
             <Link
-              href="/b2c-student/student-flow/dashboard"
-              className="block py-2 hover:bg-black/10 px-3 rounded-md transition-colors duration-200"
+              href="/student-b2b/student-flow/dashboard"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               My learnings
             </Link>

@@ -5,7 +5,7 @@ import LoginTable from './login-status'
 const LoginActivityStudent = () => {
   return (
     <>
-    <PrincipalLoginBanner button1='Class Assigned' button2='Class Assigned' profileImage='/principal/manage.jpg' activity="Student" />
+    <PrincipalLoginBanner button1='Class 8A' button2='Group A' profileImage='/principal/profile-image.jpg' activity="Student" />
     <LoginTable />
     </>
   )
