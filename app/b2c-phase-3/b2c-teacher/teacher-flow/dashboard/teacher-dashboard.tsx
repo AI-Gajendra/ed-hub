@@ -1,5 +1,5 @@
 'use client'
-import Header from '@/components/layout/TeacherB2CHeader'
+import Header from '@/components/layout/TeacherB2CHeaderPhase3'
 import React from 'react'
 import Footer from '@/components/layout/Footer'
 import { Input } from '@/components/ui/input'
@@ -788,17 +788,17 @@ type ToolkitItem = {
 };
 
 const toolkitItems: ToolkitItem[] = [
-	{ label: "BW test", icon: FiCalendar, href: "/b2c-teacher/teacher-flow/create-test" },
-	{ label: "Assessment", icon: AssessmentIcon, href: "/b2c-teacher/teacher-flow/create-assessment" },
-	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-teacher/teacher-flow/create-quiz" },
-	{ label: "Worksheet", icon: FiFileText, href: "/b2c-teacher/teacher-flow/worksheet" },
-	{ label: "DMIT Results", icon: FiAward, href: "/b2c-teacher/teacher-flow/dmit-student-list" },
-	{ label: "Videos", icon: FiVideo, href: "/b2c-teacher/teacher-flow/referance-video" },
+	{ label: "BW test", icon: FiCalendar, href: "/b2c-phase-3/b2c-teacher/teacher-flow/create-test" },
+	{ label: "Assessment", icon: AssessmentIcon, href: "/b2c-phase-3/b2c-teacher/teacher-flow/create-assessment" },
+	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-phase-3/b2c-teacher/teacher-flow/create-quiz" },
+	{ label: "Worksheet", icon: FiFileText, href: "/b2c-phase-3/b2c-teacher/teacher-flow/worksheet" },
+	{ label: "DMIT Results", icon: FiAward, href: "/b2c-phase-3/b2c-teacher/teacher-flow/dmit-student-list" },
+	{ label: "Videos", icon: FiVideo, href: "/b2c-phase-3/b2c-teacher/teacher-flow/referance-video" },
 	{ label: "Apply for leave", icon: FiSun }, // No href = button
-	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-teacher/teacher-flow/manage-course-teach" },
-	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-teacher/teacher-flow/daily-log-select-course" },
-	{ label: "Manage Reports", icon: PiSquaresFourLight, href: "/b2c-teacher/teacher-flow/student-list-report" },
-	{ label: "Manage Feedbacks", icon: HiOutlineArchiveBox, href: "/b2c-teacher/teacher-flow/manage-feedback" },
+	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-phase-3/b2c-teacher/teacher-flow/manage-course-teach" },
+	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-phase-3/b2c-teacher/teacher-flow/daily-log-select-course" },
+	{ label: "Manage Reports", icon: PiSquaresFourLight, href: "/b2c-phase-3/b2c-teacher/teacher-flow/student-list-report" },
+	{ label: "Manage Feedbacks", icon: HiOutlineArchiveBox, href: "/b2c-phase-3/b2c-teacher/teacher-flow/manage-feedback" },
 	{ label: "Advance Plan", icon: TfiMenuAlt }, // No href = button
 ];
 const ChapterAccordion: React.FC<{

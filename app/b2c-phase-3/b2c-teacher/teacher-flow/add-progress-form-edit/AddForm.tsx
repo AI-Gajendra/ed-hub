@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import Image from "next/image";
 
@@ -18,7 +18,7 @@ export default function StudentSubmittedPapersPage() {
  const router = useRouter();
 
   const handleDelete = () => {
-    router.push("/b2c-teacher/teacher-flow/daily-log-student-list");
+    router.push("/b2c-phase-3/b2c-teacher/teacher-flow/daily-log-student-list");
   };
 
   const students = new Array(4).fill({

@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import React, { useState, useMemo } from "react";
 import {
@@ -172,7 +172,7 @@ export default function StudentSubmittedPapersPage() {
             Folder Name
           </h1>
         </div>
-        <Link href={"/b2c-teacher/teacher-flow/manage-group-share"} className="px-6 py-2 border rounded-xl bg-[#f9fafb] text-xs sm:text-sm whitespace-nowrap">
+        <Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/manage-group-share"} className="px-6 py-2 border rounded-xl bg-[#f9fafb] text-xs sm:text-sm whitespace-nowrap">
           Manage Group Share
         </Link>
       </div>

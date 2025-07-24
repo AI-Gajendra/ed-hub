@@ -2,7 +2,7 @@
 
 import { FiArrowLeft, FiChevronDown, FiFilter, FiSearch } from "react-icons/fi"
 import Footer from "@/components/layout/Footer"
-import Header from "@/components/layout/TeacherB2CHeader"
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"
 import { FiSettings } from "react-icons/fi";
 import { useState } from "react"
 import Image from "next/image";
@@ -18,7 +18,7 @@ const dummyGroups = Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
     name: "Group Name",
     students: "No. of Students",
-    image: "/b2c-teacher/manage-group-share.png", // Replace with actual path later
+    image: "/b2c-phase-3/b2c-teacher/manage-group-share.png", // Replace with actual path later
 }));
 
 const GroupCardList = () => {

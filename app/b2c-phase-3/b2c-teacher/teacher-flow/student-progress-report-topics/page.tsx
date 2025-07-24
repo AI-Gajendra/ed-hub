@@ -4,7 +4,7 @@
 import BackButton from "@/components/common-components/BackButton";
 import TabSwitch from "@/components/common-components/TabSwitch";
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 import React, { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
