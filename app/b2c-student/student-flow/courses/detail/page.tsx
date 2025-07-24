@@ -32,6 +32,7 @@ import Newsletter from "@/components/common-components/Newsletter";
 import BackButton from "@/components/common-components/BackButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import VideoPlayerPopup from "@/app/b2c-student/pop-ups/popupComponent/VideoPlayerPopup";
 
 interface Review {
   id: number;
@@ -273,7 +274,9 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 
 export default function CourseDetail() {
   const [activeTab, setActiveTab] = useState("about");
-const router = useRouter();
+
+  const [watchVideo, setWatchVideo] = useState(false)
+  const router = useRouter();
   const menuItems = [
     { id: "about", label: "About Course", icon: Info },
     { id: "benefits", label: "Benefits", icon: Star },
@@ -517,7 +520,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         </div>
 
         <div className="max-w-7xl relative flex flex-col lg:flex-row bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
-          <button className="bg-[#8DD9B3] flex items-center gap-2 px-4 py-3 text-white text-left rounded-[14px] lg:absolute z-10 mt-2 mx-4 lg:m-0 top-5 right-6 cursor-pointer">
+
+          <button onClick={() => setWatchVideo(true)} className="bg-[#8DD9B3] flex items-center gap-2 px-4 py-3 text-white text-left rounded-[14px] lg:absolute z-10 mt-2 mx-4 lg:m-0 top-5 right-6 cursor-pointer">
             <Video />
             Watch Demo Video
           </button>
@@ -570,7 +574,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           <div className="relative flex gap-4 items-center flex-col md:flex-row justify-center w-full z-9">
             <h1 className="text-3xl sm:text-[48px] font-bold text-white">Book a Free Demo</h1>
             <button
-            
+
               onClick={() => router.push("/b2c-student/student-flow/demo/booking-form")} className='bg-white cursor-pointer rounded-full px-8 py-2 text-m font-medium'>Click Here</button>
           </div>
           <div
@@ -943,6 +947,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         </div>
       </div>
       <Footer />
+
+      <VideoPlayerPopup isOpen={watchVideo} onClose={() => setWatchVideo(false)} />
     </StudentWrapper>
   );
 }

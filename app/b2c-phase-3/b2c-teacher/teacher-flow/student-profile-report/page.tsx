@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { FaInfoCircle, FaCalendarAlt } from 'react-icons/fa'
 
 import Image from 'next/image' // For profile picture
-import Header from '@/components/layout/TeacherB2CHeader'
+import Header from '@/components/layout/TeacherB2CHeaderPhase3'
 import Footer from '@/components/layout/Footer'
 import ChartsReportTeacherB2C from '@/components/teacher-b2c/common-components/ChartB2CTeacher'
 import BackButton from '@/components/common-components/BackButton'

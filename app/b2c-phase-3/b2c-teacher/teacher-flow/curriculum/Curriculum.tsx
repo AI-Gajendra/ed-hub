@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Header from '@/components/layout/TeacherB2CHeader';
+import Header from '@/components/layout/TeacherB2CHeaderPhase3';
 import { IoIosArrowDown } from "react-icons/io";
 import {
   FiArrowLeftCircle,

@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react'
 import {  FiFolder, FiSettings } from 'react-icons/fi'
-import Header from '@/components/layout/TeacherB2CHeader' // Adjust path as needed
+import Header from '@/components/layout/TeacherB2CHeaderPhase3' // Adjust path as needed
 import Footer from '@/components/layout/Footer' // Adjust path as needed
 import Link from 'next/link'
 import TabSwitch from '@/components/common-components/TabSwitch'

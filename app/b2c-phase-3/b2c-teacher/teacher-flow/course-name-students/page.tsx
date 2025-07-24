@@ -1,5 +1,5 @@
 import BackButton from "@/components/common-components/BackButton";
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 import CourseStudent from "./CourseComponent";
 

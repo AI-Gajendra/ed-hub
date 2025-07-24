@@ -1,4 +1,4 @@
-import FolderNamePage from '@/components/teacher-b2c/folder-name'
+import FolderNamePage from './folder-name'
 
 export default function CourseDetail() {
     return (

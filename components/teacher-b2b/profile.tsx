@@ -103,7 +103,7 @@ export default function EditStudentProfilePage() {
 										alt={formData.name}
 										width={80}
 										height={80}
-										className="w-20 h-20 rounded-full object-cover"
+										className="w-20 h-20 rounded-full object-cover object-center"
 									/>
 									<button className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full shadow-md  focus:outline-none">
 										<FiEdit2 className="w-3 h-3" />
@@ -149,7 +149,7 @@ export default function EditStudentProfilePage() {
 
 							</div>
 						</form>
-								<button type="button" onClick={handleBack} className="px-4 h-12 rounded-full text-xl w-full mt-6 md:col-start-2">Save</button>
+								<button type="button" onClick={handleBack} className="block px-4 h-12 rounded-full text-xl w-1/3 mx-auto mt-6 md:col-start-2 bg-[#3366ff] text-white">Save</button>
 					</div>
 
 					<Newsletter />

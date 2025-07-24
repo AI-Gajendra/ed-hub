@@ -5,7 +5,8 @@ import Image from 'next/image';
 // import StepIndicator from '@/components/step-indicator'; // Adjust path if needed
 import { FiChevronDown, FiEye, FiEyeOff, FiUploadCloud } from 'react-icons/fi';
 import StepIndicator from '@/components/step-indicator';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+
 
 // --- Form Step Components (defined in the same file for simplicity) ---
 
@@ -42,7 +43,8 @@ const Step1 = ({ onContinue }: { onContinue: () => void }) => {
 
 // --- Main Page Component ---
 export default function RegisterPage() {
-  const [step, setStep] = useState(1);
+  const params = useSearchParams();
+  const [step, setStep] = useState(parseInt(params.get("step") || "1"));
   const router = useRouter()
   const totalSteps = 5;
 
@@ -58,7 +60,7 @@ export default function RegisterPage() {
   const renderStep = () => {
     switch (step) {
       // NOTE: Replace these with the full components below
-      case 1: return <Step1 onContinue={nextStep} />;
+      case 1: return <Step1 onContinue={() => router.push("/principal/registration/otp")} />;
       case 2: return <Step2 onContinue={nextStep} />;
       case 3: return <Step3 onContinue={nextStep} />;
       case 4: return <Step4 onContinue={nextStep} />;
@@ -174,15 +176,13 @@ const Step3 = ({ onContinue }: { onContinue: () => void }) => (
           <label className="block text-sm font-semibold text-black mb-2">Degree</label>
           <input type="text" placeholder="Degree" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
-        <div className="flex gap-4">
-          <div className="w-1/2">
-              <label className="block text-sm font-semibold text-black mb-2">Start Year</label>
-              <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div className="w-1/2">
-              <label className="block text-sm font-semibold text-black mb-2">End Year</label>
-              <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
+        <div className="w-full">
+            <label className="block text-sm font-semibold text-black mb-2">Start Year</label>
+            <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div className="w-full">
+            <label className="block text-sm font-semibold text-black mb-2">End Year</label>
+            <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
         <div className="pt-2 space-y-4">
             <button type="button" className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">Add Qualification</button>

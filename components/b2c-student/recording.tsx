@@ -122,7 +122,7 @@ export default function RecordingsPage() {
 
 	return (
 		<>
-			<Header user={headerUser} />
+			<Header user={headerUser} activeState='Recordings'/>
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 
 			<main className="container p-4 max-w-[90vw] sm:p-6 lg:p-8 bg-white m-6 mx-auto rounded-2xl">

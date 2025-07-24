@@ -6,7 +6,7 @@ import {
     FiArrowLeft,
 } from "react-icons/fi"; // Add icons as needed
 import Image from "next/image"; // For profile picture
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
 import ChartsReport from "@/components/b2c-admin/charts";
 import BackButton from "@/components/common-components/BackButton";

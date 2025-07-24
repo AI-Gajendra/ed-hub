@@ -119,7 +119,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 md:min-h-96 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 md:min-h-84 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}

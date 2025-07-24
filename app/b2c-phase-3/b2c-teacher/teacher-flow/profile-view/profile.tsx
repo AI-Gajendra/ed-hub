@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Header from "@/components/layout/TeacherB2CHeader"; // Assuming Header is in this path
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"; // Assuming Header is in this path
 import Footer from "@/components/layout/Footer"; // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from "react-icons/fi"; // Edit icon
 import { Button } from "./button";
@@ -70,7 +70,7 @@ export default function EditStudentProfilePage() {
 	const router = useRouter();
 	
 		const handleBack = () => {
-			router.push('/b2c-teacher/teacher-flow/dashboard');
+			router.push('/b2c-phase-3/b2c-teacher/teacher-flow/dashboard');
 		};
 
 	return (

@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import Image from "next/image";
 

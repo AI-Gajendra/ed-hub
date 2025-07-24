@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
 import ReferenceVideoContentPage from "./VideoContent"
 import { FiArrowLeft, FiPlus } from "react-icons/fi"; // Ensure FiArrowLeft is imported

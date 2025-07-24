@@ -46,7 +46,7 @@ export default function Header({ user, isAskme = true, activeState = "Dashboard"
 		{
 			icon: FaRegSmile,
 			label: 'Dashboard',
-			href: '/',
+			href: '/b2c-student/student-flow/dashboard',
 		},
 		{
 			icon: FiBookOpen,
@@ -56,12 +56,12 @@ export default function Header({ user, isAskme = true, activeState = "Dashboard"
 		{
 			icon: FiMessageSquare,
 			label: 'Chat',
-			href: '/',
+			href: '/b2c-student/student-flow/chat-page',
 		},
 		{
 			icon: FiVideo,
 			label: 'Recordings',
-			href: '/',
+			href: '/b2c-student/student-flow/recording',
 		},
 	]
 

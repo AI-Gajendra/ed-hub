@@ -75,10 +75,10 @@ const Curriculum = () => {
     setCurrentDate(nextMonth);
   };
   return (
-    <div className="bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
+    <div className="bg-[#eeeeee]">
       <GoBack GoBackHeading="Yearly Plan Overview" />
 
-      <div className=" md:px-4 mx-auto bg-[#eeeeee]">
+      <div className="mx-auto bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
         <div className="px-4 pt-4">
           <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
             <div className="flex flex-wrap md:text-base text-xs md:justify-center justify-start px-2 md:gap-4 gap-2">
@@ -114,7 +114,7 @@ const Curriculum = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
           {/* Left column */}
           <div className="bg-white p-6 rounded-2xl">
             <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
@@ -138,7 +138,7 @@ const Curriculum = () => {
               </div>
             </div>
 
-            <div className="space-y-2   overflow-y-scroll custom-peach-scrollbar max-h-[880px]">
+            <div className="space-y-2 overflow-y-scroll custom-peach-scrollbar max-h-[1200px]">
               {sessionData.map((item, index) => {
                 const isOpen = activeIndex === index;
 

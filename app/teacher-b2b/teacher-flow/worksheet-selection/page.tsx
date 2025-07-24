@@ -1,7 +1,8 @@
-import FolderNamePage from "@/components/teacher-b2b/worksheet-selection";
+import StudentSubmittedPapersPage from "./WorkSheetSelection";
+
 
 export default function CourseDetail(){
     return <div>
-        <FolderNamePage /> 
+        <  StudentSubmittedPapersPage /> 
     </div>
 }

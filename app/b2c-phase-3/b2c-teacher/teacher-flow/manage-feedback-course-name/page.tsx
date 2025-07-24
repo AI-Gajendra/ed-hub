@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown, FiStar, FiSmile } from 'react-icons/fi';
 import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/TeacherB2CHeader';
+import Header from '@/components/layout/TeacherB2CHeaderPhase3';
 import BackButton from '@/components/common-components/BackButton';
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper';
 import SearchFilterIcon from '@/components/common-components/SearchFilterIcon';
@@ -96,7 +96,7 @@ const FeedbackCard: React.FC<typeof feedbackData[0]> = ({ name, role,  review, d
         <div className="flex items-center mb-3">
             <Image src="/images/profile2.jpg" alt={name} width={70} height={70} className="w-15 h-15 rounded-full object-cover mr-4" />
             <div>
-                <h4 className="font-semibold text-black mb-1">{name}</h4>
+                <h4 className="font-medium text-lg text-black mb-1">{name}</h4>
                 <p className="text-xs text-[#6B7280] mb-1">{role}</p>
                 <div className="flex items-center gap-2">
                     {[...Array(4)].map((_, i) => <FiStar key={i} className={`w-4 h-4 text-[#FFCC00] fill-current `} />)}
@@ -106,7 +106,7 @@ const FeedbackCard: React.FC<typeof feedbackData[0]> = ({ name, role,  review, d
         <p className="text-xs text-[#6B7280] leading-tight flex-grow mb-1 ">{review}</p>
         <span className="text-xs text-[#6B7280] font-medium mt-1">{date}</span>
         <div className="flex justify-end items-center">
-            <button className="px-5 py-1.5 text-sm font-semibold rounded-full" style={{ backgroundColor: LIGHT_PINK_BG, color: PINK_COLOR }}>Hide</button>
+            <button className="px-5 py-1.5 text-sm font-medium rounded-full" style={{ backgroundColor: LIGHT_PINK_BG, color: PINK_COLOR }}>Hide</button>
         </div>
     </div>
 );
