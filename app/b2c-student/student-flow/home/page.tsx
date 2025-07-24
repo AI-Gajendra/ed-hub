@@ -309,7 +309,7 @@ export default function StudentHome() {
                   <Card
                     key={course.id}
                     onClick={() => Router.push("/b2c-student/student-flow/courses/detail")}
-                    className="bg-white cursor-pointer rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                    className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
                   >
                     <div className="relative p-3">
                       <Image

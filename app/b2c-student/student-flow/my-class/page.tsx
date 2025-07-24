@@ -220,7 +220,7 @@ export default function MyClassAssesmentPage() {
                   activeSubCategory={activeSubCategory}
                   onSubCategoryClick={setActiveSubCategory}
                 />
-                <FillForm setOpenModal={setOpenModal} />
+                {activeContentTab === "Learning" && <FillForm setOpenModal={setOpenModal} />}
               </div>
               <div className="md:col-span-3 lg:col-span-4">
                 {" "}

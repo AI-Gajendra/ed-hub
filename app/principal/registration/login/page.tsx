@@ -14,7 +14,6 @@ export default function LoginPage() {
 
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if(!emailId || !password) return; // Use email and password validation instead
     router.push("/principal/dashboard")
   }
 
