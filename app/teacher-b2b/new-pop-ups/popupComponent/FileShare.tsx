@@ -79,7 +79,7 @@ const StyledSelect: React.FC<{
     items: { value: string; label: string }[];
 }> = ({ defaultValue, placeholder, items }) => (
     <Select defaultValue={defaultValue}>
-        <SelectTrigger className="bg-transparent w-full sm:w-auto rounded-xl py-3.5 sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+        <SelectTrigger className=" w-full sm:w-auto rounded-xl py-3.5 sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
             <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
