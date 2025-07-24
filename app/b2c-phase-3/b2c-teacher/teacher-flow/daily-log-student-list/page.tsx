@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import EditBatchNameModal from "@/app/b2c-teacher/ct-pop-ups/popupComponent/EditRenameBatch";

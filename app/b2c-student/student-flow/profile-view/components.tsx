@@ -117,6 +117,7 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
              {/* Forcing it to the next row on md if needed, or just ensure it takes the full width of a column */}
             <button
               type="button"
+              onClick={handleDownload} 
               className="w-full h-11 sm:h-12 md:h-auto rounded-full sm:rounded-3xl px-8 sm:px-10 py-2.5 sm:py-3 bg-blue-600 text-white font-semibold text-xs sm:text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors "
             >
               Save

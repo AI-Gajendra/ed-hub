@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import {
     FiArrowLeft,
 } from "react-icons/fi";
-import Header from "@/components/layout/TeacherB2CHeader"
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"
 import Footer from "@/components/layout/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";

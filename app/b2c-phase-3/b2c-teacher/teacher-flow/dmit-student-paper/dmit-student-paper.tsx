@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { IoCheckmarkCircle,  IoTimeOutline, IoStar, IoStarOutline } from 'react-icons/io5';
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
 import BackButton from '@/components/common-components/BackButton';
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper';

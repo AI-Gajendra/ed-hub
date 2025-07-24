@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import {
     FiSearch,
@@ -269,7 +269,7 @@ const CreateAIAssessmentContent: React.FC = () => {
     };
     const router = useRouter();
     const handleCreate = () => {
-        router.push("/b2c-teacher/teacher-flow/dashboard");
+        router.push("/b2c-phase-3/b2c-teacher/teacher-flow/dashboard");
     };
 
     return (

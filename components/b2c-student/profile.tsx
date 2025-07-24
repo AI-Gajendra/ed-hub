@@ -17,6 +17,7 @@ import BackButton from '../common-components/BackButton';
 import StudentB2CWrapper from './common-components/StudentB2CWrapper';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import VideoPlayerPopup from '@/app/b2c-student/pop-ups/popupComponent/VideoPlayerPopup';
 
 const images = [
     '/b2c-student/card-banner-1.png',
@@ -325,6 +326,7 @@ const Profile = () => {
   const handleContinue = () => {
     router.push("/b2c-student/student-flow/time-table"); // <-- yahan apna route daal
   };
+  const [watchVideo, setWatchVideo] = useState(false)
     return (
         <>
             <StudentNavbar activeState='Home' />
@@ -371,7 +373,7 @@ const Profile = () => {
                         </div>
 
                         {/* Demo Button */}
-                        <button className="w-full mt-4 bg-[#FF3366] text-white font-semibold py-3 rounded-2xl flex items-center justify-center gap-2 text-sm">
+                        <button onClick={() => setWatchVideo(true)} className="w-full mt-4 bg-[#FF3366] text-white font-semibold py-3 rounded-2xl flex items-center justify-center gap-2 text-sm">
                             <IoVideocamOutline />
                             Watch Demo Video
                         </button>
@@ -521,6 +523,7 @@ const Profile = () => {
 
             </StudentB2CWrapper>
             <Footer />
+        <VideoPlayerPopup isOpen={watchVideo} onClose={() => setWatchVideo(false)} />
         </>
 
     )

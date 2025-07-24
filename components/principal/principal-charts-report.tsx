@@ -471,7 +471,7 @@ const [isOpen, setIsOpen] = useState(false);
 							backgroundColor: PALETTE.WHITE_CARD,
 						}}>
 						<h3 className="text-base font-semibold mb-3 text-[#FF3366]">{personalDevData.title}</h3>
-						<div className="space-y-3  custom-scrollbar overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
+						<div className="space-y-3 max-h-96 scrollbar overflow-y-scroll scrollbar-thumb-red-400">
 							{' '}
 							{/* Custom scrollbar */}
 							{personalDevData.skills.map((skill, i) => (
@@ -485,7 +485,7 @@ const [isOpen, setIsOpen] = useState(false);
 							))}
 						</div>
 						{/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
-						<div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
+						<div className="absolute right-1 top-16 bottom-5 w-1 rounded-full opacity-50 hidden sm:block"></div>
 					</div>
 				</div>
 				<main className="grid h-full grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 bg-gray-100">

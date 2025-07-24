@@ -6,7 +6,7 @@ import {
     FiFilter,
     FiFolder,
 } from "react-icons/fi";
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from "next/navigation";

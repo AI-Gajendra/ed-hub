@@ -126,7 +126,7 @@ const Curriculum = () => {
 			  </div>
 			</div>
 
-			<div className="space-y-2">
+			<div className="space-y-2 pr-2 overflow-y-scroll max-h-[100vh] scrollbar">
 			  {sessionData.map((item, index) => {
 				const isOpen = activeIndex === index;
 

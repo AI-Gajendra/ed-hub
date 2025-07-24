@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
+import Header from "@/components/layout/TeacherB2CHeaderPhase3"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import React, { useState, useMemo } from "react";
 import {
@@ -139,7 +139,7 @@ const FileManagementContent: React.FC = () => {
           </div>
         )}
         <div className="flex justify-end my-4">
-          <Link href={"/b2c-teacher/teacher-flow/worksheet-upload"}
+          <Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/worksheet-upload"}
             className="px-3  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full text-sm"
             aria-label="Continue btn file"
           >

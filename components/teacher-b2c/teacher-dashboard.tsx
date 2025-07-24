@@ -773,6 +773,7 @@ import RescheduleMeetingStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponen
 import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideoDemo'
 import { PiSquaresFourLight } from 'react-icons/pi'
 import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ApplyLeaveModal'
+import { BsFilm } from 'react-icons/bs'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (
@@ -793,7 +794,7 @@ const toolkitItems: ToolkitItem[] = [
 	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-teacher/teacher-flow/create-quiz" },
 	{ label: "Worksheet", icon: FiFileText, href: "/b2c-teacher/teacher-flow/worksheet" },
 	{ label: "DMIT Results", icon: FiAward, href: "/b2c-teacher/teacher-flow/dmit-student-list" },
-	{ label: "Videos", icon: FiVideo, href: "/b2c-teacher/teacher-flow/referance-video" },
+	{ label: "Videos", icon: BsFilm, href: "/b2c-teacher/teacher-flow/referance-video" },
 	{ label: "Apply for leave", icon: FiSun }, // No href = button
 	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-teacher/teacher-flow/manage-course-teach" },
 	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-teacher/teacher-flow/daily-log-select-course" },

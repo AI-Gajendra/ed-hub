@@ -1,6 +1,6 @@
 'use client'
 import React, { useMemo, useState } from 'react'
-import Header from '@/components/layout/TeacherB2CHeader'
+import Header from '@/components/layout/TeacherB2CHeaderPhase3'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import SearchFilterIcon from '@/components/common-components/SearchFilterIcon'
@@ -127,7 +127,7 @@ const dummyStudents: Student[] = [
 // StudentCard Component
 const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
     return (
-        <Link href={"/b2c-teacher/teacher-flow/dmit-student-paper"} className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-2 justify-between flex flex-col gap-1.5 sm:flex-row sm:items-center sm:space-x-4 ">
+        <Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/dmit-student-paper"} className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-2 justify-between flex flex-col gap-1.5 sm:flex-row sm:items-center sm:space-x-4 ">
             <div className="flex items-center gap-2">
                 {/* Avatar */}
                 <Image

@@ -53,16 +53,39 @@ const TabButton: React.FC<TabButtonProps> = ({ label, isActive, onClick }) => (
 		className={`px-12 py-1.5 text-sm font-medium rounded-xl transition-colors duration-150
       ${isActive ? `text-white` : `hover:bg-gray-100 text-[${INACTIVE_TAB_TEXT}]`}`}
 		style={{ backgroundColor: isActive ? ACTIVE_TAB_BG : INACTIVE_TAB_BG }}>
-		{/* {label} */}
+		{label}
 	</button>
 )
 
 // --- Main Dashboard Component ---
 const PrincipalDashboardPage: React.FC = () => {
+	const router = useRouter()
 	const [teacherPerformanceTab, setTeacherPerformanceTab] = useState('Class A')
 	const [studentPerformanceTab, setStudentPerformanceTab] = useState('Class A')
+	const [currentDate, setCurrentDate] = useState(new Date());
 
-	const router = useRouter()
+  const handlePrevMonth = () => {
+    setCurrentDate((prevDate) => {
+      const newDate = new Date(prevDate);
+      newDate.setMonth(newDate.getMonth() - 1);
+      return newDate;
+    });
+  };
+
+  const handleNextMonth = () => {
+    setCurrentDate((prevDate) => {
+      const newDate = new Date(prevDate);
+      newDate.setMonth(newDate.getMonth() + 1);
+      return newDate;
+    });
+  };
+
+  const formattedDate = currentDate.toLocaleString('default', {
+    month: 'long',
+    year: 'numeric',
+  });
+
+
 
 	const profile = {
 		name: 'Shlok Agheda',
@@ -73,7 +96,6 @@ const PrincipalDashboardPage: React.FC = () => {
 			'Gender: Male',
 			'DOB: 15 Jun 2015',
 			'Email: example@gm.com',
-			'Contact: +91 1234567890',
 			'City: Mumbai',
 			'State: Maharashtra',
 		],
@@ -99,7 +121,7 @@ const PrincipalDashboardPage: React.FC = () => {
 		{ label: 'E', value: 40, displayValue: '25k', name: 'Branch Name' },
 	]
 
-	const teacherPerformanceData = Array(8)
+	const teacherPerformanceData = Array(30)
 		.fill(null)
 		.map((_, i) => ({
 			// Added unique keys for mapping
@@ -112,7 +134,7 @@ const PrincipalDashboardPage: React.FC = () => {
 	teacherPerformanceData[4].progress = '+16%'
 	teacherPerformanceData[2].progress = '+5%'
 
-	const studentPerformanceData = Array(8)
+	const studentPerformanceData = Array(30)
 		.fill(null)
 		.map((_, i) => ({
 			// Added unique keys
@@ -166,9 +188,9 @@ const PrincipalDashboardPage: React.FC = () => {
 								Overall Progress
 							</h2>
 							<div className="flex items-center gap-3 text-sm border font-medium border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-								<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-								<span>June 2025</span>
-								<FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+								<FiArrowLeftCircle onClick={handlePrevMonth} className="w-4 h-4 cursor-pointer hover:text-black" />
+								<span>{formattedDate}</span>
+								<FiArrowRightCircle onClick={handleNextMonth} className="w-4 h-4 cursor-pointer hover:text-black" />
 							</div>
 						</div>
 						<div className="h-48 relative">
@@ -303,7 +325,7 @@ const PrincipalDashboardPage: React.FC = () => {
 					</div>
 					<div className="p-3 mx-3 mb-3 rounded-2xl border border-[#E5E7EB] flex flex-col flex-grow">
 						<div className="flex items-center mb-3 justify-between border border-[#E5E7EB] rounded-xl p-0.5 w-full">
-							{['Class A', 'Class B', 'Class C'].map(cls => (
+							{['Class A', 'Class B', 'Class C'].map((cls: string) => (
 								<TabButton
 									key={cls}
 									label={cls}
@@ -326,7 +348,11 @@ const PrincipalDashboardPage: React.FC = () => {
 							</div>
 						</div>
 						<div
-							className={`flex-grow overflow-y-auto space-y-1 pb-1 max-h-85 scrollbar-thin scrollbar-thumb-${SCROLLBAR_THUMB_COLOR} scrollbar-track-gray-100 scrollbar-thumb-rounded-full`}>
+							className="flex-grow overflow-y-auto space-y-1 pb-1 max-h-85 scrollbar scrollbar-thumb-rounded-full"
+							style={{
+								
+							}}
+						>
 							{teacherPerformanceData.map(item => (
 								<div
 									key={item.id}
@@ -395,7 +421,7 @@ const PrincipalDashboardPage: React.FC = () => {
 							</div>
 						</div>
 						<div
-							className={`flex-grow overflow-y-auto space-y-1 pb-1 max-h-85 scrollbar-thin scrollbar-thumb-${SCROLLBAR_THUMB_COLOR} scrollbar-track-gray-100 scrollbar-thumb-rounded-full`}>
+							className={`flex-grow overflow-y-auto space-y-1 pb-1 max-h-85 scrollbar`}>
 							{studentPerformanceData.map(item => (
 								<div
 									key={item.id}

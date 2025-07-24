@@ -1,9 +1,9 @@
-import Dashboard from '@/components/teacher-b2b/teacher-dashboard'
 
-export default function DashboardPage() {
-	return (
-		<div>
-			<Dashboard />
-		</div>
-	)
+import React from 'react'
+import TeacherDashboard from './Dashboard'
+
+const Dashboard = () => {
+	return <TeacherDashboard />
 }
+
+export default Dashboard

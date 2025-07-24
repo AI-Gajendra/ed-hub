@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react'
 import {  FiFolder, FiSettings } from 'react-icons/fi'
-import Header from '@/components/layout/TeacherB2CHeader' // Adjust path as needed
+import Header from '@/components/layout/TeacherB2CHeaderPhase3' // Adjust path as needed
 import Footer from '@/components/layout/Footer' // Adjust path as needed
 import Link from 'next/link'
 import TabSwitch from '@/components/common-components/TabSwitch'
@@ -58,7 +58,7 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 	return (
-		<Link href={"/b2c-teacher/teacher-flow/worksheet-selection"} className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-3 duration-200 relative flex flex-col md:flex-row md:items-center gap-4  max-w-lg">
+		<Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/worksheet-selection"} className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-3 duration-200 relative flex flex-col md:flex-row md:items-center gap-4  max-w-lg">
 			{/* Info Icon */}
 			<div className="flex gap-4 items-start justify-start">
 				{/* Folder Icon Area */}

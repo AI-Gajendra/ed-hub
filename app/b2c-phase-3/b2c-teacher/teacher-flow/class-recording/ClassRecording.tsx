@@ -12,7 +12,7 @@ import {
   FiUploadCloud,
   FiX
 } from "react-icons/fi";
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
 import { CiPlay1 } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
