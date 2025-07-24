@@ -83,18 +83,16 @@ export const DualToggleButton: React.FC<DualToggleButtonProps> = ({ leftLabel, r
     <div className="flex items-center text-sm"> {/* Base text size for mobile */}
         <button
             onClick={onLeftClick}
-            // Your original desktop class for the left part: px-4 py-1.5 bg-[#FF3366] text-white text-base rounded-full rounded-r-none
-            // Assuming activeSide controls the active state for this component too
-            className={`px-3 py-1 text-white text-xs rounded-full rounded-r-none hover:opacity-90
+            className={`px-3 py-1  text-xs rounded-full rounded-r-none hover:opacity-90
                        sm:px-4 sm:py-1.5 sm:text-base 
-                       ${activeSide === 'left' ? 'bg-[#FF3366]' : 'bg-gray-400'}`}
+                       ${activeSide === 'left' ? 'bg-[#FF3366] text-white' : 'bg-[#F9FAFB] text-black'}`}
         >
             {leftLabel}
         </button>
         <button // Changed from span to button for consistency if clickable
             onClick={onRightClick}
             // Your original desktop class for the right part: px-2 py-1.5 bg-[#F9FAFB] text-base rounded-full rounded-l-none
-            className={`px-2 py-1 text-xs rounded-full rounded-l-none hover:bg-gray-200
+            className={`px-2 py-1 text-xs rounded-full rounded-l-none
                        sm:px-2 sm:py-1.5 sm:text-base 
                        ${activeSide === 'right' ? 'bg-[#FF3366] text-white' : 'bg-[#F9FAFB] text-black'}`}
         >
