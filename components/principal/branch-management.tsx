@@ -91,7 +91,7 @@ const AddNewBranchModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none text-sm pr-8">
                   <option>Option 1</option>
                 </select>
-                <ChevronDownIcon />
+                <ChevronDownIcon className='absolute top-[50%] right-4 transform translate-y-[-50%]' />
               </div>
             </div>
           ))}

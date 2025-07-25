@@ -59,7 +59,7 @@ export default function OtpPage() {
               value={digit}
               onChange={(e) => handleChange(index, e)}
               onKeyDown={(e) => handleKeyDown(index, e)}
-              className="w-9.5 h-9.5 sm:w-12 sm:h-12 text-center text-2xl font-bold bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-9.5 h-9.5 sm:w-12 sm:h-12 text-center text-lg font-bold bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
           ))}
         </div>
