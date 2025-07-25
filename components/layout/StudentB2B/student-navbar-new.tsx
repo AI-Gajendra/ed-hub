@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import AskMeAnything from "@/app/b2c-student/pop-ups/popupComponent/AskMeAnything";
 
-export default function StudentNavbarNew({ activeState = "My Learnings" }: { activeState?: string }) {
+export default function StudentNavbarNew({ activeState = "Dashboard" }: { activeState?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openModal, setOpenModal] = useState<string | null>(null);
@@ -36,7 +36,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
   const navItems = [
     {
       href: "/student-b2b/student-flow/dashboard",
-      label: "My Learnings",
+      label: "Dashboard",
       icon: Smile,
     },
     {
