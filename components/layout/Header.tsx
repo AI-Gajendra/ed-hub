@@ -4,8 +4,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' // App Router hook for current path
-import { FiBookOpen, FiMessageSquare, FiVideo, FiBell } from 'react-icons/fi'
+import { FiBookOpen, FiMessageSquare, FiVideo, FiBell, FiUsers, FiDatabase } from 'react-icons/fi'
 import { FaRegSmile } from 'react-icons/fa'
+import { MessageCircle } from 'lucide-react'
 
 const NavItem = ({
 	icon: Icon,
@@ -46,22 +47,28 @@ export default function Header({ user, isAskme = true, activeState = "Dashboard"
 		{
 			icon: FaRegSmile,
 			label: 'Dashboard',
-			href: '/b2c-student/student-flow/dashboard',
+			href: '/teacher-b2b/teacher-flow/dashboard',
 		},
 		{
-			icon: FiBookOpen,
-			label: 'My course',
-			href: '/b2c-student/student-flow/my-course',
+			icon: FiUsers,
+			label: 'Students',
+			href: '/teacher-b2b/teacher-flow/students',
 		},
 		{
-			icon: FiMessageSquare,
-			label: 'Chat',
-			href: '/b2c-student/student-flow/chat-page',
+			icon: FiDatabase,
+			label: 'Material',
+			href: '/teacher-b2b/teacher-flow/material',
 		},
+		
 		{
 			icon: FiVideo,
 			label: 'Recordings',
-			href: '/b2c-student/student-flow/recording',
+			href: '/teacher-b2b/teacher-flow/class-recording',
+		},
+		{
+			icon: MessageCircle,
+			label: 'Chat',
+			href: '/teacher-b2b/teacher-flow/chat-page',
 		},
 	]
 
