@@ -11,7 +11,7 @@ import SelectionCard from '@/app/b2c-phase-3/b2c-student/pop-ups/popupComponent/
 export default function StudentNavbar({ activeState = "Home", isLanding = false }: { activeState?: string, isLanding?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
- const [openModal, setOpenModal] = useState<string | null>(null);
+  const [openModal, setOpenModal] = useState<string | null>(null);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -62,10 +62,10 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
                 />
               </div>
             </Link>
- <SelectionCard
-        isOpen={openModal === "select"}
-        onClose={() => setOpenModal(null)}
-      />
+            <SelectionCard
+              isOpen={openModal === "select"}
+              onClose={() => setOpenModal(null)}
+            />
             {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:space-x-4 xl:space-x-8">
               {navLinks.map((href, idx) => (
@@ -108,7 +108,7 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
                   </div>
                 </>
                 :
-                <button className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#3366ff] rounded-full' )}  onClick={() => setOpenModal("select")}>
+                <button className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#3366ff] rounded-full')} onClick={() => setOpenModal("select")}>
                   Login
                 </button>}
 

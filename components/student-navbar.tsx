@@ -6,10 +6,12 @@ import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import SelectionCard from "@/app/b2c-phase-3/b2c-teacher/new-pop-ups/popupComponent/select-type"
 
 export default function StudentNavbar({ activeState = "Home", isLanding = false }: { activeState?: string, isLanding?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openModal, setOpenModal] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +63,10 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
                 />
               </div>
             </Link>
-
+            <SelectionCard
+              isOpen={openModal === "select"}
+              onClose={() => setOpenModal(null)}
+            />
             {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:space-x-4 xl:space-x-8">
               {navLinks.map((href, idx) => (
@@ -104,7 +109,7 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
                   </div>
                 </>
                 :
-                <Link href={'/b2c-phase-3/b2c-teacher/registration/select-type'} className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#f9326f] rounded-full')}>
+                <Link href={'/b2c-phase-3/b2c-teacher/registration/select-type'} className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#f9326f] rounded-full')} onClick={() => setOpenModal("select")}>
                   Login
                 </Link>}
 
