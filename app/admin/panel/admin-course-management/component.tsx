@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { FiChevronDown, FiCheck } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
+import MembershipModal from '../../pop-ups-2/components/manage-membership';
 
 const subjects = Array.from({ length: 10 }, (_, i) => `Subject ${i + 1}`);
 const plans = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
@@ -12,7 +13,7 @@ const AdminCourse: React.FC = () => {
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
   const [selectedPlan, setSelectedPlan] = useState('Option 1');
   const [isPlanOpen, setIsPlanOpen] = useState(false);
-
+ const [openModal, setOpenModal] = useState<string | null>(null);
   const handleSubjectChange = (subject: string) => {
     setSelectedSubjects((prev) =>
       prev.includes(subject)
@@ -31,6 +32,10 @@ const AdminCourse: React.FC = () => {
       {/* Left Form Section */}
       <div className="w-full max-w-xs space-y-6">
         <div>
+          <MembershipModal
+        isOpen={openModal === "membership"}
+        onClose={() => setOpenModal(null)}
+      />
           <h2 className="text-[#ff3366] text-base font-semibold mb-4">Select Membership Plan</h2>
 
           <div className="space-y-6">
@@ -116,7 +121,8 @@ const AdminCourse: React.FC = () => {
           <button className="rounded-full px-6 py-2 text-sm font-medium text-[#ff3366] bg-[#ffe6ec] hover:bg-[#ffd4df] transition">
             Discard
           </button>
-          <button className="rounded-full px-6 py-2 text-sm font-medium text-white bg-[#3366ff] hover:bg-[#2b5de0] transition">
+          <button className="rounded-full px-6 py-2 text-sm font-medium text-white bg-[#3366ff] hover:bg-[#2b5de0] transition"
+          onClick={() => setOpenModal("membership")}>
             Save
           </button>
         </div>

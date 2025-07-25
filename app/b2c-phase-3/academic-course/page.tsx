@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import DetailsCousrePopup from "../pop-ups/component/details-for-course";
+import { useRouter } from "next/navigation";
 
 const user = {
   avatarSrc: "/admin/usernav.jpg",
@@ -26,6 +27,7 @@ export default function GradeAndContent() {
  const [activeTab, setActiveTab] = useState<"Academic Courses" | "Foundation & Skills Courses">(
     "Academic Courses"
   );
+  const router = useRouter();
   return (
     <div className="bg-[#EEEEEE] h-full min-h-screen">
       <Navbar user={user} />
@@ -33,7 +35,8 @@ export default function GradeAndContent() {
         <div>
          
           <div className="flex gap-4 justify-between items-center">
-            <ArrowLeft className="w-6 h-6" />
+            <ArrowLeft className="w-6 h-6 md:w-8 md:h-8" 
+             onClick={() => router.back()}/>
             <div className="text-xl font-semibold mb-2">
               Chooses Pre-Recorded Courses
             </div>
