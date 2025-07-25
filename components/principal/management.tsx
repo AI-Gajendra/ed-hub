@@ -10,6 +10,12 @@ import { AiOutlineSwap } from "react-icons/ai";
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import { ChevronDownIcon } from 'lucide-react';
+import ManageLectureModal from '@/app/principal/pop-ups/components/ManageLecture';
+import ReassignClassModal from '@/app/principal/pop-ups/components/Reassign';
+import ShiftStudentModalSimple from '@/app/principal/pop-ups/components/ShiftStudentModalSimple';
+import ShiftTeacherModalSimple from '@/app/principal/pop-ups/components/ShiftTeacherModalSimple';
+import AddClassModal from '@/app/principal/pop-ups/components/AddClass';
+import AddStudentsModal from '@/app/principal/pop-ups/components/AddStudents';
 type CardData = {
   id: number;
   name: string;
@@ -47,7 +53,7 @@ const filters = ['Filter 1', 'Filter 2'];
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  showDeleteBtn?: boolean;
+  onSave?: () => void;
 }
 
 const CloseIcon = () => (
@@ -155,6 +161,7 @@ const RemoveStudentModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 const ShiftTeacherModalWithOptions: React.FC<ModalProps> = ({
   isOpen,
   onClose,
+  onSave
 }) => {
   if (!isOpen) return null;
   return (
@@ -210,7 +217,7 @@ const ShiftTeacherModalWithOptions: React.FC<ModalProps> = ({
           >
             Cancel
           </button>
-          <button className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700">
+          <button onClick={onSave} className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700">
             Continue
           </button>
         </div>
@@ -222,6 +229,7 @@ const ShiftTeacherModalWithOptions: React.FC<ModalProps> = ({
 const ShiftStudentModalWithOptions: React.FC<ModalProps> = ({
   isOpen,
   onClose,
+  onSave
 }) => {
   if (!isOpen) return null;
   return (
@@ -277,7 +285,7 @@ const ShiftStudentModalWithOptions: React.FC<ModalProps> = ({
           >
             Cancel
           </button>
-          <button className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700">
+          <button onClick={onSave} className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700">
             Continue
           </button>
         </div>
@@ -341,7 +349,7 @@ const SelectClassToEditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn }) => {
+const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
   if (!isOpen) return null;
   // Dummy state for this modal's internal selections if any
   // const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -390,7 +398,7 @@ const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn
                 <option>Option 1</option>
                 <option>Option 2</option>
               </select>
-              <ChevronDownIcon />
+              <ChevronDownIcon className='absolute top-[50%] right-4 transform translate-y-[-50%]' />
             </div>
           </div>
           <div>
@@ -408,7 +416,7 @@ const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn
                 <option>Option 1</option>
                 <option>Option 2</option>
               </select>
-              <ChevronDownIcon />
+              <ChevronDownIcon className='absolute top-[50%] right-4 transform translate-y-[-50%]' />
             </div>
           </div>
           <label className="block text-sm font-medium text-black mb-1">
@@ -468,10 +476,10 @@ const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn
           </div>
         </div>
         <div className="flex justify-center space-x-3">
-          {showDeleteBtn && <button onClick={() => onClose()} className="px-6 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
+          <button onClick={onClose} className="px-6 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
             Delete Class
-          </button>}
-          <button onClick={() => onClose()} className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
+          </button>
+          <button onClick={onSave} className="px-6 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
             Continue
           </button>
         </div>
@@ -480,7 +488,7 @@ const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn
   );
 };
 
-const AddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn }) => {
+const ManageAddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   const students = Array(10)
     .fill(null)
@@ -492,7 +500,7 @@ const AddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn
       group: "Group",
     }));
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-transparent backdrop-blur flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-3xl transform transition-all duration-300 ease-in-out scale-100 opacity-100">
         <label
           htmlFor="mc_className"
@@ -552,9 +560,9 @@ const AddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose, showDeleteBtn
           ))}
         </div>
         <div className="flex justify-center space-x-3">
-          {showDeleteBtn && <button onClick={() => onClose()} className="px-6 w-45 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
+          <button onClick={() => onClose()} className="px-6 w-45 py-2.5 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors">
             Delete Class
-          </button>}
+          </button>
           <button onClick={() => onClose()} className="px-6 w-45 py-2.5 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
             Save
           </button>{" "}
@@ -570,14 +578,19 @@ const Management = () => {
 
   const filteredData = sampleData.filter((item) => item.role === activeTab);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showDeleteBtn, setShowDeleteBtn] = useState<boolean>(false);
+  const [showAddClassPopup, setShowAddClassPopup] = useState<boolean>(false);
   const [showRemoveTeacherPopup, setShowRemoveTeacherPopup] = useState<boolean>(false)
   const [showRemoveStudentPopup, setShowRemoveStudentPopup] = useState<boolean>(false)
   const [showAddStudentPopup, setShowAddStudentPopup] = useState<boolean>(false)
   const [showShiftTeacherPopup, setShowShiftTeacherPopup] = useState<boolean>(false)
+  const [showShiftTeacherModalSimple, setShowShiftTeacherModalSimple] = useState<boolean>(false)
   const [showShiftStudentPopup, setShowShiftStudentPopup] = useState<boolean>(false)
+  const [showShiftStudentModalSimple, setShowShiftStudentModalSimple] = useState<boolean>(false)
   const [showSelectClassPopup, setShowSelectClassPopup] = useState<boolean>(false)
   const [showManageClassPopup, setShowManageClassPopup] = useState<boolean>(false)
+  const [showManageAddStudentsPopup, setShowManageAddStudentsPopup] = useState<boolean>(false)
+  const [showManageLecturePopup, setShowManageLecturePopup] = useState<boolean>(false)
+  const [showReassignModal, setShowReassignPopup] = useState<boolean>(false)
   const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
 
   const router = useRouter()
@@ -602,11 +615,6 @@ const Management = () => {
 
   const handleManageClass = () => {
     setShowSelectClassPopup(false);
-    setShowDeleteBtn(true);
-    setShowManageClassPopup(true);
-  }
-  const handleAddClass = () => {
-    setShowDeleteBtn(false);
     setShowManageClassPopup(true);
   }
 
@@ -621,11 +629,17 @@ const Management = () => {
       <div className="bg-white rounded-2xl p-4">
         <RemoveTeacherModal isOpen={showRemoveTeacherPopup} onClose={() => { setShowRemoveTeacherPopup(false) }} />
         <RemoveStudentModal isOpen={showRemoveStudentPopup} onClose={() => { setShowRemoveStudentPopup(false) }} />
-        <AddStudentsModal isOpen={showAddStudentPopup} onClose={() => { setShowAddStudentPopup(false) }} showDeleteBtn={showDeleteBtn} />
-        <ShiftTeacherModalWithOptions isOpen={showShiftTeacherPopup} onClose={() => { setShowShiftTeacherPopup(false) }} />
-        <ShiftStudentModalWithOptions isOpen={showShiftStudentPopup} onClose={() => { setShowShiftStudentPopup(false) }} />
+        <ShiftTeacherModalWithOptions isOpen={showShiftTeacherPopup} onClose={() => { setShowShiftTeacherPopup(false) }}  onSave={() => { setShowShiftTeacherPopup(false); setShowShiftTeacherModalSimple(true) }}/>
+        <ShiftTeacherModalSimple isOpen={showShiftTeacherModalSimple} onClose={() => setShowShiftTeacherModalSimple(false)} />
+        <ShiftStudentModalWithOptions isOpen={showShiftStudentPopup} onClose={() => setShowShiftStudentPopup(false)} onSave={() => { setShowShiftStudentPopup(false); setShowShiftStudentModalSimple(true) }} />
+        <ShiftStudentModalSimple isOpen={showShiftStudentModalSimple} onClose={() => setShowShiftStudentModalSimple(false)} />
         <SelectClassToEditModal isOpen={showSelectClassPopup} onClose={handleManageClass} />
-        <ManageClassModal isOpen={showManageClassPopup} onClose={() => setShowManageClassPopup(false)} showDeleteBtn={showDeleteBtn} />
+        <ManageClassModal isOpen={showManageClassPopup} onClose={() => setShowManageClassPopup(false)} onSave={() => {setShowManageClassPopup(false); setShowManageAddStudentsPopup(true) }} />
+        <ManageAddStudentsModal isOpen={showManageAddStudentsPopup} onClose={() => setShowManageAddStudentsPopup(false)} />
+        <AddClassModal isOpen={showAddClassPopup} onSave={() => {setShowAddClassPopup(false); setShowAddStudentPopup(true)}} />
+        <AddStudentsModal isOpen={showAddStudentPopup} onClose={() => setShowAddStudentPopup(false)} />
+        <ManageLectureModal isOpen={showManageLecturePopup} onClose={() => {setShowManageLecturePopup(false)}} onReassign={() => {setShowManageLecturePopup(false); setShowReassignPopup(true) }} />
+        <ReassignClassModal isOpen={showReassignModal} onClose={() => setShowReassignPopup(false)} />
 
         <div className="relative flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
@@ -641,8 +655,8 @@ const Management = () => {
           </div>
           <div className="flex flex-grow gap-4 justify-between">
             <Button onClick={() => setShowSelectClassPopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
-            <Button onClick={() => handleAddClass()} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
-            <Button className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
+            <Button onClick={() => setShowAddClassPopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
+            <Button onClick={() => setShowManageLecturePopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
             {/* Filters with dropdown icons */}
             {filters.map((filter, index) => (
               <div key={filter} className="relative flex-1 overflow-x-auto custom-scrollbar">

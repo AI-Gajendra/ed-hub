@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { FiChevronDown, FiEye, FiEyeOff, FiUploadCloud } from 'react-icons/fi'
 import StepIndicator from '@/components/step-indicator'
 import { useRouter, useSearchParams } from 'next/navigation'
+import AddQualificationModal from '../../pop-ups/components/AddQualificationModal'
+import AddExperienceModal from '../../pop-ups/components/AddExperienceModal'
 
 // --- Form Step Components (defined in the same file for simplicity) ---
 
@@ -228,70 +230,81 @@ const Step2 = ({ onContinue }: { onContinue: () => void }) => (
 	</>
 )
 
-const Step3 = ({ onContinue }: { onContinue: () => void }) => (
-	<>
-		<h1 className="text-xl text-black mb-6">Education</h1>
-		<form
-			className="space-y-4"
-			onSubmit={e => {
-				e.preventDefault()
-				onContinue()
-			}}>
-			<div>
-				<label className="block text-sm font-semibold text-black mb-2">School / University Name</label>
-				<input
-					type="text"
-					placeholder="Name"
-					required
-					className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-				/>
-			</div>
-			<div>
-				<label className="block text-sm font-semibold text-black mb-2">Degree</label>
-				<input
-					type="text"
-					placeholder="Degree"
-					required
-					className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-				/>
-			</div>
-			<div className="w-full">
-				<label className="block text-sm font-semibold text-black mb-2">Start Year</label>
-				<input
-					type="text"
-					placeholder="DD/MM/YY"
-					required
-					className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-				/>
-			</div>
-			<div className="w-full">
-				<label className="block text-sm font-semibold text-black mb-2">End Year</label>
-				<input
-					type="text"
-					placeholder="DD/MM/YY"
-					required
-					className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-				/>
-			</div>
-			<div className="pt-2 space-y-4">
-				<button
-					type="button"
-					className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">
-					Add Qualification
-				</button>
-				<button
-					type="submit"
-					className="w-full bg-[#3366FF] text-white font-bold py-3.5 rounded-full hover:bg-blue-700 transition-all">
-					Continue
-				</button>
-			</div>
-		</form>
-	</>
-)
+const Step3 = ({ onContinue }: { onContinue: () => void }) => {
+	const [showAddQualificationForm, setShowAddQualificationForm] = useState(false)
 
-const Step4 = ({ onContinue }: { onContinue: () => void }) => (
+
+	return (
+		<>
+			<AddQualificationModal isOpen={showAddQualificationForm} onClose={() => {setShowAddQualificationForm(false)}} onContinue={() => {setShowAddQualificationForm(false)}} />
+			<h1 className="text-xl text-black mb-6">Education</h1>
+			<form
+				className="space-y-4"
+				onSubmit={e => {
+					e.preventDefault()
+					onContinue()
+				}}>
+				<div>
+					<label className="block text-sm font-semibold text-black mb-2">School / University Name</label>
+					<input
+						type="text"
+						placeholder="Name"
+						required
+						className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<div>
+					<label className="block text-sm font-semibold text-black mb-2">Degree</label>
+					<input
+						type="text"
+						placeholder="Degree"
+						required
+						className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<div className="w-full">
+					<label className="block text-sm font-semibold text-black mb-2">Start Year</label>
+					<input
+						type="text"
+						placeholder="DD/MM/YY"
+						required
+						className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<div className="w-full">
+					<label className="block text-sm font-semibold text-black mb-2">End Year</label>
+					<input
+						type="text"
+						placeholder="DD/MM/YY"
+						required
+						className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+				</div>
+				<div className="pt-2 space-y-4">
+					<button
+						onClick={() => setShowAddQualificationForm(true)}
+						type="button"
+						className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">
+						Add Qualification
+					</button>
+					<button
+						type="submit"
+						className="w-full bg-[#3366FF] text-white font-bold py-3.5 rounded-full hover:bg-blue-700 transition-all">
+						Continue
+					</button>
+				</div>
+			</form>
+		</>
+	)
+}
+
+const Step4 = ({ onContinue }: { onContinue: () => void }) => {
+	const [showAddExperiencePopup, setShowAddExperiencePopup] = useState(false);
+
+	return (
 	<>
 		<h1 className="text-xl text-black mb-6">Achievement / Experience</h1>
+		<AddExperienceModal isOpen={showAddExperiencePopup} onClose={() => {setShowAddExperiencePopup(false)}} onContinue={() => {setShowAddExperiencePopup(false)}} />
 		<form
 			className="space-y-4"
 			onSubmit={e => {
@@ -315,6 +328,7 @@ const Step4 = ({ onContinue }: { onContinue: () => void }) => (
 			</div>
 			<div className="pt-2 space-y-4">
 				<button
+					onClick={() => setShowAddExperiencePopup(true)}
 					type="button"
 					className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">
 					Add Achievement / Experience
@@ -327,7 +341,7 @@ const Step4 = ({ onContinue }: { onContinue: () => void }) => (
 			</div>
 		</form>
 	</>
-)
+)}
 
 const Step5 = ({ onContinue }: { onContinue: (e: FormEvent<HTMLFormElement>) => void }) => (
 	<>

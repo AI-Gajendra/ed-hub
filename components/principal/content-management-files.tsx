@@ -9,6 +9,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { LuInfo } from "react-icons/lu";
 import GoBack from "./goback";
+import ManageAccessModal from "@/app/principal/pop-ups/components/ManageAccessModal";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -79,39 +80,43 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
 //   </button>
 // );
 
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
-  <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4 relative`}
-  >
-    <div className="absolute right-5 top-5 text-gray-400">
-      <LuInfo />
-    </div>
+const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
+  const [showManageAccessPopup, setShowManageAccessPopup] = useState<boolean>(false);
+  return (
     <div
-      className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4 relative`}
     >
-      <FiFileText
-        className="w-8 h-8 sm:w-12 sm:h-12 text-black opacity-80"
-        strokeWidth={1.5}
-      />
-    </div>
-    <div className="flex flex-col w-full gap-4">
-      <div className="">
-        <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
-          {folder.name}
-        </h3>
-        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
+      <ManageAccessModal isOpen={showManageAccessPopup} onClose={() => setShowManageAccessPopup(false)} />
+      <div className="absolute right-5 top-5 text-gray-400">
+        <LuInfo />
       </div>
-      <div className="w-full hidden lg:grid grid-cols-1 xl:grid-cols-2 gap-2 ">
+      <div
+        className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      >
+        <FiFileText
+          className="w-8 h-8 sm:w-12 sm:h-12 text-black opacity-80"
+          strokeWidth={1.5}
+        />
+      </div>
+      <div className="flex flex-col w-full gap-4">
+        <div className="">
+          <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
+            {folder.name}
+          </h3>
+          <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
+        </div>
+        <div className="w-full hidden lg:grid grid-cols-1 xl:grid-cols-2 gap-2 ">
+          <button onClick={(e) => { e.stopPropagation(); setShowManageAccessPopup(true) }} className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
+          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
+        </div>
+      </div>
+      <div className="w-full lg:hidden col-span-2 grid grid-cols-1 md:grid-cols-2 gap-2 ">
         <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
         <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>
     </div>
-     <div className="w-full lg:hidden col-span-2 grid grid-cols-1 md:grid-cols-2 gap-2 ">
-        <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
-        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
-      </div>
-  </div>
-);
+  )
+};
 
 const GeneralFilterButton: React.FC<{
   filter: GeneralFilterOption;
