@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { TeacherB2CBaseModal, PopupPropB2CTeacher } from "../page";
 import { FiArrowLeft } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 const DetailsCousrePopup: React.FC<PopupPropB2CTeacher> = ({
   isOpen,
@@ -20,6 +21,7 @@ const DetailsCousrePopup: React.FC<PopupPropB2CTeacher> = ({
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const router = useRouter();
   return (
     <TeacherB2CBaseModal
       isOpen={isOpen}
@@ -30,7 +32,7 @@ const DetailsCousrePopup: React.FC<PopupPropB2CTeacher> = ({
       <div className="px-6 md:px-8 py-4 mb-16">
         {/* Top Bar */}
         <div className="w-full  flex items-center text-[#F40852] font-medium text-md  md:text-lg mb-6">
-          <FiArrowLeft className="mr-2 w-5 h-6 text-black" />
+          <FiArrowLeft className="mr-2 w-5 h-6 text-black" onClick={() => router.back()} />
           Confirm Details
         </div>
         {/* Main Card */}

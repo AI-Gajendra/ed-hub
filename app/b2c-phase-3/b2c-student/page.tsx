@@ -15,6 +15,7 @@ import Testinomials from "@/components/testimonials";
 import { ReactNode } from "react";
 import Footer from "@/components/footer";
 import LandingWrapper from "@/components/landing-wrapper";
+import SelectionCard from "@/app/b2c-phase-3/b2c-student/pop-ups/popupComponent/select-type"
 import {
   BookOpen,
   Brain,
@@ -28,6 +29,7 @@ import {
 import { useState, useEffect } from "react";
 import StudentNavbar from "@/components/b2c-phase-3/student-navbar";
 import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaYoutube } from "react-icons/fa";
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -181,6 +183,7 @@ export default function Landing() {
         "EduNique Membership Plans provide a wide Academic to extra curricular to Skill Development Programs. Take on the future, step by step.",
       image: "/Card1.png",
       buttonText: "Explore Now!",
+      
     },
     {
       id: 2,
@@ -242,13 +245,17 @@ export default function Landing() {
       View More <ChevronRight className="ml-1 h-4 w-4" />
     </motion.button>
   );
-
+  const [openModal, setOpenModal] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const phoneNumber = '+0931-705-3875'
 
   return (
     <div>
       <nav className="sticky top-0 left-0 w-full z-50 flex flex-col">
+        <SelectionCard
+        isOpen={openModal === "select"}
+        onClose={() => setOpenModal(null)}
+      />
         {/* Top Bar (1/3 of total height => 40px) */}
         <div className="flex-1 bg-[#F9326F] text-white py-[0.3rem] px-[8vw] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 min-h-[40px]">
           {/* Left: Contact */}

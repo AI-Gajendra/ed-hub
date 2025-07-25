@@ -5,6 +5,7 @@ import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
 import Navbar from "@/components/b2c-phase-3/navbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { ArrowLeft, ChevronDown } from "lucide-react";
 import {
@@ -22,13 +23,15 @@ const user = {
 };
 
 export default function StoryLearning() {
+  const router = useRouter();
   return (
     <div className="bg-[#EEEEEE] h-full min-h-screen">
       <Navbar user={user} />
       <MaxWidthWrapper className="py-10">
         <div>
           <div className="flex gap-4 justify-between items-center">
-            <ArrowLeft className="w-6 h-6" />
+            <ArrowLeft className="w-6 md:w-8 md:h-8 h-6"
+             onClick={() => router.back()} />
             <div className="text-xl font-semibold mb-2">
               Chooses Pre-Recorded Courses
             </div>
@@ -110,7 +113,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               {card.features}
             </p>
             <Link
-              href={"/b2c-phase-3/grade-and-content"}
+              href={"/b2c-phase-3/academic-course"}
               className="w-full mt-2"
             >
               <button className="bg-[#3366ff] w-full py-2 px-4 rounded-full text-white font-medium hover:bg-blue-700 transition">
