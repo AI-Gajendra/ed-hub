@@ -1,6 +1,6 @@
 'use client'
 
-import Header from '@/components/layout/TeacherB2CHeader'
+import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper'

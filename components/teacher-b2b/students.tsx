@@ -102,7 +102,7 @@ const StudentItemRow: React.FC<{
   const [remove, setRemove] = useState(false);
 
   const handleCardClick = () => {
-    router.push('/teacher-b2b/teacher-flow/student-progress');
+    router.push('/teacher-b2b/teacher-flow/student-profile');
   };
 
   return (

@@ -16,7 +16,7 @@ import {
   FiArrowRightCircle,
 } from "react-icons/fi"; // Add icons as needed
 import Image from "next/image"; // For profile picture
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/Header";
 import Footer from "../layout/Footer";
 import ChartsReportTeacherB2C from "@/components/teacher-b2c/common-components/ChartB2CTeacher";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
