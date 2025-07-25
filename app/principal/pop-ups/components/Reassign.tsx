@@ -13,7 +13,7 @@ const filter = [
 ]
 
 const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
-    const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
 
   const handleSelect = (index: number) => {
     setSelectedIndices((prev) =>
@@ -22,7 +22,7 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   };
   return (
     <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-8xl">
-      <div className="drelative bg-white p-6 rounde-2xl w-full max-h-[95vh] overflow-y-auto custom-scrollbar-thin mr-1">
+      <div className="relative bg-white p-6 rounded-2xl w-full max-h-[95vh] overflow-y-auto custom-scrollbar-thin mr-1">
 
 
         {/* Title */}
@@ -67,44 +67,44 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Teachers */}
-             <div className="space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar-thin pr-1">
-      {[...Array(5)].map((_, i) => {
-        const isSelected = selectedIndices.includes(i);
+            <div className="space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar-thin pr-1">
+              {[...Array(5)].map((_, i) => {
+                const isSelected = selectedIndices.includes(i);
 
-        return (
-          <label
-            key={i}
-            onClick={() => handleSelect(i)}
-            className={`flex items-center gap-4 py-2 px-3 rounded-2xl border cursor-pointer hover:shadow-sm transition
+                return (
+                  <label
+                    key={i}
+                    onClick={() => handleSelect(i)}
+                    className={`flex items-center gap-4 py-2 px-3 rounded-2xl border cursor-pointer hover:shadow-sm transition
             `}
-          >
-            <Image
-              src="/common-images/teacher.png"
-              alt="Teacher"
-              width={75}
-              height={75}
-              className="w-20 h-20"
-            />
+                  >
+                    <Image
+                      src="/common-images/teacher.png"
+                      alt="Teacher"
+                      width={75}
+                      height={75}
+                      className="w-20 h-20"
+                    />
 
-            <div className="flex-1">
-              <p className="text-base font-semibold text-black">Name</p>
-              <p className="text-sm text-[#ff3366]">Course</p>
-              <p className="text-xs text-gray-500">Detail 1</p>
-              <p className="text-xs text-gray-500">Detail 2</p>
-            </div>
+                    <div className="flex-1">
+                      <p className="text-base font-semibold text-black">Name</p>
+                      <p className="text-sm text-[#ff3366]">Course</p>
+                      <p className="text-xs text-gray-500">Detail 1</p>
+                      <p className="text-xs text-gray-500">Detail 2</p>
+                    </div>
 
-            {/* Custom toggle circle */}
-            <div
-              className={`w-6 h-6 rounded-full border-3 flex items-center justify-center
+                    {/* Custom toggle circle */}
+                    <div
+                      className={`w-6 h-6 rounded-full border-3 flex items-center justify-center
                 ${isSelected ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-500'}
               `}
-            >
-              {isSelected && <FaCheck className="text-white text-[10px]" />}
+                    >
+                      {isSelected && <FaCheck className="text-white text-[10px]" />}
+                    </div>
+                  </label>
+                );
+              })}
             </div>
-          </label>
-        );
-      })}
-    </div>
           </div>
 
           {/* Timetable Panel */}
