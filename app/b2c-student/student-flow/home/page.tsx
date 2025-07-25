@@ -378,7 +378,7 @@ export default function StudentHome() {
             </div>
 
             {/* Courses Slider with Tabs */}
-            <CourseSlider />
+            <CategoryTabs />
 
             {/* Overlaying Cards Section */}
             <div className="max-w-7xl mx-auto relative h-fit bg-gray-100 overflow-hidden rounded-3xl p-10">
@@ -480,6 +480,7 @@ export default function StudentHome() {
 
 import CustomSelect from "@/components/student/courses/CustomSelect";
 import { Tabs, TabsList } from "@/components/ui/tabs";
+import CategoryTabs from "./HomeTab";
 
 interface Course {
   id: string;
