@@ -28,7 +28,7 @@ export default function ChooseProfilePage() {
     <AuthLayout
       leftPanelTitle="Become a Future School"
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Profile</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Profiles</h2>
       <p className="text-sm text-gray-600 mb-8 leading-relaxed">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
