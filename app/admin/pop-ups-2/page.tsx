@@ -27,6 +27,7 @@ import EditWorkingHoursPopup from "./components/editWorkingHours";
 import RejectChoiceModal from "./components/rejectmodal";
 import Link from "next/link";
 import ConfidentialStudentPopup from "./components/confidential";
+import MembershipModal from "./components/manage-membership";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -264,6 +265,7 @@ export default function AllPopupsPage() {
   const modalButtons = [
     { id: "createFolder", label: "Create Folder" },
     { id: "content", label: "Upload Content" },
+     { id: "membership", label: "Membership" },
     { id: "manageAccess", label: "Manage Access" },
     { id: "meetingDetailTeacher", label: "Meeting Detail Teacher" },
     { id: "meetingDetailStudent", label: "Meeting Detail Student" },
@@ -311,6 +313,10 @@ export default function AllPopupsPage() {
       />
       <UploadContentImage
         isOpen={openModal === "content"}
+        onClose={() => setOpenModal(null)}
+      />
+      <MembershipModal
+        isOpen={openModal === "membership"}
         onClose={() => setOpenModal(null)}
       />
       <ManageAccess

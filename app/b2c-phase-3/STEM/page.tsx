@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 const user = {
   avatarSrc: "/admin/usernav.jpg",
   name: "Shlok Agheda",
@@ -25,13 +25,15 @@ export default function StemCourse() {
   const [activeTab, setActiveTab] = useState<
     "Academic Courses" | "Foundation & Skills Courses"
   >("Academic Courses");
+   const router = useRouter();
   return (
     <div className="bg-[#EEEEEE] h-full min-h-screen">
       <Navbar user={user} />
       <MaxWidthWrapper className="py-10">
         <div>
           <div className="flex gap-4 justify-between items-center">
-            <ArrowLeft className="w-6 h-6" />
+            <ArrowLeft className="w-6 h-6" 
+             onClick={() => router.back()}/>
             <div className="text-xl font-semibold mb-2">
               Chooses Pre-Recorded Courses
             </div>

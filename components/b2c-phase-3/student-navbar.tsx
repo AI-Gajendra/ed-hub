@@ -6,11 +6,12 @@ import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import SelectionCard from '@/app/b2c-phase-3/b2c-student/pop-ups/popupComponent/select-type'
 
 export default function StudentNavbar({ activeState = "Home", isLanding = false }: { activeState?: string, isLanding?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+ const [openModal, setOpenModal] = useState<string | null>(null);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -35,11 +36,11 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
 
   const navLabels = [
     "Home",
-    "About",
-    "Instructor List",
-    "Courses List",
-    "Contact",
-    "My learnings",
+    "About Us",
+    "Courses",
+    "Become a Future School",
+    "Subscription Plan",
+    "Contact Us",
   ];
 
   return (
@@ -47,28 +48,31 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
         }`}
     >
-      <nav className="bg-[#3366FF] text-white pt-4 px-8">
+      <nav className="bg-white text-black pt-4 px-8">
         <div className="w-full mx-auto xl:px-12">
-          <div className="flex items-center justify-between h-17">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <div className="relative h-10 w-32">
                 <Image
-                  src="/mianLogo2.png"
+                  src="/logoo.png"
                   alt="EduHub Logo"
                   fill
                   className="object-contain"
                 />
               </div>
             </Link>
-
+ <SelectionCard
+        isOpen={openModal === "select"}
+        onClose={() => setOpenModal(null)}
+      />
             {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:space-x-4 xl:space-x-8">
               {navLinks.map((href, idx) => (
                 <Link
                   key={`${href}-${idx}`}
                   href={href}
-                  className={`text-sm text-nowrap xl:text-base font-medium hover:text-gray-200 transition-colors duration-200 px-2 py-1.5 lg:px-3 lg:py-2 rounded-full ${navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
+                  className={`text-sm text-nowrap xl:text-base font-medium  transition-colors duration-200 px-2 py-1.5 lg:px-3 lg:py-2 rounded-full ${navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
                     }`}
                 >
                   {navLabels[idx]}
@@ -104,9 +108,9 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
                   </div>
                 </>
                 :
-                <Link href={'/b2c-phase-3/b2c-student/registration/select-type'} className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#f9326f] rounded-full')}>
+                <button className={cn(buttonVariants({ variant: 'default' }), 'hover:bg-black/10 px-6 text-xs bg-[#3366ff] rounded-full' )}  onClick={() => setOpenModal("select")}>
                   Login
-                </Link>}
+                </button>}
 
               {/* Mobile menu button */}
               <button

@@ -5,7 +5,7 @@ import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
 import Navbar from "@/components/b2c-phase-3/navbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 import { ArrowLeft, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
@@ -25,13 +25,14 @@ export default function RecordedCourse() {
   const [activeTab, setActiveTab] = useState<
     "Academic Courses" | "Foundation & Skills Courses"
   >("Academic Courses");
+   const router = useRouter();
   return (
     <div className="bg-[#EEEEEE] h-full min-h-screen">
       <Navbar user={user} />
       <MaxWidthWrapper className="py-10">
         <div>
           <div className="flex  pl-28 justify-between items-center">
-            <ArrowLeft className="w-6 h-6 " />
+            <ArrowLeft className="w-6 h-6  md:w-8 md:h-8" onClick={() => router.back()}  />
             <div className="text-xl md:text-2xl font-semibold mb-2 -tracking-normal">
               Chooses Pre-Recorded Courses
             </div>
