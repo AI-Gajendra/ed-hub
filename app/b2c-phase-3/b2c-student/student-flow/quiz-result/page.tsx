@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Header from '@/components/b2c-phase-3/b2c-student/Header4fromlayout'
+import Header from '@/components/b2c-phase-3/student-navbar-new'
 import {
     QuizResultHeader,
     QuestionReviewBlock,
@@ -35,7 +35,7 @@ export default function QuizTestResultPage() {
 
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col">
-            <Header user={headerUser}/>
+            <Header activeState='My course'/>
 
             <main className=" p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="mb-4">

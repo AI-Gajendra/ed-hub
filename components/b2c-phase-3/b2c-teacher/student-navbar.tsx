@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import SelectionCard from "@/app/b2c-student/pop-ups/popupComponent/select-type"
+import SelectionCard from "@/app/b2c-phase-3/b2c-teacher/new-pop-ups/popupComponent/select-type"
 
 export default function StudentNavbar({ activeState = "Home", isLanding = false }: { activeState?: string, isLanding?: boolean }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,12 +27,12 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
   }, []);
 
   const navLinks = [
-    "/b2c-student/student-flow/home",
-    "/b2c-student/student-flow/about-us",
-    "/b2c-student/student-flow/educator",
-    "/b2c-student/student-flow/courses",
-    "/b2c-student/student-flow/contact",
-    "/b2c-student/student-flow/dashboard",
+    "/b2c-phase-3/b2c-teacher/teacher-flow/home",
+    "/b2c-phase-3/b2c-teacher/teacher-flow/about-us",
+    "/b2c-phase-3/b2c-teacher/teacher-flow/educator",
+    "/b2c-phase-3/b2c-teacher/teacher-flow/courses",
+    "/b2c-phase-3/b2c-teacher/teacher-flow/contact",
+    "/b2c-phase-3/b2c-teacher/teacher-flow/dashboard",
   ];
 
   const navLabels = [

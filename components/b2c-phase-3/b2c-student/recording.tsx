@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Header from '@/components/b2c-phase-3/b2c-student/Header4fromlayout'
+import Header from '@/components/b2c-phase-3/student-navbar-new'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
 
@@ -122,7 +122,7 @@ export default function RecordingsPage() {
 
 	return (
 		<>
-			<Header user={headerUser} activeState='Recordings'/>
+			<Header  activeState='Recordings'/>
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 
 			<main className="container p-4 max-w-[90vw] sm:p-6 lg:p-8 bg-white m-6 mx-auto rounded-2xl">

@@ -26,7 +26,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import StudentNavbar from "@/components/b2c-phase-3/b2c-teacher/student-navbar";
+import StudentNavbar from "@/components/student-navbar";
 import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const fadeInUp = {
