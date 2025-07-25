@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown, FiStar, FiSmile } from 'react-icons/fi';
 import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/TeacherB2CHeaderPhase3';
+import Header from '@/components/layout/TeacherB2CHeader';
 import BackButton from '@/components/common-components/BackButton';
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper';
 import SearchFilterIcon from '@/components/common-components/SearchFilterIcon';
@@ -147,7 +147,7 @@ const filterOptions = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filt
             <BackButton Heading='Course Name' />
             <TeacherB2CWrapper>
                
-                    <div className="bg-white p-2 rounded-3xl max-w-screen-xl mx-auto">
+                    <div className="bg-white p-2 rounded-3xl max-w-screen mx-auto">
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                             {/* Left Column: Feedback Cards */}

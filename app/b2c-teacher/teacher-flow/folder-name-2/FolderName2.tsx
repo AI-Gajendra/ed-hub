@@ -125,7 +125,7 @@ const FileManagementContent: React.FC = () => {
           </div>
         )}
         <div className="flex justify-end my-4">
-          <Link href={"/b2c-teacher/teacher-flow/create-test"}
+          <Link href={"/b2c-teacher/teacher-flow/create-test?step=3"}
             className="px-3  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full text-sm"
             aria-label="Upload new file"
           >

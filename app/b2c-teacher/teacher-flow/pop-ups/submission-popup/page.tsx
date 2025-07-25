@@ -1,15 +1,21 @@
 "use client";
+import { ModalProps } from "@/app/principal/pop-ups/page";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center">
-      <h1 className="text-blue-300 text-sm mb-4">
-        Submission Pop Up – Journey Report
-      </h1>
+interface modalProps {
+  show: boolean;
+  onClose: () => void;
+}
 
+export default function SubmissionPopup({show, onClose}: modalProps) {
+  if(!show) return
+  const router = useRouter();
+
+  return (
+    <div onClick={(e) => {e.stopPropagation(); onClose()}} className="z-100 fixed min-h-screen bg-gray-900 flex flex-col items-center justify-center">
       {/* Modal Backdrop */}
-      <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-transparent backdrop-blur-xs flex items-center justify-center z-50">
         {/* Modal Dialog */}
         <div
           role="dialog"
@@ -23,6 +29,7 @@ export default function Home() {
           </p>
 
           <button
+            onClick={() => router.push("/b2c-teacher/teacher-flow/student-progress-report")}
             className="bg-[#3366FF] text-white px-10 py-2 rounded-full hover:bg-blue-600 transition"
           >
             Close

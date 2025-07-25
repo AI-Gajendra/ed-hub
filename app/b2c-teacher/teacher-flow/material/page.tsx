@@ -141,7 +141,7 @@ export default function MaterialPage() {
     }, [filteredFoldersBySubject, searchTerm]);
     return (
         <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-            <Header />
+            <Header activeState="Material" />
             <div>
                 <main className="flex-grow max-w-[94rem] mx-auto p-4 mb-4">
                     <>

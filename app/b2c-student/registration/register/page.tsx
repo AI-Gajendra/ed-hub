@@ -216,7 +216,7 @@ export default function RegisterPage() {
                   <div className="flex">
                     <p>Already Have an Account?</p>
                     <Link
-                      href={"/b2c-student/student-flow/register-type"}
+                      href={"/b2c-student/registration/login"}
                       className="ml-2 text-[#F9326F] hover:underline"
                     >
                       Login

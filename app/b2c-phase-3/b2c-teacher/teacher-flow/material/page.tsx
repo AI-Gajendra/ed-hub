@@ -6,7 +6,7 @@ import {
     FiFilter,
     FiFolder,
 } from "react-icons/fi";
-import Header from "@/components/layout/TeacherB2CHeaderPhase3";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from "next/navigation";
@@ -80,7 +80,7 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
 
     return (
         <div
-            onClick={()=> Router.push("/b2c-phase-3/b2c-teacher/teacher-flow/folder-name")}
+            onClick={()=> Router.push("/b2c-teacher/teacher-flow/folder-name")}
             className={`${FOLDER_CARD_BG} rounded-2xl p-2 md:p-3 lg:p-4 border border-[#E5E7EB] hover:shadow-lg cursor-pointer transition-shadow duration-200 flex items-center gap-5`}
         >
             <div
@@ -141,7 +141,7 @@ export default function MaterialPage() {
     }, [filteredFoldersBySubject, searchTerm]);
     return (
         <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-            <Header />
+            <Header activeState="Material" />
             <div>
                 <main className="flex-grow max-w-[94rem] mx-auto p-4 mb-4">
                     <>

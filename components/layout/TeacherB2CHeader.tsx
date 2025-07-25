@@ -154,7 +154,7 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 						</>
 					)}
 
-					<Link href="/teacher-b2b/teacher-flow/notification">
+					<Link href="/b2c-teacher/teacher-flow/notification">
 						<button
 							className="p-2 cursor-pointer rounded-full hover:bg-[#3366FF]/70 focus:outline-none"
 							aria-label="Notifications">
@@ -162,13 +162,15 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 						</button>
 					</Link>
 
-					<Image
-						src={user.avatarSrc ?? '/page3/entry/pri.png'}
-						alt={user.name}
-						width={40}
-						height={40}
-						className="w-10 h-10 rounded-full object-cover hover:cursor-pointer"
-					/>
+					<Link href="/b2c-teacher/teacher-flow/profile-view">
+						<Image
+							src={user.avatarSrc ?? '/page3/entry/pri.png'}
+							alt={user.name}
+							width={40}
+							height={40}
+							className="w-10 h-10 rounded-full object-cover hover:cursor-pointer"
+						/>
+					</Link>
 				</div>
 			</div>
 

@@ -206,7 +206,7 @@ export default function RegisterPage() {
 
                   <Button
                     className="w-full mt-2 py-2 rounded-full"
-                    onClick={()=>{Router.push('/b2c-phase-3/b2c-student/registration/forgot-password-2')}}
+                    onClick={()=>{Router.push('/b2c-student/registration/forgot-password-2')}}
                   >
                     Submit
                   </Button>
@@ -216,7 +216,7 @@ export default function RegisterPage() {
                   <div className="flex">
                     <p>Already Have an Account?</p>
                     <Link
-                      href={"/b2c-phase-3/b2c-student/student-flow/register-type"}
+                      href={"/b2c-student/registration/login"}
                       className="ml-2 text-[#F9326F] hover:underline"
                     >
                       Login

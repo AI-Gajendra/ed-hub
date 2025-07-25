@@ -234,6 +234,7 @@ const TeacherDashboard = () => {
 	};
 
 	const [showLeaveModal, setShowLeaveModal] = useState(false);
+	const [showScheduleModal, setShowScheduleModal] = useState(false);
 	const handleToolClick = (label: string) => {
 		if (label === "Apply for leave") {
 			setShowLeaveModal(true);
@@ -375,7 +376,7 @@ const TeacherDashboard = () => {
 									))}
 								</div>
 								<div className="flex justify-end">
-									<button onClick={() => setMeetingDetails(true)}  className="mt-4 px-3 font-medium text-right bg-[#3366FF] text-white py-3 rounded-full">Schedule Meeting</button>
+									<button onClick={() => {setShowScheduleModal(true)}}  className="mt-4 px-3 font-medium text-right bg-[#3366FF] text-white py-3 rounded-full">Schedule Meeting</button>
 								</div>
 							</div>
 
@@ -745,9 +746,10 @@ const TeacherDashboard = () => {
 			</TeacherB2CWrapper>
 			<Footer />
 			<RescheduleMeetingStudent isOpen={meeting} onClose={() => setMeeting(false)} />
+			<ScheduleMeeting isOpen={showScheduleModal} onClose={() => setShowScheduleModal(false)} />
 			<EditDemoVideo isOpen={uploadImage} onClose={() => setUploadImage(false)} />
 			<MeetingDetailStudent isOpen={meetingDetails} onClose={() => setMeetingDetails(false)} />
-				<LeaveApplicationModal isOpen={showLeaveModal} onClose={() => setShowLeaveModal(false)}/>
+			<LeaveApplicationModal isOpen={showLeaveModal} onClose={() => setShowLeaveModal(false)}/>
 		</div>
 	)
 }
@@ -775,6 +777,7 @@ import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideo
 import { PiSquaresFourLight } from 'react-icons/pi'
 import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ApplyLeaveModal'
 import { BsFilm } from 'react-icons/bs'
+import ScheduleMeeting from '@/app/b2c-teacher/ct-pop-ups/popupComponent/ScheduleMeeting'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (
@@ -790,12 +793,12 @@ type ToolkitItem = {
 };
 
 const toolkitItems: ToolkitItem[] = [
-	{ label: "BW test", icon: FiCalendar, href: "/b2c-teacher/teacher-flow/create-test" },
-	{ label: "Assessment", icon: AssessmentIcon, href: "/b2c-teacher/teacher-flow/create-assessment" },
-	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-teacher/teacher-flow/create-quiz" },
+	{ label: "BW test", icon: FiCalendar, href: "/b2c-teacher/teacher-flow/bi-weekly-test" },
+	{ label: "Assessment", icon: AssessmentIcon, href: "/b2c-teacher/teacher-flow/assessment" },
+	{ label: "Quiz", icon: FiHelpCircle, href: "/b2c-teacher/teacher-flow/quiz" },
 	{ label: "Worksheet", icon: FiFileText, href: "/b2c-teacher/teacher-flow/worksheet" },
 	{ label: "DMIT Results", icon: FiAward, href: "/b2c-teacher/teacher-flow/dmit-student-list" },
-	{ label: "Videos", icon: BsFilm, href: "/b2c-teacher/teacher-flow/referance-video" },
+	{ label: "Videos", icon: BsFilm, href: "/b2c-teacher/teacher-flow/reference-video" },
 	{ label: "Apply for leave", icon: FiSun }, // No href = button
 	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-teacher/teacher-flow/manage-course-teach" },
 	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-teacher/teacher-flow/daily-log-select-course" },
