@@ -185,7 +185,7 @@ export default function MyClassAssesmentPage() {
   };
 
   return (
-    <StudentWrapper>
+    <StudentWrapper student activeState="My course">
       <div className="bg-[#eeeeee] min-h-screen flex flex-col">
         <main className="flex-col w-full mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
       <RequestTeacherChangeModal

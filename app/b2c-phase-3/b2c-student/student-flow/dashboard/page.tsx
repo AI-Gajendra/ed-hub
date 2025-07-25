@@ -13,6 +13,9 @@ import {
 	NotificationsCard
 } from './components';
 import StudentNavbarNew from '@/components/b2c-phase-3/student-navbar-new';
+import { PiHashBold } from 'react-icons/pi';
+import { BsBoxSeam } from 'react-icons/bs';
+import { useRouter } from 'next/navigation';
 
 // --- Sample Data ---
 const studentData = {
@@ -58,6 +61,8 @@ export default function StudentDashboardPage() {
 	const [learningActivityFilter, setLearningActivityFilter] = useState<'Active' | 'Completed'>('Active');
 	const [currentLearningDate, setCurrentLearningDate] = useState('June 2025'); // Example state
 
+	const router = useRouter();
+
 
 	// Dummy date navigation handlers
 	const handleLearningDatePrev = () => { setCurrentLearningDate("May 2025"); console.log("Prev Learning Month"); };
@@ -69,6 +74,19 @@ export default function StudentDashboardPage() {
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<StudentNavbarNew />
 			<main className="container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 flex-grow">
+				<div className="flex flex-col md:flex-row justify-between items-center bg-white py-2 px-4 rounded-xl mb-6 border-l-5 gap-2 border-[#3366ff]">
+					<h3 className="font-semibold text-lg md:text-xl text-black">Current Membership Plan : Membership Plan Name</h3>
+					<div className="flex flex-wrap gap-3">
+						<button
+
+							onClick={() => router.push("/b2c-phase-3/update-membership")}
+							className="rounded-2xl whitespace-nowrap w-full md:w-auto text-xs items-center flex gap-2 border bg-[#f9fafb] px-2 py-4">
+							<PiHashBold className='text-gray-500' size={20} />Upgrade Membership Plan</button>
+						<button
+							onClick={() => router.push("/b2c-phase-3/unlock-course")} className="rounded-2xl whitespace-nowrap text-xs w-full md:w-auto items-center flex gap-2 border bg-[#f9fafb] px-2 py-4">
+							<BsBoxSeam className='text-gray-500 transform -scale-x-100' size={15} strokeWidth={1} />Unlock More Courses</button>
+					</div>
+				</div>
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
 					<div className="lg:col-span-2 space-y-4 md:space-y-6">
 						<StudentProfileCard studentData={studentData} />
