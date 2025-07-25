@@ -28,14 +28,14 @@ const ManageAccess: React.FC<PopupProp> = ({
 
     // Generate mock data using Array.from
     const data: Record<Role, PersonCard[]> = {
-        Teacher: Array.from({ length: 6 }, (_, i) => ({
+        Teacher: Array.from({ length: 16 }, (_, i) => ({
             name: `Name`,
             course: 'Course Involved',
             batch: 'Batch Assigned',
             image: '/common-images/teacher.png', 
             group: "",
         })),
-        Student: Array.from({ length: 6 }, (_, i) => ({
+        Student: Array.from({ length: 16 }, (_, i) => ({
             name: `Student Name`,
             course: 'Course Name',
             batch: 'Level Grade',

@@ -171,7 +171,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {workSheetDataPage.map((item) => (
-              <WorkSheetItem key={item.id} item={item} onClick={() => Router.push("/student-b2b/student-flow/my-class-worksheet-3")} />
+              <WorkSheetItem key={item.id} item={item} onClick={() => Router.push("/student-b2b/student-flow/my-class-worksheet-2")} />
             ))}
           </div>
         );
@@ -220,7 +220,6 @@ export default function MyClassAssesmentPage() {
                   activeSubCategory={activeSubCategory}
                   onSubCategoryClick={setActiveSubCategory}
                 />
-                {activeContentTab === "Learning" && <FillForm setOpenModal={setOpenModal} />}
               </div>
               <div className="md:col-span-3 lg:col-span-4">
                 {" "}

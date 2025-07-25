@@ -26,6 +26,7 @@ import ProfileSettingTeacher from "./components/profileSettingTeacher";
 import ProfileSettingStudent from "./components/profileSettingStudent";
 import AllotCoursePopup from "./components/allotNewCourse";
 import EditWorkingHoursPopup from "./components/editWorkingHours";
+import { UploadFile } from "./Popup-components-2/UploadFile";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -188,6 +189,7 @@ export default function AllPopupsPage() {
         { id: "ProfileSettingStudent", label: "Profile Student Student" },
         { id: "AllotCoursePopup", label: "Allot Course Popup" },
         { id: "EditWorkingHoursPopup", label: "Edit Working Hours Popup" },
+        { id: "uploadFile", label: "Upload file" },
 
     ];
 
@@ -290,6 +292,10 @@ export default function AllPopupsPage() {
             />
             <EditWorkingHoursPopup
                 isOpen={openModal === "EditWorkingHoursPopup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <UploadFile
+                isOpen={openModal === "uploadFile"}
                 onClose={() => setOpenModal(null)}
             />
         </div>

@@ -4,6 +4,7 @@ import React, { MouseEventHandler, useState } from 'react'
 import Image from 'next/image'
 import { FiArrowRight, FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi' // Add more icons if used by StatCard or other elements
 import { useRouter } from 'next/navigation'
+import ConfidentialInfoPopup from '@/app/principal/pop-ups/components/ConfidentialInfoPopup'
 
 // --- Color Constants (approximated from image) ---
 const PROFILE_NAME_COLOR = 'black'
@@ -443,6 +444,7 @@ const PrincipalDashboardPage: React.FC = () => {
 					</div>
 					<div className="p-3 mt-auto text-center">
 						<button
+							onClick={() => router.push("/principal/teacher-management")}
 							className="text-md font-medium px-16 py-2.5 rounded-full border border-[#E5E7EB] "
 							style={{ backgroundColor: VIEW_ALL_BG, color: VIEW_ALL_TEXT }}>
 							View All

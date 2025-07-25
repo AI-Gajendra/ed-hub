@@ -13,6 +13,7 @@ import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar'
 import Footer from '@/components/layout/Footer';
 import StudentNavbarNew from '@/components/student-navbar-new';
 import StudentNavbar from '@/components/layout/StudentB2B/student-navbar';
+import { useRouter } from 'next/navigation';
 // SimpleIconButton is in ui-components, used by components
 
 // --- Sample Data (from your original) ---
@@ -30,9 +31,10 @@ export default function QuizTestResultPage() {
 
     const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeholder-avatar-student.jpg" };
 
-    const handlePageBack = () => { // For QuizResultHeader back button
-        if(typeof window !== "undefined") window.history.back();
-    };
+    const handlePageBack = () => {
+  const router = useRouter();
+  router.push('/student-b2b/student-flow/video-screen');
+};
 
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col">

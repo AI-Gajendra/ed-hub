@@ -1,11 +1,12 @@
 "use client"
 import PrincipalChatrsReport from '@/components/principal/principal-charts-report';
 import { IoMdSettings } from "react-icons/io";
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import { FaStar } from 'react-icons/fa';
+import ConfidentialInfoPopup from '../pop-ups/components/ConfidentialInfoPopup';
 
 interface CourseCardProps {
   image: string;
@@ -66,6 +67,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
 };
 
 const StudentProgressReport = () => {
+  const [showConfidentialPopup, setShowConfidentialPopup] = useState(false);
+
   const handleBackClick = () => {
     if (typeof window !== "undefined") {
       window.history.back();
@@ -119,6 +122,7 @@ const StudentProgressReport = () => {
   return (
     <>
       <div className='w-full'>
+        <ConfidentialInfoPopup isOpen={showConfidentialPopup} onClose={() => { setShowConfidentialPopup(false) }} onSave={() => { setShowConfidentialPopup(false) }} />
         <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
           <button
             onClick={handleBackClick}
@@ -148,14 +152,14 @@ const StudentProgressReport = () => {
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
               <div className="flex-grow relative">
-                <div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]"><IoMdSettings size={20}/></div>
+                <div onClick={() => setShowConfidentialPopup(true)} className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]"><IoMdSettings size={20} /></div>
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}
                 >
                   Shlok Agheda
                 </h2>
-                
+
                 <div className="flex flex-wrap items-center gap-1 mt-2">
                   <span
                     className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
@@ -175,14 +179,14 @@ const StudentProgressReport = () => {
                   >
                     Group A
                   </span>
-                 
+
                 </div>
               </div>
               <div className="text-[11px] font-medium text-left space-y-0.5 text-black">
                 <p>Gender: Male</p>
                 <p>DOB: 15 Jun 2015</p>
                 <p>Email: example@gm.com</p>
-                
+
                 <p>City: Mumbai</p>
                 <p>State: Maharashtra</p>
               </div>

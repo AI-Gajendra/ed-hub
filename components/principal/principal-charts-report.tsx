@@ -2,12 +2,8 @@
 
 import React, { useState } from 'react'
 import {
-	FiSearch,
 	FiPercent,
-	FiAward,
-	FiBarChart2,
 	FiChevronDown,
-	FiZap,
 	FiArrowLeftCircle,
 	FiArrowRightCircle,
 	FiChevronUp,

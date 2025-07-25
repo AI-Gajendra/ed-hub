@@ -65,7 +65,7 @@ const ManageApprovalsPage = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             placeholder="Search"
-                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                            className="w-full pl-10 pr-4 py-2 border-2 border-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                         />
                     </div>
 
@@ -73,7 +73,7 @@ const ManageApprovalsPage = () => {
                     {filters.map((filter, index) => (
                         <div key={filter} className="relative">
                             <select
-                                className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
                                 value={selectedFilters[index]}
                                 onChange={(e) => handleFilterChange(index, e.target.value)}
                             >
@@ -100,7 +100,7 @@ const ManageApprovalsPage = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[80vh] overflow-y-scroll scrollbar">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2 max-h-[80vh] overflow-y-scroll scrollbar">
 
 
                     {/* Cards */}
@@ -111,16 +111,16 @@ const ManageApprovalsPage = () => {
                             </div>
                             <div className="flex-1">
                                 <div className="font-semibold">{item.name}</div>
-                                <div className={`text-sm ${item.role == "teacher" ? "text-[#ff3366]" : "text-gray-100"}`}>{item.course}</div>
+                                <div className={`text-sm ${item.role == "teacher" ? "text-[#ff3366]" : "text-gray-500"}`}>{item.course}</div>
                          
                                 <div className="text-sm text-gray-500">{item.level}</div>
                                 <div className="text-sm text-gray-500">{item.group}</div>
                             </div>
                             <div className="flex gap-2">
-                                <button className="bg-blue-600 text-white px-3 py-1.5 text-sm rounded-full hover:bg-blue-700">
+                                <button className="bg-[#3366ff] text-white px-3 py-1.5 text-sm rounded-full hover:bg-blue-700">
                                     Approve
                                 </button>
-                                <button className="bg-pink-100 text-pink-600 px-3 py-1.5 text-sm rounded-full hover:bg-pink-200">
+                                <button className="bg-[#ff336619] text-[#ff3366] px-3 py-1.5 text-sm rounded-full hover:bg-pink-200">
                                     Reject
                                 </button>
                             </div>

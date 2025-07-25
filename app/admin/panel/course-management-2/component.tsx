@@ -14,10 +14,13 @@ import ScrollableButton from '@/components/b2c-admin/common-component/scrollable
 import { FiSearch, FiChevronDown } from "react-icons/fi";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import AddCourseModal from '@/components/b2c-admin/add-course'
+import AddCourseModal  from '@/app/admin/pop-ups-2/components/add-course'
+import RemoveCourseModal from '@/app/admin/pop-ups-2/components/RemoveCourseModal'
+
 export default function CourseManagement() {
   const [searchTerm, setSearchTerm] = useState("");
 const [isModalOpen, setIsModalOpen] = useState(false)
+   const [openModal, setOpenModal] = useState<string | null>(null);
   const courses = Array.from({ length: 9 }, () => ({
     image: "/personality.png",
     name: "Course Name",
@@ -36,6 +39,10 @@ const [isModalOpen, setIsModalOpen] = useState(false)
       <div className="bg-white rounded-2xl">
         <div className="pt-2 px-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+             <RemoveCourseModal
+                            isOpen={openModal === "removeCourse"}
+                            onClose={() => setOpenModal(null)}
+                        />
             <div className="relative flex-grow">
               <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2  h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
               <input
@@ -136,7 +143,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
                 </h3>
               </div>
 
-              <button className="rounded-full w-full px-4 py-2 cursor-pointer text-[#ff3366] bg-[#ff33661a] font-medium mt-2">
+              <button className="rounded-full w-full px-4 py-2 cursor-pointer text-[#ff3366] bg-[#ff33661a] font-medium mt-2" onClick={() => setOpenModal("removeCourse")}>
                 Remove
               </button>
             </div>

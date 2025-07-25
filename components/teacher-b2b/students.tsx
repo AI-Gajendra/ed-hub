@@ -14,6 +14,10 @@ import Footer from "@/components/layout/Footer"; // Adjust path as needed
 // import { ArrowRightLeft } from 'lucide-react'
 import Image from "next/image";
 import SearchFilterIcon from "../common-components/SearchFilterIcon";
+import ShiftStudentModal from "@/app/b2c-teacher/ct-pop-ups/popupComponent/ShiftStudent";
+import RemoveStudentModal from "@/app/b2c-teacher/ct-pop-ups/popupComponent/ConfirmStudentRemove";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366"; // For active Class/Batch/Group tabs and remove icon
@@ -81,10 +85,9 @@ const ClassBatchGroupTabButton: React.FC<{
   <button
     onClick={onClick}
     className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap
-      ${
-        isActive
-          ? `bg-[${ACCENT_PINK}] text-white `
-          : "text-[#6B7280] hover:bg-gray-200"
+      ${isActive
+        ? `bg-[${ACCENT_PINK}] text-white `
+        : "text-[#6B7280] hover:bg-gray-200"
       }`}
   >
     {tab.name}
@@ -93,57 +96,74 @@ const ClassBatchGroupTabButton: React.FC<{
 
 const StudentItemRow: React.FC<{
   student: StudentListItem;
-  onRemove: () => void;
-  onTransfer: () => void;
-}> = ({ student, onRemove, onTransfer }) => (
-  <div
-    className={`${STUDENT_ITEM_BG} border border-[#B0B0B0] rounded-2xl p-2 duration-200 flex items-center justify-between gap-3`}
-  >
-    <div className="flex items-center gap-3 min-w-0">
-      <Image
-        width={100}
-        height={100}
-        src={"/teacher-b2b/student-avatar.png"}
-        alt={student.name}
-        className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover"
-      />
-      <span className="font-light text-gray-800 truncate self-start">
-        {student.name}
-      </span>
-    </div>
-    <div className="flex items-center space-x-2 flex-shrink-0">
-      <button
-        onClick={onRemove}
-        className={`p-1.5 sm:p-2 rounded-full ${ICON_BUTTON_BG_LIGHT_PINK} hover:bg-pink-200`}
-        aria-label="Remove student"
-      >
-        <FiMinusCircle
-          className={`w-4 h-4 sm:w-4.5 sm:h-4.5 ${ICON_BUTTON_TEXT_PINK}`}
+}> = ({ student }) => {
+  const router = useRouter();
+  const [shift, setShift] = useState(false);
+  const [remove, setRemove] = useState(false);
+
+  const handleCardClick = () => {
+    router.push('/teacher-b2b/teacher-flow/student-progress');
+  };
+
+  return (
+    <div
+      onClick={handleCardClick}
+      className={`${STUDENT_ITEM_BG} border border-[#B0B0B0] rounded-2xl p-2 duration-200 flex items-center justify-between gap-3 cursor-pointer`}
+    >
+      <div className="flex items-center gap-3 min-w-0">
+        <Image
+          width={100}
+          height={100}
+          src="/teacher-b2b/student-avatar.png"
+          alt={student.name}
+          className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover"
         />
-      </button>
-      <button
-        onClick={onTransfer}
-        className={`p-1.5 sm:p-2 rounded-full ${ICON_BUTTON_BG_LIGHT_GRAY} hover:bg-gray-200`}
-        aria-label="Transfer student"
-      >
-        {/* <ArrowRightLeft className={`w-4 h-4 sm:w-4.5 sm:h-4.5 text-black`} /> */}
-        <svg
-          width={16}
-          height={16}
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-black"
+        <span className="font-light text-gray-800 truncate self-start">
+          {student.name}
+        </span>
+      </div>
+
+      <div className="flex items-center space-x-2 flex-shrink-0">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setRemove(true);
+          }}
+          className={`p-1.5 sm:p-2 rounded-full ${ICON_BUTTON_BG_LIGHT_PINK} hover:bg-pink-200`}
+          aria-label="Remove student"
         >
-          <path
-            d="M15.9241 6.38297C15.9998 6.20019 16.0196 5.99907 15.981 5.80505C15.9424 5.61102 15.847 5.43281 15.7071 5.29297L10.7071 0.292969L9.29312 1.70697L12.5861 4.99997H0.000115853V6.99997H15.0001C15.1979 7.00002 15.3912 6.94143 15.5557 6.8316C15.7202 6.72178 15.8484 6.56565 15.9241 6.38297ZM0.0761161 9.61697C0.000411265 9.79974 -0.0193799 10.0009 0.019247 10.1949C0.057874 10.3889 0.153183 10.5671 0.293116 10.707L5.29312 15.707L6.70712 14.293L3.41412 11H16.0001V8.99997H1.00012C0.80232 8.99979 0.608922 9.05832 0.444428 9.16817C0.279935 9.27801 0.15175 9.4342 0.0761161 9.61697Z"
-            fill="black"
-          />
-        </svg>
-      </button>
+          <FiMinusCircle className={`w-4 h-4 sm:w-4.5 sm:h-4.5 ${ICON_BUTTON_TEXT_PINK}`} />
+        </button>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setShift(true);
+          }}
+          className={`p-1.5 sm:p-2 rounded-full ${ICON_BUTTON_BG_LIGHT_GRAY} hover:bg-gray-200`}
+          aria-label="Transfer student"
+        >
+          <svg
+            width={16}
+            height={16}
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-black"
+          >
+            <path
+              d="M15.9241 6.38297C15.9998 6.20019 16.0196 5.99907 15.981 5.80505C15.9424 5.61102 15.847 5.43281 15.7071 5.29297L10.7071 0.292969L9.29312 1.70697L12.5861 4.99997H0.000115853V6.99997H15.0001C15.1979 7.00002 15.3912 6.94143 15.5557 6.8316C15.7202 6.72178 15.8484 6.56565 15.9241 6.38297ZM0.0761161 9.61697C0.000411265 9.79974 -0.0193799 10.0009 0.019247 10.1949C0.057874 10.3889 0.153183 10.5671 0.293116 10.707L5.29312 15.707L6.70712 14.293L3.41412 11H16.0001V8.99997H1.00012C0.80232 8.99979 0.608922 9.05832 0.444428 9.16817C0.279935 9.27801 0.15175 9.4342 0.0761161 9.61697Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <ShiftStudentModal isOpen={shift} onClose={() => setShift(false)} />
+      <RemoveStudentModal isOpen={remove} onClose={() => setRemove(false)} />
     </div>
-  </div>
-);
+  );
+};
 
 // --- StudentListViewContent Component ---
 const StudentListViewContent: React.FC = () => {
@@ -197,7 +217,7 @@ const StudentListViewContent: React.FC = () => {
         <div className="space-y-2 sm:space-y-2.5 pr-1 custom-scrollbar pb-6">
           {" "}
           {/* Adjust max-h */}
-          {[1, 2, 3,4,5].map((i) => (
+          {[1, 2, 3, 4, 5].map((i) => (
             <StudentItemRow
               key={i}
               student={{
@@ -205,8 +225,6 @@ const StudentListViewContent: React.FC = () => {
                 name: `Student ${i}`,
                 avatarUrl: "https://via.placeholder.com/40",
               }}
-              onRemove={() => {}}
-              onTransfer={() => {}}
             />
           ))}
         </div>

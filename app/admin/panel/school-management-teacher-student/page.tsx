@@ -17,19 +17,17 @@ import NamingBar from "@/components/admin/ui/naming-bar";
 import SchoolManagementReportPage from "@/components/admin/student-management-report";
 import ActiveTab from "@/components/principal/active-inactive";
 import ContentManagement from "@/components/admin/content-management";
+import Link from "next/link";
+import CreateFolderModal from "../../pop-ups-2/components/CreateFolder";
 
 export default function ManageAllApprovals() {
   const tabs = ["Analysis", "Teachers", "Students", "Content"] as const;
   type Tab = (typeof tabs)[number];
 
   const [activeTab, setActiveTab] = useState<Tab>("Teachers");
-
-  const studentClass = [
-    { className: "Class 1", active: true },
-    { className: "Class 2", active: false },
-    { className: "Class 3", active: false },
-    { className: "Class 4", active: false },
-  ];
+   const [openModal, setOpenModal] = useState<string | null>(null);
+const [selectedClass, setSelectedClass] = useState<string>('Class 1')
+  const classes = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5']
 
   return (
     <div className="bg-gray-100/60 min-h-screen">
@@ -38,9 +36,12 @@ export default function ManageAllApprovals() {
         <MaxWidthWrapper className="bg-white rounded-2xl my-10 py-4">
           {/* Search filter only for Teachers and Students */}
           {["Students", "Teachers", "Content"].includes(activeTab) && (
-            <SearchFilterBar activeTab={activeTab} />
+            <SearchFilterBar activeTab={activeTab} setOpenModal={setOpenModal} />
           )}
-
+<CreateFolderModal
+            isOpen={openModal === "createFolder"}
+            onClose={() => setOpenModal(null)}
+          />
           {/* Tabs Navigation */}
           <div className="my-6 flex items-center justify-start gap-4 sm:gap-8 font-medium">
             {tabs.map((tab) => (
@@ -61,19 +62,25 @@ export default function ManageAllApprovals() {
 
           {/* Class filter shown only for Students and Teachers */}
           {(activeTab === "Students" || activeTab === "Teachers") && (
-            <div className="flex justify-center items-center gap-8 border rounded-2xl py-2 my-4 mr-4">
-              {studentClass.map((cls, indx) => (
-                <div
-                  key={indx}
-                  className={cn(
-                    "text-white p-2 rounded-2xl",
-                    cls.active ? "bg-[#FF3366]" : "text-[#6B7280]"
-                  )}
-                >
-                  {cls.className}
-                </div>
-              ))}
-            </div>
+            <div className="rounded-2xl my-4 border border-[#E5E7EB] px-4 py-2 flex flex-wrap sm:flex-nowrap justify-start sm:justify-center items-center sm:gap-8">
+					{classes.map((cls, indx) =>
+						selectedClass === cls ? (
+							<Button
+								key={indx}
+								className="rounded-xl bg-[#FF3366] hover:bg-[#FF3366]/90 text-white px-2"
+								onClick={() => setSelectedClass(cls)}>
+								{cls}
+							</Button>
+						) : (
+							<Button
+								key={indx}
+								className="rounded-2xl bg-white hover:bg-gray-100 text-[#6B7280] px-4"
+								onClick={() => setSelectedClass(cls)}>
+								{cls}
+							</Button>
+						)
+					)}
+				</div>
           )}
 
           {/* Tab Content Rendering */}
@@ -102,8 +109,9 @@ export default function ManageAllApprovals() {
 
 interface SearchFilterBarProps {
   activeTab: "Analysis" | "Teachers" | "Students" | "Content";
+   setOpenModal: (value: string) => void;
 }
-function SearchFilterBar({ activeTab }: SearchFilterBarProps) {
+function SearchFilterBar({ activeTab,setOpenModal }: SearchFilterBarProps) {
   return (
     <div className="flex flex-wrap md:flex-nowrap gap-4 items-center">
       <div className="relative w-full">
@@ -114,7 +122,7 @@ function SearchFilterBar({ activeTab }: SearchFilterBarProps) {
         <Search className="absolute top-0 translate-y-1/4 left-2" />
       </div>
       {activeTab === "Content" && (
-        <Button className="bg-[#FF3366] w-full sm:w-fit hover:bg-[#FF3366]/90 font-normal px-2 rounded-full text-white">
+        <Button className="bg-[#FF3366] w-full sm:w-fit hover:bg-[#FF3366]/90 font-normal px-2 rounded-full text-white"onClick={() => setOpenModal("createFolder")}>
           Create Folder
         </Button>
       )}
@@ -141,7 +149,7 @@ function SearchFilterBar({ activeTab }: SearchFilterBarProps) {
 }
 
 function TeacherRectangle() {
-  return (
+  return ( <Link href={"/admin/panel/teacher-performance"}>
     <div className="bg-[#F3F4F6] rounded-2xl px-2 py-1.5 flex items-center gap-1">
       <Image
         src="/images/admin-teacher-profile.png"
@@ -158,12 +166,12 @@ function TeacherRectangle() {
           <h4 className="text-[#6B7280] text-xs">Batch Assigned</h4>
         </div>
       </div>
-    </div>
+    </div></Link>
   );
 }
 
 function StudentRectangle() {
-  return (
+  return ( <Link href={"/admin/panel/student-progress-report"}>
     <div className="bg-[#F3F4F6] rounded-2xl px-2 py-2 border border-[#B0B0B0] flex items-center gap-1">
       <Image
         src="/images/admin-student-profile.png"
@@ -180,6 +188,6 @@ function StudentRectangle() {
           <h4 className="text-[#6B7280] text-xs">Group</h4>
         </div>
       </div>
-    </div>
+    </div></Link>
   );
 }

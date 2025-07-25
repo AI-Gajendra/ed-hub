@@ -241,7 +241,7 @@ export default function SchoolManagementReportPage() {
 }
 
 function TecherChip() {
-    return (
+    return ( <Link href={"/admin/panel/school-management-teacher-student"}>
         <div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
             <Image
                 src={'/images/teacher.jpg'}
@@ -254,12 +254,12 @@ function TecherChip() {
                 <p className="font-semibold text-lg">Name</p>
                 <p className="text-[#FF3366] text-sm font-medium">Subject</p>
             </div>
-        </div>
+        </div></Link>
     )
 }
 
 function ClassBox() {
-    return (
+    return ( <Link href={"/admin/panel/school-management-student "}>
         <div className="border p-4 rounded-2xl w-full">
             <div className="flex gap-2 items-center mb-4">
                 <h1 className="text-[#1D5851] font-semibold text-lg px-2">Class 1</h1>
@@ -288,7 +288,7 @@ function ClassBox() {
                 <p>Teachers Onboarded</p>
                 <p className="text-[#5E5E5E] font-bold">20</p>
             </div>
-        </div>
+        </div></Link>
     )
 }
 

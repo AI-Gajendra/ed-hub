@@ -7,7 +7,7 @@ import { FiSearch } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 
 // SVG Icons (can be replaced with react-icons if preferred and installed)
-const CloseIcon = () => (
+export const CloseIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -95,7 +95,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
             {isOpen && (
                 <div
                     onClick={onClose}
-                    className="fixed inset-0 bg-[#0000004a] flex items-center justify-center p-4 z-50"
+                    className="fixed inset-0 bg-transparent backdrop-blur-xs flex items-center justify-center p-4 z-50"
                 >
                     <motion.div
                         onClick={(e) => e.stopPropagation()}
@@ -114,7 +114,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 };
 
 // --- Base Modal Props ---
-interface ModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }

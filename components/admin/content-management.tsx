@@ -14,17 +14,23 @@ import { Button } from "@/components/ui/button";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import ManageAccess from "@/app/admin/pop-ups-2/components/ManageAccess";
 
 export default function ContentManagement() {
-  
+  const [openModal, setOpenModal] = useState<string | null>(null);
 
   return (
     <div >
       
         <MaxWidthWrapper className="bg-white p-4 rounded-2xl my-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ManageAccess
+                          isOpen={openModal === "manageAccess"}
+                          onClose={() => setOpenModal(null)}
+                      />
             {Array.from({ length: 12 }).map((_, i) => (
-              <FolderCard key={i} />
+              <FolderCard key={i} setOpenModal={setOpenModal} />
             ))}
           </div>
         </MaxWidthWrapper>
@@ -33,7 +39,7 @@ export default function ContentManagement() {
   );
 }
 
-function FolderCard() {
+function FolderCard({ setOpenModal }: { setOpenModal: (value: string) => void }) {
   return (
     <div className="p-3 rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] flex gap-4">
         <Link href={"/admin/panel/content-management-files"}>
@@ -49,7 +55,7 @@ function FolderCard() {
         <h4 className="font-medium">Folder Name</h4>
         <p className="text-xs font-[#6B7280]">100 Files</p>
          
-        <Button className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full  w-full font-normal text-[#6B7280]">
+        <Button className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full  w-full font-normal text-[#6B7280]" onClick={() => setOpenModal("manageAccess")}>
           <Settings />
           Manage Access
         </Button>

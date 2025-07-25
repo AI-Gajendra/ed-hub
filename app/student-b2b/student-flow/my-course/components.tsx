@@ -35,7 +35,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
     if (course.isKnowledgeBox) {
         return (
-            <div onClick={() => Router.push("/student-b2b/student-flow/my-class")} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-3 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
+            <div onClick={() => Router.push("/student-b2b/student-flow/my-class")} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-3 flex flex-col h-full cursor-pointer">
                 <div className="w-full rounded-xl flex items-center justify-center mb-3 sm:mb-4"> {/* Adjusted margin */}
                     <Image src={course.imageSrc} alt={course.name} width={932} height={460} className="w-full h-auto rounded-xl object-cover aspect-[16/9] sm:aspect-video" /> {/* Added aspect ratio */}
                 </div>
@@ -50,7 +50,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     return (
         <div onClick={() => {
             if (!isCompleted) Router.push("/student-b2b/student-flow/single-course-detail")
-        }} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-2 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
+        }} className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-2 flex flex-col h-full ">
             <div className="relative w-full aspect-[16/9] sm:aspect-video rounded-xl overflow-hidden"> {/* Added aspect ratio and overflow hidden for Image */}
                 <Image src={course.imageSrc} alt={course.name} layout="fill" objectFit="contain" />
             </div>

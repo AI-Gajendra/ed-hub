@@ -5,7 +5,7 @@ import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new'
 
 const YearlyPlan = () => {
 	return <>
-		<StudentNavbarNew activeState='My course'/>
+		<StudentNavbarNew activeState='Dashboard'/>
 		<Curriculum />
 	</>
 }
