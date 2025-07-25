@@ -158,7 +158,7 @@ const router = useRouter();
 						{/* Centered Next button */}
 						<button
 							
-			  onClick={() => router.push("/student-b2b/test/page-7")}
+			  onClick={() => router.push("/student-b2b/test-question/page-7")}
 							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
 						</button>

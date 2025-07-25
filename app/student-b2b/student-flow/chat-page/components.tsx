@@ -11,6 +11,7 @@ import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilte
 export interface TeacherContact {
     id: string; name: string; avatarSrc: string;
     lastMessageTime?: string;
+    subject: string;
     // isActive prop will be passed by parent, not part of core data typically
 }
 export interface ChatMessageData {
@@ -37,6 +38,7 @@ export const TeacherListItem: React.FC<TeacherListItemProps> = ({ teacher, onCli
         <div className="flex-1 text-left pt-2  min-w-0">
             {/* Original h4: text-sm font-semibold text-black */}
             <h4 className="text-xs font-semibold text-black truncate sm:text-sm">{teacher.name}</h4>
+            <p className="text-xs text-[#6B7280]">{teacher.subject}</p>
         </div>
         {teacher.lastMessageTime && (
             // Original span: text-[10px] text-[#6B7280] ml-2 self-end flex-shrink-0
@@ -105,18 +107,15 @@ interface TeacherListSidebarProps {
     onTeacherSelect: (teacherId: string) => void;
 }
 const filter = [
-    {id: "t1", label: "Teachers"}
+    { id: "t1", label: "Teachers" }
 ]
 export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers, activeTeacherId, onTeacherSelect }) => (
     <div className="w-full lg:w-[35%] bg-white rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
         {/* Original h2: text-lg tracking-wide font-popp font-semibold text-[#FF3366] mb-4 px-2 */}
         <h2 className="text-md tracking-wide font-semibold text-[#FF3366] mb-3 px-1 sm:text-lg sm:mb-4 sm:px-2"> {/* Assuming font-popp is global */}
-            Recent Chats
+            Teachers
         </h2>
-        <div className="w-full bg-white text-black flex gap-4 items-center py-2 rounded-xl">
-            {/* Search Input */}
-            <SearchFilter bg={"bg-white"} filters={filter}/>
-        </div>
+
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
         <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey pr-1 sm:pr-2">
             {/* Your original repetition for scroll testing */}

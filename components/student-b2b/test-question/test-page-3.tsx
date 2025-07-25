@@ -131,7 +131,7 @@ const QuestionPanel = ({
 			)}
 			<div className="mt-10 flex justify-center rounded-full">
 				<button
-					onClick={() => router.push("/student-b2b/test/page-4")} className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
+					onClick={() => router.push("/student-b2b/test-question/page-4")} className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 					{currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1 ? 'Submit' : 'Next'}
 				</button>
 			</div>

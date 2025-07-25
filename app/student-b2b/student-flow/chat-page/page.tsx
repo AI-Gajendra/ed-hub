@@ -9,11 +9,14 @@ import {
     ChatMessageData // Import type
 } from './components';
 import { motion, AnimatePresence } from 'framer-motion';
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
+import Footer from '@/components/layout/Footer';
 
 // --- Sample Data (Strictly from your original) ---
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({ // Kept 10 distinct teacher entries
     id: `teacher${i + 1}`,
-    name: 'Name', // All are "Teacher Name"
+    name: 'Teacher Name', // All are "Teacher Name"
+    subject: 'Subject',
     avatarSrc: `/teacher-avatar-chat-${(i % 3) + 1}.jpg`,
     lastMessageTime: '7:00 pm',
     // isActive is handled by activeTeacherId state
@@ -63,6 +66,7 @@ export default function ChatPage() {
 
     return (
         <div className="min-h-screen bg-[#EEEEEE] flex flex-col">
+            <StudentNavbarNew activeState='Chat' />
             <main className="z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start">
                 {/* 🖥️ Desktop Layout */}
                 <div className="hidden lg:flex w-full gap-5">
@@ -126,6 +130,7 @@ export default function ChatPage() {
                 </div>
 
             </main>
+            <Footer />
         </div>
     );
 }
