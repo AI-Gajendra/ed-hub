@@ -305,6 +305,7 @@ const TeacherDashboard = () => {
                                         <div className="flex justify-between items-center">
                                             <span className="text-m font-medium">Demo Video</span>
                                             <button
+                                            onClick={() => setUploadImage(true)}
                                                 className="text-sm font-medium py-1 px-4 rounded-full text-black"
                                                 style={{ backgroundColor: PALETTE.GREEN_LIGHT }}>
                                                 Edit
@@ -373,7 +374,7 @@ const TeacherDashboard = () => {
                                     ))}
                                 </div>
                                 <div className="flex justify-end">
-                                    <button className="mt-4 px-3 font-medium text-right bg-[#3366FF] text-white py-3 rounded-full">Schedule Meeting</button>
+                                    <button onClick={() => setMeetingDetails(true)} className="mt-4 px-3 font-medium text-right bg-[#3366FF] text-white py-3 rounded-full">Schedule Class</button>
                                 </div>
                             </div>
 

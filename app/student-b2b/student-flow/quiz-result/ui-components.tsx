@@ -10,22 +10,22 @@ interface MainCategoryTabProps {
     label: string; isActive: boolean; onClick: () => void; hasDropdown?: boolean;
 }
 export const MainCategoryTab: React.FC<MainCategoryTabProps> = ({ label, isActive, onClick, hasDropdown }) => (
-	<button
-		onClick={onClick}
+    <button
+        onClick={onClick}
         // Original: flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-2xl ...
-		className={`flex items-center gap-1 px-3 py-2 text-xs rounded-xl 
+        className={`flex items-center gap-1 px-3 py-2 text-xs rounded-xl 
                    sm:gap-1.5 sm:px-5 sm:py-2.5 sm:text-sm sm:font-semibold sm:rounded-2xl 
                    transition-colors whitespace-nowrap 
-        ${ isActive ? "bg-[#FF3366] text-white -md" : "text-[#6B7280] hover:bg-[#ff33660f]" }`}
+        ${ isActive ? "bg-[#FF3366] text-white shadow-md" : "text-[#6B7280] hover:bg-[#ff33660f]" }`}
     >
-		{label}
-		{hasDropdown && <FiChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${isActive ? 'transform rotate-180' : ''} `} />}
-	</button>
+        {label}
+        {hasDropdown && <FiChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${isActive ? 'transform rotate-180' : ''} `} />}
+    </button>
 );
 
 // --- Component 2: OptionReviewDisplay (for QuestionReviewBlock) ---
 interface OptionReviewUIData { // Renamed from OptionReview to avoid conflict if that's also a data type
-	id: string; text: string; isUserSelected: boolean; isCorrect: boolean;
+    id: string; text: string; isUserSelected: boolean; isCorrect: boolean;
 }
 export const OptionReviewDisplay: React.FC<{ option: OptionReviewUIData }> = ({ option }) => {
     // Your exact logic and classes from QuestionReviewBlock's option mapping
@@ -52,11 +52,11 @@ export const OptionReviewDisplay: React.FC<{ option: OptionReviewUIData }> = ({ 
 
     return (
         // Original: w-full flex items-center p-3.5 rounded-full transition-all duration-150 ${optionStyle}
-        <div className={`w-full flex items-center p-3 rounded-full transition-all duration-150 
-                       sm:p-3.5 
+        <div className={`w-full flex items-center p-3  md:p-4 rounded-full transition-all duration-150 
+                       
                        ${selectedSpecificBg || optionStyle}`}> {/* Apply specific BG if set, else default */}
             {icon && <span className="mr-1.5 sm:mr-2">{icon}</span>}
-            <span className={`text-xs sm:text-sm font-semibold ${textColor}`}>{option.text}</span>
+            <span className={`text-xs md:text-lg font-semibold ${textColor}`}>{option.text}</span>
         </div>
     );
 };
@@ -74,36 +74,36 @@ export const SimpleIconButton: React.FC<SimpleIconButtonProps> = ({ icon, classN
 // --- Component 4: ScoreChart (Visual only, as per your original) ---
 // No props needed for this hardcoded version
 export const ScoreChartDisplay: React.FC = () => {
-	const radius = 40; const stroke = 8; const normalizedRadius = radius - stroke / 2;
-	const circumference = Math.PI * normalizedRadius * 2; // Full circumference for a full circle, then use path for semi
+    const radius = 40; const stroke = 8; const normalizedRadius = radius - stroke / 2;
+    const circumference = Math.PI * normalizedRadius * 2; // Full circumference for a full circle, then use path for semi
     const progress = 0.9; // Representing 90% for the progress part of the semi-circle
     // For a semi-circle, the "full" dasharray would be half the circumference
     const semiCircumference = circumference / 2;
-	const offset = semiCircumference * (1 - progress);
+    const offset = semiCircumference * (1 - progress);
 
-	return (
+    return (
         // Original: relative w-60 h-60 mx-auto
-		<div className="relative w-48 h-48 mx-auto sm:w-60 sm:h-60"> {/* Made responsive */}
-			<svg className="w-full h-full" viewBox="0 0 100 100">
-				<path
-					d="M 10 50 A 40 40 0 0 1 90 50" // Semi-circle path
-					className="text-[#E9EDF0]" strokeWidth="8" stroke="currentColor"
-					fill="transparent" strokeLinecap="round"
-				/>
-				<path
-					d="M 10 50 A 40 40 0 0 1 90 50" // Semi-circle path
-					className="text-[#3366FF]" strokeWidth="8"
-					strokeDasharray={semiCircumference} // Use semi-circumference
-					strokeDashoffset={offset}
-					strokeLinecap="round" stroke="currentColor" fill="transparent"
-					style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }}
-				/>
-			</svg>
-			<div className="absolute inset-0 flex items-center justify-center">
-				<div className="bg-[#E9EDF0] p-1.5 rounded-full sm:p-2"> {/* Responsive padding */}
-					<FiSmile className="w-16 h-16 text-[#3366FF] sm:w-20 sm:h-20" />
-				</div>
-			</div>
-		</div>
-	);
+        <div className="relative w-48 h-48 mx-auto sm:w-60 sm:h-60"> {/* Made responsive */}
+            <svg className="w-full h-full" viewBox="0 0 100 100">
+                <path
+                    d="M 10 50 A 40 40 0 0 1 90 50" // Semi-circle path
+                    className="text-[#E9EDF0]" strokeWidth="8" stroke="currentColor"
+                    fill="transparent" strokeLinecap="round"
+                />
+                <path
+                    d="M 10 50 A 40 40 0 0 1 90 50" // Semi-circle path
+                    className="text-[#3366FF]" strokeWidth="8"
+                    strokeDasharray={semiCircumference} // Use semi-circumference
+                    strokeDashoffset={offset}
+                    strokeLinecap="round" stroke="currentColor" fill="transparent"
+                    style={{ transition: 'stroke-dashoffset 0.5s ease-in-out' }}
+                />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-[#E9EDF0] p-1.5 rounded-full sm:p-2"> {/* Responsive padding */}
+                    <FiSmile className="w-16 h-16 text-[#3366FF] sm:w-20 sm:h-20" />
+                </div>
+            </div>
+        </div>
+    );
 };

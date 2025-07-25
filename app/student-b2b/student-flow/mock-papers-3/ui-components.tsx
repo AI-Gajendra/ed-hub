@@ -17,7 +17,7 @@ export const OptionButton: React.FC<OptionButtonProps> = ({ text, isSelected, on
 // --- Component 3: ActionButton ---
 interface ActionButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { variant?: 'primary'; fullWidthOnMobile?: boolean; }
 export const ActionButton: React.FC<ActionButtonProps> = ({ children, className, variant = 'primary', fullWidthOnMobile = false, ...props }) => {
-    let baseStyle = "font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 -md";
+    let baseStyle = "font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-md";
     const sizeStyle = "px-10 py-2.5 text-xs sm:px-12 sm:py-3 sm:text-sm";
     if (variant === 'primary') baseStyle += " bg-[#3366FF] text-white hover:bg-blue-700 focus:ring-blue-500";
     if (fullWidthOnMobile) baseStyle += " w-full sm:w-auto";

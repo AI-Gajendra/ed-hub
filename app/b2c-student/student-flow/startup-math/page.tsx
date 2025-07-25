@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Header from '@/components/b2c-student/Header'
 import { FiArrowLeft, FiArrowLeftCircle, FiArrowRightCircle, FiChevronDown } from 'react-icons/fi'
 import Image from 'next/image'
 import Footer from '@/components/layout/Footer';
+import StudentNavbarNew from '@/components/student-navbar-new';
 
 
 // --- Main Category Tab Component ---
@@ -94,7 +94,7 @@ export default function WorksheetViewPage() {
 
     return (
         <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-            <Header user={headerUser} />
+            <StudentNavbarNew activeState='My course'  />
 
             <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
                 {/* Main Category Tabs */}

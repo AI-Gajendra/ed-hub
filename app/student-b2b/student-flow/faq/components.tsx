@@ -20,18 +20,12 @@ interface FAQSectionProps {
     imageAlt?: string;
 }
 export const FAQSection: React.FC<FAQSectionProps> = ({ questions, imageSrc, imageAlt = "Illustration" }) => (
-    // Original: container mx-auto p-2 max-w-[90vw] bg-white rounded-2xl my-6 flex flex-col sm:flex-row gap-4
-    // This component will be the content *inside* that main container.
-    <div className="flex flex-col sm:flex-row gap-4 md:gap-6"> {/* Responsive gap */}
-        {/* Original: sm:w-2/5 */}
-        <div className="w-full sm:w-2/5">
-            {/* Original: space-y-4 */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 "> 
+        <div className="w-full">
             <Accordion type="single" collapsible className="w-full space-y-3 sm:space-y-4">
                 {questions.map((item, index) => (
                     <AccordionItem
-                        value={`item-${index}`} // AccordionItem needs a unique value
-                        key={index}
-                        // Original: px-4 py-2 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]
+                        value={`item-${index}`}key={index}
                         className="px-3 py-1.5 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]
                                    sm:px-4 sm:py-2 sm:rounded-xl"
                     >
@@ -48,11 +42,11 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ questions, imageSrc, ima
             </Accordion>
         </div>
         {/* Original: sm:w-3/5 */}
-        <div className="w-full sm:w-3/5 mt-4 sm:mt-0">
+        <div className="w-full">
             {/* Original Image: src={'/student.png'} width={200} height={200} alt="student" className="w-full h-full" */}
             {/* For responsiveness, provide intrinsic size and let Tailwind control display size.
                 object-contain or object-cover depending on desired image behavior. */}
-            <Image src={imageSrc} width={600} height={600} alt={imageAlt} className="w-full h-auto max-h-[400px] sm:max-h-[500px] object-contain rounded-lg" />
+            <Image src={imageSrc} width={500} height={500} alt={imageAlt} className="w-full h-auto max-h-[400px] sm:max-h-[500px] object-contain rounded-lg" />
         </div>
     </div>
 );
@@ -87,7 +81,7 @@ export const NewsletterSection: React.FC<NewsletterSectionProps> = ({
         </p>
         <form
           onSubmit={onNewsletterSubmit}
-          className="max-w-sm md:max-w-md mx-auto flex flex-row items-center bg-white rounded-full p-1 sm:p-1.5 -lg"
+          className="max-w-sm md:max-w-md mx-auto flex flex-row items-center bg-white rounded-full p-1 sm:p-1.5 shadow-lg"
         >
           <input
             type="email"

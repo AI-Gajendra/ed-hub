@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import {
     QuizResultHeader,
@@ -12,6 +11,7 @@ import {
     QuestionReviewData // Type
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
+import StudentNavbarNew from '@/components/student-navbar-new';
 // SimpleIconButton is in ui-components, used by components
 
 // --- Sample Data (from your original) ---
@@ -27,7 +27,7 @@ const reviewQuestionsData: QuestionReviewData[] = [ // Renamed for clarity
 export default function QuizTestResultPage() {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategoriesData[0]);
 
-	const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeholder-avatar-student.jpg" };
+	
 
     const handlePageBack = () => { // For QuizResultHeader back button
         if(typeof window !== "undefined") window.history.back();
@@ -35,7 +35,7 @@ export default function QuizTestResultPage() {
 
 	return (
 		<div className="bg-gray-100 min-h-screen flex flex-col">
-			<Header user={headerUser} />
+			<StudentNavbarNew activeState='My course' />
 
 			<main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
 				<div className="mb-4">
@@ -46,8 +46,8 @@ export default function QuizTestResultPage() {
 						  />
 						</div>
 				{/* Main Content Card for Test Result */}
-                {/* Original: bg-white px-3 py-6 rounded-2xl -lg */}
-				<div className="bg-white px-2 py-4 sm:px-3 sm:py-6 rounded-2xl -lg mt-4 md:mt-6 border border-gray-200"> {/* No , add border */}
+                {/* Original: bg-white px-3 py-6 rounded-2xl shadow-lg */}
+				<div className="bg-white px-2 py-4 sm:px-3 sm:py-6 rounded-2xl mt-4 md:mt-6 border border-gray-200"> {/* No shadow, add border */}
 					<QuizResultHeader
                         onBackClick={handlePageBack}
                         quizTitle="Addition Mock Test" // As per original

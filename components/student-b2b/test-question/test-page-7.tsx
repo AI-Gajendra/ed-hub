@@ -85,7 +85,7 @@ export default function DmittTest_7_Page() {
 		return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
 	}
 
-	
+
 
 	return (
 		<div className="min-h-screen bg-white flex flex-col">
@@ -105,9 +105,8 @@ export default function DmittTest_7_Page() {
 								<button
 									key={category}
 									onClick={() => setActiveCategory(category)}
-									className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${
-										activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-									}`}>
+									className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+										}`}>
 									{category}
 								</button>
 							))}
@@ -144,8 +143,8 @@ export default function DmittTest_7_Page() {
 						{' '}
 						{/* Centered Next button */}
 						<button
-							
-			  onClick={() => router.push("/student-b2b/student-flow/dashboard")}
+
+							onClick={() => router.push("/student-b2b/student-flow/dashboard")}
 							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
 						</button>
