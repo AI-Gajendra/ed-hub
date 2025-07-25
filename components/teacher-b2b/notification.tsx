@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Header from '@/components/layout/TeacherB2CHeader'
+import Header from '@/components/layout/Header'
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 

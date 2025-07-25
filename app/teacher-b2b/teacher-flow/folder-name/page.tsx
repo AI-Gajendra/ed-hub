@@ -1,9 +1,10 @@
-import FolderNamePage from '@/components/teacher-b2c/folder-name'
+import FolderName from "./component";
+
 
 export default function CourseDetail() {
     return (
         <div>
-            <FolderNamePage />
+            <FolderName />
         </div>
     )
 }
