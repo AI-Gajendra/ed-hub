@@ -213,7 +213,7 @@ const StudentProgressReport = () => {
               <h2 className='my-2 text-sm font-bold'>Assigned Teachers</h2>
               <div className="flex flex-wrap gap-4 items-stretch">
                 {Teachers.map((card, index) => (
-                  <div className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+                  <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
                     <Image className='rounded-xl' src={card.image} width={80} height={80} alt={card.name} />
                     <div className="">
                       <h2 className='font-medium'>{card.name}</h2>
@@ -226,7 +226,7 @@ const StudentProgressReport = () => {
           </div>
         </div>
       </div>
-      <div className="my-2 mx-4 rounded-2xl bg-[#f1f1f2] border px-3 py-2">
+      <div className="my-4 mx-4 rounded-2xl bg-[#f1f1f2] border px-3 py-2">
         <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-bold text-m`}>Active Courses</h2>
         <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 ">
           {courses.map((course, index) => (

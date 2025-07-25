@@ -89,9 +89,34 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageTe
 const PrincipalChatrsReport: React.FC = () => {
 	// Dummy state for month/year filter for Overall Progress chart
 	const [isOpen, setIsOpen] = useState(false);
+	const currentDate = new Date();
+
+	const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); // default selected month
+	const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear()); // visible only, not changed until arrows used
 
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
+	};
+
+	const months = [
+		"Month",
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+
+	const handleMonthSelect = (index: number) => {
+		setSelectedMonth(index);
+		setIsOpen(false);
 	};
 	// Simplified data for the line chart (hardcoded points)
 	const lineChartData = {
@@ -293,6 +318,42 @@ const PrincipalChatrsReport: React.FC = () => {
 				progress: '3/4',
 				color: PALETTE.ACCENT_RED,
 			},
+			{
+				name: 'Discipline',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Confidence',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
 		],
 	}
 
@@ -359,6 +420,14 @@ const PrincipalChatrsReport: React.FC = () => {
 		},
 	]
 
+	const handlePrevYear = () => {
+		setSelectedYear((prev) => prev - 1);
+	};
+
+	const handleNextYear = () => {
+		setSelectedYear((prev) => prev + 1);
+	};
+
 	return (
 		<>
 			<div className="bg-gray-100">
@@ -383,50 +452,85 @@ const PrincipalChatrsReport: React.FC = () => {
 						<div className="flex items-start justify-between px-2">
 							<div className="flex flex-col flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
 								<div className="flex items-center">
-									<div className="w-16 h-5 rounded-full mr-2" style={{ backgroundColor: PALETTE.ACCENT_BLUE }}></div>
-									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Basic Academic Skills</span>
+									<div
+										className="w-16 h-5 rounded-full mr-2"
+										style={{ backgroundColor: PALETTE.ACCENT_BLUE }}
+									></div>
+									<span style={{ color: PALETTE.TEXT_MEDIUM }}>
+										Basic Academic Skills
+									</span>
 								</div>
 								<div className="flex items-center">
-									<div className="w-16 h-5 rounded-full mr-2" style={{ backgroundColor: PALETTE.ACCENT_PURPLE }}></div>
-									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Critical Academic Skills</span>
+									<div
+										className="w-16 h-5 rounded-full mr-2"
+										style={{ backgroundColor: PALETTE.ACCENT_PURPLE }}
+									></div>
+									<span style={{ color: PALETTE.TEXT_MEDIUM }}>
+										Critical Academic Skills
+									</span>
 								</div>
 								<div className="flex items-center">
-									<div className="w-16 h-5 rounded-full mr-2" style={{ backgroundColor: PALETTE.ACCENT_RED }}></div>
-									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Personality Development</span>
+									<div
+										className="w-16 h-5 rounded-full mr-2"
+										style={{ backgroundColor: PALETTE.ACCENT_RED }}
+									></div>
+									<span style={{ color: PALETTE.TEXT_MEDIUM }}>
+										Personality Development
+									</span>
 								</div>
 							</div>
-							<div className="flex items-center gap-2 mt-2 sm:mt-0">
+							{/* month and june button */}
+							<div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
 								<div className="relative inline-block text-left">
 									{/* Button + Border container */}
 									<div
-										className={`bg-[#f9fafb] ${isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"
+										className={`bg-[#f9fafb] ${isOpen
+											? "rounded-t-xl border-t border-x"
+											: "rounded-xl border"
 											} box-border`}
 									>
 										<button
 											onClick={toggleDropdown}
-											className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full"
+											className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-3 w-full"
 										>
-											Month
-											{isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+											{months[selectedMonth] ?? " Month"}
+											{isOpen ? (
+												<FiChevronUp size={14} />
+											) : (
+												<FiChevronDown size={14} />
+											)}
 										</button>
 									</div>
 
 									{/* Dropdown content */}
 									{isOpen && (
-										<div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border">
-											<button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-												Option 1
-											</button>
-											<button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-												Option 2
-											</button>
+										<div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border max-h-60 overflow-y-auto no-scrollbar">
+											{months.map((month, index) => (
+												<button
+													key={month}
+													onClick={() => handleMonthSelect(index)}
+													className={`whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-700 hover:bg-gray-100 ${index === selectedMonth
+														? "font-semibold text-black"
+														: ""
+														}`}
+												>
+													{month}
+												</button>
+											))}
 										</div>
 									)}
 								</div>
-								<div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-									<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-									<span>2025</span>
-									<FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+
+								<div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+									<FiArrowLeftCircle
+										onClick={handlePrevYear}
+										className="w-4 h-4 cursor-pointer hover:text-black"
+									/>
+									<span>{selectedYear}</span>
+									<FiArrowRightCircle
+										onClick={handleNextYear}
+										className="w-4 h-4 cursor-pointer hover:text-black"
+									/>
 								</div>
 							</div>
 						</div>
@@ -484,7 +588,7 @@ const PrincipalChatrsReport: React.FC = () => {
 							backgroundColor: PALETTE.WHITE_CARD,
 						}}>
 						<h3 className="text-base font-semibold mb-3 text-[#FF3366]">{personalDevData.title}</h3>
-						<div className="space-y-3 max-h-96 scrollbar overflow-y-scroll scrollbar-thumb-red-400">
+						<div className="space-y-3 max-h-96 custom-scrollbar-thin-grey overflow-y-scroll">
 							{' '}
 							{/* Custom scrollbar */}
 							{personalDevData.skills.map((skill, i) => (

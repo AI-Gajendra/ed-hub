@@ -9,6 +9,7 @@ import {
 import { IoSettingsOutline } from "react-icons/io5";
 import MaxWidthWrapper from "../max-width-wrapper";
 import GoBack from "../principal/goback";
+import { useRouter } from "next/navigation";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
@@ -79,8 +80,11 @@ const SubjectTabButton: React.FC<{
   </button>
 );
 
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
-  <div
+const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
+  const router = useRouter()
+
+  return (<div
+  onClick={(e) => {e.stopPropagation(); router.push("/principal/content-management-files-principal")}}
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4`}
   >
     <div
@@ -105,8 +109,8 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
     <div className="w-full bg-gray-100 lg:hidden col-span-2 rounded-full p-1">
       <button className="w-full flex  items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
     </div>
-  </div>
-);
+  </div>)
+};
 
 const GeneralFilterButton: React.FC<{
   filter: GeneralFilterOption;

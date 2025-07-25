@@ -100,7 +100,7 @@ const Leave = () => {
                     <div className="text-xs absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange size={20} />From 6/8/25 to 6/6/25</div>
                   </div>
                 </div>
-                <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl shadow-md max-w-xl m-3  ">
+                <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl max-w-xl m-3  ">
                   <p className="text-center text-black font-bold text-lg">Reason</p>
                   <p className="text-center text-black-600 text-base">
                     {item.reason}</p>

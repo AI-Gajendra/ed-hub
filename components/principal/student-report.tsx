@@ -504,7 +504,7 @@ const PrincipalStudentReport: React.FC = () => {
               <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
                 {personalDevData.title}
               </h3>
-              <div className="space-y-3 max-h-96 scrollbar overflow-y-scroll pr-3">
+              <div className="space-y-3 max-h-96 custom-scrollbar-thin overflow-y-scroll pr-3">
                 {" "}
                 {/* Custom scrollbar */}
                 {personalDevData.skills.map((skill, i) => (
@@ -621,7 +621,7 @@ const PrincipalStudentReport: React.FC = () => {
               ))}
               {/* Life Skill Enhancements Card - similar structure to Personal Development */}
             </div>
-            <div className="p-5 h-full custom-scrollbar overflow-y-auto shadow-sm rounded-2xl bg-white row-span-2">
+            <div className="p-5 h-full shadow-sm rounded-2xl bg-white row-span-2">
               <div
                 style={{
                   backgroundColor: lifeSkillsData.bgColor,
@@ -677,7 +677,7 @@ const PrincipalStudentReport: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="space-y-3  overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+              <div className="space-y-3  overflow-y-auto pr-2">
                 {lifeSkillsData.skills.map((skill, i) => (
                   <ProgressCircleItem
                     key={i}
