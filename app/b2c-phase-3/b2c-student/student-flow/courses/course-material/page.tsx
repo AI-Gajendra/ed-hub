@@ -10,7 +10,7 @@ export default function Component() {
 const router = useRouter();
 
   return (
-    <StudentWrapper student>
+    <StudentWrapper student activeState="Material">
       
       <section className="bg-[#EEEEEE] p-4 md:p-6 lg:p-10">
         <div className="w-full max-w-7xl min-h-screen mx-auto space-y-6 p-4 bg-white rounded-3xl">
