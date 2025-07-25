@@ -24,7 +24,7 @@ type Student = {
 };
 
 // Dummy Data
-const fileData = Array.from({ length: 5 }).map(() => ({
+const fileData = Array.from({ length: 20 }).map(() => ({
     name: 'File Name',
     size: '300 KB',
     icon: '/common-images/file-name.png',

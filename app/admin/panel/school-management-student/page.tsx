@@ -24,8 +24,8 @@ export default function ManageAllApprovals() {
   const tabs = ["Analysis", "Teachers", "Students", "Content"] as const;
   type Tab = (typeof tabs)[number];
 
-  const [activeTab, setActiveTab] = useState<Tab>("Teachers");
-   const [openModal, setOpenModal] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<Tab>("Students");
+  const [openModal, setOpenModal] = useState<string | null>(null);
 const [selectedClass, setSelectedClass] = useState<string>('Class 1')
   const classes = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5']
 
@@ -63,24 +63,24 @@ const [selectedClass, setSelectedClass] = useState<string>('Class 1')
           {/* Class filter shown only for Students and Teachers */}
           {(activeTab === "Students" || activeTab === "Teachers") && (
             <div className="rounded-2xl my-4 border border-[#E5E7EB] px-4 py-2 flex flex-wrap sm:flex-nowrap justify-start sm:justify-center items-center sm:gap-8">
-					{classes.map((cls, indx) =>
-						selectedClass === cls ? (
-							<Button
-								key={indx}
-								className="rounded-xl bg-[#FF3366] hover:bg-[#FF3366]/90 text-white px-2"
-								onClick={() => setSelectedClass(cls)}>
-								{cls}
-							</Button>
-						) : (
-							<Button
-								key={indx}
-								className="rounded-2xl bg-white hover:bg-gray-100 text-[#6B7280] px-4"
-								onClick={() => setSelectedClass(cls)}>
-								{cls}
-							</Button>
-						)
-					)}
-				</div>
+                    {classes.map((cls, indx) =>
+                        selectedClass === cls ? (
+                            <Button
+                                key={indx}
+                                className="rounded-xl bg-[#FF3366] hover:bg-[#FF3366]/90 text-white px-2"
+                                onClick={() => setSelectedClass(cls)}>
+                                {cls}
+                            </Button>
+                        ) : (
+                            <Button
+                                key={indx}
+                                className="rounded-2xl bg-white hover:bg-gray-100 text-[#6B7280] px-4"
+                                onClick={() => setSelectedClass(cls)}>
+                                {cls}
+                            </Button>
+                        )
+                    )}
+                </div>
           )}
 
           {/* Tab Content Rendering */}
@@ -109,7 +109,7 @@ const [selectedClass, setSelectedClass] = useState<string>('Class 1')
 
 interface SearchFilterBarProps {
   activeTab: "Analysis" | "Teachers" | "Students" | "Content";
-   setOpenModal: (value: string) => void;
+  setOpenModal: (value: string) => void;
 }
 function SearchFilterBar({ activeTab,setOpenModal }: SearchFilterBarProps) {
   return (
@@ -122,7 +122,7 @@ function SearchFilterBar({ activeTab,setOpenModal }: SearchFilterBarProps) {
         <Search className="absolute top-0 translate-y-1/4 left-2" />
       </div>
       {activeTab === "Content" && (
-        <Button className="bg-[#FF3366] w-full sm:w-fit hover:bg-[#FF3366]/90 font-normal px-2 rounded-full text-white"onClick={() => setOpenModal("createFolder")}>
+        <Button className="bg-[#FF3366] w-full sm:w-fit hover:bg-[#FF3366]/90 font-normal px-2 rounded-full text-white"  onClick={() => setOpenModal("createFolder")}>
           Create Folder
         </Button>
       )}
@@ -149,7 +149,7 @@ function SearchFilterBar({ activeTab,setOpenModal }: SearchFilterBarProps) {
 }
 
 function TeacherRectangle() {
-  return ( <Link href={"/admin/panel/teacher-performance"}>
+  return (  <Link href={"/admin/panel/teacher-performance"}>
     <div className="bg-[#F3F4F6] rounded-2xl px-2 py-1.5 flex items-center gap-1">
       <Image
         src="/images/admin-teacher-profile.png"

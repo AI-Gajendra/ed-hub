@@ -56,7 +56,7 @@ export default function SchoolLoginActivity() {
 						selectedClass === cls ? (
 							<Button
 								key={indx}
-								className="rounded-2xl bg-[#FF3366] hover:bg-[#FF3366]/90 text-white px-4"
+								className="rounded-xl bg-[#FF3366] hover:bg-[#FF3366]/90 text-white px-2"
 								onClick={() => setSelectedClass(cls)}>
 								{cls}
 							</Button>
@@ -110,7 +110,8 @@ export default function SchoolLoginActivity() {
 }
 
 function TecherChip() {
-	return (
+	return ( 
+		<Link href={"/admin/panel/teacher-login-activity"}>
 		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-full">
 			<Image
 				src={'/images/teacher.jpg'}
@@ -125,12 +126,12 @@ function TecherChip() {
 				<p className="text-xs text-[#6B7280] font-light">Class Assigned</p>
 				<p className="text-xs text-[#6B7280] font-light">Batch Assigned</p>
 			</div>
-		</div>
+		</div></Link>
 	)
 }
 
 function StudentRectangle() {
-	return (
+	return ( <Link href={"/admin/panel/student-login-activity"}>
 		<div className="bg-[#F3F4F6] rounded-2xl px-2 py-2 border border-[#B0B0B0] flex items-center gap-2">
 			<Image
 				src="/images/admin-student-profile.png"
@@ -146,6 +147,6 @@ function StudentRectangle() {
 					<h4 className="text-[#6B7280] text-sm">Group</h4>
 				</div>
 			</div>
-		</div>
+		</div></Link>
 	)
 }
