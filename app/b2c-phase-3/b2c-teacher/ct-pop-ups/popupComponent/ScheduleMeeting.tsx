@@ -6,6 +6,7 @@ import { FiArrowLeft, FiSearch, FiCalendar, FiClock, FiChevronDown } from 'react
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import ConfirmPasswordModal from './ConfirmPasswordModal';
 
 // --- Data Interfaces ---
 interface SelectableItem {
@@ -119,6 +120,8 @@ export default function ScheduleMeeting({ isOpen, onClose }: {
     const [targetAudience, setTargetAudience] = useState<'Students' | 'Teacher'>('Teacher');
     const [activeCategory, setActiveCategory] = useState(studentCategories[0]);
 
+    const [passwordOpen, setPasswordOpen] = useState<boolean>(false)
+
     // State for the right-side selection list
     const [selectionType, setSelectionType] = useState<'For all' | 'For Selective'>('For Selective');
     const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
@@ -157,10 +160,10 @@ export default function ScheduleMeeting({ isOpen, onClose }: {
         };
     }, [targetAudience])
 
-    useEffect(()=>{
-        const timer = setTimeout(()=>{
+    useEffect(() => {
+        const timer = setTimeout(() => {
             updateHeight();
-        },200);
+        }, 200);
 
         return () => {
             clearTimeout(timer);
@@ -179,157 +182,169 @@ export default function ScheduleMeeting({ isOpen, onClose }: {
         });
     };
 
+    // helper to close first and then open confirm modal
+    const handleAction = () => {
+        onClose();
+
+        setTimeout(() => {
+            setPasswordOpen(true); // open the next after 300ms
+        }, 300); // same as your modal transition duration
+    };
+
     // Dynamically choose data based on the target audience
     const categories = targetAudience === 'Students' ? studentCategories : departmentCategories;
     const selectableList = targetAudience === 'Students' ? sampleStudents : sampleTeachers;
 
     return (
-        <NewBaseModal isOpen={isOpen} onClose={onClose}>
-            <div className="bg-white w-full max-w-5xl mx-auto rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8">
+        <>
+            <NewBaseModal isOpen={isOpen} onClose={onClose}>
+                <div className="bg-white w-full max-w-5xl mx-auto rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8">
 
-                {/* Header */}
-                <div className="flex flex-col justify-between gap-6 items-center mb-4 sm:mb-6">
-                    <h1 className="text-lg font-semibold">Schedule Meeting</h1>
-                    <TargetAudienceToggle activeTarget={targetAudience} onTargetChange={setTargetAudience} />
-                </div>
-
-
-                {/* Main Content Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
-                    {/* Left Column: Form Fields */}
-                    <div ref={leftRef} className="space-y-4">
-
-                        {/* Conditional Fields for "For Teacher" view */}
-                        {targetAudience === 'Teacher' && (
-                            <>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Meeting Title</label>
-                                    <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Meeting URL</label>
-                                    <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Date</label>
-                                    <div className="relative">
-                                        <input type="text" placeholder="DD / MM / YYYY" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                        <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Time</label>
-                                    <div className="relative">
-                                        <input type="text" placeholder="16:00" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                        <FiClock className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Select Course</label>
-                                    <div className="relative">
-                                        <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
-                                        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
-                                    </div>
-                                </div>
-                            </>
-                        )}
-
-                        {/* Conditional Fields for "For Students" view */}
-                        {targetAudience === 'Students' && (
-                            <>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Lecture Title</label>
-                                    <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Meeting URL</label>
-                                    <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Date</label>
-                                    <div className="relative">
-                                        <input type="text" placeholder="DD / MM / YYYY" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                        <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Time</label>
-                                    <div className="relative">
-                                        <input type="text" placeholder="16:00" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                        <FiClock className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Select Course</label>
-                                    <div className="relative">
-                                        <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
-                                        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Select Batch</label>
-                                    <div className="relative">
-                                        <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
-                                        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
-                                    </div>
-                                </div>
-                            </>
-                        )}
+                    {/* Header */}
+                    <div className="flex flex-col justify-between gap-6 items-center mb-4 sm:mb-6">
+                        <h1 className="text-lg font-semibold">Schedule Meeting</h1>
+                        <TargetAudienceToggle activeTarget={targetAudience} onTargetChange={setTargetAudience} />
                     </div>
 
-                    {/* Right Column: Selection List */}
-                    <div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-4 space-y-3">
-                        <div className="flex items-center space-x-4">
-                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For all" checked={selectionType === 'For all'} onChange={() => setSelectionType('For all')} className="form-radio text-[#3366FF]" />For all</label>
-                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF]" />For Selective {targetAudience}</label>
+
+                    {/* Main Content Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
+                        {/* Left Column: Form Fields */}
+                        <div ref={leftRef} className="space-y-4">
+
+                            {/* Conditional Fields for "For Teacher" view */}
+                            {targetAudience === 'Teacher' && (
+                                <>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Meeting Title</label>
+                                        <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Meeting URL</label>
+                                        <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Date</label>
+                                        <div className="relative">
+                                            <input type="text" placeholder="DD / MM / YYYY" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                            <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Time</label>
+                                        <div className="relative">
+                                            <input type="text" placeholder="16:00" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                            <FiClock className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Select Course</label>
+                                        <div className="relative">
+                                            <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
+                                            <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+
+                            {/* Conditional Fields for "For Students" view */}
+                            {targetAudience === 'Students' && (
+                                <>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Lecture Title</label>
+                                        <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Meeting URL</label>
+                                        <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Date</label>
+                                        <div className="relative">
+                                            <input type="text" placeholder="DD / MM / YYYY" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                            <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Time</label>
+                                        <div className="relative">
+                                            <input type="text" placeholder="16:00" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                                            <FiClock className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Select Course</label>
+                                        <div className="relative">
+                                            <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
+                                            <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm  text-black mb-1">Select Batch</label>
+                                        <div className="relative">
+                                            <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
+                                            <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
-                        {/* Search and Filter */}
-                        <div className="flex items-center space-x-2">
-                            <div className="relative flex-1">
-                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black">
-                                    <FiSearch className="h-4 w-4" />
-                                </span>
-                                <input
-                                    type="text"
-                                    placeholder="Search Student"
-                                    className="w-full rounded-full border border-[#6b7280] py-2 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
-                                />
+
+                        {/* Right Column: Selection List */}
+                        <div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-4 space-y-3">
+                            <div className="flex items-center space-x-4">
+                                <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For all" checked={selectionType === 'For all'} onChange={() => setSelectionType('For all')} className="form-radio text-[#3366FF]" />For all</label>
+                                <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF]" />For Selective {targetAudience}</label>
                             </div>
-                            <div className="relative">
-                                <StyledSelect
-                                    defaultValue="all"
-                                    placeholder="Filter"
-                                    items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Batch 1" }]}
-                                />
+                            {/* Search and Filter */}
+                            <div className="flex items-center space-x-2">
+                                <div className="relative flex-1">
+                                    <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black">
+                                        <FiSearch className="h-4 w-4" />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        placeholder="Search Student"
+                                        className="w-full rounded-full border border-[#6b7280] py-2 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
+                                    />
+                                </div>
+                                <div className="relative">
+                                    <StyledSelect
+                                        defaultValue="all"
+                                        placeholder="Filter"
+                                        items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Batch 1" }]}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        {/* Scrollable list */}
-                        <div className="space-y-1.5 h-full overflow-y-auto custom-scrollbar-thin pr-1" style={{
-                            height: leftHeight > 0 ? `${leftHeight - 124}px` : 'auto',
-                        }}>
-                            {selectableList.map(item => (
-                                <SelectableItemCard
-                                    key={item.id}
-                                    item={item}
-                                    isSelected={selectedItems.has(item.id)}
-                                    onSelect={() => handleItemSelect(item.id)}
-                                    activeTarget={targetAudience}
-                                />
-                            ))}
+                            {/* Scrollable list */}
+                            <div className="space-y-1.5 h-full overflow-y-auto custom-scrollbar-thin pr-1" style={{
+                                height: leftHeight > 0 ? `${leftHeight - 124}px` : 'auto',
+                            }}>
+                                {selectableList.map(item => (
+                                    <SelectableItemCard
+                                        key={item.id}
+                                        item={item}
+                                        isSelected={selectedItems.has(item.id)}
+                                        onSelect={() => handleItemSelect(item.id)}
+                                        activeTarget={targetAudience}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Footer Button */}
-                <div className="mt-6 sm:mt-8 flex justify-center">
-                    <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full transition-colors font-medium cursor-pointer"
-                        onClick={onClose}>
-                        Schedule
-                    </button>
-                </div>
+                    {/* Footer Button */}
+                    <div className="mt-6 sm:mt-8 flex justify-center">
+                        <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full transition-colors font-medium cursor-pointer"
+                            onClick={() => { handleAction() }}>
+                            Schedule
+                        </button>
+                    </div>
 
-            </div>
-        </NewBaseModal>
+                </div>
+            </NewBaseModal>
+            <ConfirmPasswordModal isOpen={passwordOpen} onClose={() => setPasswordOpen(false)} />
+        </>
     );
 }
 

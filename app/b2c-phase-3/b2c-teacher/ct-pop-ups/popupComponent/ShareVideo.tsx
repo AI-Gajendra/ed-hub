@@ -10,7 +10,7 @@ const ShareVideoPopup: React.FC<PopupPropB2CTeacher> = ({
     <TeacherB2CBaseModal onClose={onClose} isOpen={isOpen} maxWidth='max-w-[400px]'> 
         <div className=" p-6 relative">
       {/* Close Button */}
-     <button className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black">
+     <button onClick={onClose} className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black">
         <X size={20} />
       </button>
 

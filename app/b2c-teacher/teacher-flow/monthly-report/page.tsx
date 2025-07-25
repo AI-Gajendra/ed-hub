@@ -75,7 +75,7 @@ export default function FeedbackDashboardPage() {
                 </div>
             </TeacherB2CWrapper>
             <Footer />
-            <SubmitMonthEndReportModal isOpen={publish} onClose={() => setPublish(true)} />
+            <SubmitMonthEndReportModal isOpen={publish} onClose={() => setPublish(false)} />
         </>
     );
 }

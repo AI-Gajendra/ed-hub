@@ -6,6 +6,7 @@ import React, { useState, useMemo } from "react";
 import {
   FiArrowLeft,
   FiSearch,
+  FiShare2,
 } from "react-icons/fi";
 import Image from 'next/image'
 import SearchFilterIcon from "../common-components/SearchFilterIcon";
@@ -14,6 +15,7 @@ import TabSwitch from "../common-components/TabSwitch";
 import Link from "next/link";
 import FileShare from "@/app/b2c-teacher/new-pop-ups/popupComponent/FileShare";
 import { useRouter } from "next/navigation";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 // Define the File interface
 interface ManagedFile {
@@ -44,7 +46,7 @@ const dummyFiles: ManagedFile[] = [
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
   const [fileShare, setFileShare] = useState(false);
   return (
-    <div className="grid grid-cols-2 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
+    <div className="grid grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
       <div className="flex items-center space-x-3 min-w-0 justify-self-start">
         <Image
           src={"/teacher-b2b/pdf.png"}
@@ -60,15 +62,15 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
           {file.name}
         </span>
       </div>
-      <span className="text-sm text-gray-500 flex-shrink-0 ml-4 justify-self-end ">
+      <span className="text-sm text-gray-500 flex-shrink-0 ml-4 justify-self-center">
         {file.size}
       </span>
-      {/* <div className="flex gap-4 text-gray-500 justify-self-end">
+      <div className="flex gap-4 text-gray-500 justify-self-end">
         <MdOutlineFileDownload size={20} />
         <button className="" onClick={() => setFileShare(true)}>
           <FiShare2 size={20} />
         </button>
-      </div> */}
+      </div>
       <FileShare isOpen={fileShare} onClose={() => setFileShare(false)} />
     </div>
   );

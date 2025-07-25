@@ -1,7 +1,9 @@
-import React from "react";
+import SubmissionPopup from "@/app/b2c-teacher/teacher-flow/pop-ups/submission-popup/page";
+import React, { useState } from "react";
 
 // Main App component
 export default function ExamReport() {
+  const [showSubmissionPopup, setShowSubmissionPopup] = useState<boolean>(false)
   // Sample data for exam results
   const examResults = [
     {
@@ -134,11 +136,12 @@ export default function ExamReport() {
 
         {/* Publish Report Button */}
         <div className="flex justify-center mt-8">
-          <button className="bg-[#3366ff] hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          <button onClick={() => setShowSubmissionPopup(true)} className="bg-[#3366ff] hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             Publish Report
           </button>
         </div>
       </div>
+      <SubmissionPopup show={showSubmissionPopup} onClose={() => setShowSubmissionPopup(false)} />
     </div>
   );
 }
