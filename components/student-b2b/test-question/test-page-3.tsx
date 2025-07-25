@@ -208,7 +208,7 @@ export default function DmittTest_3_Page() {
 
 			{/* This container defines the fixed height area below the header */}
 			<div className="flex-1 flex lg:h-[calc(100dvh-64px)] p-4 sm:p-6 lg:p-8">
-				<main className="w-full max-w-[53rem] flex flex-col lg:flex-row gap-8">
+				<main className="w-full max-w-[90rem] mx-auto flex flex-col lg:flex-row gap-8">
 					<QuestionPanel
 						activeCategory={activeCategory}
 						setActiveCategory={setActiveCategory}
