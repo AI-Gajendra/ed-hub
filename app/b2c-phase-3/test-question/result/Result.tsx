@@ -141,7 +141,7 @@ const router = useRouter();
       <div className="text-center">
         <button
 
-onClick={() => router.push("/student-b2b/student-flow/dashboard")} 
+onClick={() => router.push("/b2c-phase-3/membership/recommended")} 
          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-12 rounded-full text-md transition duration-150 ease-in-out shadow-md hover:shadow-lg">
           Next
         </button>

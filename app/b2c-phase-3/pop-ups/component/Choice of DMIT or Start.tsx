@@ -60,10 +60,11 @@ const DmitStart: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
                 <h4 className="text-xl font-medium">Course Plan Started !!</h4>
                 <p className="text-sm max-w-[30ch]  text-[#2e2e2e]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+                </p> 
+                 <Link href={"/b2c-phase-3/test-question/page-1"}>
                 <button className="w-fit bg-[#3366FF] text-white text-sm font-medium px-6 py-2 rounded-full hover:bg-[#295cd9] transition">
                   Take DMIT Test
-                </button>
+                </button></Link>
               </div>
             </div>
           </div>
