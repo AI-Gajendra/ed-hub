@@ -11,6 +11,7 @@ import {
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 import StudentWrapper from '@/components/layout/StudentB2B/student-wrapper';
+import { useRouter } from 'next/navigation';
 
 // --- Sample Data (from your original) ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];
@@ -26,8 +27,6 @@ export default function QuizTestPage() {
   const [activeMainCategory, setActiveMainCategory] = useState(mainCategoriesData[0]);
   const [answers, setAnswers] = useState<Record<number, string | null>>({});
   const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES_MOCK_TEST * 60);
-
-  const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeholder-avatar-student.jpg" };
 
   useEffect(() => {
     if (timeLeft <= 0) {
@@ -49,9 +48,10 @@ export default function QuizTestPage() {
     alert("Test Submitted! (Check console)");
   };
 
-  const handlePageBack = () => { // For the QuizHeader back button
-    if (typeof window !== "undefined") window.history.back();
-  };
+ const handlePageBack = () => {
+  const router = useRouter();
+  router.push('/student-b2b/student-flow/video-screen');
+};
 
   return (
     <StudentWrapper student activeState='My course'>

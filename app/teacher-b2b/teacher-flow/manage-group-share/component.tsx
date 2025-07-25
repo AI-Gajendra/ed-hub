@@ -17,7 +17,7 @@ const dummyGroups = Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
     name: "Group Name",
     students: "No. of Students",
-    image: "/teacher-b2b/manage-group-share.png", // Replace with actual path later
+    image: "/b2c-teacher/manage-group-share.png", // Replace with actual path later
 }));
 
 const GroupCardList = () => {

@@ -2,23 +2,25 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Header from '@/components/layout/Header';
 import { IoIosArrowDown } from "react-icons/io";
 import {
-  FiArrowLeft,
   FiArrowLeftCircle,
   FiArrowRightCircle,
   FiChevronDown,
 } from "react-icons/fi";
-import GoBack from "@/components/principal/goback";
-import { format } from "date-fns";
-import TabSwitch from "@/components/common-components/TabSwitch";
 import BackButton from "@/components/common-components/BackButton";
+import Footer from "@/components/layout/Footer";
+import MonthTab from "@/components/common-components/MonthTab/MonthTab";
+import DropdownBtnXl from "@/components/teacher-b2c/common-components/DropdownXl";
+import TabSwitch from "@/components/common-components/TabSwitch";
+import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 const categories = [
-  "Subject 1",
-  "Subject 2",
-  "Subject 3",
-  "Subject 4",
-  "Subject 5",
+  "Category 1",
+  "Category 2",
+  "Category 3",
+  "Category 4",
+  "Category 5",
 ];
 const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
@@ -41,7 +43,7 @@ const PALETTE = {
   WHITE_CARD: "#FFFFFF",
 };
 
-const sessionData = Array.from({ length: 134 }, () => ({
+const sessionData = Array.from({ length: 12 }, () => ({
   title: `Unit Name`,
   content: `1. REAL NUMBERS
 
@@ -62,52 +64,38 @@ type
 `,
 }));
 const Curriculum = () => {
-  const [selected, setSelected] = useState(categories[0]);
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const handlePrevious = () => {
-    const prevMonth = new Date(currentDate);
-    prevMonth.setMonth(prevMonth.getMonth() - 1);
-    setCurrentDate(prevMonth);
-  };
+    const tab = ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5", ]
+  const [selected, setSelected] = useState(tab[0]);
 
-  const handleNext = () => {
-    const nextMonth = new Date(currentDate);
-    nextMonth.setMonth(nextMonth.getMonth() + 1);
-    setCurrentDate(nextMonth);
-  };
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+    const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/teacher-b2b/profile.png" };
+
+    const filter = [{ id: 'f1', label: 'Weekly' }];
+
   return (
     <div className="bg-[#eeeeee]">
-      <BackButton Heading="Yearly Plan Overview" />
+        <Header user={headerUser} />
+     <BackButton Heading={'Curriculum'}/>
 
-      <div className="mx-auto bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
-        <TabSwitch tabs={categories} selected={selected} onChange={setSelected} />
+      <TeacherB2CWrapper>
+     <div className="mb-2">
+           <TabSwitch tabs={tab} selected={selected} onChange={setSelected}/>
+     </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
+        <div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 ">
           {/* Left column */}
-          <div className="bg-white p-6 rounded-2xl">
+         <div className="bg-white  p-6 rounded-2xl">
             <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
-              <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b-2 border-[#3366FF] w-fit">
-                Modules
+              <h2 className="text-md sm:text-lg font-semibold h-fit text-[#3366FF] border-b-[2px] border-[#3366FF] w-fit">
+                Session
               </h2>
               <div className="flex items-center h-fit gap-2 sm:gap-3 sm:self-center">
-                <FilterDropdown
-                  value={"Week 1"}
-                  options={[
-                    { value: "Weekly", label: "Weekly" },
-                    { value: "Week 1", label: "Week 1" },
-                    { value: "Week 2", label: "Week 2" },
-                  ]} // Added Weekly as per original
-                />
-                <DateNavigatorWithArrows
-                  currentDate={format(currentDate, "MMMM yyyy")}
-                  onPrevious={handlePrevious}
-                  onNext={handleNext}
-                />
+               <DropdownBtnXl filters={filter}/>
+                <MonthTab />
               </div>
             </div>
 
-            <div className="space-y-2 overflow-y-scroll custom-peach-scrollbar max-h-[1200px]">
+            <div className="space-y-2">
               {sessionData.map((item, index) => {
                 const isOpen = activeIndex === index;
 
@@ -116,7 +104,7 @@ const Curriculum = () => {
                     key={index}
                     className={`${
                       isOpen ? "p-6" : "border border-[#E5E7EB]"
-                    } relative z-20 rounded-2xl mr-3 transition-all`}
+                    } relative z-20 rounded-2xl overflow-hidden transition-all`}
                   >
                     {/* Filtered background image */}
                     <div
@@ -129,15 +117,13 @@ const Curriculum = () => {
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
                       className={`${
-                        isOpen ? "bg-white px-6 py-2 " : ""
+                        isOpen ? "bg-white px-6 py-2" : ""
                       } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
-                      <span className="text-lg">
-                        {isOpen ? item.title : "Unit Name "}
-                      </span>
+                      <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
                       <div>
                         {isOpen ? (
-                          <div className="flex gap-4  font-normal text-[#6B7280] text-xs items-center">
+                          <div className="flex gap-3 text-[#6B7280] text-xs items-center">
                             <p>Periods: 18</p>
                             <p>Marks: 20</p>
                             <svg
@@ -193,7 +179,7 @@ const Curriculum = () => {
           {/* Right column with two rows */}
           <div className="font-medium">
             <div className="bg-white  md:p-8 h-fit p-6 rounded-2xl overflow-auto">
-              <h3 className="text-m text-blue-600 text-center font-semibold mb-4">
+              <h3 className="text-md sm:text-lg text-[#3366ff] text-center tracking-wider font-semibold mb-4">
                 COURSE STRUCTURE CLASS - IX
               </h3>
 
@@ -238,8 +224,8 @@ const Curriculum = () => {
               {/* Title */}
               <div className="text-center space-y-1">
                 <h2 className="text-lg font-semibold uppercase">Mathematics</h2>
-                <p className="font-medium">Question Paper Design</p>
-                <p>Class - IX</p>
+                <p className="font-medium text-lg">Question Paper Design</p>
+                <p  className="font-medium text-lg">Class - IX</p>
                 <div className="flex justify-between mt-2 text-sm font-medium px-2">
                   <span>Time: 3 Hrs.</span>
                   <span>Max. Marks: 80</span>
@@ -369,7 +355,8 @@ const Curriculum = () => {
             </div>
           </div>
         </div>
-      </div>
+      </TeacherB2CWrapper>
+      <Footer />
     </div>
   );
 };
@@ -387,11 +374,17 @@ export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({
   onNext,
 }) => (
   <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
-    <button onClick={onPrevious} aria-label="Previous month">
+    <button
+      onClick={onPrevious}
+      aria-label="Previous month"
+    >
       <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
     </button>
     <span className="">{currentDate}</span>
-    <button onClick={onNext} aria-label="Next month">
+    <button
+      onClick={onNext}
+      aria-label="Next month"
+    >
       <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
     </button>
   </div>

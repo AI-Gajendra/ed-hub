@@ -348,7 +348,7 @@ const PrincipalDashboardPage: React.FC = () => {
 							</div>
 						</div>
 						<div
-							className="flex-grow overflow-y-auto space-y-1 pb-1 max-h-85 scrollbar scrollbar-thumb-rounded-full"
+							className="flex-grow overflow-y-auto space-y-1 pr-2 pb-1 max-h-85 scrollbar"
 							style={{
 								
 							}}
@@ -421,7 +421,7 @@ const PrincipalDashboardPage: React.FC = () => {
 							</div>
 						</div>
 						<div
-							className={`flex-grow overflow-y-auto space-y-1 pb-1 max-h-85 scrollbar`}>
+							className={`flex-grow overflow-y-auto space-y-1 pr-2 pb-1 max-h-85 scrollbar`}>
 							{studentPerformanceData.map(item => (
 								<div
 									key={item.id}

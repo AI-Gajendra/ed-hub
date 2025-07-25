@@ -61,10 +61,10 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-x-4 mt-6 md:mt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-x-4 mt-6 md:mt-8">
                     <div
 
-                        onClick={() => router.push("/student-b2b/student-flow/assessment-result")} className="bg-[#F3F4F6] cursor-pointer p-3 md:p-4 rounded-xl text-center">
+                        onClick={() => router.push("/student-b2b/test-question/result")} className="bg-[#F3F4F6] cursor-pointer p-3 md:p-4 rounded-xl text-center">
                         <p className="text-sm font-semibold text-black">DMT & Skill Test</p>
                         <p className="text-sm font-medium text-black mt-1">Score: {studentData.dmitScore}</p>
                     </div>
@@ -74,11 +74,7 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
                         <p className="text-sm font-semibold text-black">Assessment Report</p>
                         <p className="text-sm font-medium text-black mt-1">{studentData.assessmentReportDate}</p>
                     </div>
-                    <div
-                        onClick={() => setBtn(true)} className="flex items-center cursor-pointer justify-center bg-[#F3F4F6] relative p-3 md:p-4 rounded-xl text-center">
-                        <p className="text-sm font-semibold  text-black">Report</p>
-                        <span className="absolute -top-1 -right-1 rounded-full w-3 h-3 bg-[#FFCC00]"></span>
-                    </div>
+                   
                 </div>
                 <div className="mt-6 bg-[#FEF9C3] border-l-4 border-yellow-400 p-3 md:p-4 rounded-l-xl"> {/* Adjusted: rounded-l-xl not rounded-r-xl */}
                     <h3 className="text-sm font-semibold text-yellow-800 mb-1">Objective of the Year</h3>
@@ -167,29 +163,7 @@ export const ClassesSummaryCard: React.FC<ClassesSummaryCardProps> = ({ classSta
 
     return (
         <>
-            <div className="bg-white rounded-2xl p-4 text-center">
-                <h3 className="text-lg font-semibold text-[#3366ff] mb-2">
-                    Need to Reschedule a Class?
-                </h3>
-                <p className="text-sm text-gray-500 mb-4">
-                    You can submit a request if your child is unavailable for the upcoming session.
-                </p>
-                <div className="flex justify-center gap-3">
-                    <button
-                        className="bg-[#FFEDEF] text-[#FF3366] text-sm font-medium px-4 py-2.5 rounded-full"
-                        onClick={() => setCancelWaringPop(true)}
-                    >
-                        Cancel a Lecture
-                    </button>
-                    <button
-                        className="bg-[#246BFD] text-white text-sm font-medium px-4 py-2.5 rounded-full"
-                        onClick={() => setWarningPop(true)}
-                    >
-                        Request Reschedule
-                    </button>
-                </div>
-            </div>
-
+            
             <div className="bg-white rounded-2xl p-4 md:p-6">
                 <div className="flex justify-between items-start xs:items-center mb-4 gap-2">
                     <h2 className="text-md md:text-lg font-semibold text-black">Classes</h2>

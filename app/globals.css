@@ -160,7 +160,6 @@ button{
 
   .scrollbar::-webkit-scrollbar-track {
     border-radius: 100vh;
-    @apply bg-gray-100
   }
 
   .scrollbar::-webkit-scrollbar-thumb {

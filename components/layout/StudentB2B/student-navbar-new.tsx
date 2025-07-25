@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import AskMeAnything from "@/app/b2c-student/pop-ups/popupComponent/AskMeAnything";
 
-export default function StudentNavbarNew({ activeState = "My Learnings" }: { activeState?: string }) {
+export default function StudentNavbarNew({ activeState = "Dashboard" }: { activeState?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openModal, setOpenModal] = useState<string | null>(null);
@@ -36,7 +36,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
   const navItems = [
     {
       href: "/student-b2b/student-flow/dashboard",
-      label: "My Learnings",
+      label: "Dashboard",
       icon: Smile,
     },
     {
@@ -44,11 +44,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
       label: "My course",
       icon: LayoutGrid,
     },
-    {
-      href: "/student-b2b/student-flow/courses/course-material",
-      label: "Material",
-      icon: Database,
-    },
+   
     {
       href: "/student-b2b/student-flow/chat-page",
       label: "Chat",
@@ -89,13 +85,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
             </div>
 
             <div className="hidden md:flex items-center space-x-2 xl:space-x-4">
-              <button onClick={() => {
-                if (typeof window !== "undefined") {
-                  window.history.back();
-                }
-              }} className="p-2 cursor-pointer bg-white/10 rounded-full transition-colors">
-                <ArrowLeft className="h-5 w-5" />
-              </button>
+             
               {/* Center - Navigation Items */}
               <div className="flex items-center space-x-2 xl:space-x-4 bg-[#E3F2FD26] rounded-full p-1">
                 {navItems.map((item) => {

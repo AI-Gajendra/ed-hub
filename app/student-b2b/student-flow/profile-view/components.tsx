@@ -1,10 +1,11 @@
 
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiEdit2 } from 'react-icons/fi';
 import { FormInput } from './ui-components';
+import SavedToast from '@/components/common-components/SavedToast';
 
 
 interface ProfileFormData {
@@ -34,13 +35,25 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
   onProfileSave,
   profileAvatarSrc,
 }) => {
+   const [showToast, setShowToast] = useState(false);
+    
+      const handleDownload = () => {
+        // simulate download
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 2000);
+      };
+       const handleBackClick = () => {
+    if (typeof window !== "undefined") {
+      window.history.back();
+    }
+  };
   return (
     
     <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8">
       
     <div className="flex items-center gap-2 mb-4 sm:mb-6">
                 <button 
-                    // onClick={handleBackClick} 
+                    onClick={handleBackClick} 
                     className="p-1 text-gray-600 hover:text-blue-600 focus:outline-none"
                     aria-label="Go back"
                 >
@@ -103,7 +116,8 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
           <div className="md:col-start-auto mt-auto"> {/* Control button position if needed, or let it flow */}
              {/* Forcing it to the next row on md if needed, or just ensure it takes the full width of a column */}
             <button
-              type="submit"
+              type="button"
+              onClick={handleDownload} 
               className="w-full h-11 sm:h-12 md:h-auto rounded-full sm:rounded-3xl px-8 sm:px-10 py-2.5 sm:py-3 bg-blue-600 text-white font-medium text-xs sm:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors "
             >
               Save
@@ -111,6 +125,7 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
           </div>
         </div>
       </form>
+      <SavedToast show={showToast}  />
     </div>
   );
 };

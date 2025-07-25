@@ -66,7 +66,7 @@ export default function StudentDashboardPage() {
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
-			<StudentNavbarNew />
+			<StudentNavbarNew activeState='Dashboard' />
 			<main className="container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 flex-grow">
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
 					<div className="lg:col-span-2 space-y-4 md:space-y-6">

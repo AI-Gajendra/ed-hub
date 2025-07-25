@@ -148,7 +148,7 @@ const FileManagementContent: React.FC = () => {
   );
 };
 
-export default function StudentSubmittedPapersPage() {
+export default function FolderName() {
   const handleBackClick = () => {
     if (typeof window !== "undefined") {
       window.history.back();
