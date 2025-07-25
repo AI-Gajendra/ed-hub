@@ -19,15 +19,14 @@ const InfoBadge = ({
 }) => (
 	<div className={`flex items-center gap-2 px-4 py-2  rounded-full ${bgColor} ${textColor}`}>
 		<Icon className="w-4 h-4" />
-		<span className="text-md font-medium ">{text}</span>
+		<span className="text-md font-semibold ">{text}</span>
 	</div>
 )
 
 export default function TestStartPage() {
+	const router = useRouter()
 	const loremIpsum =
 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-
-		const router = useRouter();
 	return (
 		<div
 			className="min-h-screen flex items-center justify-center p-6"
@@ -112,7 +111,7 @@ export default function TestStartPage() {
 						{' '}
 						{/* mt-auto pushes button down if content is short */}
 						<button
-						onClick={() => router.push("/student-b2b/test-question/page-1")} 
+							onClick={() => router.push("/student-b2b/test-question/page-1")} 
 							className="px-12 py-3 bg-blue-600 text-white font-semibold text-sm rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md">
 							Start
 						</button>

@@ -24,7 +24,7 @@ const InfoBadge = ({
     className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-sm ${bgColor} ${textColor}`}
   >
     <Icon className="w-4 h-4" />
-    <span className="text-sm font-medium">{text}</span>
+    <span className="text-sm font-semibold">{text}</span>
   </div>
 );
 
