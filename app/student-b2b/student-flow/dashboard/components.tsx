@@ -64,7 +64,7 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-x-4 mt-6 md:mt-8">
                     <div
 
-                        onClick={() => router.push("/student-b2b/student-flow/assessment-result")} className="bg-[#F3F4F6] cursor-pointer p-3 md:p-4 rounded-xl text-center">
+                        onClick={() => router.push("/student-b2b/test-question/result")} className="bg-[#F3F4F6] cursor-pointer p-3 md:p-4 rounded-xl text-center">
                         <p className="text-sm font-semibold text-black">DMT & Skill Test</p>
                         <p className="text-sm font-medium text-black mt-1">Score: {studentData.dmitScore}</p>
                     </div>

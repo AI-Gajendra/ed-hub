@@ -11,6 +11,8 @@ import {
 } from "react-icons/fi";
 import GoBack from "@/components/principal/goback";
 import { format } from "date-fns";
+import TabSwitch from "@/components/common-components/TabSwitch";
+import BackButton from "@/components/common-components/BackButton";
 const categories = [
   "Subject 1",
   "Subject 2",
@@ -60,7 +62,7 @@ type
 `,
 }));
 const Curriculum = () => {
-  const [selected, setSelected] = useState<string>("Subject 1");
+  const [selected, setSelected] = useState(categories[0]);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const handlePrevious = () => {
@@ -76,43 +78,10 @@ const Curriculum = () => {
   };
   return (
     <div className="bg-[#eeeeee]">
-      <GoBack GoBackHeading="Yearly Plan Overview" />
+      <BackButton Heading="Yearly Plan Overview" />
 
       <div className="mx-auto bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
-        <div className="px-4 pt-4">
-          <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
-            <div className="flex flex-wrap md:text-base text-xs md:justify-center justify-start px-2 md:gap-4 gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelected(category)}
-                  className={`
-                    relative md:px-5 px-2 py-2 rounded-2xl cursor-pointer font-medium transition-colors duration-200
-                    ${
-                      selected === category
-                        ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
-                        : "text-gray-700 hover:bg-gray-200"
-                    }
-                  `}
-                >
-                  {/* Animated background highlight */}
-                  {selected === category && (
-                    <motion.div
-                      layoutId="highlight"
-                      className={`absolute inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-2xl z-0`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.1 }}
-                    />
-                  )}
-                  {/* Button text above animation layer */}
-                  <span className="relative z-10">{category}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
+        <TabSwitch tabs={categories} selected={selected} onChange={setSelected} />
 
         <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
           {/* Left column */}

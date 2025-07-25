@@ -1,6 +1,7 @@
 // ui-components.tsx
 "use client";
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import {
     FiChevronDown, FiPlayCircle, FiChevronRight,
@@ -32,9 +33,12 @@ interface VideoItemProps {
     topic: string;
     onClick?: () => void; // Added onClick for potential future use
 }
-export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => (
+export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => {
+    const router = useRouter();
+    return(
 	<button
-        onClick={onClick}
+       
+onClick={() => router.push("/student-b2b/student-flow/video-screen")} 
         className="w-full flex items-center justify-between p-2.5 text-left border border-[#E5E7EB] bg-[#F3F4F6] hover:bg-[#E5E7EB]/70 rounded-2xl sm:rounded-3xl transition-colors" // rounded-2xl for mobile
     >
 		<div className="flex items-center gap-2 sm:gap-3">
@@ -44,7 +48,7 @@ export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => (
 		</div>
 		<FiChevronRight className="w-4 h-4 text-black" />
 	</button>
-);
+)};
 
 // --- Component 3: DateNavigatorWithArrows ---
 interface DateNavigatorProps {

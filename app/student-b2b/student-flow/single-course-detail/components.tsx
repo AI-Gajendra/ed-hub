@@ -1,37 +1,81 @@
 // components.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   FiChevronDown,
   FiChevronUp,
-
+  FiFileText as FiFileIcon,
   FiDownload,
 } from "react-icons/fi";
-import { DateNavigatorWithArrows, FilterDropdown } from "./ui-components";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  ContentTab,
+  VideoItem,
+  DateNavigatorWithArrows,
+  FilterDropdown,
+  ActionButton,
+} from "./ui-components";
+import DownloadToast from "@/components/common-components/DownloadToast";
 import MonthTab from "@/components/common-components/MonthTab/MonthTab";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { SelectTrigger } from "@/components/ui/select";
 
-// --- Interfaces ---
+import { Select, SelectContent, SelectItem,  SelectValue } from "@/components/ui/select";
+
+// --- Learning Accordion Interfaces & Component ---
 export interface LearningWeek {
+  // Export if used by page.tsx
   id: string;
   title: string;
   videoCount: number;
   videos: { id: string; topic: string }[];
 }
+interface LearningAccordionProps {
+  week: LearningWeek;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+export const LearningAccordion: React.FC<LearningAccordionProps> = ({
+  week,
+  isOpen,
+  onToggle,
+}) => (
+  <div className="bg-[#F9FAFB] rounded-2xl  overflow-hidden border border-[#E5E7EB]">
+    <button
+      onClick={onToggle}
+      className="w-full flex justify-between items-center p-3 sm:p-4 hover:bg-[#F3F4F6] focus:outline-none transition-colors"
+    >
+      <div>
+        <h3 className="text-sm sm:text-md mb-0.5 sm:mb-1 font-medium text-black text-left">
+          {week.title}
+        </h3>{" "}
+        {/* Added text-left */}
+        <p className="text-[10px] sm:text-xs text-left mt-1 sm:mt-1.5 text-gray-500">
+          {week.videoCount} videos
+        </p>
+      </div>
+      {isOpen ? (
+        <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+      ) : (
+        <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+      )}
+    </button>
+    {isOpen && (
+      <div className="p-3 sm:p-4 bg-[#F9FAFB] space-y-1.5 sm:space-y-2">
+        {week.videos.map((video) => (
+          <VideoItem key={video.id} topic={video.topic} />
+        ))}
+      </div>
+    )}
+  </div>
+);
+
+// --- Upcoming Class Interfaces & Component ---
 export interface UpcomingClass {
   id: number;
   title: string;
   teacher: string;
   description: string;
   time: string;
-  date: string;
-}
-export interface CourseMaterial {
-  id: number;
-  fileName: string;
   date: string;
 }
 
@@ -49,113 +93,6 @@ const StyledSelect: React.FC<{
       {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
     </SelectContent>
   </Select>
-);
-
-// --- Full Component Definitions ---
-export const LearningContentCard: React.FC<{
-  tabs: string[];
-  activeTab: string;
-  onTabClick: (tab: string) => void;
-  currentWeekFilter: string;
-  onWeekFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  currentMonth: string;
-  courseTitle: string;
-  courseSubtitle: string;
-  learningWeeks: LearningWeek[];
-  openAccordionIds: string[];
-  onAccordionToggle: (weekId: string) => void;
-  leftRef: React.RefObject<HTMLDivElement | null>
-}> = (props) => (
-  <div className="bg-white rounded-2xl p-4 md:p-6" ref={props.leftRef}>
-
-    <div className="mb-4 md:mb-6 flex flex-col lg:flex-row md:items-center justify-between gap-4">
-      {/* Tabs */}
-      <nav
-        className="w-full md:w-auto -mb-px flex overflow-x-auto space-x-1 lg:space-x-2 custom-scrollbar-thin"
-        aria-label="Content Tabs"
-      >
-        {props.tabs.map((tab) => (
-          <ContentTab
-            key={tab}
-            label={tab}
-            isActive={props.activeTab === tab}
-            onClick={() => props.onTabClick(tab)}
-          />
-        ))}
-      </nav>
-
-      {/* Filters */}
-      <div className="w-full md:w-auto flex items-center gap-2 sm:gap-3 justify-center md:justify-end">
-        <StyledSelect
-          defaultValue="all"
-          placeholder="Filter"
-          items={[
-            { value: "all", label: "Week 1" },
-            { value: "batch1", label: "Batch 1" },
-          ]}
-        />
-        <MonthTab />
-      </div>
-    </div>
-
-
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 gap-2 sm:gap-4">
-      <div>
-        <h2 className="text-lg md:text-xl font-bold text-[#3366FF]">
-          {props.courseTitle}
-        </h2>
-        <p className="text-md md:text-lg text-[#3366FF] mt-0.5 text-sm">
-          {props.courseSubtitle}
-        </p>
-      </div>
-    </div>
-
-    <div className="space-y-2 md:space-y-3">
-      {props.learningWeeks.map((week) => (
-        <LearningAccordion
-          key={week.id}
-          week={week}
-          isOpen={props.openAccordionIds.includes(week.id)}
-          onToggle={() => props.onAccordionToggle(week.id)}
-        />
-      ))}
-    </div>
-  </div>
-);
-
-export const LearningAccordion: React.FC<{
-  week: LearningWeek;
-  isOpen: boolean;
-  onToggle: () => void;
-}> = ({ week, isOpen, onToggle }) => (
-  <div className="bg-[#F9FAFB] rounded-2xl overflow-hidden border border-[#E5E7EB]">
-
-    <div
-      className="w-full flex justify-between items-center p-3 sm:p-4 focus:outline-none transition-colors"
-    >
-      <div>
-
-        <h3 className="text-sm sm:text-md mb-0.5 sm:mb-1 text-black text-left">
-          {week.title}
-        </h3>
-        <p className="text-[10px] sm:text-xs text-left mt-1 sm:mt-1.5 text-gray-500">
-          {week.videoCount} videos
-        </p>
-      </div>
-      {isOpen ? (
-        <FiChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black cursor-pointer" onClick={onToggle} />
-      ) : (
-        <FiChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-black cursor-pointer" onClick={onToggle} />
-      )}
-    </div>
-    {isOpen && (
-      <div className="p-3 sm:p-4 bg-[#F9FAFB] space-y-1.5 sm:space-y-2">
-        {week.videos.map((video) => (
-          <VideoItem key={video.id} topic={video.topic} />
-        ))}
-      </div>
-    )}
-  </div>
 );
 
 export const UpcomingClassesCard: React.FC<{
@@ -228,215 +165,223 @@ export const UpcomingClassItem: React.FC<{ uClass: UpcomingClass }> = ({
   </div>
 );
 
-export const FillForm: React.FC<{setOpenModal: React.Dispatch<React.SetStateAction<string | null>>}> = ({setOpenModal}) => (
+// --- Course Material Interfaces & Component ---
+export interface CourseMaterial {
+  // Export if used by page.tsx
+  id: number;
+  fileName: string;
+  date: string;
+}
+export const CourseMaterialItem: React.FC<Omit<CourseMaterial, "id">> = ({
+  fileName,
+  date,
+}) => {
+  const [showToast, setShowToast] = useState(false);
+  
+    const handleDownload = () => {
+      // simulate download
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
+    };
+  return(
+  <div className="bg-[#F9FAFB] p-2 rounded-2xl border border-[#E5E7EB]  flex flex-col sm:flex-row items-center gap-3 sm:gap-4 hover:shadow-md transition-shadow">
+    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#8DD9B3] rounded-2xl flex items-center justify-center flex-shrink-0">
+      {" "}
+      {/* Adjusted size for mobile */}
+      <FiFileIcon className="w-10 h-10 sm:w-12 sm:h-12 text-black" strokeWidth={2}/>
+    </div>
+    <div className="flex-1 min-w-0 w-full sm:w-auto text-center sm:text-left">
+      <h4 className="text-md sm:text-lg font-medium text-black mb-0.5 sm:mb-1 truncate">
+        {fileName}
+      </h4>
+      <p className="text-[10px] sm:text-xs text-[#6B7280] mb-2 sm:mb-3">
+        {date}
+      </p>
+     
+       <ActionButton
+       onClick={handleDownload}
+        variant="secondary"
+        size="sm"
+        className="w-full flex justify-center items-center max-w-xs mx-auto sm:mx-0"
+      >
+        <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 self-center text-black mr-1.5 sm:mr-2" />{" "}
+        Download
+      </ActionButton>
+     
+    </div>
+    <DownloadToast show={showToast} />
+  </div>
+)};
 
-  <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
-    
-    <h3 className="text-lg md:text-xl font-bold text-[#FF3366]">
-      Request Teacher Change
-    </h3>
-    <ActionButton onClick={()=>setOpenModal("requestChangeSingle")} variant="primary" size="sm" className="xs:w-auto">
-      Fill the Form
-    </ActionButton>
+// --- Major Section Components ---
+
+// 1. LearningContentCard
+interface LearningContentCardProps {
+  tabs: string[];
+  activeTab: string;
+  onTabClick: (tab: string) => void;
+  currentWeekFilter: string;
+  onWeekFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  currentMonth: string;
+  onMonthPrev?: () => void;
+  onMonthNext?: () => void;
+  courseTitle: string;
+  courseSubtitle: string;
+  learningWeeks: LearningWeek[];
+  openAccordionId: string | null;
+  onAccordionToggle: (weekId: string) => void;
+}
+export const LearningContentCard: React.FC<LearningContentCardProps> = (
+  props
+) => (
+  <div className="bg-white rounded-2xl  p-4 md:p-6">
+    <div className="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+      <nav
+        className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin"
+        aria-label="Content Tabs"
+      >
+        {props.tabs.map((tab) => (
+          <ContentTab
+            key={tab}
+            label={tab}
+            isActive={props.activeTab === tab}
+            onClick={() => props.onTabClick(tab)}
+          />
+        ))}
+      </nav>
+      <div className="flex items-center gap-2 sm:gap-3 self-end sm:self-center">
+        {" "}
+        {/* Filters */}
+        <FilterDropdown
+          value={props.currentWeekFilter}
+          onChange={props.onWeekFilterChange}
+          options={[
+            { value: "Week 1", label: "Week 1" },
+            { value: "Week 2", label: "Week 2" },
+          ]}
+        />
+        <DateNavigatorWithArrows
+          currentDate={props.currentMonth}
+          onPrevious={props.onMonthPrev}
+          onNext={props.onMonthNext}
+        />
+      </div>
+    </div>
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 gap-2 sm:gap-4">
+      <div>
+        <h2 className="text-lg md:text-xl font-bold text-[#3366FF]">
+          {props.courseTitle}
+        </h2>
+        <p className="text-md md:text-lg text-[#3366FF] mt-0.5 text-sm">
+          {props.courseSubtitle}
+        </p>{" "}
+        {/* Original had text-lg, adjusted for balance */}
+      </div>
+    </div>
+    {props.activeTab === "Learning" && (
+      <div className="space-y-2 md:space-y-3">
+        {props.learningWeeks.map((week) => (
+          <LearningAccordion
+            key={week.id}
+            week={week}
+            isOpen={props.openAccordionId === week.id}
+            onToggle={() => props.onAccordionToggle(week.id)}
+          />
+        ))}
+      </div>
+    )}
+    {props.activeTab !== "Learning" && (
+      <div className="text-center py-8 md:py-10 text-gray-500 text-sm md:text-base">
+        {props.activeTab} content goes here.
+      </div>
+    )}
   </div>
 );
 
-export const AttendanceCard: React.FC<{
-  attendance: {
-    total: number;
-    attended: number;
-    missed: number;
-    percentage: number;
-  };
-}> = ({ attendance }) => (
-  <div className="bg-white rounded-2xl p-3 md:p-4 h-full flex flex-col gap-4 lg:col-span-5">
-    <h3 className="font-medium text-black  text-sm md:text-base">Attendence</h3>
-    <p className="text-[10px] md:text-xs text-black ">
-      Total : {attendance.total}   Attended : {attendance.attended}   Missed :
+
+
+// 3. CourseMaterialSection
+interface CourseMaterialSectionProps {
+  materials: CourseMaterial[];
+}
+export const CourseMaterialSection: React.FC<CourseMaterialSectionProps> = ({
+  materials,
+}) => (
+  <div className="bg-white rounded-2xl  p-4 md:p-6">
+    <h2 className="text-lg md:text-xl font-bold text-[#FF3366] mb-4 md:mb-6">
+      Course Material
+    </h2>
+    {materials.length > 0 ? (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        {materials.map((material) => (
+          <CourseMaterialItem
+            key={material.id}
+            fileName={material.fileName}
+            date={material.date}
+          />
+        ))}
+      </div>
+    ) : (
+      <p className="text-center text-sm text-gray-500 py-4">
+        No course materials available.
+      </p>
+    )}
+  </div>
+);
+
+// 4. AttendanceCard
+interface AttendanceData {
+  total: number;
+  attended: number;
+  missed: number;
+  percentage: number;
+}
+interface AttendanceCardProps {
+  attendance: AttendanceData;
+}
+export const AttendanceCard: React.FC<AttendanceCardProps> = ({
+  attendance,
+}) => (
+  <div className="bg-white rounded-2xl  p-4 md:p-6">
+    <h3 className="text-md md:text-lg font-medium text-black mb-1.5 md:mb-2">
+      Attendance
+    </h3>
+    <p className="text-[10px] md:text-xs text-black mb-2 md:mb-3">
+      Total : {attendance.total}   Attended : {attendance.attended}   Missed :{" "}
       {attendance.missed}
     </p>
-    <div className="w-full flex rounded-full h-2.5 md:h-3">
+    <div className="w-full flex rounded-full h-2.5 md:h-3 bg-gray-200">
+      {" "}
+      {/* Added track bg */}
       <div
         className="bg-[#3366FF] relative h-full rounded-full"
         style={{ width: `${attendance.percentage}%` }}
       >
-        <p className="absolute right-0 bottom-0 self-center translate-x-[115%] translate-y-[1px] sm:translate-y-[2px] text-xs md:text-xs text-[#B0B0B0] font-medium text-right mt-1">
+        {" "}
+        {/* h-full */}
+        <p className="absolute right-0 bottom-0 self-center translate-x-[115%] translate-y-[1px] sm:translate-y-[2px] text-xs md:text-sm text-[#B0B0B0] font-medium text-right mt-1">
           {attendance.percentage}%
         </p>
       </div>
     </div>
-    <div className="flex-1 text-[#78350F] space-y-2 text-xs text-center bg-[#FFCC004D] rounded-2xl p-4 mt-auto">
-      <h1 className="font-semibold">Only 3 Classes Left</h1>
-      <p className="text-xs lg:mt-8 lg:px-4">
-        To continue learning without interruption, please renew your course or
-        complete the payment.
-      </p>
-      <Link href={"/student-b2b/student-flow/checkout"}>
-      <button className={`rounded-full bg-[#D97706] text-white px-4 py-3`}>
-        Pay Fees
-      </button></Link>
-    </div>
   </div>
 );
 
-export const CertificateCard: React.FC = () => {
-  const Router = useRouter();
-  return(
-  <div className="bg-white rounded-2xl p-3 md:p-4 text-left h-full flex flex-col lg:col-span-5">
-    <h3 className="font-medium text-black mb-2 text-sm md:text-base">
+// 5. CertificateCard
+export const CertificateCard: React.FC = () => (
+  <div className="bg-white rounded-2xl  p-3 md:p-4 text-left">
+    {" "}
+    {/* text-left was original */}
+    <h3 className="font-medium text-black mb-3 md:mb-4 text-sm md:text-base">
       Download Certificate
-    </h3>
-    <p className="text-xs text-[#6B7280] mb-2 flex-grow">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare quis. Vivamus porta finibus accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis, ligula mauris hendrerit massa, a tincidunt urna nisl eget metus. Nulla facilisi. Vivamus convallis tempor lectus ac viverra. Sed vulputate sem est, ultrices finibus odio ornare quis. Vivamus porta finibus accumsan.
-    </p>
-    <ActionButton
-      variant="secondary"
-      size="sm"
-      onClick={() => Router.push("/student-b2b/student-flow/checkout")}
-      className="w-full bg-[#F3F4F6] flex justify-center items-center mt-auto"
-    >
-      <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-[#B0B0B0]" />
-      <span className="text-[#B0B0B0]">Download</span>
+    </h3>{" "}
+    {/* text-sm for mobile */}
+   
+      <ActionButton variant="secondary" size="sm" className="w-full flex justify-center items-center">
+      <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />{" "}
+      Download{" "}
+      {/* Removed text-black from icon as ActionButton handles text color */}
     </ActionButton>
+    
   </div>
-);}
-
-export const ExtraClass: React.FC<{ materials: CourseMaterial[] }> = ({
-
-}) => (
-  <div className="bg-white rounded-2xl p-3 md:p-4 h-full flex flex-col justify-between lg:col-span-4">
-    <h3 className="font-medium text-black  text-sm md:text-base">
-      Extra Class Payment
-    </h3>
-    <p className="text-xs text-[#6B7280]">
-      Some topics remain uncovered in your current course plan.
-    </p>
-    <ul className="space-y-2">
-      {[
-        { id: 1, topic: "Topic 1" },
-        { id: 2, topic: "Topic 2" },
-        { id: 3, topic: "Topic 3" },
-        { id: 4, topic: "Topic 4" },
-      ].map((item) => (
-        <li
-          key={item.id}
-          className="flex gap-1 items-center justify-start w-full"
-        >
-          <div className="p-1 rounded-full bg-[#8DD9B3]">
-            <svg
-              width={9}
-              height={9}
-              viewBox="0 0 8 6"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.909 1L2.909 5L1.09082 3.18182"
-                stroke="white"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <h2 className="text-black text-xs">{item.topic}</h2>
-        </li>
-      ))}
-    </ul>
-    <div className="flex items-center justify-between ">
-      <h2 className="text-sm self-center text-[#3366FF]">Total: ₹ 3000</h2>
-      <Link href={"/student-b2b/student-flow/checkout"}><button className="bg-[#3366FF] text-white px-4 text-sm rounded-full py-1 xs:w-auto">
-        Proceed to pay
-      </button></Link>
-    </div>
-    <p className="text-xs text-[#6B7280]">
-      Once payment is confirmed, your extra class will be scheduled and updated
-      in your calendar
-    </p>
-  </div>
-);
-
-// --- Mock UI Components (for standalone testing) ---
-// In a real project, these would be in their own 'ui-components.tsx' file.
-
-export const ContentTab: React.FC<{
-  label: string;
-  isActive: boolean;
-  onClick: () => void;
-}> = ({ label, isActive, onClick }) => (
-  <button
-    onClick={onClick}
-    className={`whitespace-nowrap md:px-2 lg:px-3 py-2 text-xs sm:text-sm font-medium  ${isActive ? "border-b-2 border-[#3366FF] text-[#3366FF]" : "text-[#6B7280] hover:bg-gray-100"
-      }`}
-  >
-    {label}
-  </button>
-);
-
-export const VideoItem: React.FC<{ topic: string }> = ({ topic }) => {
-  const Router = useRouter();
-  return(
-  <div onClick={()=>Router.push("/student-b2b/student-flow/video-screen")} className="flex items-center justify-between bg-[#F3F4F6] p-2 rounded-full border border-[#E5E7EB] cursor-pointer">
-    <div className="flex items-center gap-2">
-      <div className=" rounded-full p-1">
-        <svg
-          width={26}
-          height={26}
-          viewBox="0 0 41 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20.4997 36.6668C29.7044 36.6668 37.1663 29.2049 37.1663 20.0002C37.1663 10.7954 29.7044 3.3335 20.4997 3.3335C11.2949 3.3335 3.83301 10.7954 3.83301 20.0002C3.83301 29.2049 11.2949 36.6668 20.4997 36.6668Z"
-            stroke="black"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M17.167 13.3335L27.167 20.0002L17.167 26.6668V13.3335Z"
-            stroke="black"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-      <span className="text-sm font-medium text-gray-700">{topic}</span>
-    </div>
-    <svg
-      className="w-5 h-5 text-black"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M9 5l7 7-7 7"
-      ></path>
-    </svg>
-  </div>
-);}
-
-export const ActionButton: React.FC<{
-  variant: "primary" | "secondary";
-  size: "sm" | "md";
-  children: React.ReactNode;
-  className?: string;
-  onClick?:()=>void;
-}> = ({ variant, size, children, className, onClick }) => (
-  <button
-  onClick={onClick}
-    className={`font-semibold rounded-full transition-colors ${variant === "primary"
-      ? "bg-[#3366FF] text-white hover:bg-blue-700"
-      : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-      } ${size === "sm"
-        ? "px-4 py-2 text-xs sm:text-sm"
-        : "px-6 py-3 text-sm sm:text-base"
-      } ${className}`}
-  >
-    {children}
-  </button>
 );
