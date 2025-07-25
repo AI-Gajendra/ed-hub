@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FiHelpCircle, FiTarget, FiClock } from "react-icons/fi";
 
 // Helper component for the info badges
@@ -55,9 +56,11 @@ export default function TestStartPage() {
           <div className="flex flex-col text-center  justify-center items-center p-6">
             <h2 className="text-2xl font-bold mb-4">{dmitTestInfo.title}</h2>
             <p className="font-normal max-w-[84ch]  my-4 text-md">{dmitTestInfo.content}</p>
+            <Link  href=
+            {"/b2c-phase-3/assessment-page"}>
             <button className="mt-6 px-6 md:px-16 py-2 text-sm md:text-md bg-[#3366ff] text-white rounded-full hover:bg-blue-700">
               {dmitTestInfo.buttonText}
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

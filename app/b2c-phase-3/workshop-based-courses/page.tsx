@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ChevronDown } from "lucide-react";
+import DetailsCousrePopup from "../pop-ups/component/details-for-course";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,12 +26,17 @@ export default function RecordedCourse() {
   const [activeTab, setActiveTab] = useState<
     "Academic Courses" | "Foundation & Skills Courses"
   >("Academic Courses");
+  const [openModal, setOpenModal] = useState<string | null>(null);
    const router = useRouter();
   return (
     <div className="bg-[#EEEEEE] h-full min-h-screen">
       <Navbar user={user} />
       <MaxWidthWrapper className="py-10">
         <div>
+          <DetailsCousrePopup
+            isOpen={openModal === "details course"}
+            onClose={() => setOpenModal(null)}
+          />
           <div className="flex  pl-28 justify-between items-center">
             <ArrowLeft className="w-6 h-6  md:w-8 md:h-8" onClick={() => router.back()}  />
             <div className="text-xl md:text-2xl font-semibold mb-2 -tracking-normal">
@@ -50,7 +56,7 @@ export default function RecordedCourse() {
            Select Courses
           </h2>
           <div className="space-y-8 mt-4">
-            <GradeCard />
+            <GradeCard setOpenModal={setOpenModal} />
           </div>
         </div >
       </MaxWidthWrapper>
@@ -58,7 +64,7 @@ export default function RecordedCourse() {
   );
 }
 
-function GradeCard() {
+function GradeCard({ setOpenModal }: { setOpenModal: (id: string) => void }) {
   const [selected, setSelected] = useState(true);
   interface CardData {
     id: number;
@@ -119,14 +125,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.`,
         <p className="text-[#2E2E2E] text-sm sm:text-base max-w-[39ch]">
           {card.description}
         </p>
-        <Link
-          href={"/b2c-phase-3/grade-and-content"}
-          className="w-full mt-2"
-        >
-          <button className="bg-[#3366ff] w-full py-2 px-4 rounded-full text-white font-medium hover:bg-blue-700 transition">
+        
+          <button className="bg-[#3366ff] w-full py-2 px-4 rounded-full text-white font-medium hover:bg-blue-700 transition"
+          onClick={() => setOpenModal("details course")}>
             {card.buttonLabel}
           </button>
-        </Link>
+       
       </div>
     </div>
   ))}

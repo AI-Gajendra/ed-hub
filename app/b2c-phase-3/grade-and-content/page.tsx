@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, ChevronDown } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import Image from 'next/image'
-
+import { useRouter } from "next/navigation";
 const user = {
 	avatarSrc: '/admin/usernav.jpg',
 	name: 'Shlok Agheda',
@@ -16,14 +16,14 @@ const user = {
 
 export default function GradeAndContent() {
 	const subjects = ['Mathematics', 'English', 'Science', 'Social Studies', 'Hindi', 'EVS', 'Gk & IT', 'Third Language']
-
+const router = useRouter();
 	return (
 		<div className="bg-[#EEEEEE] h-full min-h-screen">
 			<Navbar user={user} />
 			<MaxWidthWrapper className="py-10">
 				<div>
 					<div className="flex gap-4 justify-between items-center">
-						<ArrowLeft className="w-6 h-6" />
+						<ArrowLeft className="w-6 h-6"  onClick={() => router.back()}/>
 						<div className="text-xl font-semibold mb-2">Chooses Pre-Recorded Courses</div>
 						<div></div>
 					</div>
