@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Header from '@/components/teacher-b2b/layout/Header'
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
+import StudentNavbarNew from "@/components/layout/StudentB2B/student-navbar-new";
+import StudentNavbar from "@/components/layout/StudentB2B/student-navbar";
 
 interface NotificationItemData {
   id: number;
@@ -50,7 +51,7 @@ export default function NotificationsPage({ imageSrc }: { imageSrc?: string }) {
 
       {/* ✅ Foreground content */}
       <div className="relative z-10">
-        <Header user={headerUser} />
+        <StudentNavbarNew activeState="Dashboard" />
       </div>
 
       <main className="relative z-10 flex-grow w-full px-4 sm:px-6 lg:px-10 py-6">

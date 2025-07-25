@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Activity } from './components'; // Import Activity type if needed for state
 import {

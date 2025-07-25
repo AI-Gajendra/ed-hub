@@ -1,8 +1,6 @@
 // page.tsx (e.g., /app/courses/page.tsx or /pages/my-courses.tsx)
 "use client";
 
-// import React, { useState } from 'react'; // Only if page-level state is needed
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { CourseSection, AiSuggestsSection, Course } from './components'; 
 import StudentWrapper from '@/components/student-wrapper';

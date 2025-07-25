@@ -7,7 +7,8 @@ import Footer from '@/components/layout/Footer';
 import {  TestHeader, TestContent, QuestionData } from './components';
 import { TimerDisplay } from './ui-components'; // Timer is a UI element displayed on the page
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
-import StudentNavbarNew from '@/components/student-navbar-new';
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar';
 
 // --- Sample Data ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];

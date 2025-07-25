@@ -11,7 +11,8 @@ import {
     QuestionReviewData // Type
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
-import StudentNavbarNew from '@/components/student-navbar-new';
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar';
 // SimpleIconButton is in ui-components, used by components
 
 // --- Sample Data (from your original) ---

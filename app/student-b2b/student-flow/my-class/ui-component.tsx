@@ -80,7 +80,7 @@ export const VideoItem: React.FC<VideoItemProps> = ({ topic, onClick }) => {
     const Router = useRouter();
     return(  
     <button
-        onClick={()=>Router.push("/b2c-student/student-flow/video-screen")}
+        onClick={()=>Router.push("/student-b2b/student-flow/video-screen")}
         className="w-full flex items-center justify-between p-2.5 sm:p-3 text-left border border-[#E5E7EB] bg-[#F3F4F6] hover:bg-[#E5E7EB]/70 rounded-2xl sm:rounded-3xl transition-colors"
     >
         <div className="flex items-center gap-2 sm:gap-3">

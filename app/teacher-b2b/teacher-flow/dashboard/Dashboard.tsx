@@ -319,8 +319,9 @@ const TeacherDashboard = () => {
 
                             {/* Classes List */}
                             <div className="bg-white rounded-2xl p-4 ">
-                                <div className="flex justify-center items-center mb-4">
-                                    <h2 className="font-medium text-base">Scheduled Classes</h2>
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="font-medium text-base">Classes</h2>
+                                    <MonthTab />
                                 </div>
                                 <div className="space-y-3">
                                     {classSchedule.map((cls, index) => (
@@ -775,6 +776,7 @@ import LeaveApplicationModal from '@/app/b2c-teacher/ct-pop-ups/popupComponent/A
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper'
 import Footer from '@/components/layout/Footer'
 import { BsFilm } from 'react-icons/bs'
+import MonthTab from '@/components/common-components/MonthTab/MonthTab'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (

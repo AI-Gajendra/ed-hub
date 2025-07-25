@@ -93,7 +93,7 @@ export const QuizContent: React.FC<QuizContentProps> = ({ questions, answers, on
         ))}
         {/* Original submit button container: mt-10 flex justify-center max-w-2xl */}
         {/* Retaining max-w-2xl for the button centering logic for desktop, and justify-center */}
-        <Link href={"/b2c-student/student-flow/quiz-result"}>
+        <Link href={"/student-b2b/student-flow/quiz-result"}>
         <div className="mt-8 flex justify-center sm:mt-10 max-w-2xl">
 
             <ActionButton type="submit" fullWidthOnMobile={true}>

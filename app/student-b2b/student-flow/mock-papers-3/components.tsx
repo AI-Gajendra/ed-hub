@@ -61,7 +61,7 @@ export const TestContent: React.FC<TestContentProps> = ({ questions, answers, on
         {/* This centering and max-width should apply to the button itself if it's narrower than the form */}
         <div className="mt-8 flex justify-center sm:mt-10">
             <ActionButton 
-onClick={() => router.push("/b2c-student/student-flow/mock-paper-result")}  type="submit" fullWidthOnMobile={false}> {/* fullWidthOnMobile=false to match original centered button */}
+onClick={() => router.push("/student-b2b/student-flow/mock-paper-result")}  type="submit" fullWidthOnMobile={false}> {/* fullWidthOnMobile=false to match original centered button */}
                 Submit
             </ActionButton>
         </div>

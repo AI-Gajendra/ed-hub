@@ -6,8 +6,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import Newsletter from '@/components/common-components/Newsletter';
-import StudentNavbar from '@/components/student-navbar'
 import StudentB2CWrapper from '@/components/b2c-student/common-components/StudentB2CWrapper'
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar'
 
 export default function FAQPage() {
 

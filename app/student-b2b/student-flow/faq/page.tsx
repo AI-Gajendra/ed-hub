@@ -9,7 +9,7 @@ import {
 } from './components';
 import { PageTitleBar } from './ui-components';
 import Newsletter from '@/components/common-components/Newsletter';
-import StudentNavbar from '@/components/student-navbar';
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar';
 import BackButton from '@/components/common-components/BackButton';
 import StudentB2CWrapper from '@/components/b2c-student/common-components/StudentB2CWrapper';
 

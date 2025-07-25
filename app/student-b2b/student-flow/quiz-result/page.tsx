@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Header from '@/components/layout/Header'
 import {
     QuizResultHeader,
     QuestionReviewBlock,
@@ -12,6 +11,8 @@ import {
 } from './components';
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 import Footer from '@/components/layout/Footer';
+import StudentNavbarNew from '@/components/student-navbar-new';
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar';
 // SimpleIconButton is in ui-components, used by components
 
 // --- Sample Data (from your original) ---
@@ -35,7 +36,7 @@ export default function QuizTestResultPage() {
 
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col">
-            <Header user={headerUser}/>
+            <StudentNavbarNew activeState='My course'/>
 
             <main className=" p-3 sm:p-4 md:p-6 lg:p-8">
                 <div className="mb-4">

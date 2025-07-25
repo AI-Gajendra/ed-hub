@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import { FiArrowLeft, FiArrowLeftCircle, FiArrowRightCircle, FiChevronDown } from 'react-icons/fi'
 import Image from 'next/image'
 import Footer from '@/components/layout/Footer';
-import StudentNavbarNew from '@/components/student-navbar-new';
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
 
 
 // --- Main Category Tab Component ---

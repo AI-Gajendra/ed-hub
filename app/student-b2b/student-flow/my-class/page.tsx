@@ -19,13 +19,13 @@ import {
 } from "./components";
 import { OptimizedCategoryTabsBar } from "@/components/common-components/topbar";
 import { useRouter } from "next/navigation";
-import StudentWrapper from "@/components/student-wrapper";
 import { AnimatePresence, motion } from "framer-motion";
 import { CiMail } from "react-icons/ci";
 import { FiInfo, FiStar, FiChevronDown, FiArrowLeft, FiPlayCircle } from "react-icons/fi";
 import { IoStatsChartSharp } from "react-icons/io5";
 import Image from "next/image";
 import VideoPlayerPopup from "@/app/b2c-student/pop-ups/popupComponent/VideoPlayerPopup";
+import StudentWrapper from "@/components/layout/StudentB2B/student-wrapper";
 
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = [
@@ -155,7 +155,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {assessmentDataPage.map((assessment) => (
-              <AssessmentItem key={assessment.id} assessment={assessment} onClick={() => Router.push("/b2c-student/student-flow/startup-math")} />
+              <AssessmentItem key={assessment.id} assessment={assessment} onClick={() => Router.push("/student-b2b/student-flow/startup-math")} />
             ))}
           </div>
         );
@@ -163,7 +163,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {mockPapersDataPage.map((item) => (
-              <MockPaperItem key={item.id} item={item} onClick={() => Router.push("/b2c-student/student-flow/mock-papers-3")} />
+              <MockPaperItem key={item.id} item={item} onClick={() => Router.push("/student-b2b/student-flow/mock-papers-3")} />
             ))}
           </div>
         );
@@ -171,7 +171,7 @@ export default function MyClassAssesmentPage() {
         return (
           <div className="space-y-3">
             {workSheetDataPage.map((item) => (
-              <WorkSheetItem key={item.id} item={item} onClick={() => Router.push("/b2c-student/student-flow/my-class-worksheet-3")} />
+              <WorkSheetItem key={item.id} item={item} onClick={() => Router.push("/student-b2b/student-flow/my-class-worksheet-3")} />
             ))}
           </div>
         );
@@ -185,7 +185,7 @@ export default function MyClassAssesmentPage() {
   };
 
   return (
-    <StudentWrapper>
+    <StudentWrapper student activeState="My course">
       <div className="bg-[#eeeeee] min-h-screen flex flex-col">
         <main className="flex-col w-full mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
       <RequestTeacherChangeModal
