@@ -157,8 +157,14 @@ const SelectionTypeCard: React.FC<ToastNotificationProps> = ({
                 option={option}
                 isSelected={selectedOptionId === option.id}
                 onSelect={() => {
-                  Router.push("/b2c-phase-3/b2c-student/registration/login");
                   setSelectedOptionId(option.id);
+                  if(option.id === "Learning"){
+
+                    Router.push("/b2c-phase-3/b2c-student/registration/login");
+                  }else if(option.id === "membership_plans"){
+                    Router.push("/b2c-phase-3/b2c-student/registration/registration-2/login");
+
+                  }
                 }}
               />
             ))}

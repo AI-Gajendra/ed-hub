@@ -23,10 +23,13 @@ const user = {
   role: "Student",
 };
 
-export default function GradeAndContent() {
- const [activeTab, setActiveTab] = useState<"Academic Courses" | "Foundation & Skills Courses">(
-    "Academic Courses"
-  );
+export default async function GradeAndContent({ searchParams }: { searchParams: Promise<{ step?: string }>; }) {
+  const resolvedParams = await searchParams;
+  const step = parseInt(resolvedParams?.step || '1');
+  const currentTestStep = isNaN(step) ? 1 : step;
+
+
+ const [activeTab, setActiveTab] = useState<"Academic Courses" | "Foundation & Skills Courses">(currentTestStep === 1 ? "Academic Courses" : "Foundation & Skills Courses" );
   const router = useRouter();
   return (
     <div className="bg-[#EEEEEE] h-full min-h-screen">

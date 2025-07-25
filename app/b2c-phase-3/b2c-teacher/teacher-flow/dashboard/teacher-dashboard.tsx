@@ -763,7 +763,8 @@ import {
 	FiVideo,
 	FiSun,
 	FiClipboard,
-	FiCheckSquare
+	FiCheckSquare,
+	FiUnlock
 } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion'
 import { IoIosArrowDown } from 'react-icons/io'
@@ -797,6 +798,7 @@ const toolkitItems: ToolkitItem[] = [
 	{ label: "DMIT Results", icon: FiAward, href: "/b2c-phase-3/b2c-teacher/teacher-flow/dmit-student-list" },
 	{ label: "Videos", icon: BsFilm, href: "/b2c-phase-3/b2c-teacher/teacher-flow/referance-video" },
 	{ label: "Apply for leave", icon: FiSun }, // No href = button
+	{ label: "Unlock Course Requests", icon: FiUnlock, href: "/b2c-phase-3/unlock-request" },
 	{ label: "Manage Course", icon: FiClipboard, href: "/b2c-phase-3/b2c-teacher/teacher-flow/manage-course-teach" },
 	{ label: "Daily Log", icon: FiCheckSquare, href: "/b2c-phase-3/b2c-teacher/teacher-flow/daily-log-select-course" },
 	{ label: "Manage Reports", icon: PiSquaresFourLight, href: "/b2c-phase-3/b2c-teacher/teacher-flow/student-list-report" },

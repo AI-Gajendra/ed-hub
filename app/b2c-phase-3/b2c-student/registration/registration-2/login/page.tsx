@@ -54,20 +54,17 @@ export default function LoginPage() {
             </button>
           </div>
           <div className="flex justify-end items-center my-2">
-            <Link href="/admin/b2c-student/registration/forgot-password" className="text-xs font-medium text-[#6B7280] hover:underline">
+            <Link href="/b2c-phase-3/b2c-student/registration/registration-2/forgot-password" className="text-xs font-medium text-[#6B7280] hover:underline">
               Forgot Password?
             </Link>
           </div>
         </div>
 
-        <button
-          type="submit"
-          onClick={()=>{
-            Router.push('/b2c-phase-3/info-before-selection')
-          }}
+        <Link
+          href='/b2c-phase-3/info-before-selection'
           className="self-center w-36 bg-[#3366FF] text-white py-3 rounded-full hover:bg-opacity-90 transition-all cursor-pointer duration-200 focus:outline-none focus:ring-2 focus:ring-[#3366FF]">
           Login
-        </button>
+        </Link>
 
         <div className="self-center text-center text-[9px] w-fit text-[#6B7280] border-b-2 border-black px-1">
           <Link href="#" className=" text-[#6B7280]">

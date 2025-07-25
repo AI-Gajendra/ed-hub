@@ -113,7 +113,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               {card.features}
             </p>
             <Link
-              href={"/b2c-phase-3/academic-course"}
+              href={card.id===1 ? "/b2c-phase-3/academic-course" : "/b2c-phase-3/academic-course?step=2"}
               className="w-full mt-2"
             >
               <button className="bg-[#3366ff] w-full py-2 px-4 rounded-full text-white font-medium hover:bg-blue-700 transition">

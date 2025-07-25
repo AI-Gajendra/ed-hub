@@ -183,7 +183,7 @@ export default function Landing() {
         "EduNique Membership Plans provide a wide Academic to extra curricular to Skill Development Programs. Take on the future, step by step.",
       image: "/Card1.png",
       buttonText: "Explore Now!",
-      
+
     },
     {
       id: 2,
@@ -253,9 +253,9 @@ export default function Landing() {
     <div>
       <nav className="sticky top-0 left-0 w-full z-50 flex flex-col">
         <SelectionCard
-        isOpen={openModal === "select"}
-        onClose={() => setOpenModal(null)}
-      />
+          isOpen={openModal === "select"}
+          onClose={() => setOpenModal(null)}
+        />
         {/* Top Bar (1/3 of total height => 40px) */}
         <div className="flex-1 bg-[#F9326F] text-white py-[0.3rem] px-[8vw] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 min-h-[40px]">
           {/* Left: Contact */}
@@ -898,6 +898,11 @@ export default function Landing() {
                           },
                         },
                         tap: { scale: 0.95 },
+                      }}
+                      onClick={()=>{
+                        if(card.id ===1){
+                          setOpenModal("select");
+                        }
                       }}
                       whileHover="hover"
                       whileTap="tap"
