@@ -1,6 +1,6 @@
 import React from 'react'
 import CoursesSection from './components'
-import Navbar from '@/components/phase-3/navbar'
+import Navbar from '@/components/b2c-phase-3/navbar'
 const user = {
 	avatarSrc: '/admin/usernav.jpg',
 	name: 'Shlok Agheda',

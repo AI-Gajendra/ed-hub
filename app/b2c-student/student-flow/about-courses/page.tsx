@@ -734,7 +734,9 @@ export default function CurriculumComponent() {
             <div className="flex items-center py-4">
               <ArrowLeft
                 className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
-                onClick={() => router.push("/student/teachers/profile")}
+                onClick={() => {
+                  if(typeof window !==  "undefined" ) window.history.back();
+                }}
               />
               <h1 className="text-xl font-medium text-[#FF3366]">
                 About Course

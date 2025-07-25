@@ -1,6 +1,6 @@
 import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
-import MembershipPlan from "@/components/phase-3/membership";
-import Navbar from "@/components/phase-3/navbar";
+import MembershipPlan from "@/components/b2c-phase-3/membership";
+import Navbar from "@/components/b2c-phase-3/navbar";
 import React from "react";
 const user = {
   avatarSrc: "/admin/usernav.jpg",

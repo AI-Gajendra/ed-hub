@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from '@/components/phase-3/Header';
+import Navbar from '@/components/b2c-phase-3/Header';
 import Footer from "@/components/layout/Footer";
 import GoBack from "@/components/principal/goback";
 import { ChatArea, ChatMessageData, TeacherContact, TeacherListSidebar } from "./components";

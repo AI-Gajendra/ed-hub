@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
-import Navbar from '@/components/phase-3/navbar'
+import Navbar from '@/components/b2c-phase-3/navbar'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, ChevronDown } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'

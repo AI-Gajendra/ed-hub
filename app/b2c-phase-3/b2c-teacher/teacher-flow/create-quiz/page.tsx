@@ -1,4 +1,4 @@
-import { CreateTestPage } from '@/components/phase-3/b2c-teacher/create-test/CreateTestPage';
+import { CreateTestPage } from '@/components/b2c-phase-3/b2c-teacher/create-test/CreateTestPage';
 
 export default async function CreateQuiz({ searchParams }: { searchParams: Promise<{ step?: string }>; }) {
   const resolvedParams = await searchParams;

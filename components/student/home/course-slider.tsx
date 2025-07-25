@@ -15,6 +15,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 
 import CustomSelect from "@/components/student/courses/CustomSelect";
+import CategoryTabs from "@/app/b2c-student/student-flow/home/HomeTab";
 
 interface Course {
   id: string;
@@ -410,49 +411,7 @@ const CourseSlider = () => {
   return (
     <div className="max-w-7xl mx-auto">
       {/* Category Tabs */}
-
-      <Tabs
-        value={selectedCategory}
-        onValueChange={setSelectedCategory}
-        className="w-full"
-      >
-        <TabsList className="flex flex-nowrap overflow-x-auto custom-scrollbar-thin justify-between gap-2 bg-transparent h-auto">
-          {categories.map((category) => {
-            const isActive = category === selectedCategory;
-
-            if (isActive) {
-              return (
-                <CustomSelect
-                  key={category}
-                  options={selectOptions}
-                  defaultValue={selectedCategory}
-                  onValueChange={setSelectedCategory}
-                />
-              );
-            }
-
-            return (
-              // <TabsTrigger
-              //   key={category}
-              //   value={category}
-              //   onClick={() => Router.push("/b2c-student/student-flow/courses/categorical")}
-              //   className="data-[state=active]:bg-[#FF3366] data-[state=active]:text-white cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
-              // >
-              //   {category}
-              // </TabsTrigger>
-
-              <Button
-                key={category}
-                value={category}
-                onClick={() => Router.push("/b2c-student/student-flow/courses/categorical")}
-                className={`${isActive ? "bg-[#FF3366] text-white" : "bg-transparent hover:bg-black/10"}  cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-sm xl:text-base font-medium break-words max-w-full`}
-              >
-                {category}
-              </Button>
-            );
-          })}
-        </TabsList>
-      </Tabs>
+      <CategoryTabs />
 
       {/* Course Slider */}
 

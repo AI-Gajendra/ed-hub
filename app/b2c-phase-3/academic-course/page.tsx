@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import MaxWidthWrapper from "@/components/admin/max-width-wrapper";
-import Navbar from "@/components/phase-3/navbar";
+import Navbar from "@/components/b2c-phase-3/navbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
  import FoundationCard from './component'
