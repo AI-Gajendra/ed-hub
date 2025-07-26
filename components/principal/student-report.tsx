@@ -224,7 +224,7 @@ const PrincipalStudentReport: React.FC = () => {
     overallProgress: "4/5",
     progressPercent: 80,
     iconSet: [
-      <MdOutlineTheaterComedy key="a" className="w-6 h-6" />
+      <MdOutlineTheaterComedy key="a" className="w-6 h-6 md:w-8 md:h-8 text-[#893544]/40" />
     ], // Example icons
     skills: [
       {
@@ -616,10 +616,10 @@ const PrincipalStudentReport: React.FC = () => {
               backgroundColor: PALETTE.WHITE_CARD,
             }}
           >
-            <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
+            <h3 className="text-base font-semibold mb-4 text-[#FF3366]">
               {personalDevData.title}
             </h3>
-            <div className="space-y-3 max-h-96 custom-scrollbar-thin-grey overflow-y-scroll pr-3">
+            <div className="space-y-3.5 max-h-90 custom-scrollbar-thin-grey overflow-y-scroll pr-3">
               {" "}
               {/* Custom scrollbar */}
               {personalDevData.skills.map((skill, i) => (
@@ -686,7 +686,7 @@ const PrincipalStudentReport: React.FC = () => {
                     </div>
                   </div>
                   <p
-                    className="text-xs font-semibold mb-1"
+                    className="text-xs font-medium mb-1"
                     style={{ color: card.progressColor }}
                   >
                     Overall Progress
@@ -745,20 +745,20 @@ const PrincipalStudentReport: React.FC = () => {
             >
               <div className="flex justify-between items-center mb-2">
                 <h3
-                  className="text-base font-bold"
-                  style={{ color: PALETTE.TEXT_DARK }}
+                  className="text-base text-[#893544] font-bold"
+                  
                 >
                   {lifeSkillsData.title}
                 </h3>
                 <div
-                  className="flex space-x-1.5 text-xs"
+                  className="flex space-x-1.5   mr-6 mt-6 text-sm "
                   style={{ color: PALETTE.TEXT_MEDIUM }}
                 >
                   {lifeSkillsData.iconSet}
                 </div>
               </div>
               <p
-                className="text-xs mb-1 font-semibold"
+                className="text-xs mb-1 font-medium"
                 style={{ color: lifeSkillsData.progressColor }}
               >
                 Overall Progress

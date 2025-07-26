@@ -3,7 +3,7 @@ import PrincipalChatrsReport from '@/components/principal/principal-charts-repor
 import { IoMdSettings } from "react-icons/io";
 import React, { useState } from 'react'
 import Image from 'next/image';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiSettings } from 'react-icons/fi';
 
 import { FaStar } from 'react-icons/fa';
 import ConfidentialInfoPopup from '../pop-ups/components/ConfidentialInfoPopup';
@@ -26,7 +26,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   teacherImage,
 }) => {
   return (
-    <div className="w-full rounded-2xl bg-white border border-gray-200">
+    <div className="w-[22rem]  rounded-2xl bg-white ">
       <div className="relative w-full h-56 p-2 rounded-2xl">
         <div className="relative w-full h-full rounded-2xl overflow-hidden">
           <Image
@@ -152,7 +152,7 @@ const StudentProgressReport = () => {
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
               <div className="flex-grow relative">
-                <div onClick={() => setShowConfidentialPopup(true)} className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]"><IoMdSettings size={20} /></div>
+                <div onClick={() => setShowConfidentialPopup(true)} className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-black/5 cursor-pointer absolute left-[10rem]"><FiSettings size={20} /></div>
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}
@@ -193,7 +193,7 @@ const StudentProgressReport = () => {
             </div>
             <div className="pt-4 ">
               <p
-                className="text-sm font-bold mb-3"
+                className="text-sm font-semibold my-4"
                 style={{ color: PALETTE.TEXT_DARK }}
               >
                 Key Focus Area
@@ -214,7 +214,7 @@ const StudentProgressReport = () => {
               </div>
             </div>
             <div className="">
-              <h2 className='my-2 text-sm font-bold'>Assigned Teachers</h2>
+              <h2 className='my-4 text-sm font-semibold'>Assigned Teachers</h2>
               <div className="flex flex-wrap gap-4 items-stretch">
                 {Teachers.map((card, index) => (
                   <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
@@ -231,8 +231,8 @@ const StudentProgressReport = () => {
         </div>
       </div>
       <div className="my-4 mx-4 rounded-2xl bg-[#f1f1f2] border px-3 py-2">
-        <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-bold text-m`}>Active Courses</h2>
-        <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 ">
+        <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-semibold text-md`}>Active Courses</h2>
+        <div className="flex gap-14 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 ">
           {courses.map((course, index) => (
             <div key={index} className="min-w-[325px]">
               <CourseCard {...course} />

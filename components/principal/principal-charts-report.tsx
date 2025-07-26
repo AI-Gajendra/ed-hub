@@ -350,6 +350,79 @@ const PrincipalChatrsReport: React.FC = () => {
 				progress: '3/4',
 				color: PALETTE.ACCENT_RED,
 			},
+			{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+	{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+	{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+	
 		],
 	}
 
@@ -583,8 +656,8 @@ const PrincipalChatrsReport: React.FC = () => {
 						style={{
 							backgroundColor: PALETTE.WHITE_CARD,
 						}}>
-						<h3 className="text-base font-semibold mb-3 text-[#FF3366]">{personalDevData.title}</h3>
-						<div className="space-y-3 max-h-96 custom-scrollbar-thin-grey overflow-y-scroll">
+						<h3 className="text-base font-semibold mb-5 text-[#FF3366]">{personalDevData.title}</h3>
+						<div className="space-y-3.5 max-h-90 custom-scrollbar-thin-grey overflow-y-scroll">
 							{' '}
 							{/* Custom scrollbar */}
 							{personalDevData.skills.map((skill, i) => (
