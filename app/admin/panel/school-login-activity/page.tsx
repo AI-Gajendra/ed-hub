@@ -18,9 +18,17 @@ export default function SchoolLoginActivity() {
 	return (
 		<div>
 			<MaxWidthWrapper className="bg-white  rounded-2xl py-4 mx-10 my-4 ">
-				<div className="rounded-2xl">
-					<div className="flex flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
-						<div className="w-full lg:w-[70%]">
+				<div className="relative overflow-hidden p-4 rounded-2xl">
+					{/* Background Image */}
+					<div
+						className="absolute inset-0 z-0 bg-[url('/common-images/pattern.png')] bg-cover bg-center filter grayscale opacity-50"
+						aria-hidden="true"
+					/>
+					<div className="flex rounded-2xl flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
+						<div className="w-full lg:w-[70%] relative z-20">
+							<div className="my-4 rounded-full bg-white px-4 py-2 w-fit">
+								<p className="font-semibold">School Name</p>
+							</div>
 							<Image
 								src={'/images/school.jpg'}
 								width={1880}
@@ -28,9 +36,29 @@ export default function SchoolLoginActivity() {
 								alt="School Management Report"
 								className="w-full h-96 rounded-2xl object-cover"
 							/>
-							<div className="my-4">
-								<p className="font-semibold">School Name</p>
-							</div>
+						</div>
+						<div className="w-full lg:w-[30%] h-fit text-black rounded-2xl bg-white p-3">
+							<p>
+								<span className="font-medium">Email: </span>
+								example@gm.com
+							</p>
+							<p>
+								<span className="font-medium">Contact: </span>
+								+91 1234567890
+							</p>
+							<p>
+								<span className="font-medium">City: </span>
+								Mumbai
+							</p>
+							<p>
+								<span className="font-medium">State: </span>
+								Maharashtra
+							</p>
+							<p>
+								<span className="font-medium">Address: </span>
+								Vivamus sit amet sem ac nibh bibendum condimentum vel in sem. Curabitur tincidunt pretiutm faucibus. Vestibulum eget
+								pellentesque justo. Vivamus ut pulvinar nibh
+							</p>
 						</div>
 					</div>
 				</div>
@@ -110,28 +138,28 @@ export default function SchoolLoginActivity() {
 }
 
 function TecherChip() {
-	return ( 
+	return (
 		<Link href={"/admin/panel/teacher-login-activity"}>
-		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-full">
-			<Image
-				src={'/images/teacher.jpg'}
-				width={480}
-				height={331}
-				alt="teacher profile image"
-				className="rounded-2xl w-18 h-18 object-cover"
-			/>
-			<div>
-				<p className="font-semibold text-lg">Name</p>
-				<p className="text-[#FF3366] text-sm font-medium">Subject</p>
-				<p className="text-xs text-[#6B7280] font-light">Class Assigned</p>
-				<p className="text-xs text-[#6B7280] font-light">Batch Assigned</p>
-			</div>
-		</div></Link>
+			<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-full">
+				<Image
+					src={'/images/teacher.jpg'}
+					width={480}
+					height={331}
+					alt="teacher profile image"
+					className="rounded-2xl w-18 h-18 object-cover"
+				/>
+				<div>
+					<p className="font-semibold text-lg">Name</p>
+					<p className="text-[#FF3366] text-sm font-medium">Subject</p>
+					<p className="text-xs text-[#6B7280] font-light">Class Assigned</p>
+					<p className="text-xs text-[#6B7280] font-light">Batch Assigned</p>
+				</div>
+			</div></Link>
 	)
 }
 
 function StudentRectangle() {
-	return ( <Link href={"/admin/panel/student-login-activity"}>
+	return (<Link href={"/admin/panel/student-login-activity"}>
 		<div className="bg-[#F3F4F6] rounded-2xl px-2 py-2 border border-[#B0B0B0] flex items-center gap-2">
 			<Image
 				src="/images/admin-student-profile.png"
