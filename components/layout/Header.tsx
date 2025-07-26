@@ -68,7 +68,7 @@ export default function Header({ user, isAskme = true, activeState = "Dashboard"
 		{
 			icon: MessageCircle,
 			label: 'Chat',
-			href: '/teacher-b2b/teacher-flow/chat-page',
+			href: '/teacher-b2b/teacher-flow/chat',
 		},
 	]
 

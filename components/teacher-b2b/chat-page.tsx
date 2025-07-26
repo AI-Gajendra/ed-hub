@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiDownload, FiPaperclip, FiSend } from "react-icons/fi";
 import MaxWidthWrapper from "../admin/max-width-wrapper";
+import TeacherB2CWrapper from "../teacher-b2c/common-components/TeacherB2CPageWrapper";
 
 // --- Teacher List Item ---
 interface TeacherContact {
@@ -181,11 +182,11 @@ export default function ChatPage() {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <Header activeState="Chat" />
-      <MaxWidthWrapper>
-        <div className="bg-gray-100">
-          <main className=" py-2  sm:p-6 lg:p-8 flex gap-5 items-start">
+      <TeacherB2CWrapper>
+        <div className="">
+          <main className=" py-2 flex gap-5 items-start">
             {/* Left Column: Teacher List */}
-            <div className="w-full hidden md:block md:w-1/3 lg:w-1/4 bg-white rounded-3xl shadow-xl p-4 self-stretch">
+            <div className="w-full hidden md:block md:w-1/3 lg:w-1/4 bg-white rounded-3xl  p-4 self-stretch">
               {" "}
               {/* self-stretch */}
               <h2 className="text-lg font-bold text-[#FF3366] mb-4 px-2">
@@ -284,7 +285,7 @@ export default function ChatPage() {
             </div>
           </main>
         </div>
-      </MaxWidthWrapper>
+      </TeacherB2CWrapper>
       <Footer />
     </div>
   );
