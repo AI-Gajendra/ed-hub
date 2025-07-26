@@ -6,12 +6,12 @@ import Image from 'next/image';
 import { FiArrowLeft, FiChevronDown, FiDownload, FiSearch } from 'react-icons/fi';
 import { ChatInput } from './ui-components'; // Import ChatInput
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
-import SearchFilterInline from '@/components/b2c-admin/common-component/SearchBarFilterInline';
 
 // --- Data Interfaces (from your original) ---
 export interface TeacherContact {
     id: string; name: string; avatarSrc: string;
     lastMessageTime?: string;
+    subject: string;
     // isActive prop will be passed by parent, not part of core data typically
 }
 export interface ChatMessageData {
@@ -38,6 +38,7 @@ export const TeacherListItem: React.FC<TeacherListItemProps> = ({ teacher, onCli
         <div className="flex-1 text-left pt-2  min-w-0">
             {/* Original h4: text-sm font-semibold text-black */}
             <h4 className="text-xs font-semibold text-black truncate sm:text-sm">{teacher.name}</h4>
+            <p className="text-xs text-[#6B7280]">{teacher.subject}</p>
         </div>
         {teacher.lastMessageTime && (
             // Original span: text-[10px] text-[#6B7280] ml-2 self-end flex-shrink-0
@@ -106,18 +107,15 @@ interface TeacherListSidebarProps {
     onTeacherSelect: (teacherId: string) => void;
 }
 const filter = [
-    {id: "t1", label: "Teachers"}
+    { id: "t1", label: "Teachers" }
 ]
 export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers, activeTeacherId, onTeacherSelect }) => (
     <div className="w-full lg:w-[35%] bg-white rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
         {/* Original h2: text-lg tracking-wide font-popp font-semibold text-[#FF3366] mb-4 px-2 */}
         <h2 className="text-md tracking-wide font-semibold text-[#FF3366] mb-3 px-1 sm:text-lg sm:mb-4 sm:px-2"> {/* Assuming font-popp is global */}
-            Recent Chats
+            Students
         </h2>
-        <div className="w-full bg-white text-black flex gap-4 items-center py-2 rounded-xl">
-            {/* Search Input */}
-            <SearchFilterInline bg={"bg-white"} filters={filter}/>
-        </div>
+
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
         <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey pr-1 sm:pr-2">
             {/* Your original repetition for scroll testing */}
@@ -143,7 +141,7 @@ interface ChatAreaProps {
 export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, newMessage, onNewMessageChange, onSendMessage, onBackClick, }) => (
     // Original wrapper: w-full sm:w-[70%] bg-white rounded-3xl shadow-xl flex flex-col h-[calc(100vh-4rem)]
     <div className="w-full relative z-0 lg:w-[65%] bg-[#EEEEEE] rounded-2xl sm:rounded-3xl flex flex-col 
-                   h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-8rem)]"
+                   h-[calc(85vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-6rem)]"
     >
         <div className=" absolute -z-10 opacity-10 rounded-2xl inset-0" style={{
             backgroundImage: "url('/images/brandpatternchat.png')",

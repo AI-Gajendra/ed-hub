@@ -114,6 +114,10 @@ export const UploadFileImage: React.FC<PopupProp> = ({
                     </div>
                     <span className="truncate">Document Name</span>
                 </div>
+                <div className="flex justify-end gap-2 items-center">
+                    <button onClick={onClose} className="bg-[#f9fafb] border rounded-full py-2.5 px-4 text-gray-500">Cancel</button>
+                    <button onClick={onClose} className="bg-[#3366ff] rounded-full py-2.5 px-6 text-white">Add</button>
+                </div>
             </div>
         </BaseModal>
     );
@@ -155,7 +159,7 @@ export const AddItem: React.FC<PopupProp> = ({
                 </div>
                 <div className="w-full flex items-center justify-center">
                     <button
-                    onClick={onClose} className="cursor-pointer text-center px-6 py-2.5 rounded-full text-white bg-[#3366ff]">Add Item</button>
+                        onClick={onClose} className="cursor-pointer text-center px-6 py-2.5 rounded-full text-white bg-[#3366ff]">Add Item</button>
                 </div>
             </div>
         </BaseModal>

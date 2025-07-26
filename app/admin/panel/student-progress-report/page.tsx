@@ -7,13 +7,20 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Progress } from '@/components/ui/progress'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
-import { FiChevronDown } from 'react-icons/fi'
+import { FiChevronDown, FiSettings } from 'react-icons/fi'
+import ConfidentialStudentPopup from '../../pop-ups-2/components/confidential'
 
 export default function StudentProgressReportPage() {
+	const [openModal, setOpenModal] = useState<string | null>(null);
 	return (
 		<>
 			<div className="bg-[#EEEEEE] min-h-screen">
+				<ConfidentialStudentPopup
+					isOpen={openModal === "confidential"}
+					onClose={() => setOpenModal(null)}
+				/>
 				<NamingBar name="Student Report" />
 				<div className="px-4 space-y-4 my-10">
 					<MaxWidthWrapper className="bg-white rounded-2xl py-4 ">
@@ -32,6 +39,9 @@ export default function StudentProgressReportPage() {
 											<div className="bg-[#FF3366] rounded-r-full text-xs font-light p-2 w-fit text-white">Group A</div>
 										</div>
 									</div>
+									<button onClick={() => setOpenModal("confidential")} className="self-start rounded-full p-1.5 border border-[#E5E7EB] bg-[#F9FAFB] cursor-pointer">
+										<FiSettings className="h-5 w-5" />
+									</button>
 								</div>
 								<div>
 									<p className="font-medium text-sm">
@@ -265,7 +275,7 @@ const StudentReport = () => {
 								<FiChevronDown className="w-4 h-4 ml-1" />
 							</div>
 
-							<ArrowControl leftOnClick={handleBackClick} RightOnClick={() => {}} text="2025" className="justify-between px-1.5!" />
+							<ArrowControl leftOnClick={handleBackClick} RightOnClick={() => { }} text="2025" className="justify-between px-1.5!" />
 						</div>
 					</div>
 					{/* Simplified SVG Line Chart */}
@@ -507,19 +517,19 @@ const ProgressCircleItem = ({
 function TecherChip() {
 	return (
 		<Link href={"/admin/panel/teacher-performance"}>
-		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
-			<Image
-				src={'/images/teacher.jpg'}
-				width={480}
-				height={331}
-				alt="teacher profile image"
-				className="rounded-2xl w-18 h-18 object-cover"
-			/>
-			<div>
-				<p className="font-semibold text-lg">Name</p>
-				<p className="text-[#FF3366] text-sm font-medium">Subject</p>
-			</div>
-		</div></Link>
+			<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
+				<Image
+					src={'/images/teacher.jpg'}
+					width={480}
+					height={331}
+					alt="teacher profile image"
+					className="rounded-2xl w-18 h-18 object-cover"
+				/>
+				<div>
+					<p className="font-semibold text-lg">Name</p>
+					<p className="text-[#FF3366] text-sm font-medium">Subject</p>
+				</div>
+			</div></Link>
 	)
 }
 function CourseCard() {

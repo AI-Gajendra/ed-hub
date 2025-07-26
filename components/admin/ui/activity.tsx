@@ -189,7 +189,7 @@ const Activity: React.FC<ActivityProps> = ({ isStudent = false }) => {
             </div>
 
             {/* Details section now stacks on mobile and aligns properly on desktop */}
-            <div className="space-y-1 text-sm text-black">
+            <div className="space-y-1 text-xs text-black">
               <p>
                 <span className="font-semibold">Gender:</span> Male
               </p>

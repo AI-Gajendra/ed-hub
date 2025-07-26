@@ -799,11 +799,7 @@ const toolkitItems: ToolkitItem[] = [
     { label: "DMIT Results", icon: FiAward, href: "/b2c-teacher/teacher-flow/dmit-student-list" },
     { label: "Videos", icon: BsFilm, href: "/b2c-teacher/teacher-flow/referance-video" },
     { label: "Apply for leave", icon: FiSun }, // No href = button
-    { label: "Manage Course", icon: FiClipboard, href: "/b2c-teacher/teacher-flow/manage-course-teach" },
-    { label: "Daily Log", icon: FiCheckSquare, href: "/b2c-teacher/teacher-flow/daily-log-select-course" },
-    { label: "Manage Reports", icon: PiSquaresFourLight, href: "/b2c-teacher/teacher-flow/student-list-report" },
-    { label: "Manage Feedbacks", icon: HiOutlineArchiveBox, href: "/b2c-teacher/teacher-flow/manage-feedback" },
-    { label: "Advance Plan", icon: TfiMenuAlt }, // No href = button
+    
 ];
 const ChapterAccordion: React.FC<{
     item: ChapterAccordionItem;

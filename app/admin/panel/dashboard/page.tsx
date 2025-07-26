@@ -14,8 +14,12 @@ import Link  from 'next/link';
 export default function DashboardPage() {
 	return (
 		<MaxWidthWrapper className="px-4">
-			<div className="rounded-2xl bg-white p-2 sm:p-4 my-4 sm:my-6">
-				<div className="flex flex-col gap-4 sm:gap-6 p-2 sm:p-4 border rounded-2xl">
+			<div className="rounded-2xl p-2 sm:p-4 my-4 sm:my-6"
+			style={{
+					backgroundImage: "url('/admin/bg-pattern.png')",
+					backgroundSize: "cover",
+				}}>
+				<div className="flex bg-white flex-col gap-4 sm:gap-6 p-2 sm:p-4 border rounded-2xl">
 					{/* Stats Cards */}
 					<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
 						<Link href={"/admin/panel/school-management"} className='w-full sm:w-1/3'>

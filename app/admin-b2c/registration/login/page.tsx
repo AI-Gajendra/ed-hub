@@ -61,7 +61,7 @@ export default function LoginPage() {
         </div>
 
         <button
-          type="submit"
+          type="button"
           onClick={()=>{
             Router.push('/admin-b2c/admin-panel/dashboard')
           }}
