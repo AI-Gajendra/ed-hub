@@ -209,7 +209,7 @@ export default function ChatPage() {
             {/* Right Column: Chat Interface */}
             <div
                className="w-full relative z-0 lg:w-[70%] xl:w-3/4 bg-[#EEEEEE] rounded-2xl sm:rounded-3xl flex flex-col 
-                   h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-4rem)]">
+                   h-[85vh] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-6rem)]">
               <div
                 className=" absolute -z-10 opacity-10 rounded-2xl inset-0"
                 style={{
