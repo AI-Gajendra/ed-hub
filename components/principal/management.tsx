@@ -2,7 +2,7 @@
 
 import React, { MouseEvent, useState } from 'react';
 import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
+
 import { IoIosArrowDown } from 'react-icons/io';
 import ClassTab from './class-tab';
 import { FiMinusCircle, FiSearch } from "react-icons/fi";
@@ -26,7 +26,7 @@ type CardData = {
   image: string;
 };
 
-const students = Array.from({ length: 32 }, (_, i) => ({
+const students = Array.from({ length: 62 }, (_, i) => ({
   id: i + 1,
   name: 'Student Name',
   role: 'student' as const,
@@ -36,9 +36,9 @@ const students = Array.from({ length: 32 }, (_, i) => ({
   image: '/student-avatar-1.png', // Use same image or add logic to vary if needed
 }));
 
-const teachers = Array.from({ length: 32 }, (_, i) => ({
+const teachers = Array.from({ length: 62 }, (_, i) => ({
   id: i + 17,
-  name: 'Teacher Name',
+  name: 'Name',
   role: 'teacher' as const,
   course: 'Subject',
   level: 'Class Assigned',
@@ -643,25 +643,25 @@ const Management = () => {
 
         <div className="relative flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
-          <div className="relative bgred-400 flex justify-evenly">
-            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+          <div className="relative mx-4 flex justify-evenly">
+            <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-sm" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search"
-              className=" pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none text-sm"
+              className=" pl-8 pr-4 py-2 border border-[#6b7280] rounded-full focus:outline-none text-sm"
             />
           </div>
           <div className="flex flex-grow gap-4 justify-between">
-            <Button onClick={() => setShowSelectClassPopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
-            <Button onClick={() => setShowAddClassPopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
-            <Button onClick={() => setShowManageLecturePopup(true)} className="flex-1 bg-[#f9fafb] px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
+            <Button onClick={() => setShowSelectClassPopup(true)} className="flex-1 bg-[#f9fafb] px-6 py-2 cursow-pointer text-m border rounded-xl whitespace-nowrap">Manage Class</Button>
+            <Button onClick={() => setShowAddClassPopup(true)} className="flex-1 bg-[#f9fafb] px-6 py-2 cursow-pointer text-m border rounded-xl whitespace-nowrap">Add Class</Button>
+            <Button onClick={() => setShowManageLecturePopup(true)} className="flex-1 bg-[#f9fafb] px-4 py-2 cursow-pointer text-m border rounded-xl whitespace-nowrap">Lecture Manager</Button>
             {/* Filters with dropdown icons */}
             {filters.map((filter, index) => (
-              <div key={filter} className="relative flex-1 overflow-x-auto custom-scrollbar">
+              <div key={filter} className="relative flex overflow-x-auto custom-scrollbar">
                 <select
-                  className="appearance-none w-full border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="appearance-none w-full border border-[#e5e7eb] text-sm px-3 py-2 cursor-pointer rounded-xl  bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
                   value={selectedFilters[index]}
                   onChange={(e) => handleFilterChange(index, e.target.value)}
                 >
@@ -669,27 +669,27 @@ const Management = () => {
                   <option value="Option 1">Option 1</option>
                   <option value="Option 2">Option 2</option>
                 </select>
-                <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
+                <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-[#6b7280] text-xs" />
               </div>
             ))}
           </div>
         </div>
         <div className="flex mb-4 space-x-4 text-sm font-medium">
           <button
-            className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+            className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
             onClick={() => setActiveTab('teacher')}
           >
             Teachers
           </button>
           <button
-            className={`pb-2 text-m cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+            className={`pb-2 text-m cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
             onClick={() => setActiveTab('student')}
           >
             Students
           </button>
         </div>
         <ClassTab />
-        <div className="grid grid-cols-1 sm:grid-cols-2 p-2 gap-4 max-h-[80vh] overflow-y-scroll scrollbar">
+        <div className="grid grid-cols-1 sm:grid-cols-2 p-2 gap-4 max-h-[80vh] overflow-y-scroll custom-peach-scrollbar">
 
 
           {/* Cards */}
@@ -699,7 +699,7 @@ const Management = () => {
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-m">{item.name}</div>
+                <div className="font-medium text-m">{item.name}</div>
                 {item.role === 'teacher' && (
                   <>
                     <div className="text-sm font-semibold text-[#FF3366]">{item.course}</div>

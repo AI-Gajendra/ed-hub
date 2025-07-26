@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
+import { FiSearch } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useRouter } from 'next/navigation';
 type CardData = {
@@ -55,13 +55,13 @@ const SchoolSecurity = () => {
         <div className="flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
           <div className="relative w-full ">
-            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+            <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-sm" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search"
-              className="w-full pl-10 pr-4 py-2 border-2 border-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              className="w-full pl-8 pr-4 py-2 border-2 border-[#6b7280] rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
           </div>
           {/* Filters with dropdown icons */}
@@ -82,19 +82,19 @@ const SchoolSecurity = () => {
         </div>
         <div className="flex mb-4 space-x-4 text-sm font-medium">
           <button
-            className={`pb-2 text-m font-medium cursor-pointer ${activeTab === 'branch' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+            className={`pb-2 text-m font-semibold cursor-pointer ${activeTab === 'branch' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280'}`}
             onClick={() => setActiveTab('branch')}
           >
             Branch
           </button>
           <button
-            className={`pb-2 text-m font-medium cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+            className={`pb-2 text-m font-semibold cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
             onClick={() => setActiveTab('teacher')}
           >
             Teachers
           </button>
           <button
-            className={`pb-2 text-m font-medium cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+            className={`pb-2 text-m font-semibold cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
             onClick={() => setActiveTab('student')}
           >
             Students
@@ -105,12 +105,12 @@ const SchoolSecurity = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div onClick={() => router.push("/principal/school-login-activity")} key={item.id} className="flex flex-col sm:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
+            <div onClick={() => router.push("/principal/school-login-activity")} key={item.id} className="flex flex-col sm:flex-row border border-[#e5e7eb] gap-4 cursor-pointer bg-[#faf9fb] rounded-2xl p-3">
               <div className={`w-full sm:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-m">{item.name}</div>
+                <div className="font-semibold text-m">{item.name}</div>
                 
                 
                     <div className="text-sm text-gray-500 mb-1">{item.address}</div>

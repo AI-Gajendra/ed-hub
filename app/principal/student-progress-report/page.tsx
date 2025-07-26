@@ -7,6 +7,7 @@ import { FiArrowLeft, FiSettings } from 'react-icons/fi';
 
 import { FaStar } from 'react-icons/fa';
 import ConfidentialInfoPopup from '../pop-ups/components/ConfidentialInfoPopup';
+import Link from 'next/link';
 
 interface CourseCardProps {
   image: string;
@@ -216,14 +217,14 @@ const StudentProgressReport = () => {
             <div className="">
               <h2 className='my-4 text-sm font-semibold'>Assigned Teachers</h2>
               <div className="flex flex-wrap gap-4 items-stretch">
-                {Teachers.map((card, index) => (
-                  <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+                {Teachers.map((card, index) => ( <Link href={"/principal/teacher-performance"}>
+                  <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4  cursor-pointer rounded-2xl border-[#e5e7eb]" key={index}>
                     <Image className='rounded-xl' src={card.image} width={80} height={80} alt={card.name} />
                     <div className="">
                       <h2 className='font-medium'>{card.name}</h2>
                       <p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
                     </div>
-                  </div>
+                  </div></Link>
                 ))}
               </div>
             </div>

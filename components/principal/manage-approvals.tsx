@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
+import { FiSearch } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 
 type CardData = {
@@ -59,13 +59,13 @@ const ManageApprovalsPage = () => {
                 <div className="flex items-center mb-4 gap-2">
                     {/* Search Input */}
                     <div className="relative w-full ">
-                        <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+                        <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-sm md:text-md" />
                         <input
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             placeholder="Search"
-                            className="w-full pl-10 pr-4 py-2 border-2 border-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                            className="w-full pl-10 pr-4 py-2 border-2 border-[#6b7280] rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                         />
                     </div>
 
@@ -87,13 +87,13 @@ const ManageApprovalsPage = () => {
                 </div>
                 <div className="flex mb-4 space-x-4 text-sm font-medium">
                     <button
-                        className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+                        className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
                         onClick={() => setActiveTab('teacher')}
                     >
                         Teachers
                     </button>
                     <button
-                        className={`pb-2 text-m cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+                        className={`pb-2 text-m cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
                         onClick={() => setActiveTab('student')}
                     >
                         Students

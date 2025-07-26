@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,9 +12,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useRouter } from "next/navigation";
 import { Check } from "lucide-react";
 import Image from "next/image";
-import { FiCalendar, FiClock } from "react-icons/fi";
+import { FiCalendar, FiClock ,FiSearch} from "react-icons/fi";
 
-const teachers = Array.from({ length: 8 }).map((_, i) => ({
+const teachers = Array.from({ length: 38 }).map((_, i) => ({
   id: i,
   name: "Name",
   subject: "Subject",
@@ -44,6 +44,7 @@ const selectedTime: { [key: string]: string[] } = {
 }
 
 export default function LectureForm() {
+  const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
 
   return (
@@ -117,50 +118,56 @@ export default function LectureForm() {
           </div>
         </div>
 
-        <div className="relative grid grid-cols-6 gap-4">
+        <div className="relative grid grid-cols-3 gap-4">
           {/* Teachers List */}
-          <div className="relative bg-[#F9fafb] col-span-2 rounded-[20px] p-4">
-            <div className="flex items-center justify-between mb-3 gap-2">
-              <Input
-                placeholder="Search Teacher"
-                className="rounded-full w-full"
-              />
+          <div className="relative bg-[#F9fafb] col-span-1 rounded-[20px] p-4">
+            <div className="flex  relative items-center justify-between mb-3 gap-2">
+              
+                          <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-sm" />
+                          <input
+                            type="text"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            placeholder="Search Teacher"
+                            className=" pl-8 pr-4 py-2 border border-[#6b7280] rounded-full w-full focus:outline-none text-sm"
+                          />
+                        
               <Select>
-                <SelectTrigger className="rounded-full w-28 text-sm px-2 py-1 h-9">
+                <SelectTrigger className="rounded-xl text-[#1e1e1e] w-28 text-sm px-2 py-1 h-9">
                   1st STD
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1st">1st STD</SelectItem>
+                  <SelectItem value="1st" className="text-[#1e1e1e]">1st STD</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <div className="h-[400px] pr-1 max-h-85 overflow-y-scroll scrollbar">
+            <div className="h-[400px] pr-1 max-h-85 overflow-y-scroll custom-peach-scrollbar">
               {teachers.map((teacher, idx) => (
                 <div
                   key={idx}
                   className="flex items-center border justify-between mb-3 p-1 rounded-2xl hover:bg-gray-100"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="h-12 w-12 relative">
+                    <div className="h-16 w-16 relative">
                       <Image src={teacher.avatar} alt="teacher-profile" fill />
                     </div>
                     <div className="text-xs">
                       <p className="text-[#333] font-bold">{teacher.name}</p>
-                      <p className="text-[#FF3366] font-semibold">
+                      <p className="text-[#FF3366] font-medium">
                         {teacher.subject}
                       </p>
-                      <p className="text-gray-500">{teacher.detail1}</p>
-                      <p className="text-gray-500">{teacher.detail2}</p>
+                      <p className="text-[#6b7280]">{teacher.detail1}</p>
+                      <p className="text-[#6b7280]">{teacher.detail2}</p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 rounded-full border-2 border-gray-900"></div>
+                  <div className="w-5 h-5 rounded-full border-2 border-[#6b7280]"></div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Time Table */}
-          <div className="overflow-x-auto col-span-4 rounded-[20px]">
+          <div className="overflow-x-auto col-span-2 rounded-[20px]">
             <div className="min-w-[600px]">
               <div className="grid grid-cols-[auto_repeat(5,_1fr)] text-sm font-medium text-zinc-700 border-b mb-2">
                 <div className="text-left py-2"></div>
