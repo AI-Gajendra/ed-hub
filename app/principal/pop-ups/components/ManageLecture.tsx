@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { BaseModal } from "../page";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export interface PopupProp {
     isOpen: boolean;
@@ -224,12 +225,14 @@ const ManageLectureModal: React.FC<PopupProp> = ({ isOpen, onClose, onReassign }
           >
             Discard
           </button>
+          <Link href={"/principal/manage-lecture"}>
+         
           <button
             className="rounded-full cursor-pointer px-6 py-2.5 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700"
-            onClick={onClose}
+            
           >
             Add Lecture
-          </button>
+          </button> </Link>
         </div>
       </div>
     </BaseModal>
