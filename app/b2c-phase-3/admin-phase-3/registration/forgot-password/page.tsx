@@ -3,11 +3,12 @@
 import { useState } from 'react'
 import AuthLayout from '@/components/auth-layout' // Adjust path if needed
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 export default function ResetPasswordPage() {
   const [showNewPassword, setShowNewPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-
+  const Router = useRouter();
   return (
     <AuthLayout
       leftPanelTitle="Title"
@@ -63,7 +64,10 @@ export default function ResetPasswordPage() {
         </div>
 
         <button
-          type="submit"
+          type="button"
+          onClick={()=>{
+            Router.push('/b2c-phase-3/admin-phase-3/registration/login')
+          }}
           className="self-center w-36 mt-4 bg-[#3366FF] text-white py-3 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
           Set
         </button>

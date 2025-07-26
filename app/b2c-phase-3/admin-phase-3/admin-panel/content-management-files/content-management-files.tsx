@@ -261,7 +261,7 @@ export default function MaterialPageCourse() {
           <SubjectFolderViewContent setOpenModal={setOpenModal} />
         </main>
       </div>
-        <button type="button" onClick={()=>setIsUploadOpen(true)} className={`bg-[#FFCC00] absolute bottom-5 right-20 md:right-50 z-30 w-full sm:w-auto text-white px-3 py-2.5 text-sm sm:px-3 sm:py-3.5 sm:text-base font-medium hover:opacity-90 rounded-full transition-opacity`}>
+        <button type="button" onClick={()=>setIsUploadOpen(true)} className={`bg-[#FFCC00] fixed bottom-5 right-4 sm:right-6 lg:right-16 z-30 w-auto text-white px-3 py-2.5 text-sm sm:px-3 sm:py-3.5 sm:text-base font-medium hover:opacity-90 rounded-full transition-opacity`}>
           Upload File
         </button>
     </div>
