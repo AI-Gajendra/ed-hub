@@ -50,7 +50,7 @@ const SchoolLogin = () => {
     <div className="p-4 ">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-3">
-        <div className="relative grid grid-cols-1 relative gap-4 md:gap-12 justify-between py-4 md:grid-cols-[2fr_1fr] bg-white">
+        <div className="relative grid grid-cols-1 gap-4 md:gap-12 justify-between py-4 md:grid-cols-[2fr_1fr] bg-white">
           <div className="z-0 absolute inset-0 bg-[url('/principal/login-pattern.png')] filter grayscale opacity-20 bg-repeat-none bg-cover">
 
           </div>
