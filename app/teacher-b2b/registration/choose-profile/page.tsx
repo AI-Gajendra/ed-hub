@@ -1,5 +1,7 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import { useState } from 'react'
 import Image from 'next/image'
 import { FiCheck } from 'react-icons/fi'
@@ -12,6 +14,7 @@ const profiles = [
 ]
 
 export default function ChooseProfilePage() {
+  const Router = useRouter();
   const [selectedProfile, setSelectedProfile] = useState<string>(profiles[2].id)
 
   return (
@@ -20,6 +23,7 @@ export default function ChooseProfilePage() {
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
       <div className='flex gap-2'>
         <svg
+          onClick={() => { if (typeof window !== "undefined") { window.history.back() } }}
           width={22}
           height={22}
           viewBox="0 0 24 24"
@@ -50,11 +54,11 @@ export default function ChooseProfilePage() {
             strokeLinejoin="round"
           />
         </svg>
-        <div>
 
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Profile</h2>
-          <p className="text-sm text-gray-600 mb-8 leading-relaxed">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        <div>
+          <h2 className="text-2xl font-bold text-black mb-2">Login</h2>
+          <p className="text-xs text-black mb-16 leading-relaxed font-medium">
+            Lorem Ipsum is simply dummy text of the printing and typesetting <br /> industry.
           </p>
         </div>
       </div>
@@ -63,7 +67,10 @@ export default function ChooseProfilePage() {
         {profiles.map(profile => (
           <div
             key={profile.id}
-            onClick={() => setSelectedProfile(profile.id)}
+            onClick={() => {
+              setSelectedProfile(profile.id)
+              Router.push("/teacher-b2b/registration/school-code");
+            }}
             className="flex items-center justify-between p-2 pl-4 pr-2 cursor-pointer transition-all duration-200 bg-white hover:shadow-lg rounded-full border border-gray-200">
             <div className="flex items-center gap-4">
               <Image src={profile.iconSrc} alt={`${profile.label} icon`} width={32} height={32} />

@@ -1,8 +1,13 @@
-import Curriculum from '@/components/student-b2b/student-curriculum'
+import Header from '@/components/layout/Header';
+import Curriculum from './component'
 import React from 'react'
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
 
-const TeacherCurriculam = () => {
-	return <Curriculum />
+const YearlyPlan = () => {
+	return <>
+		<StudentNavbarNew activeState='Dashboard'/>
+		<Curriculum />
+	</>
 }
 
-export default TeacherCurriculam
+export default YearlyPlan;

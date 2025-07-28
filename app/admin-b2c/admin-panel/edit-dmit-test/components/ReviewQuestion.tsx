@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { FiCheck } from 'react-icons/fi';
 
@@ -7,6 +8,8 @@ interface DetailsProps {
 }
 
 const Review: React.FC<DetailsProps> = ({ setSelectedTab }) => {
+
+const router = useRouter();
   const question = {
     number: 1,
     question: 'Which part of the plant makes food ?',
@@ -114,11 +117,13 @@ const handleClick = () => {
         </button>
       </div>
       <div className="flex justify-center gap-2 mt-4">
-        <div className="rounded-[42px] text-base md:text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-4 py-3 cursor-pointer inline-block">
+        <button
+          onClick={() => router.push("/admin-b2c/admin-panel/admin-dmit-test")} className="rounded-[42px] text-base md:text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-4 py-3 cursor-pointer inline-block">
           Cancel
-        </div>
-        <button className="rounded-[42px] text-base md:text-lg font-semibold bg-[#3366ff] text-white px-4 py-3 cursor-pointer inline-block">
-          Publish
+        </button>
+        <button
+          onClick={() => router.push("/admin-b2c/admin-panel/admin-dmit-test")} className="rounded-[42px] text-base md:text-lg font-semibold bg-[#3366ff] text-white px-4 py-3 cursor-pointer inline-block">
+          Update
         </button>
       </div>
     </div>

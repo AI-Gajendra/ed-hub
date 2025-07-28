@@ -1,8 +1,8 @@
 'use client';
 
-import AddReminder from '@/app/admin-b2c/pop-ups-2/components/add-reminder';
-import AddReminderStudent from '@/app/admin-b2c/pop-ups-2/components/add-reminder-student';
-import { AddItem } from '@/app/admin-b2c/pop-ups-2/page';
+import AddReminder from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/add-reminder';
+import AddReminderStudent from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/components/add-reminder-student';
+import { AddItem } from '@/app/b2c-phase-3/admin-phase-3/pop-ups-2/page';
 import Image from 'next/image';
 import { FC, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';

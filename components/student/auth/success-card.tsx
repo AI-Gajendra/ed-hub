@@ -4,11 +4,7 @@ import { Check } from "lucide-react";
 
 // Success Card Component
 export default function SuccessCard({ successUrl }: { successUrl: string }) {
-    // Handle OK button in success state
-  const handleOkClick = () => {
-    // Reset the form or redirect to login
-    window.location.href = successUrl;
-  };
+
     return (
       <Card className="w-full max-w-md mx-auto rounded-2xl">
         <CardContent className="pt-16 flex flex-col items-center text-center relative">
@@ -23,7 +19,6 @@ export default function SuccessCard({ successUrl }: { successUrl: string }) {
           </p>
   
           <Button
-            onClick={handleOkClick}
             className="w-40 rounded-full mt-4 bg-[#3366FF] hover:bg-blue-700"
           >
             OK

@@ -30,6 +30,9 @@ import { FaCircleCheck } from "react-icons/fa6";
 import Footer from "@/components/layout/Footer";
 import Newsletter from "@/components/common-components/Newsletter";
 import BackButton from "@/components/common-components/BackButton";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import VideoPlayerPopup from "@/app/b2c-student/pop-ups/popupComponent/VideoPlayerPopup";
 
 interface Review {
   id: number;
@@ -272,6 +275,8 @@ const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
 export default function CourseDetail() {
   const [activeTab, setActiveTab] = useState("about");
 
+  const [watchVideo, setWatchVideo] = useState(false)
+  const router = useRouter();
   const menuItems = [
     { id: "about", label: "About Course", icon: Info },
     { id: "benefits", label: "Benefits", icon: Star },
@@ -414,7 +419,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                     Course Name
                   </h1>
                   <p className="text-gray-600 pb-2">Category</p>
-                  <div className="text-5xl font-bold text-[#3366FF] pb-2">
+                  <div className="text-5xl font-semibold text-[#3366FF] pb-2">
                     ₹2,000
                   </div>
                   <form className="space-y-4">
@@ -467,12 +472,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         placeholder="00"
                         className="w-full bg-[#F9FAFB] border border-[#D5D5D5] rounded-2xl"
                       />
-                      <Button
-                        className="bg-[#3366FF] hover:bg-blue-700 text-white text-lg py-3 px-10 rounded-full h-fit"
-                        size="lg"
+                      <button
+                        className="bg-[#3366FF] hover:bg-blue-700 text-white text-base font-medium py-1.5 whitespace-nowrap px-12 rounded-full h-fit"
+                        
                       >
                         Add to Cart
-                      </Button>
+                      </button>
                     </div>
                   </form>
                 </div>
@@ -515,7 +520,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         </div>
 
         <div className="max-w-7xl relative flex flex-col lg:flex-row bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
-          <button className="bg-[#8DD9B3] flex items-center gap-2 px-4 py-3 text-white text-left rounded-[14px] lg:absolute z-10 mt-2 mx-4 lg:m-0 top-5 right-6 cursor-pointer">
+
+          <button onClick={() => setWatchVideo(true)} className="bg-[#8DD9B3] flex items-center gap-2 px-4 py-3 text-white text-left rounded-[14px] lg:absolute z-10 mt-2 mx-4 lg:m-0 top-5 right-6 cursor-pointer">
             <Video />
             Watch Demo Video
           </button>
@@ -567,7 +573,9 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         <div className="relative py-14 rounded-2xl">
           <div className="relative flex gap-4 items-center flex-col md:flex-row justify-center w-full z-9">
             <h1 className="text-3xl sm:text-[48px] font-bold text-white">Book a Free Demo</h1>
-            <button className='bg-white cursor-pointer rounded-full px-8 py-2 text-m font-medium'>Click Here</button>
+            <button
+
+              onClick={() => router.push("/b2c-student/student-flow/demo/booking-form")} className='bg-white cursor-pointer rounded-full px-8 py-2 text-m font-medium'>Click Here</button>
           </div>
           <div
             className="absolute inset-0 rounded-2xl bg-center bg-repeat z-0"
@@ -651,9 +659,9 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       <h3 className="text-xl font-bold text-gray-900">
                         Course Name
                       </h3>
-                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                      <Link href={"/b2c-student/student-flow/know-more"} className="font-main text-sm text-[#FF3366] relative z-10 w-fit border-b border-b-[#FF3366] cursor-pointer">
                         Know More
-                      </button>
+                      </Link>
                     </div>
 
                     <div className="space-y-1">
@@ -939,6 +947,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         </div>
       </div>
       <Footer />
+
+      <VideoPlayerPopup isOpen={watchVideo} onClose={() => setWatchVideo(false)} />
     </StudentWrapper>
   );
 }

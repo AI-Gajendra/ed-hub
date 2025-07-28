@@ -6,15 +6,16 @@ import React, { useState, useMemo } from "react";
 import {
   FiArrowLeft,
   FiSearch,
+  FiShare2,
 } from "react-icons/fi";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { FiShare2 } from "react-icons/fi";
 import Image from 'next/image'
 import SearchFilterIcon from "../common-components/SearchFilterIcon";
 import TeacherB2CWrapper from "./common-components/TeacherB2CPageWrapper";
 import TabSwitch from "../common-components/TabSwitch";
 import Link from "next/link";
 import FileShare from "@/app/b2c-teacher/new-pop-ups/popupComponent/FileShare";
+import { useRouter } from "next/navigation";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 // Define the File interface
 interface ManagedFile {
@@ -45,7 +46,7 @@ const dummyFiles: ManagedFile[] = [
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
   const [fileShare, setFileShare] = useState(false);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
+    <div className="grid grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
       <div className="flex items-center space-x-3 min-w-0 justify-self-start">
         <Image
           src={"/teacher-b2b/pdf.png"}
@@ -61,7 +62,7 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
           {file.name}
         </span>
       </div>
-      <span className="text-sm text-gray-500 flex-shrink-0 ml-4 justify-self-end sm:justify-self-center">
+      <span className="text-sm text-gray-500 flex-shrink-0 ml-4 justify-self-center">
         {file.size}
       </span>
       <div className="flex gap-4 text-gray-500 justify-self-end">
@@ -77,6 +78,7 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 
 // Main File Management Content Component
 const FileManagementContent: React.FC = () => {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState("");
   // In a real app, file data would likely come from props or a global state/API call
   const [files] = useState<ManagedFile[]>(dummyFiles);
@@ -136,13 +138,13 @@ const FileManagementContent: React.FC = () => {
             </p>
           </div>
         )}
-        {/* <button
-          onClick={handleUploadClick}
+        <button
+          onClick={() => { router.push("/teacher-b2b/teacher-flow/create-test?step=3")}}
           className="px-5 ml-auto mt-4  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm"
           aria-label="Upload new file"
         >
           Upload
-        </button> */}
+        </button>
       </div>
     </div>
   );
@@ -168,7 +170,7 @@ export default function StudentSubmittedPapersPage() {
           >
             <FiArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-base sm:text-xl whitespace-nowrap font-medium sm:font-semibold text-[#FF3366]">
+          <h1 className="text-xl md:text-2xl font-medium text-[#FF3366]">
             Folder Name
           </h1>
         </div>
@@ -179,7 +181,7 @@ export default function StudentSubmittedPapersPage() {
       <TeacherB2CWrapper>
 
         <main className="flex-grow">
-       
+
           <FileManagementContent />
         </main>
 

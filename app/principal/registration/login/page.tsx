@@ -1,11 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import AuthLayout from '@/components/auth-layout' // Adjust path if needed
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
+  const [emailId, setEmailId] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const router = useRouter();
+
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    router.push("/principal/dashboard")
+  }
 
   return (
     <AuthLayout
@@ -16,7 +26,7 @@ export default function LoginPage() {
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
 
-      <form className="space-y-4 flex flex-col">
+      <form onSubmit={handleLogin} className="space-y-4 flex flex-col">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
             Email ID
@@ -24,6 +34,8 @@ export default function LoginPage() {
           <input
             type="email"
             id="email"
+            value={emailId}
+            onChange={(e) => setEmailId(e.target.value)}
             placeholder="Email"
             className="w-full px-4 py-1.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
           />
@@ -40,6 +52,8 @@ export default function LoginPage() {
             <input
               type={showPassword ? 'text' : 'password'}
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               className="w-full px-4 py-1.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
@@ -51,9 +65,9 @@ export default function LoginPage() {
             </button>
           </div>
           <div className="flex justify-end items-center my-2">
-            <a href="#" className="text-xs font-medium text-[#6B7280] hover:underline">
+            <Link href="/principal/registration/forgot-password" className="text-xs font-medium text-[#6B7280] hover:underline">
               Forgot Password?
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -64,9 +78,9 @@ export default function LoginPage() {
         </button>
 
         <div className="self-center text-center text-xs w-fit text-[#6B7280] border-b-2 border-black">
-          <a href="#" className="font-medium text-[#6B7280]   hover:underline">
+          <Link href="/principal/registration/register" className="font-medium text-[#6B7280]   hover:underline">
             Create a new account
-          </a>
+          </Link>
         </div>
       </form>
     </AuthLayout>

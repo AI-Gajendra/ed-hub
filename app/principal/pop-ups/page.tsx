@@ -4,9 +4,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image"; // Assuming Next.js for Image component
 import { IoIosArrowDown } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 
 // SVG Icons (can be replaced with react-icons if preferred and installed)
-const CloseIcon = () => (
+export const CloseIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -57,8 +58,63 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
+interface BaseModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    children: React.ReactNode;
+    maxWidth: string;
+}
+export interface PopupProp {
+    isOpen: boolean;
+    onClose: () => void;
+}
+export const BaseModal: React.FC<BaseModalProps> = ({
+    isOpen,
+    onClose,
+    children,
+    maxWidth,
+}) => {
+    useEffect(() => {
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === "Escape") onClose();
+        };
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+            window.addEventListener("keydown", handleEsc);
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen, onClose]);
+
+    return (
+        <AnimatePresence>
+            {isOpen && (
+                <div
+                    onClick={onClose}
+                    className="fixed inset-0 bg-transparent backdrop-blur-xs flex items-center justify-center p-4 z-50"
+                >
+                    <motion.div
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className={`bg-white rounded-3xl w-full ${maxWidth} overflow-hidden`}
+                    >
+                        {children}
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
+    );
+};
+
 // --- Base Modal Props ---
-interface ModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }

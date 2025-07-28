@@ -11,6 +11,7 @@ import ArrowControl from '@/components/admin/ui/arrow-control'
 import RadarChartAdmin from '@/components/admin/radar-chart'
 import { FiChevronDown } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 const PieChartAdmin = dynamic(() => import('@/components/admin/pie-chart'), {
 	ssr: false,
@@ -40,56 +41,63 @@ export default function SchoolManagementReportPage() {
 					))}
 				</div>
 
-				<div className="border p-4 rounded-2xl">
-					<div className="flex flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
-						<div className="w-full lg:w-[70%]">
-							<Image
-								src={'/admin/admin-branch-report.jpg'}
-								width={1880}
-								height={1250}
-								alt="School Management Report"
-								className="w-full h-96 rounded-2xl object-cover"
-							/>
-							<div className="mt-4">
-								<p className="font-semibold">School Name</p>
-								<p className="text-[#6B7280] text-sm mt-2">Branch Name</p>
+				<div className="p-4 rounded-2xl relative overflow-hidden">
+					{/* Background Image */}
+					<div
+						className="absolute inset-0 z-0 bg-[url('/common-images/pattern.png')] bg-cover bg-center filter grayscale opacity-60"
+						aria-hidden="true"
+					></div>
+					<div className="bg-white p-4 rounded-2xl relative z-10">
+						<div className="flex flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
+							<div className="w-full lg:w-[70%]">
+								<Image
+									src={'/admin/admin-branch-report.jpg'}
+									width={1880}
+									height={1250}
+									alt="School Management Report"
+									className="w-full h-96 rounded-2xl object-cover"
+								/>
+								<div className="mt-4">
+									<p className="font-semibold">School Name</p>
+									<p className="text-[#6B7280] text-sm mt-2">Branch Name</p>
+								</div>
 							</div>
-						</div>
-						<div className="w-full lg:w-[30%]">
-							<p>
-								<span className="font-medium">Email: </span>
-								 example@gm.com
-							</p>
-							<p>
-								<span className="font-medium">Contact: </span>
-								+91 1234567890
-							</p>
-							<p>
-								<span className="font-medium">City: </span>
-								Mumbai
-							</p>
-							<p>
-								<span className="font-medium">State: </span>
-								Maharashtra
-							</p>
-							<p>
-								<span className="font-medium">Address: </span>
-								Vivamus sit amet sem ac nibh bibendum condimentum vel in sem. Curabitur tincidunt pretiutm faucibus. Vestibulum eget
-								pellentesque justo. Vivamus ut pulvinar nibh
-							</p>
-							<div className="text-[#3366FF] mt-2 w-full space-y-2">
-								<p className="border-b border-blue-500">
-									<span className="font-medium">Branch 1:</span> Name
+							<div className="w-full lg:w-[30%]">
+								<p>
+									<span className="font-medium">Email: </span>
+									example@gm.com
 								</p>
-								<p className="border-b border-blue-500">
-									<span className="font-medium">Branch 2:</span> Name
+								<p>
+									<span className="font-medium">Contact: </span>
+									+91 1234567890
 								</p>
-								<p className="border-b border-blue-500">
-									<span className="font-medium">Branch 3:</span> Name
+								<p>
+									<span className="font-medium">City: </span>
+									Mumbai
 								</p>
-								<p className="border-b border-blue-500">
-									<span className="font-medium">Branch 4:</span> Name
+								<p>
+									<span className="font-medium">State: </span>
+									Maharashtra
 								</p>
+								<p>
+									<span className="font-medium">Address: </span>
+									Vivamus sit amet sem ac nibh bibendum condimentum vel in sem. Curabitur tincidunt pretiutm faucibus. Vestibulum eget
+									pellentesque justo. Vivamus ut pulvinar nibh
+								</p>
+								<div className="text-[#3366FF] mt-2 w-full space-y-2">
+									<p className="border-b border-blue-500">
+										<span className="font-medium">Branch 1:</span> Name
+									</p>
+									<p className="border-b border-blue-500">
+										<span className="font-medium">Branch 2:</span> Name
+									</p>
+									<p className="border-b border-blue-500">
+										<span className="font-medium">Branch 3:</span> Name
+									</p>
+									<p className="border-b border-blue-500">
+										<span className="font-medium">Branch 4:</span> Name
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -121,7 +129,7 @@ export default function SchoolManagementReportPage() {
 					<div className="mt-8 w-full">
 						<div className="flex items-center justify-between -mb-4">
 							<h2 className="font-semibold ml-2">Progress</h2>
-							<ArrowControl leftOnClick={() => {}} RightOnClick={() => {}} text="June 2025" />
+							<ArrowControl leftOnClick={() => { }} RightOnClick={() => { }} text="June 2025" />
 						</div>
 						<div className="mr-4">
 							<AdminAreaChart />
@@ -240,19 +248,21 @@ export default function SchoolManagementReportPage() {
 
 function TecherChip() {
 	return (
-		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
-			<Image
-				src={'/images/teacher.jpg'}
-				width={480}
-				height={331}
-				alt="teacher profile image"
-				className="rounded-2xl w-18 h-18 object-cover"
-			/>
-			<div>
-				<p className="font-semibold text-lg">Name</p>
-				<p className="text-[#FF3366] text-sm font-medium">Subject</p>
+		<Link href={""}>
+			<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
+				<Image
+					src={'/images/teacher.jpg'}
+					width={480}
+					height={331}
+					alt="teacher profile image"
+					className="rounded-2xl w-18 h-18 object-cover"
+				/>
+				<div>
+					<p className="font-semibold text-lg">Name</p>
+					<p className="text-[#FF3366] text-sm font-medium">Subject</p>
+				</div>
 			</div>
-		</div>
+		</Link>
 	)
 }
 
@@ -457,7 +467,7 @@ const StudentReport = () => {
 
 								<ArrowControl
 									leftOnClick={handleBackClick}
-									RightOnClick={() => {}}
+									RightOnClick={() => { }}
 									text="2025"
 									className="justify-between px-1.5!"
 								/>

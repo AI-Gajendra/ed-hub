@@ -7,8 +7,10 @@ import {
   FiFolder,
 } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
-import MaxWidthWrapper from "../max-width-wrapper";
 import GoBack from "../principal/goback";
+import { useRouter } from "next/navigation";
+import CreateFolderModal from "@/app/principal/pop-ups/components/CreateFolderModal";
+import ManageAccessModal from "@/app/principal/pop-ups/components/ManageAccessModal";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
@@ -79,34 +81,39 @@ const SubjectTabButton: React.FC<{
   </button>
 );
 
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
-  <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4`}
-  >
+const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
+  const  router = useRouter();
+  const [showManageAccessPopup, setShowManageAccessPopup] = useState(false)
+  return (
     <div
-      className={`bg-[#99DEFF] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
-    >
-      <FiFolder
-        className="w-8 h-8 md:w-12 md:h-12 text-black opacity-80"
-        strokeWidth={1.5}
-      />
-    </div>
-    <div className="flex flex-col sm:w-full gap-4">
-      <div className="">
-        <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
-          {folder.name}
-        </h3>
-        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+      onClick={(e) => { e.stopPropagation(); router.push("/principal/content-management-files-principal") }}
+      className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4`}
+    > 
+      <ManageAccessModal isOpen={showManageAccessPopup} onClose={() => {setShowManageAccessPopup(false)}} />
+      <div
+        className={`bg-[#99DEFF] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      >
+        <FiFolder
+          className="w-8 h-8 md:w-12 md:h-12 text-black opacity-80"
+          strokeWidth={1.5}
+        />
       </div>
-      <div className="w-full bg-gray-100 hidden lg:block rounded-full p-1">
-        <button className="w-full  flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
+      <div className="flex flex-col sm:w-full gap-4">
+        <div className="">
+          <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
+            {folder.name}
+          </h3>
+          <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+        </div>
+        <div className="w-full bg-gray-100 hidden lg:block rounded-full p-1">
+          <button onClick={(e) => {e.stopPropagation(); setShowManageAccessPopup(true)}} className="w-full  flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
+        </div>
       </div>
-    </div>
-    <div className="w-full bg-gray-100 lg:hidden col-span-2 rounded-full p-1">
-      <button className="w-full flex  items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
-    </div>
-  </div>
-);
+      <div className="w-full bg-gray-100 lg:hidden col-span-2 rounded-full p-1">
+        <button className="w-full flex  items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
+      </div>
+    </div>)
+};
 
 const GeneralFilterButton: React.FC<{
   filter: GeneralFilterOption;
@@ -123,6 +130,7 @@ const GeneralFilterButton: React.FC<{
 
 // --- SubjectFolderViewContent Component ---
 const SubjectFolderViewContent: React.FC = () => {
+  const [showCreateFodlerModal, setShowCreateFodlerModal] = useState(false)
   const [activeSubjectId, setActiveSubjectId] = useState<string>(
     sampleSubjectTabs[0]?.id || ""
   );
@@ -151,10 +159,8 @@ const SubjectFolderViewContent: React.FC = () => {
   return (
     <>
       {/* Top Section: Subject Tabs */}
-
-
-
       <div className="bg-white rounded-2xl  p-4 sm:p-6 lg:p-8 space-y-6">
+        <CreateFolderModal isOpen={showCreateFodlerModal} onClose={() => setShowCreateFodlerModal(false)} />
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="relative flex-grow">
@@ -169,11 +175,7 @@ const SubjectFolderViewContent: React.FC = () => {
           </div>
           <div className="flex items-center gap-2 overflow-x-auto">
             <button
-              onClick={() =>
-                alert(
-                  "Main filter icon clicked. Implement general filter logic."
-                )
-              }
+              onClick={() => { setShowCreateFodlerModal(true) }}
               className={`p-2 sm:p-3 rounded-full text-white font-medium cursor-pointer bg-[${ACCENT_PINK}] flex-shrink-0`}
               aria-label="Open main filters"
             >

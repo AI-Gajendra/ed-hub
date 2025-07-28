@@ -116,7 +116,7 @@ const Review: React.FC<TabProps> = ({ setSelectedTab }) => {
         <div className="rounded-[42px] text-base md:text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-4 py-3 cursor-pointer inline-block">
           Cancel
         </div>
-        <Link href={"/admin-b2c/admin-panel/admin-dmit-test"}>
+        <Link href={"/b2c-phase-3/admin-phase-3/admin-panel/admin-dmit-test"}>
         <button className="rounded-[42px] text-base md:text-lg font-semibold bg-[#3366ff] text-white px-4 py-3 cursor-pointer inline-block">
           Publish
         </button>

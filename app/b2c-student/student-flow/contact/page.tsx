@@ -7,21 +7,26 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import Newsletter from '@/components/common-components/Newsletter';
 import StudentNavbar from '@/components/student-navbar'
+import StudentB2CWrapper from '@/components/b2c-student/common-components/StudentB2CWrapper'
 
 export default function FAQPage() {
-	
+
 	return (
 		<div>
-			<StudentNavbar  activeState='Contact'/>
-			<div className="min-h-screen flex flex-col px-2 md:px-0 bg-[#eeeeee]">
+			<StudentNavbar activeState='Contact' />
+			<StudentB2CWrapper>
 				<main className="container mx-auto p-4 md:p-6 max-w-screen-xl rounded-2xl mt-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image
 						src={'/pattern.png'}
 						width={2160}
 						height={1440}
 						alt="pattern"
-						className="w-full h-full brightness-150 object-cover absolute top-0 left-0 opacity-50"
+						className="w-full h-full object-cover absolute top-0 left-0 "
 					/>
+
+					{/* White overlay */}
+					<div className="absolute inset-0 bg-white opacity-40 pointer-events-none z-0" />
+
 					<div className="sm:w-[45%] z-10 bg-white rounded-2xl md:pt-12 p-4">
 						<h1 className="text-xl md:text-2xl lg:text-3xl xl:text-5xl text-[#FF3366] font-bold">Get in touch</h1>
 						<p className="text-[#6B7280] mt-4 tracking-wider">We are here for you! How can we help</p>
@@ -51,7 +56,7 @@ export default function FAQPage() {
 									className="placeholder:text-[#6B7280] mt-2 rounded-2xl resize-none border-[#D5D5D5] bg-[#F9FAFB]"
 									placeholder="Enter description"
 									rows={6}
-									
+
 									cols={50}
 								/>
 							</div>
@@ -122,8 +127,8 @@ export default function FAQPage() {
 					<Newsletter />
 				</div>
 
-			</div>
-				<Footer />
+			</StudentB2CWrapper>
+			<Footer />
 		</div>
 	)
 }

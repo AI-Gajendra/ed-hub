@@ -1,93 +1,26 @@
-import { Search, Filter, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+"use client"
 import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
+import SearchFilterIcon from "@/components/common-components/SearchFilterIcon";
+import Footer from "@/components/layout/Footer";
+import { useRouter } from "next/navigation";
 
 export default function Component() {
+  const filter = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
+const router = useRouter();
+
   return (
-    <StudentWrapper student>
-      <section className="bg-[#EEEEEE] p-10">
-        <div className="w-full max-w-7xl mx-auto space-y-6 p-6 bg-white rounded-3xl">
-          {/* Search and Filter Section */}
-          <div className="flex flex-col sm:flex-row gap-4 items-center">
-            {/* Search Bar */}
-            <div className="relative flex-1 w-full">
-              <Search className="absolute z-10 left-4 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
-              <Input
-                type="text"
-                placeholder="Search"
-                className="pl-12 pr-4 py-3 w-full rounded-full focus:border-gray-300 text-lg border border-[#6B7280]"
-              />
-            </div>
-
-            {/* Filter Section */}
-            <div className="flex items-center gap-3">
-              <Filter className="text-[#FF3366] w-5 h-5" />
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-2 border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50"
-                  >
-                    Filter 1
-                    <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>Option 1</DropdownMenuItem>
-                  <DropdownMenuItem>Option 2</DropdownMenuItem>
-                  <DropdownMenuItem>Option 3</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-2 border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50"
-                  >
-                    Filter 2
-                    <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>Option 1</DropdownMenuItem>
-                  <DropdownMenuItem>Option 2</DropdownMenuItem>
-                  <DropdownMenuItem>Option 3</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-2 border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50"
-                  >
-                    Filter 3
-                    <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>Option 1</DropdownMenuItem>
-                  <DropdownMenuItem>Option 2</DropdownMenuItem>
-                  <DropdownMenuItem>Option 3</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
+    <StudentWrapper student activeState="Material">
+      
+      <section className="bg-[#EEEEEE] p-4 md:p-6 lg:p-10">
+        <div className="w-full max-w-7xl min-h-screen mx-auto space-y-6 p-4 bg-white rounded-3xl">
+          
+          <SearchFilterIcon filters={filter} />
 
           {/* Course Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* My Knowledge Box Card */}
-            <div className="bg-[#F9FAFB] rounded-3xl border border-[#E5E7EB] overflow-hidden p-2">
+            <div onClick={() => router.push("/b2c-student/student-flow/material-knowledge-box")}  className="bg-[#F9FAFB] rounded-3xl cursor-pointer border border-[#E5E7EB] overflow-hidden p-2">
               <div className="h-48 bg-gradient-to-br from-purple-200 via-purple-300 to-blue-200 flex items-center justify-center rounded-3xl">
                 <div className="text-black text-6xl font-bold">
                   <div className="flex items-center justify-center space-x-2">
@@ -107,8 +40,9 @@ export default function Component() {
             {/* Course Cards */}
             {new Array(2).fill(0).map((_, index) => (
               <div
+              onClick={() => router.push("/b2c-student/student-flow/material-page-course")} 
                 key={index}
-                className="bg-[#F9FAFB] rounded-3xl border border-[#E5E7EB] overflow-hidden p-2"
+                className="bg-[#F9FAFB] rounded-3xl cursor-pointer border border-[#E5E7EB] overflow-hidden p-2"
               >
                 <div className="relative h-48 bg-gradient-to-r from-orange-200 to-orange-300 rounded-3xl overflow-hidden">
                   <img
@@ -129,7 +63,7 @@ export default function Component() {
           </div>
         </div>
       </section>
-      <FooterNew showSuscriptionBlock={false} />
+      <Footer />
     </StudentWrapper>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // --- Reusable Form Field Components for Clean Code ---
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -73,6 +74,7 @@ export default function StudentInfoPage() {
     city: "",
   });
 
+const router = useRouter();
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
@@ -98,7 +100,7 @@ export default function StudentInfoPage() {
       <main className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
 
         {/* --- Left Panel: Form (No longer has overflow or fixed height) --- */}
-        <div className="w-full md:w-2/5 lg:w-1/3 bg-white p-6 sm:p-8 lg:p-10 rounded-4xl shadow-2xl">
+        <div className="w-full md:w-2/5 lg:w-1/3 bg-white p-6 sm:p-8 lg:p-10 rounded-4xl -2xl">
           <form onSubmit={handleSubmit}>
             <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
             <FormInput id="className" name="className" label="Class" type="text" placeholder="Enter Class" value={formData.className} onChange={handleChange} />
@@ -125,7 +127,8 @@ export default function StudentInfoPage() {
               </FormSelect>
             </div>
 
-            <button type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3.5 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <button 
+onClick={() => router.push("/student-b2b/skill-assessment/assessment-page")}  type="button" className="w-full bg-[#3366FF] text-white font-semibold py-3.5 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
               Submit
             </button>
           </form>
@@ -146,7 +149,7 @@ export default function StudentInfoPage() {
             layout="fill"
             objectFit="contain"
             objectPosition="bottom center"
-            className="z-10 drop-shadow-xl"
+            className="z-10 drop--xl"
           />
         </div>
       </main>

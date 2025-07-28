@@ -53,7 +53,7 @@ export default function AttendanceForm() {
           <div className="mt-2 space-y-4">
             {/* Date Picker */}
             <div>
-              <label className="text-base text-black font-medium">Date</label>
+              <label className="text-base text-black font-normal">Date</label>
               <div className="relative mt-1 w-full">
                 <input
                   type="text"
@@ -189,7 +189,7 @@ export default function AttendanceForm() {
             />
 
             <div className="text-sm ml-2">
-              <p className="font-medium">{student.name}</p>
+              <p className="font-normal text-base">{student.name}</p>
               <p className="text-gray-500 text-xs">{student.course}</p>
               <p className="text-gray-500 text-xs">{student.grade}</p>
               <p className="text-gray-500 text-xs">{student.group}</p>

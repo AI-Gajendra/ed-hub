@@ -23,11 +23,11 @@ const dummyGroups = Array.from({ length: 8 }, (_, i) => ({
 const GroupCardList = () => {
     const [group, setGroup] = useState(false)
     return (
-        <div className="grid grid-cols-2 px-20 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 px-4 sm:px-6 md:px-12 lg:px-20 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {dummyGroups.map((group) => (
                 <div
                     key={group.id}
-                    className="flex items-start justify-between bg-[#f9fafb] p-2 bg-white border border-gray-200 rounded-2xl"
+                    className="flex items-start justify-between bg-[#f9fafb] p-2 border border-gray-200 rounded-2xl"
                 >
                     {/* Left side: image + text */}
                     <div className="flex items-start gap-4">
@@ -107,12 +107,12 @@ const ManageGroup = () => {
                     >
                         <FiArrowLeft className="w-5 h-5" />
                     </button>
-                    <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+                    <h1 className="text-lg md:text-2xl font-medium text-[#FF3366]">
                         Manage Group Share
                     </h1>
                 </div>
                 <button onClick={() => setCreateGroup(true)}
-                 className="rounded-full bg-[#ff3366] p-2 text-white whitespace-nowrap font-medium">Create new group</button>
+                 className="rounded-full bg-[#ff3366] p-2 text-white whitespace-nowrap font-normal">Create new group</button>
             </div>
             <TeacherB2CWrapper>
 

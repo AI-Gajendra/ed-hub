@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FiBell, FiClock } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 // Sample Question Data Structure
 interface QuestionOption {
@@ -79,6 +80,7 @@ const TIME_LIMIT_MINUTES = 20
 const tabCategories = ['Academic Skills', 'Brain Development', 'Personality Development', 'Emotional Intelligence']
 
 export default function DmittTest_2_Page() {
+    const router = useRouter();
     const [activeCategory, setActiveCategory] = useState(tabCategories[0])
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1)
     const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null)
@@ -128,19 +130,14 @@ export default function DmittTest_2_Page() {
     }
 
     return (
-        <div className="min-h-screen bg-white flex flex-col">
+        <div className="min-h-screen flex flex-col">
             {/* Header */}
-            <header className="bg-[#3366FF] text-white sticky top-0 z-50">
+            <header className="bg-[#3366FF] text-white  sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
                     {/* Logo */}
                     <div className="flex items-center">
                         {/* Replace with your actual logo */}
-                        <Image
-                            src="/page3/student_b2b/Clip path group.svg"
-                            alt="Edunique Logo"
-                            width={150}
-                            height={40}
-                        />
+                        <Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={150} height={40} />
                         {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
                     </div>
 
@@ -159,7 +156,7 @@ export default function DmittTest_2_Page() {
                             />
                             <div>
                                 <p className="text-sm font-medium">Shlok Agheda</p>
-                                <p className="text-xs text-[#FFCC00] opacity-80">Student</p>
+                                <p className="text-xs opacity-80">Student</p>
                             </div>
                         </div>
                     </div>
@@ -168,16 +165,15 @@ export default function DmittTest_2_Page() {
 
             {/* Main Content */}
             <main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
-                <div className="lg:max-w-[46rem] mx-auto bg-white rounded-xl  w-full">
+                <div className="max-w-[53rem] mx-auto bg-white rounded-xl md:p-8">
                     {/* Test Title */}
                     <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
-                        DMIT (Dermatoglyphics Multiple Intelligence Test) and skill
-                        assessment
+                        DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
                     </h1>
 
                     {/* Category Tabs */}
-                    <div className="mb-8  pb-2 ">
-                        <div className="flex lg:justify-center overflow-x-auto custom-scrollbar max-w-[55%] min-w-full space-x-1 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
+                    <div className="mb-8 flex justify-center pb-2">
+                        <div className="inline-flex w-auto overflow-x-auto mx-auto space-x-1 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
                             {tabCategories.map((category) => (
                                 <button
                                     key={category}
@@ -194,7 +190,7 @@ export default function DmittTest_2_Page() {
                     </div>
 
                     {/* Test Info: Questions, Time Limit, Progress, Timer */}
-                    <div className="flex justify-start relative  items-center sm:justify-between  mb-8 gap-4">
+                    <div className="flex max-w-[100%] items-center relative  justify-between  mb-8 gap-4">
                         <div className="sm:text-left">
                             <p className="text-lg font-semibold text-[#6B7280]">
                                 Questions : {TOTAL_QUESTIONS}
@@ -241,7 +237,8 @@ export default function DmittTest_2_Page() {
                     {/* Navigation */}
                     <div className="mt-10 flex justify-center rounded-full">
                         <button
-                            onClick={handleNextQuestion}
+
+                            onClick={() => router.push("/student-b2b/test-question/page-3")}
                             className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
                             {currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
                                 ? 'Submit'

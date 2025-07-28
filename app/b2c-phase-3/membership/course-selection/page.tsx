@@ -1,6 +1,6 @@
 import React from "react";
-import MembershipForm from "@/components/phase-3/course-selection-form";
-import Navbar from "@/components/phase-3/navbar";
+import MembershipForm from "@/components/b2c-phase-3/course-selection-form";
+import Navbar from "@/components/b2c-phase-3/navbar";
 const user = {
   avatarSrc: "/admin/usernav.jpg",
   name: "Shlok Agheda",

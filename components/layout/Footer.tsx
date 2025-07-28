@@ -11,7 +11,7 @@ const FooterLink = ({ label, href = '#' }: { label: string; href?: string }) => 
 
 export default function Footer() {
 	return (
-		<footer className="bg-[#3366FF] text-[1rem] space-y-4 relative text-white font-Poppins font-semibold pt-16 pb-6 print:hidden
+		<footer className="bg-[#3366FF] text-[1rem] w-full space-y-4 relative z-20 text-white font-Poppins font-semibold pt-16 pb-6 print:hidden
 		
 		"
 		>

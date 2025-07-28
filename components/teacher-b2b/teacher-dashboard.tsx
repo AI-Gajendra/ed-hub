@@ -216,10 +216,43 @@ const contentItems = [
 			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
 		],
 	},
+	{
+		title: 'Chapter Name',
+		duration: '5 Hrs/Week',
+		topic: 'Topic Name',
+		points: [
+			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
+			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
+			'3. Definition of nth root of a real number.',
+			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
+		],
+	},
+	{
+		title: 'Chapter Name',
+		duration: '5 Hrs/Week',
+		topic: 'Topic Name',
+		points: [
+			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
+			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
+			'3. Definition of nth root of a real number.',
+			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
+		],
+	},
+	{
+		title: 'Chapter Name',
+		duration: '5 Hrs/Week',
+		topic: 'Topic Name',
+		points: [
+			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
+			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
+			'3. Definition of nth root of a real number.',
+			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
+		],
+	},
 	// repeat 3 more with different content if needed
 ]
 
-const classesAllocated = ['Class A', 'Class B', 'Class 3']
+const classesAllocated = ['Class A', 'Class B', 'Class C']
 
 const classSchedule = [
 	{ time: '10:30 AM', title: 'Basic of C++', className: 'Class 1' },
@@ -269,15 +302,15 @@ const TeacherDashboard = () => {
 									</div>
 								</div>
 
-								<div className="h-[200px] w-full overflow-hidden rounded-lg">
-									<Image src="/forest.avif" alt="Demo" width={400} height={200} className="w-full object-cover" />
+								<div className="h-[200px] w-full overflow-hidden rounded-2xl">
+									<Image src="/teacher-b2b/forest.jpg" alt="Demo" width={400} height={200} className="w-full object-cover rounded-2xl" />
 								</div>
 
 								<div className="flex justify-between items-center">
 									<span className="text-m font-medium">Demo Video</span>
 									<button
-										className="text-sm font-medium py-1 px-4 rounded-full"
-										style={{ backgroundColor: PALETTE.GREEN_LIGHT, color: PALETTE.GREEN_DARK }}>
+										className="text-sm font-medium py-1 px-4 rounded-full "
+										style={{ backgroundColor: PALETTE.GREEN_LIGHT, color: "black" }}>
 										Edit
 									</button>
 								</div>
@@ -286,7 +319,7 @@ const TeacherDashboard = () => {
 									<h4 className="font-semibold text-sm mb-2">Classes Allocated</h4>
 									<div className="flex flex-wrap gap-3">
 										{classesAllocated.map(cls => (
-											<span key={cls} className="text-sm border border-gray-300 bg-gray-200 px-2 py-2 rounded-full">
+											<span key={cls} className="text-sm border bg-[#f3f4f6] border-[#b0b0b0] px-2 py-2 rounded-full">
 												{cls}
 											</span>
 										))}
@@ -306,11 +339,11 @@ const TeacherDashboard = () => {
 								</div>
 								<div className="space-y-3">
 									{classSchedule.map((cls, index) => (
-										<div key={index} className="flex justify-between items-center bg-gray-100 p-2 rounded-2xl">
+										<div key={index} className="flex justify-between items-center bg-[#f9fafb] p-2 rounded-2xl">
 											<div>
-												<p className="text-sm rounded-2xl font-semibold bg-gray-200 p-4 leading-tight text-center">
+												<p className="text-sm rounded-2xl font-semibold bg-[#f3f4f6] p-4 leading-tight text-center">
 													{cls.time.split(' ').map((part, i) => (
-														<span key={i} className="block">
+														<span key={i} className="block tracking-wider">
 															{part}
 														</span>
 													))}
@@ -335,7 +368,7 @@ const TeacherDashboard = () => {
 							<div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
 								<h2 className="font-semibold text-lg">Teacher Toolkit</h2>
 								{tools.map((tool, idx) => (
-									<div key={idx} className="flex items-center gap-2 text-m bg-gray-200 p-4 rounded-xl font-medium cursor-pointer">
+									<div key={idx} className="flex items-center gap-2 text-m bg-[#f9fafb] p-4 rounded-xl font-medium cursor-pointer">
 										📄 {tool}
 									</div>
 								))}
@@ -444,27 +477,21 @@ const TeacherDashboard = () => {
 									{/* Accordions */}
 									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
 										{contentItems.map((item, index) => {
-											const isFirst = index === 0;
-
 											return (
 												<AccordionItem
 													key={index}
 													value={`item-${index}`}
-													className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
+													className={`relative rounded-2xl p-2 bg-[#F9FAFB]`}
 													style={
-														isFirst
-															? {
+														{
 																backgroundImage: "url('/teacher/dashboard/pattern2.png')",
 																backgroundSize: "cover",
 																backgroundPosition: "center",
 															}
-															: {}
 													}
 												>
 													{/* Only show dark overlay on the first item */}
-													{isFirst && (
-														<div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
-													)}
+													<div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
 
 													<AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
 														<div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
@@ -571,29 +598,21 @@ const TeacherDashboard = () => {
 									</div>
 
 									{/* Accordions */}
-									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
+									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2 pr-2 max-h-[80vh] overflow-y-scroll scrollbar">
 										{contentItems.map((item, index) => {
-											const isFirst = index === 0;
-
 											return (
 												<AccordionItem
 													key={index}
 													value={`item-${index}`}
-													className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
-													style={
-														isFirst
-															? {
+													className={`relative rounded-2xl p-2 bg-[#F9FAFB]`}
+													style={{
 																backgroundImage: "url('/teacher/dashboard/pattern2.png')",
 																backgroundSize: "cover",
 																backgroundPosition: "center",
-															}
-															: {}
+														}
 													}
 												>
-													{/* Only show dark overlay on the first item */}
-													{isFirst && (
-														<div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
-													)}
+													<div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
 
 													<AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
 														<div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">

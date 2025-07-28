@@ -238,7 +238,7 @@ export const CourseCreationStepper: React.FC<CourseCreationStepperProps> = ({ st
                     <div className="w-full lg:w-auto lg:absolute lg:right-0">
                         <button
                             onClick={() => {
-                                Router.push('/admin-b2c/admin-panel/know-more')
+                                Router.push('/b2c-phase-3/admin-phase-3/admin-panel/know-more')
                             }}
                             className={`font-semibold text-xs sm:text-sm transition-colors duration-150 cursor-pointer bg-[#F9FAFB] w-full lg:w-auto text-black border border-[#D5D5D5] hover:bg-gray-50 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 flex-shrink-0 whitespace-nowrap`}>
                             Preview Know More

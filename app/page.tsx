@@ -945,10 +945,6 @@ export default function Landing() {
                 whileInView="visible"
                 whileHover="hover"
                 viewport={{ once: true, amount: 0.3 }}
-                variants={{
-                  ...fadeInUp,
-                  ...cardHover,
-                }}
                 custom={index + 2}
                 className="bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-300"
               >

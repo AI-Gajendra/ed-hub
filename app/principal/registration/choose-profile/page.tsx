@@ -4,21 +4,31 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { FiCheck } from 'react-icons/fi'
 import AuthLayout from '@/components/auth-layout' // Adjust path if needed
+import { useRouter } from 'next/navigation';
 
 const profiles = [
-  { id: 'student', label: 'Student / Parents', iconSrc: '/images/profile-student-smiley.svg' },
+  { id: 'student', label: 'Student / Parents', iconSrc: '/images/profile-student-smiley.svg',  },
   { id: 'teacher', label: 'Teacher', iconSrc: '/images/profile-teacher-pen.svg' },
   { id: 'principal', label: 'Principal', iconSrc: '/images/profile-principal-star.svg' },
 ]
 
 export default function ChooseProfilePage() {
-  const [selectedProfile, setSelectedProfile] = useState<string>(profiles[2].id)
+  const [selectedProfile, setSelectedProfile] = useState<string | null>(null)
+  const router = useRouter()
+
+  const  handleProfileClick = (id: string) => {
+    setSelectedProfile(id);
+    if(id == "principal"){
+      router.push("/principal/registration/login");
+    }
+
+  }
 
   return (
     <AuthLayout
       leftPanelTitle="Become a Future School"
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Profile</h2>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Profiles</h2>
       <p className="text-sm text-gray-600 mb-8 leading-relaxed">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
@@ -27,7 +37,7 @@ export default function ChooseProfilePage() {
         {profiles.map(profile => (
           <div
             key={profile.id}
-            onClick={() => setSelectedProfile(profile.id)}
+            onClick={() => handleProfileClick(profile.id)}
             className="flex items-center justify-between p-2 pl-2 pr-2 cursor-pointer transition-all duration-200 bg-white hover:shadow-lg rounded-full border border-gray-200">
             <div className="flex items-center gap-4">
               <Image src={profile.iconSrc} alt={`${profile.label} icon`} width={40} height={40} />

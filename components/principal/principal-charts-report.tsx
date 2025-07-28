@@ -2,16 +2,16 @@
 
 import React, { useState } from 'react'
 import {
-	FiSearch,
 	FiPercent,
-	FiAward,
-	FiBarChart2,
 	FiChevronDown,
-	FiZap,
 	FiArrowLeftCircle,
 	FiArrowRightCircle,
 	FiChevronUp,
 } from 'react-icons/fi' // Add icons as needed
+import { LuOmega } from 'react-icons/lu'
+import { MdOutlineFunctions, MdOutlineSuperscript, MdOutlineTheaterComedy } from 'react-icons/md'
+import { RiPsychotherapyLine } from 'react-icons/ri'
+import { TbMathFunction } from 'react-icons/tb'
 
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
@@ -84,11 +84,36 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageTe
 
 const PrincipalChatrsReport: React.FC = () => {
 	// Dummy state for month/year filter for Overall Progress chart
-const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+	const currentDate = new Date();
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+	const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth()); // default selected month
+	const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear()); // visible only, not changed until arrows used
+
+	const toggleDropdown = () => {
+		setIsOpen(!isOpen);
+	};
+
+	const months = [
+		"Month",
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+
+	const handleMonthSelect = (index: number) => {
+		setSelectedMonth(index);
+		setIsOpen(false);
+	};
 	// Simplified data for the line chart (hardcoded points)
 	const lineChartData = {
 		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -113,131 +138,141 @@ const [isOpen, setIsOpen] = useState(false);
 	// Skill Card Data
 	const skillCardData = [
 		{
-			title: 'Basic Academic Skills',
+			title: "Basic Academic Skills",
 			bgColor: PALETTE.GREEN_LIGHT,
 			progressColor: PALETTE.GREEN_DARK, // Assuming this is for progress bar
-			overallProgress: '4/5',
+			overallProgress: "4/5",
 			progressPercent: 80,
+			color: "#1D5851",
 			iconSet: [
-				<FiSearch key="s" className="w-4 h-4" />,
-				<FiPercent key="p" className="w-4 mt-4.5 h-4" />,
-				<FiAward key="a" className="w-4 h-4" />,
+				<LuOmega key="s" className="w-5 h-5  text-[#1d5851]/40" />,
+				<FiPercent key="p" className="w-5 mt-4.5 h-5 text-[#1d5851]/40 " />,
+				<MdOutlineSuperscript key="a" className="w-5 h-5  text-[#1d5851]/40" />,
 			],
 			skills: Array(7).fill({
-				name: 'Subject 1',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Subject 1",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 			}),
 		},
 		{
-			title: 'Critical Academic Skills',
+			title: "Critical Academic Skills",
 			bgColor: PALETTE.PURPLE_LIGHT,
-			progressColor: PALETTE.PURPLE_DARK,
-			overallProgress: '4/5',
+			progressColor: PALETTE.ACCENT_PURPLE,
+			overallProgress: "4/5",
 			progressPercent: 80,
+			color: "#37085C",
 			iconSet: [
-				<FiBarChart2 key="b" className="w-4 h-4" />,
-				<FiAward key="a" className="w-4 mt-4.5 h-4" />,
-				<FiZap key="z" className="w-4 h-4" />,
+				<MdOutlineFunctions key="b" className="w-5 h-5 text-[#37085c]/30 " />,
+				<RiPsychotherapyLine
+					key="a"
+					className="w-5 mt-4.5 h-5 text-[#37085c]/30 "
+				/>,
+				<TbMathFunction key="z" className="w-5 h-5  text-[#37085c]/30" />,
 			],
 			skills: [
 				{
-					name: 'Spoken English',
-					details: 'Pedagogy and Plan',
-					progress: '3/4',
+					name: "Spoken English",
+					details: "Pedagogy and Plan",
+					progress: "3/4",
 				},
-				{ name: 'Vocabulary', details: 'Pedagogy and Plan', progress: '3/4' },
-				{ name: 'Hand Writing', details: 'Pedagogy and Plan', progress: '3/4' },
-				{ name: 'Olympiad', details: 'Pedagogy and Plan', progress: '3/4' },
-				{ name: 'Experiments', details: 'Pedagogy and Plan', progress: '3/4' },
-				{ name: 'Memory Games', details: 'Pedagogy and Plan', progress: '3/4' },
-				{ name: 'Memory Games', details: 'Pedagogy and Plan', progress: '3/4' },
+				{ name: "Vocabulary", details: "Pedagogy and Plan", progress: "3/4" },
+				{ name: "Hand Writing", details: "Pedagogy and Plan", progress: "3/4" },
+				{ name: "Olympiad", details: "Pedagogy and Plan", progress: "3/4" },
+				{ name: "Experiments", details: "Pedagogy and Plan", progress: "3/4" },
+				{ name: "Memory Games", details: "Pedagogy and Plan", progress: "3/4" },
+				{ name: "Memory Games", details: "Pedagogy and Plan", progress: "3/4" },
 			],
 		},
-	]
+	];
 
 	const lifeSkillsData = {
-		title: 'Life skill Enhancements',
+		title: "Life skill Enhancements",
 		bgColor: PALETTE.PINK_LIGHT,
 		progressColor: PALETTE.PINK_DARK, // Using the darker pink for progress
-		overallProgress: '4/5',
+		overallProgress: "4/5",
 		progressPercent: 80,
-		iconSet: [<FiAward key="a" className="w-4 mt-4.5 h-4" />, <FiZap key="z" className="w-4 h-4" />], // Example icons
+		iconSet: [
+			<MdOutlineTheaterComedy
+				key="a"
+				className="w-8  text-[#893544]/40 mr-6 mt-4.5 h-8"
+			/>,
+		], // Example icons
 		skills: [
 			{
-				name: 'Critical Thinking',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Critical Thinking",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Visualization',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Visualization",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Accountability',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Accountability",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Like Challenges',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Like Challenges",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Social Skills',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Social Skills",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Decision Making',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Decision Making",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Focus',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Focus",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Retention',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Retention",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Adaptability',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Adaptability",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Behavior',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Behavior",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Respect',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Respect",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 			{
-				name: 'Emotional Skills',
-				details: 'Pedagogy and Plan',
-				progress: '3/4',
+				name: "Emotional Skills",
+				details: "Pedagogy and Plan",
+				progress: "3/4",
 				color: PALETTE.ACCENT_RED,
 			},
 		],
-	}
+	};
 	const personalDevData = {
 		// Copied structure from Life Skills for Personal Development
 		title: 'Personal Development',
@@ -279,6 +314,115 @@ const [isOpen, setIsOpen] = useState(false);
 				progress: '3/4',
 				color: PALETTE.ACCENT_RED,
 			},
+			{
+				name: 'Discipline',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Confidence',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+	{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+	{
+				name: 'Presentation',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Written',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Creativity',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+			{
+				name: 'Problem Solving',
+				details: 'Pedagogy and Plan',
+				progress: '3/4',
+				color: PALETTE.ACCENT_RED,
+			},
+	
 		],
 	}
 
@@ -345,6 +489,14 @@ const [isOpen, setIsOpen] = useState(false);
 		},
 	]
 
+	const handlePrevYear = () => {
+		setSelectedYear((prev) => prev - 1);
+	};
+
+	const handleNextYear = () => {
+		setSelectedYear((prev) => prev + 1);
+	};
+
 	return (
 		<>
 			<div className="bg-gray-100">
@@ -369,51 +521,85 @@ const [isOpen, setIsOpen] = useState(false);
 						<div className="flex items-start justify-between px-2">
 							<div className="flex flex-col flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
 								<div className="flex items-center">
-									<div className="w-16 h-5 rounded-full mr-2" style={{ backgroundColor: PALETTE.ACCENT_BLUE }}></div>
-									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Basic Academic Skills</span>
+									<div
+										className="w-16 h-5 rounded-full mr-2"
+										style={{ backgroundColor: PALETTE.ACCENT_BLUE }}
+									></div>
+									<span style={{ color: PALETTE.TEXT_MEDIUM }}>
+										Basic Academic Skills
+									</span>
 								</div>
 								<div className="flex items-center">
-									<div className="w-16 h-5 rounded-full mr-2" style={{ backgroundColor: PALETTE.ACCENT_PURPLE }}></div>
-									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Critical Academic Skills</span>
+									<div
+										className="w-16 h-5 rounded-full mr-2"
+										style={{ backgroundColor: PALETTE.ACCENT_PURPLE }}
+									></div>
+									<span style={{ color: PALETTE.TEXT_MEDIUM }}>
+										Critical Academic Skills
+									</span>
 								</div>
 								<div className="flex items-center">
-									<div className="w-16 h-5 rounded-full mr-2" style={{ backgroundColor: PALETTE.ACCENT_RED }}></div>
-									<span style={{ color: PALETTE.TEXT_MEDIUM }}>Personality Development</span>
+									<div
+										className="w-16 h-5 rounded-full mr-2"
+										style={{ backgroundColor: PALETTE.ACCENT_RED }}
+									></div>
+									<span style={{ color: PALETTE.TEXT_MEDIUM }}>
+										Personality Development
+									</span>
 								</div>
 							</div>
-							<div className="flex items-center gap-2 mt-2 sm:mt-0">
-								 <div className="relative inline-block text-left">
-      {/* Button + Border container */}
-      <div
-        className={`bg-[#f9fafb] ${
-          isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"
-        } box-border`}
-      >
-        <button
-          onClick={toggleDropdown}
-          className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full"
-        >
-          Month
-          {isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
-        </button>
-      </div>
+							{/* month and june button */}
+							<div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
+								<div className="relative inline-block text-left">
+									{/* Button + Border container */}
+									<div
+										className={`bg-[#f9fafb] ${isOpen
+											? "rounded-t-xl border-t border-x"
+											: "rounded-xl border"
+											} box-border`}
+									>
+										<button
+											onClick={toggleDropdown}
+											className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-3 w-full"
+										>
+											{months[selectedMonth] ?? " Month"}
+											{isOpen ? (
+												<FiChevronUp size={14} />
+											) : (
+												<FiChevronDown size={14} />
+											)}
+										</button>
+									</div>
 
-      {/* Dropdown content */}
-      {isOpen && (
-        <div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border">
-          <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-            Option 1
-          </button>
-          <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
-            Option 2
-          </button>
-        </div>
-      )}
-    </div>
-								<div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-									<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-									<span>2025</span>
-									<FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+									{/* Dropdown content */}
+									{isOpen && (
+										<div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border max-h-60 overflow-y-auto no-scrollbar">
+											{months.map((month, index) => (
+												<button
+													key={month}
+													onClick={() => handleMonthSelect(index)}
+													className={`whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-700 hover:bg-gray-100 ${index === selectedMonth
+														? "font-semibold text-black"
+														: ""
+														}`}
+												>
+													{month}
+												</button>
+											))}
+										</div>
+									)}
+								</div>
+
+								<div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+									<FiArrowLeftCircle
+										onClick={handlePrevYear}
+										className="w-4 h-4 cursor-pointer hover:text-black"
+									/>
+									<span>{selectedYear}</span>
+									<FiArrowRightCircle
+										onClick={handleNextYear}
+										className="w-4 h-4 cursor-pointer hover:text-black"
+									/>
 								</div>
 							</div>
 						</div>
@@ -470,8 +656,8 @@ const [isOpen, setIsOpen] = useState(false);
 						style={{
 							backgroundColor: PALETTE.WHITE_CARD,
 						}}>
-						<h3 className="text-base font-semibold mb-3 text-[#FF3366]">{personalDevData.title}</h3>
-						<div className="space-y-3  custom-scrollbar overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
+						<h3 className="text-base font-semibold mb-5 text-[#FF3366]">{personalDevData.title}</h3>
+						<div className="space-y-3.5 max-h-90 custom-scrollbar-thin-grey overflow-y-scroll">
 							{' '}
 							{/* Custom scrollbar */}
 							{personalDevData.skills.map((skill, i) => (
@@ -485,43 +671,63 @@ const [isOpen, setIsOpen] = useState(false);
 							))}
 						</div>
 						{/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
-						<div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
+						<div className="absolute right-1 top-16 bottom-5 w-1 rounded-full opacity-50 hidden sm:block"></div>
 					</div>
 				</div>
 				<main className="grid h-full grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 bg-gray-100">
 					<div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-4 items-start">
 						{skillCardData.map((card, cardIndex) => (
-							<div key={cardIndex} className="py-4 px-2 rounded-2xl overflow-y-auto bg-gray-100">
+							<div
+								key={cardIndex}
+								className="py-4 px-2 rounded-2xl overflow-y-auto bg-gray-100"
+							>
 								<div
 									style={{
 										backgroundColor: card.bgColor,
 									}}
-									className={` p-3 mb-2 rounded-xl`}>
+									className={` px-5 py-3 mb-2 rounded-xl`}
+								>
 									<div className="flex justify-between items-center mb-2">
-										<h3 className="text-base font-bold" style={{ color: PALETTE.TEXT_DARK }}>
+										<h3
+											className="text-base md:text-xl font-bold"
+											style={{ color: card.color }}
+										>
 											{card.title}
 										</h3>
-										<div className="flex space-x-1.5 text-xs" style={{ color: PALETTE.TEXT_MEDIUM }}>
+										<div
+											className="flex space-x-1.5 text-xs"
+											style={{ color: card.color }}
+										>
 											{card.iconSet}
 										</div>
 									</div>
-									<p className="text-xs mb-1" style={{ color: card.progressColor }}>
+									<p className="text-xs mb-1" style={{ color: card.color }}>
 										Overall Progress
 									</p>
 									<div className="items-center mb-3">
-										<span className="text-lg font-semibold mr-2" style={{ color: PALETTE.TEXT_DARK }}>
+										<span
+											className="text-lg font-semibold mr-2"
+											style={{ color: PALETTE.TEXT_DARK }}
+										>
 											{card.overallProgress}
 										</span>
 										<div className="flex gap-2 items-center">
-											<div className="flex-grow h-1.5 rounded-full" style={{ backgroundColor: PALETTE.WHITE_CARD }}>
+											<div
+												className="flex-grow h-1.5 rounded-full"
+												style={{ backgroundColor: PALETTE.WHITE_CARD }}
+											>
 												<div
 													className="h-full rounded-full"
 													style={{
 														width: `${card.progressPercent}%`,
 														backgroundColor: card.progressColor,
-													}}></div>
+													}}
+												></div>
 											</div>
-											<span className="text-xs font-semibold ml-2" style={{ color: PALETTE.TEXT_DARK }}>
+											<span
+												className="text-xs font-semibold ml-2"
+												style={{ color: PALETTE.TEXT_DARK }}
+											>
 												5
 											</span>
 										</div>
@@ -600,7 +806,7 @@ const [isOpen, setIsOpen] = useState(false);
 							borderColor: PALETTE.BORDER_GREY,
 						}}>
 						<table className="w-full text-xs ">
-							<thead className="bg-gray-200">
+							<thead className="bg-[#e5ecff]">
 								<tr>
 									{['Test', 'Date', 'Date', 'Total Marks', 'How', 'Marks', 'Results'].map((header, index) => (
 										<th key={index} className="p-2.5 text-left font-semibold">
@@ -611,7 +817,7 @@ const [isOpen, setIsOpen] = useState(false);
 							</thead>
 							<tbody>
 								{testResultsData.map((row, i) => (
-									<tr key={i} className="odd:bg-white even:bg-gray-100" style={{ borderColor: PALETTE.BORDER_GREY }}>
+									<tr key={i} className="odd:bg-white even:bg-[#e5ecff4d]" style={{ borderColor: PALETTE.BORDER_GREY }}>
 										<td className="p-2.5" style={{ color: PALETTE.TEXT_DARK }}>
 											{row.test}
 										</td>

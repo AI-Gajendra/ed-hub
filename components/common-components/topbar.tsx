@@ -36,11 +36,11 @@ export const OptimizedCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({
         <div className="relative w-full flex items-center">
           <button
             onClick={handleScroll}
-            className="absolute left-1 lg:left-2 top-1/2 -translate-y-1/2 z-20 p-1 lg:p-2 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center"
+            className="absolute left-1  lg:left-2 top-1/2 -translate-y-1/2 z-20 p-1 lg:p-2 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center"
             aria-label="Scroll left"
           >
             <FiArrowLeft
-              className="w-5 h-5 text-black"
+              className="w-5 h-5  text-black"
               onClick={() => {
                 if (typeof window !== "undefined") {
                   window.history.back();

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { FiCheck } from "react-icons/fi";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // --- Color Palette ---
 const COLORS = {
@@ -71,6 +72,7 @@ const SelectionCard: React.FC<SelectionCardProps> = ({ option, isSelected, onSel
 // --- Main Static Page Component ---
 export default function SelectTypePage() {
     const [selectedOptionId, setSelectedOptionId] = useState<string>(selectionOptions[0].id);
+    const Router = useRouter();
 
     return (
         <div className="bg-black">
@@ -103,7 +105,9 @@ export default function SelectTypePage() {
                                     key={option.id}
                                     option={option}
                                     isSelected={selectedOptionId === option.id}
-                                    onSelect={() => setSelectedOptionId(option.id)}
+                                    onSelect={() => {
+                                        Router.push("/b2c-student/registration/login")
+                                        setSelectedOptionId(option.id)}}
                                 />
                             ))}
                         </div>

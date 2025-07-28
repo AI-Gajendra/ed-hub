@@ -13,12 +13,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
-import CourseSlider from "@/components/student/home/course-slider";
+import { useEffect, useRef, useState } from "react";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaCircleCheck } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import CourseSlider from "./course-slider";
 
 interface Course {
   id: string;
@@ -252,7 +252,7 @@ export default function StudentHome() {
           </div>
         </section>
 
-        <div className="relative z-10 w-full py-8 bg-[#EEEEEE] px-16 pb-70 border">
+        <div className="relative z-10 w-full py-8 bg-[#EEEEEE] px-4 sm:px-8 lg:px-16 pb-70 border">
           <section className="max-w-7xl mx-auto space-y-12">
             {/* Explore Section */}
             <div className="space-y-6">
@@ -295,7 +295,7 @@ export default function StudentHome() {
             </div>
 
             {/* Starting Cards Section */}
-            <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+            <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-4 lg:p-7">
               <div className="space-y-4 max-w-7xl mx-auto pb-3">
                 <h2 className="text-4xl leading-[1.5] font-bold text-black">
                   Start Your Learning <br /> Adventure!
@@ -309,8 +309,8 @@ export default function StudentHome() {
                 {startingCourses.map((course) => (
                   <Card
                     key={course.id}
-                    onClick={() => Router.push("/b2c-student/student-flow/course-details")}
-                    className="bg-white cursor-pointer rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                    onClick={() => Router.push("/b2c-student/student-flow/courses/detail")}
+                    className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
                   >
                     <div className="relative p-3">
                       <Image
@@ -352,7 +352,7 @@ export default function StudentHome() {
                         )}
                       </div>
 
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <div className="flex items-center gap-1 bg-[#F3F4F6] rounded-xl px-3 py-1">
                           <span className="font-bold">4.2</span>
                           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -477,3 +477,4 @@ export default function StudentHome() {
     </StudentWrapper>
   );
 }
+

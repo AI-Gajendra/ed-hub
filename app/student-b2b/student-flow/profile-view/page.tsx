@@ -2,12 +2,13 @@
 "use client";
 
 import React, { useState } from 'react';
-import Header from "@/components/layout/Header";     
 import Footer from "@/components/layout/Footer";    
 import { 
     ProfileFormSection, 
     NewsletterSection 
 } from './components'; 
+import StudentNavbarNew from '@/components/layout/StudentB2B/student-navbar-new';
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar';
 
 export default function EditStudentProfilePage() {
   const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ export default function EditStudentProfilePage() {
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
-      <Header user={headerUser} />
+      <StudentNavbarNew activeState='Dashboard'/>
 
       <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
 

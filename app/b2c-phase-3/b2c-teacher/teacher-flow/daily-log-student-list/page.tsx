@@ -1,0 +1,81 @@
+"use client";
+
+import { useState } from "react";
+import Header from "@/components/layout/TeacherB2CHeaderPhase3";
+import Footer from "@/components/layout/Footer";
+import Link from "next/link";
+import EditBatchNameModal from "@/app/b2c-teacher/ct-pop-ups/popupComponent/EditRenameBatch";
+import BackButton from "@/components/common-components/BackButton";
+import SearchFilterIcon from "@/components/common-components/SearchFilterIcon";
+import TabSwitch from "@/components/common-components/TabSwitch";
+import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
+
+
+// --- Recording Card Component ---
+interface Course {
+  id: string;
+  imageSrc: string;
+  // e.g., "PERSONALITY DEVELOPMENT"
+  courseName: string;
+  noofbatch: string;
+  noofBtudents: string; // e.g., "Class"
+  // e.g., "00 hrs : 00 mins"
+}
+
+export default function CourseCardPage() {
+  // Dummy user for Header
+  const [editOpen, setEditOpen] = useState(false)
+  const batches = ["Batch 1", "Batch 2", "Batch 3", "Batch 4", "Batch 5" ];
+  const [activeBatch, setActiveBatch] = useState(batches[0]);
+  const dates = [
+    '16 / 6 / 25', '17 / 6 / 25', '18 / 6 / 25', '19 / 6 / 25', '20 / 6 / 25',
+    '21 / 6 / 25', '22 / 6 / 25', '23 / 6 / 25', '24 / 6 / 25'
+  ];
+  
+  const filter = [
+  {id: "f1", label: "Filter 1"},
+  {id: "f2", label: "Filter 2"},
+  {id: "f3", label: "Filter 3"},
+]
+
+  return (
+    <>
+      <Header activeState="Dashboard" />
+        <BackButton Heading="Batch Daily Log"/>
+
+        <TeacherB2CWrapper>
+
+        
+        <main className="p-2  w-full sm:p-4 flex flex-col  bg-white  rounded-2xl">
+         
+        <TabSwitch tabs={batches} selected={activeBatch} onChange={setActiveBatch}/>
+
+        <div className="flex sm:gap-2 gap-4 md:px-4 items-center">
+          <SearchFilterIcon filters={filter} />
+          <button
+          onClick={() => setEditOpen(true)}
+          className="px-2 py-2.5 border bg-[#f9fafb] text-sm rounded-full  whitespace-nowrap">Edit Batch Name</button>
+          <Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/add-progress-form"} className="px-2 py-2.5 border bg-[#3366ff] text-sm rounded-full text-white  whitespace-nowrap">Add Daily Progress</Link>
+        </div>
+
+        {/* Date Rows */}
+        <div className="flex flex-col gap-4 mt-4 md:px-4 pb-6">
+          {dates.map((date, idx) => (
+            <Link href={"/b2c-phase-3/b2c-teacher/teacher-flow/add-progress-form-edit"}
+              key={idx}
+              className="bg-[#F9FAFB] w-full rounded-full px-4 py-2 text-black text-base border border-[#D0D0D0] font-medium "
+            >
+              {date}
+            </Link>
+          ))}
+        </div>
+      
+         
+        </main>
+</TeacherB2CWrapper>
+
+        <Footer />
+      <EditBatchNameModal isOpen={editOpen} onClose={() => setEditOpen(false)} />
+    </>
+  );
+}

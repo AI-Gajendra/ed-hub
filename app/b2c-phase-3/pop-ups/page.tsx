@@ -4,14 +4,18 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CourseUnlockPopup from "./component/course-unlock-confirmation";
-import ConfirmUnlockPopup from './component/teacher-unlock-confirm'
-
+import ConfirmUnlockPopup from "./component/teacher-unlock-confirm";
+import CourseMaterial from "./component/course-material";
+import DmitStart from "./component/Choice of DMIT or Start";
+import DetailsCousrePopup from "./component/details-for-course";
+import RequestClassCancel from './component/request-class-cancelling'
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   maxWidth: string;
+  className: string;
 }
 export interface PopupPropB2CTeacher {
   // this can be import as a prop
@@ -23,7 +27,7 @@ export interface PopupPropB2CTeacher {
 export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
   isOpen,
   onClose,
-
+  className,
   children,
   maxWidth,
 }) => {
@@ -90,6 +94,26 @@ export default function AllTeacherB2CPopups() {
       label: " Confirm Unlock",
       action: () => setOpenModal("confirm unlock"),
     },
+    {
+      id: "course material",
+      label: " Course material",
+      action: () => setOpenModal("course material"),
+    },
+    {
+      id: "dmit start",
+      label: " dmit start",
+      action: () => setOpenModal("dmit start"),
+    },
+    {
+      id: "details course",
+      label: " details course",
+      action: () => setOpenModal("details course"),
+    },
+     {
+      id: "request class",
+      label: "request class",
+      action: () => setOpenModal("request class"),
+    },
   ];
 
   return (
@@ -114,7 +138,23 @@ export default function AllTeacherB2CPopups() {
         onClose={() => setOpenModal(null)}
       />
       <ConfirmUnlockPopup
-      isOpen={openModal === "confirm unlock"}
+        isOpen={openModal === "confirm unlock"}
+        onClose={() => setOpenModal(null)}
+      />
+      <CourseMaterial
+        isOpen={openModal === "course material"}
+        onClose={() => setOpenModal(null)}
+      />
+      <DmitStart
+        isOpen={openModal === "dmit start"}
+        onClose={() => setOpenModal(null)}
+      />
+      <DetailsCousrePopup
+        isOpen={openModal === "details course"}
+        onClose={() => setOpenModal(null)}
+      />
+      <RequestClassCancel
+      isOpen={openModal === "request class"}
         onClose={() => setOpenModal(null)}/>
     </div>
   );

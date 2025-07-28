@@ -6,6 +6,7 @@ import FooterNew from "@/components/footer3";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Footer from "@/components/layout/Footer";
+import { useRouter } from "next/navigation";
 
 const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
   return (
@@ -13,11 +14,10 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`w-5 h-5 ${
-            star <= rating
+          className={`w-5 h-5 ${star <= rating
               ? "fill-[#FFCC00] text-[#FFCC00]"
               : "fill-white stroke-[#FFCC00]"
-          }`}
+            }`}
         />
       ))}
     </div>
@@ -25,6 +25,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
 };
 
 export default function DemoRating() {
+  const router = useRouter();
   return (
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
@@ -56,7 +57,9 @@ export default function DemoRating() {
                   />
                 </div>
                 <div className="flex items-center justify-center">
-                  <Button className="bg-[#3366ff] text-white px-8 py-4 hover:bg-[#0c45f0] hover:text-white rounded-full">
+                  <Button
+
+                    onClick={() => router.push("/b2c-student/student-flow/demo/course-fee-payment")} className="bg-[#3366ff] text-white px-8 py-4 hover:bg-[#0c45f0] hover:text-white rounded-full">
                     Submit Feedback
                   </Button>
                 </div>
@@ -86,9 +89,7 @@ export default function DemoRating() {
         </section>
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

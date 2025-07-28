@@ -3,6 +3,7 @@ import FooterNew from "@/components/footer3";
 import { ArrowLeft } from "lucide-react";
 import BackButton from "@/components/common-components/BackButton";
 import Footer from "@/components/layout/Footer";
+import Link from "next/link";
 
 export default function CourseSelection() {
   return (
@@ -15,7 +16,8 @@ export default function CourseSelection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Course Cards */}
             {new Array(4).fill(0).map((_, index) => (
-              <div
+              <Link
+              href={"/b2c-student/student-flow/advance-plan"}
                 key={index}
                 className="bg-[#F9FAFB] rounded-3xl border border-[#E5E7EB] overflow-hidden p-2"
               >
@@ -29,7 +31,7 @@ export default function CourseSelection() {
                 <div className="p-2 pb-0">
                   <h3 className="text-xl font-bold">Course Name</h3>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

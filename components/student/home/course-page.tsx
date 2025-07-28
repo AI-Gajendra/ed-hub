@@ -190,9 +190,6 @@ export default function CoursesComponent({
       setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
     }
   };
-  const handlePathClick = (path: LearningPath) => {
-    console.log("Selected learning path:", path);
-  };
 
   // Update arrow visibility on category change
   useEffect(() => {
@@ -296,7 +293,7 @@ export default function CoursesComponent({
               <div
                 key={course.id}
                 onClick={() => Router.push("/b2c-student/student-flow/course-details")}
-                className="flex-none w-80 bg-white rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative p-4">
                   <Image
@@ -322,7 +319,7 @@ export default function CoursesComponent({
 
                     <button
                       className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
-                      onClick={() => router.push("/student/courses/know-more")}
+                      onClick={() => router.push("/b2c-student/student-flow/know-more")}
                     >
                       Know More
                     </button>
@@ -394,7 +391,7 @@ export default function CoursesComponent({
               <Card
                 key={course.id}
                 onClick={() => Router.push("/b2c-student/student-flow/course-details")}
-                className="bg-white cursor-pointer rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
               >
                 <div className="relative p-3">
                   <Image
@@ -413,7 +410,7 @@ export default function CoursesComponent({
                     <button
                       className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
                       onClick={() =>
-                        Router.push("/student/courses/know-more")
+                        Router.push("/b2c-student/student-flow/know-more")
                       }
                     >
                       Know More
@@ -487,7 +484,6 @@ export default function CoursesComponent({
               <LearningPathCard
                 key={path.id}
                 path={path}
-                onClick={handlePathClick}
               />
             ))}
           </div>
@@ -516,13 +512,12 @@ const learningPaths: LearningPath[] = [
 
 interface LearningPathCardProps {
   path: LearningPath;
-  onClick?: (path: LearningPath) => void;
 }
 
 const LearningPathCard: React.FC<LearningPathCardProps> = ({
   path,
-  onClick,
 }) => {
+  const Router = useRouter();
   return (
     <Card
       className={cn(
@@ -531,7 +526,7 @@ const LearningPathCard: React.FC<LearningPathCardProps> = ({
         "hover:scale-[1.02] hover:shadow-xl",
         "border-0 bg-transparent"
       )}
-      onClick={() => onClick?.(path)}
+      onClick={() => Router.push("/b2c-student/student-flow/courses/categorical")}
     >
       <CardContent className="p-0 relative h-full">
         {/* Background Image */}

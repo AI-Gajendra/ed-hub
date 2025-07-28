@@ -3,12 +3,13 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/b2c-student/Header';
-import { 
-    ProfileFormSection, 
-    NewsletterSection 
-} from './components'; 
+import {
+  ProfileFormSection,
+  NewsletterSection
+} from './components';
 import StudentNavbarNew from '@/components/student-navbar-new';
 import Footer from '@/components/layout/Footer';
+import { useRouter } from 'next/navigation';
 
 export default function EditStudentProfilePage() {
   const [formData, setFormData] = useState({
@@ -29,11 +30,10 @@ export default function EditStudentProfilePage() {
   const handleProfileFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const router = useRouter();
   const handleProfileSave = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Profile Data Saved:", formData);
-    alert("Profile Saved (check console)!");
+    router.push("/b2c-student/student-flow/my-course")
   };
 
   const handleNewsletterEmailChange = (value: string) => {
@@ -47,14 +47,6 @@ export default function EditStudentProfilePage() {
     setNewsletterEmail("");
   };
 
-  const headerUser = {
-    name: formData.name,
-    role: "Student",
-    avatarSrc: "/images/person.jpg",
-  };
-
-
-
   return (
     <div className="bg-[#e3e3e3] min-h-screen flex flex-col">
       <StudentNavbarNew />
@@ -65,9 +57,9 @@ export default function EditStudentProfilePage() {
           formData={formData}
           onFormChange={handleProfileFormChange}
           onProfileSave={handleProfileSave}
-          profileAvatarSrc="/images/person.jpg" 
+          profileAvatarSrc="/images/person.jpg"
         />
-        
+
         <NewsletterSection
           newsletterEmail={newsletterEmail}
           onNewsletterEmailChange={handleNewsletterEmailChange}

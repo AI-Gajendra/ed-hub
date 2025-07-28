@@ -4,10 +4,10 @@ import LoginTable from './login-status'
 
 const LoginActivityTeacher = () => {
   return (
-    <>
-    <PrincipalLoginBanner button1='Class 8A' button2='Group A' profileImage='/teacher-b2b/profile2.png' activity="Teacher" />
+    <div className='max-w-screen-2xl'>
+    <PrincipalLoginBanner name='Teacher Name' button1='Class Assigned' button2='Class Assigned' profileImage='/teacher-b2b/profile2.png' activity="Teacher" />
     <LoginTable />
-    </>
+    </div>
   )
 }
 

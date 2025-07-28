@@ -1,10 +1,13 @@
+"use client"
 import PrincipalChatrsReport from '@/components/principal/principal-charts-report';
 import { IoMdSettings } from "react-icons/io";
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiSettings } from 'react-icons/fi';
 
 import { FaStar } from 'react-icons/fa';
+import ConfidentialInfoPopup from '../pop-ups/components/ConfidentialInfoPopup';
+import Link from 'next/link';
 
 interface CourseCardProps {
   image: string;
@@ -24,7 +27,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   teacherImage,
 }) => {
   return (
-    <div className="w-full rounded-2xl bg-white border border-gray-200">
+    <div className="w-[22rem]  rounded-2xl bg-white ">
       <div className="relative w-full h-56 p-2 rounded-2xl">
         <div className="relative w-full h-full rounded-2xl overflow-hidden">
           <Image
@@ -65,11 +68,13 @@ const CourseCard: React.FC<CourseCardProps> = ({
 };
 
 const StudentProgressReport = () => {
-  // const handleBackClick = () => {
-  //   if (typeof window !== "undefined") {
-  //     window.history.back();
-  //   }
-  // };
+  const [showConfidentialPopup, setShowConfidentialPopup] = useState(false);
+
+  const handleBackClick = () => {
+    if (typeof window !== "undefined") {
+      window.history.back();
+    }
+  };
   const PALETTE = {
     GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
     GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar
@@ -118,9 +123,10 @@ const StudentProgressReport = () => {
   return (
     <>
       <div className='w-full'>
+        <ConfidentialInfoPopup isOpen={showConfidentialPopup} onClose={() => { setShowConfidentialPopup(false) }} onSave={() => { setShowConfidentialPopup(false) }} />
         <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
           <button
-            // onClick={handleBackClick}
+            onClick={handleBackClick}
             className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
             aria-label="Go back"
           >
@@ -133,7 +139,7 @@ const StudentProgressReport = () => {
         <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
           {/* Student Info Card */}
           <div
-            className=" bg-white rounded-2xl"
+            className="bg-white rounded-2xl p-2"
             style={{
               borderColor: PALETTE.BORDER_GREY,
             }}
@@ -147,14 +153,14 @@ const StudentProgressReport = () => {
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
               <div className="flex-grow relative">
-                <div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]"><IoMdSettings size={20}/></div>
+                <div onClick={() => setShowConfidentialPopup(true)} className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-black/5 cursor-pointer absolute left-[10rem]"><FiSettings size={20} /></div>
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}
                 >
                   Shlok Agheda
                 </h2>
-                
+
                 <div className="flex flex-wrap items-center gap-1 mt-2">
                   <span
                     className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
@@ -174,21 +180,21 @@ const StudentProgressReport = () => {
                   >
                     Group A
                   </span>
-                 
+
                 </div>
               </div>
               <div className="text-[11px] font-medium text-left space-y-0.5 text-black">
                 <p>Gender: Male</p>
                 <p>DOB: 15 Jun 2015</p>
                 <p>Email: example@gm.com</p>
-                
+
                 <p>City: Mumbai</p>
                 <p>State: Maharashtra</p>
               </div>
             </div>
             <div className="pt-4 ">
               <p
-                className="text-sm font-bold mb-3"
+                className="text-sm font-semibold my-4"
                 style={{ color: PALETTE.TEXT_DARK }}
               >
                 Key Focus Area
@@ -209,25 +215,25 @@ const StudentProgressReport = () => {
               </div>
             </div>
             <div className="">
-              <h2 className='my-2 text-sm font-bold'>Assigned Teachers</h2>
+              <h2 className='my-4 text-sm font-semibold'>Assigned Teachers</h2>
               <div className="flex flex-wrap gap-4 items-stretch">
-                {Teachers.map((card, index) => (
-                  <div className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+                {Teachers.map((card, index) => ( <Link href={"/principal/teacher-performance"}>
+                  <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4  cursor-pointer rounded-2xl border-[#e5e7eb]" key={index}>
                     <Image className='rounded-xl' src={card.image} width={80} height={80} alt={card.name} />
                     <div className="">
                       <h2 className='font-medium'>{card.name}</h2>
                       <p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
                     </div>
-                  </div>
+                  </div></Link>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="my-2 mx-4 rounded-2xl bg-[#f1f1f2] border px-3 py-2">
-        <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-bold text-m`}>Active Courses</h2>
-        <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 ">
+      <div className="my-4 mx-4 rounded-2xl bg-[#f1f1f2] border px-3 py-2">
+        <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-semibold text-md`}>Active Courses</h2>
+        <div className="flex gap-14 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 ">
           {courses.map((course, index) => (
             <div key={index} className="min-w-[325px]">
               <CourseCard {...course} />

@@ -80,7 +80,7 @@ const AdminToolkit = () => {
 
           return (
             <Link
-              href={`/admin-b2c/admin-panel/${action.href}`}
+              href={`/b2c-phase-3/admin-phase-3/admin-panel/${action.href}`}
               passHref
               key={index}
             >

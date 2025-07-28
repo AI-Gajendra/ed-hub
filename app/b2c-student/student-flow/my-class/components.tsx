@@ -67,15 +67,17 @@ export const LearningAccordion: React.FC<LearningAccordionProps> = ({ week, isOp
         )}
     </div>
 );
-export const FillForm: React.FC = () => (
-    <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
-        <h3 className="text-base lg:text-lg font-bold text-[#FF3366]">
-            Request Teacher Change
-        </h3>
-        <ActionButton variant="primary" size="sm" className="xs:w-auto">
-            Fill the Form
-        </ActionButton>
-    </div>
+export const FillForm: React.FC<{setOpenModal: React.Dispatch<React.SetStateAction<string | null>>}> = ({setOpenModal}) => (
+
+  <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
+    
+    <h3 className="text-lg md:text-xl font-bold text-[#FF3366]">
+      Request Teacher Change
+    </h3>
+    <ActionButton onClick={()=>setOpenModal("requestChangeSingle")} variant="primary" size="sm" className="xs:w-auto">
+      Fill the Form
+    </ActionButton>
+  </div>
 );
 
 // --- Assessment Item ---
@@ -119,7 +121,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 md:min-h-96 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 md:min-h-84 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}
@@ -146,7 +148,7 @@ interface ContentDisplayAreaProps {
 export const ContentDisplayArea: React.FC<ContentDisplayAreaProps> = (props) => (
     <div className="bg-white rounded-2xl  p-4 md:p-6">
         <div className="mb-4 md:mb-6 flex flex-col sm:flex-row   justify-between items-start sm:items-center sm:gap-3 gap-1">
-            <nav className="-mb-px flex  space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
+            <nav className="-mb-px flex  space-x-1 sm:space-x-2 flex-wrap md:flex-nowrap" aria-label="Content Tabs">
                 {props.contentTabs.map(tab => (
                     <ContentUITab key={tab} label={tab} isActive={props.activeContentTab === tab} onClick={() => props.onContentTabClick(tab)} />
                 ))}

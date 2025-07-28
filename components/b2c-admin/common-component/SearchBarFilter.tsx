@@ -74,8 +74,6 @@ const SearchFilter: FC<SearchFilterProps> = ({ filters, bg, placeHolder }) => {
           className="w-full bg-transparent outline-none text-sm"
         />
       </div>
-
-      {/* Filters */}
       <Filters filters={filters} />
     </div>
   );

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { FiArrowLeft, FiChevronDown, FiDownload, FiSearch } from 'react-icons/fi';
 import { ChatInput } from './ui-components'; // Import ChatInput
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
+import SearchFilterInline from '@/components/b2c-admin/common-component/SearchBarFilterInline';
 
 // --- Data Interfaces (from your original) ---
 export interface TeacherContact {
@@ -115,7 +116,7 @@ export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers
         </h2>
         <div className="w-full bg-white text-black flex gap-4 items-center py-2 rounded-xl">
             {/* Search Input */}
-            <SearchFilter bg={"bg-white"} filters={filter}/>
+            <SearchFilterInline bg={"bg-white"} filters={filter}/>
         </div>
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
         <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey pr-1 sm:pr-2">
@@ -142,7 +143,7 @@ interface ChatAreaProps {
 export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, newMessage, onNewMessageChange, onSendMessage, onBackClick, }) => (
     // Original wrapper: w-full sm:w-[70%] bg-white rounded-3xl shadow-xl flex flex-col h-[calc(100vh-4rem)]
     <div className="w-full relative z-0 lg:w-[65%] bg-[#EEEEEE] rounded-2xl sm:rounded-3xl flex flex-col 
-                   h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-4rem)]"
+                   h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-8rem)]"
     >
         <div className=" absolute -z-10 opacity-10 rounded-2xl inset-0" style={{
             backgroundImage: "url('/images/brandpatternchat.png')",

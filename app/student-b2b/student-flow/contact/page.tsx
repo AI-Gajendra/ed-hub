@@ -1,36 +1,37 @@
 'use client'
-import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import Image from 'next/image' // For the bell icon and user avatar
+import Image from 'next/image'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import Newsletter from '@/components/common-components/Newsletter';
+import StudentB2CWrapper from '@/components/b2c-student/common-components/StudentB2CWrapper'
+import StudentNavbar from '@/components/layout/StudentB2B/student-navbar'
 
 export default function FAQPage() {
-	const headerUser = {
-		name: 'Shlok Agheda',
-		role: 'Student',
-		avatarSrc: '/placeholder-avatar-student.jpg', // UPDATE PATH
-	}
 
 	return (
 		<div>
-			<Header user={headerUser} />
-			<div className="min-h-screen flex flex-col bg-[#eeeeee]">
-				<main className="container mx-auto p-6 max-w-7xl rounded-2xl my-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
+			<StudentNavbar activeState='Contact' />
+			<StudentB2CWrapper>
+				<main className="container mx-auto p-4 md:p-6 max-w-screen-xl rounded-2xl mt-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image
 						src={'/pattern.png'}
-						width={4096}
-						height={2304}
+						width={2160}
+						height={1440}
 						alt="pattern"
-						className="w-full h-full brightness-150 absolute top-0 left-0 opacity-30"
+						className="w-full h-full object-cover absolute top-0 left-0 "
 					/>
-					<div className="sm:w-[45%] z-10 bg-white rounded-2xl p-4">
-						<h1 className="text-5xl text-[#FF3366] font-bold">Get in touch</h1>
+
+					{/* White overlay */}
+					<div className="absolute inset-0 bg-white opacity-40 pointer-events-none z-0" />
+
+					<div className="sm:w-[45%] z-10 bg-white rounded-2xl md:pt-12 p-4">
+						<h1 className="text-xl md:text-2xl lg:text-3xl xl:text-5xl text-[#FF3366] font-bold">Get in touch</h1>
 						<p className="text-[#6B7280] mt-4 tracking-wider">We are here for you! How can we help</p>
 
-						<div className="mt-10 px-4 space-y-4">
+						<div className="mt-10 px-4 pb-8 space-y-4">
 							<div>
 								<Label htmlFor="email">Name</Label>
 								<Input
@@ -52,28 +53,28 @@ export default function FAQPage() {
 							<div>
 								<Label htmlFor="email">Description</Label>
 								<Textarea
-									className="placeholder:text-[#6B7280] mt-2 rounded-2xl border-[#D5D5D5] bg-[#F9FAFB]"
+									className="placeholder:text-[#6B7280] mt-2 rounded-2xl resize-none border-[#D5D5D5] bg-[#F9FAFB]"
 									placeholder="Enter description"
-									rows={4}
+									rows={6}
+
 									cols={50}
 								/>
 							</div>
-							<div className="flex justify-center items-center mt-10">
-								<Button className="bg-[#3366FF] hover:bg-[#3366FF]/90 text-white rounded-full mx-auto">Submit</Button>
+							<div className="flex justify-center items-center mt-8">
+								<Button className="bg-[#3366FF] max-w-32 w-full hover:bg-[#3366FF]/90 text-white rounded-full mx-auto">Submit</Button>
 							</div>
 						</div>
 					</div>
 					<div className="sm:w-[55%] z-10 flex flex-col gap-4">
-						<div className="relative h-96 overflow-hidden rounded-2xl">
+						<div className="relative h-126 overflow-hidden rounded-2xl">
 							<Image
 								src={'/call-center.jpg'}
-								width={867}
-								height={1300}
+								fill
 								alt="student"
-								className="rounded-2xl object-fill aspect-square absolute -top-15 left-0 h-[45rem] w-[48rem]"
+								className="rounded-2xl object-cover object-[0_22.5%]"
 							/>
 						</div>
-						<div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-4 w-full">
+						<div className="bg-[#F9FAFB] border flex flex-col gap-2 border-[#E5E7EB] rounded-2xl p-4 w-full">
 							<div className="text-[#6B7280] flex gap-1 items-center justify-start">
 								<svg width={20} height={20} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path
@@ -122,35 +123,12 @@ export default function FAQPage() {
 					</div>
 				</main>
 
-				<div className="flex self-stretch justify-center w-full mb-4">
-					<div
-						className="mt-4 max-w-7xl w-[80vw] rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
-						style={{
-							backgroundImage: 'url(/pattern-2.png)', // UPDATE PATH
-							backgroundSize: '1500px',
-						}}>
-						<div className="relative z-10">
-							<h2 className="text-2xl md:text-3xl font-bold mb-3">Subscribe to our newsletter</h2>
-							<p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
-							<form className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 shadow-lg">
-								<input
-									type="email"
-									placeholder="Email Address"
-									className="flex-grow px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
-									required
-								/>
-								<button
-									type="submit"
-									className="px-10 py-2.5 bg-[#FFCC00] text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors">
-									Send
-								</button>
-							</form>
-						</div>
-					</div>
+				<div className="max-w-screen-xl mx-auto w-full  mb-4">
+					<Newsletter />
 				</div>
 
-				<Footer />
-			</div>
+			</StudentB2CWrapper>
+			<Footer />
 		</div>
 	)
 }

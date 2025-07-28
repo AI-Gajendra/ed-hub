@@ -24,7 +24,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             onChange={onChange}
             placeholder={placeholder}
             // Original desktop: flex-grow bg-transparent px-3 py-2 text-sm text-[#6B7280] focus:outline-none placeholder-gray-400
-            className="flex-grow bg-transparent px-2.5 py-1.5 text-xs text-[#6B7280] focus:outline-none placeholder-gray-400
+            className="sticky bottom-0 flex-grow bg-transparent px-2.5 py-1.5 text-xs text-[#6B7280] focus:outline-none placeholder-gray-400
                        sm:px-3 sm:py-2 sm:text-sm"
         />
         {/* Original button: p-2 text-[#6B7280] cursor-pointer hover:text-blue-600 focus:outline-none */}

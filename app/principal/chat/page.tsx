@@ -56,11 +56,8 @@ export default function ChatPage() {
 	};
 
 	return (
-		<div className=" min-h-screen  bg-[#EEEEEE] flex flex-col"
-		
-		>
-			
-            {/* Original main: flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex gap-5 items-start */}
+		<div className=" min-h-screen bg-[#EEEEEE] flex flex-col">			
+			{/* Original main: flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex gap-5 items-start */}
 			<main className=" z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 
                            sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start"> {/* Responsive padding, gap, and flex direction */}
 				<TeacherListSidebar

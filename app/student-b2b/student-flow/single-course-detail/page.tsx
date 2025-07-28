@@ -29,7 +29,7 @@ const learningWeeksData: LearningWeek[] = Array.from({ length: 4 }, (_, i) => ({
 	})),
 }));
 
-const upcomingClassesData: UpcomingClass[] = Array.from({ length: 3 }, (_, i) => ({ // Reduced for better initial view
+const upcomingClassesData: UpcomingClass[] = Array.from({ length: 9 }, (_, i) => ({ // Reduced for better initial view
 	id: i + 1,
 	title: 'Title',
 	teacher: "Teacher's Name ",
@@ -52,6 +52,8 @@ const attendanceData = { total: 20, attended: 17, missed: 3, percentage: 85 };
 export default function CourseDetailPage() {
 	const [activeContentTab, setActiveContentTab] = useState(contentTabsData[0]);
 	const [openAccordionId, setOpenAccordionId] = useState<string | null>(learningWeeksData[0]?.id || null);
+
+        const [rightHeight, setRightHeight] = useState<number>(936);
 	const [currentMonth, setCurrentMonth] = useState('June 2025');
 	const [currentWeekFilter, setCurrentWeekFilter] = useState('Week 1');
 
@@ -160,8 +162,7 @@ export default function CourseDetailPage() {
                             currentWeekFilter={currentWeekFilter} // Assuming same filter applies
                             onWeekFilterChange={handleWeekFilterChange}
                             currentMonth={currentMonth}
-                            onMonthPrev={handleMonthPrev}
-                            onMonthNext={handleMonthNext}
+                             rightHeight={rightHeight}
                         />
 					</div>
 				</div>

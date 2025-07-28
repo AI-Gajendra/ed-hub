@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ReviewCard, reviews } from "../course-details/page";
 import Image from "next/image";
 import Footer from "@/components/layout/Footer";
+import { useRouter } from "next/navigation";
 
 export default function AfterDemoCourseFeePayment() {
+  const router = useRouter();
   return (
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
@@ -46,7 +48,10 @@ export default function AfterDemoCourseFeePayment() {
                     Unlock the full course and continue your learning journey
                     with us!
                   </p>
-                  <Button className="bg-[#3366ff] w-full text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full">
+                  <Button 
+
+onClick={() => router.push("/b2c-student/student-flow/demo/course-details")} 
+                  className="bg-[#3366ff] w-full text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full">
                     Pay Fees and Enroll Now
                   </Button>
                 </div>
@@ -56,9 +61,7 @@ export default function AfterDemoCourseFeePayment() {
         </section>
       </div>
 
-      <div className="z-10 absolute">
-        <Footer />
-      </div>
+      <Footer />
     </StudentWrapper>
   );
 }

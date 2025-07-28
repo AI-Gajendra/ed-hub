@@ -2,6 +2,7 @@
 "use client";
 
 import React from 'react';
+
 // --- Component 1: PageTitleBar (for the "FAQs" header with back arrow) ---
 interface PageTitleBarProps {
     title: string;

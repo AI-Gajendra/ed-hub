@@ -16,6 +16,7 @@ import { TbBrandLinkedinFilled } from "react-icons/tb";
 
 import CustomSelect from "@/components/student/courses/CustomSelect";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // -------- EducatorPanel Component and related declarations START --------
 
@@ -50,11 +51,11 @@ export const educatorsData: Educator[] = [
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius.",
 
     linkedinUrl: "https://linkedin.com/in/oliviadavis",
 
-    category: "Academic",
+    category: "Speciality",
   },
 
   {
@@ -69,18 +70,16 @@ export const educatorsData: Educator[] = [
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius.",
 
     linkedinUrl: "https://linkedin.com/in/marcuschen",
 
-    category: "Academic",
+    category: "Speciality",
   },
 
   {
     id: 3,
-
     name: "Name",
-
     title: "Title",
 
     imageUrl: "/student/educator/ed3.jpg", // Placeholder image
@@ -88,11 +87,11 @@ export const educatorsData: Educator[] = [
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius.",
 
     linkedinUrl: "https://linkedin.com/in/sophiamiller",
 
-    category: "Foundation",
+    category: "Speciality",
   },
 
   {
@@ -107,11 +106,11 @@ export const educatorsData: Educator[] = [
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius.",
 
     linkedinUrl: "https://linkedin.com/in/davidwilson",
 
-    category: "Notsoextra - Curricular",
+    category: "Speciality",
   },
 
   {
@@ -126,11 +125,11 @@ export const educatorsData: Educator[] = [
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius.",
 
     linkedinUrl: "https://linkedin.com/in/isabellegarcia",
 
-    category: "Skill Development",
+    category: "Speciality",
   },
 
   {
@@ -145,97 +144,85 @@ export const educatorsData: Educator[] = [
     rating: 4.4,
 
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius.",
 
     linkedinUrl: "https://linkedin.com/in/jamesbrown",
 
-    category: "Brain Development",
+    category: "Speciality",
   },
 ];
 
-const categories = [
-  "Academic",
-
-  "Notsoextra - Curricular",
-
-  "Foundation",
-
-  "Skill Development",
-
-  "Brain Development",
-
-  "Door Step Tutoring",
-
-  "Skill Club",
-];
+const categories = ["Academic","Notsoextra -Curricular","Foundation", "Skill Development", "Brain Development","Door Step Tutoring","Skill Club"];
 
 const EducatorCard = ({ educator }: { educator: Educator }) => {
-  const Router=useRouter();
+  const Router = useRouter();
   return (
-    <div onClick={()=>Router.push("/b2c-student/student-flow/teacher-profile")} className="bg-[#F9FAFB] p-4 sm:p-5 rounded-3xl flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch relative min-h-[200px] sm:min-h-[190px] cursor-pointer">
-      <div className="relative w-full h-48 sm:w-32 sm:h-auto rounded-lg overflow-hidden flex-shrink-0">
-        {/* On mobile (flex-col), image takes full width and fixed height. */}
+    <Link href={"/b2c-student/student-flow/teacher-profile"}>
+      <div className="bg-[#F9FAFB] p-4  rounded-3xl flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch relative min-h-[200px] sm:min-h-[190px] cursor-pointer">
+        <div className="relative w-full h-48 sm:w-40 sm:h-auto rounded-lg overflow-hidden flex-shrink-0">
+          {/* On mobile (flex-col), image takes full width and fixed height. */}
 
-        {/* On sm+ (flex-row), image takes fixed width and its container stretches to card height. */}
+          {/* On sm+ (flex-row), image takes fixed width and its container stretches to card height. */}
 
-        <Image
-          src={educator.imageUrl || "/placeholder.svg"}
-          alt={educator.name}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-3xl"
-        />
-      </div>
-
-      <div className="flex-grow flex flex-col pt-3 sm:pt-0">
-        <div className="flex justify-between items-start mb-1">
-          <h3 className="text-xl font-bold text-gray-800 mr-2">
-            {educator.name}
-          </h3>
-
-          <div className="flex items-center bg-[#F3F4F6] rounded-2xl px-2 py-2 text-[#FFCC00] flex-shrink-0 whitespace-nowrap">
-            <span className="text-lg font-semibold mr-1">
-              {educator.rating.toFixed(1)}
-            </span>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-5 h-5 text-[#FFCC00]"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.006z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <Image
+            src={educator.imageUrl || "/placeholder.svg"}
+            alt={educator.name}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-2xl object-cover"
+          />
         </div>
 
-        <p className="text-sm text-[#FF3366] mb-2 font-medium">
-          {educator.title}
-        </p>
+        <div className="flex-grow flex flex-col my-6 sm:pt-0">
+          <div className="flex justify-between items-start ">
+            <h3 className="text-xl md:text-2xl font-bold text-black mr-2">
+              {educator.name}
+            </h3>
 
-        <p className="text-sm text-[#6B7280] mb-4 leading-relaxed flex-grow">
-          {educator.description}
-        </p>
+            <div className="flex items-center bg-[#F3F4F6] rounded-2xl px-2 py-1.5 text-[#FFCC00] flex-shrink-0 whitespace-nowrap">
+              <span className="text-lg font-semibold mr-1">
+                {educator.rating.toFixed(1)}
+              </span>
 
-        {/* LinkedIn icon is positioned absolutely relative to the card */}
-      </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-5 h-5 text-[#FFCC00]"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.006z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
 
-      {educator.linkedinUrl && (
-        <a
-          href={educator.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${educator.name}'s LinkedIn Profile`}
-          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-[#0077B5] hover:opacity-80 transition-opacity"
-        >
-          <TbBrandLinkedinFilled className="w-8 h-8 fill-[#3366FF]" />
-        </a>
-      )}
-    </div>
+          <p className="text-sm text-[#FF3366] mb-2 font-medium">
+            {educator.title}
+          </p>
+
+          <p className="text-xs text-[#6B7280] mb-4 leading-relaxed flex-grow">
+            {educator.description}
+          </p>
+
+          {/* LinkedIn icon is positioned absolutely relative to the card */}
+        </div>
+
+        {educator.linkedinUrl && (
+          <a
+            href={educator.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${educator.name}'s LinkedIn Profile`}
+            className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-[#0077B5] hover:opacity-80 transition-opacity"
+          >
+            <TbBrandLinkedinFilled className="w-8 h-8 fill-[#3366FF]" />
+          </a>
+        )}
+      </div>{" "}
+    </Link>
   );
 };
 
@@ -283,7 +270,7 @@ function EducatorPanel() {
             Meet Our Educators
           </h2>
 
-          <p className="text-base md:text-lg text-[#6B7280] max-w-3xl">
+          <p className="text-base md:text-lg font-semibold text-[#6B7280] max-w-3xl">
             Explore profiles of our dedicated teachers guiding every
             learner&#39;s journey.
           </p>

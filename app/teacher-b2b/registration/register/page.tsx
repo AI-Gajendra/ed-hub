@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // --- Reusable Form Field Components for Clean Code ---
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -83,6 +84,7 @@ export default function StudentInfoPage() {
     e.preventDefault();
     console.log("Submitted data:", formData);
   }
+  const Router = useRouter();
 
   return (
     <div
@@ -97,7 +99,7 @@ export default function StudentInfoPage() {
       <main className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
 
         {/* --- Left Panel: Form (No longer has overflow or fixed height) --- */}
-        <div className="w-full md:w-2/5  lg:w-1/3 bg-white px-6 py-4 rounded-4xl shadow-2xl">
+        <div className="w-full md:w-2/5 md:mb-20 lg:w-3/7 bg-white px-6 py-4 rounded-4xl shadow-2xl">
           <form onSubmit={handleSubmit}>
             <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
             <FormInput id="dob" name="dob" label="Date of Birth" type="text" placeholder="DD/MM/YY" value={formData.dob} onChange={handleChange} />
@@ -114,23 +116,25 @@ export default function StudentInfoPage() {
               <option value="maharashtra">Maharashtra</option>
             </FormSelect>
 
-              <FormSelect id="city" name="city" label="City" value={formData.city} onChange={handleChange}>
-                <option value="" disabled>Select City</option>
-                <option value="mumbai">Mumbai</option>
-              </FormSelect>
+            <FormSelect id="city" name="city" label="City" value={formData.city} onChange={handleChange}>
+              <option value="" disabled>Select City</option>
+              <option value="mumbai">Mumbai</option>
+            </FormSelect>
 
             <div className="mb-6">
               <FormInput id="pass" name="pass" label="Password" type="password" placeholder="Password" value={""} onChange={handleChange} />
             </div>
 
-            <button type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <button
+              onClick={() => Router.push('/teacher-b2b/teacher-flow/dashboard')}
+              type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
               Submit
             </button>
           </form>
         </div>
 
         {/* --- Right Panel: Image (Stretches to match the left panel's height automatically) --- */}
-        <div className="hidden md:block  w-full md:w-3/5 lg:w-2/3 relative rounded-4xl overflow-hidden">
+        <div className="hidden md:block  w-full md:w-4/7 lg:w-2/3 relative rounded-4xl overflow-hidden">
           <div
             className="absolute inset-0 w-full h-full bg-[#f9fafb]"
             style={{

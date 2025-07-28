@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FiBell, FiClock } from 'react-icons/fi'
+import { useRouter } from 'next/navigation'
 
 // Sample Question Data Structure
 interface QuestionOption {
@@ -83,7 +84,7 @@ const tabCategories = ['Academic Skills', 'Brain Development', 'Personality Deve
 
 export default function DmittTest_4_Page() {
 	const [activeCategory, setActiveCategory] = useState(tabCategories[1])
-	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1)
 	const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null)
 	const [answers, setAnswers] = useState<(string | null)[]>(Array(TOTAL_QUESTIONS).fill(null))
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES * 60) // Time in seconds
@@ -106,7 +107,7 @@ export default function DmittTest_4_Page() {
 		const remainingSeconds = seconds % 60
 		return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
 	}
-
+	const router = useRouter();
 	const currentQuestion = sampleQuestions[currentQuestionIndex]
 
 	const handleNextQuestion = () => {
@@ -130,7 +131,7 @@ export default function DmittTest_4_Page() {
 		<div className="min-h-screen flex flex-col">
 			{/* Header */}
 			<header className="bg-[#3366FF] text-white sticky top-0 z-50">
-				<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
 					{/* Logo */}
 					<div className="flex items-center">
 						{/* Replace with your actual logo */}
@@ -153,7 +154,7 @@ export default function DmittTest_4_Page() {
 							/>
 							<div>
 								<p className="text-sm font-medium">Shlok Agheda</p>
-								<p className="text-xs text-[#FFCC00] opacity-80">Student</p>
+								<p className="text-xs opacity-80">Student</p>
 							</div>
 						</div>
 					</div>
@@ -162,22 +163,21 @@ export default function DmittTest_4_Page() {
 
 			{/* Main Content */}
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-[50rem] mx-auto bg-white rounded-xl p-6 md:p-8">
+				<div className="max-w-[53rem] mx-auto bg-white rounded-xl md:p-8">
 					{/* Test Title */}
 					<h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
 						DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
 					</h1>
 
 					{/* Category Tabs */}
-					<div className="mb-8 pb-2">
+					<div className="mb-8 overflow-x-auto pb-2">
 						<div className="flex justify-between overflow-x-auto custom-scrollbar space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 							{tabCategories.map(category => (
 								<button
 									key={category}
 									onClick={() => setActiveCategory(category)}
-									className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${
-										activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-									}`}>
+									className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+										}`}>
 									{category}
 								</button>
 							))}
@@ -186,29 +186,29 @@ export default function DmittTest_4_Page() {
 
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
 					<div className="flex flex-row justify-between items-center mb-8 gap-4">
-									<div className="sm:text-left">
-										<p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
-										<p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
-										<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
-											{currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
-										</div>
-									</div>
-									<div className="sm:text-right">
-										<div className="flex sm:justify-end items-center gap-1.5 text-[#FF3366]">
-											<FiClock className="w-5 h-5" />
-											<span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
-										</div>
-										<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
-										<p className="sm:block hidden text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
-											<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
-											<span>Draw the lines to match the following</span>
-										</p>
-									</div>
-								</div>
-									<p className="sm:hidden block text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
-											<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
-											<span>Draw the lines to match the following</span>
-										</p>
+						<div className="text-left">
+							<p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
+							<p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
+							<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
+								{currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
+							</div>
+						</div>
+						<div className="text-right">
+							<div className="flex justify-end items-center gap-1.5 text-[#FF3366]">
+								<FiClock className="w-5 h-5" />
+								<span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
+							</div>
+							<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
+							<p className="text-sm mt-2 hidden md:block space-x-1 p-2 rounded-xl border border-[#FF3366] flex">
+								<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
+								<span>Draw the lines to match the following</span>
+							</p>
+						</div>
+					</div>
+					<p className="text-sm mt-2 space-x-1 p-2 md:hidden rounded-xl border border-[#FF3366] flex">
+						<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />
+						<span>Draw the lines to match the following</span>
+					</p>
 
 					{/* Current Question */}
 					{currentQuestion && (
@@ -225,7 +225,8 @@ export default function DmittTest_4_Page() {
 					{/* Navigation */}
 					<div className="mt-10 flex justify-center rounded-full">
 						<button
-							onClick={handleNextQuestion}
+
+							onClick={() => router.push("/student-b2b/test-question/page-5")}
 							// Disable if no option selected (except for last question which might be a submit)
 							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1

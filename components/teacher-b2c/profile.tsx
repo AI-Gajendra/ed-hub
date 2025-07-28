@@ -37,7 +37,7 @@ const FormInput = ({
 			value={value}
 			onChange={onChange}
 			placeholder={placeholder}
-			className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-3xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
+			className="w-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] rounded-3xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
 		/>
 	</div>
 );
@@ -97,9 +97,9 @@ export default function EditStudentProfilePage() {
 										alt={formData.name}
 										width={80}
 										height={80}
-										className="w-20 h-20  rounded-full object-fill"
+										className="w-20 h-20 rounded-full object-cover"
 									/>
-									<button onClick={handleBack} className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full  focus:outline-none">
+									<button className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full  focus:outline-none">
 										<FiEdit2 className="w-3 h-3" />
 									</button>
 								</div>
@@ -221,7 +221,7 @@ export default function EditStudentProfilePage() {
 							</div>
 						</form>
 						<div className="w-full flex pt-6 justify-center">
-							<Button className="px-[15%] rounded-full text-xl h-11 mx-auto"
+							<Button className="px-[15%] rounded-full text-xl h-10 mx-auto"
 							onClick={handleBack}>
 								Save
 							</Button>

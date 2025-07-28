@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
+import { FiSearch } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 
 type CardData = {
@@ -40,7 +40,7 @@ export const sampleData: CardData[] = [...students, ...teachers];
 const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 
 const ManageApprovalsPage = () => {
-    const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('student');
+    const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('teacher');
 
     const filteredData = sampleData.filter((item) => item.role === activeTab);
     const [searchTerm, setSearchTerm] = useState('');
@@ -59,13 +59,13 @@ const ManageApprovalsPage = () => {
                 <div className="flex items-center mb-4 gap-2">
                     {/* Search Input */}
                     <div className="relative w-full ">
-                        <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+                        <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-sm md:text-md" />
                         <input
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             placeholder="Search"
-                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                            className="w-full pl-10 pr-4 py-2 border-2 border-[#6b7280] rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                         />
                     </div>
 
@@ -73,7 +73,7 @@ const ManageApprovalsPage = () => {
                     {filters.map((filter, index) => (
                         <div key={filter} className="relative">
                             <select
-                                className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
                                 value={selectedFilters[index]}
                                 onChange={(e) => handleFilterChange(index, e.target.value)}
                             >
@@ -87,20 +87,20 @@ const ManageApprovalsPage = () => {
                 </div>
                 <div className="flex mb-4 space-x-4 text-sm font-medium">
                     <button
-                        className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+                        className={`pb-2 text-m cursor-pointer ${activeTab === 'teacher' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
                         onClick={() => setActiveTab('teacher')}
                     >
                         Teachers
                     </button>
                     <button
-                        className={`pb-2 text-m cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-zinc-900'}`}
+                        className={`pb-2 text-m cursor-pointer ${activeTab === 'student' ? 'text-blue-500 font-medium border-b-2 border-blue-500' : 'text-[#6b7280]'}`}
                         onClick={() => setActiveTab('student')}
                     >
                         Students
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2 max-h-[80vh] overflow-y-scroll scrollbar">
 
 
                     {/* Cards */}
@@ -111,16 +111,16 @@ const ManageApprovalsPage = () => {
                             </div>
                             <div className="flex-1">
                                 <div className="font-semibold">{item.name}</div>
-                                <div className={`text-sm text-gray-500 ${item.role === "teacher" ? "text-[#ff3366]" : ""}`}>{item.course}</div>
+                                <div className={`text-sm ${item.role == "teacher" ? "text-[#ff3366]" : "text-gray-500"}`}>{item.course}</div>
                          
                                 <div className="text-sm text-gray-500">{item.level}</div>
                                 <div className="text-sm text-gray-500">{item.group}</div>
                             </div>
                             <div className="flex gap-2">
-                                <button className="bg-blue-600 text-white px-3 py-1.5 text-sm rounded-full hover:bg-blue-700">
+                                <button className="bg-[#3366ff] text-white px-3 py-1.5 text-sm rounded-full hover:bg-blue-700">
                                     Approve
                                 </button>
-                                <button className="bg-pink-100 text-pink-600 px-3 py-1.5 text-sm rounded-full hover:bg-pink-200">
+                                <button className="bg-[#ff336619] text-[#ff3366] px-3 py-1.5 text-sm rounded-full hover:bg-pink-200">
                                     Reject
                                 </button>
                             </div>

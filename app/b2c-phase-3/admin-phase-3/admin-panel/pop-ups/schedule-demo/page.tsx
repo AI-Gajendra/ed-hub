@@ -1,6 +1,6 @@
 "use client";
 
-import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
+import { BaseModal, PopupProp } from "@/app/b2c-phase-3/admin-phase-3/pop-ups-2/page";
 import { useState } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FiCalendar } from "react-icons/fi";

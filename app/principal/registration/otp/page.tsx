@@ -2,12 +2,15 @@
 
 import { useState, useRef, ChangeEvent, KeyboardEvent } from "react";
 import AuthLayout from "@/components/auth-layout"; // Adjust path if needed
+import { useRouter } from "next/navigation";
 
 const OTP_LENGTH = 6;
 
 export default function OtpPage() {
   const [otp, setOtp] = useState<string[]>(new Array(OTP_LENGTH).fill("1"));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const router = useRouter();
 
   const handleChange = (index: number, e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -56,13 +59,14 @@ export default function OtpPage() {
               value={digit}
               onChange={(e) => handleChange(index, e)}
               onKeyDown={(e) => handleKeyDown(index, e)}
-              className="w-9.5 h-9.5 sm:w-12 sm:h-12 text-center text-2xl font-bold bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-9.5 h-9.5 sm:w-12 sm:h-12 text-center text-lg font-bold bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
           ))}
         </div>
 
         <button
           type="submit"
+          onClick={() => {router.push("/principal/registration/register/?step=2")}}
           className="px-10 bg-[#3366FF] text-white font-semibold py-2.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]"
         >
           Continue

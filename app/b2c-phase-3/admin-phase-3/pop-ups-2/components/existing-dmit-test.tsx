@@ -38,7 +38,7 @@ const ExistingDmitModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
         {/* Test List */}
         <div className="flex flex-col gap-2 max-h-[50vh] overflow-y-auto pr-2 custom-peach-scrollbar">
           {testList.map((test, idx) => (
-            <Link href={"/admin-b2c/admin-panel/edit-dmit-test"} key={idx} className="border rounded-xl block bg-gray-50 px-4 py-3">
+            <Link href={"/b2c-phase-3/admin-phase-3/admin-panel/edit-dmit-test"} key={idx} className="border rounded-xl block bg-gray-50 px-4 py-3">
               <p className="font-medium text-sm">{test.name}</p>
               <p className="text-xs text-gray-500">{test.duration}</p>
               <p className="text-xs text-gray-500">{test.modified}</p>

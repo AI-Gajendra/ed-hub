@@ -125,7 +125,7 @@ export default function CourseCreationFlowPage() {
 
     return (
         <div className="bg-gray-100 min-h-screen w-full flex flex-col">
-            {/* <GoBack GoBackHeading="Add Course" toLink='/admin-b2c/admin-panel/course-management'/>
+            {/* <GoBack GoBackHeading="Add Course" toLink='/b2c-phase-3/admin-phase-3/admin-panel/course-management'/>
              */}
              <BackButton Heading="Add Course" />
             <div className="px-4 sm:px-6 lg:px-8">

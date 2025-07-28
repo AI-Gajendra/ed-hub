@@ -1,7 +1,7 @@
 // components.tsx
 "use client";
 
-import React from 'react';
+import React from 'react';// For QuestionReviewBlock icons
 import { FiArrowLeft } from 'react-icons/fi'; // Smile for ScoreChart
 import {  OptionReviewDisplay, SimpleIconButton, ScoreChartDisplay } from './ui-components';
 
@@ -27,15 +27,14 @@ export const QuestionReviewBlock: React.FC<QuestionReviewBlockProps> = ({ questi
     // Original: mb-8 p-6 bg-[#F9FAFB] rounded-2xl
     <div className="mb-6 p-4 bg-[#F9FAFB] rounded-2xl border border-gray-200 sm:mb-8 sm:p-6"> {/* Add border, responsive padding */}
         {/* Original h3: text-md font-semibold text-black mb-4 */}
-        <h2 className='text-sm md:text-md font-semibold text-black'>Question</h2>
-		<h3 className="text-sm font-semibold text-black mb-3 sm:text-md sm:mb-4">
-			{questionNumber}) {question.text || "Question"} {/* Display actual question text */}
-		</h3>
+        <h2 className='text-sm md:text-lg py-4 font-semibold text-black'>
+             {questionNumber}) { "Question"} </h2>
+        
         {/* Original div: space-y-3 */}
-		<div className="space-y-2.5 sm:space-y-3">
-			{question.options.map(option => <OptionReviewDisplay key={option.id} option={option} />)}
-		</div>
-	</div>
+        <div className="space-y-2.5 sm:space-y-3">
+            {question.options.map(option => <OptionReviewDisplay key={option.id} option={option} />)}
+        </div>
+    </div>
 );
 
 // --- Component 4: ResultsDisplayCard (New component for ScoreChart and text) ---
@@ -45,7 +44,7 @@ interface ResultsDisplayCardProps {
     totalQuestions: number;
 }
 export const ResultsDisplayCard: React.FC<ResultsDisplayCardProps> = ({ scorePercentage, correctAnswers, totalQuestions }) => (
-    <div className="bg-[#F9FAFB] border border-[#E5E7EB] min-h-[380px] sm:min-h-[450px] flex flex-col justify-center sm:justify-between rounded-2xl p-4 md:p-6 lg:p-8 w-full text-center"> {/* Centering items and responsive padding */}
+    <div className="bg-[#F9FAFB]  border border-[#E5E7EB] min-h-[380px] sm:min-h-[450px] flex flex-col justify-center sm:justify-between rounded-2xl p-4 md:p-6 lg:p-8 w-full text-center"> {/* Centering items and responsive padding */}
         <ScoreChartDisplay />
         <div className="mt-4 sm:mt-0"> {/* Ensure some space on mobile if chart is large */}
             <p className="text-4xl font-bold text-[#8DD9B3] sm:text-6xl">{scorePercentage}%</p>

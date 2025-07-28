@@ -26,6 +26,7 @@ import ProfileSettingTeacher from "./components/profileSettingTeacher";
 import ProfileSettingStudent from "./components/profileSettingStudent";
 import AllotCoursePopup from "./components/allotNewCourse";
 import EditWorkingHoursPopup from "./components/editWorkingHours";
+import { UploadFile } from "./Popup-components-2/UploadFile";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -113,6 +114,10 @@ export const UploadFileImage: React.FC<PopupProp> = ({
                     </div>
                     <span className="truncate">Document Name</span>
                 </div>
+                <div className="flex justify-end gap-2 items-center">
+                    <button onClick={onClose} className="bg-[#f9fafb] border rounded-full py-2.5 px-4 text-gray-500">Cancel</button>
+                    <button onClick={onClose} className="bg-[#3366ff] rounded-full py-2.5 px-6 text-white">Add</button>
+                </div>
             </div>
         </BaseModal>
     );
@@ -154,7 +159,7 @@ export const AddItem: React.FC<PopupProp> = ({
                 </div>
                 <div className="w-full flex items-center justify-center">
                     <button
-                    onClick={onClose} className="cursor-pointer text-center px-6 py-2.5 rounded-full text-white bg-[#3366ff]">Add Item</button>
+                        onClick={onClose} className="cursor-pointer text-center px-6 py-2.5 rounded-full text-white bg-[#3366ff]">Add Item</button>
                 </div>
             </div>
         </BaseModal>
@@ -188,6 +193,7 @@ export default function AllPopupsPage() {
         { id: "ProfileSettingStudent", label: "Profile Student Student" },
         { id: "AllotCoursePopup", label: "Allot Course Popup" },
         { id: "EditWorkingHoursPopup", label: "Edit Working Hours Popup" },
+        { id: "uploadFile", label: "Upload file" },
 
     ];
 
@@ -290,6 +296,10 @@ export default function AllPopupsPage() {
             />
             <EditWorkingHoursPopup
                 isOpen={openModal === "EditWorkingHoursPopup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <UploadFile
+                isOpen={openModal === "uploadFile"}
                 onClose={() => setOpenModal(null)}
             />
         </div>

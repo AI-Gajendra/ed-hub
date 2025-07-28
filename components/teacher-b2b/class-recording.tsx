@@ -12,7 +12,7 @@ import {
   FiUploadCloud,
   FiX
 } from "react-icons/fi";
-import Header from "@/components/layout/TeacherB2CHeader";
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { CiPlay1 } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -76,7 +76,7 @@ const BaseModal: React.FC<BaseModalProps> = ({ isOpen, onClose, children, maxWid
 
 const FilterDropdown: React.FC<{ options: FilterOption[]; value: string; onChange: (value: string) => void; }> = ({ options, value, onChange }) => (
   <div className="relative">
-    <select value={value} onChange={(e) => onChange(e.target.value)} className={`pl-3 pr-7 py-2 text-xs ${FILTER_BG} border border-[#E5E7EB] rounded-lg focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none appearance-none`}>
+    <select value={value} onChange={(e) => onChange(e.target.value)} className={`pl-3 pr-7 py-2 text-sm ${FILTER_BG} border border-[#E5E7EB] rounded-lg focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none appearance-none`}>
       {options.map((opt) => (<option key={opt.value} value={opt.value}>{opt.label}</option>))}
     </select>
     <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-black pointer-events-none" />

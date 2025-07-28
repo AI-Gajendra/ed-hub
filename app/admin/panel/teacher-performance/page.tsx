@@ -14,8 +14,12 @@ export default function TeacherPerformancePage() {
 			<div className="bg-[#EEEEEE] min-h-screen">
 				<NamingBar name="Teacher Report" />
 				<div className="px-4 space-y-4 my-10">
-					<MaxWidthWrapper className="bg-white rounded-2xl py-4 ">
-						<div>
+					<div className=" px-4 mx-auto rounded-2xl p-4 "
+						style={{
+							backgroundImage: "url('/admin/bg-pattern.png')",
+							backgroundSize: "cover",
+						}}>
+						<div className='bg-white rounded-2xl p-2'>
 							<div className="flex justify-between items-start gap-8">
 								<div className="flex gap-4 items-center justify-start">
 									<Avatar className="size-28">
@@ -61,7 +65,7 @@ export default function TeacherPerformancePage() {
 								</div>
 							</div>
 						</div>
-					</MaxWidthWrapper>
+					</div>
 
 					<MaxWidthWrapper className="p-0 rounded-2xl bg-[#EEEEEE]">
 						<StudentReport />
@@ -238,7 +242,7 @@ const StudentReport = () => {
 								<FiChevronDown className="w-4 h-4 ml-1" />
 							</div>
 
-							<ArrowControl leftOnClick={handleBackClick} RightOnClick={() => {}} text="2025" className="justify-between px-1.5!" />
+							<ArrowControl leftOnClick={handleBackClick} RightOnClick={() => { }} text="2025" className="justify-between px-1.5!" />
 						</div>
 					</div>
 					{/* Simplified SVG Line Chart */}

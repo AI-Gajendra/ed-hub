@@ -3,6 +3,7 @@ import NamingBar from '@/components/admin/ui/naming-bar'
 import PointSection from '@/components/admin/ui/point-section'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 export default function DmitTestReview() {
 	const questions = [
@@ -27,8 +28,8 @@ export default function DmitTestReview() {
 				<MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-2xl">
 					<PointSection
 						points={[
-							{ value: 1, name: 'Test Details', isActive: false },
-							{ value: 2, name: 'DMIT Test Questionnaire', isActive: false },
+							{ value: 1, name: 'Test Details', isActive: false , link:"/admin/panel/create-dmit-test"},
+							{ value: 2, name: 'DMIT Test Questionnaire', isActive: false ,link:"/admin/panel/create-dmit-test-questions"},
 							{ value: 3, name: 'Review', isActive: true },
 						]}
 					/>
@@ -86,7 +87,8 @@ export default function DmitTestReview() {
 
 					<div className="max-w-2xl flex items-center justify-end gap-4 mt-4">
 						<Button className="rounded-full text-[#6B7280] border bg-white hover:bg-white py-6 px-5">Cancel</Button>
-						<Button className="rounded-full bg-[#3366FF] hover:bg-[#3366FF]/90 py-6 px-5">Update</Button>
+						
+						<Link href={"/admin/panel/dmit-test"}><Button className="rounded-full bg-[#3366FF] hover:bg-[#3366FF]/90 py-6 px-5">Update</Button></Link>
 					</div>
 				</MaxWidthWrapper>
 			</div>
