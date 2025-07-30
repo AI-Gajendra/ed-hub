@@ -26,7 +26,7 @@ export default function AuthLayout({ children, leftPanelTitle, leftPanelDescript
         backgroundSize: 'auto',
       }}>
       {/* Central content card with large rounded corners and shadow */}
-      <div className="bg-white rounded-4xl shadow-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-6xl h-auto md:h-[80vh] md:min-h-[500px] md:max-h-[650px]">
+      <div className="bg-white rounded-4xl  font-main shadow-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-6xl h-auto md:h-[80vh] md:min-h-[500px] md:max-h-[650px]">
         
         <div
           className="w-full md:w-1/2 relative text-white p-8 lg:p-12 flex flex-col justify-between min-h-[480px] md:min-h-0"

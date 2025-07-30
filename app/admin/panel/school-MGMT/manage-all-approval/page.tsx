@@ -15,8 +15,8 @@ import { ChevronDown, Search } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import NamingBar from "@/components/admin/ui/naming-bar";
-import ConfirmChoiceModal from "../../pop-ups-2/components/ConfirmModal";
-import RejectChoiceModal from "../../pop-ups-2/components/rejectmodal"
+import ConfirmChoiceModal from "../../../pop-ups-2/components/ConfirmModal";
+import RejectChoiceModal from "../../../pop-ups-2/components/rejectmodal"
 export default function ManageAllApprovals() {
   const tabs = ["Schools", "Teachers", "Students"] as const;
   type Tab = (typeof tabs)[number]; // "Schools" | "Teachers" | "Students"
@@ -24,8 +24,9 @@ export default function ManageAllApprovals() {
   const [activeTab, setActiveTab] = useState<Tab>("Schools");
   const [openModal, setOpenModal] = useState<string | null>(null);
   return (
-    <div className="bg-gray-100/60 min-h-screen">
-      <NamingBar name="Manage Approvals" />
+    <><NamingBar name="Manage Approvals" />
+     <div className="bg-[#EEEEEE] p-4">
+      
       <MaxWidthWrapper className="bg-white rounded-2xl my-10 py-4">
         <ConfirmChoiceModal
           isOpen={openModal === "confirmMessage"}
@@ -77,6 +78,7 @@ export default function ManageAllApprovals() {
         )}
       </MaxWidthWrapper>
     </div>
+    </>
   );
 }
 

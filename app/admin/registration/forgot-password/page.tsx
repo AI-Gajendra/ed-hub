@@ -13,11 +13,11 @@ export default function ResetPasswordPage() {
       leftPanelTitle="Title"
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
       <h2 className="text-2xl font-bold text-black mb-1">Reset your password</h2>
-      <p className="text-sm text-black mb-8 leading-relaxed">
+      <p className="text-sm text-black font-main leading-relaxed mb-14">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
 
-      <form className="space-y-6 flex flex-col">
+      <form className="space-y-6  font-main flex flex-col">
         <div>
           <label
             htmlFor="new-password"
@@ -64,7 +64,7 @@ export default function ResetPasswordPage() {
 
         <button
           type="submit"
-          className="self-center px-12 bg-[#3366FF] text-white font-semibold py-2.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
+          className="self-center px-14 bg-[#3366FF] text-white font-medium py-2.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
           Set
         </button>
       </form>

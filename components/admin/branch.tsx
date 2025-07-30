@@ -39,7 +39,7 @@ export default function SchoolManagementReportPage() {
                         <div className="flex flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
                             <div className="w-full lg:w-[70%]">
                                 <Image
-                                    src={'/images/school.jpg'}
+                                    src={'/admin/admin-branch-report.jpg'}
                                     width={1880}
                                     height={1250}
                                     alt="School Management Report"

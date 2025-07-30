@@ -19,7 +19,7 @@ const NamingBar: React.FC<NamingBarProps> = ({ name, toLink }) => {
   };
 	return (
 		<div className="bg-white py-2">
-			<div className="flex justify-start items-center py-2 gap-3 2xl:px-8 font-main text-lg">
+			<div className="flex  max-w-[94rem] mx-auto justify-start items-center py-2 gap-3 2xl:px-8 font-main text-lg">
 				<ArrowLeft   onClick={handleBackClick}/> <span className="text-[#FF3366] font-medium -tracking-[0.01em]">{name}</span>
 			</div>
 		</div>

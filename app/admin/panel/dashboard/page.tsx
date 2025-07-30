@@ -14,7 +14,7 @@ import Link  from 'next/link';
 export default function DashboardPage() {
 	return (
 		<MaxWidthWrapper className="px-4">
-			<div className="rounded-2xl p-2 sm:p-4 my-4 sm:my-6"
+			<div className="rounded-2xl font-main p-2 sm:p-4 my-4 sm:my-6"
 			style={{
 					backgroundImage: "url('/admin/bg-pattern.png')",
 					backgroundSize: "cover",
@@ -198,7 +198,7 @@ export default function DashboardPage() {
 			</div>
 
 			{/* School Cards Grid */}
-			<div className="rounded-3xl bg-white  ">
+			<div className="rounded-3xl font-main bg-white  ">
 				<div className="pt-4 px-4">
 					<SearchFilterBar />
 				</div>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
 import './globals.css'
-import { ADLaM_Display } from 'next/font/google'
+import { ADLaM_Display, Poppins } from 'next/font/google'
 
 const adlam = ADLaM_Display({
 	subsets: ['latin'],
@@ -9,10 +8,10 @@ const adlam = ADLaM_Display({
 	variable: '--font-adlam',
 })
 
-const poppinsFont = Poppins({
-	style: 'normal',
+const poppins = Poppins({
 	subsets: ['latin'],
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	weight: ['400', '500', '600', '700'],
+	display: 'swap',
 	variable: '--font-poppins',
 })
 
@@ -27,7 +26,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en" className={(poppinsFont.variable, adlam.variable)}>
+		<html lang="en" className={`${poppins.variable} ${adlam.variable}`}>
 			<body className="font-main overflow-x-hidden">{children}</body>
 		</html>
 	)
