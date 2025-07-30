@@ -84,9 +84,9 @@ const Leave = () => {
 
 
 
-          <div className="grid grid-cols-2 max-h-[80vh] overflow-y-scroll scrollbar">
+          <div className="grid grid-cols-1 md:grid-cols-2 max-h-[80vh] overflow-y-scroll custom-scrollbar-thin">
             {teachers.map((item) => (
-              <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-4 mb-4 shadow-sm relative">
+              <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 mr-2 mb-4 shadow-sm relative">
                 <div className="flex">
                   <div className="rounded-xl relative overflow-hidden">
                     <Image src={item.image} alt={item.name} width={110} height={110} className="object-cover" />
@@ -97,7 +97,7 @@ const Leave = () => {
                     <div className="text-xs text-gray-500 mb-1">{item.level}</div>
                     <div className="text-xs text-gray-500 mb-1"> {item.group} </div>
                     <div className="text-xs text-gray-500 mb-1"> {item.email} </div>
-                    <div className="text-xs absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange size={20} />From 6/8/25 to 6/6/25</div>
+                    <div className="text-xs lg:absolute text-gray-500 lg:top-5 lg:right-5 flex items-center"><MdOutlineDateRange size={20} />From 6/8/25 to 6/6/25</div>
                   </div>
                 </div>
                 <div className="flex flex-col items-center space-y-4 p-4 bg-[#F3F4F6] rounded-2xl max-w-2xl m-3  ">
@@ -105,7 +105,7 @@ const Leave = () => {
                   <p className="text-center  text-black-600 text-base">
                     {item.reason}</p>
                 </div>
-                <div className="flex justify-center gap-4 mt-4">
+                <div className="flex w-full justify-center gap-4 mt-4">
                   <button className="px-6 py-2 bg-red-100 text-red-500 rounded-3xl">
                     Reject
                   </button>

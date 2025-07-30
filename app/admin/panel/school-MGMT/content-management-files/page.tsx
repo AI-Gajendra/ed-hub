@@ -104,16 +104,16 @@ function FolderCard({
       23rd June 2023
     </p>
 
-    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full mt-2 sm:mt-4">
+    <div className="flex gap-2 md:gap-4 w-full mt-2 sm:mt-4 flex-wrap">
       <button
-        className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full font-normal text-[#6B7280] w-full sm:flex-1 flex items-center justify-center gap-1 px-4 py-2 text-sm"
+        className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full font-normal text-[#6B7280] w-full sm:flex-1 flex items-center justify-center text-nowrap gap-1 px-4 py-2 text-xs md:text-sm"
         onClick={() => setOpenModal('manageAccess')}
       >
         <Settings className="w-4 h-4" />
         Manage Access
       </button>
       <button
-        className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full font-normal text-[#6B7280] w-full sm:flex-1 flex items-center justify-center gap-1 px-4 py-2 text-sm"
+        className="bg-[#F3F4F6] hover:bg-[#F3F4F6]/90 rounded-full font-normal text-[#6B7280] w-full sm:flex-1 flex items-center justify-center text-nowrap gap-1 px-4 py-2 text-xs md:text-sm"
       >
         <Download className="w-4 h-4" />
         Download

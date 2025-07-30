@@ -120,7 +120,7 @@ export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers
             <input type='text' placeholder="Search" className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 pl-14 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
-        <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
+        <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(50vh-5rem)] lg:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
             {/* Your original repetition for scroll testing */}
             {[...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers, ...teachers].map((teacher, indx) => (
                 <TeacherListItem

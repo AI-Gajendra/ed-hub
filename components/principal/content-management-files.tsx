@@ -54,13 +54,7 @@ const sampleFolders: FolderItem[] = Array.from({ length: 105 }, (_, i) => ({
   fileCount: "27ᵗʰ June 2025",
   subjectId: sampleSubjectTabs[i % sampleSubjectTabs.length].id, // Distribute folders among subjects
 }));
-
-const sampleGeneralFilters: GeneralFilterOption[] = [
-  { id: "filter1", label: "Filter 1" },
-  { id: "filter2", label: "Filter 2" },
-  { id: "filter3", label: "Filter 3" },
-];
-
+const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 // --- Helper Components ---
 
 // const SubjectTabButton: React.FC<{
@@ -111,25 +105,12 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
         </div>
       </div>
       <div className="w-full lg:hidden col-span-2 grid grid-cols-1 md:grid-cols-2 gap-2 ">
-        <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
+        <button onClick={(e) => { e.stopPropagation(); setShowManageAccessPopup(true) }} className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
         <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>
     </div>
   )
 };
-
-const GeneralFilterButton: React.FC<{
-  filter: GeneralFilterOption;
-  onClick: () => void;
-}> = ({ filter, onClick }) => (
-  <button
-    onClick={onClick}
-    className={`flex items-center justify-center gap-1.5 px-3.5 py-2.5 border border-gray-300 ${INPUT_BG_FILTERS} text-[#1E1E1E] font-medium rounded-xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
-  >
-    <span>{filter.label}</span>
-    <FiChevronDown className="w-4 h-4 text-[#1E1E1E]" />
-  </button>
-);
 
 // --- SubjectFolderViewContent Component ---
 const SubjectFolderViewContent: React.FC = () => {
@@ -168,7 +149,7 @@ const SubjectFolderViewContent: React.FC = () => {
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="relative flex-grow">
-            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
             <input
               type="text"
               placeholder="Search folders..."
@@ -177,18 +158,18 @@ const SubjectFolderViewContent: React.FC = () => {
               className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
             />
           </div>
-          <div className="flex items-center gap-2 overflow-x-auto">
-
-            {sampleGeneralFilters.map((filter) => (
-              <GeneralFilterButton
-                key={filter.id}
-                filter={filter}
-                onClick={() =>
-                  alert(
-                    `${filter.label} clicked. Implement specific filter logic.`
-                  )
-                }
-              />
+          <div className="flex items-center gap-2">
+            {filters.map((filter, index) => (
+              <div key={filter} className="relative">
+                <select
+                  className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
+                >
+                  <option value="">{filter}</option>
+                  <option value="Option 1">Option 1</option>
+                  <option value="Option 2">Option 2</option>
+                </select>
+                <FiChevronDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
+              </div>
             ))}
           </div>
         </div>

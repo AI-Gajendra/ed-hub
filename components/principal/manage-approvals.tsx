@@ -100,7 +100,7 @@ const ManageApprovalsPage = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2 max-h-[80vh] overflow-y-scroll scrollbar">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2 max-h-[80vh] overflow-y-scroll custom-scrollbar-thin">
 
 
                     {/* Cards */}
@@ -116,7 +116,7 @@ const ManageApprovalsPage = () => {
                                 <div className="text-sm text-gray-500">{item.level}</div>
                                 <div className="text-sm text-gray-500">{item.group}</div>
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 flex-col md:flex-row">
                                 <button className="bg-[#3366ff] text-white px-3 py-1.5 text-sm rounded-full hover:bg-blue-700">
                                     Approve
                                 </button>
