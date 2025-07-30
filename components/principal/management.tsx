@@ -659,9 +659,9 @@ const Management = () => {
             <Button onClick={() => setShowManageLecturePopup(true)} className="flex-1 bg-[#f9fafb] px-4 py-2 cursow-pointer text-m border rounded-xl whitespace-nowrap">Lecture Manager</Button>
             {/* Filters with dropdown icons */}
             {filters.map((filter, index) => (
-              <div key={filter} className="relative flex overflow-x-auto custom-scrollbar">
+              <div key={filter} className="relative flex w-20">
                 <select
-                  className="appearance-none w-full border border-[#e5e7eb] text-sm px-3 py-2 cursor-pointer rounded-xl  bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="appearance-none min-w-10 w-full border border-[#e5e7eb] text-sm px-3 py-2 cursor-pointer rounded-xl  bg-[#f9fafb] focus:outline-none focus:ring-1 focus:ring-blue-500"
                   value={selectedFilters[index]}
                   onChange={(e) => handleFilterChange(index, e.target.value)}
                 >
@@ -691,7 +691,6 @@ const Management = () => {
         <ClassTab />
         <div className="grid grid-cols-1 sm:grid-cols-2 p-2 gap-4 max-h-[80vh] overflow-y-scroll custom-peach-scrollbar">
 
-
           {/* Cards */}
           {filteredData.map((item) => (
             <div key={item.id} onClick={() => router.push(item.role === 'teacher' ? "/principal/teacher-performance" : "/principal/student-progress-report")} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
@@ -709,7 +708,7 @@ const Management = () => {
                 )}
               </div>
               <div className="flex gap-2">
-                <button className="bg-gray-100  text-pink-600 p-2 text-sm rounded-full ">
+                <button className="bg-gray-100 text-pink-600 p-2 text-sm rounded-full ">
                   <FiMinusCircle onClick={handleRemove} />
                 </button>
                 <button className=" bg-gray-100 text-zinc-900 p-2 text-sm rounded-full">
