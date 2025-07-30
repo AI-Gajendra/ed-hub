@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import ExistingDmitModal from "../../pop-ups-2/components/existing-dmit-test";
+import ExistingDmitModal from "@/app/admin/pop-ups-2/components/existing-dmit-test";
 import { useState } from "react";
 
 export default function DmitTest() {
   const [openModal, setOpenModal] = useState<string | null>(null);
   return (
     <MaxWidthWrapper className="px-4">
-      <div className="bg-white rounded-2xl p-6 mt-6 mb-20 flex flex-col gap-8 md:flex-row justify-between items-start">
+      <div className="bg-white  font-main rounded-2xl p-6 mt-6 mb-20 flex flex-col gap-8 md:flex-row justify-between items-start">
         <div className="w-full sm:w-auto">
           <ExistingDmitModal
             isOpen={openModal === "existDmitTest"}
@@ -80,7 +80,7 @@ export default function DmitTest() {
             </div>
           </div>
           <div className="flex flex-col items-end justify-center gap-4">
-            <Link href={"/admin/panel/edit-dmit-test-questions"}>
+            <Link href={"/admin/panel/Test/edit-dmit-test-questions"}>
               <Button className="hidden sm:block rounded-full w-32 bg-[#FF3366] px-2 hover:bg-[#FF3366]/90 shadow-none">
                 Edit Questions
               </Button>
@@ -105,7 +105,7 @@ export default function DmitTest() {
 
         <div className="flex justify-center items-end flex-col gap-4">
           <h2 className="text-[#FF3366] font-semibold">Create new DMIT Test</h2>
-          <Link href={"/admin/panel/create-dmit-test"}>
+          <Link href={"/admin/panel/Test/create-dmit-test"}>
             <Button className="rounded-full shadow-none px-16">Create</Button>{" "}
           </Link>
         </div>

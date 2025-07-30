@@ -32,7 +32,7 @@ export default function DmitTestReview() {
                 value: 1,
                 name: "Test Details",
                 isActive: false,
-                link: "/admin/panel/edit-dmit-test-questions",
+                link: "/admin/panel/Test/edit-dmit-test-questions",
               },
               { value: 2, name: "Review", isActive: true },
             ]}
@@ -121,12 +121,12 @@ export default function DmitTestReview() {
           ))}
 
           <div className="max-w-2xl flex items-center justify-end gap-4 mt-4">
-            <Link href={"/admin/panel/dmit-test"}>
+            <Link href={"/admin/panel/Test/dmit-test"}>
               <Button className="rounded-full text-[#6B7280] border bg-white hover:bg-white py-6 px-5">
                 Cancel
               </Button>
             </Link>
-            <Link href={"/admin/panel/dmit-test"}>
+            <Link href={"/admin/panel/Test/dmit-test"}>
               <Button className="rounded-full bg-[#3366FF] hover:bg-[#3366FF]/90 py-6 px-5">
                 Update
               </Button>

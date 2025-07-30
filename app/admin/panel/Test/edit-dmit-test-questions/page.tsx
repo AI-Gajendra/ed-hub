@@ -8,14 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/seperator";
 import Link from "next/link";
-import { UploadFileImage } from "../../pop-ups-2/page";
+import { UploadFileImage } from "../../../pop-ups-2/page";
 import { useState } from "react";
 
 export default function EditDmitTestQuestions() {
    const [openModal, setOpenModal] = useState<string | null>(null);
-  return (
+  return ( <> <NamingBar name="Test Name" />
     <div className="bg-gray-100/60">
-      <NamingBar name="Test Name" />
+     
       <div className="p-4">
         <MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-xl">
           <UploadFileImage
@@ -25,7 +25,7 @@ export default function EditDmitTestQuestions() {
           <PointSection
             points={[
               { value: 1, name: "Test Details", isActive: true },
-              { value: 2, name: "Review", isActive: false,link: "/admin/panel/dmit-test-review" },
+              { value: 2, name: "Review", isActive: false,link: "/admin/panel/Test/dmit-test-review" },
             ]}
           />
 
@@ -53,7 +53,7 @@ export default function EditDmitTestQuestions() {
                 </div>
               </div>
               {/* First Radio Group*/}
-              <div className="flex flex-col sm:flex-row items-start gap-4 sm:items-center">
+              <div className="flex flex-col lg:flex-nowrap  sm:flex-wrap sm:flex-row items-start gap-4 sm:items-center">
                 <Label className="font-medium m-0 tracking-wide text-nowrap">
                   Question Category
                 </Label>
@@ -412,11 +412,11 @@ export default function EditDmitTestQuestions() {
           </div>
 
           <div className="flex justify-center items-center my-10">
-            <Link href={"/admin/panel/dmit-test-review"}>
+            <Link href={"/admin/panel/Test/dmit-test-review"}>
             <Button className="rounded-full px-6">Review</Button></Link>
           </div>
         </MaxWidthWrapper>
       </div>
-    </div>
+    </div></>
   );
 }

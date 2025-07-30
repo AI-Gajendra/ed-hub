@@ -7,7 +7,7 @@ export default function PointSection({
   points: { value: number; link?: string; name: string; isActive: boolean }[];
 }) {
   return (
-    <div className="flex gap-6 flex-col sm:flex-row justify-center items-start sm:items-center py-4">
+    <div className="flex font-main gap-6 flex-col sm:flex-row justify-center items-start sm:items-center py-4">
       {points.map((point, indx) => (
         <div
           key={indx}

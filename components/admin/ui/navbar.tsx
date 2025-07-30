@@ -58,8 +58,8 @@ export default function Navbar({ user, isAskme = true }: HeaderProps) {
   {
     icon: FiGrid,
     label: 'DMIT Test',
-    href: '/admin/panel/dmit-test',
-    match: '/admin/panel/dmit-test',
+    href: '/admin/panel/Test/dmit-test',
+    match: '/admin/panel/Test',
   },
   {
     icon: FiBriefcase,

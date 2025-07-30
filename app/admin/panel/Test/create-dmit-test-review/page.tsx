@@ -88,7 +88,7 @@ export default function DmitTestReview() {
 					<div className="max-w-2xl flex items-center justify-end gap-4 mt-4">
 						<Button className="rounded-full text-[#6B7280] border bg-white hover:bg-white py-6 px-5">Cancel</Button>
 						
-						<Link href={"/admin/panel/dmit-test"}><Button className="rounded-full bg-[#3366FF] hover:bg-[#3366FF]/90 py-6 px-5">Update</Button></Link>
+						<Link href={"/admin/panel/Test/dmit-test"}><Button className="rounded-full bg-[#3366FF] hover:bg-[#3366FF]/90 py-6 px-5">Update</Button></Link>
 					</div>
 				</MaxWidthWrapper>
 			</div>

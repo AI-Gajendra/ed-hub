@@ -8,13 +8,13 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/seperator'
 import Link from 'next/link'
-import { UploadFileImage } from "../../pop-ups-2/page";
+import { UploadFileImage } from "../../../pop-ups-2/page";
 import { useState } from 'react'
 export default function EditDmitTestQuestions() {
 	 const [openModal, setOpenModal] = useState<string | null>(null);
-	return (
-		<div className="bg-gray-100/60">
-			<NamingBar name="Test Name" />
+	return ( <><NamingBar name="Test Name" />
+		<div className="bg-[#eeeeee]">
+			
 			<div className="p-4">
 				<MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-xl">
 					<UploadFileImage
@@ -23,16 +23,16 @@ export default function EditDmitTestQuestions() {
 										  />
 					<PointSection
 						points={[
-							{ value: 1, name: 'DMIT Test Details', isActive: false,link:"/admin/panel/create-dmit-test" },
+							{ value: 1, name: 'DMIT Test Details', isActive: false,link:"/admin/panel/Test/create-dmit-test" },
 							{ value: 2, name: 'DMIT Test Questionnaire ', isActive: true },
-							{ value: 3, name: 'Review', isActive: false,link:"/admin/panel/create-dmit-test-review" },
+							{ value: 3, name: 'Review', isActive: false,link:"/admin/panel/Test/create-dmit-test-review" },
 						]}
 					/>
 
 					<div className="space-y-10 mt-6">
 						{/* Question 1  */}
 						<div className="max-w-2xl space-y-6">
-							<div className="w-full">
+							<div className="w-full font-main">
 								<Label>Question</Label>
 								<div className="flex gap-2 items-center w-full">
 									<div>1.</div>
@@ -194,41 +194,52 @@ export default function EditDmitTestQuestions() {
 								</div>
 							</div>
 							{/* First Radio Group*/}
-							<div className="flex flex-col sm:flex-row items-start gap-4 sm:items-center">
-								<Label className="font-medium m-0 tracking-wide text-nowrap">Question Category</Label>
-								<div className="flex flex-wrap gap-4 items-center">
-									<div className="flex items-center justify-center gap-2">
-										<Input
-											type="radio"
-											className="appearance-none checked:bg-black p-2 rounded-full border-2 border-[#6B7280]"
-											style={{ width: '2px', height: '7px' }}
-										/>
-										<Label id="questionCategory" className="m-0 tracking-wide text-nowrap font-light">
-											Brain Development
-										</Label>
-									</div>
-									<div className="flex items-center justify-center gap-2">
-										<Input
-											type="radio"
-											className="appearance-none checked:bg-black p-2 rounded-full border-2 border-[#6B7280]"
-											style={{ width: '2px', height: '7px' }}
-										/>
-										<Label id="questionCategory" className="m-0 tracking-wide text-nowrap font-light">
-											Academic Skills
-										</Label>
-									</div>
-									<div className="flex items-center justify-center gap-2">
-										<Input
-											type="radio"
-											className="appearance-none checked:bg-black p-2 rounded-full border-2 border-[#6B7280]"
-											style={{ width: '2px', height: '7px' }}
-										/>
-										<Label id="questionCategory" className="m-0 tracking-wide text-nowrap font-light">
-											Personality Development
-										</Label>
-									</div>
-								</div>
-							</div>
+							 <div className="flex flex-col lg:flex-nowrap  sm:flex-wrap sm:flex-row items-start gap-4 sm:items-center">
+                <Label className="font-medium m-0 tracking-wide text-nowrap">
+                  Question Category
+                </Label>
+                <div className="flex flex-wrap sm:flex-nowrap gap-4 items-center">
+                  <div className="flex items-center justify-center gap-2">
+                    <Input
+                      type="radio"
+                      className="appearance-none checked:bg-black p-2 rounded-full border-2 border-[#6B7280]"
+                      style={{ width: "2px", height: "7px" }}
+                    />
+                    <Label
+                      id="questionCategory"
+                      className="m-0 tracking-wide text-nowrap font-light"
+                    >
+                      Brain Development
+                    </Label>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <Input
+                      type="radio"
+                      className="appearance-none checked:bg-black p-2 rounded-full border-2 border-[#6B7280]"
+                      style={{ width: "2px", height: "7px" }}
+                    />
+                    <Label
+                      id="questionCategory"
+                      className="m-0 tracking-wide text-nowrap font-light"
+                    >
+                      Academic Skills
+                    </Label>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <Input
+                      type="radio"
+                      className="appearance-none checked:bg-black p-2 rounded-full border-2 border-[#6B7280]"
+                      style={{ width: "2px", height: "7px" }}
+                    />
+                    <Label
+                      id="questionCategory"
+                      className="m-0 tracking-wide text-nowrap font-light"
+                    >
+                      Personality Development
+                    </Label>
+                  </div>
+                </div>
+              </div>
 							{/* Second Radio Group*/}
 							<div className="flex gap-4 items-center">
 								<Label className="font-medium m-0 tracking-wide text-nowrap">Answer Types</Label>
@@ -324,14 +335,14 @@ export default function EditDmitTestQuestions() {
 					</div>
 
 					<div className="flex justify-center gap-2 items-center my-10">
-						<Link href={"/admin/panel/create-dmit-test"}>
+						<Link href={"/admin/panel/Test/create-dmit-test"}>
 						<Button className="rounded-full px-6">Save</Button></Link>
-						<Link href={"/admin/panel/create-dmit-test-review"}>
+						<Link href={"/admin/panel/Test/create-dmit-test-review"}>
 						<Button className="rounded-full px-6">Review</Button></Link>
 
 					</div>
 				</MaxWidthWrapper>
 			</div>
-		</div>
+		</div></>
 	)
 }
