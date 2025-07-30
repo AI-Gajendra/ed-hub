@@ -502,10 +502,7 @@ const PrincipalChatrsReport: React.FC = () => {
 			<div className="bg-gray-100">
 				{/* Header would go here - Assuming it's outside this component's direct render */}
 
-				{/* Page Title Bar */}
-				{/* Page Title Bar */}
-
-				<div className="grid grid-cols-1 p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+				<div className="grid grid-cols-1 p-5 md:grid-cols-[2fr_1fr] gap-4">
 					{/* ====== Overall Charts start ====== */}
 
 					<div

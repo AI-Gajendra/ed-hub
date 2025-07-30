@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, Info, Check, ArrowLeft } from "lucide-react";
+import { Search, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import StudentWrapper from "@/components/student-wrapper";
-import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import BackButton from "@/components/common-components/BackButton";
+import Image from "next/image";
 
 interface Teacher {
   id: string;
@@ -253,10 +253,11 @@ export default function TeacherSelection() {
                 {filteredTeachers.map((teacher) => (
                   <Card
                     key={teacher.id}
-                    className={`cursor-pointer transition-all duration-200 rounded-3xl ${selectedTeacher === teacher.id
+                    className={`cursor-pointer transition-all duration-200 rounded-3xl ${
+                      selectedTeacher === teacher.id
                         ? "bg-blue-500 text-white "
                         : "bg-white "
-                      }`}
+                    }`}
                     onClick={() => setSelectedTeacher(teacher.id)}
                   >
                     <CardContent className="px-2 py-1">
@@ -278,29 +279,35 @@ export default function TeacherSelection() {
                             {teacher.name}
                           </h3>
                           <p
-                            className={`text-sm truncate ${selectedTeacher === teacher.id
+                            className={`text-sm truncate ${
+                              selectedTeacher === teacher.id
                                 ? "text-blue-100"
                                 : "text-gray-600"
-                              }`}
+                            }`}
                           >
                             {teacher.detail1}
                           </p>
                           <p
-                            className={`text-sm truncate ${selectedTeacher === teacher.id
+                            className={`text-sm truncate ${
+                              selectedTeacher === teacher.id
                                 ? "text-blue-100"
                                 : "text-gray-500"
-                              }`}
+                            }`}
                           >
                             {teacher.detail2}
                           </p>
                         </div>
                         <div
-
-              onClick={() => router.push("/b2c-student/student-flow/teachers/profile?flow=demo")}
-                          className={`flex flex-col items-center justify-center self-start p-2 rounded-full gap-1 hover:bg-[${selectedTeacher === teacher.id
+                          onClick={() =>
+                            router.push(
+                              "/b2c-student/student-flow/teachers/profile?flow=demo"
+                            )
+                          }
+                          className={`flex flex-col items-center justify-center self-start p-2 rounded-full gap-1 hover:bg-[${
+                            selectedTeacher === teacher.id
                               ? "#E5E7EB1A"
                               : "#6B72801A"
-                            }]`}
+                          }]`}
                         >
                           <Info className="h-5 w-5" />
                         </div>
@@ -316,9 +323,7 @@ export default function TeacherSelection() {
               <div className="bg-white rounded-lg p-4">
                 {/* Date Headers */}
                 <div className="grid grid-cols-6 gap-2 mb-4">
-                  <div className="text-center text-sm font-medium text-[#6B7280]">
-                    Time
-                  </div>
+                  <div className="text-center text-sm font-medium text-[#6B7280] "></div>
                   {dates.map((date) => (
                     <div
                       key={date}
@@ -330,15 +335,22 @@ export default function TeacherSelection() {
                 </div>
 
                 {/* Time Slot Grid */}
-                <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                <div className="max-h-[400px] overflow-y-auto custom-scrollbar-thin-grey pr-2">
                   {times.map((time, index) => (
                     <div
                       key={time}
-                      className={`grid grid-cols-6 gap-2 border border-x-0 ${index === 0 ? "border-t-[#B0B0B0]" : "border-t-0"
-                        } border-b-[#B0B0B0] py-1`}
+                      className={`grid grid-cols-6 gap-2 border border-x-0 ${
+                        index === 0 ? "border-t-[#B0B0B0]" : "border-t-0"
+                      } border-b-[#B0B0B0] py-1`}
                     >
-                      <div className="flex items-center justify-center text-sm font-medium text-[#6B7280]">
+                      <div className="relative flex items-center justify-end text-sm font-medium text-[#6B7280]">
                         {time}
+                        <div
+                          className={`absolute bg-white h-2 w-full top-0 left-0 -translate-y-2`}
+                        ></div>
+                        {index === times.length - 1 && (
+                          <div className="absolute bg-white h-2 w-full bottom-0 left-0 translate-y-2"></div>
+                        )}
                       </div>
                       {dates.map((date) => {
                         const status = getSlotStatus(time, date);
@@ -348,17 +360,23 @@ export default function TeacherSelection() {
                             onClick={() => handleTimeSlotClick(time, date)}
                             disabled={status === "unavailable"}
                             className={`
-                          h-10 rounded-xl text-sm font-medium transition-all duration-200
-                          ${status === "available"
-                                ? "bg-[#B0B0B01A] hover:bg-gray-200 text-gray-700 border border-[#6B7280]"
-                                : status === "selected"
-                                  ? "bg-blue-500 text-white "
-                                  : "bg-[#FF33661A] text-red-400 cursor-not-allowed border border-[#FF3366]"
-                              }
+                          h-10 rounded-xl text-sm font-medium transition-all duration-200 flex justify-center items-center
+                          ${
+                            status === "available"
+                              ? "bg-[#B0B0B01A] hover:bg-gray-200 text-gray-700 border border-[#6B7280]"
+                              : status === "selected"
+                              ? "bg-blue-500 text-white "
+                              : "bg-[#FF33661A] text-red-400 cursor-not-allowed border border-[#FF3366]"
+                          }
                         `}
                           >
                             {status === "selected" && (
-                              <Check className="h-4 w-4 mx-auto" />
+                              <Image
+                                width={16}
+                                height={16}
+                                src="/svg/check_icon.svg"
+                                alt="check icon"
+                              />
                             )}
                           </button>
                         );
@@ -398,7 +416,7 @@ export default function TeacherSelection() {
         </div>
       </div>
 
-        <Footer />
+      <Footer />
     </StudentWrapper>
   );
 }

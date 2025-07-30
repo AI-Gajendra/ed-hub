@@ -61,10 +61,9 @@ const TabButton: React.FC<TabButtonProps> = ({ label, isActive, onClick }) => (
   <button
     onClick={onClick}
     className={`px-12 py-1.5 text-sm font-medium rounded-xl transition-colors duration-150
-      ${
-        isActive
-          ? `text-white`
-          : `hover:bg-gray-100 text-[${INACTIVE_TAB_TEXT}]`
+      ${isActive
+        ? `text-white`
+        : `hover:bg-gray-100 text-[${INACTIVE_TAB_TEXT}]`
       }`}
     style={{ backgroundColor: isActive ? ACTIVE_TAB_BG : INACTIVE_TAB_BG }}
   >
@@ -79,7 +78,7 @@ const PrincipalDashboardPage: React.FC = () => {
   const [studentPerformanceTab, setStudentPerformanceTab] = useState("Class A");
   const [currentDate, setCurrentDate] = useState(new Date());
   const [teacherTabPage, setTeacherTabPage] = useState(0);
-const [studentTabPage, setStudentTabPage] = useState(0);
+  const [studentTabPage, setStudentTabPage] = useState(0);
 
   const handlePrevMonth = () => {
     setCurrentDate((prevDate) => {
@@ -96,34 +95,34 @@ const [studentTabPage, setStudentTabPage] = useState(0);
       return newDate;
     });
   };
-const teacherTabs = ["Class A", "Class B", "Class C", "Class D", "Class E", "Class F"];
-const studentTabs = ["Class A", "Class B", "Class C", "Class D", "Class E"];
-const teacherTabsToShow = teacherTabs.slice(teacherTabPage * 3, (teacherTabPage + 1) * 3);
-const studentTabsToShow = studentTabs.slice(studentTabPage * 3, (studentTabPage + 1) * 3);
+  const teacherTabs = ["Class A", "Class B", "Class C", "Class D", "Class E", "Class F"];
+  const studentTabs = ["Class A", "Class B", "Class C", "Class D", "Class E"];
+  const teacherTabsToShow = teacherTabs.slice(teacherTabPage * 3, (teacherTabPage + 1) * 3);
+  const studentTabsToShow = studentTabs.slice(studentTabPage * 3, (studentTabPage + 1) * 3);
 
-const handleTeacherTabNext = () => {
-  if ((teacherTabPage + 1) * 3 < teacherTabs.length) {
-    setTeacherTabPage(teacherTabPage + 1);
-  }
-};
+  const handleTeacherTabNext = () => {
+    if ((teacherTabPage + 1) * 3 < teacherTabs.length) {
+      setTeacherTabPage(teacherTabPage + 1);
+    }
+  };
 
-const handleTeacherTabPrev = () => {
-  if (teacherTabPage > 0) {
-    setTeacherTabPage(teacherTabPage - 1);
-  }
-};
+  const handleTeacherTabPrev = () => {
+    if (teacherTabPage > 0) {
+      setTeacherTabPage(teacherTabPage - 1);
+    }
+  };
 
-const handleStudentTabNext = () => {
-  if ((studentTabPage + 1) * 3 < studentTabs.length) {
-    setStudentTabPage(studentTabPage + 1);
-  }
-};
+  const handleStudentTabNext = () => {
+    if ((studentTabPage + 1) * 3 < studentTabs.length) {
+      setStudentTabPage(studentTabPage + 1);
+    }
+  };
 
-const handleStudentTabPrev = () => {
-  if (studentTabPage > 0) {
-    setStudentTabPage(studentTabPage - 1);
-  }
-};
+  const handleStudentTabPrev = () => {
+    if (studentTabPage > 0) {
+      setStudentTabPage(studentTabPage - 1);
+    }
+  };
 
 
 
@@ -339,8 +338,7 @@ const handleStudentTabPrev = () => {
                   </defs>
                   <path
                     d={
-                      `M30,${
-                        180 - (overallProgressData.values[0] / 100) * 160
+                      `M30,${180 - (overallProgressData.values[0] / 100) * 160
                       } ` +
                       overallProgressData.values
                         .map(
@@ -349,15 +347,13 @@ const handleStudentTabPrev = () => {
                             i,
                             arrPath // Corrected `arr` to `arrPath`
                           ) =>
-                            `L${30 + i * (460 / (arrPath.length - 1))},${
-                              180 - (val / 100) * 160
+                            `L${30 + i * (460 / (arrPath.length - 1))},${180 - (val / 100) * 160
                             }`
                         )
                         .join(" ") +
-                      ` L${
-                        30 +
-                        (overallProgressData.values.length - 1) *
-                          (460 / (overallProgressData.values.length - 1))
+                      ` L${30 +
+                      (overallProgressData.values.length - 1) *
+                      (460 / (overallProgressData.values.length - 1))
                       },180 L30,180 Z`
                     }
                     fill="url(#areaGradient)"
@@ -373,8 +369,7 @@ const handleStudentTabPrev = () => {
                           i,
                           arrPoly // Corrected `arr` to `arrPoly`
                         ) =>
-                          `${30 + i * (460 / (arrPoly.length - 1))},${
-                            180 - (val / 100) * 160
+                          `${30 + i * (460 / (arrPoly.length - 1))},${180 - (val / 100) * 160
                           }`
                       )
                       .join(" ")}
@@ -395,9 +390,8 @@ const handleStudentTabPrev = () => {
                 {topBranchesData.map((branch, index) => (
                   <div
                     key={branch.label}
-                    className={`flex items-center justify-around gap-3 ${
-                      index !== topBranchesData.length - 1 ? "mb-3" : ""
-                    }`}
+                    className={`flex items-center justify-around gap-3 ${index !== topBranchesData.length - 1 ? "mb-3" : ""
+                      }`}
                   >
                     <div className="flex-grow rounded-full h-5 relative">
                       <div
@@ -448,36 +442,35 @@ const handleStudentTabPrev = () => {
             </h2>
           </div>
           <div className="p-3 mx-3 mb-3 rounded-2xl border border-[#E5E7EB] flex flex-col flex-grow">
-            <div className="flex items-center mb-3 justify-between border border-[#E5E7EB] rounded-2xl p-1.5 w-full">
-               {teacherTabPage > 0 && (
-    <button
-      onClick={handleTeacherTabPrev}
-      className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
-    >
-      <FiArrowLeft className="w-4 h-4" />
-    </button>
-  )}
+            <div className="flex items-center mb-3 justify-between border border-[#E5E7EB] rounded-2xl p-1.5 w-full overflow-x-auto custom-scrollbar-thin">
+              {teacherTabPage > 0 && (
+                <button
+                  onClick={handleTeacherTabPrev}
+                  className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
+                >
+                  <FiArrowLeft className="w-4 h-4" />
+                </button>
+              )}
 
-  {/* Show only 3 tabs at a time */}
-  {teacherTabsToShow.map((cls) => (
-    <TabButton
-      key={cls}
-      label={cls}
-      isActive={teacherPerformanceTab === cls}
-      onClick={() => setTeacherPerformanceTab(cls)}
-    />
-  ))}
+              {/* Show only 3 tabs at a time */}
+              {teacherTabsToShow.map((cls) => (
+                <TabButton
+                  key={cls}
+                  label={cls}
+                  isActive={teacherPerformanceTab === cls}
+                  onClick={() => setTeacherPerformanceTab(cls)}
+                />
+              ))}
 
-  {/* Right arrow only shown if there are more tabs */}
-  {(teacherTabPage + 1) * 3 < teacherTabs.length && (
-    <button
-      onClick={handleTeacherTabNext}
-      className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
-    >
-      <FiArrowRight className="w-4 h-4" />
-    </button>
-  )}
-
+              {/* Right arrow only shown if there are more tabs */}
+              {(teacherTabPage + 1) * 3 < teacherTabs.length && (
+                <button
+                  onClick={handleTeacherTabNext}
+                  className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
+                >
+                  <FiArrowRight className="w-4 h-4" />
+                </button>
+              )}
             </div>
             <div
               className="px-3 py-2 rounded-xl mb-1"
@@ -526,11 +519,10 @@ const handleStudentTabPrev = () => {
                   <div
                     // Correctly apply dynamic classes for Tailwind JIT
                     className={`px-1 font-semibold 
-                ${
-                  item.progress.startsWith("+")
-                    ? "text-[#10B981]"
-                    : "text-[#EF4444]"
-                }`}
+                ${item.progress.startsWith("+")
+                        ? "text-[#10B981]"
+                        : "text-[#EF4444]"
+                      }`}
                   >
                     {item.progress}
                   </div>
@@ -560,33 +552,33 @@ const handleStudentTabPrev = () => {
             </h2>
           </div>
           <div className="p-3 mx-3 mb-3 rounded-2xl border border-[#E5E7EB] flex flex-col flex-grow">
-            <div className="flex items-center mb-3 justify-between border border-[#E5E7EB] rounded-xl p-1.5 w-full">
-             {studentTabPage > 0 && (
-    <button
-      onClick={handleStudentTabPrev}
-      className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
-    >
-      <FiArrowLeft className="w-4 h-4" />
-    </button>
-  )}
+            <div className="flex items-center mb-3 justify-between border border-[#E5E7EB] rounded-xl p-1.5 w-full overflow-x-auto custom-scrollbar-thin">
+              {studentTabPage > 0 && (
+                <button
+                  onClick={handleStudentTabPrev}
+                  className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
+                >
+                  <FiArrowLeft className="w-4 h-4" />
+                </button>
+              )}
 
-  {studentTabsToShow.map((cls) => (
-    <TabButton
-      key={cls}
-      label={cls}
-      isActive={studentPerformanceTab === cls}
-      onClick={() => setStudentPerformanceTab(cls)}
-    />
-  ))}
+              {studentTabsToShow.map((cls) => (
+                <TabButton
+                  key={cls}
+                  label={cls}
+                  isActive={studentPerformanceTab === cls}
+                  onClick={() => setStudentPerformanceTab(cls)}
+                />
+              ))}
 
-  {(studentTabPage + 1) * 3 < studentTabs.length && (
-    <button
-      onClick={handleStudentTabNext}
-      className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
-    >
-      <FiArrowRight className="w-4 h-4" />
-    </button>
-  )}
+              {(studentTabPage + 1) * 3 < studentTabs.length && (
+                <button
+                  onClick={handleStudentTabNext}
+                  className="p-1 text-black bg-[#000000]/5 rounded-full hover:text-gray-700"
+                >
+                  <FiArrowRight className="w-4 h-4" />
+                </button>
+              )}
             </div>
             <div
               className="px-3 py-2 items-center rounded-2xl mb-2"

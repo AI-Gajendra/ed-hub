@@ -217,8 +217,8 @@ const StudentProgressReport = () => {
             <div className="">
               <h2 className='my-4 text-sm font-semibold'>Assigned Teachers</h2>
               <div className="flex flex-wrap gap-4 items-stretch">
-                {Teachers.map((card, index) => ( <Link href={"/principal/teacher-performance"}>
-                  <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4  cursor-pointer rounded-2xl border-[#e5e7eb]" key={index}>
+                {Teachers.map((card, index) => ( <Link href={"/principal/teacher-performance"}  key={index}>
+                  <div className="py-2 pr-16 pl-2 bg-[#f3f4f6] flex items-center gap-4  cursor-pointer rounded-2xl border-[#e5e7eb]">
                     <Image className='rounded-xl' src={card.image} width={80} height={80} alt={card.name} />
                     <div className="">
                       <h2 className='font-medium'>{card.name}</h2>
