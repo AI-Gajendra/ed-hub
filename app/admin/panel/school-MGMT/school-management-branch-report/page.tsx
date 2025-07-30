@@ -31,7 +31,7 @@ export default function ManageAllApprovals() {
 
   return (
     <div className="bg-[#eeeee]  min-h-screen">
-      <NamingBar name="School Name" />
+      <NamingBar name="School Name |  Branch Name" />
       <div className="px-4">
         <MaxWidthWrapper className="bg-white font-main rounded-2xl my-10 py-4">
           {/* Search filter only for Teachers and Students */}

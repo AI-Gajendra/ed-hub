@@ -42,7 +42,7 @@ export default function ContentManagement() {
 function FolderCard({ setOpenModal }: { setOpenModal: (value: string) => void }) {
   return (
     <div className="p-3 rounded-2xl border border-[#E5E7EB] bg-[#F9FAFB] flex gap-4">
-        <Link href={"/admin/panel/content-management-files"}>
+        <Link href={"/admin/panel/school-MGMT/content-management-files"}>
       <Image
         src="/admin/folder-img.png"
         alt="Folder"
