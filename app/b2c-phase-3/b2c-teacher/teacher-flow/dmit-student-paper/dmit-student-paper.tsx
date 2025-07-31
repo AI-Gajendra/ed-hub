@@ -350,7 +350,7 @@ const AssessmentReviewPage: React.FC = () => {
   return (
     // This div acts as the content area for the page, to be placed inside your <main> tag
     // It uses a responsive grid layout
-    <div className=" bg-white p-6 rounded-2xl flex  flex-col sm:flex-row gap-8 justify-between">
+    <div className=" bg-white px-3 py-6 sm:p-6 rounded-2xl flex  flex-col-reverse sm:flex-row gap-8 justify-between">
       {/* Left Column: Questions List */}
       <div className="sm:w-[55%] space-y-6">
         {questionsData.map((question) => (

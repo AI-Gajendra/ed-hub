@@ -159,7 +159,7 @@ const StudentReport: React.FC = () => {
 											</h2>
 											<div className="flex items-center gap-1 mt-2">
 												<span
-													className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+													className="text-xs whitespace-nowrap font-medium px-2.5 py-1.5 rounded-l-full"
 													style={{
 														backgroundColor: PALETTE.ACCENT_PINK,
 														color: PALETTE.WHITE_CARD,
@@ -167,7 +167,7 @@ const StudentReport: React.FC = () => {
 													Class 8A
 												</span>
 												<span
-													className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+													className="text-xs whitespace-nowrap font-meduim px-2.5 py-1.5 rounded-r-full"
 													style={{
 														backgroundColor: PALETTE.ACCENT_PINK,
 														color: PALETTE.WHITE_CARD,

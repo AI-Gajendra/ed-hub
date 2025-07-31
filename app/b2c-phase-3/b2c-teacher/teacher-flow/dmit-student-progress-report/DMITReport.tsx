@@ -119,7 +119,8 @@ const StudentReport: React.FC = () => {
             }}
           >
             <div className="bg-white px-2 py-1 rounded-2xl ">
-              <div className="flex  items-start sm:items-center gap-4">
+              <div className="flex flex-wrap items-start sm:items-center gap-4">
+                <div className="flex gap-2 items-center">
                 <Image
                   src="/teacher-b2b/profile2.png"
                   alt="Shlok Agheda"
@@ -155,7 +156,9 @@ const StudentReport: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="text-xs lg:pt-2 font-medium text-right sm:text-left space-y-0.5 text-black">
+                </div>
+
+                <div className="text-xs lg:pt-2 font-medium text-left space-y-0.5 text-black">
                   <p> <span className="font-semibold">Gender:</span> Male</p>
                   <p><span  className="font-semibold">DOB:</span>15 Jun 2015</p>
                   <p><span  className="font-semibold">Email:</span> example@gm.com</p>

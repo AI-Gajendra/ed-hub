@@ -379,7 +379,7 @@ const onBackClick = () => {
                     </div>
                 </main>
 
-                <div className="lg:hidden relative w-full min-h-[400px]"> {/* <-- Give it a min height to prevent blank */}
+                <div className="lg:hidden relative w-full min-h-[90vh] bg-white rounded-2xl"> {/* <-- Give it a min height to prevent blank */}
                     <AnimatePresence mode="wait" initial={false}>
                         {!showChatOnMobile ? (
                             <motion.div
