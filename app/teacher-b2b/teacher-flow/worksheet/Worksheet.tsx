@@ -96,7 +96,7 @@ const UploadExistingTestContent: React.FC = () => {
 	}, [allFolders, activeCategoryId])
 
 	return (
-		<div className="bg-white rounded-2xl  min-h-screen  px-6 py-4 ">
+		<div className="bg-white rounded-2xl  min-h-screen  px-4 sm:px-6 py-4 ">
 			{/* Category Tabs */}
 			<TabSwitch tabs={tabs} selected={activeTab} onChange={setActiveTab} />
 

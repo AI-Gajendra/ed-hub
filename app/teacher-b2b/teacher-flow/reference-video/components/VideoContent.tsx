@@ -316,7 +316,7 @@ const VideoContentPage: React.FC = () => {
             />
           ))}
         </div>
-        <div className="flex flex-wrap flex-row items-center gap-2 sm:gap-3  sm:self-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 items-start justify-start sm:items-center gap-2 sm:gap-3  sm:self-center">
           <MonthTab />
           <DropdownBtnXl filters={option1} />
           <DropdownBtnXl filters={option2} />
