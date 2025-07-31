@@ -94,7 +94,7 @@ export default function TestsPage({ testType = "BW Test" }: TestsPageProps) {
 		<div className="min-h-screen bg-[#eeeeee] flex flex-col">
 			<Header activeState='Dashboard' />
 			<GoBack GoBackHeading='' />
-			<main className="flex-grow w-full max-w-[96rem] mx-auto p-2 sm:p-6">
+			<main className="flex-grow w-full max-w-[96rem] mx-auto px-2 py-6 sm:p-6">
 				<div className="bg-white rounded-2xl p-3 sm:p-4 md:p-6">
 
 					{/* Re-architected layout using a responsive grid */}
