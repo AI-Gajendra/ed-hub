@@ -1,20 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  FiArrowLeft,
-  // FiClock,
-  // FiChevronLeft,
-  // FiChevronRight,
-  FiSearch,
-  FiPercent,
-  FiAward,
-  FiBarChart2,
-  FiChevronDown,
-  FiZap,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-} from "react-icons/fi"; // Add icons as needed
+
 import Image from "next/image"; // For profile picture
 import Header from "@/components/layout/TeacherB2CHeaderPhase3";
 import Footer from "@/components/layout/Footer";
@@ -107,21 +94,20 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 
 const StudentReport: React.FC = () => {
 
-
   const keyFocusAreas = [
     "Academics",
     "Personality Development",
     "Brain Development",
   ];
 
- 
+
   return (
     <>
       <Header activeState="Dashboard" />
         <BackButton Heading="Report" />
      
       <TeacherB2CWrapper>
-          <div className="grid grid-cols-1 lg:grid-cols-3 pb-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 pb-4 gap-6">
           {/* Student Info Card */}
 
           <div
@@ -133,7 +119,8 @@ const StudentReport: React.FC = () => {
             }}
           >
             <div className="bg-white px-2 py-1 rounded-2xl ">
-              <div className="flex  items-start sm:items-center gap-4">
+              <div className="flex flex-wrap items-start sm:items-center gap-4">
+                <div className="flex gap-2 items-center">
                 <Image
                   src="/teacher-b2b/profile2.png"
                   alt="Shlok Agheda"
@@ -169,12 +156,14 @@ const StudentReport: React.FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="lg:pt-2 text-xs font-medium text-right sm:text-left space-y-0.5 text-black">
+                </div>
+
+                <div className="text-xs lg:pt-2 font-medium text-left space-y-0.5 text-black">
                   <p> <span className="font-semibold">Gender:</span> Male</p>
-                  <p><span  className="font-semibold">DOB:</span> 15 Jun 2015</p>
+                  <p><span  className="font-semibold">DOB:</span>15 Jun 2015</p>
                   <p><span  className="font-semibold">Email:</span> example@gm.com</p>
 
-                  <p><span  className="font-semibold">City: </span> Mumbai</p>
+                  <p><span  className="font-semibold">City: </span>Mumbai</p>
                   <p><span  className="font-semibold">State:</span> Maharashtra</p>
                 </div>
               </div>
