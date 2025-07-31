@@ -117,7 +117,7 @@ export const Stepper: React.FC<{
 }> = (
 	{ steps, currentStep, setCurrentStep, isClickable = true } // Added isClickable, default true
 ) => (
-		<div className="flex mx-auto w-fit sm:w-full px-8 py-2 border border-gray-200 rounded-2xl sm:px-0 sm:py-0 sm:border-none flex-wrap items-start sm:items-center justify-center flex-col sm:flex-row gap-2 sm:gap-0 sm:space-x-8 mb-6 sm:mb-10">
+		<div className="flex mx-auto w-full px-2  py-2 border border-gray-200 rounded-2xl sm:px-0 sm:py-0 sm:border-none flex-wrap items-start sm:items-center justify-center flex-col sm:flex-row gap-2 sm:gap-0 sm:space-x-8 mb-6 sm:mb-10">
 			{steps.map((step) => (
 				<button
 					key={step.id}
@@ -391,7 +391,7 @@ export function CreateTestPage({ testType, currentTestStep = 1 }: { testType: st
 
 				<SavedNotification isVisible={showSavedNotification} />
 
-				<main className="flex-grow max-w-screen-xl mx-auto p-6 lg:p-8">
+				<main className="flex-grow max-w-screen-xl mx-auto px-2 py-6 sm:p-4 lg:p-8">
 					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} testType={testType} handleSaveClick={handleSaveClick} />
 				</main>
 			</div>

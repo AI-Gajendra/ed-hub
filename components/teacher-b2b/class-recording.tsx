@@ -43,29 +43,6 @@ const sampleBatchOptions: FilterOption[] = [{ value: "batchA", label: "All Batch
 const sampleSubjectOptions: FilterOption[] = [{ value: "all", label: "Subject" }, { value: "science", label: "Science" }];
 
 
-// --- MODAL & FORM COMPONENTS (Integrated from your popups file) ---
-
-interface BaseModalProps { isOpen: boolean; onClose: () => void; children?: React.ReactNode; maxWidth?: string; }
-const BaseModal: React.FC<BaseModalProps> = ({ isOpen, onClose, children, maxWidth = "max-w-md" }) => {
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
-    if (isOpen) { document.body.style.overflow = "hidden"; window.addEventListener("keydown", handleEsc); }
-    else { document.body.style.overflow = "auto"; }
-    return () => { window.removeEventListener("keydown", handleEsc); document.body.style.overflow = "auto"; };
-  }, [isOpen, onClose]);
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div onClick={onClose} className="fixed inset-0 bg-[#0000004a] flex items-center justify-center p-4 z-50">
-          <motion.div onClick={(e) => e.stopPropagation()} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.2 }} className={`bg-white rounded-2xl  w-full ${maxWidth} overflow-hidden`}>
-            {children}
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
-};
 
 
 
@@ -84,10 +61,10 @@ const FilterDropdown: React.FC<{ options: FilterOption[]; value: string; onChang
 );
 
 const RecordingCard: React.FC<{ recording: ClassRecording; onShared: () => void; onShare: () => void; onDelete: () => void; }> = ({ recording, onShared, onShare, onDelete }) => (
-  <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-2  duration-200 flex items-center justify-between gap-4">
+  <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-2  duration-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
     <div className="flex items-center gap-4 flex-grow min-w-0">
-      <div className="bg-[#FFCC001A] w-14 h-14 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-        <FiFilm className="w-7 h-7 sm:w-8 sm:h-8 text-[#FFCC00]" />
+      <div className="bg-[#FFCC001A] w-24 h-24 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+        <FiFilm className="w-12 h-12 sm:w-8 sm:h-8 text-[#FFCC00]" />
       </div>
       <div className="min-w-0">
         <h3 className="text-lg  font-semibold text-gray-900 truncate">{recording.title}</h3>
@@ -130,37 +107,48 @@ const ClassRecordingContent: React.FC = () => {
 
   return (
     <>
-    <div className="bg-white rounded-2xl p-4 sm:p-6">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
-        <div className="flex items-center gap-4 flex-grow w-full lg:w-auto">
-          <button className={`px-4 py-2 text-sm font-medium whitespace-nowrap text-[${ACCENT_PINK}] border-b-2 border-[${ACCENT_PINK}]`}>Class Recording</button>
-          <div className="relative flex-grow"><FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-black pointer-events-none" /><input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className={`w-full pl-10 pr-4 py-2.5 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm`} /></div>
-        </div>
-        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end lg:justify-start flex-shrink-0">
-          <div className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl"><FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" /><span>June 2025</span><FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" /></div>
-          <FilterDropdown options={sampleBatchOptions} value={batchFilter} onChange={setBatchFilter} />
-          <FilterDropdown options={sampleSubjectOptions} value={subjectFilter} onChange={setSubjectFilter} />
-        </div>
-      </div>
+      <div className="bg-white rounded-2xl p-4 sm:p-6">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 flex-grow w-full lg:w-auto">
+            <button className={`px-4 py-2 text-sm font-medium whitespace-nowrap text-[${ACCENT_PINK}] border-b-2 border-[${ACCENT_PINK}]`}>Class Recording</button>
 
-      {Object.keys(recordingsByDate).length > 0 ? (
-        <div className="space-y-6">
-          {Object.entries(recordingsByDate).map(([date, recs]) => (
-            <div key={date}>
-              <h2 className="text-lg font-semibold text-black mb-2 ml-1">Date</h2>
-              <div className="space-y-3">
-                {recs.map((rec) => (<RecordingCard key={rec.id} recording={rec} onShared={() => setShareVideoAccess(true)} onShare={() => setShareVideo(true)} onDelete={() => setDeleteRecording(true)} />))}
+            <div className="flex items-center gap-2 sm:gap-4">
+              <div className="relative flex-grow">
+                <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-black pointer-events-none" />
+                <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className={`w-full pl-10 pr-4 py-2.5 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm`} />
               </div>
-            </div>
-          ))}
-        </div>
-      ) : (<div className="text-center py-12 text-gray-500"><FiFilm className="w-16 h-16 mx-auto mb-4 text-gray-400" /><h3 className="text-xl font-semibold mb-2">No Recordings Found</h3><p className="text-sm">Try adjusting your search or filter criteria.</p></div>)}
 
-     
-    </div>
-    <ShareWithManageVideoPopup isOpen={shareVideoAccess} onClose={() => setShareVideoAccess(false)} />
-     <ShareVideoPopup isOpen={shareVideo} onClose={() => setShareVideo(false)} />
-     <DeleteRecordingModal isOpen={deleteRecording} onClose={() => setDeleteRecording(false)} />
+              <div className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" /><span className="whitespace-nowrap">June 2025</span><FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+              </div>
+
+            </div>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-start sm:justify-end lg:justify-start flex-shrink-0">
+
+            <FilterDropdown options={sampleBatchOptions} value={batchFilter} onChange={setBatchFilter} />
+            <FilterDropdown options={sampleSubjectOptions} value={subjectFilter} onChange={setSubjectFilter} />
+          </div>
+        </div>
+
+        {Object.keys(recordingsByDate).length > 0 ? (
+          <div className="space-y-6">
+            {Object.entries(recordingsByDate).map(([date, recs]) => (
+              <div key={date}>
+                <h2 className="text-lg font-semibold text-black mb-2 ml-1">Date</h2>
+                <div className="space-y-3">
+                  {recs.map((rec) => (<RecordingCard key={rec.id} recording={rec} onShared={() => setShareVideoAccess(true)} onShare={() => setShareVideo(true)} onDelete={() => setDeleteRecording(true)} />))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (<div className="text-center py-12 text-gray-500"><FiFilm className="w-16 h-16 mx-auto mb-4 text-gray-400" /><h3 className="text-xl font-semibold mb-2">No Recordings Found</h3><p className="text-sm">Try adjusting your search or filter criteria.</p></div>)}
+
+
+      </div>
+      <ShareWithManageVideoPopup isOpen={shareVideoAccess} onClose={() => setShareVideoAccess(false)} />
+      <ShareVideoPopup isOpen={shareVideo} onClose={() => setShareVideo(false)} />
+      <DeleteRecordingModal isOpen={deleteRecording} onClose={() => setDeleteRecording(false)} />
     </>
   );
 };
