@@ -245,7 +245,7 @@ const SavedNotification: React.FC<{
                         className="fixed top-30 left-1/2 -translate-x-1/2 z-50"
                     >
                         <div
-                            className="flex w-50 sm:w-xs items-center gap-2 bg-[#00B060] text-white font-semibold px-6 py-3 rounded-xl shadow-lg"
+                            className="flex w-50 sm:w-xs items-center gap-2 bg-[#00B060] text-white font-semibold px-6 py-3 rounded-xl"
                         >
                             <FaRegCircleCheck className="w-5 h-5" strokeWidth={2.5} />
                             <span className="text-base">{message}</span>
@@ -282,8 +282,8 @@ export function StudentPaperComponent({ linkPart }:{ linkPart:string }) {
 
                 <SavedNotification isVisible={showSavedNotification} />
 
-                <main className=" max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
-                    <div className=" bg-white p-4 md:p-6 lg:p-8 rounded-2xl flex  flex-col-reverse lg:flex-row gap-4 sm:gap-6 lg:gap-8 justify-between">
+                <main className=" max-w-screen-xl mx-auto px-2 py-6 sm:p-6 lg:p-8 space-y-8">
+                    <div className=" bg-white p-2 md:p-6 lg:p-8 rounded-2xl flex  flex-col-reverse lg:flex-row gap-4 sm:gap-6 lg:gap-8 justify-between">
 
                         {/* Left Column: Questions List */}
                         <div className="w-full space-y-4">
