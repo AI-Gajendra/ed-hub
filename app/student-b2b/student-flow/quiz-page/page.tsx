@@ -12,6 +12,7 @@ import {
 import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 import StudentWrapper from '@/components/layout/StudentB2B/student-wrapper';
 import { useRouter } from 'next/navigation';
+import Footer from '@/components/layout/Footer';
 
 // --- Sample Data (from your original) ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];
@@ -58,7 +59,7 @@ export default function QuizTestPage() {
 
       <div className="bg-gray-100 min-h-screen flex flex-col">
 
-        <main className="flex-grow  mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
+        <main className="flex-grow w-full mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
           <div className="mb-4">
             <OptimizedCategoryTabsBar
               categories={mainCategoriesData}
@@ -68,7 +69,7 @@ export default function QuizTestPage() {
           </div>
 
           {/* Main Content Card for Mock Test */}
-          <div className="bg-white rounded-2xl px-2 py-4 sm:px-3 sm:py-6 relative border border-gray-200"> {/* No shadow, add border */}
+          <div className="bg-white w-full rounded-2xl px-2 py-4 sm:px-3 sm:py-6 relative border border-gray-200"> {/* No shadow, add border */}
             <QuizHeader
               onBackClick={handlePageBack}
               quizTitle="Quiz"
@@ -85,6 +86,7 @@ export default function QuizTestPage() {
 
 
       </div>
+      <Footer />
     </StudentWrapper>
   );
 }

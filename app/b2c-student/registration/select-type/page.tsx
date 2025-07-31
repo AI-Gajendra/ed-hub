@@ -77,7 +77,7 @@ export default function SelectTypePage() {
     return (
         <div className="bg-black">
 
-            <div className="min-h-screen w-full flex items-center justify-center p-6 sm:p-8">
+            <div className="min-h-screen w-full flex items-center justify-center px-2 py-6 sm:p-8">
 
                 <div className="relative w-full max-w-3xl rounded-2xl overflow-hidden">
                     <div
@@ -98,7 +98,7 @@ export default function SelectTypePage() {
                         }}
                     />
 
-                    <div className="relative z-20 px-6 py-8 sm:py-12">
+                    <div className="relative z-20 px-3 sm:px-6 py-8 sm:py-12">
                         <div className="space-y-4">
                             {selectionOptions.map((option) => (
                                 <SelectionCard

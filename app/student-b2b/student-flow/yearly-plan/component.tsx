@@ -83,10 +83,10 @@ const Curriculum = () => {
       <div className="mx-auto bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
         <TabSwitch tabs={categories} selected={selected} onChange={setSelected} />
 
-        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 py-4">
           {/* Left column */}
-          <div className="bg-white p-6 rounded-2xl">
-            <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
+          <div className="bg-white p-3 sm:p-6 rounded-2xl">
+            <div className="flex  flex-col sm:flex-row items-start sm:items-center justify-between gap-2 xs:flex-col mb-3">
               <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b-2 border-[#3366FF] w-fit">
                 Modules
               </h2>
@@ -115,7 +115,7 @@ const Curriculum = () => {
                   <div
                     key={index}
                     className={`${
-                      isOpen ? "p-6" : "border border-[#E5E7EB]"
+                      isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
                     } relative z-20 rounded-2xl mr-3 transition-all`}
                   >
                     {/* Filtered background image */}
@@ -129,8 +129,8 @@ const Curriculum = () => {
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
                       className={`${
-                        isOpen ? "bg-white px-6 py-2 " : ""
-                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                        isOpen ? "bg-white px-2 sm:px-6 py-2 " : ""
+                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-2 sm:px-4 py-2 sm:py-3 font-medium focus:outline-none`}
                     >
                       <span className="text-lg">
                         {isOpen ? item.title : "Unit Name "}

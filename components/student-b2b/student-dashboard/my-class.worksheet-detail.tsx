@@ -290,7 +290,7 @@ export default function WorksheetViewPage() {
 							</button>
 							<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
 								<div>
-									<h2 className="text-xl font-bold text-[#FF3366]">Understanding Unitary Method – Level 1 </h2>
+									<h2 className="text-base md:text-xl font-medium md:font-bold text-[#FF3366]">Understanding Unitary Method – Level 1 </h2>
 									<p className="text-md text-black mt-1">Worksheet </p>
 								</div>
 							</div>
