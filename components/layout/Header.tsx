@@ -77,7 +77,7 @@ export default function Header({ user, isAskme = true, activeState = "Dashboard"
 			<div className="mx-auto px-4 h-20 flex justify-between items-center max-w-screen-2xl">
 				{/* Logo */}
 				<div className="flex-shrink-0">
-					<Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={231} height={46} className="w-40" />
+					<Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={231} height={46} className="w-28 sm:w-40" />
 				</div>
 
 				{/* Main Navigation */}

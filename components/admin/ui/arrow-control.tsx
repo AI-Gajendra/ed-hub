@@ -1,28 +1,38 @@
+'use client'
+
 import { CircleArrowLeft, CircleArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 export default function ArrowControl({
-	leftOnClick,
-	RightOnClick,
-	text = 'Next',
-	className = '',
+  leftOnClick,
+  RightOnClick,
+  text = 'Next',
+  className = '',
 }: {
-	leftOnClick: () => void
-	RightOnClick: () => void
-	text: string
-	className?: string
+  leftOnClick: () => void
+  RightOnClick: () => void
+  text: string
+  className?: string
 }) {
-	return (
-		<Button
-			variant={'outline'}
-			className={cn(
-				'flex gap-2 items-center justify-center rounded-xl font-normal w-[8.3rem] shadow-none bg-[#F9FAFB] border-[#E5E7EB] tracking-tight',
-				className
-			)}>
-			<CircleArrowLeft onClick={leftOnClick} />
-			{text}
-			<CircleArrowRight onClick={RightOnClick} />
-		</Button>
-	)
+  return (
+    <div
+      className={`flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl ${className}`}
+    >
+      <CircleArrowLeft
+        className="w-4 h-4 cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation()
+          leftOnClick()
+        }}
+      />
+      <span className="min-w-[40px] text-center font-medium">{text}</span>
+      <CircleArrowRight
+        className="w-4 h-4 cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation()
+          RightOnClick()
+        }}
+      />
+    </div>
+  )
 }
