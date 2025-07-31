@@ -163,7 +163,7 @@ const AddCourseModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
           >
             Add
           </button>
-          <Link href="/admin/panel/create-course" >
+          <Link href="/admin/panel/course-MGMT/create-course" >
             <button
               className="rounded-full px-4 py-3 bg-yellow-400 text-white text-sm font-medium hover:bg-yellow-500"
             >

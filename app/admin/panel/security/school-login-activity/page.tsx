@@ -16,18 +16,18 @@ export default function SchoolLoginActivity() {
 	const classes = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5']
 
 	return (
-		<div>
-			<MaxWidthWrapper className="bg-white  rounded-2xl py-4 mx-10 my-4 ">
+		<div className="p-4">
+			<MaxWidthWrapper className="bg-white  rounded-2xl py-4  my-4 ">
 				<div className="relative overflow-hidden p-4 rounded-2xl">
 					{/* Background Image */}
 					<div
-						className="absolute inset-0 z-0 bg-[url('/common-images/pattern.png')] bg-cover bg-center filter grayscale opacity-50"
+						className="absolute  font-main inset-0 z-0 bg-[url('/common-images/pattern.png')] bg-cover bg-center filter grayscale opacity-50"
 						aria-hidden="true"
 					/>
 					<div className="flex rounded-2xl flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
 						<div className="w-full lg:w-[70%] relative z-20">
 							<div className="my-4 rounded-full bg-white px-4 py-2 w-fit">
-								<p className="font-semibold">School Name</p>
+								<p className="font-semibold text-md md:text-xl">School Name</p>
 							</div>
 							<Image
 								src={'/images/school.jpg'}
@@ -37,7 +37,7 @@ export default function SchoolLoginActivity() {
 								className="w-full h-96 rounded-2xl object-cover"
 							/>
 						</div>
-						<div className="w-full lg:w-[30%] h-fit text-black rounded-2xl bg-white p-3">
+						<div className="w-full lg:w-[30%]  z-10  font-main h-fit text-black rounded-2xl bg-white p-3">
 							<p>
 								<span className="font-medium">Email: </span>
 								example@gm.com
@@ -139,7 +139,7 @@ export default function SchoolLoginActivity() {
 
 function TecherChip() {
 	return (
-		<Link href={"/admin/panel/teacher-login-activity"}>
+		<Link href={"/admin/panel/security/teacher-login-activity"}>
 			<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-full">
 				<Image
 					src={'/images/teacher.jpg'}
@@ -159,7 +159,7 @@ function TecherChip() {
 }
 
 function StudentRectangle() {
-	return (<Link href={"/admin/panel/student-login-activity"}>
+	return (<Link href={"/admin/panel/security/student-login-activity"}>
 		<div className="bg-[#F3F4F6] rounded-2xl px-2 py-2 border border-[#B0B0B0] flex items-center gap-2">
 			<Image
 				src="/images/admin-student-profile.png"

@@ -19,7 +19,7 @@ const GoBack: React.FC<GoBackProps> = ({ GoBackHeading, toLink }) => {
     }
   };
   return (
-   <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 ">
+   <div className="flex font-main items-center gap-3 bg-white px-4 sm:px-6 py-3.5 ">
         <button
           onClick={handleBackClick}
           className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md"
@@ -27,7 +27,7 @@ const GoBack: React.FC<GoBackProps> = ({ GoBackHeading, toLink }) => {
         >
           <FiArrowLeft className="w-5 h-5" />
         </button>
-        <h1 className="text-xl md:text-2xl font-medium text-[#FF3366]">
+        <h1 className="text-lg md:text-xl font-medium text-[#FF3366]">
           {GoBackHeading}
         </h1>
       </div>

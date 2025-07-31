@@ -121,7 +121,7 @@ export default function CourseCreationFlowPage() {
     <div className="bg-gray-100 min-h-screen w-full flex flex-col">
       <GoBack
         GoBackHeading="Add Course"
-        toLink="/admin-b2c/admin-panel/course-management"
+        toLink="/admin/panel/course-MGMT/course-management"
       />
       <div className="px-4 sm:px-6 lg:px-8">
         <main className="bg-white rounded-2xl w-full max-w-screen-xl mx-auto my-6 p-3 sm:p-4">

@@ -157,7 +157,7 @@ const Activity: React.FC<ActivityProps> = ({ isStudent = false }) => {
     <div className="bg-[#eeeeee] p-2 sm:p-4 md:p-6 space-y-4">
       {/* Header Card */}
       <div
-        className="p-3 rounded-2xl w-full max-w-screen-xl mx-auto border border-gray-200 overflow-hidden"
+        className="p-3 rounded-2xl font-main w-full max-w-screen-xl mx-auto border border-gray-200 overflow-hidden"
         style={{
           backgroundImage: "url('/pattern.png')",
           backgroundSize: "1200px",

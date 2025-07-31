@@ -55,7 +55,7 @@ const [isModalOpen, setIsModalOpen] = useState(false)
             </div>
 
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar ">
-              <Link href="/admin/panel/admin-course-management" passHref>
+              <Link href="/admin/panel/course-MGMT/admin-course-management" passHref>
                 <button
                   className={
                     "flex items-center cursor-pointer justify-center gap-1.5 px-3 py-2 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors"

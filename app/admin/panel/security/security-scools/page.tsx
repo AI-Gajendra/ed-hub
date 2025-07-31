@@ -196,7 +196,7 @@ function SearchFilterBar() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <div className="flex gap-4 w-full">
+      <div className="flex flex-wrap md:flex-nowrap gap-4 w-full">
         {buttons.map((btn, indx) => (
           <Button
             key={indx}
@@ -219,7 +219,7 @@ const SchoolCard = ({ activeClass, setOpenModalId }: SchoolCardProps) => {
    
      <Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
   {/* Make only this section clickable */}
-  <Link href="/admin/panel/school-management-report" className="w-full sm:w-52 h-44 block">
+  <Link href="/admin/panel/school-MGMT/school-management-report" className="w-full sm:w-52 h-44 block">
     <Image
       src="/images/school-image.jpg"
       alt="School"
@@ -231,7 +231,7 @@ const SchoolCard = ({ activeClass, setOpenModalId }: SchoolCardProps) => {
 
   <div className="flex flex-col justify-between gap-2 sm:gap-2 flex-1">
     <div>
-      <Link href="/admin/panel/school-management-report" className="block">
+      <Link href="/admin/panel/school-MGMT/school-management-report" className="block">
         <h2 className="font-semibold text-sm sm:text-base truncate">School Name</h2>
         <p className="text-[#6B7280] text-xs font-light truncate">Address</p>
         <p className="text-[#6B7280] text-xs font-light truncate">Detail 1</p>
@@ -253,11 +253,11 @@ const SchoolCard = ({ activeClass, setOpenModalId }: SchoolCardProps) => {
           </Button>
 
      {activeClass ? (
-  <Link href="/admin/panel/school-login-activity">
+  <Link href="/admin/panel/security/school-login-activity">
     <Button className="rounded-full px-6">Active</Button>
   </Link>
 ) : (
-  <Link href="/admin/panel/school-login-activity">
+  <Link href="/admin/panel/security/school-login-activity">
     <Button className="rounded-full text-red-600 bg-[#FBD2D9] hover:bg-[#FBD2D9]/90">
       Inactive
     </Button>

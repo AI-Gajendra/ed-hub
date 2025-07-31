@@ -70,14 +70,14 @@ export default function Navbar({ user, isAskme = true }: HeaderProps) {
   {
     icon: FiBookOpen,
     label: 'Course MGMT',
-    href: '/admin/panel/course-management',
-    match: '/admin/panel/course-management',
+    href: '/admin/panel/course-MGMT/course-management',
+    match: '/admin/panel/course-MGMT',
   },
   {
     icon: FiShield,
     label: 'Security',
-    href: '/admin/panel/security-scools',
-    match: '/admin/panel/security-scools',
+    href: '/admin/panel/security/security-scools',
+    match: '/admin/panel/security',
   },
 ]
 

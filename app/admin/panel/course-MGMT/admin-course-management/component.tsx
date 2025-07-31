@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { FiChevronDown, FiCheck } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
-import MembershipModal from '../../pop-ups-2/components/manage-membership';
+import MembershipModal from '../../../pop-ups-2/components/manage-membership';
 
 const subjects = Array.from({ length: 10 }, (_, i) => `Subject ${i + 1}`);
 const plans = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
