@@ -27,7 +27,7 @@ const ClassTab = () => {
     const [selected, setSelected] = useState<string>('Class 1');
     return (
         <div className="pb-6 pt-2">
-            <div className="w-full flex justify-center bg-white border shadow rounded-2xl py-2">
+            <div className="w-full flex justify-center bg-white border rounded-2xl py-2">
                 <div className="flex flex-wrap justify-center px-2 gap-4">
                     {classes.map((category) => (
                         <button

@@ -1012,23 +1012,6 @@ export default function Landing() {
                     className="object-cover transition-transform duration-500 hover:scale-105"
                     priority
                   />
-                  {post.categories && post.categories.length > 0 && (
-                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                      {post.categories.slice(0, 2).map((category, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-[#3366ff] text-white text-xs px-2 py-1 rounded-full"
-                        >
-                          {category}
-                        </span>
-                      ))}
-                      {post.categories.length > 2 && (
-                        <span className="bg-[#f9326f] text-white text-xs px-2 py-1 rounded-full">
-                          +{post.categories.length - 2}
-                        </span>
-                      )}
-                    </div>
-                  )}
                 </div>
 
                 {/* Card content */}
@@ -1041,7 +1024,7 @@ export default function Landing() {
                   </p>
 
                   {/* Author and date */}
-                  <div className="flex items-center justify-between w-full mb-4">
+                  <div className="flex items-center justify-between w-full mb-4 mt-4 border-t">
                     <div className="flex items-center">
                       <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
                         <Image
@@ -1053,7 +1036,7 @@ export default function Landing() {
                           priority
                         />
                       </div>
-                      <span className="text-sm text-gray-700">
+                      <span className="text-sm text-[#F9326F]">
                         {post.author}
                       </span>
                     </div>
