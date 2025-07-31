@@ -149,7 +149,7 @@ function SearchFilterBar({ activeTab,setOpenModal }: SearchFilterBarProps) {
 }
 
 function TeacherRectangle() {
-  return ( <Link href={"/admin/panel/teacher-performance"}>
+  return ( <Link href={"/admin/panel/school-MGMT/teacher-performance"}>
     <div className="bg-[#F3F4F6] rounded-2xl px-2 py-1.5 flex items-center gap-1">
       <Image
         src="/images/admin-teacher-profile.png"
@@ -171,7 +171,7 @@ function TeacherRectangle() {
 }
 
 function StudentRectangle() {
-  return ( <Link href={"/admin/panel/student-progress-report"}>
+  return ( <Link href={"/admin/panel/school-MGMT/student-progress-report"}>
     <div className="bg-[#F3F4F6] rounded-2xl px-2 py-2 border border-[#B0B0B0] flex items-center gap-1">
       <Image
         src="/images/admin-student-profile.png"
