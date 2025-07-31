@@ -20,7 +20,7 @@ const StudentBatchPage: React.FC = () => {
             <div className="px-4">
                 <SearchFilterIcon filters={filter} />
             </div>
-            <div className="flex flex-col md:flex-row gap-2 p-4">
+            <div className="flex flex-col md:flex-row gap-2 py-4 sm:p-4">
                 {/* Left - Student List */}
                 <div className="flex-1 space-y-3">
                     {students.map((student, index) => (

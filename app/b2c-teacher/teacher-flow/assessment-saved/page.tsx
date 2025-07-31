@@ -13,7 +13,9 @@ export default function Assesment() {
 	return (
 		<div className="min-h-screen bg-[#eeeeee] flex flex-col">
 			<Header user={headerUser} />
-			<NamingBar name="" />
+			<div className="pl-4 bg-white">
+				<NamingBar name="" />
+			</div>
 			<MaxWidthWrapper>
 				<BiWeekly />
 			</MaxWidthWrapper>

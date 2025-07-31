@@ -116,8 +116,8 @@ export default function EditStudentProfilePage() {
 							<h1 className="text-[#3366FF] font-semibold">
 								Your Unique Referral Code
 							</h1>
-							<div className="flex items-center justify-between p-3 bg-[#f9f9f9] rounded-2xl">
-								<h2 className="text-[#FF3366] text-xl font-bold">
+							<div className="flex flex-wrap gap-2 items-center justify-between p-3 bg-[#f9f9f9] rounded-2xl">
+								<h2 className="text-[#FF3366] text-base sm:text-xl font-medium sm:font-bold">
 									EDUNIQUE-TEACHER-RONAK23
 								</h2>
 								<div className=" bg-[#3366FF33] text-[#3366FF] rounded-2xl px-4 py-3 flex items-center justify-center gap-1">
