@@ -248,7 +248,7 @@ const TeacherDashboard = () => {
                         <div className="grid grid-cols-1 mb-4 md:grid-cols-2 lg:grid-cols-[4.5fr_3fr_2.5fr] gap-4">
                             {/* Profile Card */}
                             <div className="bg-white rounded-2xl p-4  space-y-4">
-                                <div className="flex items-center justify-between gap-4">
+                                <div className="flex flex-wrap items-center justify-between gap-4">
                                     <div className="flex gap-6 items-center">
                                         <Image src="/teacher-b2b/profile.png" alt="Profile" width={90} height={90} className="h-22 w-22 object-cover rounded-full" />
                                         <div>
@@ -416,13 +416,13 @@ const TeacherDashboard = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr] gap-2 md:gap-4 py-2">
                             {/* First item - Full width on sm to md, 40% on lg */}
-                            <div className="rounded-2xl bg-white py-4 px-8 space-y-6">
+                            <div className="rounded-2xl bg-white py-4 px-4 sm:px-8 space-y-6">
                                 {/* --- Custom Tab Navigation (The only part that is changed) --- */}
                                 <div className="flex items-center space-x-8">
                                     {/* Tab Button 1: AS Basic */}
                                     <button
                                         onClick={() => setActiveTab('class-a')}
-                                        className={`relative px-1 pb-3 text-base font-semibold transition-colors duration-300 ${activeTab === 'class-a' ? 'text-[#3366FF]' : 'text-[#6B7280] hover:text-[#3366FF]'}`}
+                                        className={`relative px-1 pb-3 text-sm sm:text-base font-medium sm:font-semibold whitespace-nowrap transition-colors duration-300 ${activeTab === 'class-a' ? 'text-[#3366FF]' : 'text-[#6B7280] hover:text-[#3366FF]'}`}
                                     >
                                         AS Basic
                                         {activeTab === 'class-a' && (
@@ -437,7 +437,7 @@ const TeacherDashboard = () => {
                                     {/* Tab Button 2: Olymp. M G1 */}
                                     <button
                                         onClick={() => setActiveTab('class-b')}
-                                        className={`relative px-1 pb-3 text-base font-semibold transition-colors duration-300 ${activeTab === 'class-b' ? 'text-[#3366FF]' : 'text-[#6B7280] hover:text-[#3366FF]'}`}
+                                        className={`relative px-1 pb-3 text-sm sm:text-base font-medium sm:font-semibold whitespace-nowrap  transition-colors duration-300 ${activeTab === 'class-b' ? 'text-[#3366FF]' : 'text-[#6B7280] hover:text-[#3366FF]'}`}
                                     >
                                         Olymp. M G1
                                         {activeTab === 'class-b' && (
@@ -452,7 +452,7 @@ const TeacherDashboard = () => {
                                     {/* Tab Button 3: Olymp. M G2 */}
                                     <button
                                         onClick={() => setActiveTab('class-c')}
-                                        className={`relative px-1 pb-3 text-base font-semibold transition-colors duration-300 ${activeTab === 'class-c' ? 'text-[#3366FF]' : 'text-[#6B7280] hover:text-[#3366FF]'}`}
+                                        className={`relative px-1 pb-3 text-sm sm:text-base font-medium sm:font-semibold whitespace-nowrap transition-colors duration-300 ${activeTab === 'class-c' ? 'text-[#3366FF]' : 'text-[#6B7280] hover:text-[#3366FF]'}`}
                                     >
                                         Olymp. M G2
                                         {activeTab === 'class-c' && (
@@ -496,7 +496,7 @@ const TeacherDashboard = () => {
                                             <div className="mt-6">
                                                 <h2 className="text-lg font-semibold mb-3">Students Enrolled</h2>
                                                 <div className="overflow-x-auto rounded-xl">
-                                                    <table className="min-w-full rounded-2xl overflow-hidden">
+                                                    <table className="min-w-[450px] overflow-x-auto custom-scrollbar md:min-w-full rounded-2xl ">
                                                         <thead>
                                                             <tr className="text-left bg-[#3366FF33] text-sm font-semibold text-black">
                                                                 <th className="p-3">Student name</th>
@@ -632,10 +632,10 @@ const TeacherDashboard = () => {
                                                                     onClick={() => setMeeting(true)}
                                                                     className={`rounded-xl p-2 text-xs border ${slot.bg} ${slot.bor} flex cursor-pointer justify-between items-start`}>
                                                                     <div className="flex flex-col justify-between items-start">
-                                                                        <div className="font-medium">{slot.title}</div>
-                                                                        <div className="text-black">{slot.subtitle}</div>
+                                                                        <div className="whitepace-nowrap font-medium">{slot.title}</div>
+                                                                        <div className="whitepace-nowrap text-black">{slot.subtitle}</div>
                                                                     </div>
-                                                                    <div className="text-right text-[10px] text-black self-start">{slot.time}</div>
+                                                                    <div className="whitepace-nowrap text-right text-[10px] text-black self-start">{slot.time}</div>
                                                                 </div>
                                                             ) : (
                                                                 <div className="h-auto"></div>
