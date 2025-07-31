@@ -8,6 +8,7 @@ import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
+import TabSwitch from "@/components/common-components/TabSwitch";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
@@ -284,13 +285,11 @@ const InfoPanel: React.FC<{ info: PedagogyInfo }> = ({ info }) => (
 
 // --- PedagogyContent Component ---
 const PedagogyContent: React.FC = () => {
-    const [activeCategoryId, setActiveCategoryId] = useState<string>(
-        sampleTopCategories[0]?.id || ""
-    );
     const [activeChapterId, setActiveChapterId] = useState<string>("ch1");
     const [openAccordionIds, setOpenAccordionIds] = useState<string[]>(["acc1"]);
     const [pedagogyData] = useState<PedagogyInfo>(samplePedagogyInfo);
-
+    const tabs = ["Category 1",  "Category 2","Category 3","Category 4", "Category 5"];
+    const [tab, setTab] = useState(tabs[0])
     const handleAccordionToggle = (accordionId: string) => {
         setOpenAccordionIds((prevIds) =>
             prevIds.includes(accordionId)
@@ -326,19 +325,7 @@ const PedagogyContent: React.FC = () => {
     }, [])
     return (
         <>
-            {/* Top Categories */}
-            <div className="bg-white p-1.5 mb-4 sm:mb-6 rounded-2xl w-full overflow-x-auto custom-scrollbar-thin">
-                <nav className="flex space-x-1 sm:space-x-4 justify-start sm:justify-center min-w-max px-2 sm:px-4">
-                    {sampleTopCategories.map((cat) => (
-                        <TopTabButton
-                            key={cat.id}
-                            tab={cat}
-                            isActive={activeCategoryId === cat.id}
-                            onClick={() => setActiveCategoryId(cat.id)}
-                        />
-                    ))}
-                </nav>
-            </div>
+            <TabSwitch tabs={tabs} selected={tab} onChange={setTab} />
 
 
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">

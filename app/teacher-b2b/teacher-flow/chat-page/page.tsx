@@ -112,7 +112,7 @@ export default function ChatPage() {
                                 animate={{ x: 0 }}
                                 exit={{ x: '100%' }}
                                 transition={{ duration: 0.4 }}
-                                className="absolute top-0 left-0 w-full h-full z-20 bg-white"
+                                className="absolute top-0 left-0 w-full h-full z-20 "
                             >
 
                                 <ChatArea

@@ -350,7 +350,7 @@ const AssessmentReviewPage: React.FC = () => {
   return (
     // This div acts as the content area for the page, to be placed inside your <main> tag
     // It uses a responsive grid layout
-    <div className=" bg-white p-6 rounded-2xl flex  flex-col sm:flex-row gap-8 justify-between">
+    <div className=" bg-white p-3 sm:p-6 rounded-2xl flex  flex-col-reverse sm:flex-row gap-8 justify-between">
       {/* Left Column: Questions List */}
       <div className="sm:w-[55%] space-y-6">
         {questionsData.map((question) => (
@@ -375,7 +375,7 @@ export default function StudentPaperPage() {
       <TeacherB2CWrapper>
         {/* Back Button and Page Title */}
 
-        <main className=" p-6 ">
+        <main className=" px-2 py-6 sm:p-6 ">
           <AssessmentReviewPage />
         </main>
       </TeacherB2CWrapper>

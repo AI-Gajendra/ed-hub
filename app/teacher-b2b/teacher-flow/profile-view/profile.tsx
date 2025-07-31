@@ -112,7 +112,7 @@ export default function EditStudentProfilePage() {
 						<div className="flex flex-col gap-2 my-6">
 							<h1 className="text-[#3366FF] font-semibold">Your Unique Referral Code</h1>
 							<div className="flex items-center justify-between p-3 bg-[#f9f9f9] rounded-2xl">
-								<h2 className="text-[#FF3366] text-xl font-bold">EDUNIQUE-TEACHER-RONAK23</h2>
+								<h2 className="text-[#FF3366] font-medium text-base md:text-xl md:font-bold">EDUNIQUE-TEACHER-RONAK23</h2>
 								<div className=" bg-[#3366FF33] text-[#3366FF] rounded-2xl px-4 py-3 flex items-center justify-center gap-1">
 									<svg width={16} height={16} viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path

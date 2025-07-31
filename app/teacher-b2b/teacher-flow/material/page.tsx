@@ -10,6 +10,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from "next/navigation";
+import TabSwitch from "@/components/common-components/TabSwitch";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
@@ -122,6 +123,8 @@ export default function MaterialPage() {
     const [activeSubjectId, setActiveSubjectId] = useState<string>(
         sampleSubjectTabs[0]?.id || ""
     );
+    const tabs = ["Subject 1", "Subject 2", "Subject 3", "Subject 4", "Subject 5"]
+    const [tab, setTab] = useState(tabs[0])
     const [searchTerm, setSearchTerm] = useState("");
 
     const filteredFoldersBySubject = useMemo(() => {
@@ -146,18 +149,7 @@ export default function MaterialPage() {
                 <main className="flex-grow max-w-[94rem] mx-auto p-4 mb-4">
                     <>
                         {/* Top Section: Subject Tabs */}
-                        <div className="bg-white flex items-start sm:items-center justify-center p-1 sm:py-1.5 rounded-2xl sm:mx-4 mb-4 sm:mt-2 sm:mb-8">
-                            <nav className="flex space-x-1 sm:space-x-4 lg:space-x-8 overflow-x-auto custom-scrollbar-thin">
-                                {sampleSubjectTabs.map((tab) => (
-                                    <SubjectTabButton
-                                        key={tab.id}
-                                        tab={tab}
-                                        isActive={activeSubjectId === tab.id}
-                                        onClick={() => setActiveSubjectId(tab.id)}
-                                    />
-                                ))}
-                            </nav>
-                        </div>
+                       <TabSwitch tabs={tabs} selected={tab} onChange={setTab} />
 
                         <div className="bg-white rounded-3xl px-3 py-2 sm:p-6 space-y-6">
                             {/* Mid Section: Search and General Filters */}
