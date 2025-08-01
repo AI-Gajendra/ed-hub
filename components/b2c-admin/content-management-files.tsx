@@ -72,10 +72,10 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
       <LuInfo />
     </div>
     <div
-      className={`bg-[#8dd9b3] w-28 h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      className={`bg-[#8dd9b3] w-24 sm:w-28 h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
     >
       <FiFileText
-        className="w-12 h-12 text-black opacity-80"
+        className="w-10 h-10 sm:w-12 sm:h-12 text-black opacity-80"
         strokeWidth={1.5}
       />
     </div>
@@ -96,7 +96,7 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
           <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-base hover:bg-gray-200"> <MdOutlineFileDownload /> Download</button>
         </div>
       </div>
-    </div>
+     </div>
   </div>
 );
 

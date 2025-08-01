@@ -20,7 +20,7 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-3 relative z-50">
+    <div className="flex flex-wrap items-center gap-3 relative z-10">
       {filters.map((filter) => {
         const isOpen = openFilterId === filter.id;
         return (

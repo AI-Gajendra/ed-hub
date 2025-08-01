@@ -51,7 +51,7 @@ const ActivityItem = ({ activity }: { activity: Activity }) => {
 				// Updated "Not Started" style
 				<span className="text-lg font-semibold text-gray-400 pr-2">Not Started</span>
 			)}
-			{activity.status === 'completed' && <span className="text-lg font-semibold text-green-500 pr-2">Completed</span>}
+			{activity.status === 'completed' && <span className="text-sm sm:text-lg font-medium sm:font-semibold bg-green-100 rounded-full px-2 sm:py-4 py-1.5 text-green-500">Completed</span>}
 		</div>
 	)
 }
@@ -307,12 +307,12 @@ export default function StudentDashboardPage() {
 									<Image src={'/fwd-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
 								</div>
 								<div className="flex items-center gap-2">
-									<button className="hover:cursor-pointer px-4 py-1.5 bg-[#FF3366] text-white text-base rounded-full rounded-r-none">
+									<button className="hover:cursor-pointer px-4 py-1.5 bg-[#FF3366] text-white text-base whitespace-nowrap rounded-full rounded-r-none">
 										Weekly ( 10 )
 									</button>
 
 									{/* Group Tag: Fully rounded right side */}
-									<span className="px-2 py-1.5 bg-[#F9FAFB] text-base rounded-full rounded-l-none">Monthly ( 50 )</span>
+									<span className="px-2 py-1.5 whitespace-nowrap bg-[#F9FAFB] text-base rounded-full rounded-l-none">Monthly ( 50 )</span>
 								</div>
 								<button className="hover:cursor-pointer px-2 py-1.5 text-sm text-black border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50 transition-colors">
 									Yearly Plan Overview
