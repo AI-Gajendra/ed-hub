@@ -22,7 +22,7 @@ export default function AttendancePage() {
 
 	return (
 		<MaxWidthWrapper>
-			<div className="py-2">
+			<div className="py-2 px-2 sm:px-4">
 				<main className="p-2 max-w-[90rem] sm:p-6 mx-auto bg-white my-6 rounded-3xl">
 					{/* Search & Filter Section */}
 					<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">

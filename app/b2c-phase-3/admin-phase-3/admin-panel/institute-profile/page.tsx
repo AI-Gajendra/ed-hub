@@ -35,8 +35,8 @@ export default function SchoolManagementReportPage() {
     return (
         <div>
             <BackButton Heading="Institute Name" />
-            <MaxWidthWrapper className="bg-white rounded-2xl py-4 my-4 overflow-hidden">
-                <div className="flex items-center justify-start gap-8 mb-4 font-medium">
+            <MaxWidthWrapper className="bg-white rounded-2xl px-3 py-4 my-4 overflow-hidden">
+                <div className="flex items-center justify-start gap-4 md:gap-8 mb-4 font-medium">
                     {tabs.map((tab, indx) => (
                         <Link href={tabPaths[tab]} key={indx}>
                             <div

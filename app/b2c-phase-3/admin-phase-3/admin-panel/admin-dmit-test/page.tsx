@@ -113,15 +113,17 @@ const DmitTestForm = () => {
                             Edit Questions
                         </Link>
                         <div className="flex flex-wrap gap-2 md:gap-4 pt-4 justify-end">
-                            <button className="bg-pink-100 w-1/2 sm:w-auto text-[#ff3366] text-sm font-medium py-3 px-8 rounded-full hover:opacity-90 cursor-pointer">
-                                Discard
-                            </button>
-                            <button
-                                className="bg-blue-100 w-1/2 sm:w-auto text-[#3366ff] text-sm font-medium py-3 px-2 rounded-full hover:opacity-90 cursor-pointer"
-                                onClick={() => setIsViewTestModalOpen(true)}
-                            >
-                                View Existing Test
-                            </button>
+                            <div className="flex w-full sm:w-auto sm:justify-end items-center gap-2 md:gap-4">
+                                <button className="bg-pink-100 w-1/2 sm:w-auto text-[#ff3366] text-sm font-medium py-3 px-8 rounded-full hover:opacity-90 cursor-pointer">
+                                    Discard
+                                </button>
+                                <button
+                                    className="bg-blue-100 whitespace-nowrap w-1/2 sm:w-auto text-[#3366ff] text-sm font-medium py-3 px-2 rounded-full hover:opacity-90 cursor-pointer"
+                                    onClick={() => setIsViewTestModalOpen(true)}
+                                >
+                                    View Existing Test
+                                </button>
+                            </div>
 
                             <button className="bg-[#3366ff] text-white text-sm font-medium py-3  rounded-full hover:opacity-90 w-full sm:w-32 cursor-pointer">
                                 Save

@@ -63,7 +63,7 @@ export default function ChatPage() {
 
     return (
         <div className="min-h-screen bg-[#EEEEEE] flex flex-col">
-            <main className="z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start">
+            <main className="z-20 relative flex-grow container mx-auto py-6 p-2 flex flex-col gap-3 sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start">
                 {/* 🖥️ Desktop Layout */}
                 <div className="hidden lg:flex w-full gap-5">
                     <TeacherListSidebar
@@ -82,7 +82,7 @@ export default function ChatPage() {
 
                 {/* 📱 Mobile / Tablet Layout */}
                 {/* 📱 Mobile / Tablet Layout */}
-                <div className="lg:hidden relative w-full min-h-[400px]"> {/* <-- Give it a min height to prevent blank */}
+                <div className="lg:hidden relative w-full min-h-[85vh] bg-white rounded-2xl"> {/* <-- Give it a min height to prevent blank */}
                     <AnimatePresence mode="sync" initial={false}>
                         {!showChatOnMobile ? (
                             <motion.div

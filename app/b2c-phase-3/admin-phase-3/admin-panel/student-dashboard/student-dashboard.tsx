@@ -70,8 +70,8 @@ const StudentDashboard = () => {
     );
   
   return (
-    <div className="bg-[#eeeeee] py-6 sm:py-8 lg:py-10 min-h-screen">
-        <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px]   mx-auto bg-white my-6 rounded-3xl">
+    <div className="bg-[#eeeeee] px-2 sm:px-4 py-6 sm:py-8 lg:py-10 min-h-screen">
+        <main className="p-2 max-w-[90rem] sm:p-6    mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
