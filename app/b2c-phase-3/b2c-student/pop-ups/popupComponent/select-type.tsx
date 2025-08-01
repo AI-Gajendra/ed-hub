@@ -122,56 +122,55 @@ const SelectionTypeCard: React.FC<ToastNotificationProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-      <div className="relative w-full max-w-3xl rounded-2xl bg-white overflow-hidden shadow-xl mx-4">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition z-30"
-        >
-          ✕
-        </button>
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-2 sm:px-4">
+  <div className="relative w-full max-w-3xl rounded-2xl bg-white overflow-hidden shadow-xl mx-auto sm:mx-4">
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition z-30 text-xl sm:text-2xl"
+    >
+      ✕
+    </button>
 
-        {/* Pattern background */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: "url(/pattern.png)",
-            backgroundRepeat: "repeat",
-            backgroundSize: "1000px",
-            filter: "brightness(60%) grayscale(10%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            backgroundColor: "#cccccc",
-            filter: "brightness(120%) opacity(70%)",
-          }}
-        />
+    {/* Pattern background */}
+    <div
+      className="absolute inset-0 z-0"
+      style={{
+        backgroundImage: "url(/pattern.png)",
+        backgroundRepeat: "repeat",
+        backgroundSize: "1000px",
+        filter: "brightness(60%) grayscale(10%)",
+      }}
+    />
+    <div
+      className="absolute inset-0 z-10"
+      style={{
+        backgroundColor: "#cccccc",
+        filter: "brightness(120%) opacity(70%)",
+      }}
+    />
 
-        <div className="relative z-20 px-6 my-20 py-8 sm:py-12">
-          <div className="space-y-4">
-            {selectionOptions.map((option) => (
-              <SelectionCard
-                key={option.id}
-                option={option}
-                isSelected={selectedOptionId === option.id}
-                onSelect={() => {
-                  setSelectedOptionId(option.id);
-                  if(option.id === "Learning"){
-
-                    Router.push("/b2c-phase-3/b2c-student/registration/login");
-                  }else if(option.id === "membership_plans"){
-                    Router.push("/b2c-phase-3/b2c-student/registration/registration-2/login");
-
-                  }
-                }}
-              />
-            ))}
-          </div>
-        </div>
+    <div className="relative z-20 px-4 sm:px-6 py-8 sm:py-12 my-12 sm:my-20">
+      <div className="space-y-4">
+        {selectionOptions.map((option) => (
+          <SelectionCard
+            key={option.id}
+            option={option}
+            isSelected={selectedOptionId === option.id}
+            onSelect={() => {
+              setSelectedOptionId(option.id);
+              if (option.id === "Learning") {
+                Router.push("/b2c-phase-3/b2c-student/registration/login");
+              } else if (option.id === "membership_plans") {
+                Router.push("/b2c-phase-3/b2c-student/registration/registration-2/login");
+              }
+            }}
+          />
+        ))}
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 
