@@ -58,7 +58,7 @@ const PayloadManagemnet = () => {
         <>
             <BackButton Heading='Payload Management' />
             <AdminB2CWrapper>
-                <div className="bg-white p-4 rounded-2xl">
+                <div className="bg-white  sm:px-6 p-4 rounded-2xl">
                     <TabSwitch tabs={tabs} selected={selectedTab} onChange={setSelectedTab} />
                     <h2 className="bg-[#f9fafb] text-[#ff3366] rounded-3xl py-3.5 text-center px-2 border border-gray-200 text-lg font-semibold">Payload Management Form</h2>
                     <FilterBar />

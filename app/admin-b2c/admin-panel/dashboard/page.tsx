@@ -59,7 +59,7 @@ export default function DashboardPage() {
 	]
 	return (
 		<AdminB2CWrapper>
-			<div className="rounded-2xl p-2 sm:p-4 my-4 sm:my-6"
+			<div className="rounded-2xl font-main p-2 sm:p-4 my-4 sm:my-6"
 				style={{
 					backgroundImage: "url('/admin/bg-pattern.png')",
 					backgroundSize: "cover",
@@ -110,7 +110,7 @@ export default function DashboardPage() {
 					</div>
 
 					{/* Progress and Chart Section */}
-					<div className="flex flex-col lg:flex-row gap-4">
+					<div className="flex font-main flex-col lg:flex-row gap-4">
 						{/* Progress Card */}
 						<Card className="shadow-none bg-[#F9FAFB] w-full lg:w-[45%] py-4 space-y-2">
 							<CardHeader className="flex flex-col sm:flex-row gap-4 px-2 sm:px-4 py-0">

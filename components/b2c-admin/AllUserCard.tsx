@@ -48,7 +48,7 @@ const UserCard: FC<UserCardProps> = ({
   return (
     <Link href={navigate || href} className="block">
       <div
-        className={`w-full bg-[#F9FAFB] rounded-2xl p-[6px] flex items-center gap-4 cursor-pointer hover:shadow-md transition ${
+        className={`w-full bg-[#F9FAFB] rounded-2xl p-[6px] flex  font-main items-center gap-4 cursor-pointer hover:shadow-md transition ${
           showBorder ? "border border-[#B0B0B0]" : ""
         }`}
       >

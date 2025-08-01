@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function PeopleGrid ()  {
   const personImageUrl = '/admin/teacher.png'; 
 
-  const people = Array.from({ length: 200 }, (_, i) => ({
+  const people = Array.from({ length: 100 }, (_, i) => ({
     id: i,
     name: 'Name', 
     image: personImageUrl, 

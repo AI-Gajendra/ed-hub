@@ -6,14 +6,14 @@ import Image from 'next/image'
 export default function StudentGrid() {
 	const personImageUrl = '/admin/student.png'
 
-	const people = Array.from({ length: 200 }, (_, i) => ({
+	const people = Array.from({ length: 100 }, (_, i) => ({
 		id: i,
 		name: ' Student Name',
 		image: personImageUrl,
 	}))
 
 	return (
-		<div className="overflow-y-auto max-h-[80vh]  custom-peach-scrollbar mx-auto py-4">
+		<div className="overflow-y-auto max-h-[80vh] font-main  custom-peach-scrollbar mx-auto py-4">
 			<div className="grid grid-cols-1 md:grid-cols-2 mx-2 gap-4">
 				{people.map((person, indx) => (
 					<Link

@@ -30,7 +30,7 @@ const loginData: LoginRecord[] = [
 const TeacherTable: React.FC = () => {
   const [actionTab, setActionTab] = useState(false)
   return (
-    <div className="overflow-x-auto rounded-2xl custom-scrollbar-thin">
+    <div className="overflow-x-auto rounded-2xl no-scrollbar">
       <table className="min-w-[900px] px-3 py-2 rounded-2xl w-full bg-white text-sm text-center border-separate border-spacing-y-2">
         <thead>
           <tr className="bg-[#3366ff] text-white whitespace-nowrap">

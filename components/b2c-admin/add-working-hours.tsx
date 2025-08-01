@@ -21,9 +21,9 @@ const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
   return (
     <BaseModal onClose={onClose} isOpen={isOpen} maxWidth="max-w-xl">
-    <div className=" mx-auto px-6 py-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+    <div className=" mx-auto px-6 py-6 bg-white overflow-y-scroll no-scrollbar   rounded-2xl shadow-sm border border-gray-100">
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-1">
+        <h2 className="text-xl font-semibold text-black mb-1">
           Add Working Hours
         </h2>
         <p className="text-sm text-gray-500">
@@ -32,7 +32,7 @@ const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
       </div>
 
       {/* Two-Column Layout */}
-      <div className="flex  flex-col sm:flex-row gap-14 ">
+      <div className="flex  flex-col sm:flex-row md:gap-14 ">
         {/* Left Column */}
         <div className="w-full  flex flex-col md:w-[40%] space-y-6">
           {/* Start Date */}
@@ -54,7 +54,7 @@ const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
           {/* Repeats */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-[#6b7280] mb-2">
               Repeats
             </label>
             <select
@@ -180,7 +180,7 @@ const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
       {/* Actions */}
       <div className="flex  mt-4 gap-3 justify-start">
-        <button onClick={onClose} className="px-6 py-2 text-sm font-medium text-[#6b7280] bg-[#e5e7eb] rounded-full transition-colors">
+        <button className="px-6 py-2 text-sm font-medium text-[#6b7280] bg-[#e5e7eb] rounded-full transition-colors" onClick={onClose}>
           Cancel
         </button>
         <button
