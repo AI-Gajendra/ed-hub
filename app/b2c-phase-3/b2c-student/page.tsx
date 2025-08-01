@@ -15,7 +15,7 @@ import Testinomials from "@/components/testimonials";
 import { ReactNode } from "react";
 import Footer from "@/components/footer";
 import LandingWrapper from "@/components/landing-wrapper";
-import SelectionCard from "@/app/b2c-phase-3/b2c-student/pop-ups/popupComponent/select-type"
+import SelectionCard from "@/app/b2c-phase-3/b2c-student/pop-ups/popupComponent/select-type";
 import {
   BookOpen,
   Brain,
@@ -27,9 +27,16 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaFacebookF,
+  FaInstagram,
+  FaTelegramPlane,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 import StudentNavbar from "@/components/b2c-phase-3/landing-student-header";
-
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -183,7 +190,6 @@ export default function Landing() {
         "EduNique Membership Plans provide a wide Academic to extra curricular to Skill Development Programs. Take on the future, step by step.",
       image: "/Card1.png",
       buttonText: "Explore Now!",
-
     },
     {
       id: 2,
@@ -246,8 +252,8 @@ export default function Landing() {
     </motion.button>
   );
   const [openModal, setOpenModal] = useState<string | null>(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const phoneNumber = '+0931-705-3875'
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const phoneNumber = "+0931-705-3875";
 
   return (
     <div>
@@ -261,13 +267,21 @@ export default function Landing() {
           {/* Left: Contact */}
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-start sm:items-center gap-2 sm:gap-6">
             {/* Phone */}
-            <a href={`tel:${phoneNumber}`} className="flex items-center gap-2 no-underline">
+            <a
+              href={`tel:${phoneNumber}`}
+              className="flex items-center gap-2 no-underline"
+            >
               <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#ff5e8e] text-white text-sm shadow-md">
                 <FaPhoneAlt />
               </div>
               <span className="font-bold tracking-wide text-xs sm:text-sm break-all">
-                {phoneNumber.split('').map((char, index) => (
-                  <span key={index} className={`relative px-[0.3px] ${index % 2 === 0 ? '-top-[0.5px]' : 'top-[0.7px]'}`}>
+                {phoneNumber.split("").map((char, index) => (
+                  <span
+                    key={index}
+                    className={`relative px-[0.3px] ${
+                      index % 2 === 0 ? "-top-[0.5px]" : "top-[0.7px]"
+                    }`}
+                  >
                     {char}
                   </span>
                 ))}
@@ -275,18 +289,35 @@ export default function Landing() {
             </a>
 
             {/* Email */}
-            <a href="mailto:ElizabethJ@jourrapide.com" className="flex items-center gap-2 no-underline">
+            <a
+              href="mailto:ElizabethJ@jourrapide.com"
+              className="flex items-center gap-2 no-underline"
+            >
               <div className="w-[28px] h-[28px] rounded-full flex items-center justify-center bg-[#ff5e8e] text-white text-sm shadow-md">
                 <FaEnvelope />
               </div>
-              <span className="font-bold tracking-wide text-xs sm:text-sm break-all">ElizabethJ@jourrapide.com</span>
+              <span className="font-bold tracking-wide text-xs sm:text-sm break-all">
+                ElizabethJ@jourrapide.com
+              </span>
             </a>
           </div>
 
           {/* Right: Social */}
           <div className="flex justify-center sm:justify-end gap-2 sm:gap-4 items-center">
-            {[FaFacebookF, FaInstagram, FaTelegramPlane, FaTwitter, FaYoutube].map((Icon, index) => {
-              const bgColors = ['#3b5998', '#E4405F', '#0088cc', '#444', '#FF0000']
+            {[
+              FaFacebookF,
+              FaInstagram,
+              FaTelegramPlane,
+              FaTwitter,
+              FaYoutube,
+            ].map((Icon, index) => {
+              const bgColors = [
+                "#3b5998",
+                "#E4405F",
+                "#0088cc",
+                "#444",
+                "#FF0000",
+              ];
               return (
                 <a
                   key={index}
@@ -294,10 +325,11 @@ export default function Landing() {
                   style={{ backgroundColor: bgColors[index] }}
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://facebook.com">
+                  href="https://facebook.com"
+                >
                   <Icon />
                 </a>
-              )
+              );
             })}
           </div>
         </div>
@@ -403,9 +435,9 @@ export default function Landing() {
         ></div>
 
         {/* Foreground Content */}
-        <div className="relative z-10 pt-12 px-4 flex flex-col gap-6 items-center w-full h-full">
+        <div className="relative z-10 pt-4 sm:pt-6 px-2 sm:px-4 flex flex-col gap-4 sm:gap-6 items-center w-full max-w-[95vw] sm:max-w-screen-sm md:max-w-4xl mx-auto">
           <motion.h1
-            className="text-2xl md:text-4xl text-center font-semibold text-black"
+            className="text-lg xs:text-xl sm:text-2xl md:text-4xl text-center font-semibold text-black leading-snug sm:leading-tight"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -414,9 +446,8 @@ export default function Landing() {
             Globally Recognized Interactive Education
           </motion.h1>
 
-          {/* Image takes remaining space */}
           <motion.div
-            className="flex-grow w-full flex justify-center items-center overflow-hidden"
+            className="w-full h-auto sm:pt-44 flex justify-center items-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -425,7 +456,7 @@ export default function Landing() {
             <Image
               src={OverImage2}
               alt="Education Graphic"
-              className="w-auto h-full max-h-full object-contain"
+              className="w-full sm:w-auto max-w-[90%] sm:max-w-full h-auto object-contain"
               priority
             />
           </motion.div>
@@ -671,9 +702,9 @@ export default function Landing() {
 
       {/* Page 4 - Quality & Results */}
       <motion.div
-        className="w-full flex flex-col md:flex-row gap-6 md:gap-3 px-6 md:px-[9%] items-center justify-between bg-cover bg-center bg-no-repeat"
+        className="w-full flex flex-col  md:flex-row gap-6 md:gap-3 px-6 md:px-[9%] items-center justify-between bg-cover bg-center bg-no-repeat"
         style={{
-          minHeight: "calc(100vh - 7.5rem)",
+          minHeight: "calc(100vh - 20.5rem)",
           backgroundImage: "url('/Background3.png')",
         }}
         initial={{ opacity: 0 }}
@@ -683,7 +714,7 @@ export default function Landing() {
       >
         <div className="relative z-10 pt-12 px-4 flex flex-col gap-6 items-center w-full h-full">
           <motion.h1
-            className="text-2xl md:text-4xl text-center font-semibold text-black"
+            className="text-2xl font-main md:text-4xl text-center font-semibold text-black"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -694,7 +725,7 @@ export default function Landing() {
 
           {/* Image takes remaining space */}
           <motion.div
-            className="flex-grow w-full flex justify-center items-center overflow-hidden"
+            className="flex-grow font-main w-full sm:py-8 flex justify-center items-center overflow-hidden"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -899,8 +930,8 @@ export default function Landing() {
                         },
                         tap: { scale: 0.95 },
                       }}
-                      onClick={()=>{
-                        if(card.id ===1){
+                      onClick={() => {
+                        if (card.id === 1) {
                           setOpenModal("select");
                         }
                       }}
