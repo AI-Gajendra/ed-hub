@@ -19,20 +19,6 @@ const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   setSelectedDay(day);
 };
 
-
-  const handleSubmit = () => {
-    const formData = {
-      startDate,
-      endDate: endDateEnabled ? endDate : null,
-      repeat,
-      startTime,
-      endTime,
-      selectedDay,
-      location,
-    };
-    console.log("Form Data:", formData);
-  };
-
   return (
     <BaseModal onClose={onClose} isOpen={isOpen} maxWidth="max-w-xl">
     <div className=" mx-auto px-6 py-6 bg-white rounded-2xl shadow-sm border border-gray-100">
@@ -194,11 +180,11 @@ const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
       {/* Actions */}
       <div className="flex  mt-4 gap-3 justify-start">
-        <button className="px-6 py-2 text-sm font-medium text-[#6b7280] bg-[#e5e7eb] rounded-full transition-colors">
+        <button onClick={onClose} className="px-6 py-2 text-sm font-medium text-[#6b7280] bg-[#e5e7eb] rounded-full transition-colors">
           Cancel
         </button>
         <button
-          onClick={handleSubmit}
+          onClick={onClose}
           className="px-6 sm:px-8 py-2 text-sm font-medium text-white bg-[#3366ff] rounded-full hover:bg-blue-700 transition-colors"
         >
           Save
