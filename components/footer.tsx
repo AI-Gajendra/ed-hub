@@ -300,7 +300,7 @@ export default function Footer() {
           </motion.div>
         </div>
       </div>
-      <footer className="text-white pt-36 md:pt-40 w-full px-6 md:px-28">
+      <footer className="text-white  font-main pt-36 md:pt-40 w-full px-6 md:px-28">
         <div className="container mx-auto py-8">
           <motion.div
             variants={staggerChildren}
