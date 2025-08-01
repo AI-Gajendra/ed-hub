@@ -21,12 +21,12 @@ const selectionOptions = [
   {
     id: "explore_courses",
     title: (
-      <h3
-        className="text-nowrap text-sm sm:text-base font-bold"
+      <p
+        className="text-xs xs:text-sm sm:text-base font-bold break-words leading-snug text-left text-black"
         style={{ color: COLORS.textBlack }}
       >
         Explore EdUnique Courses
-      </h3>
+      </p>
     ),
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -35,12 +35,12 @@ const selectionOptions = [
   {
     id: "Learning",
     title: (
-      <h3
-        className="text-nowrap text-sm sm:text-base font-bold"
+      <p
+       className="text-xs xs:text-sm sm:text-base font-bold break-words leading-snug text-left text-black"
         style={{ color: COLORS.textBlack }}
       >
         AI Mapped Holistic Learning Program
-      </h3>
+      </p>
     ),
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -49,12 +49,12 @@ const selectionOptions = [
   {
     id: "membership_plans",
     title: (
-      <h3
-        className="text-nowrap text-sm sm:text-base font-bold"
+      <p
+      className="text-xs xs:text-sm sm:text-base font-bold break-words leading-snug text-left text-black"
         style={{ color: COLORS.textBlack }}
       >
         Pre-recorded Courses
-      </h3>
+      </p>
     ),
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -88,7 +88,7 @@ const SelectionCard: React.FC<SelectionCardProps> = ({
         quality={100}
       />
     </div>
-    <div className="flex-1 text-left">
+    <div className="flex-1 text-sm  text-left">
       {option.title}
       <p
         className="text-[10px] xs:text-xs sm:text-sm mt-1 leading-snug"

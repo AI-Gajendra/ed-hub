@@ -89,7 +89,7 @@ export default function Footer() {
       <div className="z-40 min-h-80 w-full absolute top-0 translate-y-[-100%] flex justify-center text-white">
         <div className="min-h-24 max-w-6xl bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between relative top-40 overflow-hidden shadow-xl">
           <svg
-            className="absolute top-0 left-0 w-40 h-40"
+            className="absolute top-0 left-0  w-28 h-28 sm:w-40 sm:h-40"
             viewBox="0 0 100 100"
           >
             <motion.circle
@@ -126,7 +126,7 @@ export default function Footer() {
             />
           </svg>
           <svg
-            className="absolute top-0 right-0 w-40 h-40"
+            className="absolute top-0 right-0 w-28 h-28 sm:w-40 sm:h-40"
             viewBox="0 0 100 100"
           >
             <motion.circle
@@ -169,7 +169,7 @@ export default function Footer() {
               initial={{ y: -20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="text-2xl md:text-4xl font-bold mb-2 text-center"
+              className="text-lg md:text-3xl font-bold mb-2 text-center"
             >
               Subscribe to our newsletter
             </motion.h2>

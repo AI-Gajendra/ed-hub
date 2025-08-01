@@ -417,7 +417,7 @@ export default function Landing() {
 
       {/* Page 2 - Globally Recognized */}
       <motion.div
-        className="relative w-full h-[calc(100vh-7.5rem)] flex flex-col overflow-hidden"
+        className="relative w-full md:h-[calc(100vh-7.5rem)] flex flex-col overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -447,7 +447,7 @@ export default function Landing() {
           </motion.h1>
 
           <motion.div
-            className="w-full h-auto sm:pt-44 flex justify-center items-center"
+            className="w-full h-auto flex justify-center items-center"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -858,7 +858,7 @@ export default function Landing() {
 
       {/* page7 */}
       <div className="relative min-h-screen w-screen flex justify-around bg-gradient-to-r from-[#fcdecf] to-[#fdc1d7] pt-16">
-        <div className="w-full max-w-5/7 p-4 pb-20">
+        <div className="w-full sm:max-w-5/7 p-4 pb-20">
           {cardData.map((card, index) => (
             <motion.div
               key={card.id}

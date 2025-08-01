@@ -849,56 +849,9 @@ export default function PopupShowcasePage() {
       label: "Deactivate School",
       color: "bg-red-500 hover:bg-[#FF3366]",
     },
-    {
-      id: "manageClassModal",
-      label: "Manage Class",
-      color: "bg-blue-500 hover:bg-[#3366FF]",
-    },
-    {
-      id: "addStudentsModal",
-      label: "Add Students",
-      color: "bg-green-500 hover:bg-green-600",
-    },
-    {
-      id: "selectClassToEditModal",
-      label: "Select Class to Edit",
-      color: "bg-purple-500 hover:bg-purple-600",
-    },
-    {
-      id: "addNewBranchModal",
-      label: "Add New Branch",
-      color: "bg-indigo-500 hover:bg-indigo-600",
-    },
-    {
-      id: "removeStudentModal",
-      label: "Remove Student",
-      color: "bg-pink-500 hover:bg-pink-600",
-    },
-    {
-      id: "shiftStudentModalSimple",
-      label: "Shift Student (Simple)",
-      color: "bg-teal-500 hover:bg-teal-600",
-    },
-    {
-      id: "shiftTeacherModalSimple",
-      label: "Shift Teacher (Simple)",
-      color: "bg-cyan-500 hover:bg-cyan-600",
-    },
-    {
-      id: "removeTeacherModal",
-      label: "Remove Teacher",
-      color: "bg-orange-500 hover:bg-orange-600",
-    },
-    {
-      id: "shiftStudentModalWithOptions",
-      label: "Shift Student (Options)",
-      color: "bg-lime-500 hover:bg-lime-600",
-    },
-    {
-      id: "shiftTeacherModalWithOptions",
-      label: "Shift Teacher (Options)",
-      color: "bg-amber-500 hover:bg-amber-600",
-    },
+    
+    
+   
   ];
 
   return (
