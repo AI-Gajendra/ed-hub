@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Header from '@/components/layout/TeacherB2CHeader';
+import Header from '@/components/layout/Header';
 import { IoIosArrowDown } from "react-icons/io";
 import {
   FiArrowLeftCircle,
@@ -15,33 +15,7 @@ import MonthTab from "@/components/common-components/MonthTab/MonthTab";
 import DropdownBtnXl from "@/components/teacher-b2c/common-components/DropdownXl";
 import TabSwitch from "@/components/common-components/TabSwitch";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
-const categories = [
-  "Category 1",
-  "Category 2",
-  "Category 3",
-  "Category 4",
-  "Category 5",
-];
-const PALETTE = {
-  GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
-  GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar
-  PURPLE_LIGHT: "#EEDAFE", // Critical Academic Skills BG
-  PURPLE_DARK: "#A866DD", // Critical Academic Skills Progress
-  PINK_LIGHT: "#FBD2D9", // Life Skill / Personal Dev BG
-  PINK_DARK: "#893544", // Life Skill Progress (this is quite dark, using a lighter shade for text if needed)
 
-  ACCENT_PINK: "#FF3366", // Tags, highlights
-  ACCENT_BLUE: "#0DC6FD", // Line chart, progress
-  ACCENT_PURPLE: "#AC50F5", // Line chart, progress
-  ACCENT_RED: "#FF4A69", // Failed status
-
-  BG_PAGE: "#F3F4F6", // Main page background
-  BORDER_GREY: "#B0B0B0", // General borders for cards
-  TEXT_DARK: "#1F2937", // For primary text
-  TEXT_MEDIUM: "#6B7280", // For secondary text
-  TEXT_LIGHT: "#9CA3AF", // For tertiary text
-  WHITE_CARD: "#FFFFFF",
-};
 
 const sessionData = Array.from({ length: 12 }, () => ({
   title: `Unit Name`,
@@ -64,33 +38,33 @@ type
 `,
 }));
 const Curriculum = () => {
-    const tab = ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5", ]
+  const tab = ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5",]
   const [selected, setSelected] = useState(tab[0]);
 
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
-    const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/teacher-b2b/profile.png" };
+  const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/teacher-b2b/profile.png" };
 
-    const filter = [{ id: 'f1', label: 'Weekly' }];
+  const filter = [{ id: 'f1', label: 'Weekly' }];
 
   return (
     <div className="bg-[#eeeeee]">
-        <Header user={headerUser} />
-     <BackButton Heading={'Curriculum'}/>
+      <Header user={headerUser} />
+      <BackButton Heading={'Curriculum'} />
 
       <TeacherB2CWrapper>
-     <div className="mb-2">
-           <TabSwitch tabs={tab} selected={selected} onChange={setSelected}/>
-     </div>
+        <div className="mb-2">
+          <TabSwitch tabs={tab} selected={selected} onChange={setSelected} />
+        </div>
 
         <div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 ">
           {/* Left column */}
-         <div className="bg-white  p-6 rounded-2xl">
-            <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
+          <div className="bg-white  p-3 sm:p-6 rounded-2xl">
+            <div className="flex  flex-col sm:flex-row items-start sm:items-center justify-between gap-2 xs:flex-col mb-3">
               <h2 className="text-md sm:text-lg font-semibold h-fit text-[#3366FF] border-b-[2px] border-[#3366FF] w-fit">
                 Session
               </h2>
               <div className="flex items-center h-fit gap-2 sm:gap-3 sm:self-center">
-               <DropdownBtnXl filters={filter}/>
+                <DropdownBtnXl filters={filter} />
                 <MonthTab />
               </div>
             </div>
@@ -102,9 +76,8 @@ const Curriculum = () => {
                 return (
                   <div
                     key={index}
-                    className={`${
-                      isOpen ? "p-6" : "border border-[#E5E7EB]"
-                    } relative z-20 rounded-2xl overflow-hidden transition-all`}
+                    className={`${isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
+                      } relative z-20 rounded-2xl overflow-hidden transition-all`}
                   >
                     {/* Filtered background image */}
                     <div
@@ -116,9 +89,8 @@ const Curriculum = () => {
                     />
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
-                      className={`${
-                        isOpen ? "bg-white px-6 py-2" : ""
-                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                      className={`${isOpen ? "bg-white px-6 py-2" : ""
+                        } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
                       <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
                       <div>
@@ -225,7 +197,7 @@ const Curriculum = () => {
               <div className="text-center space-y-1">
                 <h2 className="text-lg font-semibold uppercase">Mathematics</h2>
                 <p className="font-medium text-lg">Question Paper Design</p>
-                <p  className="font-medium text-lg">Class - IX</p>
+                <p className="font-medium text-lg">Class - IX</p>
                 <div className="flex justify-between mt-2 text-sm font-medium px-2">
                   <span>Time: 3 Hrs.</span>
                   <span>Max. Marks: 80</span>

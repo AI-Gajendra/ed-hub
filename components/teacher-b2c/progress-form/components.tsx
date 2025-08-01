@@ -44,7 +44,7 @@ export default function AttendanceForm() {
   return (
     <div className="flex flex-col sm:flex-row justify-between">
       {/* Left Section – Form */}
-      <div className="w-[40%] space-y-6">
+      <div className="w-full lg:w-[40%] space-y-6">
         {/* Details Section */}
         <div>
           <h3 className="text-base font-bold text-black bg-[#E5E7EB]  rounded-2xl p-4 ">
@@ -161,7 +161,7 @@ export default function AttendanceForm() {
       </div>
 
       {/* Right Section – Attendance */}
-      <div className="w-[40%] bg-[#F9FAFB] space-y-3 p-4 rounded-3xl">
+      <div className="w-full lg:w-[40%] bg-[#F9FAFB] space-y-3 p-4 rounded-3xl">
         <h3 className="text-base font-semibold  rounded">Attendance</h3>
         {/* Search */}
         <div className="flex  items-center gap-2 border-[2px] border-[#6B7280] rounded-full px-3 py-2 bg-white">

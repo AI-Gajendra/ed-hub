@@ -98,7 +98,7 @@ export default function TestsPage() {
 
 						{/* --- Left Column Content --- */}
 						<div className="md:col-span-5 md:col-start-1 md:row-start-1">
-							<div className="flex flex-col lg:flex-row h-fit overflow-x-auto custom-scrollbar justify-between items-center mb-4">
+							<div className="flex flex-col lg:flex-row h-fit overflow-x-auto custom-scrollbar justify-between sm:items-center mb-4">
 								<CustomTestTabs tabs={['Scheduled Test', 'Completed Test', 'Saved']} activeTab={activeTab} onChange={setActiveTab} />
 								<div className="mt-4 lg:my-2 w-full sm:w-auto">
 									<Select defaultValue="all">

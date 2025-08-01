@@ -78,7 +78,7 @@ export default function StudentSubmittedPapersPage() {
 
 function StudentCard({ student }: { student: any }) {
   return (
-    <div className="flex items-center justify-between bg-[#F9FAFB] px-2 py-2 rounded-2xl  border border-[#B0B0B0]">
+    <div className="flex flex-wrap gap-2 items-center justify-between bg-[#F9FAFB] px-2 py-2 rounded-2xl  border border-[#B0B0B0]">
       <div className="flex items-center space-x-2">
         <Image
           src={student.image}

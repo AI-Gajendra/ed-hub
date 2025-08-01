@@ -49,7 +49,7 @@ interface SelectionCardProps {
     onSelect: () => void;
 }
 const SelectionCard: React.FC<SelectionCardProps> = ({ option, isSelected, onSelect }) => (
-    <button onClick={onSelect} className="w-full max-w-xl mx-auto flex items-center gap-2 sm:gap-4 p-1.5 sm:p-3 rounded-full bg-white hover:shadow-lg transition-all duration-200 cursor-pointer">
+    <button onClick={onSelect} className="w-full max-w-xl mx-auto flex items-center gap-2 sm:gap-4 sm:p-3 rounded-full bg-white hover:shadow-lg transition-all duration-200 cursor-pointer">
         <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center ">
             <Image src={option.iconSrc} alt={option.id} width={90} height={90} className="w-full h-full object-contain" priority quality={100} />
         </div>
@@ -75,7 +75,7 @@ export default function SelectTypePage() {
     return (
         <div className="bg-black">
 
-            <div className="min-h-screen w-full flex items-center justify-center p-6 sm:p-8">
+            <div className="min-h-screen w-full flex items-center justify-center px-2 py-6 sm:p-8">
 
                 <div className="relative w-full max-w-3xl rounded-2xl overflow-hidden">
                     <div

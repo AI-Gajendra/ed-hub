@@ -85,7 +85,7 @@ const Curriculum = () => {
         <div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 ">
           {/* Left column */}
          <div className="bg-white  p-6 rounded-2xl">
-            <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
+            <div className="flex  flex-col sm:flex-row items-start sm:items-center justify-between gap-2 xs:flex-col mb-3">
               <h2 className="text-md sm:text-lg font-semibold h-fit text-[#3366FF] border-b-[2px] border-[#3366FF] w-fit">
                 Session
               </h2>
@@ -103,7 +103,7 @@ const Curriculum = () => {
                   <div
                     key={index}
                     className={`${
-                      isOpen ? "p-6" : "border border-[#E5E7EB]"
+                      isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
                     } relative z-20 rounded-2xl overflow-hidden transition-all`}
                   >
                     {/* Filtered background image */}
@@ -117,7 +117,7 @@ const Curriculum = () => {
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
                       className={`${
-                        isOpen ? "bg-white px-6 py-2" : ""
+                        isOpen ? "bg-white px-3 sm:px-6 py-2" : ""
                       } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
                       <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>

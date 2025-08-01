@@ -78,8 +78,8 @@ const Curriculum = () => {
     <div className="bg-[#eeeeee]">
       <GoBack GoBackHeading="Yearly Plan Overview" />
 
-      <div className="mx-auto bg-[#eeeeee] p-3 sm:p-4 md:p-6 lg:p-8">
-        <div className="px-4 pt-4">
+      <div className="mx-auto bg-[#eeeeee] p-2 sm:p-4 md:p-6 lg:p-8">
+        <div className=" sm:px-4 pt-4">
           <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
             <div className="flex flex-wrap md:text-base text-xs md:justify-center justify-start px-2 md:gap-4 gap-2">
               {categories.map((category) => (
@@ -114,10 +114,10 @@ const Curriculum = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-2 sm:p-4">
           {/* Left column */}
-          <div className="bg-white p-6 rounded-2xl">
-            <div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
+          <div className="bg-white p-2 sm:p-6 rounded-2xl">
+            <div className="flex  flex-col sm:flex-row items-start sm:items-center justify-between gap-2 xs:flex-col mb-3">
               <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b-2 border-[#3366FF] w-fit">
                 Modules
               </h2>
@@ -146,7 +146,7 @@ const Curriculum = () => {
                   <div
                     key={index}
                     className={`${
-                      isOpen ? "p-6" : "border border-[#E5E7EB]"
+                      isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
                     } relative z-20 rounded-2xl mr-3 transition-all`}
                   >
                     {/* Filtered background image */}
@@ -223,7 +223,7 @@ const Curriculum = () => {
 
           {/* Right column with two rows */}
           <div className="font-medium">
-            <div className="bg-white  md:p-8 h-fit p-6 rounded-2xl overflow-auto">
+            <div className="bg-white  md:p-8 h-fit p-2 sm:p-6 rounded-2xl overflow-auto">
               <h3 className="text-m text-blue-600 text-center font-semibold mb-4">
                 COURSE STRUCTURE CLASS - IX
               </h3>

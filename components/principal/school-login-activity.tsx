@@ -55,12 +55,12 @@ const SchoolLogin = () => {
 
           </div>
           <div className="px-2 z-10">
-            <h2 className="font-bold mb-2">School Name</h2>
-            <div className="h-62 relative">
+            <h2 className="font-bold mb-2 rounded-full px-4 bg-white py-1 w-fit">School Name</h2>
+            <div className="h-72 relative">
               <Image src="/principal/school-login-banner.png" alt='school-login-principal-image' fill objectFit='cover' className='rounded-2xl' />
             </div>
           </div>
-          <div className="flex flex-col z-10">
+          <div className="bg-white p-3 rounded-2xl h-fit flex flex-col z-10">
             <p className="text-sm"><strong>Email:</strong> example@gm.com
             </p>
             <p className="text-sm"><strong>Contact:</strong> +91 1234567890</p>

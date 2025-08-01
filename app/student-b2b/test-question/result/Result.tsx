@@ -126,7 +126,7 @@ const router = useRouter();
       </div>
 
       {/* Bottom Bar: Summary Stats */}
-      <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-full p-4 md:p-5 flex flex-wrap justify-around items-center text-center mb-8">
+      <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-3xl sm:rounded-full p-4 md:p-5 flex flex-wrap justify-around items-center text-center mb-8">
         {summaryStats.map((stat) => (
           <div key={stat.label} className="px-2 min-w-[80px]">
             <p className="text-xs font-bold  text-[#6B7280] uppercase tracking-wider">{stat.label}</p>

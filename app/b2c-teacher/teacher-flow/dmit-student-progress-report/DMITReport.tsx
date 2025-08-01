@@ -1,14 +1,25 @@
 "use client";
 
 import React from "react";
-
+import {
+  FiArrowLeft,
+  // FiClock,
+  // FiChevronLeft,
+  // FiChevronRight,
+  FiSearch,
+  FiPercent,
+  FiAward,
+  FiBarChart2,
+  FiChevronDown,
+  FiZap,
+  FiArrowLeftCircle,
+  FiArrowRightCircle,
+} from "react-icons/fi"; // Add icons as needed
 import Image from "next/image"; // For profile picture
 import Header from "@/components/layout/TeacherB2CHeader";
-import Footer from "@/components/layout/Footer";
 import ChartsReportTeacherB2C from "@/components/teacher-b2c/common-components/ChartB2CTeacher";
-import BackButton from "@/components/common-components/BackButton";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
-
+import Footer from "@/components/layout/Footer";
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
@@ -39,6 +50,11 @@ type ProgressCircleProps = {
   skillName?: string;
   details?: string;
 };
+const user = {
+  avatarSrc: '/admin/usernav.jpg',
+  name: 'Shlok Agheda',
+  role: 'Student',
+}
 
 export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
   percentageText,
@@ -93,6 +109,15 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 };
 
 const StudentReport: React.FC = () => {
+  // Dummy state for month/year filter for Overall Progress chart
+  // const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
+  // const [currentYear, setCurrentYear] = useState("2025");
+
+  const handleBackClick = () => {
+    if (typeof window !== "undefined") {
+      window.history.back();
+    }
+  };
 
   const keyFocusAreas = [
     "Academics",
@@ -104,94 +129,114 @@ const StudentReport: React.FC = () => {
   return (
     <>
       <Header activeState="Dashboard" />
-        <BackButton Heading="Report" />
-     
-      <TeacherB2CWrapper>
-          <div className="grid grid-cols-1 lg:grid-cols-3 pb-4 gap-6">
-          {/* Student Info Card */}
 
-          <div
-            className="lg:col-span-3   p-4 rounded-2xl"
-            style={{
-              borderColor: PALETTE.BORDER_GREY,
-              backgroundImage: "url('/images/brandpatternreport.png')",
-              backgroundSize: "cover",
-            }}
-          >
-            <div className="bg-white px-2 py-1 rounded-2xl ">
-              <div className="flex  items-start sm:items-center gap-4">
-                <Image
-                  src="/teacher-b2b/profile2.png"
-                  alt="Shlok Agheda"
-                  width={72}
-                  height={72}
-                  className="rounded-full h-24 w-24 flex-shrink-0"
-                />
-                <div className="flex-grow">
-                  <h2
-                    className="text-xl font-semibold"
-                    style={{ color: PALETTE.TEXT_DARK }}
-                  >
-                    Shlok Agheda
-                  </h2>
-                  <div className="flex flex-wrap items-center gap-1 mt-2">
-                    <span
-                      className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
-                      style={{
-                        backgroundColor: PALETTE.ACCENT_PINK,
-                        color: PALETTE.WHITE_CARD,
-                      }}
-                    >
-                      Class 8A
-                    </span>
-                    <span
-                      className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
-                      style={{
-                        backgroundColor: PALETTE.ACCENT_PINK,
-                        color: PALETTE.WHITE_CARD,
-                      }}
-                    >
-                      Group A
-                    </span>
+      <div className="bg-gray-100">
+        {/* Header would go here - Assuming it's outside this component's direct render */}
+
+        {/* Page Title Bar */}
+        {/* Page Title Bar */}
+        <div className="bg-white">
+          <div className="flex items-center gap-3 mx-auto max-w-[98rem]  px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+            <button
+              onClick={handleBackClick}
+              className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
+              aria-label="Go back"
+            >
+              <FiArrowLeft className="w-5 h-5" />
+            </button>
+            <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+              Report
+            </h1>
+          </div>
+        </div>
+        <TeacherB2CWrapper>
+          <div className="grid grid-cols-1 lg:grid-cols-3 pb-4 gap-6">
+            {/* Student Info Card */}
+
+            <div
+              className="lg:col-span-3 p-4 rounded-2xl"
+              style={{
+                borderColor: PALETTE.BORDER_GREY,
+                backgroundImage: "url('/images/brandpatternreport.png')",
+                backgroundSize: "cover",
+              }}
+            >
+              <div className="bg-white px-2 py-1 rounded-2xl ">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <div className="flex gap-4 items-center">
+                    <Image
+                      src="/teacher-b2b/profile2.png"
+                      alt="Shlok Agheda"
+                      width={72}
+                      height={72}
+                      className="rounded-full h-24 w-24 flex-shrink-0"
+                    />
+                    <div className="flex-grow">
+                      <h2
+                        className="text-xl font-semibold"
+                        style={{ color: PALETTE.TEXT_DARK }}
+                      >
+                        Shlok Agheda
+                      </h2>
+                      <div className="flex flex-wrap items-center gap-1 mt-2">
+                        <span
+                          className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+                          style={{
+                            backgroundColor: PALETTE.ACCENT_PINK,
+                            color: PALETTE.WHITE_CARD,
+                          }}
+                        >
+                          Class 8A
+                        </span>
+                        <span
+                          className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+                          style={{
+                            backgroundColor: PALETTE.ACCENT_PINK,
+                            color: PALETTE.WHITE_CARD,
+                          }}
+                        >
+                          Group A
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-xs lg:pt-2 font-medium text-left space-y-0.5 text-black">
+                    <p> <span className="font-semibold">Gender:</span> Male</p>
+                    <p><span className="font-semibold">DOB:</span>15 Jun 2015</p>
+                    <p><span className="font-semibold">Email:</span> example@gm.com</p>
+
+                    <p><span className="font-semibold">City: </span>Mumbai</p>
+                    <p><span className="font-semibold">State:</span> Maharashtra</p>
                   </div>
                 </div>
-                <div className="text-xs lg:pt-2 font-medium text-right sm:text-left space-y-0.5 text-black">
-                  <p> <span className="font-semibold">Gender:</span> Male</p>
-                  <p><span  className="font-semibold">DOB:</span>15 Jun 2015</p>
-                  <p><span  className="font-semibold">Email:</span> example@gm.com</p>
-
-                  <p><span  className="font-semibold">City: </span>Mumbai</p>
-                  <p><span  className="font-semibold">State:</span> Maharashtra</p>
-                </div>
-              </div>
-              <div className="pt-4 ">
-                <p
-                  className="text-md font-bold mb-3"
-                  style={{ color: PALETTE.TEXT_DARK }}
-                >
-                  Key Focus Area
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  {keyFocusAreas.map((area) => (
-                    <button
-                      key={area}
-                      className="text-sm px-2 py-2 text-black rounded-full border"
-                      style={{
-                        backgroundColor: "#F3F4F6",
-                        borderColor: PALETTE.BORDER_GREY,
-                      }}
-                    >
-                      {area}
-                    </button>
-                  ))}
+                <div className="pt-4 ">
+                  <p
+                    className="text-md font-bold mb-3"
+                    style={{ color: PALETTE.TEXT_DARK }}
+                  >
+                    Key Focus Area
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    {keyFocusAreas.map((area) => (
+                      <button
+                        key={area}
+                        className="text-sm px-2 py-2 text-black rounded-full border"
+                        style={{
+                          backgroundColor: "#F3F4F6",
+                          borderColor: PALETTE.BORDER_GREY,
+                        }}
+                      >
+                        {area}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <ChartsReportTeacherB2C />
-      </TeacherB2CWrapper>
-     
+          <ChartsReportTeacherB2C />
+        </TeacherB2CWrapper>
+      </div>
 
       <Footer />
     </>

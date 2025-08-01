@@ -150,12 +150,12 @@ const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
 				</div>
 			</div>
 			{/* Score and Status */}
-			<div className="grid grid-cols-2 gap-2 flex-shrink-0 sm:mt-0 self-start sm:self-center mr-2">
-				<div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] w-full sm:min-w-[140px]">
+			<div className="grid w-full grid-cols-2 gap-2 flex-shrink-0 sm:mt-0 self-start sm:self-center mr-2">
+				<div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center  w-full sm:min-w-[140px]">
 					<p className="text-sm text-[#6B7280] mb-0.5">Score</p>
 					<p className="text-sm font-bold text-[#3366FF]">{student.score}</p>
 				</div>
-				<div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] sm:min-w-[140px]">
+				<div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center w-full sm:min-w-[140px]">
 					<p className="text-sm text-[#6B7280] mb-0.5">Status</p>
 					<p className={`text-md  font-semibold ${student.status === 'Passed' ? 'text-[#4BC4B6]' : 'text-[#FF3366CC]'}`}>
 						{student.status}
@@ -200,7 +200,7 @@ const StudentPerformancePage: React.FC = () => {
 					))}
 				</div>
 			) : (
-				<div className="text-center py-12 text-[#6B7280] bg-white rounded-xl shadow-sm border border-[#B0B0B0]">
+				<div className="text-center py-12 text-[#6B7280] bg-white rounded-xl border border-[#B0B0B0]">
 					<h3 className="text-xl font-semibold mb-2">No Students Found</h3>
 					<p>Try adjusting your search or filter criteria.</p>
 				</div>

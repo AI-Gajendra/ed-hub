@@ -129,7 +129,7 @@ export default function TestExpiredPage() {
 							backgroundRepeat: 'repeat',
 							backgroundSize: 'auto',
 						}}></div>
-					<div className="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-0">
+					<div className="relative z-10 w-full h-full flex items-center justify-center py-4 md:p-0">
 						<Image
 							src="/images/student_with_laptop.svg" // <-- UPDATE PATH
 							alt="Student with laptop"

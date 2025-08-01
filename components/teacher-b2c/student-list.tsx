@@ -168,7 +168,7 @@ export function StudentListPage({ label } : { label: string; }) {
             <Header />
             <GoBack GoBackHeading={`${label} Name`} />
 
-            <div className="bg-[#eeeeee] p-6">
+            <div className="bg-[#eeeeee] py-6 px-2 sm:p-6">
                 <main className="w-full max-w-screen-xl mx-auto p-5 space-y-4 bg-white rounded-3xl mb-10">
                     {/* Header: Search and Filters */}
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

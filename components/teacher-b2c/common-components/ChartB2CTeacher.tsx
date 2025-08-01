@@ -634,7 +634,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
                 </div>
               </div>
               {/* month and june button */}
-              <div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
+              <div className="flex items-center flex-wrap justify-end md:justify-normal gap-2 mt-2 sm:mt-0">
                 <div className="relative inline-block text-left">
                   {/* Button + Border container */}
                   <div

@@ -16,7 +16,7 @@ export default function TeacherLoginForm() {
   return (
     <MaxWidthWrapper>
       {/* This container correctly centers the card vertically and horizontally. */}
-      <div className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center p-4">
+      <div className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center py-4 px-2 sm:p-4">
 
         {/* FIXED: Reduced max-width from 6xl to 5xl for a more contained size. */}
         <div className="relative flex flex-col md:flex-row-reverse gap-2 sm:gap-6 w-full max-w-6xl p-3 md:p-6 bg-white rounded-2xl overflow-hidden">

@@ -379,7 +379,7 @@ const onBackClick = () => {
                     </div>
                 </main>
 
-                <div className="lg:hidden relative w-full min-h-[400px]"> {/* <-- Give it a min height to prevent blank */}
+                <div className="lg:hidden relative w-full min-h-[85vh] bg-white rounded-2xl"> {/* <-- Give it a min height to prevent blank */}
                     <AnimatePresence mode="wait" initial={false}>
                         {!showChatOnMobile ? (
                             <motion.div
@@ -396,7 +396,7 @@ const onBackClick = () => {
                                     <h2 className="text-lg font-bold text-[#FF3366] mb-4 px-2">
                                         Students
                                     </h2>
-                                    <div className="space-y-1 max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar-thin-grey pr-2">
+                                    <div className="space-y-1 max-h-[calc(100vh-7rem)] md:max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar-thin-grey pr-2">
                                         <div className="flex items-center w-full sm:w-auto flex-grow border-2 border-[#6B7280] rounded-full px-3 py-2 mb-4 focus-within:ring-2 focus-within:ring-gray-400">
                                             <FiSearch size={20} className="text-black mr-2" />
                                             <input

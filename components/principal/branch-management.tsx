@@ -194,7 +194,7 @@ const BranchManagement = () => {
             <div
               key={item.id}
               onClick={() => router.push("/principal/teacher-management")}
-              className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3"
+              className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3 cursor-pointer "
             >
               <div
                 className={`w-full lg:w-56 h-42 rounded-2xl relative overflow-hidden`}

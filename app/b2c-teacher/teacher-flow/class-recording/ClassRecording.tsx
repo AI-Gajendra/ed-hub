@@ -86,7 +86,7 @@ const FilterDropdown: React.FC<{ options: FilterOption[]; value: string; onChang
 );
 
 const RecordingCard: React.FC<{ recording: ClassRecording; onShared: () => void; onShare: () => void; onDelete: () => void; }> = ({ recording, onShared, onShare, onDelete }) => (
-  <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-2  duration-200 flex items-center justify-between gap-4">
+  <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-2  duration-200 flex items-center justify-between flex-wrap gap-4">
     <div className="flex items-center gap-4 flex-grow min-w-0">
       <div className="bg-[#FFCC001A] w-14 h-14 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
         <FiFilm className="w-7 h-7 sm:w-8 sm:h-8 text-[#FFCC00]" />
@@ -143,7 +143,7 @@ const ClassRecordingContent: React.FC = () => {
           <button className={`px-4 py-2 text-sm font-medium whitespace-nowrap text-[${ACCENT_PINK}] border-b-2 border-[${ACCENT_PINK}]`}>Class Recording</button>
           <div className="relative flex-grow"><FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-black pointer-events-none" /><input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className={`w-full pl-10 pr-4 py-2.5 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm`} /></div>
         </div>
-        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end lg:justify-start flex-shrink-0">
+        <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 flex-wrap justify-end lg:justify-start flex-shrink-0">
           <MonthTab />
           <DropdownBtnXl filters={option1} />
           <DropdownBtnXl filters={option2} />

@@ -237,7 +237,7 @@ export const LearningContentCard: React.FC<LearningContentCardProps> = (
   <div className="bg-white rounded-2xl  p-4 md:p-6">
     <div className="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
       <nav
-        className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin"
+        className="-mb-px flex space-x-1 sm:space-x-2 flex-wrap gap-2"
         aria-label="Content Tabs"
       >
         {props.tabs.map((tab) => (

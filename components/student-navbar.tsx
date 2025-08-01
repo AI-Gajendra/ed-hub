@@ -46,7 +46,7 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+      className={`sticky top-0 z-[9999] w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
         }`}
     >
       <nav className="bg-[#3366FF] text-white pt-4 px-8">

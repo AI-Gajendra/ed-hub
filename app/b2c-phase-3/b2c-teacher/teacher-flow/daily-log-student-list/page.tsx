@@ -50,7 +50,7 @@ export default function CourseCardPage() {
          
         <TabSwitch tabs={batches} selected={activeBatch} onChange={setActiveBatch}/>
 
-        <div className="flex sm:gap-2 gap-4 md:px-4 items-center">
+        <div className="flex flex-wrap gap-2 md:px-4 items-center justify-center sm:justify-normal">
           <SearchFilterIcon filters={filter} />
           <button
           onClick={() => setEditOpen(true)}
