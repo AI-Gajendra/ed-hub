@@ -115,7 +115,7 @@ const ActivityItem: React.FC<{ activity: Activity }> = ({ activity }) => {
             <div className="self-end sm:self-center "> {/* Align right on mobile, center on sm+ */}
                 {activity.status === 'join' && <button className="text-blue-600 text-md sm:text-lg font-semibold hover:text-blue-700 transition-colors">Join</button>}
                 {activity.status === 'not_started' && <span className="text-md sm:text-lg font-semibold text-gray-400">Not Started</span>}
-                {activity.status === 'completed' && <span className="text-md sm:text-lg font-semibold bg-green-100 rounded-full px-2 py-4 text-green-500">Completed</span>}
+                {activity.status === 'completed' && <span className="text-sm sm:text-lg font-medium sm:font-semibold bg-green-100 rounded-full px-2 sm:py-4 py-1.5 text-green-500">Completed</span>}
             </div>
         </div>
     );
@@ -139,7 +139,7 @@ export const LearningActivitiesSection: React.FC<LearningActivitiesSectionProps>
                 <h2 className="text-lg md:text-xl font-semibold text-black">Learning Activities</h2>
                 <div className="flex items-center gap-1 bg-[#F9FAFB] p-1.5 md:p-2 rounded-full">{['Active', 'Completed'].map(filter => (<FilterTabButton key={filter} label={filter} isActive={currentFilter === filter} onClick={() => onFilterChange(filter as 'Active' | 'Completed')} />))}</div>
             </div>
-            <div className="grid grid-cols-1 grid-cols-3 justify-between items-start sm:items-center mb-6 gap-4 flex-wrap">
+            <div className="grid grid-cols-1 sm:flex justify-between items-start sm:items-center mb-6 gap-4 flex-wrap">
                 <MonthTab />
                 <DualToggleButton leftLabel="Weekly ( 10 )" rightLabel="Monthly ( 50 )" activeSide={activeSide}
                     onLeftClick={() => setActiveSide('left')}
