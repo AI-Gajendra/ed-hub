@@ -5,11 +5,11 @@ import BackButton from '@/components/common-components/BackButton'
 export default function page() {
   return (
     <>
-    <BackButton Heading="Remove Course"/>
+    <BackButton Heading="Remove Course"/> <div className='p-4'>
       <AdminB2CWrapper>
         
         < RemoveCourse />
-      </AdminB2CWrapper>
+      </AdminB2CWrapper></div>
     </>
   )
 }

@@ -9,8 +9,9 @@ export default function page() {
 	return (
 		<div>
 			<BackButton Heading="Teacher Profile" />
+			<div className='p-4'>
 			<MaxWidthWrapper>
-				<main className="flex-grow w-full max-w-[90rem] mx-auto p-4 ">
+				<main className="flex-grow w-full max-w-[90rem] mx-auto  ">
 					<div className="space-y-4 ">
 						<TeacherCard />
 						<TeacherControlPanel />
@@ -18,7 +19,7 @@ export default function page() {
 						<ChartsReport />
 					</div>
 				</main>
-			</MaxWidthWrapper>
+			</MaxWidthWrapper></div>
 		</div>
 	)
 }

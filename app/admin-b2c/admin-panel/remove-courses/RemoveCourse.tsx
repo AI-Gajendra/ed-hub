@@ -24,7 +24,7 @@ export default function RemoveCourse() {
  
   return (
     <>
-      <div className="bg-white rounded-2xl">
+      <div className="bg-white w-full rounded-2xl">
         <div className="pt-2 px-4">
             <SearchFilter filters={filter} />
         </div>

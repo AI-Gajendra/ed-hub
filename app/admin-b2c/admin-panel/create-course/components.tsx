@@ -169,8 +169,8 @@ export const ModulesAndVideosPart: React.FC<ModulesAndVideosPartProps> = ({ modu
                                     />
 
                                     <div className='flex gap-2 w-fit mx-auto'>
-                                        <button onClick={() => { setVideoModal(false) }} className=" bg-[#FF33661A] text-[#FF3366] font-medium py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-pink-200 rounded-full">Cancel</button>
-                                        <button className=" bg-[#3366FF] text-white font-medium py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-blue-500 rounded-full">Add</button>
+                                        <button onClick={() => { setVideoModal(false) }} className=" bg-[#FF33661A] text-[#FF3366] font-medium py-3 text-sm transition-colors duration-150 cursor-pointer  w-28 md:w-32 hover:bg-pink-200 rounded-full">Cancel</button>
+                                        <button className=" bg-[#3366FF] text-white font-medium py-3 text-sm transition-colors duration-150 cursor-pointer  w-28 md:w-32 hover:bg-blue-500 rounded-full">Add</button>
                                     </div>
                                 </div>}
                                 <ActionButton variant="outline" onClick={() => setVideoModal(true)}>{videoModal ? "Add Video" : "Add More Videos"}</ActionButton>
@@ -222,7 +222,7 @@ export const CourseCreationStepper: React.FC<CourseCreationStepperProps> = ({ st
     return (
         <div className="border border-[#E5E7EB] px-2 py-1.5 mb-4 rounded-xl sm:rounded-2xl w-full">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-2 relative">
-                <nav className="w-full flex justify-start sm:justify-center overflow-x-auto custom-scrollbar-thin">
+                <nav className="w-full flex justify-start sm:justify-center overflow-x-auto no-scrollbar">
                     <div className="flex items-center space-x-1 sm:space-x-2 min-w-max">
                         {steps.map((step) => (
                             <StepperTabButton
