@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import { IoIosArrowDown } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 import MonthTab from "@/components/common-components/MonthTab/MonthTab";
+import Footer from "@/components/layout/Footer";
 
 interface Unit {
   number: string;
@@ -252,7 +253,7 @@ export default function CurriculumComponent() {
               return (
                 <div
                   key={index}
-                  className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                  className={`${isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
                     } relative z-20 rounded-2xl overflow-hidden transition-all`}
                 >
                   {/* Filtered background image */}
@@ -520,7 +521,7 @@ export default function CurriculumComponent() {
                 return (
                   <div
                     key={index}
-                    className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                    className={`${isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
                       } relative z-20 rounded-2xl overflow-hidden transition-all`}
                   >
                     {/* Filtered background image */}
@@ -601,7 +602,7 @@ export default function CurriculumComponent() {
                 return (
                   <div
                     key={index}
-                    className={`${isOpen ? "p-6" : "border border-[#E5E7EB]"
+                    className={`${isOpen ? "p-3 sm:p-6" : "border border-[#E5E7EB]"
                       } relative z-20 rounded-2xl overflow-hidden transition-all bg-[#E5E7EB]`}
                   >
                     <button
@@ -796,7 +797,7 @@ export default function CurriculumComponent() {
         </div>
       </section>
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

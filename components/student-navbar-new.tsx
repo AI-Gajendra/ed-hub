@@ -63,7 +63,7 @@ export default function StudentNavbarNew({ activeState = "My Learnings" }: { act
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+      className={`sticky top-0 z-[9999] w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
         }`}
     >
       <AskMeAnything

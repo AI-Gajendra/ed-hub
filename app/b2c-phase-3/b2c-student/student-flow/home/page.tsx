@@ -227,7 +227,7 @@ export default function StudentHome() {
                   <BsFillPlayCircleFill className="w-10 h-10 fill-[#F8BD00]" />
                   <div className="font-bold text-xl">How to Work</div>
                 </button>
-                <div className="absolute scale-50 md:scale-75 w-[400px] h-[400px] bottom-0 right-0 z-10 translate-x-full translate-y-3/6">
+                <div className="absolute hidden m:block scale-50 md:scale-75 w-[400px] h-[400px] bottom-0 right-0 z-10 translate-x-full translate-y-3/6">
                   <Image
                     src="/student/home/arrow.svg"
                     alt="arrow"

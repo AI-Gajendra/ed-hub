@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Footer from "@/components/layout/Footer";
 
 interface ScheduleSlot {
   time: string;
@@ -118,8 +119,8 @@ export default function LearningSchedule() {
       ></div>
       <div className="bg-black fixed inset-0 bg-center bg-repeat z-1 opacity-40" />
 
-      <div className="relative z-10 p-10">
-        <div className="min-h-fit w-full max-w-[86rem] mx-auto bg-white py-8 px-4 sm:px-6 lg:px-30 rounded-3xl">
+      <div className="relative z-10 p-2 md:p-10">
+        <div className="min-h-fit w-full max-w-[86rem] mx-auto bg-white py-8 px-2 sm:px-6 lg:px-30 rounded-3xl">
           <div className="">
             {/* Header */}
             <div className="text-center mb-12">
@@ -210,7 +211,7 @@ export default function LearningSchedule() {
               {/* Course Legend */}
               
             </div>
-            <div className="items-center my-40">
+            <div className="items-center my-8 md:my-40">
                 
                   
                     {/* Header */} <div className="">
@@ -255,7 +256,7 @@ export default function LearningSchedule() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer />
       </div>
     </StudentWrapper>
   );

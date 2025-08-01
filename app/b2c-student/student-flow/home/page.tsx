@@ -19,6 +19,7 @@ import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaCircleCheck } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import CourseSlider from "./course-slider";
+import Footer from "@/components/layout/Footer";
 
 interface Course {
   id: string;
@@ -228,7 +229,7 @@ export default function StudentHome() {
                   <BsFillPlayCircleFill className="w-10 h-10 fill-[#F8BD00]" />
                   <div className="font-bold text-xl">How to Work</div>
                 </button>
-                <div className="absolute scale-50 md:scale-75 w-[400px] h-[400px] bottom-0 right-0 z-10 translate-x-full translate-y-3/6">
+                <div className="absolute scale-50 hidden md:block md:scale-75 w-[400px] h-[400px] bottom-0 right-0 z-10 translate-x-full translate-y-3/6">
                   <Image
                     src="/student/home/arrow.svg"
                     alt="arrow"
@@ -472,7 +473,7 @@ export default function StudentHome() {
         </div>
 
         {/* footer */}
-        <FooterNew />
+        <Footer />
       </main>
     </StudentWrapper>
   );

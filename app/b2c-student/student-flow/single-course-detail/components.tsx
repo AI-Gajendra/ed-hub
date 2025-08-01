@@ -71,7 +71,7 @@ export const LearningContentCard: React.FC<{
     <div className="mb-4 md:mb-6 flex flex-col lg:flex-row md:items-center justify-between gap-4">
       {/* Tabs */}
       <nav
-        className="w-full md:w-auto -mb-px flex overflow-x-auto space-x-1 lg:space-x-2 custom-scrollbar-thin"
+        className="w-full md:w-auto -mb-px gap-2 flex overflow-x-auto space-x-1 lg:space-x-2 custom-scrollbar-thin"
         aria-label="Content Tabs"
       >
         {props.tabs.map((tab) => (

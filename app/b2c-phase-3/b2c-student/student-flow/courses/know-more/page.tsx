@@ -43,7 +43,7 @@ export default function CourseDetail() {
           </div>
         </div>
 
-        <section className="px-16 py-8">
+        <section className="px-4 lg:px-16 py-8">
           <div className="rounded-xl bg-white">
             <div className="md:grid md:grid-cols-[1fr_0.6fr] p-4 gap-16">
               <div className="space-y-4">

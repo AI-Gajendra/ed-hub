@@ -17,6 +17,8 @@ import { TbBrandLinkedinFilled } from "react-icons/tb";
 import CustomSelect from "@/components/student/courses/CustomSelect";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Footer from "@/components/layout/Footer";
+import Newsletter from "@/components/common-components/Newsletter";
 
 // -------- EducatorPanel Component and related declarations START --------
 
@@ -152,7 +154,7 @@ export const educatorsData: Educator[] = [
   },
 ];
 
-const categories = ["Academic","Notsoextra -Curricular","Foundation", "Skill Development", "Brain Development","Door Step Tutoring","Skill Club"];
+const categories = ["Academic", "Notsoextra -Curricular", "Foundation", "Skill Development", "Brain Development", "Door Step Tutoring", "Skill Club"];
 
 const EducatorCard = ({ educator }: { educator: Educator }) => {
   const Router = useRouter();
@@ -239,7 +241,7 @@ function EducatorPanel() {
   }));
 
   return (
-    <div className="w-full mb-62">
+    <div className="w-full">
       <div className="max-w-screen-xl mx-auto w-full p-6 bg-white rounded-3xl">
         {/* Heading Section */}
 
@@ -341,9 +343,12 @@ export default function CourseDetail() {
     <StudentWrapper activeState="Instructor List">
       <div className="bg-[#EEEEEE] mx-auto w-full py-8 sm:py-12 space-y-6 px-4 sm:px-6 md:px-10 lg:px-16">
         <EducatorPanel />
+        <div className="">
+          <Newsletter />
+        </div>
       </div>
 
-      <FooterNew />
+      <Footer />
     </StudentWrapper>
   );
 }

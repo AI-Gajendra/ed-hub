@@ -3,8 +3,8 @@
 import StudentWrapper from "@/components/student-wrapper";
 import { FaCircleCheck } from "react-icons/fa6";
 import { ArrowLeft } from "lucide-react";
-import FooterNew from "@/components/footer3";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/layout/Footer";
 
 export default function CourseDetail() {
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function CourseDetail() {
           </div>
         </div>
 
-        <section className="px-16 py-8">
+        <section className="sm:px-4 md:px-8 lg:px-16 py-8">
           <div className="rounded-xl bg-white">
             <div className="md:grid md:grid-cols-[1fr_0.6fr] p-4 gap-16">
               <div className="space-y-4">
@@ -190,7 +190,7 @@ export default function CourseDetail() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew showSuscriptionBlock={false} />
+        <Footer/>
       </div>
     </StudentWrapper>
   );

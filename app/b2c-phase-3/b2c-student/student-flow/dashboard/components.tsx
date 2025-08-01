@@ -139,7 +139,7 @@ export const LearningActivitiesSection: React.FC<LearningActivitiesSectionProps>
                 <h2 className="text-lg md:text-xl font-semibold text-black">Learning Activities</h2>
                 <div className="flex items-center gap-1 bg-[#F9FAFB] p-1.5 md:p-2 rounded-full">{['Active', 'Completed'].map(filter => (<FilterTabButton key={filter} label={filter} isActive={currentFilter === filter} onClick={() => onFilterChange(filter as 'Active' | 'Completed')} />))}</div>
             </div>
-            <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 flex-wrap">
+            <div className="grid grid-cols-1 grid-cols-3 justify-between items-start sm:items-center mb-6 gap-4 flex-wrap">
                 <MonthTab />
                 <DualToggleButton leftLabel="Weekly ( 10 )" rightLabel="Monthly ( 50 )" activeSide={activeSide}
                     onLeftClick={() => setActiveSide('left')}

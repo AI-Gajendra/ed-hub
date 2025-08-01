@@ -74,7 +74,7 @@ const CategoryTabs: React.FC = () => {
   };
 
   return (
-    <div className="relative z-[9999]">
+    <div className="relative z-[98]">
       <div className="flex gap-3 md:gap-5 justify-start md:justify-center px-4 py-6 bg-white rounded-xl whitespace-nowrap overflow-x-auto scrollbar-hide">
         {categories.map((category) => {
           const isAcademic = category === "Academic";

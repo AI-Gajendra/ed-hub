@@ -45,10 +45,10 @@ export default function StudentNavbar({ activeState = "Home", isLanding = false 
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
+      className={`sticky top-0 z-[999] w-full transition-all duration-300 ${isScrolled ? "shadow-md" : ""
         }`}
     >
-      <nav className="bg-white text-black pt-4 px-8">
+      <nav className="bg-[#3366FF] text-white pt-5 px-4 md:px-8">
         <div className="w-full mx-auto xl:px-12">
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
