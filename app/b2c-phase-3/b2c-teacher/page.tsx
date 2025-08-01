@@ -378,7 +378,7 @@ export default function Landing() {
 
       {/* Page 2 - Globally Recognized */}
       <motion.div
-        className="relative w-full h-[calc(100vh-7.5rem)] flex flex-col overflow-hidden"
+        className="relative w-full font-main md:h-[calc(100vh-7.5rem)] flex flex-col overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -426,7 +426,7 @@ export default function Landing() {
       </motion.div>
 
       {/* Page 3 - About Us */}
-      <div className="relative w-full px-4 md:px-24 min-h-[calc(100vh-7.5rem)] flex flex-col overflow-hidden">
+      <div className="relative  font-main w-full px-4 md:px-24 min-h-[calc(100vh-7.5rem)] flex flex-col overflow-hidden">
         {/* Background Layer */}
         <div
           className="absolute inset-0 bg-center bg-repeat z-0"
@@ -666,7 +666,7 @@ export default function Landing() {
       <motion.div
         className="w-full flex flex-col md:flex-row gap-6 md:gap-3 px-6 md:px-[9%] items-center justify-between bg-cover bg-center bg-no-repeat"
         style={{
-          minHeight: "calc(100vh - 7.5rem)",
+          minHeight: "calc(100vh - 20.5rem)",
           backgroundImage: "url('/Background3.png')",
         }}
         initial={{ opacity: 0 }}
@@ -676,7 +676,7 @@ export default function Landing() {
       >
         <div className="relative z-10 pt-12 px-4 flex flex-col gap-6 items-center w-full h-full">
           <motion.h1
-            className="text-2xl md:text-4xl text-center font-semibold text-black"
+            className="text-2xl  font-main md:text-4xl text-center font-semibold text-black"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -687,7 +687,7 @@ export default function Landing() {
 
           {/* Image takes remaining space */}
           <motion.div
-            className="flex-grow w-full flex justify-center items-center overflow-hidden"
+            className="flex-grow w-full py-10 flex justify-center items-center overflow-hidden"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -820,7 +820,7 @@ export default function Landing() {
 
       {/* page7 */}
       <div className="relative min-h-screen w-screen flex justify-around bg-gradient-to-r from-[#fcdecf] to-[#fdc1d7] pt-16">
-        <div className="w-full max-w-5/7 p-4 pb-20">
+        <div className="w-full md:max-w-5/7 p-4 pb-20">
           {cardData.map((card, index) => (
             <motion.div
               key={card.id}
