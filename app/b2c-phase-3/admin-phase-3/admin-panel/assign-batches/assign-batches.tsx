@@ -53,7 +53,7 @@ const TeacherDroppingForm = () => {
 	}
 
 	return (
-		<div className="bg-[#eeeeee] py-6 sm:py-8 lg:py-10 min-h-screen">
+		<div className="bg-[#eeeeee] px-2 sm:px-4 py-6 sm:py-8 lg:py-10 min-h-screen">
 			<MaxWidthWrapper className="">
 				<div className="max-w-[94rem] mx-auto bg-white p-6  rounded-2xl shadow-sm">
 					<h1 className="text-md text-black mb-2">Teacher Dropping</h1>

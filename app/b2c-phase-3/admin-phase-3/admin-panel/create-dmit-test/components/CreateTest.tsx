@@ -77,7 +77,7 @@ const CreateTest: React.FC<TabProps> = ({ setSelectedTab }) => {
           <Link href={"/b2c-phase-3/admin-phase-3/admin-panel/admin-dmit-test"}>
             <GrayBtn title='Cancel' />
           </Link>
-          <button className="rounded-[42px] text-lg font-semibold bg-[#3366ff] text-white px-2.5 py-4 cursor-pointer inline-block"
+          <button className="rounded-[42px] text-base sm:text-lg font-medium sm:font-semibold bg-[#3366ff] text-white px-2.5 py-4 cursor-pointer inline-block"
           onClick={handleClick}>
             Continue
           </button>

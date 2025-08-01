@@ -123,7 +123,7 @@ const AdminCourse: React.FC = () => {
       </div>
 
       {/* Right Subject Selector */}
-      <div className="w-full max-w-[25%] bg-[#f9fafb] border rounded-2xl p-4">
+      <div className="w-full sm:max-w-[25%] bg-[#f9fafb] border rounded-2xl p-4">
         <h3 className="text-lg md:text-xl font-semibold mb-5">Select Subjects</h3>
         <div className="space-y-5 overflow-y-auto custom-scrollbar-thin max-h-[300px]">
           {subjects.map((subject, index) => {

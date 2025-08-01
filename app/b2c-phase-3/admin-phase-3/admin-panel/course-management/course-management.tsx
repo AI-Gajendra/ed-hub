@@ -160,7 +160,11 @@ export default function CourseManagementPage() {
 							</Link>
 						))}
 					</div>
-					<ScrollableButton onClick={() => setIsModalOpen(true)} ButtonHeading="Add Courses" />
+					<div>
+						<button
+							onClick={() => setIsModalOpen(true)}
+							className="   rounded-full z-50 hover:cursor-pointer text-white px-3 py-3  bg-[#ffcc00] fixed bottom-8 sm:right-12  right-4 ">Add Courses</button>
+					</div>
 
 					<AddCourseModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 				</main>

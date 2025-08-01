@@ -1,4 +1,5 @@
-import CourseManagementPage from '@/components/b2c-admin/course-management'
+import CourseManagementPage from "./course-management";
+
 
 export default function page() {
 	return <CourseManagementPage />
