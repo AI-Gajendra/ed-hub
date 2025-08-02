@@ -1,38 +1,12 @@
 "use client";
 import mapImage from "@/public/mapImage.png";
-import wave from "@/public/wave.png";
 import Image from "next/image";
 import { FiSend } from "react-icons/fi";
 import mainLogo from "@/public/mianLogo2.png";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaTiktok,
-  FaYoutube,
-} from "react-icons/fa";
 
-import { motion, Variants } from "framer-motion";
-import { JSX } from "react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
-  const SocialIcon = ({
-    type,
-    className,
-  }: {
-    type: string;
-    className?: string;
-  }) => {
-    const icons: Record<string, JSX.Element> = {
-      facebook: <FaFacebookF className={className} />,
-      instagram: <FaInstagram className={className} />,
-      twitter: <FaTwitter className={className} />,
-      tiktok: <FaTiktok className={className} />,
-      youtube: <FaYoutube className={className} />,
-    };
-
-    return icons[type] || null;
-  };
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
