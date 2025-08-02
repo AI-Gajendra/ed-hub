@@ -8,8 +8,8 @@ export default function landingWrapper({
 }) {
   return (
     <div>
-        <Navbar />
-        {children}
+      <Navbar />
+      {children}
     </div>
   );
 }
