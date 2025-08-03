@@ -162,93 +162,12 @@ export default function Footer() {
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="absolute right-8 bottom-8 hidden md:block"
+            className="absolute right-12 bottom-12 hidden md:block"
           >
-            <motion.svg
-              width="50"
-              height="50"
-              viewBox="0 0 50 50"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-            >
-              <circle cx="25" cy="25" r="20" fill="#FFCC00" />
-              <circle cx="25" cy="25" r="12" fill="#FFD54F" />
-              {/* Light rays */}
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 0 }}
-                d="M45 25H50"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 0.2 }}
-                d="M0 25H5"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 0.4 }}
-                d="M25 45V50"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 0.6 }}
-                d="M25 0V5"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 0.8 }}
-                d="M38 38L42 42"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 1 }}
-                d="M8 8L12 12"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 1.2 }}
-                d="M38 12L42 8"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5, delay: 1.4 }}
-                d="M8 42L12 38"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </motion.svg>
+           <Image src={"/bulb.png"}
+           alt="bulb"
+           height={100}
+           width={100}/>
           </motion.div>
         </div>
       </div>
